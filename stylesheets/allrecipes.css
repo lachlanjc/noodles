@@ -1,0 +1,170 @@
+body {
+  color: #333;
+  height: 100%;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+}
+button {
+  border: 0;
+  background-color: transparent;
+  display: inline-block;
+}
+button:focus { outline: none; }
+.content {
+  display: inline-block;
+  width: 100%;
+  padding-left: 10px;
+}
+.nav {
+  width: 75px;
+  height: 100%;
+  display: inline-block;
+  border-right: 1px solid #f2f2f2;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0 !important;
+}
+.nav-container {
+  margin: auto 0;
+}
+.nav-container button {
+  display: block !important;
+  background-color: transparent;
+  background-size: 35px 35px;
+  background-repeat: no-repeat;
+  border: 0;
+  width: 35px;
+  height: 35px;
+  margin: 0 auto 25px 13px;
+}
+.nav-container .add { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/add.svg"); }
+.nav-container .recipes { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/recipes.svg"); }
+.nav-container .collections { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/collections.svg"); }
+.nav-container .ingredients { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/ingredients.svg"); }
+.nav-container .cuisines { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/cuisines.svg"); }
+.nav-container .add-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/add-active.svg"); }
+.nav-container .recipes-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/recipes-active.svg"); }
+.nav-container .collections-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/collections-active.svg"); }
+.nav-container .ingredients-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/ingredients-active.svg"); }
+.nav-container .cuisines-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/cuisines-active.svg"); }
+.nav-container .active {
+    background-color: #fa6713;
+    -webkit-box-shadow: -20px -20px 0 0 #fa6713;
+    -moz-box-shadow: -20px -20px 0 0 #fa6713;
+    box-shadow: -20px -20px 0 0 #fa6713;
+    border-radius: 10px;
+    overflow: visible !important;
+}
+
+header {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  border-bottom: 1px solid #f2f2f2;
+  box-sizing: border-box;
+  font-family: "freight-sans-pro", sans-serif;
+}
+.title {
+  font-weight: normal;
+  font-size: 2em;
+  line-height: 2em;
+  font-weight: 300;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+header .label {
+  color: #fa6713;
+  font-weight: bold;
+  font-size: 0.95em;
+  letter-spacing: -0.05rem;
+}
+header .f-btn {
+  width: 24px;
+  height: 24px;
+  background-size: 24px 24px;
+  margin: 5px;
+}
+header .f-btn:focus { outline: none; }
+#recent { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/recent.svg"); }
+#favorite { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/favorite.svg"); }
+header .search {
+  height: 30px;
+  width: 180px;
+  background-color: transparent;
+  margin: 17px 5px auto auto;
+  border: 1px solid #fa6713;
+  border-radius: 30px;
+  padding: 8px 8px 8px 28px;
+  box-sizing: border-box;
+  background: url("https://d1nk51tq4b83ct.cloudfront.net/search.svg") no-repeat;
+  background-size: 14px 14px;
+  background-position: 8px 7px;
+  font: 0.9em "freight-sans-pro", sans-serif;
+  color: #333;
+  letter-spacing: 0.01rem;
+}
+header .search:hover {
+  -webkit-box-shadow: 0 0 6px #fdc8a9;
+  -moz-box-shadow:    0 0 6px #fdc8a9;
+  box-shadow:         0 0 6px #fdc8a9;
+}
+header .search:focus {
+  -webkit-box-shadow: 0 0 12px #fdc8a9;
+  -moz-box-shadow:    0 0 12px #fdc8a9;
+  box-shadow:         0 0 12px #fdc8a9;
+  outline: none;
+}
+.recipe-link {
+  text-decoration: none;
+  color: #333;
+}
+.recipe-list {
+  list-style: none;
+  padding-left: 1px;
+}
+.recipe-list li {
+  margin: 24px 0;
+}
+.photo {
+  display: none;
+  overflow: hidden;
+  width: 80px;
+  border-radius: 12px;
+  height: 80px;
+  margin: 10px;
+  background-size: 100px;
+  background-repeat: no-repeat;
+}
+.list-header {
+  font-weight: 400;
+  font-size: 1.2em;
+  color: #fa6713;
+  font-family: "freight-sans-pro", sans-serif;
+}
+.list-ingredients {
+  font-family: "adobe-garamond-pro", serif;
+  font-weight: 300;
+  font-size: 1em;
+  color: #9e9e9e;
+}
+#cake {
+  background-image: url("https://lh6.googleusercontent.com/Ih935lCTKrUxyCKrDb8DiavasbzyyZkEjn7-tNV2p0gcc2IKKYHr0uDa1-UA6edmiVfaxYpUOLw");
+}
+#chorizo-stew {
+  background-image: url("http://www.epicurious.com/images/recipesmenus/2013/2013_february/51143230.jpg");
+}
+@media print {
+    .nav { display: none; }
+    header { display: block; }
+    header .filter { display: none; }
+    header div .search { display: none; }
+    .list-header { color: #000 !important; }
+}
