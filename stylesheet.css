@@ -1,5 +1,5 @@
 body {
-  font-family: "freight-sans-pro", "Avenir Next", Avenir, Helvetica, sans-serif !important;
+  font-family: "Avenir Next", Avenir, Helvetica, sans-serif !important;
   text-align: center;
 }
 .form-control {
@@ -9,9 +9,12 @@ body {
   max-width: 800px;
   margin: 24px auto;
 }
-h1 { font-size: 4em; }
-h3 { font-size: 2em; }
+h1 { font-size: 4em !important; }
+h3 { font-size: 2em !important; }
 p {
   margin: 24px auto !important;
   font-size: 1.33em;
+  width: 50%;
+  min-width: 315px;
+  max-width: 1000px;
 }
