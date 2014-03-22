@@ -51,6 +51,7 @@
             <div class="notes p-hide">
               <teaxtarea class="note-editor" id="inputter" contenteditable="true"  autocomplete="false">Type your notes in here...</textarea>
             </div>
+            <div id="rendered"></div>
             <span class="disclaimer p-hide">Notes are formatted with Markdown. Need help with it? <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Here's a guide.</a></span><br>
             <button onclick="save();" class="button p-hide">Save</button><button onclick="render();" class="button p-hide">View</button><br>
             <div id="results"></div>
@@ -74,7 +75,7 @@
                 </li>
                 <li>
                     <button id="four">
-                        <div class="icon" id="grocery-list"></div><span>Grocery Lists</span>
+                        <div class="icon" id="grocery-list"></div><span>Create a Shopping List</span>
                     </button>
                 </li>
             </ul>

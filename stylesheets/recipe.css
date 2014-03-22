@@ -92,11 +92,11 @@ h2 {
 .button {
     background-color: #fa6713;
     border-radius: 8px;
-    padding: 6px 12px;
+    padding: 5px 10px;
     margin: auto 5px;
     color: #fff;
     text-align: center;
-    font-size: 0.95em;
+    font-size: 0.75em;
     font-family: "freight-sans-pro", sans-serif;
     letter-spacing: 0.05rem;
 }
@@ -162,24 +162,7 @@ ol li { line-height: 1.75em; }
 #print { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/print.svg"); }
 #share { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/options.svg"); }
 #grocery-list { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/grocery-lists.svg"); }
-/* .recipe-options {
-  margin: 2em auto;
-  width: 25%;
-  display: flex;
-  display: -webkit-flex;
-  justify-content: space-between;
-  -webkit-justify-content: space-between;
-}
-.recipe-options button {
-  width: 25px;
-  height: 25px;
-  background-size: 25px 25px;
-  background-color: transparent;
-  border: 0;
-}
-#edit { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/edit.svg"); }
-#print { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/print.svg"); }
-#share { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/options.svg"); } */
+
 @media only screen and (max-width: 1000px) {
     .r-header .container { margin: 8em auto 4em 4em; }
 }
@@ -212,8 +195,8 @@ ol li { line-height: 1.75em; }
     .r-header .container { margin: 1em auto 0.75em 1em; }
     .r-header h1 { font-size: 2em; }
     .r-header h4 { font-size: 1em; }
-    article { width: 90%; }
-    .recipe-actions { width: 90%; }
+    article { width: 95%; }
+    .recipe-actions { width: 100%; }
 }
 @media print {
   .r-header { background-image: none; }
@@ -237,6 +220,6 @@ ol li { line-height: 1.75em; }
   }
   article h2 { font-size: 1.15; }
   li { font-size: 0.85em; }
-  #note-print { display: block; }
+  #rendered { display: block; }
   .p-hide { display: none; }
 }

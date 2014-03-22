@@ -1,3 +1,4 @@
+html, body { height: 100%; }
 body {
   color: #333;
   height: 100%;
@@ -19,12 +20,13 @@ button:focus { outline: none; }
 }
 .nav {
   width: 75px;
-  height: 100%;
-  display: inline-block;
+  height: 95%;
   border-right: 1px solid #f2f2f2;
   box-sizing: border-box;
   padding: 0;
-  margin: 0 !important;
+  margin: 0.5% 0 0 0;
+  display: flex;
+  display: -webkit-flex;
 }
 .nav-container {
   margin: auto 0;
@@ -37,7 +39,7 @@ button:focus { outline: none; }
   border: 0;
   width: 35px;
   height: 35px;
-  margin: 0 auto 25px 13px;
+  margin: 0 auto 35px 13px;
 }
 .nav-container .add { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/add.svg"); }
 .nav-container .recipes { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/recipes.svg"); }
