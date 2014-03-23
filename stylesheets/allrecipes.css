@@ -31,16 +31,6 @@ button:focus { outline: none; }
 .nav-container {
   margin: auto 0;
 }
-.nav-container button {
-  display: block;
-  background-color: transparent;
-  background-size: 35px 35px;
-  background-repeat: no-repeat;
-  border: 0;
-  width: 35px;
-  height: 35px;
-  margin: 0 auto 35px 13px;
-}
 .nav-container a {
   display: block;
   background-size: 35px 35px;
@@ -63,11 +53,9 @@ button:focus { outline: none; }
 .nav-container .cuisines-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/cuisines-active.svg"); }
 .nav-container .active {
     background-color: #fa6713;
-    -webkit-box-shadow: -20px -20px 0 0 #fa6713;
-    -moz-box-shadow: -20px -20px 0 0 #fa6713;
-    box-shadow: -20px -20px 0 0 #fa6713;
-    border-radius: 10px;
-    overflow: visible !important;
+    padding: 17px 26px 17px 17px;
+    margin: 0 auto 25px -8px;
+    background-position: 21px 17px;
 }
 
 header {
