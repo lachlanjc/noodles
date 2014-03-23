@@ -32,8 +32,17 @@ button:focus { outline: none; }
   margin: auto 0;
 }
 .nav-container button {
-  display: block !important;
+  display: block;
   background-color: transparent;
+  background-size: 35px 35px;
+  background-repeat: no-repeat;
+  border: 0;
+  width: 35px;
+  height: 35px;
+  margin: 0 auto 35px 13px;
+}
+.nav-container a {
+  display: block;
   background-size: 35px 35px;
   background-repeat: no-repeat;
   border: 0;
@@ -46,6 +55,7 @@ button:focus { outline: none; }
 .nav-container .collections { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/collections.svg"); }
 .nav-container .ingredients { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/ingredients.svg"); }
 .nav-container .cuisines { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/cuisines.svg"); }
+
 .nav-container .add-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/add-active.svg"); }
 .nav-container .recipes-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/recipes-active.svg"); }
 .nav-container .collections-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/collections-active.svg"); }
