@@ -57,6 +57,42 @@ button:focus { outline: none; }
     margin: 0 auto 25px -8px;
     background-position: 21px 17px;
 }
+.tooltip-right:after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 15%;
+  left: 15%;
+  margin-top: -100%;
+  margin-left: 99%;
+  background-color: #fa6713;
+  padding: 5px 15px;
+  color: #fff;
+  border-radius: 8px;
+  white-space: nowrap;
+  opacity: 0;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition:  all 0.25s ease;
+}
+.tooltip-right:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-right:   9px solid #fa6713;
+  border-top:   9px solid transparent;
+  border-left:  9px solid transparent;
+  border-bottom:  9px solid transparent;
+  -webkit-transition: all 0.4s ease;
+  -moz-transition:  all 0.4s ease;
+  transition:     all 0.4s ease;;
+  opacity: 0;
+  left: 95%;
+  top: 15%;
+}
+.tooltip-right:hover:after {
+  bottom: -25%;
+}
+.tooltip-right:hover:after, span:hover:before { opacity: 1; }
 
 header {
   display: flex;
