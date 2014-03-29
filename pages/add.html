@@ -23,14 +23,42 @@
   </aside>
   <aside class="content">
   	<header>
-        <div></div>
+        <div>
+          <a href="http://pfmscode.github.io/recipes/pages/allrecipes.html"><button class="button">Cancel</button></a>
+        </div>
         <div class="title">Add Recipe</div>
-        <div class="controls">
-          <button class="control"></button>
+        <div>
+          <button class="button">Save Recipe</button>
         </div>
       </header>
       <article>
-      	
+        <div class="about">
+          <h2 class="tk-freight-sans-pro">About</h2>
+      	  <input type="text" name="title" placeholder="Title" required>
+          <input type="number" name="serves" placeholder="Serves" min="1" required>
+          <input type="text" name="active-time" placeholder="Active time in minutes (optional)">
+          <input type="text" name="total-time" placeholder="Total time (optional)">
+        </div>
+        <br>
+        <div class="ingredients">
+          <h2 class="tk-freight-sans-pro">Ingredients</h2>
+          <input type="text" placeholder="Ingredient">
+          <input type="text" placeholder="Ingredient">
+          <input type="text" placeholder="Ingredient">
+          <input type="text" placeholder="Ingredient">
+          <input type="text" placeholder="Ingredient">
+          <input type="text" placeholder="Ingredient">
+          <input type="text" placeholder="Ingredient">
+          <input type="text" placeholder="Ingredient">
+          <input type="text" placeholder="Ingredient">
+          <input type="text" placeholder="Ingredient">
+          <button class="button" onclick="addIngredient();">Add Ingredient</button>
+        </div>
+        <br>
+        <div class="instructions">
+          <h2 class="tk-freight-sans-pro">Instructions</h2>
+          <textarea class="instructions-content"></textarea>
+        </div>
       </article>
   </aside>
 </body>
