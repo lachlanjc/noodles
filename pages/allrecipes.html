@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Noodle</title>
-    <link rel="stylesheet" type="text/css" href="https://lachlanjc.github.io/recipes/stylesheets/allrecipes.css">
-    <script type="text/javascript" src="https://lachlanjc.github.io/recipes/allrecipes.js"></script>
+    <title>Noodles</title>
+    <link rel="stylesheet" type="text/css" href="https://pfmscode.github.io/recipes/stylesheets/allrecipes.css">
+    <script type="text/javascript" src="https://pfmscode.github.io/recipes/allrecipes.js"></script>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="viewport" content="width=device-width, minimal-ui">
@@ -16,12 +16,12 @@
 <body>
   <aside class="nav">
     <div class="nav-container">
-      <a href="http://lachlanjc.github.io/recipes/pages/add.html" class="add tooltip-right" data-tooltip="Add a new recipe"></a>
-      <a href="http://lachlanjc.github.io/recipes/pages/allrecipes.html" class="recipes-active active tooltip-right" tooltip="View all of your recipes"></a>
-      <a href="http://lachlanjc.github.io/recipes/pages/collections.html" class="collections tooltip-right" data-tooltip="Organize your recipes into collections"></a>
+      <a href="http://pfmscode.github.io/recipes/pages/add.html" class="add" title="Add a new recipe"></a>
+      <a href="http://pfmscode.github.io/recipes/pages/allrecipes.html" class="recipes-active" title="View all of your recipes"></a>
+      <a href="http://pfmscode.github.io/recipes/pages/collections.html" class="collections" title="Organize your recipes into collections"></a>
       <!--Pro features-->
-      <a href="http://lachlanjc.github.io/recipes/pages/ingredients.html" class="ingredients tooltip-right" data-tooltip="Filter your recipes through ingredients"></a>
-      <a href="http://lachlanjc.github.io/recipes/pages/add.html" class="cuisines tooltip-right" data-tooltip="Browse through your recipes by looking at a map of the world"></a>
+      <a href="http://pfmscode.github.io/recipes/pages/ingredients.html" class="ingredients" title="Filter your recipes through ingredients"></a>
+      <a href="http://pfmscode.github.io/recipes/pages/add.html" class="cuisines" title="Browse through your recipes by looking at a map of the world"></a>
     </div>
   </aside>
   <aside class="content">
@@ -37,8 +37,9 @@
           <input type="text" class="search" title="Search through your recipes">
         </div>
       </header>
-      <ul class="recipe-list stroll flip">
-        <li href="javascript:;" onclick="openRecipeOne();">
+      <ul class="recipe-list">
+        <a href="http://pfmscode.github.io/recipes">
+        <li>
             <div class="photo" id="chorizo-stew"></div>
             <div class="list-header">Banana Walnut Cake</div>
             <p class="list-ingredients">Bananas, walnuts, olive oil, spinach and water</p>
@@ -60,6 +61,7 @@
         </li>
         <li>
       </ul>
+    </div>
   </aside>
   <script src="https://d1nk51tq4b83ct.cloudfront.net/instantclick.min.js" data-no-instant></script>
   <script data-no-instant>InstantClick.init(5);</script>

@@ -74,7 +74,7 @@ h2 {
   height: 315px;
   margin: 2em auto 2px 0;
   border-radius: 0.75em;
-  background-image: url("https://dvkeeb2d1e2j7.cloudfront.net/act/Notes/note_background.svg");
+  background-image: url("https://d1nk51tq4b83ct.cloudfront.net/note_background.svg");
   background-size: auto 400px;
   display: flex;
   display: -webkit-flex;
@@ -194,6 +194,9 @@ ol li { line-height: 1.75em; }
   .r-header h1 { font-size: 2em; }
   .r-header h4 { font-size: 1em; }
   article { width: 95%; }
+  .button {
+
+  }
   .recipe-actions { width: 100%; }
 }
 @media print {

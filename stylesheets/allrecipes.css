@@ -16,7 +16,7 @@ button:focus { outline: none; }
 .content {
   display: inline-block;
   width: 100%;
-  padding-left: 10px;
+  padding-left: 15px;
 }
 .nav {
   width: 75px;
@@ -24,13 +24,11 @@ button:focus { outline: none; }
   border-right: 1px solid #f2f2f2;
   box-sizing: border-box;
   padding: 0;
-  margin: 0.5% 0 0 0;
+  margin: 0.35% 0 0 0;
   display: flex;
   display: -webkit-flex;
 }
-.nav-container {
-  margin: auto 0;
-}
+.nav-container { margin: auto 0; }
 .nav-container a {
   display: block;
   background-size: 35px 35px;
@@ -79,20 +77,18 @@ button:focus { outline: none; }
   width: 0;
   height: 0;
   border-right:   9px solid #fa6713;
-  border-top:   9px solid transparent;
-  border-left:  9px solid transparent;
+  border-top:     9px solid transparent;
+  border-left:    9px solid transparent;
   border-bottom:  9px solid transparent;
   -webkit-transition: all 0.4s ease;
-  -moz-transition:  all 0.4s ease;
-  transition:     all 0.4s ease;;
+  -moz-transition:    all 0.4s ease;
+  transition:         all 0.4s ease;;
   opacity: 0;
   left: 95%;
   top: 15%;
 }
-.tooltip-right:hover:after {
-  bottom: -25%;
-}
-.tooltip-right:hover:after, span:hover:before { opacity: 1; }
+.tooltip-right:hover:after { bottom: -25%; }
+.tooltip-right:hover:after, .tooltip-right:hover:before { opacity: 1; }
 
 header {
   display: flex;
