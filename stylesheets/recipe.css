@@ -93,9 +93,9 @@ article h2 { letter-spacing: -0.03rem !important; }
   margin: 1.25em 5px auto 0;
   color: #fff;
   text-align: center;
-  font-size: 0.75em;
+  font-size: 1em;
   font-family: "freight-sans-pro", sans-serif;
-  letter-spacing: 0.05rem;
+  letter-spacing: 0.01rem;
 }
 .button:active {
   outline: 0;
@@ -192,7 +192,6 @@ article h2 { letter-spacing: -0.03rem !important; }
     width: 95%;
     padding-top: 0;
   }
-  .button { font-size: 1em; }
   .notes {
     width: 100% !important;
     margin-top: 1em !important;

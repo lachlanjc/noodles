@@ -86,9 +86,9 @@ header {
   margin: 1.25em 5px auto 0;
   color: #fff;
   text-align: center;
-  font-size: 0.75em;
+  font-size: 1em;
   font-family: "freight-sans-pro", sans-serif;
-  letter-spacing: 0.05rem;
+  letter-spacing: 0.01rem;
 }
 .button:active {
   outline: 0;
@@ -115,7 +115,7 @@ input {
   background-image: none;
   border: 1px solid #ccc;
   border-radius: 4px;
-  margin: 1px 0;
+  margin: 1em 0;
 }
 input:focus {
   border: 1px solid rgba(19, 166, 250, 0.85);
@@ -142,6 +142,11 @@ input:focus {
 .about small {
   font-size: 0.9em;
   letter-spacing: 0.01rem;
+}
+.ingredients input {
+  width: 25%;
+  min-width: 175px;
+  max-width: 400px;
 }
 .instructions-content {
   width: 99%;
