@@ -51,7 +51,7 @@ button:focus { outline: none; }
 .nav-container .cuisines-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/cuisines-active.svg"); }
 .nav-container .active {
     background-color: #fa6713;
-    padding: 17px 26px 17px 17px;
+    padding: 17px 25px 17px 17px;
     margin: 0 auto 25px -8px;
     background-position: 21px 17px;
 }
@@ -62,8 +62,7 @@ header {
   justify-content: space-between;
   -webkit-justify-content: space-between;
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   height: auto;
   border-bottom: 1px solid #f2f2f2;
   box-sizing: border-box;
@@ -93,4 +92,47 @@ header {
   -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
   -moz-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
   box-shadow: inset 0 3px 5px rgba(0,0,0,.125)
+}
+header .button {
+  letter-spacing: 0.01rem !important;
+  font-size: 1em !important;
+}
+article h2 { letter-spacing: -0.03rem !important; }
+input {
+  display: block;
+  height: 30px;
+  padding: 2px 10px;
+  font-size: 1em;
+  letter-spacing: 0.02rem;
+  font-family: "freight-sans-pro", sans-serif;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+input:focus {
+  border: 1px solid rgba(19, 166, 250, 0.85);
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 3px rgba(19, 166, 250, 0.125);
+     -moz-box-shadow: inset 0 1px 3px rgba(19, 166, 250, 0.125);
+          box-shadow: inset 0 1px 3px rgba(19, 166, 250, 0.125);
+}
+.instructions-content {
+  width: 99%;
+  height: 20em !important;
+  border-top: 1px solid #f2f2f2;
+  border-bottom: 1px solid #f2f2f2;
+  border-left: 0;
+  border-right: 0;
+  box-sizing: border-box;
+  padding: 2em 0;
+  resize: none;
+  overflow: auto;
+}
+.instructions-content:focus {
+  outline: none;
+  border-top: 1px solid #13a6fa;
+  border-bottom: 1px solid #13a6fa;
 }

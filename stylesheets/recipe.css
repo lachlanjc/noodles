@@ -43,8 +43,8 @@ button:focus { outline: none; }
   width: 100%;
   height: 100%;
   -webkit-box-shadow: 0 -35px 50px rgba(0,0,0,0.4);
-  -moz-box-shadow:  0 -35px 50px rgba(0,0,0,0.4);
-  box-shadow:     0 -35px 50px rgba(0,0,0,0.4);
+     -moz-box-shadow: 0 -35px 50px rgba(0,0,0,0.4);
+          box-shadow: 0 -35px 50px rgba(0,0,0,0.4);
   z-index: 2;
 }
 .print-line {
@@ -64,10 +64,7 @@ article {
   z-index: 3;
 }
 section { margin: 1.25em 0; }
-h2 {
-  font-family: "freight-sans-pro", sans-serif;
-  font-weight: bold;
-}
+article h2 { letter-spacing: -0.03rem !important; }
 .notes {
   width: 80%;
   max-width: 1000px;
@@ -88,7 +85,6 @@ h2 {
   overflow-y: auto;
   outline: none;
 }
-.notes-print { display: none; }
 .button {
   background-color: #fa6713;
   border-radius: 8px;
@@ -103,13 +99,12 @@ h2 {
 .button:active {
   outline: 0;
   -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
-  -moz-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
-  box-shadow: inset 0 3px 5px rgba(0,0,0,.125)
+     -moz-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+          box-shadow: inset 0 3px 5px rgba(0,0,0,.125)
 }
 .disclaimer {
   font-size: 0.65em;
   color: #555;
-  font-family: "freight-sans-pro", sans-serif;
   font-weight: normal;
 }
 .disclaimer a { color: #507bab; }
@@ -160,7 +155,7 @@ ol li { line-height: 1.75em; }
 #share { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/options.svg"); }
 #shopping-list { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/shopping-list.svg"); }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1025px) {
   .r-header .container { margin: 8em auto 4em 4em; }
 }
 @media only screen and (max-width: 800px) {
@@ -193,11 +188,16 @@ ol li { line-height: 1.75em; }
   .r-header .container { margin: 1em auto 0.75em 1em; }
   .r-header h1 { font-size: 2em; }
   .r-header h4 { font-size: 1em; }
-  article { width: 95%; }
-  .button {
-
+  article {
+    width: 95%;
+    padding-top: 0;
   }
-  .recipe-actions { width: 100%; }
+  .button { font-size: 1em; }
+  .notes {
+    width: 100% !important;
+    margin-top: 1em !important;
+  }
+  .recipe-actions { width: 100% !important; }
 }
 @media print {
   .r-header { background-image: none; }
@@ -209,9 +209,9 @@ ol li { line-height: 1.75em; }
     color: #000;
   }
   .r-header h4 {
-  text-shadow: none;
-  color: #000;
-  font-size: 1.15em;
+    text-shadow: none;
+    color: #000;
+    font-size: 1.15em;
   }
   .body-container { box-shadow: none; }
   .print-line { display: block; }
@@ -220,7 +220,8 @@ ol li { line-height: 1.75em; }
     margin-left: 1.33em;
   }
   article h2 { font-size: 1.15; }
-  li { font-size: 0.85em; }
+  article li { font-size: 0.85em; }
+  .button { display: none; }
   #rendered { display: block; }
   .p-hide { display: none; }
 }

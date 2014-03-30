@@ -54,7 +54,7 @@ button:focus { outline: none; }
 .nav-container .cuisines-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/cuisines-active.svg"); }
 .nav-container .active {
     background-color: #fa6713;
-    padding: 17px 26px 17px 17px;
+    padding: 17px 25px 17px 17px;
     margin: 0 auto 25px -8px;
     background-position: 21px 17px;
 }
@@ -122,44 +122,60 @@ header .search:focus {
   box-shadow:         0 0 12px #fdc8a9;
   outline: none;
 }
-.recipe-link {
-  text-decoration: none;
-  color: #333;
-}
+h2 { letter-spacing: -0.03rem !important; }
 .recipe-list {
   list-style: none;
   padding-left: 1px;
 }
-.recipe-list li {
-  margin: 24px 0;
-}
-.photo {
-  display: none;
-  overflow: hidden;
-  width: 80px;
-  border-radius: 12px;
-  height: 80px;
-  margin: 10px;
-  background-size: 100px;
-  background-repeat: no-repeat;
-}
+.recipe-list li { margin: 24px 0; }
 .list-header {
   font-weight: 400;
   font-size: 1.2em;
   color: #fa6713;
-  font-family: "freight-sans-pro", sans-serif;
 }
 .list-ingredients {
-  font-family: "adobe-garamond-pro", serif;
   font-weight: 300;
   font-size: 1em;
   color: #9e9e9e;
 }
-#cake {
-  background-image: url("https://lh6.googleusercontent.com/Ih935lCTKrUxyCKrDb8DiavasbzyyZkEjn7-tNV2p0gcc2IKKYHr0uDa1-UA6edmiVfaxYpUOLw");
+@media only screen and (max-width: 1025px) {
+  .r-header .container { margin: 8em auto 4em 4em; }
 }
-#chorizo-stew {
-  background-image: url("http://www.epicurious.com/images/recipesmenus/2013/2013_february/51143230.jpg");
+@media only screen and (max-width: 800px) {
+  .r-header .container { margin: 6em auto 3em 3em; }
+  article { width: 75%; }
+}
+@media only screen and (max-width: 640px) {
+  .r-header { background-position: 0 0; }
+  .r-header .container { margin: 5em auto 2.5em 2.5em; }
+  .r-header h1 { font-size: 3em; }
+  article { width: 80%; }
+  .notes { width: 75%;}
+  .recipe-options { width: 33%; }
+}
+@media only screen and (max-width: 500px) {
+  .r-header .container { margin: 4em auto 2em 2em; }
+  .r-header h1 {
+    font-size: 2.5em;
+    text-shadow: 0 0 20px rgba(0,0,0,0.4);
+  }
+  .r-header h4 { font-size: 1.05em; }
+  article {
+    width: 85%;
+    margin-left: 18px;
+  }
+  .body-container { box-shadow: none; }
+  .notes { width: 85%; }
+}
+@media only screen and (max-width: 320px) {
+  .r-header .container { margin: 1em auto 0.75em 1em; }
+  .r-header h1 { font-size: 2em; }
+  .r-header h4 { font-size: 1em; }
+  article { width: 95%; }
+  .button {
+
+  }
+  .recipe-actions { width: 100%; }
 }
 @media print {
     .nav { display: none; }
@@ -167,4 +183,5 @@ header .search:focus {
     header .filter { display: none; }
     header div .search { display: none; }
     .list-header { color: #000 !important; }
+    .button { display: none; }
 }
