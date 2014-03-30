@@ -58,6 +58,9 @@ button:focus { outline: none; }
     margin: 0 auto 25px -8px;
     background-position: 21px 17px;
 }
+@media only screen and (max-width: 712px) {
+  .nav-container .active { padding-right: 21px !important; }
+}
 
 header {
   display: flex;
@@ -167,14 +170,12 @@ h2 { letter-spacing: -0.03rem !important; }
   .body-container { box-shadow: none; }
   .notes { width: 85%; }
 }
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 333px) {
   .r-header .container { margin: 1em auto 0.75em 1em; }
   .r-header h1 { font-size: 2em; }
   .r-header h4 { font-size: 1em; }
   article { width: 95%; }
-  .button {
-
-  }
+  .button { font-size: 1em; }
   .recipe-actions { width: 100%; }
 }
 @media print {

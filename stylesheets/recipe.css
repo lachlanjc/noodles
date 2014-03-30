@@ -59,7 +59,8 @@ article {
   padding-top: 1em;
   margin-left: 15%;
   font-family: "adobe-garamond-pro", serif;
-  font-size: 1.2em;
+  font-size: 1.2em !important;
+  line-height: 1.75em;
   letter-spacing: 0.01rem;
   z-index: 3;
 }
@@ -113,7 +114,6 @@ article h2 { letter-spacing: -0.03rem !important; }
   padding-left: 0;
 }
 .ingredients ul li { line-height: 1.75em; }
-ol li { line-height: 1.75em; }
 .recipe-actions {
   list-style: none;
   width: 12em;

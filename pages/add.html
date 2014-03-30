@@ -33,11 +33,13 @@
       </header>
       <article>
         <div class="about">
-          <h2 class="tk-freight-sans-pro">About</h2>
-      	  <input type="text" name="title" placeholder="Title" required>
-          <input type="number" name="serves" placeholder="Serves" min="1" required>
-          <input type="text" name="active-time" placeholder="Active time in minutes (optional)">
-          <input type="text" name="total-time" placeholder="Total time (optional)">
+          <h2 class="tk-freight-sans-pro">About This Recipe</h2>
+      	  <input type="text" name="title large" placeholder="Title" required>
+          <input type="number" name="serves small" placeholder="Serves" min="1" required>
+          <br><span class="disclaimer tk-freight-sans-pro">OPTIONAL INFORMATION</span><br>
+          <small class="tk-freight-sans-pro">Please put everything in minutes.</small><br>
+          <input type="text" name="active-time small" placeholder="Active time">
+          <input type="text" name="total-time small" placeholder="Total time">
         </div>
         <br>
         <div class="ingredients">
@@ -58,8 +60,9 @@
         <br>
         <div class="instructions">
           <h2 class="tk-freight-sans-pro">Instructions</h2>
-          <textarea class="instructions-content"></textarea>
+          <textarea class="instructions-content" placeholder="Enter the instructions for the recipe here..."></textarea>
         </div>
+        <button class="button save">Save Recipe</button>
       </article>
   </aside>
 </body>
