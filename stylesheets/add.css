@@ -130,7 +130,7 @@ input:focus {
   max-width: 600px;
 }
 .about input.small {
-  width: 10%;
+  width: 15%;
   min-width: 50px;
   max-width: 120px;
 }

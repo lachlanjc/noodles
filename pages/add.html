@@ -1,7 +1,7 @@
-<!DOCTYPE html>
 <html>
 <head>
   <title>Add Recipe</title>
+<<<<<<< HEAD
   <link rel="stylesheet" type="text/css" href="https://pfmscode.github.io/recipes/stylesheets/add.css">
   <script type="text/javascript" src="https://pfmscode.github.io/recipes/scripts/add.js"></script>
   <meta name="viewport" content="width=device-width, minimal-ui">
@@ -13,6 +13,16 @@
   </script>-->
   <script type="text/javascript">
   if("standalone"in window.navigator&&window.navigator.standalone){var noddy,remotes=false;document.addEventListener("click",function(e){noddy=e.target;while(noddy.nodeName!=="A"&&noddy.nodeName!=="HTML"){noddy=noddy.parentNode}if("href"in noddy&&noddy.href.indexOf("http")!==-1&&(noddy.href.indexOf(document.location.host)!==-1||remotes)){e.preventDefault();document.location.href=noddy.href}},false)}
+=======
+    <link rel="stylesheet" type="text/css" href="https://pfmscode.github.io/recipes/stylesheets/add.css">
+    <script type="text/javascript" src="https://pfmscode.github.io/recipes/scripts/add.js"></script>
+    <meta name="viewport" content="width=device-width, minimal-ui">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <script type="text/javascript" src="//use.typekit.net/gqp2fia.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <script>
+    
+>>>>>>> FETCH_HEAD
   </script>
 </head>
 </head>
@@ -28,7 +38,7 @@
     </div>
   </aside>
   <aside class="content">
-  	<header>
+    <header>
         <div>
           <a href="http://pfmscode.github.io/recipes/pages/allrecipes.html"><button class="button">Cancel</button></a>
         </div>
@@ -40,7 +50,7 @@
       <article>
         <div class="about">
           <h2 class="tk-freight-sans-pro">About This Recipe</h2>
-      	  <input type="text" name="title" placeholder="Title" class="large" required>
+          <input type="text" name="title" placeholder="Title" class="large" required>
           <input type="number" name="serves" placeholder="Serves" min="1" class="small" required>
           <br><span class="disclaimer tk-freight-sans-pro">OPTIONAL INFORMATION</span><br>
           <small class="tk-freight-sans-pro">Please put everything in minutes.</small><br>
@@ -48,7 +58,7 @@
           <input type="text" name="total-time" placeholder="Total time" class="small">
         </div>
         <br>
-        <div class="ingredients">
+        <div id="ingredients" class="ingredients">
           <h2 class="tk-freight-sans-pro">Ingredients</h2>
           <input type="text" placeholder="Ingredient">
           <input type="text" placeholder="Ingredient">
@@ -60,14 +70,17 @@
           <input type="text" placeholder="Ingredient">
           <input type="text" placeholder="Ingredient">
           <input type="text" placeholder="Ingredient">
-          <br>
-          <button class="button" onclick="addIngredient();">Add Ingredient</button>
         </div>
-        <br>
+          <button class="button" onclick="addIngredient();">Add Ingredient</button>
+          <br>
         <div class="instructions">
           <h2 class="tk-freight-sans-pro">Instructions</h2>
+<<<<<<< HEAD
           <small class="tk-freight-sans-pro">Instructions are formatted with Markdown (read a guide on that <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">here</a>). Use 1. and 2. for making a list.</small><br>
           <textarea class="instructions-content" placeholder="Enter the instructions for the recipe here..."></textarea>
+=======
+          <textarea class="instructions-content" placeholder="Enter and number the instructions for the recipe here..."></textarea>
+>>>>>>> FETCH_HEAD
         </div>
         <button class="button save">Save Recipe</button>
       </article>
