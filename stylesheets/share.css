@@ -207,3 +207,7 @@ ol li { line-height: 1.75em; }
   #note-print { display: block; }
   .p-hide { display: none; }
 }
+.author a {
+  text-decoration: none;
+  color: white;
+}
