@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Noodles</title>
+  <link rel="stylesheet" type="text/css" href="http://pfmscode.github.io/recipes/stylesheets/add.css">
+  <script type="text/javascript" src="http://pfmscode.github.io/recipes/scripts/settings.js"></script>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, minimal-ui">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <script type="text/javascript" src="http://use.typekit.net/gqp2fia.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <script type="text/javascript">
+  if("standalone"in window.navigator&&window.navigator.standalone){var noddy,remotes=false;document.addEventListener("click",function(e){noddy=e.target;while(noddy.nodeName!=="A"&&noddy.nodeName!=="HTML"){noddy=noddy.parentNode}if("href"in noddy&&noddy.href.indexOf("http")!==-1&&(noddy.href.indexOf(document.location.host)!==-1||remotes)){e.preventDefault();document.location.href=noddy.href}},false)}
+  </script>
+</head>
+<body>
+  <aside class="nav">
+    <div class="nav-container">
+      <a href="http://pfmscode.github.io/recipes/pages/add.html" class="add" title="Add a new recipe"></a>
+      <a href="http://pfmscode.github.io/recipes/pages/allrecipes.html" class="recipes-active active" title="View all of your recipes"></a>
+      <!--Pro features-->
+      <a href="http://pfmscode.github.io/recipes/pages/collections.html" class="collections" title="Organize your recipes into collections"></a>
+      <a href="http://pfmscode.github.io/recipes/pages/ingredients.html" class="ingredients" title="Filter your recipes through ingredients"></a>
+      <a href="http://pfmscode.github.io/recipes/pages/cuisines.html" class="cuisines" title="Browse through your recipes by looking at a map of the world"></a>
+    </div>
+  </aside>
+  <aside class="content">
+   <header>
+    <div>
+     <button class="button">Log Out</button>
+    </div>
+    <h2 class="tk-freight-sans-pro">Settings</h2>
+    <div>
+      <button class="button">Save</button>
+    </div>
+   </header>
+   <article>
+    <div class="plans tk-freight-sans-pro">
+     <h2 class="tk-freight-sans-pro">Plans</h2>
+     <div class="free tk-freight-sans-pro">
+      <h2 class="tk-freight-sans-pro">Free</h2>
+      <ul>
+       <li>Unlimited recipes</li>
+       <li>Powerful search</li>
+       <li>Automatic sync</li>
+       <li>iPad and web apps</li>
+       <li>5 share links per month</li>
+      </ul>
+     </div>
+     <div class="pro tk-freight-sans-pro">
+      <h2 class="tk-freight-sans-pro">Pro</h2>
+      <p>All the great features from the free plan, plus:</p>
+      <ul>
+       <li>Unlimited share links</li>
+       <li>Collections</li>
+       <li>Search by ingredients or cuisines</li>
+       <li>No ads</li>
+      </ul>
+      <span class="disclaimer tk-freight-sans-pro">Monthly Plan</span>
+      <form action="" method="POST">
+       <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="pk_test_xqN1DR2X9K6zcJjxDA8SL32P"
+        data-amount="350"
+        data-name="Noodles Pro"
+        data-description="Monthly Subscription to Noodles Pro"
+        data-image="/128x128.png">
+       </script>
+      </form>
+      
+      <span class="disclaimer tk-freight-sans-pro">Yearly Plan</span>
+      <form action="" method="POST">
+       <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="pk_test_xqN1DR2X9K6zcJjxDA8SL32P"
+        data-amount="3500"
+        data-name="Noodles Pro"
+        data-description="Yearly Subscription to Noodles Pro"
+        data-image="/128x128.png">
+       </script>
+      </form>
+     </div>
+    </div>
+    <h2 class="tk-freight-sans-pro">Account Info</h2>
+    <br>
+     <div class="sb tk-freight-sans-pro">
+      <div>
+        <span class="disclaimer">Avatar</span><br>
+        <small>We use <a href="http://gravatar.com/">Gravatar</a> to find profile images.</small><br>
+        <img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?size=120"><br>
+        <label for="grav-email">Gravatar Email:</label>
+        <input type="email" id="grav-email">
+      </div>
+      <div>
+       <label for="name">Name:</label>
+       <input type="text" id="name">
+       <label for="username">Username:</label>
+       <input type="text" id="username" readonly>
+       <label for="email">Email:</label>
+       <input type="email" id="email">
+      </div>
+     </div>
+      <div class="tk-freight-sans-pro">
+       <span class="disclaimer tk-freight-sans-pro">SOCIAL NETWORKS</span><br>
+       <small>Optionally, you can add your social network profiles.</small><br><br>
+       <label for="twitter">Twitter Handle:</label>
+       <input type="text" id="twitter">
+       <label for="facebook">Facebook Username:</label>
+       <input type="text" id="facebook">
+      </div>
+     </div>
+   </article>
+  </aside>

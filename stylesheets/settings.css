@@ -18,6 +18,9 @@ button:focus { outline: none; }
   width: 100%;
   padding-left: 15px;
 }
+.content a {
+  text-decoration: none;
+}
 .nav {
   width: 75px;
   height: 95%;
@@ -65,7 +68,8 @@ header {
   justify-content: space-between;
   -webkit-justify-content: space-between;
   width: 100%;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   height: auto;
   border-bottom: 1px solid #f2f2f2;
   box-sizing: border-box;
@@ -79,89 +83,41 @@ header {
   margin-left: auto;
   margin-right: auto;
 }
-.button {
-  background-color: #fa6713;
-  border-radius: 8px;
-  padding: 5px 10px;
-  margin: 1.25em 5px auto 0;
-  color: #fff;
-  text-align: center;
-  font-size: 1em;
-  font-family: "freight-sans-pro", sans-serif;
-  letter-spacing: 0.01rem;
-}
-.button:active {
-  outline: 0;
-  -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
-     -moz-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
-          box-shadow: inset 0 3px 5px rgba(0,0,0,.125)
-}
-header div .button {
-  letter-spacing: 0.01rem !important;
-  font-size: 1em !important;
-  margin-top: 1em;
-}
-article h2 { letter-spacing: -0.03rem !important; }
-input {
-  display: block;
-  height: 30px;
-  padding: 2px 10px;
-  font-size: 1em;
-  letter-spacing: 0.02rem;
-  font-family: "freight-sans-pro", sans-serif;
-  line-height: 1.42857143;
-  color: #555;
-  background-color: #fff;
-  background-image: none;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin: 1em 0;
-}
-input:focus {
-  border: 1px solid rgba(19, 166, 250, 0.85);
-  outline: 0;
-  -webkit-box-shadow: inset 0 1px 3px rgba(19, 166, 250, 0.125);
-     -moz-box-shadow: inset 0 1px 3px rgba(19, 166, 250, 0.125);
-          box-shadow: inset 0 1px 3px rgba(19, 166, 250, 0.125);
-}
-.about input.large {
-  width: 33%;
-  min-width: 200px;
-  max-width: 600px;
-}
-.about input.small {
-  width: 15%;
-  min-width: 50px;
-  max-width: 120px;
-}
-.about .disclaimer {
-  font-size: 1.05em;
+header .label {
+  color: #fa6713;
   font-weight: bold;
-  letter-spacing: -0.03rem;
+  font-size: 0.95em;
+  letter-spacing: -0.05rem;
 }
-small {
-  font-size: 0.9em;
-  letter-spacing: 0.01rem;
+header .f-btn {
+  width: 24px;
+  height: 24px;
+  background-size: 24px 24px;
+  margin: 5px;
 }
-small a {
-  text-decoration: none;
-  color: #13a6fa;
+header .f-btn:focus { outline: none; }
+#recent { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/recent.svg"); }
+#favorite { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/favorite.svg"); }
+h2 { letter-spacing: -0.03rem !important; }
+.recipes ul {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
-.ingredients input {
-  width: 25%;
-  min-width: 175px;
-  max-width: 400px;
+.recipe-list {
+  list-style: none;
+  padding-left: 1px;
 }
-.ingredient {
-  background: #fa6713;
+.recipe-list li { margin: 24px 0; }
+.list-header {
+  font-weight: 400;
+  font-size: 1.2em;
+  color: #fa6713;
+}
+.list-ingredients {
+  font-weight: 300;
   font-size: 1em;
-<<<<<<< HEAD
-  border-radius:
-=======
   color: #9e9e9e;
-}
-#search-bar {
-  width: 300px;
 }
 @media only screen and (max-width: 1025px) {
   .r-header .container { margin: 8em auto 4em 4em; }
@@ -206,5 +162,4 @@ small a {
     header div .search { display: none; }
     .list-header { color: #000 !important; }
     .button { display: none; }
->>>>>>> FETCH_HEAD
 }
