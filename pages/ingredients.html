@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title>Search by Ingredients</title>
   <link rel="stylesheet" type="text/css" href="http://pfmscode.github.io/recipes/stylesheets/ingredients.css">
   <script type="text/javascript" src="http://pfmscode.github.io/recipes/scripts/ingredients.js"></script>
   <meta name="viewport" content="width=device-width, minimal-ui">
@@ -19,19 +19,39 @@
       <!--Pro features-->
       <a href="http://pfmscode.github.io/recipes/pages/collections.html" class="collections" title="Organize your recipes into collections"></a>
       <a href="http://pfmscode.github.io/recipes/pages/ingredients.html" class="ingredients-active active" title="Filter your recipes through ingredients"></a>
-      <a href="http://pfmscode.github.io/recipes/pages/cuisines.html" class="cuisines" title="Browse through your recipes by looking at a map of the world"></a>
+      <a href="http://pfmscode.github.io/recipes/pages/cuisines.html" class="cuisines" title="Find your recipes through a world map"></a>
     </div>
   </aside>
-<aside class="content">
-  <div class="search-ingredients">
-    <input type="text" id="search-bar" placeholder="Enter your ingredient and hit enter" title="Type your ingredients in here">
-  </div>
-  <div class="ingredients-list">
-    <h3 class="ingredient">
-<!--I don't know what you would use for this...-->
-      Ingredient
-    </h3>
-    <button class="submit-list">Submit</button>
-</aside>
+  <aside class="content">
+  <header>
+    <div></div>
+    <div>
+      <span class="title tk-freight-sans-pro">Find Recipes by Ingredients</span>
+    </div>
+    <div></div>
+  </header>
+  <article>
+    <h2 class="tk-freight-sans-pro">Search</h2>
+    <input type="text" id="search-field" placeholder="Ingredient" title="Type your ingredients in here">
+    <div id="ingredients-list">
+      <div class="ingredient">
+        <span class="tk-freight-sans-pro">banana</span>
+        <button></button>
+      </div>
+    </div>
+    <br>
+    <h2 class="tk-freight-sans-pro">Recipes</h2>
+    <div>
+      <ul class="recipe-list">
+        <a href="http://pfmscode.github.io/recipes/pages/recipe.html">
+          <li>
+            <div class="list-header tk-freight-sans-pro">Banana Walnut Cake</div>
+            <p class="list-ingredients tk-adobe-garamond-pro">Bananas, walnuts, olive oil, spinach and water</p>
+          </li>
+        </a>
+      </ul>
+    </div>
+  </article>
+  </aside>
 </body>
 </html>

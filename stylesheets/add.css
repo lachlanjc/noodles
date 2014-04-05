@@ -139,9 +139,13 @@ input:focus {
   font-weight: bold;
   letter-spacing: -0.03rem;
 }
-.about small {
+small {
   font-size: 0.9em;
   letter-spacing: 0.01rem;
+}
+small a {
+  text-decoration: none;
+  color: #13a6fa;
 }
 .ingredients input {
   width: 25%;

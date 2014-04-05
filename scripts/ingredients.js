@@ -1,6 +1,4 @@
 // Set the text content of an element
-// Some browsers support only textContent, some only innerText, some both
-// so cater for them all
 function setText(el, s) {
   if (typeof el.textContent == 'string') {
     el.textContent = s;
@@ -9,9 +7,8 @@ function setText(el, s) {
   }
 }
 
-// Given an element ID, set the text to text
 function update(id, text) {
-  var el = document.getElementById(id);
+  var el = document.getElementById("search-field");
   if (el) {
     setText(el, text);
   }
