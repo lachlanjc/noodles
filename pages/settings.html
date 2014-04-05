@@ -30,16 +30,16 @@
     <div>
      <button class="button">Log Out</button>
     </div>
-    <h2 class="tk-freight-sans-pro">Settings</h2>
+    <span class="title tk-freight-sans-pro">Settings</span>
     <div>
-      <button class="button">Save</button>
+      <button class="button bold">Save</button>
     </div>
    </header>
    <article>
-    <div class="plans tk-freight-sans-pro">
-     <h2 class="tk-freight-sans-pro">Plans</h2>
-     <div class="free tk-freight-sans-pro">
-      <h2 class="tk-freight-sans-pro">Free</h2>
+    <h2 class="tk-freight-sans-pro">Plan</h2>
+    <div class="plans flex sb tk-freight-sans-pro">
+     <div class="free">
+      <span class="disclaimer orange">Free</span><br>
       <ul>
        <li>Unlimited recipes</li>
        <li>Powerful search</li>
@@ -48,8 +48,8 @@
        <li>5 share links per month</li>
       </ul>
      </div>
-     <div class="pro tk-freight-sans-pro">
-      <h2 class="tk-freight-sans-pro">Pro</h2>
+     <div class="pro">
+      <span class="disclaimer orange">Pro</span><br>
       <p>All the great features from the free plan, plus:</p>
       <ul>
        <li>Unlimited share links</li>
@@ -57,56 +57,65 @@
        <li>Search by ingredients or cuisines</li>
        <li>No ads</li>
       </ul>
-      <span class="disclaimer tk-freight-sans-pro">Monthly Plan</span>
-      <form action="" method="POST">
-       <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-        data-key="pk_test_xqN1DR2X9K6zcJjxDA8SL32P"
-        data-amount="350"
-        data-name="Noodles Pro"
-        data-description="Monthly Subscription to Noodles Pro"
-        data-image="/128x128.png">
-       </script>
-      </form>
-      
-      <span class="disclaimer tk-freight-sans-pro">Yearly Plan</span>
-      <form action="" method="POST">
-       <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-        data-key="pk_test_xqN1DR2X9K6zcJjxDA8SL32P"
-        data-amount="3500"
-        data-name="Noodles Pro"
-        data-description="Yearly Subscription to Noodles Pro"
-        data-image="/128x128.png">
-       </script>
-      </form>
-     </div>
+      <div class="flex sb">
+        <div>
+          <span class="disclaimer ta-center tk-freight-sans-pro">$4.50/Month</span>
+          <form action="" method="POST">
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="pk_test_xqN1DR2X9K6zcJjxDA8SL32P"
+              data-amount="350"
+              data-name="Noodles Pro"
+              data-description="Monthly Subscription to Noodles Pro"
+              data-image="/128x128.png">
+            </script>
+          </form>
+        </div>
+        <div>
+          <span class="tk-freight-sans-pro disclaimer or">or</span>
+        </div>
+        <div>
+          <span class="disclaimer bold tk-freight-sans-pro">$35/Year</span>
+          <form action="" method="POST">
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="pk_test_xqN1DR2X9K6zcJjxDA8SL32P"
+              data-amount="3500"
+              data-name="Noodles Pro"
+              data-description="Yearly Subscription to Noodles Pro"
+              data-image="/128x128.png">
+            </script>
+          </form>
+        </div>
+      </div>
     </div>
+    <hr>
     <h2 class="tk-freight-sans-pro">Account Info</h2>
-    <br>
-     <div class="sb tk-freight-sans-pro">
+     <div class="flex sb tk-freight-sans-pro">
       <div>
         <span class="disclaimer">Avatar</span><br>
         <small>We use <a href="http://gravatar.com/">Gravatar</a> to find profile images.</small><br>
-        <img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?size=120"><br>
+        <img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?size=120" class="avatar"><br>
         <label for="grav-email">Gravatar Email:</label>
         <input type="email" id="grav-email">
       </div>
       <div>
        <label for="name">Name:</label>
-       <input type="text" id="name">
+       <input type="text" id="name"><br>
        <label for="username">Username:</label>
-       <input type="text" id="username" readonly>
+       <input type="text" id="username" class="readonly" readonly><br>
        <label for="email">Email:</label>
-       <input type="email" id="email">
+       <input type="email" id="email"><br>
       </div>
      </div>
-      <div class="tk-freight-sans-pro">
+     <div class="tk-freight-sans-pro">
        <span class="disclaimer tk-freight-sans-pro">SOCIAL NETWORKS</span><br>
        <small>Optionally, you can add your social network profiles.</small><br><br>
-       <label for="twitter">Twitter Handle:</label>
-       <input type="text" id="twitter">
-       <label for="facebook">Facebook Username:</label>
-       <input type="text" id="facebook">
+       <label for="twitter" class="bold">Twitter Handle:</label>
+       <input type="text" id="twitter"><br>
+       <label for="facebook" class="bold">Facebook Username:</label>
+       <input type="text" id="facebook"><br>
       </div>
      </div>
+     <hr>
+     <button class="button bold save-bottom">Save</button>
    </article>
   </aside>

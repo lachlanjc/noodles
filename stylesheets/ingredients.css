@@ -155,9 +155,7 @@ small a {
 .ingredient {
   background: #fa6713;
   font-size: 1em;
-<<<<<<< HEAD
-  border-radius:
-=======
+  border-radius: 12px;
   color: #9e9e9e;
 }
 #search-bar {
@@ -206,5 +204,4 @@ small a {
     header div .search { display: none; }
     .list-header { color: #000 !important; }
     .button { display: none; }
->>>>>>> FETCH_HEAD
 }
