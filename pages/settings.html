@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Noodles</title>
+  <title>Settings - Noodles</title>
   <link rel="stylesheet" type="text/css" href="http://pfmscode.github.io/recipes/stylesheets/settings.css">
   <script type="text/javascript" src="http://pfmscode.github.io/recipes/scripts/settings.js"></script>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="viewport" content="width=device-width, minimal-ui">
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
   <script type="text/javascript" src="http://use.typekit.net/gqp2fia.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
@@ -17,12 +14,14 @@
 <body>
   <aside class="nav">
     <div class="nav-container">
-      <a href="http://pfmscode.github.io/recipes/pages/add.html" class="add" title="Add a new recipe"></a>
-      <a href="http://pfmscode.github.io/recipes/pages/allrecipes.html" class="recipes-active active" title="View all of your recipes"></a>
+      <a href="add.html" class="add" title="Add a new recipe"></a>
+      <a href="allrecipes.html" class="recipes" title="View all of your recipes"></a>
       <!--Pro features-->
-      <a href="http://pfmscode.github.io/recipes/pages/collections.html" class="collections" title="Organize your recipes into collections"></a>
-      <a href="http://pfmscode.github.io/recipes/pages/ingredients.html" class="ingredients" title="Filter your recipes through ingredients"></a>
-      <a href="http://pfmscode.github.io/recipes/pages/cuisines.html" class="cuisines" title="Browse through your recipes by looking at a map of the world"></a>
+      <a href="collections.html" class="collections" title="Organize your recipes into collections"></a>
+      <a href="ingredients.html" class="ingredients" title="Filter your recipes through ingredients"></a>
+      <a href="cuisines.html" class="cuisines" title="Browse through your recipes by looking at a map of the world"></a>
+      <!--End pro features-->
+      <a href="settings.html" class="settings-active active" title="Change account settings or log out"></a>
     </div>
   </aside>
   <aside class="content">
@@ -90,30 +89,36 @@
     <hr>
     <h2 class="tk-freight-sans-pro">Account Info</h2>
      <div class="flex sb tk-freight-sans-pro">
+       <span class="disclaimer tk-freight-sans-pro">Account</span><br>
       <div>
         <span class="disclaimer">Avatar</span><br>
         <small>We use <a href="http://gravatar.com/">Gravatar</a> to find profile images.</small><br>
         <img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?size=120" class="avatar"><br>
         <label for="grav-email">Gravatar Email:</label>
-        <input type="email" id="grav-email">
+        <input type="email" id="grav-email" placeholder="human@icloud.com">
       </div>
       <div>
-       <label for="name">Name:</label>
-       <input type="text" id="name"><br>
-       <label for="username">Username:</label>
-       <input type="text" id="username" class="readonly" readonly><br>
-       <label for="email">Email:</label>
-       <input type="email" id="email"><br>
+        <span class="disclaimer tk-freight-sans-pro">Account</span><br>
+        <label for="name">Name:</label>
+        <input type="text" id="name" class="large"><br>
+        <label for="username">Username:</label>
+        <input type="text" id="username" class="readonly" readonly=""><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" class="large"><br>
+        <input type="checkbox" id="newsletter"><br>
+        <label class="newsletter-text" for="newsletter">Receive our monthly newsletter</label>
+      </div>
+      <div>
+        <span class="disclaimer tk-freight-sans-pro">SOCIAL NETWORKS</span><br>
+        <small>Optionally, you can add your social network profiles.</small><br><br>
+        <label for="name">Name:</label>
+        <input type="text" id="name"><br>
+        <label for="username">Evernote username:</label>
+        <input type="text" id="username" class="readonly small" readonly><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="human@icloud.com"><br>
       </div>
      </div>
-     <div class="tk-freight-sans-pro">
-       <span class="disclaimer tk-freight-sans-pro">SOCIAL NETWORKS</span><br>
-       <small>Optionally, you can add your social network profiles.</small><br><br>
-       <label for="twitter" class="bold">Twitter Handle:</label>
-       <input type="text" id="twitter"><br>
-       <label for="facebook" class="bold">Facebook Username:</label>
-       <input type="text" id="facebook"><br>
-      </div>
      </div>
      <hr>
      <button class="button bold save-bottom">Save</button>

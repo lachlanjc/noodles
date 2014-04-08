@@ -43,12 +43,14 @@ button:focus { outline: none; }
 .nav-container .collections { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/collections.svg"); }
 .nav-container .ingredients { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/ingredients.svg"); }
 .nav-container .cuisines { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/cuisines.svg"); }
+.nav-container .settings { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/settings.svg"); }
 
 .nav-container .add-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/add-active.svg"); }
 .nav-container .recipes-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/recipes-active.svg"); }
 .nav-container .collections-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/collections-active.svg"); }
 .nav-container .ingredients-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/ingredients-active.svg"); }
 .nav-container .cuisines-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/cuisines-active.svg"); }
+.nav-container .settings-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/settings-active.svg"); }
 .nav-container .active {
     background-color: #fa6713;
     padding: 17px 25px 17px 17px;
@@ -138,6 +140,7 @@ input:focus {
   font-size: 1.15em;
   font-weight: bold;
   letter-spacing: -0.03rem;
+  text-transform: uppercase;
 }
 small {
   font-size: 0.9em;
@@ -155,25 +158,23 @@ small a {
 .instructions-content {
   width: 99%;
   height: 20em !important;
-  border-top: 1px solid #f2f2f2;
-  border-bottom: 1px solid #f2f2f2;
-  border-left: 0;
-  border-right: 0;
-  border-radius: 0 !important;
+  border: 1px solid #f2f2f2;
+  border-radius: 1em;
+  padding: 1em;
   background-image: none;
   box-sizing: border-box;
-  padding: 1em 0;
   resize: none;
   overflow: auto;
-  font-family: "adobe-garamond-pro", serif;
   font-size: 1.2em !important;
   line-height: 1.75em;
   color: #333;
+  margin-top: 1em;
 }
 .instructions-content:focus {
   outline: none;
-  border-top: 1px solid #13a6fa;
-  border-bottom: 1px solid #13a6fa;
+  border: 1px solid #13a6fa;
+  box-shadow: 0 1px 5px rgba(19,166,250,0.25);
+  -webkit-box-shadow: 0 1px 5px rgba(19,166,250,0.25);
 }
 .ingredients .button { margin-top: 0; }
 article button.save { margin: 1em 0; }
