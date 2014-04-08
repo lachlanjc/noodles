@@ -153,8 +153,6 @@ hr {
   border-radius: 50%;
   margin: 1em 0;
   border: 2px solid #fff;
-  box-shadow: 0 2px 15px rgba(0,0,0,0.33);
-  -webkit-box-shadow: 0 2px 15px rgba(0,0,0,0.33);
 }
 label { font-weight: bold; }
 input[type="text"], input[type="email"] {
@@ -191,12 +189,12 @@ input.small {
 }
 .readonly {
   border: 0;
-  border-bottom: 1px solid #ccc;
-  border-radius: 0;
+  border-bottom: 1px solid #ccc !important;
+  border-radius: 0 !important;
 }
 .readonly:focus {
   border: 0;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ccc !important;
   box-shadow: none;
   -webkit-box-shadow: none;
 }
