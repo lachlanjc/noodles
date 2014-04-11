@@ -150,18 +150,42 @@ small a {
   text-decoration: none;
   color: #13a6fa;
 }
-.flex {
-  display: flex;
-  display: -webkit-flex;
-}
-.sa {
-  justify-content: space-between;
-  -webkit-justify-content: space-between;
-}
 .container {
   width: 100%;
-  height: 100%;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  flex-wrap: wrap;
 }
 .collection {
-  
+  width: 250px;
+  height: 250px;
+  margin: 2em 1em;
+  box-sizing: border-box;
+  display: inline-block;
+  border-radius: 50%;
+  overflow: hidden;
+  -webkit-box-shadow: 0 5px 33px rgba(0,0,0,0.2) !important;
+          box-shadow: 0 5px 33px rgba(0,0,0,0.2);
+}
+.add {
+  background: #fff;
+  background-image: url("https://d1nk51tq4b83ct.cloudfront.net/add.svg");
+  background-repeat: no-repeat;
+  background-position: 100px;
+  background-size: 50px;
+  border: 3px solid #fa6713;
+  box-shadow: none;
+}
+.collection img {
+  height: 100%;
+  margin-left: -50px;
+}
+.label-container{
+  margin-top: -52px !important;
+  height: 3em;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.25);
 }
