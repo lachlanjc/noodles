@@ -164,7 +164,7 @@ small a {
   margin: 2em 1em;
   box-sizing: border-box;
   display: inline-block;
-  border-radius: 50%;
+  border-radius: 4em;
   overflow: hidden;
   -webkit-box-shadow: 0 5px 33px rgba(0,0,0,0.2) !important;
           box-shadow: 0 5px 33px rgba(0,0,0,0.2);
@@ -176,16 +176,17 @@ small a {
   background-position: 100px;
   background-size: 50px;
   border: 3px solid #fa6713;
-  box-shadow: none;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
 }
 .collection img {
   height: 100%;
   margin-left: -50px;
 }
-.label-container{
-  margin-top: -52px !important;
+.label-container {
   height: 3em;
   color: #fff;
   text-align: center;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.25);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.33);
+  margin: -52px auto 0 auto;
 }
