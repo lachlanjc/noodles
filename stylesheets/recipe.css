@@ -3,6 +3,7 @@ body {
   margin: 0 !important;
   width: 100%;
   height: 100%;
+  color: #333;
 }
 button {
   border: 0;
@@ -12,10 +13,9 @@ button {
 button:focus { outline: none; }
 .r-header {
   width: 100%;
-  font-family: "freight-sans-pro", sans-serif;
   overflow: hidden;
-  background-image: url("https://recipesapp.s3.amazonaws.com/cake.jpg");
-  background-position: 0 -20px;
+  background-image: url("https://d1nk51tq4b83ct.cloudfront.net/food/tandoori-chicken.jpg");
+  background-position: 0 -50px;
   background-repeat: no-repeat;
   background-size: cover;
   color: #fff;
@@ -58,12 +58,12 @@ article {
   width: 65%;
   padding-top: 1em;
   margin-left: 15%;
-  font-family: "adobe-garamond-pro", serif;
   font-size: 1.2em !important;
   line-height: 1.75em;
   letter-spacing: 0.01rem;
   z-index: 3;
 }
+.georgia { font-family: Georgia, serif; }
 section { margin: 1.25em 0; }
 article h2 { letter-spacing: -0.03rem !important; }
 .notes {
@@ -94,14 +94,13 @@ article h2 { letter-spacing: -0.03rem !important; }
   color: #fff;
   text-align: center;
   font-size: 1em;
-  font-family: "freight-sans-pro", sans-serif;
   letter-spacing: 0.01rem;
 }
 .button:active {
   outline: 0;
   -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
-     -moz-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
-          box-shadow: inset 0 3px 5px rgba(0,0,0,.125)
+  -moz-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+  box-shadow: inset 0 3px 5px rgba(0,0,0,.125)
 }
 article small {
   font-size: 0.9em;
@@ -112,7 +111,7 @@ article small a { color: #507bab; }
   list-style: none;
   padding-left: 0;
 }
-.ingredients ul li { line-height: 1.75em; }
+.ingredients ul li { line-height: 2em; }
 .recipe-actions {
   list-style: none;
   width: 12em;
@@ -122,7 +121,6 @@ article small a { color: #507bab; }
 .recipe-action li {
   width: 100%;
   color: #fa6713;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
   line-height: 2.5em;
 }
 .recipe-actions button {
@@ -134,7 +132,6 @@ article small a { color: #507bab; }
 }
 .recipe-actions span {
   color: #fa6713;
-  font-family: "freight-sans-pro", sans-serif;
   line-height: 2em;
   vertical-align: top;
   padding-top: 12px;
@@ -155,7 +152,7 @@ article small a { color: #507bab; }
 #shopping-list { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/shopping-list.svg"); }
 
 @media only screen and (max-width: 1025px) {
-  .r-header .container { margin: 8em auto 4em 4em; }
+  .r-header .container { margin: 10em auto 5em 5em; }
 }
 @media only screen and (max-width: 800px) {
   .r-header .container { margin: 6em auto 3em 3em; }

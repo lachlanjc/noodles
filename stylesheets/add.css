@@ -46,11 +46,6 @@ button:focus { outline: none; }
 .nav-container .settings { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/settings.svg"); }
 
 .nav-container .add-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/add-active.svg"); }
-.nav-container .recipes-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/recipes-active.svg"); }
-.nav-container .collections-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/collections-active.svg"); }
-.nav-container .ingredients-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/ingredients-active.svg"); }
-.nav-container .cuisines-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/cuisines-active.svg"); }
-.nav-container .settings-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/settings-active.svg"); }
 .nav-container .active {
     background-color: #fa6713;
     padding: 17px 25px 17px 17px;
@@ -104,6 +99,7 @@ header div .button {
   margin-top: 1em;
 }
 article h2 { letter-spacing: -0.03rem !important; }
+.georgia { font-family: Georgia, serif; }
 input {
   display: block;
   height: 30px;
@@ -156,7 +152,7 @@ small a {
   max-width: 400px;
 }
 .instructions-content {
-  width: 99%;
+  width: 80%;
   height: 20em !important;
   border: 1px solid #f2f2f2;
   border-radius: 1em;
@@ -178,3 +174,14 @@ small a {
 }
 .ingredients .button { margin-top: 0; }
 article button.save { margin: 1em 0; }
+#hidden-input {
+    font-size: 25px;
+    width: 25px;
+    height: 25px;
+    cursor:pointer;
+    border: none;
+    position: absolute;
+    margin-left: 5px;
+    outline: none;
+    background: transparent;
+}

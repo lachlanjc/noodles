@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Banana Walnut Cake</title>
+  <link rel="stylesheet" type="text/css" href="../stylesheets/edit-recipe.css">
+  <meta name="viewport" content="width=device-width, minimal-ui">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <script type="text/javascript" src="//use.typekit.net/gqp2fia.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <script type="text/javascript" src="../scripts/edit-recipe.js"></script>
+  <script type="text/javascript">
+  if("standalone"in window.navigator&&window.navigator.standalone){var noddy,remotes=false;document.addEventListener("click",function(e){noddy=e.target;while(noddy.nodeName!=="A"&&noddy.nodeName!=="HTML"){noddy=noddy.parentNode}if("href"in noddy&&noddy.href.indexOf("http")!==-1&&(noddy.href.indexOf(document.location.host)!==-1||remotes)){e.preventDefault();document.location.href=noddy.href}},false)}
+  </script>
+</head>
+<body>
+  <header class="r-header">
+    <div class="container">
+      <input placeholder="Title" value="Banana Walnut Cake">
+      <h4 class="tk-proxima-nova">
+        <span class="bold">Active time:</span><input type="number" value="24"> min
+        <br>
+        <span class="bold">Total time:</span><input type="number" value="60"> min
+        <br>
+        <span class="bold">Serves:</span><input type="number" value="10"> people
+      </h4>
+    </div>
+  </header>
+  <div class="body-container">
+    <article>
+        <section class="ingredients">
+          <h2 class="tk-proxima-nova">Ingredients</h2>
+          <ul>
+            <li><input placeholder="Ingredient" value="1 lb. bananas"></li>
+            <li><input placeholder="Ingredient" value="1 lb. walnuts"></li>
+            <li><input placeholder="Ingredient" value="1 gallon olive oil"></li>
+            <li><input placeholder="Ingredient" value="1 lb. spinach"></li>
+            <li><input placeholder="Ingredient" value="2 boxes of baking soda"></li>
+            <li><input placeholder="Ingredient" value="1 gallon water"></li>
+          </ul>
+          </section>
+          <section>
+            <h2 class="tk-proxima-nova">Steps</h2>
+            <div class="instructions">
+              <small class="tk-proxima-nova">Instructions are formatted with Markdown (read a guide on that <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">here</a>). Use 1. and 2. for making a list.</small><br>
+              <textarea id="instructions" class="instructions-content georgia" placeholder="Enter the instructions for the recipe here..."></textarea>
+            </div>
+          </section>
+          <button class="button bold save-bottom">Save</button>
+        </article>
+    </div>
+</body>
+</html>

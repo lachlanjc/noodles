@@ -6,10 +6,11 @@
   <script type="text/javascript" src="../scripts/ingredients.js"></script>
   <meta name="viewport" content="width=device-width, minimal-ui">
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-  <!--<link rel="apple-touch-icon" sizes="152x152" href="”>
-  <link rel="apple-touch-icon" sizes="120x120" href="”>-->
   <script type="text/javascript" src="http://use.typekit.net/gqp2fia.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <script type="text/javascript">
+  if("standalone"in window.navigator&&window.navigator.standalone){var noddy,remotes=false;document.addEventListener("click",function(e){noddy=e.target;while(noddy.nodeName!=="A"&&noddy.nodeName!=="HTML"){noddy=noddy.parentNode}if("href"in noddy&&noddy.href.indexOf("http")!==-1&&(noddy.href.indexOf(document.location.host)!==-1||remotes)){e.preventDefault();document.location.href=noddy.href}},false)}
+  </script>
 <body>
   <aside class="nav">
     <div class="nav-container">
@@ -27,27 +28,27 @@
   <header>
     <div></div>
     <div>
-      <span class="title tk-freight-sans-pro">Find Recipes by Ingredients</span>
+      <span class="title tk-proxima-nova">Find Recipes by Ingredients</span>
     </div>
     <div></div>
   </header>
   <article>
-    <h2 class="tk-freight-sans-pro">Search</h2>
-    <input type="text" id="search-field" placeholder="Ingredient" title="Type your ingredients in here">
+    <h2 class="tk-proxima-nova">Search</h2>
+    <input type="text" id="search-field" placeholder="Ingredient" title="Type your ingredients in here" x-webkit-speech>
     <div id="ingredients-list">
       <div class="ingredient">
-        <span class="tk-freight-sans-pro">banana</span>
+        <span class="tk-proxima-nova">banana</span>
         <button class="close"></button>
       </div>
     </div>
     <br>
-    <h2 class="tk-freight-sans-pro">Recipes</h2>
+    <h2 class="tk-proxima-nova">Recipes</h2>
     <div>
       <ul class="recipe-list">
         <a href="recipe.html">
           <li>
-            <div class="list-header tk-freight-sans-pro">Banana Walnut Cake</div>
-            <p class="list-ingredients tk-adobe-garamond-pro">Bananas, walnuts, olive oil, spinach and water</p>
+            <div class="list-header tk-proxima-nova">Banana Walnut Cake</div>
+            <p class="list-ingredients georgia">Bananas, walnuts, olive oil, spinach and water</p>
           </li>
         </a>
       </ul>

@@ -45,12 +45,7 @@ button:focus { outline: none; }
 .nav-container .cuisines { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/cuisines.svg"); }
 .nav-container .settings { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/settings.svg"); }
 
-.nav-container .add-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/add-active.svg"); }
-.nav-container .recipes-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/recipes-active.svg"); }
-.nav-container .collections-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/collections-active.svg"); }
 .nav-container .ingredients-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/ingredients-active.svg"); }
-.nav-container .cuisines-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/cuisines-active.svg"); }
-.nav-container .settings-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/settings-active.svg"); }
 .nav-container .active {
     background-color: #fa6713;
     padding: 17px 25px 17px 17px;
@@ -136,6 +131,7 @@ input.small {
   min-width: 50px;
   max-width: 120px;
 }
+.georgia { font-family: Georgia, serif; }
 .disclaimer {
   font-size: 1.05em;
   font-weight: bold;

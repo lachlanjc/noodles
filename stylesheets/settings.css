@@ -46,11 +46,6 @@ button:focus { outline: none; }
 .nav-container .cuisines { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/cuisines.svg"); }
 .nav-container .settings { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/settings.svg"); }
 
-.nav-container .add-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/add-active.svg"); }
-.nav-container .recipes-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/recipes-active.svg"); }
-.nav-container .collections-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/collections-active.svg"); }
-.nav-container .ingredients-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/ingredients-active.svg"); }
-.nav-container .cuisines-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/cuisines-active.svg"); }
 .nav-container .settings-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/settings-active.svg"); }
 .nav-container .active {
     background-color: #fa6713;
@@ -90,7 +85,6 @@ header {
   color: #fff;
   text-align: center;
   font-size: 1em;
-  font-family: "freight-sans-pro", sans-serif;
   letter-spacing: 0.01rem;
 }
 .button:active {
@@ -111,6 +105,7 @@ h2 { letter-spacing: -0.03rem !important; }
   letter-spacing: -0.03rem;
   text-transform: uppercase;
 }
+.georgia { font-family: Georgia, serif; }
 small {
   font-size: 0.9em;
   letter-spacing: 0.01rem;
@@ -133,7 +128,7 @@ small a {
   display: block;
   width: 20px;
   height: 20px;
-  margin: 2.5em auto;
+  margin: 3em auto;
 }
 .checkmark:before {
   content: '';

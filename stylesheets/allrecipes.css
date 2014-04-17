@@ -48,12 +48,7 @@ button:focus { outline: none; }
 .nav-container .cuisines { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/cuisines.svg"); }
 .nav-container .settings { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/settings.svg"); }
 
-.nav-container .add-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/add-active.svg"); }
 .nav-container .recipes-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/recipes-active.svg"); }
-.nav-container .collections-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/collections-active.svg"); }
-.nav-container .ingredients-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/ingredients-active.svg"); }
-.nav-container .cuisines-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/cuisines-active.svg"); }
-.nav-container .settings-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/settings-active.svg"); }
 .nav-container .active {
     background-color: #fa6713;
     padding: 17px 25px 17px 17px;
@@ -70,26 +65,22 @@ header {
   justify-content: space-between;
   -webkit-justify-content: space-between;
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
   height: auto;
   border-bottom: 1px solid #f2f2f2;
   box-sizing: border-box;
 }
 .title {
-  font-weight: normal;
+  font-weight: 100;
   font-size: 2em;
   line-height: 2em;
-  font-weight: 300;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+  letter-spacing: -0.05rem;
 }
 header .label {
   color: #fa6713;
   font-weight: bold;
   font-size: 0.95em;
-  letter-spacing: -0.05rem;
+  text-transform: uppercase;
 }
 header .f-btn {
   width: 24px;
@@ -127,7 +118,7 @@ header .search:focus {
   box-shadow:         0 0 12px #fdc8a9;
   outline: none;
 }
-h2 { letter-spacing: -0.03rem !important; }
+.georgia { font-family: Georgia, serif; }
 .recipes ul {
   overflow-x: hidden;
   overflow-y: scroll;
@@ -140,13 +131,12 @@ h2 { letter-spacing: -0.03rem !important; }
 .recipe-list li { margin: 24px 0; }
 .list-header {
   font-weight: 400;
-  font-size: 1.2em;
+  font-size: 1.25em;
   color: #fa6713;
 }
 .list-ingredients {
-  font-weight: 300;
-  font-size: 1em;
-  color: #9e9e9e;
+  font-size: 0.9em;
+  color: #aaa;
 }
 @media only screen and (max-width: 1025px) {
 

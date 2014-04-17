@@ -45,7 +45,7 @@ button:focus { outline: none; }
 .nav-container .cuisines { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/cuisines.svg"); }
 .nav-container .settings { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/settings.svg"); }
 
-.nav-container .cuisines-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/cuisines-active.svg"); }
+.nav-container .recipes-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/recipes-active.svg"); }
 .nav-container .active {
     background-color: #fa6713;
     padding: 17px 25px 17px 17px;
@@ -90,8 +90,8 @@ header {
 .button:active {
   outline: 0;
   -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
-     -moz-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
-          box-shadow: inset 0 3px 5px rgba(0,0,0,.125)
+  -moz-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+  box-shadow: inset 0 3px 5px rgba(0,0,0,.125)
 }
 header div .button {
   letter-spacing: 0.01rem !important;
@@ -121,23 +121,23 @@ input:focus {
      -moz-box-shadow: inset 0 1px 3px rgba(19, 166, 250, 0.125);
           box-shadow: inset 0 1px 3px rgba(19, 166, 250, 0.125);
 }
-input.large {
+.about input.large {
   width: 33%;
   min-width: 200px;
   max-width: 600px;
 }
-input.small {
+.about input.small {
   width: 15%;
   min-width: 50px;
   max-width: 120px;
 }
-.georgia { font-family: Georgia, serif; }
-.disclaimer {
-  font-size: 1.05em;
+.about .disclaimer {
+  font-size: 1.15em;
   font-weight: bold;
   letter-spacing: -0.03rem;
   text-transform: uppercase;
 }
+.georgia { font-family: Georgia, serif; }
 small {
   font-size: 0.9em;
   letter-spacing: 0.01rem;
@@ -145,4 +145,44 @@ small {
 small a {
   text-decoration: none;
   color: #13a6fa;
+}
+.ingredients input {
+  width: 25%;
+  min-width: 175px;
+  max-width: 400px;
+}
+.instructions-content {
+  width: 80%;
+  height: 20em !important;
+  border: 1px solid #f2f2f2;
+  border-radius: 1em;
+  padding: 1em;
+  background-image: none;
+  box-sizing: border-box;
+  resize: none;
+  overflow: auto;
+  font-size: 1.2em !important;
+  line-height: 1.75em;
+  color: #333;
+  margin-top: 1em;
+}
+.instructions-content:focus {
+  outline: none;
+  border: 1px solid #13a6fa;
+  box-shadow: 0 1px 5px rgba(19,166,250,0.25);
+  -webkit-box-shadow: 0 1px 5px rgba(19,166,250,0.25);
+}
+.ingredients .button { margin-top: 0; }
+article button.save { margin: 1em 0; }
+
+#hidden-input {
+    font-size: 25px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    border: none;
+    position: absolute;
+    margin-left: 5px;
+    outline: none;
+    background: transparent;
 }
