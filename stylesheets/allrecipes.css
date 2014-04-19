@@ -1,126 +1,30 @@
-html, body { height: 100%; }
-body {
-  color: #333;
-  height: 100%;
-  display: flex;
-  display: -webkit-flex;
-  justify-content: space-between;
-  -webkit-justify-content: space-between;
-}
-button {
-  border: 0;
-  background-color: transparent;
-  display: inline-block;
-}
-button:focus { outline: none; }
-.content {
-  display: inline-block;
-  width: 100%;
-  padding-left: 15px;
-}
-.content a {
-  text-decoration: none;
-}
-.nav {
-  width: 75px;
-  height: 95%;
-  border-right: 1px solid #f2f2f2;
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0.35% 0 0 0;
-  display: flex;
-  display: -webkit-flex;
-}
-.nav-container { margin: auto 0; }
-.nav-container a {
-  display: block;
-  background-size: 35px 35px;
-  background-repeat: no-repeat;
-  border: 0;
-  width: 35px;
-  height: 35px;
-  margin: 0 auto 35px 13px;
-}
-.nav-container .add { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/add.svg"); }
-.nav-container .recipes { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/recipes.svg"); }
-.nav-container .collections { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/collections.svg"); }
-.nav-container .ingredients { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/ingredients.svg"); }
-.nav-container .cuisines { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/cuisines.svg"); }
-.nav-container .settings { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/settings.svg"); }
+.nav-container .recipes-active { background-image: url("http://assets.getnoodl.es/recipes-active.svg"); }
 
-.nav-container .recipes-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/recipes-active.svg"); }
-.nav-container .active {
-    background-color: #fa6713;
-    padding: 17px 25px 17px 17px;
-    margin: 0 auto 25px -8px;
-    background-position: 21px 17px;
-}
-@media only screen and (max-width: 712px) {
-  .nav-container .active { padding-right: 21px !important; }
-}
-
-header {
-  display: flex;
-  display: -webkit-flex;
-  justify-content: space-between;
-  -webkit-justify-content: space-between;
-  width: 100%;
-  margin: auto;
-  height: auto;
-  border-bottom: 1px solid #f2f2f2;
-  box-sizing: border-box;
-}
-.title {
-  font-weight: 100;
-  font-size: 2em;
-  line-height: 2em;
-  letter-spacing: -0.05rem;
-}
 header .label {
   color: #fa6713;
-  font-weight: bold;
-  font-size: 0.95em;
+  font-size: 1em;
   text-transform: uppercase;
+  font-family: "proxima-nova", "Proxima Nova", sans-serif;
 }
-header .f-btn {
+header .filter button {
   width: 24px;
   height: 24px;
   background-size: 24px 24px;
-  margin: 5px;
+  margin-top: 5px;
 }
-header .f-btn:focus { outline: none; }
-#recent { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/recent.svg"); }
-#favorite { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/favorite.svg"); }
+header .filter button:focus { outline: none; }
+#clock { background-image: url("http://assets.getnoodl.es/clock.svg"); }
 header .search {
-  height: 30px;
-  width: 180px;
-  background-color: transparent;
-  margin: 17px 5px auto auto;
-  border: 1px solid #fa6713;
-  border-radius: 30px;
-  padding: 8px 8px 8px 28px;
   box-sizing: border-box;
-  background: url("https://d1nk51tq4b83ct.cloudfront.net/search.svg") no-repeat;
-  background-size: 14px 14px;
-  background-position: 8px 7px;
-  font: 0.9em "freight-sans-pro", sans-serif;
-  color: #333;
-  letter-spacing: 0.01rem;
+  background: url("http://assets.getnoodl.es/search.svg") no-repeat !important;
+  background-size: 18px !important;
+  background-position: 6px !important;
+  margin-right: 1em !important;
+  width: 12em;
+  padding-left: 2em;
+  letter-spacing: 0 !important;
 }
-header .search:hover {
-  -webkit-box-shadow: 0 0 6px #fdc8a9;
-  -moz-box-shadow:    0 0 6px #fdc8a9;
-  box-shadow:         0 0 6px #fdc8a9;
-}
-header .search:focus {
-  -webkit-box-shadow: 0 0 12px #fdc8a9;
-  -moz-box-shadow:    0 0 12px #fdc8a9;
-  box-shadow:         0 0 12px #fdc8a9;
-  outline: none;
-}
-.georgia { font-family: Georgia, serif; }
 .recipes ul {
-  overflow-x: hidden;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 }
@@ -129,33 +33,27 @@ header .search:focus {
   padding-left: 1px;
 }
 .recipe-list li { margin: 24px 0; }
-.list-header {
+.recipe-list li div {
   font-weight: 400;
   font-size: 1.25em;
   color: #fa6713;
+  font-family: "proxima-nova", "Proxima Nova", sans-serif;
 }
-.list-ingredients {
+.recipe-list li p {
   font-size: 0.9em;
   color: #aaa;
+  font-family: Georgia, serif;
 }
-@media only screen and (max-width: 1025px) {
-
-}
-@media only screen and (max-width: 800px) {
-  article { width: 75%; }
-}
-@media only screen and (max-width: 640px) {
-  article { width: 80%; }
-}
+@media only screen and (max-width: 1025px) { }
+@media only screen and (max-width: 800px) { article { width: 75%; } }
+@media only screen and (max-width: 640px) { article { width: 80%; } }
 @media only screen and (max-width: 500px) {
   article {
     width: 85%;
     margin-left: 18px;
   }
 }
-@media only screen and (max-width: 333px) {
-  article { width: 95%; }
-}
+@media only screen and (max-width: 333px) { article { width: 95%; } }
 @media print {
     .nav { display: none; }
     header { display: block; }

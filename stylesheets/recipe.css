@@ -14,7 +14,7 @@ button:focus { outline: none; }
 .r-header {
   width: 100%;
   overflow: hidden;
-  background-image: url("https://d1nk51tq4b83ct.cloudfront.net/food/tandoori-chicken.jpg");
+  background-image: url("http://assets.getnoodl.es/food/cake.jpg");
   background-position: 0 -50px;
   background-repeat: no-repeat;
   background-size: cover;
@@ -37,7 +37,7 @@ button:focus { outline: none; }
 .scale {
   width: 16px;
   height: 16px;
-  background-image: url("https://d1nk51tq4b83ct.cloudfront.net/scale.svg");
+  background-image: url("http://assets.getnoodl.es/scale.svg");
 }
 .body-container {
   width: 100%;
@@ -72,7 +72,7 @@ article h2 { letter-spacing: -0.03rem !important; }
   height: 315px;
   margin: 2em auto 2px 0;
   border-radius: 0.75em;
-  background-image: url("https://d1nk51tq4b83ct.cloudfront.net/note_background.svg");
+  background-image: url("http://assets.getnoodl.es/note_background.svg");
   background-size: auto 400px;
   display: flex;
   display: -webkit-flex;
@@ -146,10 +146,10 @@ article small a { color: #507bab; }
   margin-top: 3px;
   margin-right: 10px;
 }
-#edit { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/edit.svg"); }
-#print { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/print.svg"); }
-#share { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/options.svg"); }
-#shopping-list { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/shopping-list.svg"); }
+#edit { background-image: url("http://assets.getnoodl.es/edit.svg"); }
+#print { background-image: url("http://assets.getnoodl.es/print.svg"); }
+#share { background-image: url("http://assets.getnoodl.es/options.svg"); }
+#shopping-list { background-image: url("http://assets.getnoodl.es/shopping-list.svg"); }
 
 @media only screen and (max-width: 1025px) {
   .r-header .container { margin: 10em auto 5em 5em; }

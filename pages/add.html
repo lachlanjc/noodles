@@ -2,6 +2,7 @@
 <head>
   <title>Add Recipe - Noodles</title>
   <link rel="stylesheet" type="text/css" href="../stylesheets/add.css">
+  <link rel="stylesheet" type="text/css" href="../stylesheets/global.css">
   <script type="text/javascript" src="../scripts/add.js"></script>
   <meta name="viewport" content="width=device-width, minimal-ui">
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
@@ -29,46 +30,48 @@
   <aside class="content">
     <header>
         <div>
-          <a href="http://pfmscode.github.io/recipes/pages/allrecipes.html"><button class="button">Cancel</button></a>
+          <a href="allrecipes.html"><button class="button">Cancel</button></a>
         </div>
-        <div class="title tk-proxima-nova">Add Recipe</div>
+        <div class="title">Add Recipe</div>
         <div>
-          <button class="button">Save Recipe</button>
+          <button class="button bold">Save Recipe</button>
         </div>
       </header>
       <article>
         <div class="about">
-          <h2 class="tk-proxima-nova">About This Recipe</h2>
-          <input type="text" name="title" placeholder="Title" class="large" required x-webkit-speech>
+          <h2>About This Recipe</h2>
+          <input type="text" name="title" placeholder="Title" class="large" autofocus required x-webkit-speech>
           <input type="number" name="serves" placeholder="Serves" min="1" class="small" required>
-          <br><span class="disclaimer tk-proxima-nova">optional information</span><br>
-          <small class="tk-proxima-nova">Please put everything in minutes.</small><br>
+          <br><span class="disclaimer">optional information</span><br>
+          <small>Please leave everything in minutes.</small><br>
           <input type="number" name="active-time" placeholder="Active time" class="small">
           <input type="number" name="total-time" placeholder="Total time" class="small">
         </div>
         <br>
-        <div id="ingredients" class="ingredients">
-          <h2 class="tk-proxima-nova">Ingredients</h2>
-          <input type="text" placeholder="Ingredient" x-webkit-speech>
-          <input type="text" placeholder="Ingredient" x-webkit-speech>
-          <input type="text" placeholder="Ingredient" x-webkit-speech>
-          <input type="text" placeholder="Ingredient" x-webkit-speech>
-          <input type="text" placeholder="Ingredient" x-webkit-speech>
-          <input type="text" placeholder="Ingredient" x-webkit-speech>
-          <input type="text" placeholder="Ingredient" x-webkit-speech>
-          <input type="text" placeholder="Ingredient" x-webkit-speech>
-          <input type="text" placeholder="Ingredient" x-webkit-speech>
-          <input type="text" placeholder="Ingredient" x-webkit-speech>
-        </div>
+        <div class="ingredients">
+          <h2>Ingredients</h2>
+          <div id="ingredients">
+            <input type="text" placeholder="Ingredient" x-webkit-speech>
+            <input type="text" placeholder="Ingredient" x-webkit-speech>
+            <input type="text" placeholder="Ingredient" x-webkit-speech>
+            <input type="text" placeholder="Ingredient" x-webkit-speech>
+            <input type="text" placeholder="Ingredient" x-webkit-speech>
+            <input type="text" placeholder="Ingredient" x-webkit-speech>
+            <input type="text" placeholder="Ingredient" x-webkit-speech>
+            <input type="text" placeholder="Ingredient" x-webkit-speech>
+            <input type="text" placeholder="Ingredient" x-webkit-speech>
+            <input type="text" placeholder="Ingredient" x-webkit-speech>
+          </div>
           <button class="button" onclick="addIngredient();">Add Ingredient</button>
           <br>
-        <div class="instructions">
-          <h2 class="tk-proxima-nova">Instructions</h2>
-          <small class="tk-proxima-nova">Instructions are formatted with Markdown (read a guide on that <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">here</a>). Use 1. and 2. for making a list.</small><br>
-          <textarea id="instructions" class="instructions-content georgia" placeholder="Enter the instructions for the recipe here..."></textarea>
-          <input x-webkit-speech id="hidden-input">
         </div>
-        <button class="button save">Save Recipe</button>
+        <div class="instructions">
+          <h2>Instructions</h2>
+          <small>Instructions are formatted with Markdown (read a guide on that <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">here</a>). Use 1. and 2. for making a list.</small>
+          <textarea id="instructions" class="georgia" placeholder="Enter the instructions for the recipe here..."></textarea>
+          <input id="hidden-input" x-webkit-speech>
+        </div>
+        <button class="button bold save save-bottom">Save Recipe</button>
       </article>
   </aside>
 </body>
