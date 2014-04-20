@@ -1,21 +1,17 @@
 .nav-container .ingredients-active { background-image: url("http://assets.getnoodl.es/ingredients-active.svg"); }
-.ingredients input {
-  width: 25%;
-  min-width: 175px;
-  max-width: 400px;
+#ingredients-list {
+  width: 75%;
+  list-style: none;
 }
-.ingredients input {
-  width: 25%;
-  min-width: 175px;
-  max-width: 400px;
-}
-.ingredient {
+#ingredients-list li {
   background: #fa6713;
   font-size: 1em;
   border-radius: 12px;
   padding: 2px 8px;
   color: #fff !important;
   font-family: "proxima-nova", "Proxima Nova", sans-serif;
+  margin: 1em;
+  display: inline-block
 }
 .ingredient button {
   background-image: url("http://assets.getnoodl.es/close.svg");
@@ -23,7 +19,26 @@
   height: 11px;
   background-size: 11px 11px;
   background-repeat: no-repeat;
-  margin: -10px auto auto auto;
+}
+.recipes ul {
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+.recipe-list {
+  list-style: none;
+  padding-left: 1px;
+}
+.recipe-list li { margin: 24px 0; }
+.recipe-list li div {
+  font-weight: 400;
+  font-size: 1.25em;
+  color: #fa6713;
+  font-family: "proxima-nova", "Proxima Nova", sans-serif;
+}
+.recipe-list li p {
+  font-size: 0.9em;
+  color: #aaa;
+  font-family: Georgia, serif;
 }
 @media only screen and (max-width: 1025px) { }
 @media only screen and (max-width: 800px) {

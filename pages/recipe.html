@@ -3,6 +3,7 @@
 <head>
   <title>Banana Walnut Cake</title>
   <link rel="stylesheet" type="text/css" href="../stylesheets/recipe.css">
+  <link rel="stylesheet" type="text/css" href="../stylesheets/global.css">
   <meta name="viewport" content="width=device-width, minimal-ui">
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
   <script type="text/javascript" src="//use.typekit.net/gqp2fia.js"></script>
@@ -27,7 +28,7 @@
   </header>
   <div class="body-container">
     <article class="georgia">
-      <div class="print-line"></div>
+      <hr class="p">
       <section class="ingredients">
         <h2 class="tk-proxima-nova">Ingredients</h2>
         <ul>
@@ -40,7 +41,7 @@
         </ul>
       </section>
       <section>
-        <h2 class="tk-proxima-nova">Steps</h2>
+        <h2>Steps</h2>
         <ol>
           <li>Mix everything together in a 1 oz bowl</li>
           <li>Lick the batter off the spoon</li>
@@ -52,37 +53,36 @@
         </ol>
       </section>
       <section>
-      <h2 class="p-hide tk-proxima-nova">Notes</h2>
-      <small class="p-hide tk-proxima-nova">Notes are formatted with Markdown (read a guide on that <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">here</a>).</small><br>
-      <div class="notes p-hide">
-        <textarea class="note-editor" id="inputter" contenteditable="true"  autocomplete="false">Type your notes in here...</textarea>
-      </div>
-      <div id="rendered"></div>
-      <button onclick="save();" class="button tk-proxima-nova p-hide">Save</button><button onclick="render();" class="button p-hide tk-proxima-nova">View</button><br>
-      <div id="results"></div>
+        <h2 class="p-hide">Notes</h2>
+        <small class="p-hide">Notes are formatted with Markdown (read a guide on it <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">here</a>).</small><br>
+        <textarea class="note-editor" id="inputter" autocomplete="false" placeholder="Type your notes in here..."></textarea>
+        <div id="rendered"></div>
+        <button onclick="save();" class="button">Save</button>
+        <button onclick="render();" class="button">View</button><br>
+        <div id="results"></div>
       </section>
       <section class="recipe-options p-hide">
-      <ul class="recipe-actions tk-proxima-nova">
+      <ul class="recipe-actions">
         <li class="top">
           <a href="edit-recipe.html">
             <button>
-              <div class="icon" id="edit"></div><span class="tk-proxima-nova">Edit</span>
+              <div class="icon" id="edit"></div><span>Edit</span>
             </button>
           </a>
         </li>
         <li>
-          <button>
-            <div class="icon" id="print" onclick="window.print();"></div><span class="tk-proxima-nova">Print</span>
+          <button onclick="window.print();">
+            <div class="icon" id="print"></div><span>Print</span>
           </button>
         </li>
         <li>
           <button>
-            <div class="icon" id="share"></div><span class="tk-proxima-nova">Share</span>
+            <div class="icon" id="share"></div><span>Share</span>
           </button>
         </li>
         <li>
           <button>
-            <div class="icon" id="shopping-list"></div><span class="tk-proxima-nova">Shopping List</span>
+            <div class="icon" id="shopping-list"></div><span>Shopping List</span>
           </button>
         </li>
       </ul>

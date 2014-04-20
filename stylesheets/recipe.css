@@ -1,9 +1,8 @@
 body {
-  font-weight: 400;
-  margin: 0 !important;
-  width: 100%;
+  display: block !important;
   height: 100%;
-  color: #333;
+  width: 100%;
+  margin: 0 !important;
 }
 button {
   border: 0;
@@ -20,6 +19,7 @@ button:focus { outline: none; }
   background-size: cover;
   color: #fff;
   z-index: 1;
+  font-family: "proxima-nova", "Proxima Nova", sans-serif;
 }
 .r-header .container { margin: 12em auto 6em 4em; }
 .r-header h1 {
@@ -47,11 +47,11 @@ button:focus { outline: none; }
           box-shadow: 0 -35px 50px rgba(0,0,0,0.4);
   z-index: 2;
 }
-.print-line {
-  width: 100%;
+hr.p {
+  width: 66%;
   margin: 0 auto;
   padding: 0;
-  border-bottom: 2px solid #ccc;
+  border-bottom: 2px solid #f2f2f2;
   display: none;
 }
 article {
@@ -63,50 +63,18 @@ article {
   letter-spacing: 0.01rem;
   z-index: 3;
 }
-.georgia { font-family: Georgia, serif; }
 section { margin: 1.25em 0; }
 article h2 { letter-spacing: -0.03rem !important; }
 .notes {
   width: 80%;
   max-width: 1000px;
   height: 315px;
-  margin: 2em auto 2px 0;
   border-radius: 0.75em;
   background-image: url("http://assets.getnoodl.es/note_background.svg");
   background-size: auto 400px;
   display: flex;
   display: -webkit-flex;
 }
-.note-editor {
-  width: 90%;
-  height: 255px;
-  line-height: 1.38em;
-  font-size: 1em;
-  margin: 17px auto auto auto;
-  overflow-y: auto;
-  outline: none;
-}
-.button {
-  background-color: #fa6713;
-  border-radius: 8px;
-  padding: 5px 10px;
-  margin: 1.25em 5px auto 0;
-  color: #fff;
-  text-align: center;
-  font-size: 1em;
-  letter-spacing: 0.01rem;
-}
-.button:active {
-  outline: 0;
-  -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
-  -moz-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
-  box-shadow: inset 0 3px 5px rgba(0,0,0,.125)
-}
-article small {
-  font-size: 0.9em;
-  letter-spacing: 0.01rem;
-}
-article small a { color: #507bab; }
 .ingredients ul {
   list-style: none;
   padding-left: 0;
@@ -136,6 +104,7 @@ article small a { color: #507bab; }
   vertical-align: top;
   padding-top: 12px;
   letter-spacing: 0.02rem;
+  font-family: "proxima-nova", "Proxima Nova", sans-serif;
 }
 .recipe-actions .icon {
   width: 20px;
@@ -209,7 +178,6 @@ article small a { color: #507bab; }
     font-size: 1.15em;
   }
   .body-container { box-shadow: none; }
-  .print-line { display: block; }
   article {
     width: 85%;
     margin-left: 1.33em;
@@ -219,4 +187,5 @@ article small a { color: #507bab; }
   .button { display: none; }
   #rendered { display: block; }
   .p-hide { display: none; }
+  #hidden-input { display: none; }
 }

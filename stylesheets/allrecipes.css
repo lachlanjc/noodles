@@ -16,14 +16,15 @@ header .filter button:focus { outline: none; }
 #clock { background-image: url("http://assets.getnoodl.es/clock.svg"); }
 header .search {
   box-sizing: border-box;
-  background: url("http://assets.getnoodl.es/search.svg") no-repeat !important;
+  background: url("http://assets.getnoodl.es/search-grey.svg") no-repeat !important;
   background-size: 18px !important;
   background-position: 6px !important;
-  margin-right: 1em !important;
-  width: 12em;
-  padding-left: 2em;
+  margin-right: 0.66em !important;
+  width: 12em !important;
+  padding-left: 2em !important;
   letter-spacing: 0 !important;
 }
+header .search:focus { background-image: url("http://assets.getnoodl.es/search.svg") !important; }
 .recipes ul {
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
@@ -59,6 +60,7 @@ header .search {
     header { display: block; }
     header .filter { display: none; }
     header div .search { display: none; }
-    .list-header { color: #000 !important; }
+    li div { color: #000 !important; }
+    li p { color: #000 !important; }
     .button { display: none; }
 }
