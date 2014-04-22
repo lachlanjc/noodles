@@ -1,11 +1,6 @@
 .nav-container .collections-active { background-image: url("http://assets.getnoodl.es/collections-active.svg"); }
 .container {
   width: 100%;
-  display: flex;
-  display: -webkit-flex;
-  justify-content: space-between;
-  -webkit-justify-content: space-between;
-  flex-wrap: wrap;
   font-family: "proxima-nova", "Proxima Nova", sans-serif;
 }
 .collection {
@@ -16,18 +11,18 @@
   display: inline-block;
   border-radius: 4em;
   overflow: hidden;
-  -webkit-box-shadow: 0 5px 33px rgba(0,0,0,0.2) !important;
-          box-shadow: 0 5px 33px rgba(0,0,0,0.2);
+  -webkit-box-shadow: 0 5px 33px rgba(0,0,0,0.1) !important;
+          box-shadow: 0 5px 33px rgba(0,0,0,0.1);
 }
 .add {
   background: #fff;
-  background-image: url("http://assets.getnoodl.es/add.svg");
-  background-repeat: no-repeat;
+  background: url("http://assets.getnoodl.es/add.svg") no-repeat;
   background-position: 100px;
   background-size: 50px;
   border: 3px solid #fa6713;
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
+  border-radius: 5em;
 }
 .collection img {
   height: 100%;

@@ -2,23 +2,26 @@
 #ingredients-list {
   width: 75%;
   list-style: none;
+  margin-top: 0;
+  padding-left: 0;
 }
 #ingredients-list li {
   background: #fa6713;
   font-size: 1em;
   border-radius: 12px;
   padding: 2px 8px;
-  color: #fff !important;
+  color: #fff;
   font-family: "proxima-nova", "Proxima Nova", sans-serif;
-  margin: 1em;
-  display: inline-block
+  margin: 0 0.66em 0.66em 0;;
+  display: inline-block;
 }
-.ingredient button {
-  background-image: url("http://assets.getnoodl.es/close.svg");
-  width: 11px;
-  height: 11px;
-  background-size: 11px 11px;
-  background-repeat: no-repeat;
+.remove {
+  background: url("http://assets.getnoodl.es/close.svg") no-repeat;
+  width: 10px;
+  height: 10px;
+  background-size: 100%;
+  margin-left: 3px;
+  display: inline-block;
 }
 .recipes ul {
   overflow-y: scroll;

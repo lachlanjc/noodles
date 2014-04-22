@@ -91,10 +91,7 @@ header div .button {
   font-size: 1em !important;
   margin-top: 0.66em;
 }
-h2 {
-  letter-spacing: -0.02rem !important;
-  font-family: "proxima-nova", "Proxima Nova", sans-serif;
-}
+h1, h2, h3, h4, h5, h6 { font-family: "proxima-nova", "Proxima Nova", sans-serif; }
 .ta-center { text-align: center; }
 .disclaimer {
   font-size: 1.15em;

@@ -3,6 +3,7 @@
 <head>
   <title>Banana Walnut Cake</title>
   <link rel="stylesheet" type="text/css" href="../stylesheets/edit-recipe.css">
+  <link rel="stylesheet" type="text/css" href="../stylesheets/global.css">
   <meta name="viewport" content="width=device-width, minimal-ui">
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
   <script type="text/javascript" src="//use.typekit.net/gqp2fia.js"></script>
@@ -15,8 +16,8 @@
 <body>
   <header class="r-header">
     <div class="container">
-      <input placeholder="Title" value="Banana Walnut Cake">
-      <h4 class="tk-proxima-nova">
+      <input placeholder="Title" value="Banana Walnut Cake" autofocus>
+      <h4>
         <span class="bold">Active time:</span><input type="number" value="24"> min
         <br>
         <span class="bold">Total time:</span><input type="number" value="60"> min
@@ -28,7 +29,7 @@
   <div class="body-container">
     <article>
         <section class="ingredients">
-          <h2 class="tk-proxima-nova">Ingredients</h2>
+          <h2>Ingredients</h2>
           <ul>
             <li><input placeholder="Ingredient" value="1 lb. bananas"></li>
             <li><input placeholder="Ingredient" value="1 lb. walnuts"></li>
@@ -39,10 +40,10 @@
           </ul>
           </section>
           <section>
-            <h2 class="tk-proxima-nova">Steps</h2>
+            <h2>Steps</h2>
             <div class="instructions">
-              <small class="tk-proxima-nova">Instructions are formatted with Markdown (read a guide on that <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">here</a>). Use 1. and 2. for making a list.</small><br>
-              <textarea id="instructions" class="instructions-content georgia" placeholder="Enter the instructions for the recipe here..."></textarea>
+              <small>Instructions are formatted with Markdown (read a guide on that <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">here</a>). Use 1. and 2. for making a list.</small><br>
+              <textarea placeholder="Enter the instructions for the recipe here..."></textarea>
             </div>
           </section>
           <button class="button bold save-bottom">Save</button>

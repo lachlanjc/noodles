@@ -7,7 +7,10 @@
   justify-content: space-between;
   -webkit-justify-content: space-between;
 }
-.plans { width: 60%; }
+.plans {
+  width: 60%;
+  font-family: "proxima-nova", "Proxima Nova", sans-serif;
+}
 .checkmark {
   display: block;
   width: 20px;
@@ -32,15 +35,16 @@
 .avatar {
   border-radius: 50%;
   margin-top: 1em;
-  border: 2px solid #fff;
 }
 
-@media only screen and (max-width: 1025px) { }
+@media only screen and (max-width: 1025px) { .plans { width: 100% !important; } }
+@media only screen and (max-width: 950px) {
+  
+}
 @media only screen and (max-width: 825px) {
   article { width: 85%; }
-  .plans { width: 100%; }
-  article > div:nth-child(5) { display: block !important; }
-  article > div:nth-child(5) > div { margin-top: 1.5em; }
+  article > div:nth-child(5) { display: inline-block !important; }
+  article > div:nth-child(5) > div { margin-top: 3em; }
 }
 @media only screen and (max-width: 640px) {
   article { width: 100% !important; }
