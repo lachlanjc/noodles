@@ -56,9 +56,6 @@ article h4 {
   margin-bottom: 0;
 }
 .bold { font-weight: bold; }
-.scale {
-  margin-top: 0;
-}
 .body-container {
   width: 100%;
   height: 100%;
@@ -139,9 +136,9 @@ section { margin: 1.25em 0; }
 #share { background-image: url("http://assets.getnoodl.es/options.svg"); }
 #shopping-list { background-image: url("http://assets.getnoodl.es/shopping-list.svg"); }
 
-@media only screen and (max-width: 1025px) {
-  .r-header .container { margin: 10em auto 5em 5em; }
-}
+@media only screen and (max-width: 1500px) { .r-header .container { margin: 14em auto 7em 7em; } }
+@media only screen and (max-width: 1275px) { .r-header .container { margin: 12em auto 6em 6em; } }
+@media only screen and (max-width: 1025px) { .r-header .container { margin: 10em auto 5em 5em; } }
 @media only screen and (max-width: 800px) {
   .r-header .container { margin: 6em auto 3em 3em; }
   article { width: 75%; }

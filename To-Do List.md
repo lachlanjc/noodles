@@ -1,0 +1,5 @@
+- [ ] Create a landing page
+- [ ] Convert recipe page to HAML
+- [ ] Convert share page to HAML
+- [ ] Start with SCSS (Lachlan)
+- [ ] Draw icon (Lachlan)
