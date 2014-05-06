@@ -1,0 +1,25 @@
+%aside.nav
+  .nav-container
+    %a.add{:href => "add.html", :title => "Add a new recipe"}
+    %a.allrecipes-active.active{:href => "alrecipes", :title => "Views all of your recipes"}
+    <!--Pro features-->
+    %a.collections{:href => "collections", :title => "Organize your recipes into collections"}
+    %a.ingredients{:href => "ingredients", :title => "Filter your recipes through ingredients"}
+    %a.cuisines{:href => "cuisines", :title => "Find your recipes through a world map"}
+    <!--End pro features-->
+    %a.settings{:href => "settings", :title => "Change account settings or log out"}
+%aside.content
+  .recipes
+    %header
+      .filter
+        %span.label Filter
+        %button#clock{:title => "Sort your recipes based on when they were last edited}
+        .title All Recipes - 4
+        %input.search{:type => "text", :title => "Search through your recipes", :x-webkit-speech => "x-webkit-speech"} 
+      %ul.recipe-list
+        <!--Link to recipe goes here-->
+        <!--Rebder in those recipes, don't ask me how-->
+        <!--The title of the recipe should be in a div, the description in a p. Each one in an li-->
+        <!--%= 1.upto(recipe_count) do |recipe|
+          
+        end-->

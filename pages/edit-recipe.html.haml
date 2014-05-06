@@ -1,0 +1,33 @@
+%header.r-header
+  .container
+    %input{:placeholder => "Title", :value => "Banana Walnut Cake", :autofocus => "autofocus"}
+      %h4
+        %span.bold Active time:
+        %input{:type => "number", :value => "#{recipe.active_time}"> min
+        %br
+        %span.bold Total time:
+        %input{:type => "number", :value => "#{recipe.total}"> min
+        %br
+        %span.bold Serves:
+        %input{:type => "number", :value => "#{recipe.serves}"> people
+  .body-container
+    %article
+      %section.ingredients
+        %h2 Ingredients
+          %ul
+            <!--Make li's and inputs inside for each ingredient, don't ask me how-->
+            <!--<li><input placeholder="Ingredient" value="1 lb. bananas"></li>
+            <li><input placeholder="Ingredient" value="1 lb. walnuts"></li>
+            <li><input placeholder="Ingredient" value="1 gallon olive oil"></li>
+            <li><input placeholder="Ingredient" value="1 lb. spinach"></li>
+            <li><input placeholder="Ingredient" value="2 boxes of baking soda"></li>
+            <li><input placeholder="Ingredient" value="1 gallon water"></li>-->
+      %section.instructions-section
+        %h2 Instructions
+          .instructions
+              %small Instructions are formatted with Markdown (read a guide on that
+                a{:href => "https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet"} here
+                ). Use 1. and 2. for making a list.
+              %br
+              %textarea{:placeholder => "Enter the instructions for the recipe here..."}
+    %button.button.bold.save-bottom Save

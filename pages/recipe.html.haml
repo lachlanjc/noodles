@@ -1,0 +1,54 @@
+%header.r-header
+  %button.back{:onclick => "goBack();"}
+  .container
+    %h1= recipe.name
+    %h4= recipe.description
+    %h5= recipe.cuisine
+.body-container
+%article.georgia
+  %section
+    %h4
+      %span.bold Active time: #{recipe.active_time} 24 min
+      %br
+      %span.bold Total time: #{recipe.total_time} min
+      %br
+      %span.bold Serves: #{recipe.serves} people
+  %hr
+  %section.ingredients
+    %h2 Ingredients
+    %ul
+      / render in an li for each ingredient
+  %section
+    %h2 Steps
+    %ol
+      / render in an li for each step
+  %section
+    %h2.p-hide Notes
+    %small.p-hide Notes are formatted with Markdown (read a guide on it
+      %a{href => "https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet"} here
+    %small .
+    %br
+    %textarea#inputter.note-editor{:autocomplete => "false", :placeholder => "Type your notes in here..."}
+    #rendered
+    %button.button{:onclick => "save();"} Save
+    %button.button{:onclick => "render();"} View
+    %br
+  %section.recipe-options.p-hide
+    %ul.recipe-actions
+      %li.top
+        / link to edit recipe
+          %button
+            #edit.icon
+            %span Edit
+      %li
+        %button{:onclick => "window.print();"}
+          #print.icon
+          %span Print
+      %li
+        %button
+          #share.icon
+          %span Share
+      %li
+        %button
+          #shopping-list.icon
+          %span Shopping List

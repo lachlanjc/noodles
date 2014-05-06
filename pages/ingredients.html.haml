@@ -1,0 +1,24 @@
+%aside.nav
+  .nav-container
+    %a.add{:href => "add.html", :title => "Add a new recipe"}
+    %a.allrecipes{:href => "alrecipes", :title => "Views all of your recipes"}
+    <!--Pro features-->
+    %a.collections{:href => "collections", :title => "Organize your recipes into collections"}
+    %a.ingredients-active.active{:href => "ingredients", :title => "Filter your recipes through ingredients"}
+    %a.cuisines{:href => "cuisines", :title => "Find your recipes through a world map"}
+    <!--End pro features-->
+    %a.settings{:href => "settings", :title => "Change account settings or log out"}
+%aside.content
+  %header
+    %div
+    .title Find Recipes by Ingredients
+    %div
+  %article
+    %input#search-field{:type => "text", :placeholder => "Ingredient", :title => "Type your ingredients in here", x-webkit-speech => "x-webkit-speech">
+    %ul#ingredients-list
+      <!--Render in an li for each ingredient, with a span for the name and .remove below it-->
+    %hr
+    %div
+      %ul.recipe-list
+      <!--link to recipe-->
+        <!--Create an li for each search result, with the title in a div and the description in a p below-->
