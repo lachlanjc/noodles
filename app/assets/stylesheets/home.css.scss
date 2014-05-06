@@ -1,0 +1,13 @@
+$fonts: "proxima-nova", "Proxima Nova", "Helvetica Neue", Helvetica, Arial;
+$orange: #fa6713;
+$black: #333;
+
+body { text-align: center; }
+h1 {
+  font: 4em $fonts;
+  color: $orange;
+}
+h3 {
+  font: 1.5em $fonts;
+  color: $black;
+}

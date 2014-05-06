@@ -1,8 +1,0 @@
-.nav-container .add-active { background-image: url("http://assets.getnoodl.es/add-active.svg"); }
-input { display: block !important; }
-.ingredients input {
-  width: 25%;
-  min-width: 175px;
-  max-width: 400px;
-}
-.ingredients .button { margin-top: 0; }

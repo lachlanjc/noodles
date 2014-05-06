@@ -1,0 +1,29 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+$fonts: "proxima-nova", "Proxima Nova", "Helvetica Neue", Helvetica, Arial;
+$orange: #fa6713;
+$black: #333;
+
+body { text-align: center; }
+h1 {
+  font: 4em $fonts;
+  color: $orange;
+}
+h3 {
+  font: 1.5em $fonts;
+  color: $black;
+}

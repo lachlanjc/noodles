@@ -1,4 +1,0 @@
-- [ ] Create a landing page
-- [x] Convert recipe page to HAML
-- [x] Convert share page to HAML
-- [ ] Draw icon (Lachlan)

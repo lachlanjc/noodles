@@ -1,0 +1,10 @@
+body {
+	text-align: center;
+	font-family: "proxima-nova", "Proxima Nova", sans-serif;
+	color: #333;
+}
+h1 {
+	color: #fa6713;
+	font-size: 3em;
+}
+h3 { font-size: 1.5em; }
