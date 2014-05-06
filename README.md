@@ -1,6 +1,6 @@
 Recipes
 =======
 
-It's cooking...
+Something’s cooking...
 
-*Built by @tns12 and @lachlanjc*
+*Built by @lachlanjc and @tns12*
