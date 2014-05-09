@@ -1,15 +1,25 @@
 Myapp::Application.routes.draw do
+  # real code from Rails:
   get "settings/index"
   get "ingredients/index"
   get "cuisines/index"
   get "recipes/index"
   get "collections/index"
   get "home/index"
+  # Lachlan screwing around!
+  get '/collections', to: "collections/index"
+  get '/collections' => "collections/index"
+  get '/settings', to: "settings/index"
+  get '/recipes', to: "recipes/index"
+  get '/recipes' => "recipes/index"
+  get '/cuisines', to: "cuisines/index"
+  get '/ingredients', to: "ingredients/index"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-root to: 'home#index'
+  root to: 'home#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
