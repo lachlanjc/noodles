@@ -1,7 +1,0 @@
-{
-  "noodles": {
-    "image": "ruby",
-    "path": ".",
-    "build": "bundle install"
-  }
-}
