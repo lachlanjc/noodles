@@ -1,0 +1,30 @@
+html, body {
+  height: 100%;
+  color: $black;
+}
+
+.content {
+  display: inline-block;
+  width: 100%;
+  padding-left: 15px;
+
+  a { text-decoration: none; }
+}
+
+header {
+  width: 100%;
+  @include center;
+  height: auto;
+  border-bottom: 1px solid $light-grey;
+  box-sizing: border-box;
+
+  h1 {
+    font-size: 2em;
+    line-height: 2em;
+    font-weight: 300;
+    font-family: $heading-type;
+    letter-spacing: -0.03rem;
+  }
+
+  .btn { margin-top: 0.66em; }
+}

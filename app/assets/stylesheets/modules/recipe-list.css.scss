@@ -1,0 +1,21 @@
+.recipe-list {
+  list-style: none;
+  padding-left: 1px;
+  
+  li {
+    margin: 24px 0;
+
+    div {
+      font-weight: 400;
+      font-size: 1.25em;
+      color: $main;
+      font-family: $body-type;
+    }
+
+    p {
+      font-size: 0.9em;
+      color: $description;
+      font-family: $body-type;
+    }
+  }
+}
