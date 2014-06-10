@@ -1,0 +1,55 @@
+.ingredients-list {
+  width: 75%;
+  list-style: none;
+  margin-top: 0;
+  padding-left: 0;
+  
+  li {
+    background: $main;
+    color: $white;
+    font-family: $header-type;
+    font-size: 1em;
+    border-radius: 12px;
+    padding: 2px 8px;
+    margin: 0 0.66em 0.66em 0;;
+    display: inline-block;
+  }
+}
+
+.remove {
+  @include img(http://assets.getnoodl.es/close.svg);
+  background-repeat: no-repeat;
+  width: 10px;
+  height: 10px;
+  background-size: 100%;
+  margin-left: 3px;
+  display: inline-block;;
+}
+
+.recipes ul {
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+
+@media only screen and (max-width: 1025px) { }
+@media only screen and (max-width: 800px) {
+  article { width: 75%; }
+}
+@media only screen and (max-width: 640px) { article { width: 80%; } }
+@media only screen and (max-width: 500px) {
+  article {
+    width: 85%;
+    margin-left: 18px;
+  }
+}
+@media only screen and (max-width: 333px) { article { width: 95%; } }
+@media print {
+    .nav { display: none; }
+    header { display: block; }
+    header .filter { display: none; }
+    header div .search { display: none; }
+    .list-header { color: #000 !important; }
+    .button { display: none; }
+}
