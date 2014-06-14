@@ -25,5 +25,5 @@
 }
 
 @mixin img($src) {
-  background-image: url("$src");
+  background-image: url($src);
 }

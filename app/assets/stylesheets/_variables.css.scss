@@ -1,15 +1,16 @@
 // Typography
 
 $heading-type:  "proxima-nova", "Proxima Nova", "Helvetica Neue", Helvetica, sans-serif;
-$body-type:     Georgia, serif;
+$body-type:     "source-serif-pro", Georgia, "Times New Roman", Times, serif;
 
 // Base Colors
+// http://colorpeek.com/#ffffff,fa6713,13a6fa,67fa13,fa1333,fadb13
 
 $main:          #FA6713;
 
 $white:         #FFFFFF;
 $light-grey:    #F2F2F2;
-#lightish-grey: #AAAAAA;
+$lightish-grey: #AAAAAA;
 $grey:          #CCCCCC;
 $dark-grey:     #555555;
 $black:         #333333;
@@ -17,17 +18,21 @@ $black:         #333333;
 $red:           #FA1333;
 $light-red:     #FB2632;
 
-$light-green:  
-$green:         #13FA67;
+$yellow:        #FADB13;
+$light-yellow:  #FCE65E;
 
-$light-blue:   
-$blue:          #13A6FA;
+$light-green:   #A1FC5E;
+$green:         #76FA13;
+
+$light-blue:    #5ECFFC;
+$blue:          #5EC2FC;
 
 // Logical Colors
 
-$line-color:    $light-grey;
+$separator:     $light-grey;
 $description:   $lightish-grey;
-$text-muted:    $gray;
+$text-muted:    $grey;
+$text-color:    $black;
 $primary:       $main;
 $success:       $green;
 $warning:       $light-blue;
