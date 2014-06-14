@@ -3,7 +3,7 @@
     width: 100%;
     color: $white;
     z-index: 1;
-    font-family: $header-type;
+    font-family: $heading-type;
 
     h1 {
       font-size: 4em;
@@ -36,7 +36,7 @@
   .r-header .container { margin: 12em auto 6em 4em; }
   .body-container {
     width: 100%;
-    @include tall();
+    height: 100%;
     @include shadow(0 -35px 50px rgba(0,0,0,0.4));
     z-index: 2;
   }
@@ -64,7 +64,7 @@
     max-width: 1000px;
     height: 315px;
     border-radius: 0.75em;
-    @include img(http://assets.getnoodl.es/note_background.svg);
+    @include img("http://assets.getnoodl.es/note_background.svg");
     background-size: auto 400px;
     @include flex();
   }
@@ -83,18 +83,18 @@
     width: 12em;
     padding: 0.5em 1em 1em 0;
     color: $main;
-    font-family: $header-type;
+    font-family: $heading-type;
 
     .top { border-top: 1px solid $separator; }
 
     li {
-      @include wide();
+      width: 100%;
       line-height: 2.5em;
     }
 
     button {
       border-bottom: 1px solid $separator !important;
-      @include wide();
+      width: 100%;
       text-align: left;
       font-size: 0.85em;
       padding-bottom: 2px;

@@ -4,6 +4,6 @@ header {
   width: 100%;
   @include center();
   height: auto;
-  border-bottom: 1px solid $light-grey;
+  border-bottom: 1px solid $separator;
   box-sizing: border-box;
 }

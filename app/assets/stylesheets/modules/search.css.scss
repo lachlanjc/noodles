@@ -7,7 +7,7 @@
   li {
     background: $main;
     color: $white;
-    font-family: $header-type;
+    font-family: $heading-type;
     font-size: 1em;
     border-radius: 12px;
     padding: 2px 8px;
@@ -17,7 +17,7 @@
 }
 
 .remove {
-  @include img(http://assets.getnoodl.es/close.svg);
+  @include img("http://assets.getnoodl.es/close.svg");
   background-repeat: no-repeat;
   width: 10px;
   height: 10px;
