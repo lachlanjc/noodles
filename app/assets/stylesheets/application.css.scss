@@ -1,5 +1,7 @@
-@import 'variables';
-@import 'mixins';
+@import "bourbon";
+
+@import '_variables';
+@import '_mixins';
 
 @import 'base/*';
 @import 'layouts/*';

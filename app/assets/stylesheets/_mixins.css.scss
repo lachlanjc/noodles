@@ -3,21 +3,6 @@
 	margin-right: auto;
 }
 
-@mixin flex() {
-  display: flex;
-  display: -webkit-flex;
-}
-
-@mixin space-between() {
-  justify-content: space-between;
-  -webkit-justify-content: space-between;
-}
-
-@mixin space-around() {
-  justify-content: space-around;
-  -webkit-justify-content: space-around;
-}
-
 @mixin shadow($value) {
   -webkit-box-shadow: $value;
      -moz-box-shadow: $value;
