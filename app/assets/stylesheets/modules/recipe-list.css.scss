@@ -1,21 +1,20 @@
 .recipe-list {
   list-style: none;
-  padding-left: 1px;
-  
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+
   li {
     margin: 24px 0;
 
     div {
+      font: 1.25em $sans-serif;
       font-weight: 400;
-      font-size: 1.25em;
       color: $main;
-      font-family: $body-type;
     }
 
     p {
-      font-size: 0.9em;
+      font: 0.9em $serif;
       color: $description;
-      font-family: $body-type;
     }
   }
 }

@@ -1,9 +1,0 @@
-header {
-  @include flex();
-  @include space-between();
-  width: 100%;
-  @include center();
-  height: auto;
-  border-bottom: 1px solid $separator;
-  box-sizing: border-box;
-}

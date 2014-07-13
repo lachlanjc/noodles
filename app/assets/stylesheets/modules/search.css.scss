@@ -3,12 +3,11 @@
   list-style: none;
   margin-top: 0;
   padding-left: 0;
-  
+
   li {
     background: $main;
     color: $white;
-    font-family: $heading-type;
-    font-size: 1em;
+    font: 1rem $font-base;
     border-radius: 12px;
     padding: 2px 8px;
     margin: 0 0.66em 0.66em 0;;
@@ -17,7 +16,7 @@
 }
 
 .remove {
-  @include img("http://assets.getnoodl.es/close.svg");
+  background-image: url("http://assets.getnoodl.es/close.svg");
   background-repeat: no-repeat;
   width: 10px;
   height: 10px;
@@ -25,12 +24,6 @@
   margin-left: 3px;
   display: inline-block;;
 }
-
-.recipes ul {
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-}
-
 
 
 @media only screen and (max-width: 1025px) { }

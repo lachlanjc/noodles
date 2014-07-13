@@ -1,12 +1,11 @@
 .recipe {
   header {
     width: 100%;
-    color: $white;
     z-index: 1;
-    font-family: $heading-type;
+    color: $white;
 
     h1 {
-      font-size: 4em;
+      font-size: 4rem;
       font-weight: bold;
       text-shadow: 0 3px 24px rgba(0,0,0,0.33);
       margin-bottom: 0;
@@ -14,24 +13,25 @@
 
     h4 {
       text-shadow: 0 1px 8px rgba(0,0,0,0.25);
-      font-size: 1.33em;
+      font-size: 1.33rem;
       font-weight: normal;
-      margin: 0.33em auto 0 0;
-      line-height: 1.75em;
+      margin: 0.33rem auto 0 0;
+      line-height: 1.75;
     }
 
     h5 {
       font-style: italic;
       font-weight: 300;
-      font-size: 1.1em;
-      margin-top: 0.33em;
+      font-size: 1.1rem;
+      margin-top: 0.33rem;
       text-shadow: 0 1px 6px rgba(0,0,0,0.25);
     }
-  }
-  header .back {
-    width: 3.33em;
-    height: 3.33em;
-    margin: 1.66em 0 0 1.66em;
+
+    .back {
+      width: 3.33rem;
+      height: 3.33rem;
+      margin: 1.66rem 0 0 1.66rem;
+    }
   }
   .r-header .container { margin: 12em auto 6em 4em; }
   .body-container {
@@ -44,8 +44,8 @@
     width: 65%;
     padding-top: 1em;
     margin-left: 15%;
-    font-size: 1.2em !important;
-    line-height: 1.75em;
+    font-size: 1.2em;
+    line-height: 1.75;
     letter-spacing: 0.01rem;
     z-index: 3;
 
@@ -63,29 +63,22 @@
     width: 80%;
     max-width: 1000px;
     height: 315px;
-    border-radius: 0.75em;
-    @include img("http://assets.getnoodl.es/note_background.svg");
-    background-size: auto 400px;
-    @include flex();
+    border-radius: $radius;
+    background-color: $notes;
   }
 
-  .ingredients {
-    ul {
-      list-style: none;
-      padding-left: 0;
+  .ingredients ul {
+    list-style: none;
+    padding-left: 0;
 
-      li { line-height: 2em; }
-    }
+    li { line-height: 2em; }
   }
 
-  .recipe-actions {
+  .action-list {
     list-style: none;
     width: 12em;
     padding: 0.5em 1em 1em 0;
     color: $main;
-    font-family: $heading-type;
-
-    .top { border-top: 1px solid $separator; }
 
     li {
       width: 100%;
@@ -93,11 +86,15 @@
     }
 
     button {
-      border-bottom: 1px solid $separator !important;
+      border-bottom: $line-thin;
       width: 100%;
       text-align: left;
-      font-size: 0.85em;
+      font: 0.85em $sans-serif;
       padding-bottom: 2px;
+
+      &:first-child {
+        border-top: 1px solid $line-thin;
+      }
     }
 
     span {
@@ -107,12 +104,10 @@
       letter-spacing: 0.02rem;
     }
 
-    .icon {
+    .geomicon.icon {
       width: 20px;
       height: 20px;
       display: inline-block;
-      background-size: 20px 20px;
-      background-repeat: no-repeat;
       margin-top: 3px;
       margin-right: 10px;
     }

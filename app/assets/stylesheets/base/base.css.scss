@@ -13,16 +13,16 @@ html, body {
 
 header {
   width: 100%;
-  @include center;
+  margin-left: auto;
+  margin-right: auto;
   height: auto;
   border-bottom: 1px solid $light-grey;
   box-sizing: border-box;
 
   h1 {
-    font-size: 2em;
-    line-height: 2em;
+    font: 2rem $font-base;
+    line-height: 2;
     font-weight: 300;
-    font-family: $heading-type;
     letter-spacing: -0.03rem;
   }
 
