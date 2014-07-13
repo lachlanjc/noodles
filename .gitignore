@@ -1,40 +1,13 @@
-# This is a list of all the files that git will ignore.
-# These files are the temporary ones that should not be uploaded or shared on GitHub
-# because no one else should have them.
-# 
 # Read more at http://help.github.com/ignore-files/
 
-# Database config
-/config/database.yml
-
-# Bundler config.
-/.bundle
-
-# Default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-journal
-
-# All logfiles and tempfiles.
-/log/*.log
+/config/database.yml # Database config
+/.bundle # Bundler config
+/log/*.log # logs
 /tmp
-
-# Foreman .env files
 *.env
-
-# Bundler binstubs
-/bin/*
-
-# Vagrant folder
-/.vagrant
-
-# OS X .DS_Store files
-.DS_Store
-
-# RSpec configuration
-/.rspec
-
-# VI swp files
-*.swp
-
-# Sublime project files
-*.sublime-*
+/bin/* # Bundler binstubs
+/.vagrant # Vagrant folder
+/app/assets/stylesheets/.sass-cache/ # Sass cache
+.DS_Store # OS X .DS_Store files
+*.swp # VI swp files
+*.sublime-* # Sublime Text files
