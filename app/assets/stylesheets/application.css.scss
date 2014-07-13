@@ -1,10 +1,22 @@
-@import "bourbon";
+@import 'bourbon/bourbon';
 
-@import '_variables';
-@import '_mixins';
+@import 'variables.css.scss';
+@import 'mixins.css.scss';
 
-@import 'base/*';
-@import 'layouts/*';
-@import 'modules/*';
-@import 'modules/animations/*';
-@import 'modules/icons/*';
+@import 'base/base.css.scss';
+@import 'base/brand.css.scss';
+@import 'base/type.css.scss';
+
+@import 'modules/avatar.css.scss';
+@import 'modules/buttons.css.scss';
+@import 'modules/collections.css.scss';
+@import 'modules/cuisines.css.scss';
+@import 'modules/dropdowns.css.scss';
+@import 'modules/embed.css.scss';
+@import 'modules/empty-state.css.scss';
+@import 'modules/forms.css.scss';
+@import 'modules/nav.css.scss';
+@import 'modules/recipe-list.css.scss';
+@import 'modules/recipe.css.scss';
+@import 'modules/search.css.scss';
+@import 'modules/settings.css.scss';
