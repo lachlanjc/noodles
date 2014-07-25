@@ -3,6 +3,7 @@ source "https://rails-assets.org"
 ruby "2.1.1"
 
 gem "autoprefixer-rails"
+gem "aws-sdk"
 gem "bcrypt", "~> 3.1.7"
 gem "bootstrap-sass", "~> 3.2.0"
 gem "bourbon"
@@ -15,12 +16,9 @@ gem "stripe"
 gem "turbolinks"
 gem "uglifier", ">= 1.3.0"
 
-gem "mocha", group: :test
-
 group :development, :test do
   gem "factory_girl_rails", "~> 4.2.1"
   gem "json_spec"
-  gem "nifty-generators"
   gem "rake"
 end
 
