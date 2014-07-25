@@ -7,7 +7,8 @@
 *.env
 /bin/* # Bundler binstubs
 /.vagrant # Vagrant folder
-/app/assets/stylesheets/.sass-cache/ # Sass cache
 .DS_Store # OS X .DS_Store files
 *.swp # VI swp files
 *.sublime-* # Sublime Text files
+
+*.log
