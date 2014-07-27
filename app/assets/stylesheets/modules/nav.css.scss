@@ -1,8 +1,25 @@
-.nav {
-  width: 100%;
-  background-color: $main;
+.navbar-noodles {
+  background-color: $brand-primary;
+  border-color: transparent;
+  border-bottom: 0;
+  margin: 0 0 auto 0;
+  border-radius: 0;
 
-  .nav-container {
-    
+  .navbar-brand {
+    color: white;
+    font-weight: 100;
+    text-transform: uppercase;
+
+    &:hover {
+      color: white;
+    }
+  }
+
+  a {
+    color: white;
+
+    &:hover {
+      color: white;
+    }
   }
 }
