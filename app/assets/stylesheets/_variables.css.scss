@@ -1,50 +1,601 @@
-// TYPE
-
-$sans-serif:   "proxima-nova", "Proxima Nova", $helvetica;
-$font-base:    $sans-serif;
-$serif:        "source-serif-pro", $georgia;
-
 // COLORS
-// http://colorpeek.com/#ffffff,fa6713,13a6fa,67fa13,fa1333,fadb13
 
-$main:          #FA6713;
-
-$white:         #FFFFFF;
-$light-grey:    #F2F2F2;
-$lightish-grey: #AAAAAA;
+$grey-lighter:  #F2F2F2;
+$grey-light:    #AAAAAA;
 $grey:          #CCCCCC;
-$dark-grey:     #555555;
+$grey-dark:     #777777;
+$grey-darker:   #555555;
 $black:         #333333;
 
-$red:           #F92513;
-$light-red:     #FA3C2C;
+$red:           #E00622; // #F92513;
 
 $yellow:        #FADB13;
-$light-yellow:  #FCE65E;
 
-$light-green:   #74F913;
-$green:         #67EC06;
+$green:         #4CC428; // #05ee5a; #67EC06;
 
-$blue:          #13A6FA;
+$blue:          #13A9FF;
 $light-blue:    darken($blue, 8%);
 $dark-blue:     darken($blue, 10%);
 
+$brand-primary:          #FB6700; // #FA6713;
+$brand-success:          $green;
+$brand-info:             $yellow;
+$brand-warning:          $yellow;
+$brand-danger:           $red;
 
-$notes:         #FFFFCC;
-$highlight:     #FFEEAA;
-$notification:  #51555C;
+$brand-bg:               white;
+$brand-border:           #dae8ec;
+$brand-divider:          rgba(black, 0.02);
 
-$separator:     $light-grey;
-$description:   $lightish-grey;
-$text-muted:    $grey;
-$text-color:    $black;
-$primary:       $main;
-$success:       $green;
-$info:          $blue;
-$danger:        $red;
+$notes:                  #FFFFCC;
+$highlight:              #FFEEAA;
+$notification:           #51555C;
 
-// OTHER VARS
+$separator:              $grey-lighter;
+$description:            $grey-light;
+$text-muted:             $grey;
+$text-color:             $black;
 
-$radius:        6px;
-$line:          2px solid $separator;
-$line-thin:     1px solid $separator;
+// Scaffolding
+
+$body-bg:                $brand-bg;
+$text-color:             $black;
+
+$link-color:             $brand-primary;
+$link-hover-color:       darken($link-color, 15%);
+
+
+// Typography
+$sans-serif:             'proxima-nova', 'Proxima Nova', 'Helvetica Neue', Helvetica, sans-serif;
+$font-base:              $sans-serif;
+$serif:                  'Source Serif Pro', Georgia, 'Times New Roman', Times, serif;
+$font-monospace:         'Source Code Pro', Menlo, Monaco, Consolas, 'Courier New', monospace;
+
+$font-size-base:         16px;
+$font-size-xs:           ceil(($font-size-base * 0.65)); // ~11px
+$font-size-small:        ceil(($font-size-base * 0.85)); // ~14px
+$font-size-large:        ceil(($font-size-base * 1.25)); // ~20px
+$font-size-xl:           ceil(($font-size-base * 1.5)); // ~24px
+
+$font-size-h1:           floor(($font-size-base * 2.6)); // ~36px
+$font-size-h2:           floor(($font-size-base * 2.15)); // ~30px
+$font-size-h3:           ceil(($font-size-base * 1.7)); // ~24px
+$font-size-h4:           ceil(($font-size-base * 1.25)); // ~18px
+$font-size-h5:           $font-size-base;
+$font-size-h6:           ceil(($font-size-base * 0.85)); // ~12px
+
+$line-height-base:       1.66;
+$line-height-computed:   1.66; // floor(($font-size-base * $line-height-base));  ~20px
+
+$headings-font-weight:   500;
+$headings-line-height:   1.1;
+$headings-color:         inherit;
+
+
+// Iconography
+
+$icon-font-path:         'fonts/';
+$icon-font-name:         'ss-geomicons-squared';
+
+// Components
+
+$padding-base-vertical:     6px;
+$padding-base-horizontal:   12px;
+
+$padding-xl-vertical:       30px;
+$padding-xl-horizontal:     36px;
+
+$padding-large-vertical:    10px;
+$padding-large-horizontal:  16px;
+
+$padding-small-vertical:    5px;
+$padding-small-horizontal:  10px;
+
+$padding-xs-vertical:       1px;
+$padding-xs-horizontal:     5px;
+
+$line-height-large:         1.33;
+$line-height-small:         1.5;
+
+$border-radius-base:        4px;
+$border-radius-large:       6px;
+$border-radius-small:       3px;
+$border-radius-xl:          12px;
+
+$component-active-color:    $white;
+$component-active-bg:       $brand-primary;
+
+$caret-width-base:          4px;
+$caret-width-large:         5px;
+
+$large-margin-top:          30px !default;
+
+
+// Tables
+
+$table-cell-padding:            8px;
+$table-condensed-cell-padding:  5px;
+
+$table-bg:                      transparent;
+$table-bg-accent:               #f9f9f9;
+$table-bg-hover:                #f5f5f5;
+$table-bg-active:               $table-bg-hover;
+
+$table-border-color:            #ddd;
+
+
+// Buttons
+
+$btn-link-disabled-color:       $grey-lighter;
+
+$btn-padding-base-horizontal:   $padding-base-horizontal * 1.5;
+$btn-padding-large-horizontal:  $padding-large-horizontal * 1.5;
+$btn-padding-small-horizontal:  $padding-small-horizontal * 1.5;
+$btn-padding-xs-horizontal:     $padding-xs-horizontal * 1.5;
+
+$btn-radius:                    90px;
+
+
+// Forms
+
+$input-bg:                       #f9fbfd;
+$input-bg-focus:                 white;
+$input-bg-disabled:              $grey-lighter;
+
+$input-color:                    $grey-darker;
+$input-border:                   $brand-border;
+$input-border-radius:            $border-radius-base;
+$input-border-focus:             $brand-primary;
+
+$input-color-placeholder:        $grey-light;
+
+$input-height-base:              ($line-height-computed + ($padding-base-vertical * 2) + 2) * 1.3;
+$input-height-large:             (ceil($font-size-large * $line-height-large) + ($padding-large-vertical * 2) + 2) * 1.3;
+$input-height-small:             (floor($font-size-small * $line-height-small) + ($padding-small-vertical * 2) + 2) * 1.3;
+
+$legend-color:                   darken($brand-primary, 25%);
+$legend-border-color:            $brand-border;
+
+$input-group-addon-bg:           $grey-lighter;
+$input-group-addon-border-color: $input-border;
+
+
+// Dropdowns
+
+$dropdown-bg:                    #fff;
+$dropdown-border:                rgba(0, 0, 0, 0.15);
+$dropdown-fallback-border:       #ccc;
+$dropdown-divider-bg:            $grey-light;
+
+$dropdown-link-color:            $grey-light;
+$dropdown-link-hover-color:      darken($grey-light, 5%);
+$dropdown-link-hover-bg:         #f5f5f5;
+
+$dropdown-link-active-color:     $component-active-color;
+$dropdown-link-active-bg:        $component-active-bg;
+
+$dropdown-link-disabled-color:   $grey-lighter;
+
+$dropdown-header-color:          darken($grey-lighter, 10%);
+
+$dropdown-caret-color:           #000;
+
+
+// Z-index master list
+
+$zindex-navbar:            1000;
+$zindex-dropdown:          1000;
+$zindex-popover:           1060;
+$zindex-tooltip:           1070;
+$zindex-navbar-fixed:      1030;
+$zindex-modal-background:  1040;
+$zindex-modal:             1050;
+
+
+// Media queries breakpoints
+
+$screen-xs:                480px;
+$screen-xs-min:            $screen-xs;
+$screen-phone:             $screen-xs-min;
+
+$screen-sm:                768px;
+$screen-sm-min:            $screen-sm;
+$screen-tablet:            $screen-sm-min;
+
+$screen-md:                992px;
+$screen-md-min:            $screen-md;
+$screen-desktop:           $screen-md-min;
+
+$screen-lg:                1200px;
+$screen-lg-min:            $screen-lg;
+$screen-lg-desktop:        $screen-lg-min;
+
+$screen-xs-max:            ($screen-sm-min - 1);
+$screen-sm-max:            ($screen-md-min - 1);
+$screen-md-max:            ($screen-lg-min - 1);
+
+
+// Grid system
+
+$grid-columns:              12;
+$grid-gutter-width:         30px;
+$grid-float-breakpoint:     $screen-sm-min;
+$grid-float-breakpoint-max: ($grid-float-breakpoint - 1);
+
+
+// Container sizes
+
+$container-tablet:          ((720px + $grid-gutter-width));
+$container-sm:              $container-tablet;
+
+$container-desktop:         ((940px + $grid-gutter-width));
+$container-md:              $container-desktop;
+
+$container-large-desktop:   ((1140px + $grid-gutter-width));
+$container-lg:              $container-large-desktop;
+
+
+// Navbar
+
+// Basics
+$navbar-height:                    50px;
+$navbar-margin-bottom:             $line-height-computed;
+$navbar-border-radius:             $border-radius-base;
+$navbar-padding-horizontal:        floor(($grid-gutter-width / 2));
+$navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2);
+$navbar-collapse-max-height:       340px;
+
+$navbar-default-color:             $brand-primary;
+$navbar-default-bg:                white;
+$navbar-default-border:            darken($navbar-default-bg, 6.5%);
+
+// Navbar links
+$navbar-default-link-color:                $grey-dark;
+$navbar-default-link-hover-color:          $black;
+$navbar-default-link-hover-bg:             transparent;
+$navbar-default-link-active-color:         $grey-darker;
+$navbar-default-link-active-bg:            darken($navbar-default-bg, 6.5%);
+$navbar-default-link-disabled-color:       #ccc;
+$navbar-default-link-disabled-bg:          transparent;
+
+// Navbar brand label
+$navbar-default-brand-color:               $navbar-default-link-color;
+$navbar-default-brand-hover-color:         darken($navbar-default-brand-color, 10%);
+$navbar-default-brand-hover-bg:            transparent;
+
+// Navbar toggle
+$navbar-default-toggle-hover-bg:           #ddd;
+$navbar-default-toggle-icon-bar-bg:        #888;
+$navbar-default-toggle-border-color:       #ddd;
+
+
+// Inverted navbar
+// Reset inverted navbar basics
+$navbar-inverse-color:                      rgba(white, 0.6);
+$navbar-inverse-bg:                         $black;
+$navbar-inverse-border:                     darken($navbar-inverse-bg, 20%);
+
+// Inverted navbar links
+$navbar-inverse-link-color:                 $navbar-inverse-color;
+$navbar-inverse-link-hover-color:           white;
+$navbar-inverse-link-hover-bg:              darken($navbar-inverse-bg, 20%);
+$navbar-inverse-link-active-color:          $navbar-inverse-link-hover-color;
+$navbar-inverse-link-active-bg:             darken($navbar-inverse-bg, 20%);
+$navbar-inverse-link-disabled-color:        $navbar-inverse-color;
+$navbar-inverse-link-disabled-bg:           $black;
+
+// Inverted navbar brand label
+$navbar-inverse-brand-color:                $navbar-inverse-link-color;
+$navbar-inverse-brand-hover-color:          #fff;
+$navbar-inverse-brand-hover-bg:             transparent;
+
+// Inverted navbar toggle
+$navbar-inverse-toggle-hover-bg:            $black;
+$navbar-inverse-toggle-icon-bar-bg:         #fff;
+$navbar-inverse-toggle-border-color:        $black;
+
+
+// Navs
+
+$nav-link-padding:                          10px 15px;
+$nav-link-hover-bg:                         rgba(black, .05);
+
+$nav-disabled-link-color:                   $grey-dark;
+$nav-disabled-link-hover-color:             $grey-dark;
+
+$nav-open-link-hover-color:                 #fff;
+
+// Tabs
+$nav-tabs-border-color:                     $brand-border;
+
+$nav-tabs-link-hover-border-color:          $grey-lighter;
+
+$nav-tabs-active-link-hover-bg:             white;
+$nav-tabs-active-link-hover-color:          $grey-darker;
+$nav-tabs-active-link-hover-border-color:   $brand-border;
+
+$nav-tabs-justified-link-border-color:            #ddd;
+$nav-tabs-justified-active-link-border-color:     $body-bg;
+
+// Pills
+$nav-pills-border-radius:                   $border-radius-base;
+$nav-pills-active-link-hover-bg:            $component-active-bg;
+$nav-pills-active-link-hover-color:         $component-active-color;
+
+
+// Pagination
+
+$pagination-color:                     $link-color;
+$pagination-bg:                        #fff;
+$pagination-border:                    #ddd;
+
+$pagination-hover-color:               $link-hover-color;
+$pagination-hover-bg:                  $grey-lighter;
+$pagination-hover-border:              #ddd;
+
+$pagination-active-color:              #fff;
+$pagination-active-bg:                 $brand-primary;
+$pagination-active-border:             $brand-primary;
+
+$pagination-disabled-color:            $grey-dark;
+$pagination-disabled-bg:               #fff;
+$pagination-disabled-border:           #ddd;
+
+
+// Pager
+
+$pager-bg:                             $pagination-bg;
+$pager-border:                         $pagination-border;
+$pager-border-radius:                  15px;
+
+$pager-hover-bg:                       $pagination-hover-bg;
+
+$pager-active-bg:                      $pagination-active-bg;
+$pager-active-color:                   $pagination-active-color;
+
+$pager-disabled-color:                 $pagination-disabled-color;
+
+
+// Jumbotron
+
+$jumbotron-padding:              30px;
+$jumbotron-color:                inherit;
+$jumbotron-bg:                   $brand-bg;
+$jumbotron-heading-color:        inherit;
+$jumbotron-font-size:            ceil(($font-size-base * 1.5));
+
+
+// Form states and alerts
+
+$state-success-text:             #3c763d;
+$state-success-bg:               #dff0d8;
+$state-success-border:           darken(adjust-hue($state-success-bg, -10), 5%);
+
+$state-info-text:                #31708f;
+$state-info-bg:                  #d9edf7;
+$state-info-border:              darken(adjust-hue($state-info-bg, -10), 7%);
+
+$state-warning-text:             #8a6d3b;
+$state-warning-bg:               #fcf8e3;
+$state-warning-border:           darken(adjust-hue($state-warning-bg, -10), 5%);
+
+$state-danger-text:              #a94442;
+$state-danger-bg:                #f2dede;
+$state-danger-border:            darken(adjust-hue($state-danger-bg, -10), 5%);
+
+
+// Tooltips
+
+$tooltip-max-width:           200px;
+$tooltip-color:               #fff;
+$tooltip-bg:                  #000;
+$tooltip-opacity:             .9;
+
+$tooltip-arrow-width:         5px;
+$tooltip-arrow-color:         $tooltip-bg;
+
+
+// Popovers
+
+$popover-bg:                          #fff;
+$popover-max-width:                   276px;
+$popover-border-color:                rgba(0, 0, 0, 0.2);
+$popover-fallback-border-color:       #ccc;
+
+$popover-title-bg:                    darken($popover-bg, 3%);
+
+$popover-arrow-width:                 10px;
+$popover-arrow-color:                 #fff;
+
+$popover-arrow-outer-width:           ($popover-arrow-width + 1);
+$popover-arrow-outer-color:           fade_in($popover-border-color, 0.05);
+$popover-arrow-outer-fallback-color:  darken($popover-fallback-border-color, 20%);
+
+
+// Labels
+
+$label-default-bg:            $grey-dark;
+$label-primary-bg:            $brand-primary;
+$label-success-bg:            $brand-success;
+$label-info-bg:               $brand-info;
+$label-warning-bg:            $brand-warning;
+$label-danger-bg:             $brand-danger;
+
+$label-color:                 #fff;
+$label-link-hover-color:      #fff;
+
+
+// Modals
+
+$modal-inner-padding:         $padding-large-vertical $padding-large-horizontal;
+
+$modal-title-padding:         $modal-inner-padding;
+$modal-title-line-height:     $line-height-base;
+
+$modal-content-bg:                     #fff;
+$modal-content-border-color:           rgba(0, 0, 0, 0.2);
+$modal-content-fallback-border-color:  #999;
+
+$modal-backdrop-bg:           #000;
+$modal-backdrop-opacity:      0.5;
+$modal-header-border-color:   #e5e5e5;
+$modal-footer-border-color:   $modal-header-border-color;
+
+$modal-lg:                    900px;
+$modal-md:                    600px;
+$modal-sm:                    300px;
+
+
+// Alerts
+
+$alert-padding:               $padding-large-vertical $padding-large-horizontal;
+$alert-border-radius:         $border-radius-base;
+$alert-link-font-weight:      bold;
+
+
+// Progress bars
+
+$progress-bg:                 #f5f5f5;
+$progress-bar-color:          #fff;
+
+$progress-bar-bg:             $brand-primary;
+$progress-bar-success-bg:     $brand-success;
+$progress-bar-warning-bg:     $brand-warning;
+$progress-bar-danger-bg:      $brand-danger;
+$progress-bar-info-bg:        $brand-info;
+
+
+// List group
+
+$list-group-bg:                  #fff;
+$list-group-border:              #ddd;
+$list-group-border-radius:       $border-radius-base;
+
+$list-group-hover-bg:            #f5f5f5;
+$list-group-active-color:        $component-active-color;
+$list-group-active-bg:           $component-active-bg;
+$list-group-active-border:       $list-group-active-bg;
+$list-group-active-text-color:   lighten($list-group-active-bg, 40%);
+
+$list-group-disabled-color:      $grey-dark;
+$list-group-disabled-bg:         $grey-lighter;
+$list-group-disabled-text-color: $list-group-disabled-color;
+
+$list-group-link-color:          $grey-darker;
+$list-group-link-hover-color:    $list-group-link-color;
+$list-group-link-heading-color:  $black;
+
+
+// Panels
+
+$panel-bg:                    #fff;
+$panel-body-padding:          $padding-large-vertical $padding-large-horizontal;
+$panel-heading-padding:       10px 15px;
+$panel-footer-padding:        $panel-heading-padding;
+$panel-border:                $brand-border;
+$panel-border-radius:         $border-radius-base;
+$panel-title:                 $grey-darker;
+
+$panel-inner-border:          #ddd;
+$panel-footer-bg:             #f5f5f5;
+
+$panel-default-text:          $black;
+$panel-default-border:        #ddd;
+$panel-default-heading-bg:    #f5f5f5;
+
+$panel-primary-text:          #fff;
+$panel-primary-border:        $brand-primary;
+$panel-primary-heading-bg:    $brand-primary;
+
+$panel-success-text:          $state-success-text;
+$panel-success-border:        $state-success-border;
+$panel-success-heading-bg:    $state-success-bg;
+
+$panel-info-text:             $state-info-text;
+$panel-info-border:           $state-info-border;
+$panel-info-heading-bg:       $state-info-bg;
+
+$panel-warning-text:          $state-warning-text;
+$panel-warning-border:        $state-warning-border;
+$panel-warning-heading-bg:    $state-warning-bg;
+
+$panel-danger-text:           $state-danger-text;
+$panel-danger-border:         $state-danger-border;
+$panel-danger-heading-bg:     $state-danger-bg;
+
+
+// Thumbnails
+
+$thumbnail-padding:           4px;
+$thumbnail-bg:                $body-bg;
+$thumbnail-border:            #ddd;
+$thumbnail-border-radius:     $border-radius-base;
+
+$thumbnail-caption-color:     $text-color;
+$thumbnail-caption-padding:   9px;
+
+
+// Wells
+
+$well-bg:                     #f5f5f5;
+$well-border:                 darken($well-bg, 7%);
+
+
+// Badges
+
+$badge-color:                 #fff;
+$badge-link-hover-color:      #fff;
+$badge-bg:                    $grey-dark;
+
+$badge-active-color:          $link-color;
+$badge-active-bg:             #fff;
+
+$badge-font-weight:           bold;
+$badge-line-height:           1;
+$badge-border-radius:         10px;
+
+
+// Breadcrumbs
+
+$breadcrumb-padding-vertical:   8px;
+$breadcrumb-padding-horizontal: $padding-large-vertical $padding-large-horizontal;
+$breadcrumb-bg:                 #f5f5f5;
+$breadcrumb-color:              #ccc;
+$breadcrumb-active-color:       $grey-dark;
+$breadcrumb-separator:          '/';
+
+
+// Carousel
+
+$carousel-text-shadow:            0 1px 2px rgba(0, 0, 0, 0.6);
+
+$carousel-control-color:          #fff;
+$carousel-control-width:          15%;
+$carousel-control-opacity:        .5;
+$carousel-control-font-size:      20px;
+
+$carousel-indicator-active-bg:    #fff;
+$carousel-indicator-border-color: #fff;
+
+$carousel-caption-color:          #fff;
+
+
+// Close
+
+$close-font-weight:           bold;
+$close-color:                 #000;
+$close-text-shadow:           none;
+
+
+// Code
+
+$code-color:                  #c7254e;
+$code-bg:                     #f9f2f4;
+
+$kbd-color:                   #fff;
+$kbd-bg:                      $black;
+
+$pre-bg:                      #f5f5f5;
+$pre-color:                   $black;
+$pre-border-color:            #ccc;
+$pre-scrollable-max-height:   340px;

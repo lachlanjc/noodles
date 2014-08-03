@@ -2,17 +2,17 @@
   header {
     width: 100%;
     z-index: 1;
-    color: $white;
+    color: white;
 
     h1 {
-      font-size: 4rem;
+      font-size: 4em;
       font-weight: bold;
-      text-shadow: 0 3px 24px rgba(0,0,0,0.33);
+      text-shadow: 0 3px 24px rgba(0, 0, 0, 0.33);
       margin-bottom: 0;
     }
 
     h4 {
-      text-shadow: 0 1px 8px rgba(0,0,0,0.25);
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
       font-size: 1.33rem;
       font-weight: normal;
       margin: 0.33rem auto 0 0;
@@ -24,7 +24,7 @@
       font-weight: 300;
       font-size: 1.1rem;
       margin-top: 0.33rem;
-      text-shadow: 0 1px 6px rgba(0,0,0,0.25);
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
     }
 
     .back {
@@ -37,7 +37,7 @@
   .body-container {
     width: 100%;
     height: 100%;
-    @include shadow(0 -35px 50px rgba(0,0,0,0.4));
+    @include shadow(0 -35px 50px rgba(0, 0, 0, 0.4));
     z-index: 2;
   }
   article {
@@ -52,7 +52,7 @@
     h4 {
       font-size: 1.1em;
       font-weight: normal;
-      line-height: 1.75em;
+      line-height: 1.75;
       margin-bottom: 0;
     }
   }
@@ -63,7 +63,7 @@
     width: 80%;
     max-width: 1000px;
     height: 315px;
-    border-radius: $radius;
+    border-radius: $border-radius-large;
     background-color: $notes;
   }
 
@@ -78,7 +78,7 @@
     list-style: none;
     width: 12em;
     padding: 0.5em 1em 1em 0;
-    color: $main;
+    color: $brand-primary;
 
     li {
       width: 100%;
@@ -86,14 +86,15 @@
     }
 
     button {
-      border-bottom: $line-thin;
+      border: 0;
+      border-bottom: 1px solid $brand-border;
       width: 100%;
       text-align: left;
-      font: 0.85em $sans-serif;
+      font: 0.85em $font-base;
       padding-bottom: 2px;
 
       &:first-child {
-        border-top: 1px solid $line-thin;
+        border-top: 1px solid $brand-border;
       }
     }
 
@@ -134,7 +135,7 @@
   .r-header .container { margin: 4em auto 2em 2em; }
   .r-header h1 {
     font-size: 2.5em;
-    text-shadow: 0 0 20px rgba(0,0,0,0.4);
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   }
   .r-header h4 { font-size: 1.05em; }
   article {
