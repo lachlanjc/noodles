@@ -3,3 +3,22 @@
      -moz-box-shadow: $values;
           box-shadow: $values;
 }
+
+@mixin button-standard($text-color) {
+  background-color: white;
+  border: 1px solid $brand-border;
+  color: $text-color;
+
+  &:hover {
+    background-color: darken(white, 2%);
+    color: darken($text-color, 2%);
+    border: 1px solid $brand-border;
+  }
+
+  &:focus,
+  &:active {
+    background-color: darken(white, 4%);
+    color: darken($text-color, 4%);
+    border: 1px solid $brand-border;
+  }
+}

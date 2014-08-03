@@ -1,28 +1,62 @@
 button {
   border: 0;
   display: inline-block;
-  font: 1rem $font-base;
   outline: 0;
 }
-.btn {
-  background-color: $main;
-  color: $white;
-  text-align: center;
-  border-radius: $radius;
-  padding: 8px 10px;
-}
-.btn:hover {
-  background-color: lighten($main, 8%);
+.btn:focus {
+  outline: 0;
 }
 .btn:active {
   @include shadow(inset 0 3px 5px rgba(0, 0, 0, 0.125));
 }
-.btn.secondary {
-  border: 3px solid $blue;
-  color: $blue;
-  background-color: $white;
+
+.btn-primary {
+  background-color: $brand-primary;
+  color: white;
+  border: 0;
+
+  &:hover {
+    background-color: lighten($brand-primary, 3%);
+  }
+
+  &:active {
+    background-color: darken($brand-primary, 5%);
+    color: darken(white, 6%);
+  }
 }
-.btn.secondary:hover {
-  border-color: $light-blue;
-  color: $light-blue;
+
+.btn-default {
+  @include button-standard($brand-primary);
+}
+
+.btn-success {
+  @include button-standard($brand-success);
+}
+
+.btn-info {
+  @include button-standard($brand-info);
+}
+
+.btn-warning {
+  @include button-standard($brand-warning);
+}
+
+.btn-danger {
+  @include button-standard($brand-danger);
+}
+
+.btn {
+  @include button-size($padding-base-vertical, $btn-padding-base-horizontal, $font-size-base, $line-height-base, $btn-radius);
+}
+
+.btn-lg {
+  @include button-size($padding-large-vertical, $btn-padding-large-horizontal, $font-size-large, $line-height-large, $btn-radius);
+}
+
+.btn-sm {
+  @include button-size($padding-small-vertical, $btn-padding-small-horizontal, $font-size-small, $line-height-small, $btn-radius);
+}
+
+.btn-xs {
+  @include button-size($padding-xs-vertical, $btn-padding-xs-horizontal, $font-size-small, $line-height-small, $btn-radius);
 }
