@@ -16,14 +16,13 @@ header {
   margin-left: auto;
   margin-right: auto;
   height: auto;
-  border-bottom: 1px solid $light-grey;
+  border-bottom: 1px solid $grey-lighter;
   box-sizing: border-box;
 
   h1 {
-    font: 2rem $font-base;
+    font: 2em $font-base;
     line-height: 2;
     font-weight: 300;
-    letter-spacing: -0.03rem;
   }
 
   .btn { margin-top: 0.66em; }

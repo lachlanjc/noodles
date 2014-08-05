@@ -16,12 +16,21 @@ button {
   border: 0;
 
   &:hover {
-    background-color: lighten($brand-primary, 3%);
+    background-color: lighten($brand-primary, 2%);
+    color: white;
   }
 
   &:active {
     background-color: darken($brand-primary, 5%);
-    color: darken(white, 6%);
+    color: darken(white, 8%);
+  }
+
+  &:visited {
+    color: white;
+
+    &:hover {
+      color: white;
+    }
   }
 }
 

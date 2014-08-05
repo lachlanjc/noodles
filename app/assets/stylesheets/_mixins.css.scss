@@ -21,4 +21,12 @@
     color: darken($text-color, 4%);
     border: 1px solid $brand-border;
   }
+
+  &:visited {
+    color: $text-color;
+
+    &:hover {
+      color: $text-color;
+    }
+  }
 }
