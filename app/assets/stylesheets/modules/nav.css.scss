@@ -1,7 +1,6 @@
 .navbar-noodles {
   background-color: $brand-primary;
-  border-color: transparent;
-  border-bottom: 0;
+  border: 0 !important;
   margin: 0 0 auto 0;
   border-radius: 0;
 
@@ -9,17 +8,84 @@
     color: white;
     font-weight: 100;
     text-transform: uppercase;
+    padding-top: 11px;
+    border-top: 4px solid transparent;
+    transition: border-top 0.12s ease-in-out;
 
     &:hover {
       color: white;
+      border-top: 4px solid white;
     }
   }
 
-  a {
-    color: white;
+  .navbar-nav > li {
+    margin-left: 6px;
+    margin-right: 6px;
 
-    &:hover {
+    > a {
+      font-weight: 400;
+      font-size: 1.15em;
       color: white;
+      border-top: 4px solid transparent;
+      padding: 12px 12px 15px 12px;
+      transition: border-top 0.12s ease-in-out;
+
+      &:hover {
+        color: white;
+        background-color: $brand-primary;
+        border-top: 4px solid white;
+      }
+
+      &.dropdown-toggle {
+        padding: 0 10px 15px 10px;
+        background-color: $brand-primary;
+
+        .avatar {
+          width: 30px;
+          height: 30px;
+          position: relative;
+          top: 6px;
+          right: 2px;
+        }
+
+        .caret {
+          position: relative;
+          top: 3px;
+        }
+      }
+    }
+
+    &.dropdown {
+      .dropdown-menu {
+        border-top-color: transparent;
+
+        > li {
+          > a {
+            padding: 4px 12px;
+          }
+
+          &.divider {
+            margin: 6px 0;
+          }
+        }
+      }
+    }
+
+
+    &.dropdown:hover {
+      background-color: $brand-primary;
+    }
+
+    &.dropdown.open {
+      background-color: $brand-primary !important;
+
+      .caret {
+        color: white;
+      }
+
+      &:hover {
+        background-color: $brand-primary;
+      }
     }
   }
 }
