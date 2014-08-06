@@ -1,0 +1,74 @@
+.notification {
+  margin-bottom: 0;
+  border-bottom: 1px solid darken($notification-bg, 5%);
+  background-color: $notification-bg;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  .text {
+    color: white;
+    font-size: 1.2em;
+  }
+
+  a {
+    color: white;
+    font-weight: bold;
+    border-bottom: 2px solid white;
+
+    .hover,
+    &:hover {
+      color: $grey-lighter;
+      text-decoration: underline;
+    }
+  }
+
+  .container {
+    padding: $padding-large-vertical 0;
+  }
+
+  .geomicon {
+    font-size: 22px;
+    top: $padding-small-vertical;
+    position: relative;
+    margin: 0 $padding-small-horizontal 0 $padding-xs-horizontal;
+    margin-right: $padding-small-horizontal;
+  }
+
+  .close-button {
+    float: right;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    position: relative;
+    margin-right: $padding-xs-horizontal;
+
+    .geomicon {
+      color: white;
+      opacity: 0.5;
+
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+  }
+}
+
+.notification-success {
+  .geomicon {
+    color: $brand-success;
+  }
+}
+
+.notification-info {
+  .geomicon {
+    color: $brand-info;
+  }
+}
+
+.notification-danger {
+  .geomicon {
+    color: $brand-danger;
+  }
+}

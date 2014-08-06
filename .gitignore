@@ -1,13 +1,13 @@
 # Read more at http://help.github.com/ignore-files/
 
+.DS_Store
+
 /config/database.yml # Database config
 /.bundle # Bundler config
 /log/*.log # logs
 /tmp
 *.env
 /bin/* # Bundler binstubs
-/.vagrant # Vagrant folder
-.DS_Store # OS X .DS_Store files
 *.swp # VI swp files
 *.sublime-* # Sublime Text files
 

@@ -7,7 +7,7 @@ $grey-dark:     #777777;
 $grey-darker:   #555555;
 $black:         #333333;
 
-$red:           #E00622; // #F92513;
+$red:           #F50B38; // #F92513;
 
 $yellow:        #FADB13;
 
@@ -29,7 +29,7 @@ $brand-divider:          rgba(black, 0.02);
 
 $notes:                  #FFFFCC;
 $highlight:              #FFEEAA;
-$notification:           #51555C;
+$notification-bg:        #51555C;
 
 $separator:              $grey-lighter;
 $description:            $grey-light;
@@ -365,7 +365,7 @@ $jumbotron-heading-color:        inherit;
 $jumbotron-font-size:            ceil(($font-size-base * 1.5));
 
 
-// Form states and alerts
+// Form states
 
 $state-success-text:             #3c763d;
 $state-success-bg:               #dff0d8;
@@ -444,13 +444,6 @@ $modal-footer-border-color:   $modal-header-border-color;
 $modal-lg:                    900px;
 $modal-md:                    600px;
 $modal-sm:                    300px;
-
-
-// Alerts
-
-$alert-padding:               $padding-large-vertical $padding-large-horizontal;
-$alert-border-radius:         $border-radius-base;
-$alert-link-font-weight:      bold;
 
 
 // Progress bars
