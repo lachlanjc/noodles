@@ -1,5 +1,13 @@
 // TODO: add WTF, Forms
 
+.remember-me {
+  input.form-control {
+    width: 20px;
+    height: 15px;
+    display: inline-block;
+  }
+}
+
 label {
   font-size: 16px;
   font-weight: 400;
@@ -9,6 +17,10 @@ label {
 .row {
   margin-top: 5px;
   margin-bottom: 5px;
+
+  &:last-child {
+    margin-top: 15px;
+  }
 }
 
 .form-control {
