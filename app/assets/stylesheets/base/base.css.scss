@@ -3,27 +3,7 @@ html, body {
   color: $black;
 }
 
-.content {
-  display: inline-block;
-  width: 100%;
-  padding-left: 15px;
-
-  a { text-decoration: none; }
-}
-
-header {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  height: auto;
-  border-bottom: 1px solid $grey-lighter;
-  box-sizing: border-box;
-
-  h1 {
-    font: 2em $font-base;
-    line-height: 2;
-    font-weight: 300;
-  }
-
-  .btn { margin-top: 0.66em; }
+hr {
+  border: 0;
+  border-bottom: 2px solid $brand-border;
 }
