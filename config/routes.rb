@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :recipes
+
   root 'pages#welcome'
 
   get '/home' => 'pages#welcome'
