@@ -20,4 +20,17 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  general:
+    noodles: "Noodles"
+    settings: "Settings"
+  devise:
+    registrations:
+      edit:
+        account_settings: "Account Settings"
+        email_and_pass: "Email and Password"
+        need_help: "Need help?"
+        unhappy_want_support: "If you are unhappy with Noodles for any reason, please don't hesitate to reach out to us. Just click the button below and ask away!"
+        delete_account: "Delete your account"
+        want_account_gone: "To delete your account, please click the button below However, it is irreviresible — once you delete your acocunt all your data is erased from our servers."
+        delete_my_account: "Delete my account"
+        back_to_noodles: "Back to Noodles"
