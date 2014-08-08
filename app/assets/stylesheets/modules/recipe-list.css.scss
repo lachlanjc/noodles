@@ -1,20 +1,62 @@
-.recipe-list {
-  list-style: none;
-  overflow-y: scroll;
+.recipes-list-container {
+  background-color: $grey-lighter;
+  width: 100%;
+  height: 100%;
+}
+
+.recipes-list-group {
   -webkit-overflow-scrolling: touch;
 
-  li {
-    margin: 24px 0;
+  a, a:visited {
+    color: $brand-primary;
 
-    div {
-      font-size: 1.25em;
-      font-weight: 400;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .list-group-item {
+    border-radius: 0;
+    border: 0;
+    border-bottom: 2px solid $brand-border;
+    padding-bottom: 1em;
+    padding-left: 2em;
+    transition: box-shadow 0.22s ease-in-out;
+
+    &:hover {
+      box-shadow: inset 3px 0 $brand-primary;
+    }
+
+    h3 {
       color: $brand-primary;
     }
 
     p {
-      font: 0.9em $serif;
+      font: 1em $serif;
       color: $description;
+      font-weight: 400;
+      padding: 0.5em 0;
+    }
+  }
+}
+
+#add-item {
+  border-bottom: 0 !important;
+
+  &:hover {
+    box-shadow: none;
+
+    p span {
+      color: darken($brand-border, 16%);
+    }
+  }
+
+  p {
+    padding: 1em 0 0 0 !important;
+
+    span {
+      font-size: $font-size-large;
+      color: darken($brand-border, 8%);
     }
   }
 }

@@ -1,31 +1,30 @@
-<h1>Listing recipes</h1>
+<% activate_nav!(:recipes) %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Ingredients</th>
-      <th>Instructions</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%= render 'shared/nav' %>
 
-  <tbody>
+<%= render 'layouts/flash' %>
+
+<div class="container recipes-list-container background-grey">
+
+  <div class="col-md-8 col-md-offset-2 list-group recipes-list-group">
+
     <% @recipes.each do |recipe| %>
-      <tr>
-        <td><%= recipe.title %></td>
-        <td><%= recipe.description %></td>
-        <td><%= recipe.ingredients %></td>
-        <td><%= recipe.instructions %></td>
-        <td><%= link_to 'Show', recipe %></td>
-        <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
-        <td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <%= link_to (recipe) do %>
+        <div class="list-group-item">
+          <h3><%= recipe.title %></h3>
+          <p><%= recipe.description %></p>
+        </div>
+      <% end %>
     <% end %>
-  </tbody>
-</table>
 
-<br>
+    <%= link_to new_recipe_path do %>
+      <div class="list-group-item text-center" id="add-item">
+        <p>
+          <span class="geomicon geomicon-plus"></span>
+        </p>
+      </div>
+    <% end %>
 
-<%= link_to 'New Recipe', new_recipe_path %>
+  </div>
+
+</div>

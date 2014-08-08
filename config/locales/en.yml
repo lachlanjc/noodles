@@ -22,7 +22,9 @@
 en:
   general:
     noodles: "Noodles"
-    settings: "Settings"
+    recipes: "Recipes"
+    settings: "Account Settings"
+    sign_out: "Sign Out"
   devise:
     registrations:
       edit:
