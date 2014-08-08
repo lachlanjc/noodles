@@ -11,9 +11,9 @@
         <li class="<%= nav_active_class(:recipes) %>">
           <%= link_to :recipes do %>
             <span class="geomicon geomicon-rows"></span>
-            <span class="title"><%= t('.recipes') %></span>
-            <% unless @recipes.count.zero? %>
-              <span class="badge"><%= @recipes.count %></span>
+            <span class="title"><%= t('general.recipes') %></span>
+            <% unless @recipes.length.zero? %>
+              <span class="badge"><%= @recipes.length %></span>
             <% end %>
           <% end %>
         </li>
@@ -48,7 +48,7 @@
       <% else %>
 
         <li>
-          <%= link_to 'Sign In', :create_user_session %>
+          <%= link_to t('general.sign_in'), :create_user_session %>
         </li>
 
       <% end %>

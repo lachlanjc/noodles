@@ -5,7 +5,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset-3 jumbotron text-center">
-      <h1>Noodles</h1>
+      <h1><%= t('general.noodles') %>/h1>
       <h3>Awesome recipes</h3>
       <br>
       <% if user_signed_in? %>
@@ -13,7 +13,7 @@
         <%= current_user.email %></p>
       <% else %>
         <div class="text-center">
-          <%= link_to 'Sign Up', :add_user, class: 'btn btn-lg btn-primary' %>
+          <%= link_to t('general.sign_up'), :add_user, class: 'btn btn-lg btn-primary' %>
         </div>
       <% end %>
     </div>
