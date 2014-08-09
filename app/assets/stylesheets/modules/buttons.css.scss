@@ -34,6 +34,46 @@ button {
   }
 }
 
+.btn-paper {
+  position: fixed;
+  bottom: $padding-base-horizontal;
+  padding: 14px 15px 10px 15px;
+  color: white;
+  background-color: $brand-primary;
+  border-radius: 50%;
+  font-size: $font-size-h4;
+  line-height: 1.25;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
+
+  &:visited {
+    color: white;
+
+    &:hover {
+      color: white;
+    }
+  }
+
+  &:hover {
+    transition: box-shadow 0.1s ease-in-out;
+    box-shadow: 0 7px 7px rgba(0, 0, 0, 0.22);
+    text-decoration: none;
+    color: white;
+  }
+
+  &:active {
+    transition: box-shadow 0.1s ease-in-out;
+    box-shadow: 0 15px 10px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.btn-paper-left {
+  left: $padding-base-horizontal;
+}
+
+.btn-paper-right {
+  right: $padding-base-horizontal;
+}
+
 .btn-default {
   @include button-standard($blue);
 }

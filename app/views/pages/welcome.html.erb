@@ -2,20 +2,29 @@
 
 <%= render 'layouts/flash' %>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3 jumbotron text-center">
-      <h1><%= t('general.noodles') %></h1>
-      <h3>Awesome recipes</h3>
-      <br>
+<div class="container recipes-list-container background-grey">
+
+  <div class="col-md-8 col-md-offset-2 list-group recipes-list-group">
+
+    <div class="list-group-item text-center">
+      <h3><%= t('general.welcome_to_noodles') %></h3>
       <% if user_signed_in? %>
-        <p>Signed in as:</p>
-        <%= current_user.email %></p>
+        <%= link_to 'Go to Recipes', :recipes, class: 'btn btn-primary', style: 'color: white !important; margin: 1em auto;' %>
       <% else %>
         <div class="text-center">
-          <%= link_to t('general.sign_up'), :add_user, class: 'btn btn-lg btn-primary' %>
+          <%= link_to t('general.sign_up'), :add_user, class: 'btn btn-primary', style: 'color: white !important; margin: 1em auto;' %>
         </div>
       <% end %>
     </div>
+
   </div>
+
+  <div class="col-md-8 col-md-offset-2 footer">
+    <%= render 'shared/footer' %>
+  </div>
+
 </div>
+
+<%= link_to :new_recipe, class: 'btn-paper btn-paper-right' do %>
+  <span class="geomicon geomicon-plus"></span>
+<% end %>

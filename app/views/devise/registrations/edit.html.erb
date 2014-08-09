@@ -38,13 +38,11 @@
       <hr>
     </div>
 
-    <script async src="https://assets.helpful.io/assets/widget.js"></script>
-
     <div class="row">
       <h1><%= t('.need_help') %></h1>
       <p><%= t('.unhappy_want_support') %></p>
       <p>
-        <a href="#" class="btn btn-default" data-helpful="noodles" data-helpful-email="<%= @user.email %>"><%= t('.get_support') %></a>
+        <a href="#" class="btn btn-default" data-helpful="noodles" data-helpful-email="<%= current_user.email %>"><%= t('.get_support') %></a>
       </p>
     </div>
 
@@ -54,14 +52,10 @@
       <%= button_to t('.delete_my_account'), registration_path(resource_name), class: 'btn btn-sm btn-danger', data: { confirm: "Are you sure you want to erase your account? Once deleted you cannot restore it." }, method: :delete %>
     </div>
 
-    <div class="row">
-      <hr>
-    </div>
-
-    <div class="row">
-      <%= link_to t('.back_to_noodles'), :home, class: 'btn btn-primary' %>
-    </div>
-
   </div>
 
 </div>
+
+<%= link_to :home, class: 'btn-paper btn-paper-left' do %>
+  <span class="geomicon geomicon-navigateleft"></span>
+<% end %>
