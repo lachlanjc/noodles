@@ -6,6 +6,8 @@
 
 .recipes-list-group {
   -webkit-overflow-scrolling: touch;
+  padding-right: 0;
+  margin-bottom: 0;
 
   a, a:visited {
     color: $brand-primary;
@@ -36,27 +38,6 @@
       color: $description;
       font-weight: 400;
       padding: 0.5em 0;
-    }
-  }
-}
-
-#add-item {
-  border-bottom: 0 !important;
-
-  &:hover {
-    box-shadow: none;
-
-    p span {
-      color: darken($brand-border, 16%);
-    }
-  }
-
-  p {
-    padding: 1em 0 0 0 !important;
-
-    span {
-      font-size: $font-size-large;
-      color: darken($brand-border, 8%);
     }
   }
 }
