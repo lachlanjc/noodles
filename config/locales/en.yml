@@ -22,11 +22,15 @@
 en:
   general:
     noodles: "Noodles"
+    welcome_to_noodles: "Welcome to Noodles!"
     recipes: "Recipes"
+    collections: "Collections"
+    search: "Search"
     settings: "Account Settings"
     sign_up: "Sign Up"
     sign_in: "Sign In"
     sign_out: "Sign Out"
+    save: "Save"
   devise:
     registrations:
       edit:
@@ -38,3 +42,14 @@ en:
         want_account_gone: "To delete your account, please click the button below However, it is irreviresible — once you delete your acocunt all your data is erased from our servers."
         delete_my_account: "Delete my account"
         back_to_noodles: "Back to Noodles"
+  recipes:
+    new:
+      new_recipe: "New Recipe"
+    edit:
+      edit_recipe: "Edit Recipe"
+  shared:
+    error_messages:
+      oops_went_wrong: "Oops! Something went wrong."
+    footer:
+      footer_copy: "2014 Noodles. Eat well."
+      get_help: "Get Help"

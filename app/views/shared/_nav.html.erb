@@ -15,7 +15,12 @@
           <% end %>
         </li>
 
-      </ul>
+        <li class="<%= nav_active_class(:collections) %>">
+          <%= link_to :recipes do %>
+            <span class="geomicon geomicon-grid"></span>
+            <span class="title"><%= t('general.collections') %></span>
+          <% end %>
+        </li>
 
     </div>
 
