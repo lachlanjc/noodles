@@ -1,0 +1,39 @@
+.footer {
+  padding-left: 0;
+
+  p {
+    padding-top: 15px;
+    font-size: 1em;
+    color: $grey-light;
+    display: inline-block;
+
+    &:first-child {
+      float: left;
+    }
+
+    &:last-child {
+      float: right;
+      margin-right: 0;
+      position: relative;
+      left: 15px;
+    }
+  }
+
+  a {
+    display: inline-block;
+    color: $grey-light !important;
+
+    &:hover {
+      color: $grey;
+      text-decoration: none;
+    }
+
+    &:visited {
+      color: $grey-light;
+
+      &:hover {
+        color: $grey;
+      }
+    }
+  }
+}
