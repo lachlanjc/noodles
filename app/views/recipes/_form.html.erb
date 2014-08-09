@@ -1,33 +1,32 @@
 <%= form_for(@recipe) do |f| %>
-  <% if @recipe.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
 
-      <ul>
-      <% @recipe.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: 'form-control' %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <%= f.label :description %>
+      <%= f.text_area :description, class: 'form-control' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :ingredients %><br>
-    <%= f.text_area :ingredients %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <%= f.label :ingredients %>
+      <%= f.text_area :ingredients, class: 'form-control' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :instructions %><br>
-    <%= f.text_area :instructions %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <%= f.label :instructions %>
+      <%= f.text_area :instructions, class: 'form-control' %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <%= f.submit t('general.save'), class: 'btn btn-primary' %>
+    </div>
   </div>
 <% end %>

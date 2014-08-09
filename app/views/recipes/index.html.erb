@@ -17,14 +17,14 @@
       <% end %>
     <% end %>
 
-    <%= link_to new_recipe_path do %>
-      <div class="list-group-item text-center" id="add-item">
-        <p>
-          <span class="geomicon geomicon-plus"></span>
-        </p>
-      </div>
-    <% end %>
+  </div>
 
+  <div class="col-md-8 col-md-offset-2 footer">
+    <%= render 'shared/footer' %>
   </div>
 
 </div>
+
+<%= link_to :new_recipe, class: 'btn-paper btn-paper-right' do %>
+  <span class="geomicon geomicon-plus"></span>
+<% end %>

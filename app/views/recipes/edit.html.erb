@@ -1,6 +1,25 @@
-<h1>Editing recipe</h1>
+<% activate_nav!(:recipes) %>
 
-<%= render 'form' %>
+<%= render 'shared/nav' %>
 
-<%= link_to 'Show', @recipe %> |
-<%= link_to 'Back', recipes_path %>
+<%= render 'layouts/flash' %>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h1 class="page-title"><%= t('.edit_recipe') %></h1>
+    </div>
+  </div>
+
+  <%= render 'form' %>
+
+</div>
+
+<%= link_to :recipes, class: 'btn-paper btn-paper-left' do %>
+  <span class="geomicon geomicon-navigateleft"></span>
+<% end %>
+
+<%= link_to :new_recipe, class: 'btn-paper btn-paper-right' do %>
+  <span class="geomicon geomicon-plus"></span>
+<% end %>
