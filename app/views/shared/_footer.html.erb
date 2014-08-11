@@ -4,6 +4,12 @@
     <%= t('.footer_copy') %>
   </p>
   <p>
-    <a href="#" data-helpful="noodles" data-helpful-email="<%= current_user.email %>"><%= t('.get_help') %></a>
+    <% if user_signed_in? %>
+      <a href="#" data-helpful="noodles" data-helpful-email="<%= current_user.email %>">
+        <%= t('.get_help') %>
+      </a>
+    <% else %>
+      <a href="#" data-helpful="noodles"><%= t('.get_help') %></a>
+    <% end %>
   </p>
 </div>
