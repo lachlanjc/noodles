@@ -1,24 +1,63 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @recipe.title %>
-</p>
+<% render 'layouts/flash' %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @recipe.description %>
-</p>
+<div class="container">
 
-<p>
-  <strong>Ingredients:</strong>
-  <%= @recipe.ingredients %>
-</p>
+  <div class="row">
 
-<p>
-  <strong>Instructions:</strong>
-  <%= @recipe.instructions %>
-</p>
+    <div class="col-md-8 col-md-offset-2">
 
-<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
-<%= link_to 'Back', recipes_path %>
+      <h1 class="page-title">
+        <%= @recipe.title %>
+      </h1>
+
+      <div class="serif">
+        <%= simple_format(@recipe.description.html_safe) %>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-8 col-md-offset-2">
+
+      <h1>Ingredients</h1>
+
+      <div class="serif">
+        <%= simple_format(@recipe.ingredients.html_safe) %>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-8 col-md-offset-2">
+
+      <h1>Instructions</h1>
+
+      <div class="serif">
+        <%= simple_format(@recipe.instructions.html_safe) %>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<%= link_to :recipes, class: 'btn-paper btn-paper-left animated bounceInLeft' do %>
+  <span class="geomicon geomicon-navigateleft"></span>
+<% end %>
+
+<%= link_to :edit_recipe, class: 'btn-paper btn-paper-right-two animated bounceInUp' do %>
+  <span class="geomicon geomicon-write"></span>
+<% end %>
+
+<%= link_to :new_recipe, class: 'btn-paper btn-paper-right animated bounceInUp' do %>
+  <span class="geomicon geomicon-plus"></span>
+<% end %>
