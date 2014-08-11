@@ -74,6 +74,11 @@ button {
   right: $padding-base-horizontal;
 }
 
+.btn-paper-right-two {
+  bottom: 74px !important;
+  right: $padding-base-horizontal;
+}
+
 .btn-default {
   @include button-standard($blue);
 }
