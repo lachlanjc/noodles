@@ -33,6 +33,9 @@ en:
     save: "Save"
   devise:
     registrations:
+      new:
+        welcome: "Welcome to Noodles"
+        sign_up_and: "Sign up for Noodles in under a minute and enjoy awesome recipe organization."
       edit:
         account_settings: "Account Settings"
         email_and_pass: "Email and Password"
@@ -42,6 +45,11 @@ en:
         want_account_gone: "To delete your account, please click the button below However, it is irreviresible — once you delete your acocunt all your data is erased from our servers."
         delete_my_account: "Delete my account"
         back_to_noodles: "Back to Noodles"
+    sessions:
+      new:
+        sign_in_to_n: "Sign in to Noodles"
+        enter_info: "Just enter your email and password and you can get right back to cooking!"
+        sign_in: "Sign in"
   recipes:
     new:
       new_recipe: "New Recipe"

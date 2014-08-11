@@ -5,8 +5,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <h1 class="page-title">Sign in to Noodles</h1>
-      <p>Just enter your email and password and you cna get right back to cooking!</p>
+      <h1 class="page-title"><%= t('.sign_in_to_n') %></h1>
+      <p><%= t('.enter_info') %></p>
     </div>
   </div>
 
@@ -38,7 +38,7 @@
 
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-        <%= f.submit 'Sign in', class: 'btn btn-primary' %>
+        <%= f.submit t('.sign_in'), class: 'btn btn-primary' %>
       </div>
     </div>
 
