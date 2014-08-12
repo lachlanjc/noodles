@@ -6,20 +6,20 @@
 @import 'variables';
 @import 'mixins';
 
-@import 'base/base.css.scss';
-@import 'base/brand.css.scss';
-@import 'base/type.css.scss';
+@import 'base/base';
+@import 'base/brand';
+@import 'base/type';
 
-@import 'modules/avatar.css.scss';
-@import 'modules/buttons.css.scss';
-@import 'modules/collections.css.scss';
-@import 'modules/cuisines.css.scss';
-@import 'modules/flash.css.scss';
-@import 'modules/footer.css.scss';
-@import 'modules/forms.css.scss';
-@import 'modules/geomicons.css.scss';
-@import 'modules/nav.css.scss';
-@import 'modules/panels.css.scss';
-@import 'modules/recipe-list.css.scss';
-@import 'modules/recipe.css.scss';
-@import 'modules/search.css.scss';
+@import 'modules/avatar';
+@import 'modules/buttons';
+@import 'modules/collections';
+@import 'modules/cuisines';
+@import 'modules/flash';
+@import 'modules/footer';
+@import 'modules/forms';
+@import 'modules/geomicons';
+@import 'modules/nav';
+@import 'modules/panels';
+@import 'modules/recipe-list';
+@import 'modules/recipe';
+@import 'modules/search';

@@ -1,7 +1,7 @@
 .recipes-list-container {
   background-color: $grey-lighter;
   width: 100%;
-  height: 100%;
+  height: inherit;
 }
 
 .recipes-list-group {
@@ -19,6 +19,7 @@
 
   .list-group-item {
     border-radius: 0;
+    background-color: white;
     border: 0;
     border-bottom: 2px solid $brand-border;
     padding-bottom: 1em;
