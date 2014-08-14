@@ -14,7 +14,9 @@
         <%= link_to (recipe) do %>
           <div class="list-group-item">
             <h3><%= recipe.title %></h3>
-            <p><%= recipe.description %></p>
+            <% unless recipe.description.length == 0 %>
+              <p><%= recipe.description %></p>
+            <% end %>
           </div>
         <% end %>
       <% end %>
