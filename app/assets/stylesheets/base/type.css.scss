@@ -1,21 +1,22 @@
 body {
   font-family: $font-base;
+  line-height: $line-height;
 }
 
 .serif {
   font-family: $serif;
-  line-height: 1.75;
+  line-height: $line-height;
 }
 
 .page-title {
   font-size: 3em;
-  font-weight: 600;
+  font-weight: 400;
   border-bottom: 2px solid $brand-border;
   padding-bottom: 10px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 400;
+  font-weight: 300;
 }
 
 h1 {
@@ -27,7 +28,8 @@ h2 {
 }
 
 p {
-  font-size: 1.18em;
+  font: 300 1.18em $font-base;
+  line-height: $line-height;
 }
 
 a {

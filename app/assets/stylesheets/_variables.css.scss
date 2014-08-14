@@ -46,7 +46,7 @@ $link-hover-color:       darken($link-color, 15%);
 
 
 // Typography
-$sans-serif:             'proxima-nova', 'Proxima Nova', 'Helvetica Neue', Helvetica, sans-serif;
+$sans-serif:             Roboto, 'Helvetica Neue', Helvetica, sans-serif;
 $font-base:              $sans-serif;
 $serif:                  'Source Serif Pro', Georgia, 'Times New Roman', Times, serif;
 $font-monospace:         'Source Code Pro', Menlo, Monaco, Consolas, 'Courier New', monospace;
@@ -64,8 +64,7 @@ $font-size-h4:           ceil(($font-size-base * 1.25)); // ~18px
 $font-size-h5:           $font-size-base;
 $font-size-h6:           ceil(($font-size-base * 0.85)); // ~12px
 
-$line-height-base:       1.66;
-$line-height-computed:   1.66; // floor(($font-size-base * $line-height-base));  ~20px
+$line-height:            1.8; // floor(($font-size-base * $line-height-base));  ~20px
 
 $headings-font-weight:   500;
 $headings-line-height:   1.1;
