@@ -32,18 +32,23 @@ en:
     sign_in: "Sign In"
     sign_out: "Sign Out"
     save: "Save"
+    update: "Update"
   devise:
     registrations:
       new:
         welcome: "Welcome to Noodles"
         sign_up_and: "Sign up for Noodles in under a minute and enjoy awesome recipe organization."
+        make_sure_eight: "Make sure you use at least 8 characters."
+        sign_up_start_using: "Sign up and start using Noodles!"
       edit:
         account_settings: "Account Settings"
         email_and_pass: "Email and Password"
+        can_leave_blank: "(leave this blank unless you would like to change it)"
+        eight_char: "Please use at least 8 characters."
         need_help: "Need help?"
         unhappy_want_support: "If you are unhappy with Noodles for any reason, please don't hesitate to reach out to us. Click the button below and ask away!"
         delete_account: "Delete your account"
-        want_account_gone: "To delete your account, please click the button below However, it is irreviresible — once you delete your acocunt all your data is erased from our servers."
+        want_account_gone: "To delete your account, click the button below. Your data will be erased forever."
         delete_my_account: "Delete my account"
         back_to_noodles: "Back to Noodles"
     sessions:
@@ -56,6 +61,7 @@ en:
       new_recipe: "New Recipe"
     edit:
       edit_recipe: "Edit Recipe"
+      sure_you_want_gone: "Are you sure you want to delete your recipe? There is no way to get it back after deleting it."
   shared:
     error_messages:
       oops_went_wrong: "Oops! Something went wrong."

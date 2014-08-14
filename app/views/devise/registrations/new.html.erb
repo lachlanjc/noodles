@@ -26,7 +26,7 @@
 
         <%= f.label :password %>
         <%= f.password_field :password, class: 'form-control', required: true, pattern: '.{8,}', title: 'Make sure you use at least 8 characters' %>
-        <span class="help-block">Make sure you use at least 8 characters.</span>
+        <span class="help-block"><%= t('.make_sure_eight') %></span>
 
       </div>
 
@@ -35,7 +35,7 @@
 
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-        <%= f.submit 'Sign up and start using Noodles!', class: 'btn btn-primary' %>
+        <%= f.submit t('.sign_up_start_using'), class: 'btn btn-primary' %>
       </div>
     </div>
 
