@@ -1,32 +1,27 @@
 <%= form_for(@recipe) do |f| %>
 
   <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <%= f.label :title %>
-      <%= f.text_field :title, autofocus: true, class: 'form-control' %>
-    </div>
+    <%= f.label :title %>
+    <%= f.text_field :title, autofocus: true, class: 'form-control' %>
   </div>
+
   <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <%= f.label :description %>
-      <%= f.text_area :description, class: 'form-control serif' %>
-    </div>
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'form-control' %>
   </div>
+
   <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <%= f.label :ingredients %>
-      <%= f.text_area :ingredients, rows: 6, class: 'form-control serif' %>
-    </div>
+    <%= f.label :ingredients %>
+    <%= f.text_area :ingredients, rows: 6, class: 'form-control serif' %>
   </div>
+
   <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <%= f.label :instructions %>
-      <%= f.text_area :instructions, rows: 10, class: 'form-control serif' %>
-    </div>
+    <%= f.label :instructions %>
+    <%= f.text_area :instructions, rows: 10, class: 'form-control serif' %>
   </div>
+
   <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <%= f.submit t('general.save'), class: 'btn btn-primary' %>
-    </div>
+    <%= f.submit t('general.save'), class: 'btn btn-primary' %>
   </div>
+
 <% end %>

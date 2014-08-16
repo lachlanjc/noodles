@@ -4,11 +4,13 @@
 
 <%= render 'layouts/flash' %>
 
-<div class="container recipes-list-container background-grey">
+<br>
 
-  <%# if current_user %>
+<% if current_user %>
 
-    <div class="col-md-8 col-md-offset-2 list-group recipes-list-group">
+  <div class="page container col-md-8 col-md-offset-2 recipes-list-container">
+
+    <div class="list-group recipes-list-group">
 
       <% @recipes.each do |recipe| %>
 
@@ -25,34 +27,33 @@
 
     </div>
 
-    <div class="col-md-8 col-md-offset-2 footer">
-      <%= render 'shared/footer' %>
-    </div>
+  </div>
 
-  <%# else %>
+  <div class="col-md-8 col-md-offset-2 footer">
+    <%= render 'shared/footer' %>
+  </div>
 
-    <div class="col-md-6 col-md-offset-3 jumbotron text-center" style="background-color: white; margin-bottom: 0;">
+<% else %>
 
-      <h2 style="font-weight: 400;"><%= t('general.eat_well_with') %></h2>
+  <div class="page container col-md-6 col-md-offset-3 home text-center">
 
-      <p>
-        Noodles is the best place to keep all your recipes.
-      </p>
+    <h2><%= t('general.eat_well_with') %></h2>
 
-      <p style="margin-top: 1.33em;"> </p>
+    <p>
+      Noodles is the best place to keep all your recipes.
+    </p>
 
-      <%= link_to t('general.sign_up'), :add_user, class: 'btn btn-lg btn-primary' %>
+    <br>
 
-    </div>
+    <%= link_to t('general.sign_up'), :add_user, class: 'btn btn-lg btn-primary' %>
 
-    <div class="col-md-6 col-md-offset-3 footer">
-      <%= render 'shared/footer' %>
-    </div>
+  </div>
 
-  <%# end %>
+  <div class="col-md-6 col-md-offset-3 footer">
+    <%= render 'shared/footer' %>
+  </div>
 
-</div>
-
+<% end %>
 
 <% if current_user %>
 

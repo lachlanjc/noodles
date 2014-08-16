@@ -1,13 +1,34 @@
-@mixin shadow($values) {
-  -webkit-box-shadow: $values;
-     -moz-box-shadow: $values;
-          box-shadow: $values;
+// SHADOWS
+
+@mixin shadow-1 {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.24);
 }
 
-@mixin button-standard($text-color) {
+@mixin shadow-2 {
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.23);
+}
+
+@mixin shadow-3 {
+  box-shadow: 0 6px 4px rgba(0, 0, 0, 0.23);
+}
+
+@mixin shadow-4 {
+  box-shadow: 0 10px 8px rgba(0, 0, 0, 0.22);
+}
+
+@mixin shadow-5 {
+  box-shadow: 0 15px 10px rgba(0, 0, 0, 0.22);
+}
+
+// PAPER
+
+@mixin paper {
+  border-radius: $border-radius-small;
   background-color: white;
-  border: 1px solid $brand-border;
-  color: $text-color;
+  transition: box-shadow 0.2s ease-in-out;
+  @include shadow-1;
+  padding: 0;
+}
 
 // TEXT STYLES
 
@@ -53,25 +74,32 @@
   color: $black-54;
 }
 
+// BUTTON STYLES
+
+@mixin button-standard($btn-bg-color) {
+  background-color: $btn-bg-color;
+  color: white;
+  transition: box-shadow 0.2s ease-in-out;
+  @include shadow-1;
 
   &:hover {
-    background-color: darken(white, 2%);
-    color: darken($text-color, 2%);
-    border: 1px solid $brand-border;
+    background-color: darken($btn-bg-color, 1%);
+    color: white;
+    @include shadow-2;
   }
 
   &:focus,
   &:active {
-    background-color: darken(white, 4%);
-    color: darken($text-color, 4%);
-    border: 1px solid $brand-border;
+    background-color: darken($btn-bg-color, 4%);
+    color: darken(white, 3%);
+    @include shadow-4;
   }
 
   &:visited {
-    color: $text-color;
+    color: white;
 
     &:hover {
-      color: $text-color;
+      color: white;
     }
   }
 }

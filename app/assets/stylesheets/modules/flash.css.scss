@@ -26,6 +26,10 @@
 
   .container {
     padding: $padding-large-vertical 0;
+    border-radius: 0;
+    background-color: inherit;
+    transition: none;
+    box-shadow: none;
   }
 
   .geomicon {
