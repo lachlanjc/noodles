@@ -110,12 +110,12 @@ $table-border-color:            #ddd;
 
 $btn-link-disabled-color:       $grey-lighter;
 
-$btn-padding-base-horizontal:   $padding-base-horizontal * 1.5;
-$btn-padding-large-horizontal:  $padding-large-horizontal * 1.5;
-$btn-padding-small-horizontal:  $padding-small-horizontal * 1.5;
-$btn-padding-xs-horizontal:     $padding-xs-horizontal * 1.5;
+$btn-padding-base-horizontal:   $padding-base-horizontal * 1.18;
+$btn-padding-large-horizontal:  $padding-large-horizontal * 1.18;
+$btn-padding-small-horizontal:  $padding-small-horizontal * 1.18;
+$btn-padding-xs-horizontal:     $padding-xs-horizontal * 1.18;
 
-$btn-radius:                    90px;
+$btn-radius:                    $border-radius-base;
 
 
 // Forms
