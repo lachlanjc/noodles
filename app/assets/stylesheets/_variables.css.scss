@@ -241,37 +241,6 @@ $navbar-default-brand-color:               $navbar-default-link-color;
 $navbar-default-brand-hover-color:         darken($navbar-default-brand-color, 10%);
 $navbar-default-brand-hover-bg:            transparent;
 
-// Navbar toggle
-$navbar-default-toggle-hover-bg:           #ddd;
-$navbar-default-toggle-icon-bar-bg:        #888;
-$navbar-default-toggle-border-color:       #ddd;
-
-
-// Inverted navbar
-// Reset inverted navbar basics
-$navbar-inverse-color:                      rgba(white, 0.6);
-$navbar-inverse-bg:                         $black;
-$navbar-inverse-border:                     darken($navbar-inverse-bg, 20%);
-
-// Inverted navbar links
-$navbar-inverse-link-color:                 $navbar-inverse-color;
-$navbar-inverse-link-hover-color:           white;
-$navbar-inverse-link-hover-bg:              darken($navbar-inverse-bg, 20%);
-$navbar-inverse-link-active-color:          $navbar-inverse-link-hover-color;
-$navbar-inverse-link-active-bg:             darken($navbar-inverse-bg, 20%);
-$navbar-inverse-link-disabled-color:        $navbar-inverse-color;
-$navbar-inverse-link-disabled-bg:           $black;
-
-// Inverted navbar brand label
-$navbar-inverse-brand-color:                $navbar-inverse-link-color;
-$navbar-inverse-brand-hover-color:          #fff;
-$navbar-inverse-brand-hover-bg:             transparent;
-
-// Inverted navbar toggle
-$navbar-inverse-toggle-hover-bg:            $black;
-$navbar-inverse-toggle-icon-bar-bg:         #fff;
-$navbar-inverse-toggle-border-color:        $black;
-
 
 // Navs
 
@@ -340,26 +309,6 @@ $jumbotron-padding:              30px;
 $jumbotron-color:                inherit;
 $jumbotron-bg:                   $brand-bg;
 $jumbotron-heading-color:        inherit;
-
-
-// Form states
-
-$state-success-text:             #3c763d;
-$state-success-bg:               #dff0d8;
-$state-success-border:           darken(adjust-hue($state-success-bg, -10), 5%);
-
-$state-info-text:                #31708f;
-$state-info-bg:                  #d9edf7;
-$state-info-border:              darken(adjust-hue($state-info-bg, -10), 7%);
-
-$state-warning-text:             #8a6d3b;
-$state-warning-bg:               #fcf8e3;
-$state-warning-border:           darken(adjust-hue($state-warning-bg, -10), 5%);
-
-$state-danger-text:              #a94442;
-$state-danger-bg:                #f2dede;
-$state-danger-border:            darken(adjust-hue($state-danger-bg, -10), 5%);
-
 
 // Tooltips
 
@@ -463,7 +412,6 @@ $panel-body-padding:          $padding-large-vertical $padding-large-horizontal;
 $panel-heading-padding:       10px 15px;
 $panel-footer-padding:        $panel-heading-padding;
 $panel-border:                $brand-border;
-$panel-border-radius:         $border-radius-base;
 
 $panel-inner-border:          #ddd;
 $panel-footer-bg:             #f5f5f5;
@@ -471,26 +419,6 @@ $panel-footer-bg:             #f5f5f5;
 $panel-default-text:          $black;
 $panel-default-border:        #ddd;
 $panel-default-heading-bg:    #f5f5f5;
-
-$panel-primary-text:          #fff;
-$panel-primary-border:        $brand-primary;
-$panel-primary-heading-bg:    $brand-primary;
-
-$panel-success-text:          $state-success-text;
-$panel-success-border:        $state-success-border;
-$panel-success-heading-bg:    $state-success-bg;
-
-$panel-info-text:             $state-info-text;
-$panel-info-border:           $state-info-border;
-$panel-info-heading-bg:       $state-info-bg;
-
-$panel-warning-text:          $state-warning-text;
-$panel-warning-border:        $state-warning-border;
-$panel-warning-heading-bg:    $state-warning-bg;
-
-$panel-danger-text:           $state-danger-text;
-$panel-danger-border:         $state-danger-border;
-$panel-danger-heading-bg:     $state-danger-bg;
 
 
 // Thumbnails
@@ -547,13 +475,6 @@ $carousel-indicator-active-bg:    #fff;
 $carousel-indicator-border-color: #fff;
 
 $carousel-caption-color:          #fff;
-
-
-// Close
-
-$close-font-weight:           bold;
-$close-color:                 #000;
-$close-text-shadow:           none;
 
 
 // Code
