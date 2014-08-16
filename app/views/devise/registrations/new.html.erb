@@ -23,9 +23,8 @@
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control', required: true, autocomplete: :off %>
 
-      <%= f.label :password %>
+      <%= f.label :password %>  <i><%= t('.eight_char') %></i>
       <%= f.password_field :password, class: 'form-control', required: true, pattern: '.{8,}', title: 'Make sure you use at least 8 characters' %>
-      <span class="help-block"><%= t('.make_sure_eight') %></span>
 
     </div>
 
@@ -37,4 +36,8 @@
 
   <% end %>
 
+</div>
+
+<div class="col-md-6 col-md-offset-3 footer">
+  <%= render 'shared/footer' %>
 </div>
