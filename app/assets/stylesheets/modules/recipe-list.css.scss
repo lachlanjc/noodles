@@ -1,13 +1,14 @@
 .recipes-list-container {
-  background-color: $grey-lighter;
-  width: 100%;
-  height: inherit;
+  padding: 0;
+  border-radius: 3px;
+  overflow: hidden;
 }
 
 .recipes-list-group {
   -webkit-overflow-scrolling: touch;
   padding-right: 0;
   margin-bottom: 0;
+  border-radius: $border-radius-small;
 
   a, a:visited {
     color: $brand-primary;
@@ -15,13 +16,17 @@
     &:hover {
       text-decoration: none;
     }
+
+    &:last-child .list-group-item {
+      border-bottom: 0;
+    }
   }
 
   .list-group-item {
     border-radius: 0;
     background-color: white;
     border: 0;
-    border-bottom: 2px solid $brand-border;
+    border-bottom: 2px solid #eee;
     padding-bottom: 1em;
     padding-left: 2em;
     transition: box-shadow 0.22s ease-in-out;
@@ -31,14 +36,14 @@
     }
 
     h3 {
-      color: $brand-primary;
+      color: $brand-primary !important;
+      @include text-headline;
+      margin: 15px 0 12px 0;
     }
 
     p {
-      font: 1em $serif;
-      color: $description;
-      font-weight: 400;
-      padding: 0.5em 0;
+      @include text-caption;
+      margin: 5px 0 10px 0;
     }
   }
 }

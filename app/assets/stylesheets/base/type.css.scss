@@ -5,26 +5,25 @@ body {
 
 .serif {
   font-family: $serif;
-  line-height: $line-height;
+
+  p {
+    font-family: $serif;
+    line-height: $line-height;
+  }
 }
 
 .page-title {
-  font-size: 3em;
-  font-weight: 400;
+  @include text-page-title;
   border-bottom: 2px solid $brand-border;
   padding-bottom: 10px;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 300;
-}
-
 h1 {
-  font-size: $font-size-h2;
+  @include text-h1;
 }
 
 h2 {
-  font-size: $font-size-h3;
+  @include text-title;
 }
 
 p {

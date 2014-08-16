@@ -9,6 +9,51 @@
   border: 1px solid $brand-border;
   color: $text-color;
 
+// TEXT STYLES
+
+@mixin text-body {
+  font-weight: 400;
+  font-size: 14px;
+  color: $black-87;
+}
+
+@mixin text-label {
+  font-weight: 500;
+  font-size: 14px;
+  color: $black-64;
+}
+
+@mixin text-caption {
+  font-weight: 400;
+  font-size: 12px;
+  color: $black-54;
+}
+
+@mixin text-title {
+  font-weight: 500;
+  font-size: 20px;
+  color: $black-87;
+}
+
+@mixin text-headline {
+  font-weight: 400;
+  font-size: 24px;
+  color: $black-64;
+}
+
+@mixin text-h1 {
+  font-weight: 300;
+  font-size: 34px;
+  color: $black-64;
+}
+
+@mixin text-page-title {
+  font-weight: 400;
+  font-size: 56px;
+  color: $black-54;
+}
+
+
   &:hover {
     background-color: darken(white, 2%);
     color: darken($text-color, 2%);

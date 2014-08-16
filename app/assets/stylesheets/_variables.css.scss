@@ -46,29 +46,17 @@ $link-hover-color:       darken($link-color, 15%);
 
 
 // Typography
+
 $sans-serif:             Roboto, 'Helvetica Neue', Helvetica, sans-serif;
 $font-base:              $sans-serif;
 $serif:                  'Source Serif Pro', Georgia, 'Times New Roman', Times, serif;
-$font-monospace:         'Source Code Pro', Menlo, Monaco, Consolas, 'Courier New', monospace;
+$font-monospace:         'Input Mono', 'Source Code Pro', Consolas, monospace;
 
-$font-size-base:         16px;
-$font-size-xs:           ceil(($font-size-base * 0.65)); // ~11px
-$font-size-small:        ceil(($font-size-base * 0.85)); // ~14px
-$font-size-large:        ceil(($font-size-base * 1.25)); // ~20px
-$font-size-xl:           ceil(($font-size-base * 1.5)); // ~24px
+$black-54:               #65636A; // lighten(black, 46%);
+$black-64:               lighten(black, 36%);
+$black-87:               #343434; // lighten(black, 13%);
 
-$font-size-h1:           floor(($font-size-base * 2.6)); // ~36px
-$font-size-h2:           floor(($font-size-base * 2.15)); // ~30px
-$font-size-h3:           ceil(($font-size-base * 1.7)); // ~24px
-$font-size-h4:           ceil(($font-size-base * 1.25)); // ~18px
-$font-size-h5:           $font-size-base;
-$font-size-h6:           ceil(($font-size-base * 0.85)); // ~12px
-
-$line-height:            1.8; // floor(($font-size-base * $line-height-base));  ~20px
-
-$headings-font-weight:   500;
-$headings-line-height:   1.1;
-$headings-color:         inherit;
+$line-height:            1.8;
 
 
 // Components
@@ -356,7 +344,6 @@ $jumbotron-padding:              30px;
 $jumbotron-color:                inherit;
 $jumbotron-bg:                   $brand-bg;
 $jumbotron-heading-color:        inherit;
-$jumbotron-font-size:            ceil(($font-size-base * 1.5));
 
 
 // Form states
@@ -481,7 +468,6 @@ $panel-heading-padding:       10px 15px;
 $panel-footer-padding:        $panel-heading-padding;
 $panel-border:                $brand-border;
 $panel-border-radius:         $border-radius-base;
-$panel-title:                 $grey-darker;
 
 $panel-inner-border:          #ddd;
 $panel-footer-bg:             #f5f5f5;

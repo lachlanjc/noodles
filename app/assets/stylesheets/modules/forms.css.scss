@@ -9,12 +9,11 @@
 }
 
 label {
-  font-size: 16px;
-  font-weight: 300;
+  @include text-label;
   margin-bottom: 5px;
 
   & + i {
-    font-weight: 300;
+    @include text-label;
   }
 }
 

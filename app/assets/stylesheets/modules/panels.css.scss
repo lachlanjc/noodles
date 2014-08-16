@@ -11,6 +11,36 @@
     color: $gray-dark;
     border-color: #ddd;
     border-color: rgba(0, 0, 0, 0.15);
+
+  .panel-title {
+    margin: 0 0 6px 0;
+    @include text-title;
+  }
+
+  .panel-body {
+    color: $black;
+    font-size: 16px;
+    font-weight: 300;
+    margin-left: 0;
+    padding: 0;
+
+    .btn {
+      display: block;
+      margin-top: 15px;
+    }
+
+    p {
+      margin-bottom: 10px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    blockquote {
+      color: $grey-dark;
+      border-color: #ddd;
+    }
   }
 }
 

@@ -3,8 +3,8 @@
 
   p {
     padding-top: 15px;
-    font-size: 1em;
-    color: $grey-light;
+    @include text-body;
+    color: $grey-light !important;
     display: inline-block;
 
     &:first-child {
@@ -21,10 +21,11 @@
 
   a {
     display: inline-block;
+    @include text-label;
     color: $grey-light !important;
 
     &:hover {
-      color: $grey;
+      color: $brand-primary !important;
       text-decoration: none;
     }
 
@@ -32,7 +33,7 @@
       color: $grey-light;
 
       &:hover {
-        color: $grey;
+        color: $brand-primary !important;
       }
     }
   }
