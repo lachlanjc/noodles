@@ -1,7 +1,4 @@
 class RecipesController < ApplicationController
-
-  before_filter :authenticate_user!, only: [:show, :new, :edit, :update, :destroy]
-
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
   # GET /recipes
@@ -27,8 +24,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
 
     if @recipe.save
-      flash[:success] = 'Great, your recipe has been successfully saved.'
-      redirect_to @recipe
+      redirect_to @recipe, notice: 'Recipe was successfully created.'
     else
       render :new
     end
@@ -37,8 +33,7 @@ class RecipesController < ApplicationController
   # PATCH/PUT /recipes/1
   def update
     if @recipe.update(recipe_params)
-      flash[:success] = 'Awesome, your changes have been saved.'
-      redirect_to @recipe
+      redirect_to @recipe, notice: 'Recipe was successfully updated.'
     else
       render :edit
     end
@@ -47,8 +42,7 @@ class RecipesController < ApplicationController
   # DELETE /recipes/1
   def destroy
     @recipe.destroy
-    flash[:danger] = 'Your recipe is no more.'
-    redirect_to recipes_url
+    redirect_to recipes_url, notice: 'Recipe was successfully destroyed.'
   end
 
   private
@@ -61,5 +55,4 @@ class RecipesController < ApplicationController
     def recipe_params
       params.require(:recipe).permit(:title, :description, :ingredients, :instructions)
     end
-
 end

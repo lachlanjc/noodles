@@ -1,7 +1,7 @@
 <% unless flash.empty? %>
   <div id="flash-messages">
     <% flash.each do |key, value| %>
-      <div class="notification <%= flash_class(key) %> alert-dismissible animated bounceInDown">
+      <div class="notification <%= flash_class(key) %> alert-dismissible">
         <div class="container">
           <span class="geomicon <%= flash_icon_class(key) %>"></span>
           <span class="text"><%= value %></span>
