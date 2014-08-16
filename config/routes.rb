@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-  get '/home' => 'pages#welcome'
-
   resources :recipes
-
   root 'recipes#index'
+
+  get '/home' => 'pages#welcome'
+  get '/styleguide' => 'pages#styleguide'
 
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions"}, skip: [:sessions, :registrations]
 
