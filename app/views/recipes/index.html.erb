@@ -6,25 +6,54 @@
 
 <div class="container recipes-list-container background-grey">
 
-  <div class="col-md-8 col-md-offset-2 list-group recipes-list-group">
+  <% if current_user %>
 
-    <% @recipes.each do |recipe| %>
-      <%= link_to (recipe) do %>
-        <div class="list-group-item">
-          <h3><%= recipe.title %></h3>
-          <p><%= recipe.description %></p>
-        </div>
+    <div class="col-md-8 col-md-offset-2 list-group recipes-list-group">
+
+      <% @recipes.each do |recipe| %>
+        <%= link_to (recipe) do %>
+          <div class="list-group-item">
+            <h3><%= recipe.title %></h3>
+            <p><%= recipe.description %></p>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
 
-  </div>
+    </div>
 
-  <div class="col-md-8 col-md-offset-2 footer">
-    <%= render 'shared/footer' %>
-  </div>
+    <div class="col-md-8 col-md-offset-2 footer">
+      <%= render 'shared/footer' %>
+    </div>
+
+  <% else %>
+
+    <div class="col-md-6 col-md-offset-3 jumbotron text-center" style="background-color: white; margin-bottom: 0;">
+
+      <h2><%= t('general.eat_well_with') %></h2>
+
+      <p style="margin-top: 1.33em;"> </p>
+
+      <p>Noodles is the best place to keep all your recipes.</p>
+
+      <p style="margin-top: 1.33em;"> </p>
+
+      <%= link_to t('general.sign_up'), :add_user, class: 'btn btn-lg btn-primary' %>
+
+    </div>
+
+    <div class="col-md-6 col-md-offset-3 footer">
+      <%= render 'shared/footer' %>
+    </div>
+
+  <% end %>
 
 </div>
 
-<%= link_to :new_recipe, class: 'btn-paper btn-paper-right animated bounceInUp' do %>
-  <span class="geomicon geomicon-plus"></span>
+
+<% if current_user %>
+
+  <%= link_to :new_recipe, class: 'btn-paper btn-paper-right animated bounceInUp' do %>
+    <span class="geomicon geomicon-plus"></span>
+  <% end %>
+
 <% end %>

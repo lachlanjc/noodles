@@ -5,7 +5,7 @@ default: &default
 
 development:
   <<: *default
-  database: noodles_dev_db
+  database: noodles_development
 
 test:
   <<: *default
