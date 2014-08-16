@@ -28,20 +28,39 @@ label {
 }
 
 .form-control {
-  box-shadow: none;
   margin-bottom: 1em;
+  padding: 8px;
   background-color: $input-bg;
-  border: 1px solid $brand-border;
+  border-radius: $border-radius-base;
+  box-shadow: none !important;
+  box-sizing: border-box;
+  border: 1px solid $input-border;
+  color: $black;
 
   &:focus {
-    background-color: $input-bg-focus;
-    border: 1px solid $blue;
-    box-shadow: none;
-    outline: none;
+    border-color: $blue;
+    background-color: white;
   }
 }
 
 textarea.form-control, div.form-control {
-  line-height: 1.75;
+  line-height: 1.5;
   font-size: 1.12em;
+}
+
+.radio label {
+  line-height: 1.42;
+  text-transform: none;
+}
+
+.field_with_errors {
+  display: inline !important;
+
+  label, i {
+    color: $brand-danger;
+  }
+
+  input {
+    border-color: $brand-danger;
+  }
 }

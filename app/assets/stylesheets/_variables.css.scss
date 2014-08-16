@@ -120,16 +120,12 @@ $btn-radius:                    90px;
 
 // Forms
 
-$input-bg:                       #f9fbfd;
-$input-bg-focus:                 white;
+$input-bg:                       #f8fbfe;
 $input-bg-disabled:              $grey-lighter;
 
-$input-color:                    $grey-darker;
-$input-border:                   $brand-border;
-$input-border-radius:            $border-radius-base;
-$input-border-focus:             $brand-primary;
+$input-color:                    $black;
 
-$input-color-placeholder:        $grey-light;
+$input-border:                   #dae8ec;
 
 $input-height-base:              ($line-height-computed + ($padding-base-vertical * 2) + 2) * 1.3;
 $input-height-large:             (ceil($font-size-large * $line-height-large) + ($padding-large-vertical * 2) + 2) * 1.3;
