@@ -1,27 +1,53 @@
 .panel {
   min-height: 20px;
-  padding: 24px;
+  padding: 20px;
   margin-bottom: 20px;
   background-color: white;
-  border-radius: $border-radius-base;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-  border: 1px solid $panel-border;
+  border-radius: $border-radius-small;
+  @include shadow-2-spread;
 
-  blockquote {
-    color: $gray-dark;
-    border-color: #ddd;
-    border-color: rgba(0, 0, 0, 0.15);
+  .panel-title {
+    margin: 0 0 6px 0;
+    @include text-title;
+  }
+
+  .panel-body {
+    color: $black;
+    font-size: 16px;
+    font-weight: 300;
+    margin-left: 0;
+    padding: 0;
+
+    .btn {
+      display: block;
+      margin-top: 15px;
+    }
+
+    p {
+      margin-bottom: 10px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    blockquote {
+      color: $grey-dark;
+      border-color: #ddd;
+    }
   }
 }
 
 .panel-error {
-  border: 1px solid lighten($brand-danger, 35%);
+  border: 1px solid lighten($brand-danger, 27%);
+  padding: 8px 20px 20px 20px;
+  box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.1);
 
   .geomicon-alert {
-    font-size: $font-size-xl;
+    font-size: 24px;
     color: $brand-danger;
     position: relative;
-    top: 7px;
+    top: 6px;
     padding-right: $padding-xs-horizontal;
   }
 
@@ -39,36 +65,8 @@
   }
 }
 
-form fieldset .panel-error {
-  margin: 2em 0 1em 0;
-}
-
-.panel-title {
-  color: $panel-title;
-  text-transform: uppercase;
-}
-
-.panel-body {
-  color: $black;
-  font-size: 16px;
-  font-weight: 300;
-  margin-left: 0;
-  padding-left: 0;
-  padding-top: 10px;
-  padding-bottom: 0;
-  padding-right: 0;
-
-  .btn {
-    margin-top: 24px;
-  }
-
-  p {
-    margin-bottom: 10px;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
+form .panel-error {
+  margin: 1em 0;
 }
 
 .panel-lg {

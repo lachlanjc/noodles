@@ -9,7 +9,7 @@
 
   .text {
     color: white;
-    font-size: 1.2em;
+    font: 300 1.12em $font-base;
   }
 
   a {
@@ -26,6 +26,10 @@
 
   .container {
     padding: $padding-large-vertical 0;
+    border-radius: 0;
+    background-color: inherit;
+    transition: none;
+    box-shadow: none;
   }
 
   .geomicon {
@@ -47,6 +51,7 @@
     .geomicon {
       color: white;
       opacity: 0.5;
+      top: 3px;
 
       &:hover {
         opacity: 0.75;

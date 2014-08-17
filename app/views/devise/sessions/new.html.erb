@@ -2,46 +2,45 @@
 
 <%= render 'layouts/flash' %>
 
-<div class="container">
+<br>
+
+<div class="container page col-md-6 col-md-offset-3">
+
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <h1 class="page-title"><%= t('.sign_in_to_n') %></h1>
-      <p><%= t('.enter_info') %></p>
-    </div>
+    <h1 class="page-title"><%= t('.sign_in_to_n') %></h1>
+    <p><%= t('.enter_info') %></p>
   </div>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
     <div class="row">
+      <%= devise_error_messages! %>
 
-      <div class="col-md-6 col-md-offset-3">
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control', required: true, autofocus: true %>
 
-        <%= devise_error_messages! %>
-
-        <%= f.label :email %>
-        <%= f.email_field :email, class: 'form-control', required: true, autofocus: true %>
-
-        <%= f.label :password %>
-        <%= f.password_field :password, class: 'form-control', required: true, pattern: '.{8,}', title: 'Make sure you use at least 8 characters' %>
-
-      </div>
-
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control', required: true, pattern: '.{8,}', title: 'Make sure you use at least 8 characters' %>
     </div>
 
     <% if devise_mapping.rememberable? -%>
+
       <div class="row">
-        <div class="col-md-6 col-md-offset-3 remember-me">
+        <div class="remember-me">
           <%= f.check_box :remember_me, class: 'form-control' %> <%= f.label :remember_me, class: 'control-label' %>
         </div>
       </div>
+
     <% end %>
 
     <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <%= f.submit t('.sign_in'), class: 'btn btn-primary' %>
-      </div>
+      <%= f.submit t('.sign_in'), class: 'btn btn-primary' %>
     </div>
 
   <% end %>
 
+</div>
+
+<div class="col-md-6 col-md-offset-3 footer">
+  <%= render 'shared/footer' %>
 </div>

@@ -1,8 +1,10 @@
 <%= render 'shared/nav' %>
 
-<div class="container">
+<%= render 'layouts/flash' %>
 
-  <div class="col-md-8 col-md-offset-2">
+<br>
+
+<div class="page container col-md-8 col-md-offset-2">
 
     <div class="row">
       <h1 class="page-title"><%= t('.account_settings') %></h1>
@@ -18,17 +20,17 @@
         <%= devise_error_messages! %>
 
         <div class="row">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+          <%= f.label :email %>
+          <%= f.email_field :email, placeholder: 'noodles@icloud.com', autocomplete: 'off', class: 'form-control' %>
         </div>
 
         <div class="row">
-          <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-          <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+          <%= f.label :password %> <i><%= t('.can_leave_blank') %></i>
+          <%= f.password_field :password, placeholder: t('.eight_char'), autocomplete: 'off', class: 'form-control' %>
         </div>
 
         <div class="row">
-          <%= f.submit "Update", class: 'btn btn-default' %>
+          <%= f.submit t('general.update'), class: 'btn btn-default' %>
         </div>
       <% end %>
 
@@ -56,6 +58,8 @@
 
 </div>
 
-<%= link_to :home, class: 'btn-paper btn-paper-left animated bounceInLeft' do %>
-  <span class="geomicon geomicon-navigateleft"></span>
-<% end %>
+<div class="col-md-8 col-md-offset-2 footer">
+  <%= render 'shared/footer' %>
+</div>
+
+<br>
