@@ -56,6 +56,8 @@ en:
         enter_info: "Just enter your email and password and you can get right back to cooking!"
         sign_in: "Sign in"
   recipes:
+    index:
+      eat_well_with: "Eat well with Noodles."
     new:
       new_recipe: "New Recipe"
     edit:
