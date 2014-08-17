@@ -1,4 +1,6 @@
-<% activate_nav!(:recipes) %>
+<% if current_user %>
+  <% activate_nav!(:recipes) %>
+<% end %>
 
 <%= render 'shared/nav' %>
 
