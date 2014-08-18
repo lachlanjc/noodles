@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   include Gravtastic
   gravtastic
+
+  has_many :recipes
 end
