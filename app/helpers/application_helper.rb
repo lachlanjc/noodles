@@ -13,7 +13,7 @@ module ApplicationHelper
       when :notice then "geomicon-info"
       when :success then "geomicon-check"
       when :error then "geomicon-alert"
-      when :alert then "geomicon-alert"
+      when :alert then "geomicon-close"
     end
   end
 end

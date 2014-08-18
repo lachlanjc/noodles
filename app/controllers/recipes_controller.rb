@@ -24,7 +24,8 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
 
     if @recipe.save
-      redirect_to @recipe, notice: 'Recipe was successfully created.'
+      flash[:success] = "Your recipe has been created."
+      redirect_to @recipe
     else
       render :new
     end
@@ -33,7 +34,8 @@ class RecipesController < ApplicationController
   # PATCH/PUT /recipes/1
   def update
     if @recipe.update(recipe_params)
-      redirect_to @recipe, notice: 'Recipe was successfully updated.'
+      flash[:success] = "Awesome, your changes have been saved."
+      redirect_to @recipe
     else
       render :edit
     end
@@ -42,7 +44,8 @@ class RecipesController < ApplicationController
   # DELETE /recipes/1
   def destroy
     @recipe.destroy
-    redirect_to recipes_url, notice: 'Recipe was successfully destroyed.'
+    flash[:alert] = "Your recipe has been deleted."
+    redirect_to recipes_url
   end
 
   private
