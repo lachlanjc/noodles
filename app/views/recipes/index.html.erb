@@ -8,7 +8,28 @@
 
 <br>
 
-<% if current_user %>
+<% if current_user and @recipes.count == 0 %>
+
+  <div class="col-md-8 col-md-offset-2">
+    <div class="row">
+      <div class="panel">
+        <div class="panel-title">
+          <%= t('.hey_welcome') %>
+        </div>
+        <div class="panel-body">
+          <%= t('.no_recipes') %>
+          <br>
+          <%= link_to t('.create_first'), new_recipe_path, class: 'btn btn-success' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-8 col-md-offset-2 footer">
+    <%= render 'shared/footer' %>
+  </div>
+
+<% elsif current_user %>
 
   <div class="page container col-md-8 col-md-offset-2 recipes-list-container">
 
