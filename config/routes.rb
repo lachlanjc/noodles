@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :recipes
   root 'recipes#index'
+
+  resources :recipes
 
   get '/home' => 'pages#welcome'
   get '/styleguide' => 'pages#styleguide'
