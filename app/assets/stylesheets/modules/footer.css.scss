@@ -1,39 +1,18 @@
 .footer {
-  padding-left: 0;
+  padding: 0;
 
-  p {
-    padding-top: 15px;
+  div {
     @include text-body;
-    color: $grey-light !important;
-    display: inline-block;
+    color: $grey-light;
 
-    &:first-child {
-      float: left;
-    }
-
-    &:last-child {
-      float: right;
-      margin-right: 0;
-      position: relative;
-      left: 15px;
-    }
-  }
-
-  a {
-    display: inline-block;
-    @include text-label;
-    color: $grey-light !important;
-
-    &:hover {
-      color: $brand-primary !important;
-      text-decoration: none;
-    }
-
-    &:visited {
+    a, a:visited {
+      @include text-label;
       color: $grey-light;
+      text-transform: uppercase;
 
       &:hover {
-        color: $brand-primary !important;
+        color: darken($grey-light, 8%);
+        text-decoration: underline;
       }
     }
   }

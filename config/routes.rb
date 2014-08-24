@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :recipes
 
-  get '/home' => 'pages#welcome'
+  get '/home' => 'recipes#home'
   get '/styleguide' => 'pages#styleguide'
 
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions"}, skip: [:sessions, :registrations]

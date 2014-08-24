@@ -4,8 +4,6 @@
 
 <%= render 'layouts/flash' %>
 
-<br>
-
 <div class="page container col-md-8 col-md-offset-2">
 
   <div class="row">
@@ -20,6 +18,8 @@
   	<%= link_to t('.delete'), @recipe, class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: t('.delete_forever') } %>
   </div>
 
-  <br>
+</div>
 
+<div class="container col-md-8 col-md-offset-2 footer">
+  <%= render 'shared/footer' %>
 </div>

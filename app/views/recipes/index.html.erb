@@ -4,8 +4,6 @@
 
 <%= render 'layouts/flash' %>
 
-<br>
-
 <% if current_user and @recipes.count == 0 %>
 
   <div class="col-md-8 col-md-offset-2">
@@ -54,7 +52,7 @@
 
 <% end %>
 
-<div class="col-md-8 col-md-offset-2 footer">
+<div class="container col-md-8 col-md-offset-2 footer">
   <%= render 'shared/footer' %>
 </div>
 

@@ -8,15 +8,16 @@ body {
 }
 
 .container {
+  margin-top: 1.2em;
+}
+
+.page {
+  padding: 8px 48px 32px 48px;
   @include paper;
 
   &:hover {
     @include shadow-2;
   }
-}
-
-.page {
-  padding: 8px 48px;
 }
 
 .home {

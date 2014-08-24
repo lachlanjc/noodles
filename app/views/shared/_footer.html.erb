@@ -1,15 +1,13 @@
-<div class="footer">
-  <p>
-    <span>&copy;</span>
-    <%= t('.footer_copy') %>
-  </p>
-  <p>
-    <% if current_user %>
-      <a href="#" data-helpful="noodles" data-helpful-email="<%= current_user.email %>">
-        <%= t('.get_help') %>
-      </a>
-    <% else %>
-      <a href="#" data-helpful="noodles"><%= t('.contact_us') %></a>
-    <% end %>
-  </p>
+<div class="pull-left">
+  <span>&copy;</span>
+  <%= t('.footer_copy') %>
+</div>
+<div class="pull-right">
+  <% if current_user %>
+    <a href="#" data-helpful="noodles" data-helpful-email="<%= current_user.email %>">
+      <%= t('.get_help') %>
+    </a>
+  <% else %>
+    <a href="#" data-helpful="noodles"><%= t('.contact_us') %></a>
+  <% end %>
 </div>
