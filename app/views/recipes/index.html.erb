@@ -1,6 +1,4 @@
-<% if current_user %>
-  <% activate_nav!(:recipes) %>
-<% end %>
+<% activate_nav!(:recipes) %>
 
 <%= render 'shared/nav' %>
 
@@ -11,7 +9,9 @@
 <% if current_user and @recipes.count == 0 %>
 
   <div class="col-md-8 col-md-offset-2">
+
     <div class="row">
+
       <div class="panel">
         <div class="panel-title">
           <%= t('.hey_welcome') %>
@@ -22,11 +22,9 @@
           <%= link_to t('.create_first'), new_recipe_path, class: 'btn btn-success' %>
         </div>
       </div>
-    </div>
-  </div>
 
-  <div class="col-md-8 col-md-offset-2 footer">
-    <%= render 'shared/footer' %>
+    </div>
+
   </div>
 
 <% elsif current_user %>
@@ -52,34 +50,13 @@
 
   </div>
 
-  <div class="col-md-8 col-md-offset-2 footer">
-    <%= render 'shared/footer' %>
-  </div>
-
-<% else %>
-
-  <div class="page container col-md-6 col-md-offset-3 home text-center">
-
-    <h1><%= t('.eat_well_with') %></h1>
-
-    <p>
-      Noodles is the best place to keep all your recipes.
-    </p>
-
-    <%= link_to t('general.sign_up'), :add_user, class: 'btn btn-lg btn-primary' %>
-
-  </div>
-
-  <div class="col-md-6 col-md-offset-3 footer">
-    <%= render 'shared/footer' %>
-  </div>
-
 <% end %>
 
-<% if current_user %>
+<div class="col-md-8 col-md-offset-2 footer">
+  <%= render 'shared/footer' %>
+</div>
 
-  <%= link_to :new_recipe, class: 'btn-paper btn-paper-right animated bounceInUp' do %>
-    <span class="geomicon geomicon-plus"></span>
-  <% end %>
 
+<%= link_to :new_recipe, class: 'btn-paper btn-paper-right animated bounceInUp' do %>
+  <span class="geomicon geomicon-plus"></span>
 <% end %>
