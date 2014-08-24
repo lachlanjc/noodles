@@ -1,5 +1,6 @@
 .notification {
   margin-bottom: 0;
+  padding-right: 0;
   border-bottom: 1px solid darken($notification-bg, 5%);
   background-color: $notification-bg;
 
@@ -10,48 +11,40 @@
   .text {
     color: white;
     font: 300 1.12em $font-base;
-  }
+    margin-left: $padding-xs-horizontal;
 
-  a {
-    color: white;
-    font-weight: bold;
-    border-bottom: 2px solid white;
+    a {
+      color: white;
+      font-weight: bold;
+      border-bottom: 2px solid white;
 
-    .hover,
-    &:hover {
-      color: $grey-lighter;
-      text-decoration: underline;
+      &:hover {
+        color: $grey-lighter;
+        text-decoration: underline;
+      }
     }
   }
 
-  .container {
-    padding: $padding-large-vertical 0;
-    border-radius: 0;
-    background-color: inherit;
-    transition: none;
+  .container-fluid {
+    margin: auto;
+    padding: 6px 8px 6px 24px;
     box-shadow: none;
   }
 
   .geomicon {
     font-size: 22px;
-    top: $padding-small-vertical;
+    top: 4px;
     position: relative;
-    margin: 0 $padding-small-horizontal 0 $padding-xs-horizontal;
-    margin-right: $padding-small-horizontal;
   }
 
   .close-button {
     float: right;
     background-color: transparent;
-    border: 0;
-    padding: 0;
-    position: relative;
-    margin-right: $padding-xs-horizontal;
+    padding: 3px 12px 3px 6px;
 
     .geomicon {
       color: white;
       opacity: 0.5;
-      top: 3px;
 
       &:hover {
         opacity: 0.75;
@@ -60,20 +53,20 @@
   }
 }
 
-.notification-success {
-  .geomicon {
-    color: $brand-success;
-  }
+.notification-success .geomicon {
+  color: $brand-success;
 }
 
-.notification-info {
-  .geomicon {
-    color: $brand-info;
-  }
+.notification-info .geomicon {
+  color: $brand-info;
 }
 
-.notification-danger {
-  .geomicon {
-    color: $brand-danger;
+.notification-danger .geomicon {
+  color: $brand-danger;
+}
+
+@media (min-width: $screen-phone) {
+  .notification {
+
   }
 }

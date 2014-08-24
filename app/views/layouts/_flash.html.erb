@@ -2,7 +2,7 @@
   <div id="flash-messages">
     <% flash.each do |key, value| %>
       <div class="notification <%= flash_class(key) %> alert-dismissible">
-        <div class="container">
+        <div class="container-fluid">
           <span class="geomicon <%= flash_icon_class(key) %>"></span>
           <span class="text"><%= value %></span>
           <button type="button" class="close-button" data-dismiss="alert" data-target=".alert-dismissible">
