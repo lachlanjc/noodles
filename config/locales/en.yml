@@ -58,8 +58,10 @@ en:
   recipes:
     home:
       eat_well_with: "Eat well with Noodles."
+    index:
       hey_welcome: "Hey! Welcome to Noodles."
-      no_recipes: "You don't have any recipes yet!"
+      no_recipes: "You don't have any recipes yet! To create one, click the button below."
+      and_if_need_help: "And if at any point you need anything, click the link in the footer below and ask away. We're happy to help."
       create_first: "Create your first recipe"
     new:
       new_recipe: "New Recipe"
