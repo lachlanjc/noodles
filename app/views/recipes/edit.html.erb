@@ -14,8 +14,12 @@
 
   <%= render 'form' %>
 
+  <br>
+
   <div class="row">
-  	<%= link_to 'Delete', @recipe, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %>
+  	<%= link_to t('.delete'), @recipe, class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: t('.delete_forever') } %>
   </div>
+
+  <br>
 
 </div>

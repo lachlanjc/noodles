@@ -65,7 +65,8 @@ en:
       new_recipe: "New Recipe"
     edit:
       edit_recipe: "Edit Recipe"
-      sure_you_want_gone: "Are you sure you want to delete your recipe? There is no way to get it back after deleting it."
+      delete: "Delete this Recipe"
+      delete_forever: "Are you sure you want to delete your recipe? There is no way to get it back after deleting it."
   shared:
     error_messages:
       oops_went_wrong: "Oops! Something went wrong."
