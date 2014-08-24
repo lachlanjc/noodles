@@ -32,12 +32,12 @@
 
     <ul class="nav navbar-nav navbar-right">
 
-      <% if user_signed_in? %>
+      <% if current_user %>
 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-            <%= image_tag current_user.gravatar_url(:rating => 'R', :secure => true, :size => 60, :default => 'identicon'), class: 'avatar' %>
+            <%= image_tag current_user.gravatar_url(:rating => 'PG', :secure => true, :size => 60, :default => 'identicon'), class: 'avatar' %>
             <span class="caret"></span></a>
 
             <ul class="dropdown-menu" role="menu">

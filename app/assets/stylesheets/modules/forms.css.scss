@@ -28,9 +28,11 @@ label {
   background-color: $input-bg;
   border-radius: $border-radius-base;
   box-shadow: none !important;
+  background-image: none !important;
   box-sizing: border-box;
   border: 1px solid $input-border;
-  color: $black;
+  font-weight: 300;
+  font-size: 1.1em;
 
   &:focus {
     border-color: $blue;
@@ -40,7 +42,6 @@ label {
 
 textarea.form-control, div.form-control {
   line-height: 1.5;
-  font-size: 1.12em;
 }
 
 .radio label {

@@ -5,6 +5,7 @@ body {
 
 .serif {
   font-family: $serif;
+  font-weight: 400;
 
   p {
     font-family: $serif;
@@ -14,8 +15,9 @@ body {
 
 .page-title {
   @include text-page-title;
-  border-bottom: 2px solid $brand-border;
-  padding-bottom: 10px;
+  border-bottom: 1px solid $brand-border;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 h1 {
