@@ -5,8 +5,10 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <meta name="viewport" content="width=device-width, minimal-ui">
-  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, minimal-ui, initial-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
   <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Roboto:300,400,500,700/Source+Serif+Pro:400,700">
   <script type="text/javascript">
   if("standalone"in window.navigator&&window.navigator.standalone){var noddy,remotes=false;document.addEventListener("click",function(e){noddy=e.target;while(noddy.nodeName!=="A"&&noddy.nodeName!=="HTML"){noddy=noddy.parentNode}if("href"in noddy&&noddy.href.indexOf("http")!==-1&&(noddy.href.indexOf(document.location.host)!==-1||remotes)){e.preventDefault();document.location.href=noddy.href}},false)}
