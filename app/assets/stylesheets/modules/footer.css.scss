@@ -8,7 +8,6 @@
     a, a:visited {
       @include text-label;
       color: $grey-light;
-      text-transform: uppercase;
 
       &:hover {
         color: darken($grey-light, 8%);
