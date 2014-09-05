@@ -1,19 +1,21 @@
+<% activate_nav! :home %>
+
 <%= render 'shared/nav' %>
 
 <%= render 'layouts/flash' %>
 
-<div class="page container col-md-6 col-md-offset-3 home text-center">
+<div class="page container col-md-6 col-md-offset-3 text-center">
 
-  <h1><%= t('.eat_well_with') %></h1>
+  <h1><%= t('.cook_better_with') %></h1>
 
   <p>
-    Noodles is the best place to keep all your recipes.
+    Search, share, and organize your recipes like never before with Noodles.
   </p>
 
   <%= link_to t('general.sign_up'), :add_user, class: 'btn btn-lg btn-primary' %>
 
 </div>
 
-<div class="container col-md-8 col-md-offset-2 footer">
+<div class="container col-md-6 col-md-offset-3 footer">
   <%= render 'shared/footer' %>
 </div>
