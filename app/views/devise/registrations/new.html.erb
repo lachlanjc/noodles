@@ -13,20 +13,22 @@
 
   </div>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= form_for @user, url: registration_path(resource_name), html: {name: 'reg'} do |f| %>
+
+    <div class="row">
+      <%= devise_error_messages! %>
+    </div>
 
     <div class="row">
 
-      <%= devise_error_messages! %>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control', id: 'name-full', autofocus: true, required: true %>
 
       <%= f.label :email %>
-      <%= f.email_field :email, autofocus: true, class: 'form-control', required: true, autocomplete: :off %>
-
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control', required: true, autocomplete: :off %>
+      <%= f.email_field :email, class: 'form-control', required: true, id: 'email' %>
 
       <%= f.label :password %>  <i><%= t('.eight_char') %></i>
-      <%= f.password_field :password, class: 'form-control', required: true, pattern: '.{8,}', title: 'Make sure you use at least 8 characters' %>
+      <%= f.password_field :password, class: 'form-control', required: true, id: 'new-password', pattern: '.{8,}' %>
 
     </div>
 
