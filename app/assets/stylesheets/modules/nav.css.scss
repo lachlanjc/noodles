@@ -13,8 +13,8 @@
   }
 
   .container {
-    margin-top: 0;
-    padding-left: 2px;
+    margin: 0 auto;
+    padding: 2px 0;
     float: none;
   }
 
@@ -27,10 +27,8 @@
       font-weight: bold;
     }
 
-    &:hover span {
-      -webkit-transition: color 0.1s ease-in-out;
-      transition: color 0.1s ease-in-out;
-      color: #f5f5f5;
+    &.pull-right {
+      margin: 0;
     }
 
     > a {
@@ -40,25 +38,13 @@
       color: white;
       font-weight: 400;
       font-size: 16px;
-
-      &:focus {
-        color: white !important;
-        text-decoration: none;
-      }
-
-      &:visited {
-        color: white !important;
-        text-decoration: none;
-
-        &:hover {
-        color: white !important;
-        text-decoration: none;
-        }
-      }
+      text-decoration: none !important;
 
       &:hover {
-        color: white !important;
-        text-decoration: none;
+        color: white;
+        padding-bottom: 4px;
+        transition: box-shadow 0.15s ease-in-out;
+        box-shadow: 0 2px white;
       }
 
       .geomicon {
@@ -69,7 +55,7 @@
 
       .badge {
         background-color: white;
-        color: #ff6d00;
+        color: $brand-primary;
         position: relative;
         left: 4px;
       }
@@ -93,22 +79,35 @@
     }
   }
 
-  .pull-right .dropdown-menu {
-    top: 62px;
-    left: -92px;
-    border-top: 0;
-    border-radius: 0 0 4px 4px;
+  .pull-right {
+    > a {
+      .geomicon {
+        font-size: 1.25em;
+        line-height: 1.66;
+      }
 
-    .divider {
-      margin: 4px 0 !important;
+      .caret {
+        position: relative;
+        top: -5px;
+      }
+    }
+
+    .nav-link:last-child {
+      margin-right: 0 !important;
+    }
+
+    .dropdown-menu {
+      top: 62px;
+      margin-right: 1em;
+      border-radius: 4px 0 4px 4px;
+
+      .divider {
+        margin: 4px 0 !important;
+      }
     }
   }
 }
 
 .nav-logged-out {
   display: block !important;
-
-  .pull-right .nav-link:last-child {
-    margin-right: 0 !important;
-  }
 }

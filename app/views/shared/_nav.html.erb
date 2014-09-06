@@ -15,7 +15,7 @@
         <% end %>
       </div>
 
-      <div class="nav-link <%= nav_active_class(:recipes) %>">
+      <div class="nav-link <%= nav_active_class(:collections) %>">
         <%= link_to :recipes do %>
           <span class="geomicon geomicon-grid"></span>
           <span class="title"><%= t('general.collections') %></span>
@@ -24,24 +24,22 @@
 
     </div>
 
-    <div class="pull-right">
+    <div class="pull-right nav-link">
 
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-
-        <%= image_tag current_user.gravatar_url(:rating => 'PG', :secure => true, :size => 60, :default => 'identicon'), class: 'avatar' %>
-        <span class="caret"></span></a>
-
-        <ul class="dropdown-menu" role="menu">
-          <li>
-            <%= link_to t('general.settings'), :edit_user_registration %>
-          </li>
-          <li class="divider"></li>
-          <li>
-            <%= link_to t('general.sign_out'), :destroy_user_session %>
-          </li>
-        </ul>
-
+        <span class="geomicon geomicon-user"></span>
+        <span class="caret"></span>
       </a>
+
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <%= link_to t('general.settings'), :edit_user_registration %>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <%= link_to t('general.sign_out'), :destroy_user_session %>
+        </li>
+      </ul>
 
     </div>
 

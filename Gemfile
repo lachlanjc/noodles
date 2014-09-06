@@ -8,7 +8,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'devise'
-gem 'gravtastic'
 gem 'jquery-rails'
 gem 'medium-editor-rails'
 gem 'pg'
@@ -33,5 +32,4 @@ end
 group :production do
   gem 'font_assets'
   gem 'rails_12factor'
-  gem 'newrelic_rpm'
 end
