@@ -71,7 +71,7 @@ en:
     edit:
       edit_recipe: "Edit Recipe"
       delete: "Delete this Recipe"
-      delete_forever: "Are you sure you want to delete your recipe? There is no way to get it back after deleting it."
+      delete_forever: "Delete your recipe forever? Forever is a long, long time."
     printing:
       print_copy: "Search, share, and organize your recipes like never before with Noodles. Get it now for free at http://getnoodl.es/"
   shared:
