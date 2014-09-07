@@ -111,3 +111,9 @@
 .nav-logged-out {
   display: block !important;
 }
+
+@media print {
+  .navbar-noodles {
+    display: none;
+  }
+}

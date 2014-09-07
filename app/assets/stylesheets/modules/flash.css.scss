@@ -65,3 +65,9 @@
 .notification-danger .geomicon {
   color: $brand-danger;
 }
+
+@media print {
+  .notification {
+    display: none;
+  }
+}

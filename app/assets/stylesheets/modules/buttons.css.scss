@@ -50,6 +50,12 @@ a.btn:visited:hover {
   }
 }
 
+@media print {
+  .btn-paper {
+    display: none;
+  }
+}
+
 .btn-primary {
   @include button-standard($brand-primary);
 }
