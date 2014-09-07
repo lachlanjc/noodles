@@ -1,0 +1,35 @@
+.action-list a {
+  width: 100%;
+  display: block;
+  border-bottom: 1px solid $brand-border-light;
+  width: 100%;
+  padding: 3px 0;
+  color: $brand-primary;
+  font: 15px/29px $font-base;
+
+  &:first-child {
+    border-top: 1px solid $brand-border-light;
+  }
+
+  &:hover {
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  &:visited span {
+    color: $brand-primary;
+  }
+
+  .geomicon {
+    font-size: 18px;
+    position: relative;
+    top: 3px;
+    margin: 0 7px;
+  }
+}
+
+@media print {
+  .action-list {
+    display: none;
+  }
+}

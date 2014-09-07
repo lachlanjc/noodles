@@ -1,6 +1,8 @@
-<p id="notice"><%= notice %></p>
+<% activate_nav!(:recipes) %>
 
-<% render 'layouts/flash' %>
+<%= render 'shared/nav' %>
+
+<%= render 'layouts/flash' %>
 
 <div class="page container col-md-8 col-md-offset-2">
 
@@ -30,6 +32,29 @@
       <div class="serif">
         <%= simple_format(@recipe.instructions.html_safe) %>
       </div>
+
+  </div>
+
+  <div class="row col-md-4 no-padding">
+
+    <div class="action-list">
+
+      <%= link_to :edit_recipe do %>
+        <span class="geomicon geomicon-write"></span>
+        <span><%= t('general.edit') %></span>
+      <% end %>
+
+      <a onclick="window.print();">
+        <span class="geomicon geomicon-print"></span>
+        <span><%= t('general.print') %></span>
+      </a>
+
+      <!-- <a>
+        <span class="geomicon geomicon-action"></span>
+        <span>Share</span>
+      </a> -->
+
+    </div>
 
   </div>
 

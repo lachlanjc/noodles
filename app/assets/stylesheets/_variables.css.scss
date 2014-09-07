@@ -25,6 +25,7 @@ $brand-danger:           $red;
 
 $brand-bg:               #E8E8E8;
 $brand-border:           #D4E2EA;
+$brand-border-light:     lighten($brand-border, 4%);
 $brand-divider:          rgba(black, 0.02);
 
 $notes:                  #FFFFCC;

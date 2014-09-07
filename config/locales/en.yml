@@ -30,6 +30,8 @@ en:
     sign_up: "Sign Up"
     sign_in: "Sign In"
     sign_out: "Sign Out"
+    edit: "Edit"
+    print: "Print"
     save: "Save"
     update: "Update"
   devise:
