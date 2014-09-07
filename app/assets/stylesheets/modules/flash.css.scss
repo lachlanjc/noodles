@@ -16,11 +16,12 @@
     a {
       color: white;
       font-weight: bold;
-      border-bottom: 2px solid white;
 
       &:hover {
         color: $grey-lighter;
-        text-decoration: underline;
+        text-decoration: none;
+        transition: box-shadow 0.18s ease-in-out;
+        box-shadow: 0 2px $grey-lighter;
       }
     }
   }
@@ -63,10 +64,4 @@
 
 .notification-danger .geomicon {
   color: $brand-danger;
-}
-
-@media (min-width: $screen-phone) {
-  .notification {
-
-  }
 }
