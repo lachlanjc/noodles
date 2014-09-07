@@ -44,3 +44,39 @@
     }
   }
 }
+
+@media print {
+  .recipes-list-container {
+    padding-left: 1em;
+
+    .page-title {
+      @include text-h1;
+    }
+
+    p.printer-copy {
+      border-top: 1px solid #eee;
+      padding-top: 10px;
+      font-weight: 300;
+    }
+  }
+
+  .recipes-list-group {
+    a:after {
+      content: "" !important;
+    }
+
+    .list-group-item {
+      padding-left: 0;
+
+      h3 {
+        font-weight: 300;
+        font-size: 24px;
+        color: $black-87 !important;
+      }
+
+      p {
+        color: $black-64 !important;
+      }
+    }
+  }
+}

@@ -31,6 +31,10 @@
 
   <div class="page container col-md-8 col-md-offset-2 recipes-list-container print-full-width">
 
+    <h1 class="page-title printer-copy">
+      <%= t('.all_recipes') %>
+    </h1>
+
     <div class="list-group recipes-list-group">
 
       <% @recipes.each do |recipe| %>

@@ -8,7 +8,23 @@
 }
 
 @media print {
+  h1:not(.page-title) {
+    font-weight: 300;
+    font-size: 24px;
+    color: $black-64;
+  }
+
   .printer-copy {
     display: block;
+  }
+
+  .recipe-print {
+    .page-title {
+      @include text-h1;
+    }
+
+    p {
+      font-size: 1em !important;
+    }
   }
 }

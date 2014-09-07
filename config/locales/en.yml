@@ -65,6 +65,7 @@ en:
       no_recipes: "You don't have any recipes yet! To create one, click the button below."
       and_if_need_help: "And if at any point you need anything, click the link in the footer below and ask away. We're happy to help."
       create_first: "Create your first recipe"
+      all_recipes: "All Recipes"
     new:
       new_recipe: "New Recipe"
     edit:
