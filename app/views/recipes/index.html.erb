@@ -27,7 +27,7 @@
 
   </div>
 
-<% elsif current_user %>
+<% else %>
 
   <div class="page container col-md-8 col-md-offset-2 recipes-list-container">
 
@@ -47,6 +47,10 @@
       <% end %>
 
     </div>
+
+    <p class="printer-copy">
+      <%= t('recipes.printing.print_copy') %>
+    </p>
 
   </div>
 

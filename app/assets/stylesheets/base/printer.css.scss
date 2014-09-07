@@ -1,0 +1,14 @@
+.printer-copy {
+  display: none;
+  @include text-caption;
+
+  hr {
+    margin: 25px 0 12px 0;
+  }
+}
+
+@media print {
+  .printer-copy {
+    display: block;
+  }
+}

@@ -71,6 +71,8 @@ en:
       edit_recipe: "Edit Recipe"
       delete: "Delete this Recipe"
       delete_forever: "Are you sure you want to delete your recipe? There is no way to get it back after deleting it."
+    printing:
+      print_copy: "Search, share, and organize your recipes like never before with Noodles. Get it now for free at http://getnoodl.es/"
   shared:
     error_messages:
       oops_went_wrong: "Oops! Something went wrong."
