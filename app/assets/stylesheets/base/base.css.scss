@@ -28,6 +28,13 @@ body {
   padding: 0;
 }
 
+@media print {
+  .print-full-width {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+}
+
 hr {
   border: 0;
   border-bottom: 1px solid $brand-border;
