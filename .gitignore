@@ -5,6 +5,7 @@
 /.bundle # Bundler config
 *.log # logs
 /tmp # Temporary asset caches
+/tmp/*
 *.env
 /bin/* # Bundler binstubs
 *.sublime-* # Sublime Text files
