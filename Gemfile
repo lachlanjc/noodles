@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-source 'https://rails-assets.org'
 ruby '2.1.2'
 
 gem 'autoprefixer-rails'
@@ -19,6 +18,7 @@ gem 'sass-rails'
 gem 'stripe'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
+
 group :development do
   gem 'better_errors'
 end

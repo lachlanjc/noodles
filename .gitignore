@@ -2,13 +2,10 @@
 
 .DS_Store
 
-/config/database.yml # Database config
 /.bundle # Bundler config
-/log/*.log # logs
-/tmp
+*.log # logs
+/tmp # Temporary asset caches
 *.env
 /bin/* # Bundler binstubs
-*.swp # VI swp files
 *.sublime-* # Sublime Text files
 
-*.log
