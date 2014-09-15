@@ -2,11 +2,10 @@
 
 .DS_Store
 
-/.bundle # Bundler config
-*.log # logs
-/tmp # Temporary asset caches
+*.log
 /tmp/*
 *.env
-/bin/* # Bundler binstubs
-*.sublime-* # Sublime Text files
+/bin/*
+*.sublime-*
 
+config/local_env.yml
