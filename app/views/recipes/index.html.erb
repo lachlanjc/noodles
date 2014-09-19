@@ -6,23 +6,17 @@
 
 <% if current_user and @recipes.count == 0 %>
 
-  <div class="col-md-8 col-md-offset-2">
+  <div class="page-panel container col-md-8 col-md-offset-2">
 
-    <div class="row">
-
-      <div class="panel">
-        <div class="panel-title">
-          <%= t('.hey_welcome') %>
-        </div>
-        <div class="panel-body">
-          <%= t('.no_recipes') %>
-          <br>
-          <%= t('.and_if_need_help') %>
-          <br>
-          <%= link_to t('.create_first'), new_recipe_path, class: 'btn btn-primary' %>
-        </div>
-      </div>
-
+    <div class="panel-title">
+      <%= t('.hey_welcome') %>
+    </div>
+    <div class="panel-body">
+      <%= t('.no_recipes') %>
+      <br>
+      <%= t('.and_if_need_help') %>
+      <br>
+      <%= link_to t('.create_first'), new_recipe_path, class: 'btn btn-primary' %>
     </div>
 
   </div>
