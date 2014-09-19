@@ -37,7 +37,9 @@
           <div class="list-group-item">
             <h3><%= recipe.title %></h3>
             <% unless recipe.description.length == 0 %>
-              <p><%= recipe.description %></p>
+              <p>
+                <%= simple_format(recipe.description.truncate(140)) %>
+              </p>
             <% end %>
           </div>
         <% end %>
