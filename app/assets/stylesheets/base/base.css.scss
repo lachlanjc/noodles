@@ -28,11 +28,8 @@ body {
   padding: 0;
 }
 
-@media print {
-  .print-full-width {
-    width: 100% !important;
-    margin: 0 !important;
-  }
+.text-pink {
+  color: $brand-pink;
 }
 
 hr {
