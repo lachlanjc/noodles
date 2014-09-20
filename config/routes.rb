@@ -22,4 +22,7 @@ Rails.application.routes.draw do
     get    "account" => "devise/registrations#edit",    as: :edit_user_registration
   end
 
+  get '/admin/user_marketable' => 'analytics#marketable', as: :analytics_marketable
+  get '/admin/all_users' => 'analytics#all_users', as: :analytics_users
+
 end

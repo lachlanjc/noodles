@@ -1,0 +1,36 @@
+<%= render 'shared/analytics_nav' %>
+
+<% if @access == true %>
+
+  <div class="page container col-md-8 col-md-offset-2 print-full-width">
+
+    <div class="row">
+      <h1 class="page-title">
+        All Users (<%= @users.count %>)
+      </h1>
+    </div>
+
+    <div class="row">
+      <table class="table">
+        <thead>
+          <tr style="font-weight: bold;">
+            <td>ID</td>
+            <td>Name</td>
+            <td>Email</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= user.name %></td>
+              <td><%= user.email %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+<% end %>

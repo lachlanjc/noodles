@@ -1,0 +1,36 @@
+<%= render 'shared/analytics_nav' %>
+
+<% if @access == true %>
+
+  <div class="page container col-md-8 col-md-offset-2 print-full-width">
+
+    <div class="row">
+      <h1 class="page-title">
+        Marketable for Devise
+      </h1>
+    </div>
+
+    <div class="row">
+      <table class="table">
+        <thead>
+          <tr style="font-weight: bold;">
+            <td>Email</td>
+            <td>referring_url</td>
+            <td>landing_url</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.email %></td>
+              <td><%= user.referring_url %></td>
+              <td><%= user.landing_url %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+<% end %>
