@@ -20,7 +20,7 @@
 
   .nav-link {
     display: inline-block;
-    margin: 0 2rem;
+    margin: 0 1.25em;
     height: 64px;
 
     &.active .title {
@@ -34,7 +34,6 @@
     > a {
       position: relative;
       top: 16px;
-      right: 16px;
       color: white;
       font-weight: 400;
       font-size: 16px;
@@ -64,11 +63,11 @@
 
   .nav-brand-text {
     color: white;
-    font-weight: 400;
-    font-size: 20px;
+    font-weight: 200;
+    font-size: 32px;
     position: relative;
-    top: 12px;
-    left: 20px;
+    top: 2px;
+    left: 15px;
     display: inline-block;
 
     &:focus,
@@ -79,8 +78,27 @@
     }
   }
 
-  .pull-right {
+  .dropdown-menu-icons {
+    margin-top: 0;
+
+    li a {
+      padding: 5px 15px !important;
+
+      .geomicon {
+        position: relative;
+        top: 2px;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  > .pull-right {
+    position: relative;
+    right: 15px;
+
     > a {
+      display: block;
+
       .geomicon {
         font-size: 1.25em;
         line-height: 1.66;
@@ -88,7 +106,7 @@
 
       .caret {
         position: relative;
-        top: -5px;
+        top: -8px;
       }
     }
 
