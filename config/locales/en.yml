@@ -35,6 +35,7 @@ en:
     sign_out: "Sign Out"
     edit: "Edit"
     print: "Print"
+    create_recipe: "Create Recipe"
     save: "Save"
     update: "Update"
   devise:
