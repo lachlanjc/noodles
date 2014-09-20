@@ -5,6 +5,7 @@ class RecipesController < ApplicationController
   def index
     if current_user
       @recipes = Recipe.where(:user_id => current_user.id)
+      @recipe_count = @recipes.count
     else
       render "home"
     end

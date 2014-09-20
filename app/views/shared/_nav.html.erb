@@ -12,6 +12,9 @@
         <%= link_to :recipes do %>
           <span class="geomicon geomicon-rows"></span>
           <span class="title"><%= t('general.recipes') %></span>
+          <% if nav_active?(:recipes) %>
+            <span class="badge"><%= @recipe_count %></span>
+          <% end %>
         <% end %>
       </div>
 
