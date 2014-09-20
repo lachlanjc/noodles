@@ -61,19 +61,17 @@ label {
 
 .form-control {
   margin-bottom: 1em;
-  padding: 8px;
-  background-color: $input-bg;
-  border-radius: $border-radius-base;
+  padding: 6px 12px;
+  border-radius: 0;
   box-shadow: none !important;
   background-image: none !important;
-  box-sizing: border-box;
-  border: 1px solid $input-border;
+  border: 0;
+  border-left: 2px solid $brand-border;
   font-weight: 300;
   font-size: 1.1em;
 
   &:focus {
     border-color: $blue;
-    background-color: white;
   }
 }
 
