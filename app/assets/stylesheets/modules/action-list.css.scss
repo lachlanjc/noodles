@@ -20,11 +20,15 @@
     color: $brand-primary;
   }
 
-  .geomicon {
+  .geomicon:not(.geomicon-star) {
     font-size: 18px;
     position: relative;
     top: 3px;
     margin: 0 7px;
+  }
+
+  &.wtf {
+    padding: 5px 0 2px 0 !important;
   }
 }
 

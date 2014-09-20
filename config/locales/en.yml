@@ -24,6 +24,8 @@ en:
     noodles: "Noodles"
     welcome_to_noodles: "Welcome to Noodles!"
     recipes: "Recipes"
+    favorites: "Favorites"
+    fav_this_r: "Favorite this recipe"
     collections: "Collections"
     search: "Search"
     settings: "Account Settings"
@@ -66,6 +68,10 @@ en:
       and_if_need_help: "And if at any point you need anything, click the link in the footer below and ask away. We're happy to help."
       create_first: "Create your first recipe"
       all_recipes: "All Recipes"
+    favorites:
+      no_favorites_yet: "You don't have any Favorites yet."
+      favorites_are: "Favorites are a way to quickly bookmark recipes you like."
+      to_add_favorites: "To add a favorite, edit a recipe and click the Favorites star."
     new:
       new_recipe: "New Recipe"
     edit:

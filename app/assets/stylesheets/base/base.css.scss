@@ -28,8 +28,11 @@ body {
   padding: 0;
 }
 
-.text-pink {
-  color: $brand-pink;
+.corner-star {
+  position: relative;
+  top: 12px;
+  left: 0px;
+  font-size: 24px;
 }
 
 hr {

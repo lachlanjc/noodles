@@ -8,12 +8,12 @@
 
   <div class="row">
 
-      <h1 class="page-title">
-        <%= @recipe.title %>
-      </h1>
-      <p>
-        <%= @recipe.description.html_safe %>
-      </p>
+    <% if @recipe.favorite == true %>
+      <div class="pull-right">
+        <span class="geomicon geomicon-star corner-star text-yellow"></span>
+      </div>
+    <% end %>
+
 
   </div>
 

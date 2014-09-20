@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'recipes#index'
 
   resources :recipes
+  get '/favorites' => 'recipes#favorites', as: :favorites
 
   get '/home' => 'recipes#home'
   get '/styleguide' => 'pages#styleguide'

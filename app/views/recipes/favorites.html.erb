@@ -1,22 +1,26 @@
-<% activate_nav!(:recipes) %>
+<% activate_nav!(:favorites) %>
 
 <%= render 'shared/nav' %>
 
 <%= render 'layouts/flash' %>
+
+  <div class="container col-md-8 col-md-offset-2 filter">
+    <%= render 'shared/filter' %>
+  </div>
 
 <% if current_user and @recipes.count == 0 %>
 
   <div class="page-panel container col-md-8 col-md-offset-2">
 
     <div class="panel-title">
-      <%= t('.hey_welcome') %>
+      <%= t('.no_favorites_yet') %>
     </div>
     <div class="panel-body">
-      <%= t('.no_recipes') %>
+      <%= t('.favorites_are') %>
       <br>
-      <%= t('.and_if_need_help') %>
+      <%= t('.to_add_favorites') %>
       <br>
-      <%= link_to t('.create_first'), new_recipe_path, class: 'btn btn-primary' %>
+      <%= link_to t('.back_to_r'), recipes_path, class: 'btn btn-primary' %>
     </div>
 
   </div>
@@ -43,11 +47,11 @@
             <% end %>
 
             <h3><%= recipe.title %></h3>
+
             <% unless recipe.description.length == 0 %>
-              <p>
-                <%= simple_format(recipe.description.truncate(140)) %>
-              </p>
+              <p><%= recipe.description %></p>
             <% end %>
+
           </div>
         <% end %>
 
