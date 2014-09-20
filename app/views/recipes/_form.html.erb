@@ -25,6 +25,20 @@
     <%= f.text_area :instructions, rows: 10, class: 'form-control serif' %>
   </div>
 
+  <div class="row col-md-4 no-padding">
+    <div class="action-list">
+      <a class="wtf">
+        <label class="control checkbox">
+          <%= f.check_box :favorite %>
+          <span class="control-indicator geomicon geomicon-star"></span>
+          <span class="text text-black"><%= t('general.fav_this_r') %></span>
+        </label>
+      </a>
+    </div>
+  </div>
+
+  <br><br><br>
+
   <div class="row">
     <%= f.submit t('general.save'), class: 'btn btn-primary' %>
   </div>

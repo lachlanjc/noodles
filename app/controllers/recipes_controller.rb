@@ -1,10 +1,18 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_filter :set_recipe, only: [:show, :edit, :update, :destroy]
 
   # GET /recipes
   def index
     if current_user
       @recipes = Recipe.where(:user_id => current_user.id)
+    else
+      render "home"
+    end
+  end
+
+  def favorites
+    if current_user
+      @recipes = Recipe.where(:user_id => current_user.id, :favorite => true)
     else
       render "home"
     end
@@ -73,6 +81,6 @@ class RecipesController < ApplicationController
 
     # Only allow trusted parameters
     def recipe_params
-      params.require(:recipe).permit(:title, :description, :ingredients, :instructions)
+      params.require(:recipe).permit(:title, :description, :ingredients, :instructions, :favorite)
     end
 end

@@ -73,3 +73,47 @@ form .panel-error {
   padding: 30px;
   border-radius: $border-radius-large;
 }
+
+.page-panel {
+  min-height: 20px;
+  padding: 20px;
+  margin-bottom: 0;
+  background-color: white;
+  border-radius: $border-radius-small;
+  @include paper;
+
+  &:hover {
+    @include shadow-2;
+  }
+
+  .panel-title {
+    margin: 0 0 6px 0;
+    @include text-title;
+  }
+
+  .panel-body {
+    color: $black;
+    font-size: 16px;
+    font-weight: 300;
+    margin-left: 0;
+    padding: 0;
+
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+    }
+
+    p {
+      margin-bottom: 10px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    blockquote {
+      color: $grey-dark;
+      border-color: #ddd;
+    }
+  }
+}
