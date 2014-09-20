@@ -23,7 +23,7 @@ class RecipesController < ApplicationController
     if @recipe.user_id == current_user.id
       set_recipe
     else
-      flash[:error] = "You are not allowed to look at that recipe."
+      flash[:view] = "Sorry, you can't look at that recipe."
       redirect_to root_url
     end
   end
@@ -38,7 +38,7 @@ class RecipesController < ApplicationController
     if @recipe.user_id == current_user.id
       set_recipe
     else
-      flash[:error] = "Whoops! That recipe isn't yours."
+      flash[:view] = "Sorry, you can't edit that recipe."
       redirect_to root_url
     end
   end

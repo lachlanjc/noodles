@@ -5,6 +5,7 @@ module ApplicationHelper
       when :success then "notification-success"
       when :error then "notification-danger"
       when :alert then "notification-danger"
+      when :view then "notification-info"
     end
   end
 
@@ -14,6 +15,7 @@ module ApplicationHelper
       when :success then "geomicon-check"
       when :error then "geomicon-alert"
       when :alert then "geomicon-alert"
+      when :view then "geomicon-view"
     end
   end
 end
