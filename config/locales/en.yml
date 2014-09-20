@@ -23,6 +23,7 @@ en:
   general:
     noodles: "Noodles"
     welcome_to_noodles: "Welcome to Noodles!"
+    all_recipes: "All Recipes"
     recipes: "Recipes"
     favorites: "Favorites"
     fav_this_r: "Favorite this recipe"
@@ -84,6 +85,8 @@ en:
   shared:
     error_messages:
       oops_went_wrong: "Oops! Something went wrong."
+    filter:
+      filter: "Filter:"
     footer:
       footer_copy: "2014 Noodles. Cook better."
       contact_us: "Contact Us"

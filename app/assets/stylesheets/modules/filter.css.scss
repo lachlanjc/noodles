@@ -1,0 +1,57 @@
+.filter {
+  padding: 0;
+  margin-top: 1.2em;
+
+  div {
+    @include text-body;
+    color: $grey-light;
+
+    a, a:visited {
+      @include text-label;
+      color: $grey-light;
+
+      &:hover {
+        color: darken($grey-light, 8%);
+        text-decoration: none;
+      }
+    }
+  }
+
+  .search {
+    border: 1px solid #ccc;
+    border-radius: 14px;
+    padding-left: 10px;
+    background-color: transparent;
+    color: $grey-darker;
+
+    &:focus {
+      transition: all 0.18s ease-in-out;
+      background-color: white;
+      outline: 0;
+      border-color: $blue;
+    }
+  }
+
+  .pull-left {
+    h5 {
+      text-transform: uppercase;
+      display: inline-block;
+    }
+
+    a {
+      margin-left: 15px;
+
+      .geomicon {
+        position: relative;
+        top: 2px;
+        right: 3px;
+      }
+    }
+  }
+}
+
+@media print {
+  .filter {
+    display: none;
+  }
+}
