@@ -30,13 +30,13 @@ Rails.application.configure do
 
   config.active_record.dump_schema_after_migration = false
 
-  # S3 Paperclip Settings
+  # Paperclip Settings
   config.paperclip_defaults = {
   :storage => :s3,
   :s3_credentials => {
-    :bucket => ENV['noodles-assets'],
-    :access_key_id => ENV['AKIAJPPNZ6FCBWYXNQMA'],
-    :secret_access_key => ENV['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']
+    :bucket => ENV['S3_BUCKET'],
+    :access_key_id => ENV['S3_KEY'],
+    :secret_access_key => ENV['S3_SECRET']
   }
 }
 end

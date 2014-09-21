@@ -8,4 +8,4 @@
 /bin/*
 *.sublime-*
 
-config/local_env.yml
+.env
