@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
 
+gem 'dotenv-rails', groups: [:development, :test]
+
 gem 'autoprefixer-rails'
 gem 'aws-sdk'
 gem 'bcrypt', '~> 3.1.7'
