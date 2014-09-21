@@ -19,4 +19,16 @@ Rails.application.configure do
 
   config.assets.raise_runtime_errors = true
 
+  config.action_view.raise_on_missing_translations = true
+
+  # Paperclip Settings
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV['noodles-assets'],
+      :access_key_id => ENV['S3_KEY'],
+      :secret_access_key => ENV['S3_SECRET']
+    }
+  }
+
 end
