@@ -24,10 +24,10 @@ Rails.application.configure do
   # Paperclip Settings
   config.paperclip_defaults = {
     :storage => :s3,
+    :bucket => 'noodles-assets',
     :s3_credentials => {
-      :bucket => ENV['S3_BUCKET'],
-      :access_key_id => ENV['S3_KEY'],
-      :secret_access_key => ENV['S3_SECRET']
+      :access_key_id     => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
 
