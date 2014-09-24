@@ -1,6 +1,6 @@
 class AnalyticsController < ApplicationController
   def check_access(id)
-    if id == 1 or id == 2
+    if id == 1 or id == 4
       @access = true
       @users = User.all.reverse
     else
