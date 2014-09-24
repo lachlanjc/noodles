@@ -6,13 +6,13 @@
   </div>
 
   <div class="row">
-    <%= f.label :image %>
-    <%= f.file_field :image %>
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'form-control' %>
   </div>
 
   <div class="row">
-    <%= f.label :description %>
-    <%= f.text_area :description, class: 'form-control' %>
+    <%= f.label t('general.photo') %>
+    <%= f.file_field :img %>
   </div>
 
   <div class="row">

@@ -20,6 +20,8 @@ body {
   }
 }
 
+// Assorted styles that don't fit anywhere else
+
 .home {
   padding: 1em 0 2em 0 !important;
 }
@@ -33,6 +35,11 @@ body {
   top: 12px;
   left: 0px;
   font-size: 24px;
+}
+
+.img-container img {
+  display: block;
+  width: 100%;
 }
 
 hr {

@@ -19,27 +19,27 @@
 
   </div>
 
+  <% unless @recipe.img.url.length == 0 %>
+    <div class="row img-container">
+      <%= image_tag @recipe.img.url %>
+    </div>
+  <% end %>
+
   <div class="row">
 
-      <%= image_tag recipe.image.url(:recipe) %>
+    <h1>Ingredients</h1>
+    <div class="serif">
+      <%= simple_format(@recipe.ingredients.html_safe) %>
+    </div>
 
   </div>
 
   <div class="row">
 
-      <h1>Ingredients</h1>
-      <div class="serif">
-        <%= simple_format(@recipe.ingredients.html_safe) %>
-      </div>
-
-  </div>
-
-  <div class="row">
-
-      <h1>Instructions</h1>
-      <div class="serif">
-        <%= simple_format(@recipe.instructions.html_safe) %>
-      </div>
+    <h1>Instructions</h1>
+    <div class="serif">
+      <%= simple_format(@recipe.instructions.html_safe) %>
+    </div>
 
   </div>
 

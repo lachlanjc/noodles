@@ -36,6 +36,7 @@ en:
     edit: "Edit"
     print: "Print"
     create_recipe: "Create Recipe"
+    photo: "Photo"
     save: "Save"
     update: "Update"
   devise:
