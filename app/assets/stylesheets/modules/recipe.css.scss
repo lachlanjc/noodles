@@ -1,0 +1,35 @@
+.corner-star {
+  position: relative;
+  top: 12px;
+  left: 0px;
+  font-size: 24px;
+}
+
+.img-container img {
+  display: block;
+  width: 100%;
+}
+
+.markdown {
+  ol, ul {
+    padding-left: 24px;
+  }
+
+  p, li {
+    font: 400 1.18em $serif;
+    color: $recipe-text;
+    line-height: $line-height;
+  }
+}
+
+@media print {
+  .recipe-print {
+    .page-title {
+      @include text-h1;
+    }
+
+    p {
+      font-size: 1em !important;
+    }
+  }
+}
