@@ -19,7 +19,7 @@
 
   </div>
 
-  <% unless @recipe.img.url.length == 0 %>
+  <% if @recipe.img.url != '/imgs/original/missing.png' %>
     <div class="row img-container">
       <%= image_tag @recipe.img.url %>
     </div>
