@@ -38,7 +38,7 @@
 
     <h1>Instructions</h1>
     <div class="serif">
-      <%= simple_format(@recipe.instructions.html_safe) %>
+      <%= markdown(@recipe.instructions) %>
     </div>
 
   </div>
