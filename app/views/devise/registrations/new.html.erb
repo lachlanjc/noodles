@@ -21,10 +21,10 @@
 
     <div class="row">
 
-      <%= f.label :name %>
+      <%= f.label t('.first_name') %>
       <%= f.text_field :name, class: 'form-control', id: 'name-full', autofocus: true, required: true %>
 
-      <%= f.label :email %>
+      <%= f.label t('.email_check') %>
       <%= f.email_field :email, class: 'form-control', required: true, id: 'email' %>
 
       <%= f.label :password %>  <i><%= t('.eight_char') %></i>

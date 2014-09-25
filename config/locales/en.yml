@@ -44,6 +44,8 @@ en:
       new:
         welcome: "Welcome to Noodles"
         sign_up_and: "Sign up for Noodles in under a minute and enjoy awesome recipe organization."
+        first_name: "What's your first name?"
+        email_check: "What's an email address you actually check?"
         eight_char: "(at least 8 characters)"
         sign_up_start_using: "Sign up and start using Noodles!"
       edit:
