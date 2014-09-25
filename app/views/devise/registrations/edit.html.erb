@@ -9,30 +9,38 @@
     </div>
 
     <div class="row">
-      <h1><%= t('.email_and_pass') %></h1>
+      <h1><%= t('.info_and_pass') %></h1>
     </div>
 
-    <div>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <%= devise_error_messages! %>
+      <%= devise_error_messages! %>
 
-        <div class="row">
-          <%= f.label :email %>
-          <%= f.email_field :email, placeholder: 'noodles@icloud.com', autocomplete: 'off', class: 'form-control' %>
-        </div>
+      <div class="row">
+        <%= f.label t('devise.registrations.new.first_name') %>
+        <%= f.text_field :first_name, placeholder: 'Mr. Noodles', class: 'form-control', id: 'name-full', required: true %>
+      </div>
 
-        <div class="row">
-          <%= f.label :password %> <i><%= t('.can_leave_blank') %></i>
-          <%= f.password_field :password, placeholder: t('.eight_char'), autocomplete: 'off', class: 'form-control' %>
-        </div>
+      <div class="row">
+        <%= f.label t('devise.registrations.new.email_check') %>
+        <%= f.email_field :email, placeholder: 'me@getnoodl.es', class: 'form-control' %>
+      </div>
 
-        <div class="row">
-          <%= f.submit t('general.update'), class: 'btn btn-default' %>
-        </div>
-      <% end %>
+      <div class="row">
+        <%= f.label t('.current_pass') %>
+        <%= f.password_field :current_password, autocomplete: 'off', class: 'form-control' %>
+      </div>
 
-    </div>
+      <div class="row">
+        <%= f.label :password %> <i><%= t('.can_leave_blank') %></i><br />
+        <%= f.password_field :password, autocomplete: 'off', class: 'form-control' %>
+      </div>
+
+      <div class="row">
+        <%= f.submit t('general.update'), class: 'btn btn-default' %>
+      </div>
+
+    <% end %>
 
     <div class="row">
       <hr>
@@ -42,7 +50,7 @@
       <h1><%= t('.need_help') %></h1>
       <p><%= t('.unhappy_want_support') %></p>
       <p>
-        <a href="#" class="btn btn-default" data-helpful="noodles" data-helpful-email="<%= current_user.email %>"><%= t('.get_support') %></a>
+        <a href="#" class="btn btn-default" data-helpful="noodles" data-helpful-email="<%= current_user.email %>"><%= t('shared.footer.get_help') %></a>
       </p>
     </div>
 

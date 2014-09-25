@@ -50,7 +50,8 @@ en:
         sign_up_start_using: "Sign up and start using Noodles!"
       edit:
         account_settings: "Account Settings"
-        email_and_pass: "Email and Password"
+        info_and_pass: "Contact Info and Password"
+        current_pass: "Current Password"
         can_leave_blank: "(leave this blank unless you would like to change it)"
         eight_char: "Please use at least 8 characters."
         need_help: "Need help?"

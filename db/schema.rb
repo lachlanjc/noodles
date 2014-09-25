@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20140925212751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "uuid-ossp"
 
   create_table "recipes", force: true do |t|
     t.string   "title"
@@ -46,9 +45,9 @@ ActiveRecord::Schema.define(version: 20140925212751) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
     t.text     "referring_url"
     t.text     "landing_url"
+    t.string   "first_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

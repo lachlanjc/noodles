@@ -20,22 +20,22 @@
     </div>
 
     <div class="row">
-
       <%= f.label t('.first_name') %>
-      <%= f.text_field :name, class: 'form-control', id: 'name-full', autofocus: true, required: true %>
-
-      <%= f.label t('.email_check') %>
-      <%= f.email_field :email, class: 'form-control', required: true, id: 'email' %>
-
-      <%= f.label :password %>  <i><%= t('.eight_char') %></i>
-      <%= f.password_field :password, class: 'form-control', required: true, id: 'new-password', pattern: '.{8,}' %>
-
+      <%= f.text_field :first_name, class: 'form-control', id: 'name-full', autofocus: true, required: true %>
     </div>
 
     <div class="row">
+      <%= f.label t('.email_check') %>
+      <%= f.email_field :email, class: 'form-control', required: true, id: 'email' %>
+    </div>
 
+    <div class="row">
+      <%= f.label :password %>  <i><%= t('.eight_char') %></i>
+      <%= f.password_field :password, class: 'form-control', required: true, id: 'new-password', pattern: '.{8,}' %>
+    </div>
+
+    <div class="row">
       <%= f.submit t('general.sign_up'), class: 'btn btn-primary' %>
-
     </div>
 
   <% end %>
