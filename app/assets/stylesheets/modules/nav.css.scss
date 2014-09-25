@@ -103,11 +103,6 @@
         font-size: 1.25em;
         line-height: 1.66;
       }
-
-      .caret {
-        position: relative;
-        top: -8px;
-      }
     }
 
     .nav-link:last-child {
@@ -116,8 +111,6 @@
 
     .dropdown-menu {
       top: 62px;
-      margin-right: 1em;
-      border-radius: 4px 0 4px 4px;
 
       .divider {
         margin: 4px 0 !important;
