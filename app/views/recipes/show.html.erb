@@ -37,8 +37,8 @@
   <div class="row">
 
     <h1>Instructions</h1>
-    <div class="serif">
-      <%= markdown(@recipe.instructions) %>
+    <div class="markdown">
+      <%= @recipe.instructions_rendered.html_safe %>
     </div>
 
   </div>

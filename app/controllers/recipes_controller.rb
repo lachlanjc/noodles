@@ -44,10 +44,18 @@ class RecipesController < ApplicationController
     end
   end
 
+  # Markdown processing
+
+  def markdown(str)
+    md = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, underline: true, space_after_headers: true, strikethrough: true)
+    return md.render(str)
+  end
+
   # POST /recipes
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
+    @recipe.instructions_rendered = markdown(@recipe.instructions)
 
     if @recipe.save
       flash[:success] = "Your recipe has been created."
@@ -59,6 +67,8 @@ class RecipesController < ApplicationController
 
   # PATCH/PUT /recipes/1
   def update
+    @recipe.instructions_rendered = markdown(@recipe.instructions)
+
     if @recipe.update(recipe_params)
       flash[:success] = "Awesome, your changes have been saved."
       redirect_to @recipe
