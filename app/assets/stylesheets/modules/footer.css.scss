@@ -2,16 +2,16 @@
   padding: 0;
 
   div {
-    @include text-body;
+    font-weight: 400;
+    font-size: 14px;
     color: $grey-light;
 
     a, a:visited {
-      @include text-label;
+      font-weight: 700;
       color: $grey-light;
 
       &:hover {
         color: darken($grey-light, 8%);
-        text-decoration: underline;
       }
     }
   }

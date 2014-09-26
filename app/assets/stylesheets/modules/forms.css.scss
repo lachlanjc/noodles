@@ -20,15 +20,9 @@
   }
 
   .text {
-    margin-left: 32px;
     position: relative;
     top: -2px;
     font-weight: 400;
-    color: $grey-darker;
-  }
-
-  input:focus ~ .control-indicator {
-    // box-shadow: 0 0 0 .075rem #fff, 0 0 0 .2rem #0074d9;
   }
 
   input:checked ~ .control-indicator {
@@ -55,8 +49,7 @@ label {
 }
 
 .row {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin: 5px 0;
 }
 
 .form-control {
@@ -75,8 +68,8 @@ label {
   }
 }
 
-textarea.form-control, div.form-control {
-  line-height: 1.5;
+textarea.form-control {
+  line-height: 1.8;
 }
 
 .radio label {

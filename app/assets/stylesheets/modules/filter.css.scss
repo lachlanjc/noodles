@@ -2,18 +2,13 @@
   padding: 0;
   margin-top: 1.2em;
 
-  div {
-    @include text-body;
+  div, div a, div a:visited {
+    font-weight: 300;
     color: $grey-light;
 
-    a, a:visited {
-      @include text-label;
-      color: $grey-light;
-
-      &:hover {
-        color: darken($grey-light, 8%);
-        text-decoration: none;
-      }
+    &:hover {
+      color: darken($grey-light, 8%);
+      text-decoration: none;
     }
   }
 
@@ -36,6 +31,7 @@
     h5 {
       text-transform: uppercase;
       display: inline-block;
+      font-weight: 400;
     }
 
     a {
@@ -45,6 +41,7 @@
         position: relative;
         top: 2px;
         right: 3px;
+        color: lighten($grey-light, 4%);
       }
     }
   }
