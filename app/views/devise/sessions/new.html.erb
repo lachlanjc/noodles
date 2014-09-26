@@ -23,15 +23,12 @@
       <%= f.password_field :password, class: 'form-control', required: true, pattern: '.{8,}', title: 'Make sure you use at least 8 characters' %>
     </div>
 
-    <% if devise_mapping.rememberable? -%>
+    <div class="row">
+      <%= f.check_box :remember_me, class: 'switch' %>
+      <%= f.label :remember_me, class: 'control-label' %>
+    </div>
 
-      <div class="row">
-        <div class="remember-me">
-          <%= f.check_box :remember_me, class: 'form-control' %> <%= f.label :remember_me, class: 'control-label' %>
-        </div>
-      </div>
-
-    <% end %>
+    <br>
 
     <div class="row">
       <%= f.submit t('.sign_in'), class: 'btn btn-primary' %>
