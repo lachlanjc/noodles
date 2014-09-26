@@ -42,6 +42,12 @@
   <div class="row">
     <% if nav_active?(:new_recipe) %>
       <%= f.submit t('general.create_recipe'), class: 'btn btn-primary' %>
+    <% elsif nav_active?(:edit_recipe) %>
+      <%= f.submit t('general.save'), class: 'btn btn-primary' %>
+      <%= link_to @recipe, method: :delete, data: { confirm: t('general.delete_forever') }, class: 'trash-recipe' do %>
+        <span><%= t('general.or') %></span>
+        <span class="geomicon geomicon-trash"></span>
+      <% end %>
     <% else %>
       <%= f.submit t('general.save'), class: 'btn btn-primary' %>
     <% end %>

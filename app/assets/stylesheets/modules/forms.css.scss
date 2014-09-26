@@ -88,3 +88,21 @@ textarea.form-control {
     border-color: $brand-danger;
   }
 }
+
+.trash-recipe {
+  font-weight: 300;
+  margin-left: 12px;
+  color: $brand-border !important;
+
+  .geomicon {
+    position: relative;
+    top: 2px;
+    left: 2px;
+  }
+
+  &:hover {
+    text-decoration: none;
+    color: $brand-border-dark !important;
+  }
+}
+
