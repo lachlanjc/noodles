@@ -3,17 +3,6 @@ body {
   line-height: $line-height;
 }
 
-.serif {
-  font-family: $serif;
-  font-weight: 400;
-
-  p {
-    font-family: $serif;
-    color: $recipe-text;
-    line-height: $line-height;
-  }
-}
-
 .page-title {
   @include text-page-title;
   border-bottom: 1px solid $brand-border;

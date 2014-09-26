@@ -10,15 +10,14 @@
   width: 100%;
 }
 
-.markdown {
+.text {
   ol, ul {
-    padding-left: 24px;
+    padding-left: 22px;
   }
 
   p, li {
-    font: 400 1.18em $serif;
-    color: $recipe-text;
-    line-height: $line-height;
+    font-family: $serif;
+    @include text-body;
   }
 }
 

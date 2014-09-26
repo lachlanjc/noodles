@@ -28,7 +28,7 @@
   <div class="row">
 
     <h1>Ingredients</h1>
-    <div class="serif">
+    <div class="text">
       <%= simple_format(@recipe.ingredients.html_safe) %>
     </div>
 
@@ -37,7 +37,7 @@
   <div class="row">
 
     <h1>Instructions</h1>
-    <div class="markdown">
+    <div class="text">
       <%= @recipe.instructions_rendered.html_safe %>
     </div>
 
