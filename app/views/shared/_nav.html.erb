@@ -13,7 +13,7 @@
           <span class="geomicon geomicon-rows"></span>
           <span class="title"><%= t('general.recipes') %></span>
           <% if nav_active?(:recipes) %>
-            <% unless @recipe_count = 0 %>
+            <% if @recipe_count > 0 %>
               <span class="badge"><%= @recipe_count %></span>
             <% end %>
           <% end %>
