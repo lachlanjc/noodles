@@ -1,14 +1,31 @@
 .filter {
   padding: 0;
   margin-top: 1.2em;
+  color: $grey-light;
 
-  div, div a, div a:visited {
-    font-weight: 300;
+  h5 {
+    text-transform: uppercase;
+    display: inline-block;
+  }
+
+  a {
+    margin-left: 15px;
     color: $grey-light;
 
+    .geomicon {
+      position: relative;
+      top: 2px;
+      right: 3px;
+      color: lighten($grey-light, 4%);
+    }
+
     &:hover {
-      color: darken($grey-light, 8%);
+      color: darken($grey-light, 4%);
       text-decoration: none;
+
+      .geomicon {
+        color: $grey-light;
+      }
     }
   }
 
@@ -24,25 +41,6 @@
       background-color: white;
       outline: 0;
       border-color: $blue;
-    }
-  }
-
-  .pull-left {
-    h5 {
-      text-transform: uppercase;
-      display: inline-block;
-      font-weight: 400;
-    }
-
-    a {
-      margin-left: 15px;
-
-      .geomicon {
-        position: relative;
-        top: 2px;
-        right: 3px;
-        color: lighten($grey-light, 4%);
-      }
     }
   }
 }

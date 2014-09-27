@@ -29,8 +29,8 @@ $brand-pink:             $pink;
 
 $brand-bg:               #E8E8E8;
 $brand-border:           #D4E2EA;
-$brand-border-light:     lighten($brand-border, 4%);
-$brand-border-dark:      darken($brand-border, 4%);
+$brand-border-light:     lighten($brand-border, 2%);
+$brand-border-dark:      darken($brand-border, 6%);
 $brand-divider:          rgba(black, 0.02);
 
 $notes:                  #FFFFCC;
@@ -40,7 +40,6 @@ $notification-bg:        #51555C;
 $separator:              $grey-lighter;
 $description:            $grey-light;
 $text-muted:             $grey;
-$recipe-text:            #444;
 
 // Scaffolding
 

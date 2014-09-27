@@ -27,6 +27,8 @@ en:
     recipes: "Recipes"
     favorites: "Favorites"
     fav_this_r: "Favorite this recipe"
+    or: "or"
+    delete_forever: "Delete your recipe forever? Forever is a long, long time."
     collections: "Collections"
     search: "Search"
     settings: "Account Settings"

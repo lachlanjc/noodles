@@ -8,16 +8,6 @@ body {
   border-bottom: 1px solid $brand-border;
   padding-bottom: 8px;
   margin-bottom: 12px;
-
-  .lightweight {
-    font-weight: 300;
-  }
-
-  .geomicon-heart {
-    font-size: 18px;
-    position: relative;
-    top: -6px;
-  }
 }
 
 h1 {
@@ -33,26 +23,21 @@ p {
   line-height: $line-height;
 }
 
-a {
+a, a:visited {
   text-decoration: none;
-  font-weight: bold;
   color: $blue;
 
   &:hover {
     color: $dark-blue;
   }
-
-  &:visited {
-    color: $blue;
-
-    &:hover {
-      color: $dark-blue;
-    }
-  }
 }
 
 small {
   font: 1em $font-base;
+}
+
+.lightweight {
+  font-weight: 300;
 }
 
 .text-yellow {
