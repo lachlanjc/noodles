@@ -22,7 +22,7 @@
 
     <% if nav_active?(:recipes) or nav_active?(:favorites) %>
 
-       <div class="nav-link">
+       <div class="nav-link <%= nav_active_class(:favorites) %>">
         <%= link_to :favorites do %>
           <span class="geomicon geomicon-star"></span>
           <span class="title"><%= t('general.favorites') %></span>
