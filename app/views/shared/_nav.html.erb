@@ -20,7 +20,7 @@
         <% end %>
       </div>
 
-    <% if nav_active?(:recipes) %>
+    <% if nav_active?(:recipes) or nav_active?(:favorites) %>
 
        <div class="nav-link">
         <%= link_to :favorites do %>
