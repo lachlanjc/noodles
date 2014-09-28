@@ -20,13 +20,29 @@
         <% end %>
       </div>
 
-      <div class="nav-link <%= nav_active_class(:collections) %>">
+      <div class="nav-link <%= nav_active_class(:recipes) %>">
         <%= link_to :recipes do %>
           <span class="geomicon geomicon-grid"></span>
-          <span class="title"><%= t('general.collections') %></span>
+          <span class="title"><%= t('general.tags') %></span>
         <% end %>
       </div>
 
+    <% if nav_active?(:recipes) %>
+
+       <div class="nav-link <%= nav_active_class(:favorites) %>">
+        <%= link_to :favorites do %>
+          <span class="geomicon geomicon-star"></span>
+          <span class="title"><%= t('general.favorites') %></span>
+        <% end %>
+      </div>
+
+      <div class="nav-link <%= nav_active_class(:recipes) %>">
+        <%= link_to :recipes do %>
+          <span class="geomicon geomicon-share"></span>
+          <span class="title"><%= t('general.shared') %></span>
+        <% end %>
+      </div>
+    <% end %>
     </div>
 
     <div class="pull-right nav-link">
