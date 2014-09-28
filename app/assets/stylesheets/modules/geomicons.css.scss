@@ -36,6 +36,13 @@ html:hover [class^="geomicon-"]{-ms-zoom: 1;}
   -webkit-font-smoothing: antialiased;
 }
 
+.geomicon-position {
+  position: relative;
+  top: 2px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
 [class^="geomicon-"].right:before,
 [class*="geomicon-"].right:before{display:none;content:'';}
 
