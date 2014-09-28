@@ -18,12 +18,12 @@
 
       <div class="row">
         <%= f.label t('devise.registrations.new.first_name') %>
-        <%= f.text_field :f_n, placeholder: 'Mr. Noodles', class: 'form-control', id: 'name-full', required: true %>
+        <%= f.text_field :first_name, class: 'form-control', id: 'name-full', required: true %>
       </div>
 
       <div class="row">
         <%= f.label t('devise.registrations.new.email_check') %>
-        <%= f.email_field :email, placeholder: 'me@getnoodl.es', class: 'form-control' %>
+        <%= f.email_field :email, class: 'form-control' %>
       </div>
 
       <div class="row">
