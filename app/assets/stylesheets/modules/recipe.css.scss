@@ -27,6 +27,10 @@
       @include text-h1;
     }
 
+    .corner-star {
+      display: none !important;
+    }
+
     p {
       font-size: 1em !important;
     }

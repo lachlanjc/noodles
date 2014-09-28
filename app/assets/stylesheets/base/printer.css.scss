@@ -14,6 +14,11 @@
     color: $black-64;
   }
 
+  .print-full-width {
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+
   .printer-copy {
     display: block;
   }

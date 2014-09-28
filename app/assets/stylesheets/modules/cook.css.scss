@@ -1,0 +1,55 @@
+.cook-header {
+  margin: 2em auto;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cook-container {
+  width: 60%;
+  margin: 1rem auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cook-list {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+
+  > ol {
+    padding: 0;
+
+    li {
+      padding: 32px;
+      font: 400 34px/56px $serif !important;
+    }
+  }
+
+  li {
+    width: 100%;
+    min-height: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: $border-radius-small;
+    @include shadow-2-spread;
+    color: $black-87;
+
+    .panel-title {
+      @include text-title;
+    }
+
+    .panel-body {
+      margin-left: 0;
+      padding: 0;
+
+      p {
+        margin-bottom: 10px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
