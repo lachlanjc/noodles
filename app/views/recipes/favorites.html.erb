@@ -4,10 +4,6 @@
 
 <%= render 'layouts/flash' %>
 
-  <div class="container col-md-8 col-md-offset-2 filter">
-    <%= render 'shared/filter' %>
-  </div>
-
 <% if current_user and @recipes.count == 0 %>
 
   <div class="page-panel container col-md-8 col-md-offset-2">

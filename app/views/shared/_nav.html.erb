@@ -11,7 +11,7 @@
       <div class="nav-link <%= nav_active_class(:recipes) %>">
         <%= link_to :recipes do %>
           <span class="geomicon geomicon-rows"></span>
-          <span class="title"><%= t('general.recipes') %></span>
+          <span class="title"><%= t('general.all_recipes') %></span>
           <%# if nav_active?(:recipes) %>
             <%# if @recipe_count > 0 %>
               <!-- <span class="badge"><%= @recipe_count %></span> -->
@@ -39,7 +39,7 @@
 
      <div class="nav-link">
         <%= link_to :recipes do %>
-          <span class="geomicon geomicon-tags"></span>
+          <span class="geomicon geomicon-tag"></span>
           <span class="title"><%= t('general.tags') %></span>
         <% end %>
       </div>
