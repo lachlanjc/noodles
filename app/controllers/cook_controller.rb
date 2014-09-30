@@ -3,7 +3,7 @@ class CookController < ApplicationController
     @recipe = Recipe.find(params[:recipe_id])
 
     if @recipe.user_id == current_user.id
-      set_recipe
+      @recipe_step_count = @recipe.instructions.lines.count
     else
       flash[:view] = "No cooking with recipes that aren't yours!"
       redirect_to root_url

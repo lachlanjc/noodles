@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'recipes#index'
 
   resources :recipes do
-    get '/cook' => 'cook#index', as: :cook_recipe
+    get '/cook' => 'cook#index'
   end
 
   get '/favorites' => 'recipes#favorites', as: :favorites

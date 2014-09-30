@@ -9,6 +9,8 @@ window.onload = function() {
         document.body.className = e.dataset.bodyclass || '';
         for (var k = 0; k < s.length; k++) s[k].style.display = 'none';
         e.style.display = 'inline-block';
+        document.getElementById('cookCtrlRev').style.lineHeight = e.height + 'px';
+        document.getElementById('cookCtrlFwd').style.lineHeight = e.height;
         // e.style.fontSize = i + 'px';
         if (e.firstChild && e.firstChild.nodeName === 'IMG') {
             document.body.style.backgroundImage = 'url(' + e.firstChild.src + ')';
@@ -22,11 +24,12 @@ window.onload = function() {
         if (t > 0) ti = window.setTimeout(fwd, (t * 1000));
         while ((e.offsetWidth > window.innerWidth ||
             e.offsetHeight > window.innerHeight) && i >= 0) {
-            e.style.fontSize = (i -= 2) + 'px';
+            // e.style.fontSize = (i -= 2) + 'px';
         }
         // e.style.marginTop = ((window.innerHeight - e.offsetHeight) / 2) + 'px';
         if (window.location.hash !== n) window.location.hash = n;
         // document.title = e.textContent || e.innerText;
+        document.getElementById('currentStep').innerHTML = n;
     }
     document.onclick = function() { go(++big.current % (s.length)); };
     function fwd() { go(Math.min(s.length - 1, ++big.current)); }
@@ -56,42 +59,57 @@ window.onload = function() {
 };
 </script>
 
-<header class="cook-header">
-  <button class="btn" onclick="rev();">
-    <span class="geomicon geomicon-navigateleft geomicon-position"></span>
-    <span>Back</span>
-  </button>
-  <div class="text-muted">
-    <h4>
-      <%= @recipe.title %>
-    </h4>
+<header class="cook-header text-muted">
+
+  <%= link_to 'N', root_path, class: 'logo text-muted', onclick: 'window.location = "#{root_path}"' %>
+
+  <h4>
+    <%= @recipe.title %>
+  </h4>
+
+  <div>
+    <%= t('.step') %>
+    <span id="currentStep"></span>
+    <%= t('.of') %>
+    <span id="recipeStepCount"><%= @recipe_step_count %></span>
   </div>
-  <button class="btn btn-primary" onclick="fwd();">
-    <span>Next</span>
-    <span class="geomicon geomicon-navigateright geomicon-position"></span>
-  </button>
+
 </header>
 
-<article class="cook-container">
-  <ul class="cook-list">
+<article class="cook-shell">
 
-    <li class="intro">
-      <div class="panel-title">
-        <%= @recipe.title %>
-      </div>
-      <div class="panel-body">
-        <p><%= @recipe.description %></p>
-      </div>
-    </li>
+  <div class="cook-flex-container">
 
-    <li class="ingredients">
-      <div class="panel-title">Ingredients</div>
-      <div class="panel-body">
-        <%= simple_format(@recipe.ingredients.html_safe) %>
-      </div>
-    </li>
+    <div class="cook-ctrl">
+      <span class="geomicon geomicon-navigateleft" id="cookCtrlRev" onclick="rev();"></span>
+    </div>
 
-    <%= @recipe.instructions_rendered.html_safe %>
+    <ul class="cook-list">
 
-  </ul>
+      <li>
+        <div class="panel-title">
+          <%= @recipe.title %>
+        </div>
+        <div class="panel-body">
+          <p class="text-muted"><%= @recipe.description %></p>
+        </div>
+      </li>
+
+      <li class="text-left-align">
+        <div class="panel-title">Ingredients</div>
+        <div class="panel-body">
+          <%= simple_format(@recipe.ingredients.html_safe) %>
+        </div>
+      </li>
+
+      <%= @recipe.instructions_rendered.html_safe %>
+
+    </ul>
+
+    <div class="cook-ctrl">
+      <span class="geomicon geomicon-navigateright" id="cookCtrlFwd" onclick="fwd();"></span>
+    </div>
+
+  </div>
+
 </article>

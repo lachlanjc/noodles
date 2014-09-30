@@ -69,6 +69,10 @@ en:
         sign_in_to_n: "Sign in to Noodles"
         enter_info: "Just enter your email and password and you can get right back to cooking!"
         sign_in: "Sign in"
+  cook:
+    index:
+      step: "Step"
+      of: "of"
   recipes:
     home:
       cook_better_with: "Cook better with Noodles."
