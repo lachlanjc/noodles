@@ -31,7 +31,12 @@ class RecipesController < ApplicationController
 
   # GET /recipes/new
   def new
-    @recipe = Recipe.new
+    if current_user
+      @recipe = Recipe.new
+    else
+      flash[:info] = "You must sign up or sign in to create new recipes."
+      redirect_to root_url
+    end
   end
 
   # GET /recipes/1/edit
