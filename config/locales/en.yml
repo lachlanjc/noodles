@@ -73,6 +73,7 @@ en:
     index:
       step: "Step"
       of: "of"
+      cooking_with: "Today you're cooking:"
   recipes:
     home:
       cook_better_with: "Cook better with Noodles."

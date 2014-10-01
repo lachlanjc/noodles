@@ -8,9 +8,7 @@ window.onload = function() {
         var i = 1e3, e = s[n], t = parseInt(e.dataset.timeToNext || 0, 10);
         document.body.className = e.dataset.bodyclass || '';
         for (var k = 0; k < s.length; k++) s[k].style.display = 'none';
-        e.style.display = 'inline-block';
-        document.getElementById('cookCtrlRev').style.lineHeight = e.height + 'px';
-        document.getElementById('cookCtrlFwd').style.lineHeight = e.height;
+        e.style.display = 'block';
         // e.style.fontSize = i + 'px';
         if (e.firstChild && e.firstChild.nodeName === 'IMG') {
             document.body.style.backgroundImage = 'url(' + e.firstChild.src + ')';
@@ -27,9 +25,19 @@ window.onload = function() {
             // e.style.fontSize = (i -= 2) + 'px';
         }
         // e.style.marginTop = ((window.innerHeight - e.offsetHeight) / 2) + 'px';
-        if (window.location.hash !== n) window.location.hash = n;
-        // document.title = e.textContent || e.innerText;
-        document.getElementById('currentStep').innerHTML = n;
+        // if (window.location.hash !== n) window.location.hash = n;
+        var currentStep = n - 1;
+        var currentStepTitle = currentStep;
+        var currentStepTitleEnd = 'Step ' + currentStepTitle;
+        if (currentStep === -1) {
+          currentStepTitleEnd = 'Title Card';
+          currentStep = 0;
+        } else if (currentStep === 0) {
+          currentStepTitleEnd = 'Ingredients';
+          currentStep = 0;
+        }
+        document.title = document.getElementById('recipeTitle').innerHTML + '· ' + currentStepTitleEnd;
+        document.getElementById('currentStepInCount').innerHTML = currentStep;
     }
     document.onclick = function() { go(++big.current % (s.length)); };
     function fwd() { go(Math.min(s.length - 1, ++big.current)); }
@@ -46,6 +54,7 @@ window.onload = function() {
             if (x1 - x0 > 0) rev();
         };
     };
+    document.getElementById('cookCtrlRev').onclick = rev();
     function parse_hash() {
         return Math.max(Math.min(s.length - 1,
             parseInt(window.location.hash.substring(1), 10)), 0);
@@ -63,15 +72,15 @@ window.onload = function() {
 
   <%= link_to 'N', root_path, class: 'logo text-muted', onclick: 'window.location = "#{root_path}"' %>
 
-  <h4>
+  <h4 id="recipeTitle">
     <%= @recipe.title %>
   </h4>
 
   <div>
     <%= t('.step') %>
-    <span id="currentStep"></span>
+    <span id="currentStepInCount"></span>
     <%= t('.of') %>
-    <span id="recipeStepCount"><%= @recipe_step_count %></span>
+    <span><%= @recipe_step_count %></span>
   </div>
 
 </header>
@@ -88,11 +97,14 @@ window.onload = function() {
 
       <li>
         <div class="panel-title">
+          <span class="lightweight"><%= t('.cooking_with') %></span>
           <%= @recipe.title %>
         </div>
-        <div class="panel-body">
-          <p class="text-muted"><%= @recipe.description %></p>
-        </div>
+        <% if @recipe.description.length > 0 %>
+          <div class="panel-body">
+            <p class="text-muted"><%= @recipe.description %></p>
+          </div>
+        <% end %>
       </li>
 
       <li class="text-left-align">
