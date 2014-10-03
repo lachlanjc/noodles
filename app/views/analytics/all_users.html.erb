@@ -1,3 +1,5 @@
+<% activate_nav!(:analytics_users) %>
+
 <%= render 'shared/analytics_nav' %>
 
 <% if @access == true %>
@@ -15,7 +17,7 @@
         <thead>
           <tr style="font-weight: bold;">
             <td>ID</td>
-            <td>Name</td>
+            <td>First Name</td>
             <td>Email</td>
           </tr>
         </thead>
@@ -23,7 +25,7 @@
           <% @users.each do |user| %>
             <tr>
               <td><%= user.id %></td>
-              <td><%= user.name %></td>
+              <td><%= user.first_name %></td>
               <td><%= user.email %></td>
             </tr>
           <% end %>
