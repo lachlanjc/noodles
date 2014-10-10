@@ -40,8 +40,6 @@ GEM
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
       rack (>= 0.9.0)
-    bootstrap-sass (3.2.0.2)
-      sass (~> 3.2)
     bourbon (3.2.3)
       sass (~> 3.2)
       thor
@@ -83,9 +81,6 @@ GEM
       rack
     hike (1.2.3)
     i18n (0.6.11)
-    jquery-rails (3.1.2)
-      railties (>= 3.0, < 5.0)
-      thor (>= 0.14, < 2.0)
     json (1.8.1)
     json_spec (1.1.2)
       multi_json (~> 1.0)
@@ -195,14 +190,12 @@ DEPENDENCIES
   aws-sdk
   bcrypt (~> 3.1.7)
   better_errors
-  bootstrap-sass (~> 3.2.0)
   bourbon
   devise
   devise_marketable
   dotenv-rails
   factory_girl_rails (~> 4.2.1)
   font_assets
-  jquery-rails
   json_spec
   paperclip
   pg
