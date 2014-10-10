@@ -1,47 +1,33 @@
-<% activate_nav!(:recipes) %>
-
 <%= render 'shared/nav' %>
 
-<div class="page container col-md-8 col-md-offset-2 print-full-width recipe-print">
+<div class="container col-8 col-offset-1 print-full-width recipe-print">
 
-  <div class="row">
+  <% if @recipe.favorite == true %>
+    <div class="pull-right">
+      <span class="geomicon geomicon-star corner-star text-yellow"></span>
+    </div>
+  <% end %>
 
-    <% if @recipe.favorite == true %>
-      <div class="pull-right">
-        <span class="geomicon geomicon-star corner-star text-yellow"></span>
-      </div>
-    <% end %>
-
-    <h1 class="page-title"><%= @recipe.title %></h1>
-    <p><%= @recipe.description.html_safe %></p>
-
-  </div>
+  <h1><%= @recipe.title %></h1>
+  <p><%= @recipe.description.html_safe %></p>
 
   <% if @recipe.img.url != '/imgs/original/missing.png' %>
-    <div class="row img-container">
+    <div class="img-container">
       <%= image_tag @recipe.img.url %>
     </div>
   <% end %>
 
-  <div class="row">
-
-    <h1>Ingredients</h1>
-    <div class="text">
-      <%= simple_format(@recipe.ingredients.html_safe) %>
-    </div>
-
+  <h2>Ingredients</h1>
+  <div class="text">
+    <%= simple_format(@recipe.ingredients.html_safe) %>
   </div>
 
-  <div class="row">
-
-    <h1>Instructions</h1>
-    <div class="text">
-      <%= @recipe.instructions_rendered.html_safe %>
-    </div>
-
+  <h2>Instructions</h2>
+  <div class="text">
+    <%= @recipe.instructions_rendered.html_safe %>
   </div>
 
-  <div class="row col-md-4 no-padding">
+  <div class="row col-4 no-padding">
 
     <div class="action-list">
 

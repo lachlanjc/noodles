@@ -1,10 +1,8 @@
-<% activate_nav!(:favorites) %>
-
 <%= render 'shared/nav' %>
 
 <% if current_user and @recipes.count == 0 %>
 
-  <div class="page-panel container col-md-8 col-md-offset-2">
+  <div class="container col-8 col-offset-2">
 
     <div class="panel-title">
       <%= t('.no_favorites_yet') %>
@@ -21,7 +19,7 @@
 
 <% else %>
 
-  <div class="page container col-md-8 col-md-offset-2 recipes-list-container print-full-width">
+  <div class="page container col-8 col-offset-2 recipes-list-container print-full-width">
 
     <h1 class="page-title printer-copy">
       <%= t('.all_recipes') %>
@@ -61,7 +59,7 @@
 
 <% end %>
 
-<div class="container col-md-8 col-md-offset-2 footer">
+<div class="container col-8 col-offset-2 footer">
   <%= render 'shared/footer' %>
 </div>
 

@@ -1,14 +1,9 @@
 // COLORS
 
-$grey-lighter:  #F2F2F2;
+$grey-lighter:  #DDDDDD;
 $grey-light:    #AAAAAA;
-$grey:          #CCCCCC;
-$grey-dark:     #777777;
-$grey-darker:   #555555;
-$black:         #333333;
-
-$light-pink:    #FF80AB;
-$pink:          #FF4081;
+$grey:          #878787;
+$black:         #555555;
 
 $red:           #FF3D00;
 
@@ -27,9 +22,9 @@ $brand-warning:          $yellow;
 $brand-danger:           $red;
 
 $brand-bg:               #E8E8E8;
-$brand-border:           #D4E2EA;
-$brand-border-light:     lighten($brand-border, 2%);
-$brand-border-dark:      darken($brand-border, 6%);
+$brand-border:           $grey-lighter;
+$brand-border-light:     lighten($brand-border, 6%);
+$brand-border-dark:      darken($brand-border, 10%);
 $brand-divider:          rgba(black, 0.02);
 
 $notes:                  #FFFFCC;
@@ -59,6 +54,11 @@ $black-87:               #343434; // lighten(black, 13%);
 $line-height:            1.8;
 
 
+// Padding
+
+$padding-base:              16px;
+$padding-small:             8px;
+$padding-large:             24px;
 
 $padding-base-vertical:     6px;
 $padding-base-horizontal:   12px;

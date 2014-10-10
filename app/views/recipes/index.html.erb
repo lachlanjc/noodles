@@ -4,48 +4,39 @@
 
 <% if current_user and @recipes.count == 0 %>
 
-  <div class="page-panel container col-md-8 col-md-offset-2">
+  <div class="container col-8 col-offset-1">
 
-    <div class="panel-title">
-      <%= t('.hey_welcome') %>
-    </div>
-    <div class="panel-body">
-      <%= t('.no_recipes') %>
-      <br>
-      <%= t('.and_if_need_help') %>
-      <br>
-      <%= link_to t('.create_first'), new_recipe_path, class: 'btn btn-primary' %>
-    </div>
+    <h1><%= t('.hey') %></h1>
+    <h2><%= t('.welcome_to_n') %></h2>
+
+    <p><%= t('.no_recipes') %></p>
+    <p><%= t('.and_if_need_help') %></p>
+    <p><%= link_to t('.create_first'), new_recipe_path, class: 'btn btn-primary' %></p>
 
   </div>
 
 <% else %>
 
-  <div class="page container col-md-8 col-md-offset-2 recipes-list-container print-full-width">
+  <div class="container col-8 col-offset-1 recipe-list-container print-full-width">
 
-    <h1 class="page-title printer-copy">
-      <%= t('.all_recipes') %>
-    </h1>
+    <h1><%= t('general.recipes') %></h1>
 
-    <div class="list-group recipes-list-group">
+    <div class="recipe-list">
 
       <% @recipes.each do |recipe| %>
 
         <%= link_to (recipe) do %>
-          <div class="list-group-item">
+          <div class="recipe-list-item">
 
             <% if recipe.favorite == true %>
               <div class="pull-right">
-                <span class="geomicon geomicon-star text-yellow"></span>
+                <span class="geomicon geomicon-star"></span>
               </div>
             <% end %>
 
-            <h3><%= recipe.title %></h3>
-
+            <h2><%= recipe.title %></h2>
             <% unless recipe.description.length == 0 %>
-              <p>
-                <%= recipe.description.truncate(140) %>
-              </p>
+              <p><%= recipe.description.truncate(140) %></p>
             <% end %>
 
           </div>
@@ -62,10 +53,6 @@
   </div>
 
 <% end %>
-
-<div class="container col-md-8 col-md-offset-2 footer">
-  <%= render 'shared/footer' %>
-</div>
 
 
 <%= link_to :new_recipe, class: 'btn-paper btn-paper-right animated bounceInUp' do %>

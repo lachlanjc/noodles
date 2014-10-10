@@ -1,31 +1,23 @@
 <%= form_for(@recipe) do |f| %>
 
-  <div class="row">
-    <%= f.label :title %>
-    <%= f.text_field :title, autofocus: true, class: 'form-control' %>
-  </div>
+  <%= f.label :title %>
+  <%= f.text_field :title, autofocus: true, class: 'text-input' %>
 
-  <div class="row">
-    <%= f.label :description %>
-    <%= f.text_area :description, class: 'form-control' %>
-  </div>
+  <%= f.label :description %>
+  <%= f.text_area :description, class: 'text-input' %>
 
-  <div class="row">
-    <%= f.label t('general.photo') %>
-    <%= f.file_field :img %>
-  </div>
+  <%= f.label t('general.photo') %>
+  <%= f.file_field :img %>
 
-  <div class="row">
-    <%= f.label :ingredients %>
-    <%= f.text_area :ingredients, rows: 6, class: 'form-control serif' %>
-  </div>
+  <br>
 
-  <div class="row">
-    <%= f.label :instructions %>
-    <%= f.text_area :instructions, rows: 10, class: 'form-control serif' %>
-  </div>
+  <%= f.label :ingredients %>
+  <%= f.text_area :ingredients, rows: 6, class: 'text-input serif' %>
 
-  <div class="row col-md-4 no-padding">
+  <%= f.label :instructions %>
+  <%= f.text_area :instructions, rows: 10, class: 'text-input serif' %>
+
+  <div class="row col-4 no-padding">
     <div class="action-list">
       <a class="wtf">
         <label class="control checkbox">

@@ -1,10 +1,10 @@
-.action-list a {
+.action-list a, .action-list a:visited {
   width: 100%;
   padding: 3px 0;
   display: block;
   border-bottom: 1px solid $brand-border-light;
   color: $brand-primary;
-  font: 14px/32px $font-base;
+  font: 16px/32px $font-base;
 
   &:first-child {
     border-top: 1px solid $brand-border-light;
