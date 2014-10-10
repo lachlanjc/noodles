@@ -34,7 +34,6 @@ $brand-divider:          rgba(black, 0.02);
 
 $notes:                  #FFFFCC;
 $highlight:              #FFEEAA;
-$notification-bg:        #51555C;
 
 $separator:              $grey-lighter;
 $description:            $grey-light;
@@ -74,11 +73,9 @@ $large-margin-top:          30px !default;
 
 // Z-index master list
 
-$zindex-navbar:            1000;
 $zindex-dropdown:          1000;
 $zindex-popover:           1060;
 $zindex-tooltip:           1070;
-$zindex-navbar-fixed:      1030;
 $zindex-modal-background:  1040;
 $zindex-modal:             1050;
 

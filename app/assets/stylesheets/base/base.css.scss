@@ -3,40 +3,11 @@ html, body {
 }
 
 body {
-  background-color: $brand-bg;
   color: $black;
 }
 
 .container {
   margin-top: 1rem;
-}
-
-.page {
-  padding: 4px 32px 30px 32px;
-  @include paper;
-
-  &:hover {
-    @include shadow-2;
-  }
-}
-
-.logo {
-  font-weight: 200;
-  font-size: 32px;
-  position: relative;
-
-  &.text-muted {
-    color: #777777 !important;
-
-    &:visited {
-      color: #777777;
-    }
-
-    &:hover, &:visited:hover, &:focus {
-      color: darken(#777777, 8%) !important;
-      text-decoration: none;
-    }
-  }
 }
 
 // Assorted styles that don't fit anywhere else

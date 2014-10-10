@@ -10,14 +10,6 @@
     border-top: 1px solid $brand-border-light;
   }
 
-  &:hover {
-    text-decoration: none;
-  }
-
-  &:visited span {
-    color: $brand-primary;
-  }
-
   .geomicon {
     font-size: 18px;
     position: relative;
