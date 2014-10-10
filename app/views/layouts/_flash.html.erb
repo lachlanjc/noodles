@@ -1,15 +1,7 @@
 <% unless flash.empty? %>
-  <div id="flash-messages">
-    <% flash.each do |key, value| %>
-      <div class="notification <%= flash_class(key) %> alert-dismissible">
-        <div class="container-fluid">
-          <span class="geomicon <%= flash_icon_class(key) %>"></span>
-          <span class="text"><%= value %></span>
-          <button type="button" class="close-button" data-dismiss="alert" data-target=".alert-dismissible">
-            <span class="geomicon geomicon-delete"></span>
-          </button>
-        </div>
-      </div>
-    <% end %>
-  </div>
+  <% flash.each do |key, value| %>
+    <div class="flash <%= flash_class(key) %>">
+      <p><%= value %></p>
+    </div>
+  <% end %>
 <% end %>
