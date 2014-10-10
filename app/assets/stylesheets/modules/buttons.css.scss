@@ -1,14 +1,35 @@
-button {
-  border: 0;
-  display: inline-block;
+.btn:focus, .btn:active:focus {
+  outline: none;
+}
+
+.btn:active {
+  background-image: none;
   outline: 0;
 }
 
+.btn[disabled],
+fieldset[disabled] .btn {
+  pointer-events: none;
+  cursor: not-allowed;
+  filter: alpha(opacity=65);
+  box-shadow: none;
+  opacity: .65;
+}
+
 .btn {
-  font-weight: 400;
+  display: inline-block;
+  font: 14px $font-base;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  user-select: none;
+  background-image: none;
   border: 0;
+  border-radius: 4px;
   text-transform: uppercase;
-  padding: 6px 16px;
+  padding: 8px 16px;
 
   &:focus {
     outline: 0;
@@ -21,8 +42,8 @@ a.btn:visited:hover {
 
 .btn-paper {
   position: fixed;
-  bottom: $padding-base-horizontal;
-  right: $padding-base-horizontal;
+  bottom: $padding-large;
+  right: $padding-large;
   padding: 15px 15px 13px 16px;
   color: white;
   background-color: $brand-primary;
@@ -42,12 +63,8 @@ a.btn:visited:hover {
     @include shadow-5;
   }
 
-  &:visited {
+  &:visited, &:visited:hover {
     color: white;
-
-    &:hover {
-      color: white;
-    }
   }
 }
 
@@ -81,18 +98,8 @@ a.btn:visited:hover {
   @include button-standard($brand-danger);
 }
 
-.btn {
-  @include button-size($padding-base-vertical, $btn-padding-base-horizontal, $font-size-base, $line-height-base, $btn-radius);
-}
-
 .btn-lg {
-  @include button-size($padding-large-vertical, $btn-padding-large-horizontal, $font-size-large, $line-height-large, $btn-radius);
-}
-
-.btn-sm {
-  @include button-size($padding-small-vertical, $btn-padding-small-horizontal, $font-size-small, $line-height-small, $btn-radius);
-}
-
-.btn-xs {
-  @include button-size($padding-xs-vertical, $btn-padding-xs-horizontal, $font-size-small, $line-height-small, $btn-radius);
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 6px;
 }
