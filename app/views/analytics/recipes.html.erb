@@ -1,0 +1,42 @@
+<% activate_nav!(:analytics_recipes) %>
+
+<%= render 'shared/analytics_nav' %>
+
+<% if @access == true %>
+
+  <div class="page container col-md-8 col-md-offset-2 print-full-width">
+
+    <div class="row">
+      <h1 class="page-title">
+        All Recipes (<%= @recipes.count %>)
+      </h1>
+    </div>
+
+    <div class="row">
+      <table class="table">
+        <thead>
+          <tr style="font-weight: bold;">
+            <td>ID</td>
+            <td>Owner</td>
+            <td>Title</td>
+            <td>Ingredients</td>
+            <td>Instructions</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @recipes.each do |recipe| %>
+            <tr>
+              <td><%= recipe.id %></td>
+              <td><%= recipe.user_id %></td>
+              <td><%= recipe.title %></td>
+              <td><%= recipe.ingredients %></td>
+              <td><%= recipe.instructions %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+<% end %>

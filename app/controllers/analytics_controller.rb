@@ -2,7 +2,6 @@ class AnalyticsController < ApplicationController
   def check_access(id)
     if id == 1 or id == 4
       @access = true
-      @users = User.all.reverse
     else
       @access = false
     end
@@ -17,11 +16,18 @@ class AnalyticsController < ApplicationController
     end
   end
 
-  def marketable
+  def recipes
     authenticate
+    @recipes = Recipe.all.reverse
   end
 
   def all_users
     authenticate
+    @users = User.all.reverse
+  end
+
+  def marketable
+    authenticate
+    @users = User.all.reverse
   end
 end

@@ -6,6 +6,13 @@
 
   <div class="container col-md-8">
 
+    <div class="nav-link <%= nav_active_class(:analytics_recipes) %>">
+      <%= link_to :analytics_recipes do %>
+        <span class="geomicon geomicon-rows"></span>
+        <span class="title">Recipes</span>
+      <% end %>
+    </div>
+
     <div class="nav-link <%= nav_active_class(:analytics_users) %>">
       <%= link_to :analytics_users do %>
         <span class="geomicon geomicon-user"></span>
