@@ -32,36 +32,38 @@
 }
 
 label {
-  @include text-label;
-  margin-bottom: 5px;
-
-  & + i {
-    @include text-label;
-  }
+  color: $black;
+  font-weight: 500;
+  font-size: 16px;
 }
 
 .row {
   margin: 5px 0;
 }
 
-.form-control {
+.text-input {
+  display: block;
+  padding: 4px 8px;
   margin-bottom: 1em;
-  padding: 6px 12px;
-  border-radius: 0;
-  box-shadow: none !important;
-  background-image: none !important;
   border: 0;
-  border-left: 2px solid $brand-border;
-  font-weight: 300;
-  font-size: 1.1em;
+  border-left: 1px solid $brand-border;
+  width: 16em;
+  font: 300 16px $font-base;
+  color: $grey;
 
   &:focus {
-    border-color: $blue;
+    transition: all 0.18s ease-in-out;
+    border-color: $brand-border-dark;
+    outline: 0;
+    font-size: 28px;
+    padding: 4px 16px;
+    color: $black;
   }
 }
 
-textarea.form-control {
+textarea.text-input {
   line-height: 1.8;
+  width: 32em;
 }
 
 .radio label {
