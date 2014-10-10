@@ -33,7 +33,7 @@ en:
     favorites: "Favorites"
     shared: "Shared"
     search: "Search"
-    settings: "Account Settings"
+    settings: "Settings"
     sign_up: "Sign Up"
     sign_in: "Sign In"
     sign_out: "Sign Out"
@@ -46,10 +46,10 @@ en:
   devise:
     registrations:
       new:
-        welcome: "Welcome to Noodles"
-        sign_up_and: "Sign up for Noodles in under a minute and enjoy awesome recipe organization."
+        welcome: "Welcome to Noodles!"
+        sign_up_and: "Sign up for Noodles in under a minute and get cooking."
         first_name: "What's your first name?"
-        email_check: "What's an email address you actually check?"
+        email_check: "What's your email address?"
         eight_char: "(at least 8 characters)"
         sign_up_start_using: "Sign up and start using Noodles!"
       edit:
@@ -78,7 +78,8 @@ en:
     home:
       cook_better_with: "Cook better with Noodles."
     index:
-      hey_welcome: "Hey! Welcome to Noodles."
+      hey: "Hey there!"
+      welcome_to_n: "Welcome to Noodles."
       no_recipes: "You don't have any recipes yet! To create one, click the button below."
       and_if_need_help: "And if at any point you need anything, click the link in the footer below and ask away. We're happy to help."
       create_first: "Create your first recipe"
@@ -101,7 +102,6 @@ en:
       oops_went_wrong: "Oops! Something went wrong."
     filter:
       filter: "Filter:"
-    footer:
-      footer_copy: "2014 Noodles. Cook better."
+    nav:
       contact_us: "Contact Us"
-      get_help: "Get Help"
+      help: "Help"
