@@ -6,7 +6,6 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'autoprefixer-rails'
 gem 'aws-sdk'
 gem 'bcrypt', '~> 3.1.7'
-gem 'bootstrap-sass', '~> 3.2.0'
 gem 'bourbon'
 gem 'devise'
 gem 'devise_marketable'
