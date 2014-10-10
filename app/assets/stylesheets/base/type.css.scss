@@ -1,34 +1,35 @@
 body {
   font-family: $font-base;
   line-height: $line-height;
-}
-
-.page-title {
-  @include text-page-title;
-  border-bottom: 1px solid $brand-border;
-  padding-bottom: 8px;
-  margin-bottom: 12px;
+  font-weight: 300;
 }
 
 h1 {
-  @include text-h1;
+  color: $brand-primary;
+  font-size: 37px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
 }
 
 h2 {
-  @include text-title;
+  color: $black;
+  font-size: 21px;
+  font-weight: 500;
+  margin: 20px 0;
 }
 
 p {
-  font: 300 1.18em $font-base;
+  font: 300 16px $font-base;
   line-height: $line-height;
 }
 
 a, a:visited {
   text-decoration: none;
-  color: $blue;
+  color: $link-color;
 
   &:hover {
-    color: $dark-blue;
+    text-decoration: none;
+    color: darken($link-color, 4%);
   }
 }
 
@@ -36,14 +37,10 @@ small {
   font: 1em $font-base;
 }
 
-.lightweight {
-  font-weight: 300;
-}
-
-.text-left-align {
+.left-align {
   text-align: left !important;
 }
 
-.text-yellow {
-  color: $yellow;
+.center {
+  text-align: center !important;
 }

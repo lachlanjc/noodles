@@ -49,8 +49,7 @@ $link-color:             $brand-primary;
 
 // Typography
 
-$sans-serif:             Roboto, 'Helvetica Neue', Helvetica, sans-serif;
-$font-base:              $sans-serif;
+$font-base:              'museo-sans', $helvetica;
 $serif:                  'Source Serif Pro', Georgia, 'Times New Roman', Times, serif;
 $font-monospace:         'InputMono', 'Source Code Pro', Consolas, monospace;
 
