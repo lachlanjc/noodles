@@ -1,6 +1,6 @@
 <%= render 'shared/nav' %>
 
-<div class="container col-8 col-offset-1 print-full-width recipe-print">
+<div class="container col-8 print-full-width recipe-print">
 
   <% if @recipe.favorite == true %>
     <div class="pull-right">
@@ -27,26 +27,22 @@
     <%= @recipe.instructions_rendered.html_safe %>
   </div>
 
-  <div class="row col-4 no-padding">
+  <div class="action-list">
 
-    <div class="action-list">
+    <%= link_to :edit_recipe do %>
+      <%= inline_svg('ios7-compose-outline.svg') %>
+      <span><%= t('general.edit') %></span>
+    <% end %>
 
-      <%= link_to :edit_recipe do %>
-        <span class="geomicon geomicon-write"></span>
-        <span><%= t('general.edit') %></span>
-      <% end %>
+    <a onclick="window.print();">
+      <%= inline_svg('ios7-printer-outline.svg') %>
+      <span><%= t('general.print') %></span>
+    </a>
 
-      <a onclick="window.print();">
-        <span class="geomicon geomicon-print"></span>
-        <span><%= t('general.print') %></span>
-      </a>
-
-      <!-- <a>
-        <span class="geomicon geomicon-action"></span>
-        <span>Share</span>
-      </a> -->
-
-    </div>
+    <a class="disabled">
+      <%= inline_svg('ios7-upload-outline.svg') %>
+      <span>Share</span>
+    </a>
 
   </div>
 

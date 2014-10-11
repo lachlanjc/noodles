@@ -1,24 +1,33 @@
-.action-list a, .action-list a:visited {
-  width: 100%;
-  padding: 3px 0;
-  display: block;
-  border-bottom: 1px solid $brand-border-light;
+.action-list a {
+  display: inline-block;
+  margin-right: 15px;
   color: $brand-primary;
-  font: 16px/32px $font-base;
 
-  &:first-child {
-    border-top: 1px solid $brand-border-light;
+  svg, span {
+    display: block;
   }
 
-  .geomicon {
-    font-size: 18px;
-    position: relative;
-    top: 3px;
-    margin: 0 7px;
+  svg {
+    width: 40px;
+    height: 40px;
+    margin: 0 8px;
+
+    path {
+      fill: $brand-primary;
+    }
   }
 
-  &.wtf {
-    padding: 5px 0 2px 0 !important;
+  &.disabled {
+    color: $grey-light;
+
+    svg path {
+      fill: $grey-light;
+    }
+  }
+
+  span {
+    text-align: center;
+    font-weight: 500;
   }
 }
 
