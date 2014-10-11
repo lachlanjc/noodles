@@ -85,7 +85,7 @@ class RecipesController < ApplicationController
   # DELETE /recipes/1
   def destroy
     @recipe.destroy
-    flash[:alert] = "Your recipe has been deleted."
+    flash[:danger] = "Your recipe has been deleted."
     redirect_to recipes_url
   end
 
