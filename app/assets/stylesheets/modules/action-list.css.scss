@@ -17,7 +17,7 @@
     }
   }
 
-  &.disabled {
+  &.item-disabled {
     color: $grey-light;
 
     svg path {
@@ -25,9 +25,45 @@
     }
   }
 
+  &.item-danger {
+    color: $brand-danger;
+
+    svg path {
+      fill: $brand-danger;
+    }
+  }
+
   span {
     text-align: center;
     font-weight: 500;
+  }
+}
+
+.control {
+  input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1; // Put the input behind the label so it doesn't overlay text
+  }
+
+  .control-indicator {
+    user-select: none;
+
+    svg path {
+      fill: $grey-light !important;
+    }
+  }
+
+  span {
+    color: $grey-light;
+  }
+
+  input:checked ~ .control-indicator path {
+    fill: $yellow !important;
+  }
+
+  input:checked ~ span {
+    color: $yellow !important;
   }
 }
 
