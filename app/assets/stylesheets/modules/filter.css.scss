@@ -1,48 +1,30 @@
-.filter {
-  padding: 0;
-  margin-top: 1.2em;
-  color: $grey-light;
+.filter-bar {
+  width: 100%;
+  margin-top: 1em;
+  @include display(flex);
+  @include justify-content(space-between);
+  border-bottom: 1px solid $grey-lighter;
 
-  h5 {
-    text-transform: uppercase;
-    display: inline-block;
-  }
-
-  a {
-    margin-left: 15px;
-    color: $grey-light;
-
-    .geomicon {
-      position: relative;
-      top: 2px;
-      right: 3px;
-      color: lighten($grey-light, 4%);
-    }
-
-    &:hover {
-      color: darken($grey-light, 4%);
-      text-decoration: none;
-
-      .geomicon {
-        color: $grey-light;
-      }
-    }
+  span {
+    color: $grey;
   }
 
   .search {
-    border: 1px solid #ccc;
-    border-radius: 14px;
-    padding-left: 10px;
-    background-color: transparent;
-    color: $grey-darker;
+    svg {
+      @include svg(32px, $grey-light);
+    }
 
-    &:focus {
-      transition: all 0.18s ease-in-out;
-      background-color: white;
-      outline: 0;
-      border-color: $blue;
+    span {
+      margin-left: 4px;
+      vertical-align: top;
+      @include up(3px);
     }
   }
+}
+
+.dropdown-arrow svg {
+  @include svg(24px, $grey);
+  @include up(7px);
 }
 
 @media print {

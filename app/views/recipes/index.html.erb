@@ -21,6 +21,8 @@
 
     <h1><%= t('general.recipes') %></h1>
 
+    <%= render 'shared/filter' %>
+
     <div class="recipe-list">
 
       <% @recipes.each do |recipe| %>

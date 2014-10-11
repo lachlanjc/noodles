@@ -1,19 +1,15 @@
-<div class="pull-left">
+<div class="filter-bar">
 
-  <h5><%= t('.filter') %></h5>
+  <div class="search">
+    <%= inline_svg('ios7-search.svg') %>
+    <span>Search (<%= @recipes.count %> recipes)...</span>
+  </div>
 
-  <%= link_to :recipes do %>
-    <span class="geomicon geomicon-rows"></span>
-    <span class="title"><%= t('general.all_recipes') %></span>
-  <% end %>
-
-  <%= link_to :favorites do %>
-    <span class="geomicon geomicon-star"></span>
-    <span class="title"><%= t('general.favorites') %></span>
-  <% end %>
+  <div class="filter">
+    <span>Sort &amp; filter</span>
+    <span class="dropdown-arrow">
+      <%= inline_svg('ios7-arrow-down.svg') %>
+    </span>
+  </div>
 
 </div>
-
-<!-- <div class="pull-right">
-  <input type="text" class="search" placeholder="Search...">
-</div> -->
