@@ -52,11 +52,10 @@ label {
   color: $grey;
 
   &:focus {
-    transition: all 0.18s ease-in-out;
+    transition: all 0.08s ease-in;
     border-color: $brand-border-dark;
     outline: 0;
-    font-size: 28px;
-    padding: 4px 16px;
+    padding: 4px 12px;
     color: $black;
   }
 }
