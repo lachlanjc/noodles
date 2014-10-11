@@ -44,27 +44,28 @@ a.btn:visited:hover {
   position: fixed;
   bottom: $padding-large;
   right: $padding-large;
-  padding: 15px 15px 13px 16px;
-  color: white;
+  height: 45px;
+  padding: 0 0 6px 0;
   background-color: $brand-primary;
   border-radius: 50%;
-  font-size: 18px;
-  line-height: 1.25;
   transition: box-shadow 0.2s ease-in-out;
   @include shadow-2;
 
   &:hover {
     @include shadow-3;
-    text-decoration: none;
-    color: white;
   }
 
   &:active {
     @include shadow-5;
   }
 
-  &:visited, &:visited:hover {
-    color: white;
+  svg {
+    width: 50px;
+    height: 50px;
+
+    path {
+      fill: white;
+    }
   }
 }
 
