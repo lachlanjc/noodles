@@ -6,9 +6,10 @@ body {
 
 h1 {
   color: $brand-primary;
-  font-size: 37px;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  font-size: 37px;
+  line-height: 1.25;
+  margin: 15px 0 0 0;
 }
 
 h2 {
@@ -43,4 +44,12 @@ small {
 
 .center {
   text-align: center !important;
+}
+
+.text-muted {
+  color: $grey !important;
+
+  &:hover {
+    color: darken($grey, 8%);
+  }
 }
