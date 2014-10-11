@@ -80,3 +80,22 @@
     background-color: darken($btn-bg-color, 4%);
   }
 }
+
+@mixin svg($size, $fill) {
+  width: $size;
+  height: $size;
+
+  path {
+    fill: $fill;
+  }
+}
+
+@mixin size($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin up($amount) {
+  position: relative;
+  top: $amount;
+}
