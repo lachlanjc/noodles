@@ -6,20 +6,6 @@ body {
   color: $black;
 }
 
-.container {
-  margin-top: 1rem;
-}
-
-// Assorted styles that don't fit anywhere else
-
-.home {
-  padding: 1em 0 2em 0 !important;
-}
-
-.row.no-padding {
-  padding: 0;
-}
-
 hr {
   border: 0;
   border-bottom: 1px solid $brand-border;
