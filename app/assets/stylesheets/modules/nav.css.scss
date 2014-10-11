@@ -1,6 +1,5 @@
 nav {
-  padding-left: 16px;
-  padding-top: 10px;
+  padding-left: 20px;
 
   > a {
     text-transform: uppercase;
@@ -13,6 +12,6 @@ nav {
 
 @media print {
   nav {
-    display: none;
+    display: none !important;
   }
 }
