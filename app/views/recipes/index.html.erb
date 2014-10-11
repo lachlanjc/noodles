@@ -4,7 +4,7 @@
 
 <% if current_user and @recipes.count == 0 %>
 
-  <div class="container col-8 col-offset-1">
+  <div class="container col-8">
 
     <h1><%= t('.hey') %></h1>
     <h2><%= t('.welcome_to_n') %></h2>
@@ -17,7 +17,7 @@
 
 <% else %>
 
-  <div class="container col-8 col-offset-1 recipe-list-container print-full-width">
+  <div class="container col-8 recipe-list-container print-full-width">
 
     <h1><%= t('general.recipes') %></h1>
 
