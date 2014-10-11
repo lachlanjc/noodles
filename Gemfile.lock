@@ -151,6 +151,9 @@ GEM
       sass (~> 3.2.0)
       sprockets (~> 2.8, <= 2.11.0)
       sprockets-rails (~> 2.0)
+    seed_dump (3.2.0)
+      activerecord (~> 4)
+      activesupport (~> 4)
     sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -205,6 +208,7 @@ DEPENDENCIES
   rake
   redcarpet
   sass-rails
+  seed_dump
   stripe
   tracer_bullets
   turbolinks

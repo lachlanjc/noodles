@@ -22,6 +22,7 @@ gem 'will_paginate'
 
 group :development do
   gem 'better_errors'
+  gem 'seed_dump'
   gem 'tracer_bullets'
 end
 
