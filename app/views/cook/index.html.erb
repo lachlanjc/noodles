@@ -39,9 +39,12 @@ window.onload = function() {
         document.title = document.getElementById('recipeTitle').innerHTML + '· ' + currentStepTitleEnd;
         document.getElementById('currentStepInCount').innerHTML = currentStep;
     }
-    document.onclick = function() { go(++big.current % (s.length)); };
+    // document.onclick = function() { go(++big.current % (s.length)); };
     function fwd() { go(Math.min(s.length - 1, ++big.current)); }
     function rev() { go(Math.max(0, --big.current)); }
+    document.getElementById('cook-list').onclick = function() { go(Math.min(s.length - 1, ++big.current)); };
+    document.getElementById('cookCtrlFwd').onclick = function() { go(Math.min(s.length - 1, ++big.current)); };
+    document.getElementById('cookCtrlRev').onclick = function() { go(Math.max(0, --big.current)); };
     document.onkeydown = function(e) {
         if (e.which === 39 || e.which === 34 || e.which === 40) fwd();
         if (e.which === 37 || e.which === 33 || e.which === 38) rev();
@@ -54,7 +57,6 @@ window.onload = function() {
             if (x1 - x0 > 0) rev();
         };
     };
-    document.getElementById('cookCtrlRev').onclick = rev();
     function parse_hash() {
         return Math.max(Math.min(s.length - 1,
             parseInt(window.location.hash.substring(1), 10)), 0);
@@ -68,32 +70,36 @@ window.onload = function() {
 };
 </script>
 
-<header class="cook-header text-muted">
+<div class="cook-container">
 
-  <%= link_to 'N', root_path, class: 'logo text-muted', onclick: 'window.location = "#{root_path}"' %>
+  <header class="cook-header center">
 
-  <h4 id="recipeTitle">
-    <%= @recipe.title %>
-  </h4>
+    <%= link_to root_path do %>
+      <h1 class="text-muted">N</h1>
+    <% end %>
 
-  <div>
-    <%= t('.step') %>
-    <span id="currentStepInCount"></span>
-    <%= t('.of') %>
-    <span><%= @recipe_step_count %></span>
-  </div>
+    <%= link_to @recipe do %>
+      <h3 class="text-muted" id="recipeTitle">
+        <%= @recipe.title %>
+      </h3>
+    <% end %>
 
-</header>
-
-<article class="cook-shell">
-
-  <div class="cook-flex-container">
-
-    <div class="cook-ctrl">
-      <span class="geomicon geomicon-navigateleft" id="cookCtrlRev" onclick="rev();"></span>
+    <div class="text-muted">
+      <%= t('.step') %>
+      <span id="currentStepInCount"></span>
+      <%= t('.of') %>
+      <span><%= @recipe_step_count %></span>
     </div>
 
-    <ul class="cook-list">
+  </header>
+
+  <div class="cook-shell">
+
+    <div class="cook-ctrl" id="cookCtrlRev">
+      <%= inline_svg('ios7-arrow-left.svg') %>
+    </div>
+
+    <ul class="cook-list" id="cook-list">
 
       <li>
         <div class="panel-title">
@@ -118,10 +124,10 @@ window.onload = function() {
 
     </ul>
 
-    <div class="cook-ctrl">
-      <span class="geomicon geomicon-navigateright" id="cookCtrlFwd" onclick="fwd();"></span>
+    <div class="cook-ctrl" id="cookCtrlFwd">
+      <%= inline_svg('ios7-arrow-right.svg') %>
     </div>
 
   </div>
 
-</article>
+</div>
