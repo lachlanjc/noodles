@@ -15,8 +15,19 @@ h1 {
 h2 {
   color: $black;
   font-size: 21px;
-  font-weight: 500;
   margin: 20px 0;
+}
+
+h3, h4, h5, h6 {
+  font-weight: 500;
+}
+
+h6 {
+  color: $grey;
+  font-size: 1rem;
+  margin: 8px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.02rem;
 }
 
 p {
@@ -44,6 +55,10 @@ small {
 
 .center {
   text-align: center !important;
+}
+
+.text-danger {
+  color: $brand-danger !important;
 }
 
 .text-muted {
