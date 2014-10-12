@@ -5,26 +5,18 @@
   @include justify-content(space-between);
   border-bottom: 1px solid $grey-lighter;
 
-  span {
-    color: $grey;
-  }
-
   .search {
     svg {
       @include svg(32px, $grey-light);
     }
 
     span {
+      color: $grey;
       margin-left: 4px;
       vertical-align: top;
       @include up(3px);
     }
   }
-}
-
-.dropdown-arrow svg {
-  @include svg(24px, $grey);
-  @include up(7px);
 }
 
 @media print {

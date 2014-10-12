@@ -1,7 +1,7 @@
 nav {
   padding-left: 20px;
 
-  > a {
+  a {
     text-transform: uppercase;
     font-weight: 300;
     font-size: 16px;
@@ -11,6 +11,10 @@ nav {
     &.active {
       font-weight: 500;
     }
+  }
+
+  .sub {
+    margin-left: 12px;
   }
 }
 
