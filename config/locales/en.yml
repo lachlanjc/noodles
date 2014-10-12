@@ -25,6 +25,7 @@ en:
     welcome_to_noodles: "Welcome to Noodles!"
     all_recipes: "All Recipes"
     recipes: "Recipes"
+    recipe: "recipe"
     favorites: "Favorites"
     favorite: "Favorite"
     delete: "Delete"

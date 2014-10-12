@@ -2,7 +2,7 @@
 
   <div class="search">
     <%= inline_svg('ios7-search.svg') %>
-    <span>Search (<%= @recipes.count %> recipes)...</span>
+    <span><%= t('general.search') %> (<%= pluralize(@recipes.count, t('general.recipe')) %>)...</span>
   </div>
 
   <div class="filter">
