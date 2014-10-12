@@ -4,7 +4,7 @@
   <%= f.text_field :title, autofocus: true, class: 'text-input' %>
 
   <%= f.label :description %>
-  <%= f.text_area :description, class: 'text-input' %>
+  <%= f.text_area :description, class: 'text-input js-auto-size' %>
 
   <%= f.label t('general.photo') %>
   <%= f.file_field :img %>
@@ -12,10 +12,10 @@
   <br>
 
   <%= f.label :ingredients %>
-  <%= f.text_area :ingredients, rows: 6, class: 'text-input serif' %>
+  <%= f.text_area :ingredients, class: 'text-input js-auto-size serif' %>
 
   <%= f.label :instructions %>
-  <%= f.text_area :instructions, rows: 10, class: 'text-input serif' %>
+  <%= f.text_area :instructions, class: 'text-input js-auto-size serif' %>
 
   <div class="action-list">
 

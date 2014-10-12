@@ -31,6 +31,10 @@ label {
 textarea.text-input {
   line-height: 1.8;
   width: 32em;
+
+  &.js-auto-size {
+    resize: none;
+  }
 }
 
 .radio label {
