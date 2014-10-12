@@ -15,9 +15,11 @@
   }
 
   .indicators {
-    opacity: 0;
     float: right;
-    display: inline-block;
+
+    svg {
+      @include svg(18px, white);
+    }
   }
 
   &:hover {
@@ -26,16 +28,6 @@
 
     h2, p {
       color: white;
-    }
-
-    .indicators {
-      opacity: 1;
-
-      .indicator-favorite {
-        svg {
-          @include svg(18px, white);
-        }
-      }
     }
   }
 
