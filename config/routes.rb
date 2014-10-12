@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     get '/cook' => 'cook#index'
   end
 
-  get '/favorites' => 'recipes#favorites', as: :favorites
+  get '/recipes/favorites' => 'recipes#favorites', as: :favorites
 
   get '/home' => 'recipes#home'
   get '/help' => 'pages#help', as: :help
