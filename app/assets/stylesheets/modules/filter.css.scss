@@ -28,7 +28,7 @@
 }
 
 @media print {
-  .filter {
-    display: none;
+  .filter-bar {
+    display: none !important;
   }
 }
