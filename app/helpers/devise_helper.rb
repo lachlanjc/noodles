@@ -9,8 +9,10 @@ module DeviseHelper
 
     html = <<-HTML
     <hr>
-    <h3 class="text-danger">#{sentence}</h3>
-    <ul>#{messages}</ul>
+    <div class="error-container">
+      <h3 class="text-danger">#{sentence}</h3>
+      <ul>#{messages}</ul>
+    </div>
     <hr>
     HTML
 

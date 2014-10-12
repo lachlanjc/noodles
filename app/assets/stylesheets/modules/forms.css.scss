@@ -23,6 +23,7 @@ label {
     border-color: $brand-border-dark;
     outline: 0;
     padding: 4px 12px;
+    font-size: 18px;
     color: $black;
   }
 }
@@ -46,6 +47,19 @@ textarea.text-input {
 
   input {
     border-color: $brand-danger;
+  }
+}
+
+.error-container {
+  h3 {
+    margin-bottom: 0;
+  }
+
+  ul {
+    margin-top: 0;
+    padding-left: 0;
+    list-style: none;
+    color: $grey;
   }
 }
 

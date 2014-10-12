@@ -48,7 +48,7 @@ en:
     registrations:
       new:
         welcome: "Welcome to Noodles!"
-        sign_up_and: "Sign up for Noodles in under a minute and get cooking."
+        sign_up_and: "Sign up in under a minute and start cooking!"
         first_name: "What's your first name?"
         email_check: "What's your email address?"
         eight_char: "(at least 8 characters)"
