@@ -5,16 +5,15 @@
 <div class="container col-8 print-full-width">
 
   <h1><%= t('.account_settings') %></h1>
-  <h2><%= t('.info_and_pass') %></h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
     <%= devise_error_messages! %>
 
-    <%= f.label t('devise.registrations.new.first_name') %>
+    <%= f.label t('.fn') %>
     <%= f.text_field :first_name, class: 'text-input', id: 'name-full', required: true %>
 
-    <%= f.label t('devise.registrations.new.email_check') %>
+    <%= f.label t('.email_a') %>
     <%= f.email_field :email, class: 'text-input' %>
 
     <%= f.label t('.current_pass') %>
@@ -23,7 +22,7 @@
     <%= f.label :password %> <i><%= t('.can_leave_blank') %></i><br />
     <%= f.password_field :password, autocomplete: 'off', class: 'text-input' %>
 
-    <%= f.submit t('general.update'), class: 'btn btn-default' %>
+    <%= f.submit t('general.update'), class: 'btn btn-primary' %>
 
   <% end %>
 
