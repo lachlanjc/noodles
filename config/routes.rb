@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/favorites' => 'recipes#favorites', as: :favorites
 
   get '/home' => 'recipes#home'
-  get '/styleguide' => 'pages#styleguide'
+  get '/help' => 'pages#help', as: :help
 
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions"}, skip: [:sessions, :registrations]
 

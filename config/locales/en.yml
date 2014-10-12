@@ -34,6 +34,8 @@ en:
     favorites: "Favorites"
     shared: "Shared"
     search: "Search"
+    help: "Help"
+    contact_us: "Contact Us"
     settings: "Settings"
     sign_up: "Sign Up"
     sign_in: "Sign In"
@@ -44,6 +46,7 @@ en:
     photo: "Photo"
     save: "Save"
     update: "Update"
+
   devise:
     registrations:
       new:
@@ -70,6 +73,7 @@ en:
         sign_in_to_n: "Sign in to Noodles"
         enter_info: "Just enter your email and password and you can get right back to cooking!"
         sign_in: "Sign in"
+
   cook:
     index:
       step: "Step"
@@ -82,7 +86,7 @@ en:
       hey: "Hey there!"
       welcome_to_n: "Welcome to Noodles."
       no_recipes: "You don't have any recipes yet! To create one, click the button below."
-      and_if_need_help: "And if at any point you need anything, click the link in the footer below and ask away. We're happy to help."
+      and_if_need_help: "And if at any point you need anything, click the Help link in the navigation on the left."
       create_first: "Create your first recipe"
       all_recipes: "All Recipes"
     favorites:
@@ -98,11 +102,15 @@ en:
       delete_forever: "Delete your recipe forever? Forever is a long, long time."
     printing:
       print_copy: "Search, share, and organize your recipes like never before with Noodles. Get it now for free at http://getnoodl.es/"
+
+  pages:
+    help:
+      need_help: "Need help with Noodles?"
+      help_details: "We're always happy to help you out if you're having any issues with Noodles. Just click the button below, and we'll respond as soon as we possibly can!"
+      contact_us_details: "If you have any questions about Noodles, just click the button below and ask away. We'll respond as soon as we possibly can!"
+
   shared:
     error_messages:
       oops_went_wrong: "Oops! Something went wrong."
     filter:
       filter: "Filter:"
-    nav:
-      contact_us: "Contact Us"
-      help: "Help"
