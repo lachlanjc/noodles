@@ -2,21 +2,13 @@
 
 <%= render 'shared/nav' %>
 
-<%= render 'layouts/flash' %>
+<div class="container col-8">
 
-<div class="page container col-md-8 col-md-offset-2">
-
-  <div class="row">
-    <h1 class="page-title">
-      <span class="lightweight"><%= t('.editing') %></span>
-      <%= @recipe.title %>
-    </h1>
-  </div>
+  <h1>
+    <%= t('.editing') %>
+    <%= @recipe.title %>
+  </h1>
 
   <%= render 'form' %>
 
-</div>
-
-<div class="container col-md-8 col-md-offset-2 footer">
-  <%= render 'shared/footer' %>
 </div>

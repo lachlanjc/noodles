@@ -25,15 +25,18 @@ en:
     welcome_to_noodles: "Welcome to Noodles!"
     all_recipes: "All Recipes"
     recipes: "Recipes"
+    recipe: "recipe"
     favorites: "Favorites"
-    fav_this_r: "Favorite this recipe"
-    or: "or"
+    favorite: "Favorite"
+    delete: "Delete"
     delete_forever: "Delete your recipe forever? Forever is a long, long time."
     tags: "Tags"
     favorites: "Favorites"
     shared: "Shared"
     search: "Search"
-    settings: "Account Settings"
+    help: "Help"
+    contact_us: "Contact Us"
+    settings: "Settings"
     sign_up: "Sign Up"
     sign_in: "Sign In"
     sign_out: "Sign Out"
@@ -43,23 +46,23 @@ en:
     photo: "Photo"
     save: "Save"
     update: "Update"
+
   devise:
     registrations:
       new:
-        welcome: "Welcome to Noodles"
-        sign_up_and: "Sign up for Noodles in under a minute and enjoy awesome recipe organization."
+        welcome: "Welcome to Noodles!"
+        sign_up_and: "Sign up in under a minute and start cooking!"
         first_name: "What's your first name?"
-        email_check: "What's an email address you actually check?"
+        email_check: "What's your email address?"
         eight_char: "(at least 8 characters)"
         sign_up_start_using: "Sign up and start using Noodles!"
       edit:
         account_settings: "Account Settings"
-        info_and_pass: "Contact Info and Password"
+        fn: "First name"
+        email_a: "Email address"
         current_pass: "Current Password"
         can_leave_blank: "(leave this blank unless you would like to change it)"
         eight_char: "Please use at least 8 characters."
-        need_help: "Need help?"
-        unhappy_want_support: "If you are unhappy with Noodles for any reason, please don't hesitate to reach out to us. Just click the button below and ask away!"
         delete_account: "Delete your account"
         want_account_gone: "To delete your account, click the button below. Your data will be erased forever."
         delete_my_account: "Delete my account"
@@ -69,24 +72,27 @@ en:
         sign_in_to_n: "Sign in to Noodles"
         enter_info: "Just enter your email and password and you can get right back to cooking!"
         sign_in: "Sign in"
+
   cook:
     index:
       step: "Step"
       of: "of"
       cooking_with: "Today you're cooking:"
+
   recipes:
     home:
       cook_better_with: "Cook better with Noodles."
     index:
-      hey_welcome: "Hey! Welcome to Noodles."
+      hey: "Hey there!"
+      welcome_to_n: "Welcome to Noodles."
       no_recipes: "You don't have any recipes yet! To create one, click the button below."
-      and_if_need_help: "And if at any point you need anything, click the link in the footer below and ask away. We're happy to help."
+      and_if_need_help: "And if at any point you need anything, click the Help link in the navigation on the left."
       create_first: "Create your first recipe"
       all_recipes: "All Recipes"
     favorites:
       no_favorites_yet: "You don't have any Favorites yet."
-      favorites_are: "Favorites are a way to quickly bookmark recipes you like."
-      to_add_favorites: "To add a favorite, edit a recipe and click the Favorites star."
+      favorites_are: "Favorites are an easy way to quickly bookmark recipes you love."
+      to_add_favorites: "To add a favorite, edit a recipe and click the Favorites star at the bottom of the page. All your Favorites will show up here."
       back_to_r: "Back to All Your Recipes"
     new:
       new_recipe: "New Recipe"
@@ -96,12 +102,15 @@ en:
       delete_forever: "Delete your recipe forever? Forever is a long, long time."
     printing:
       print_copy: "Search, share, and organize your recipes like never before with Noodles. Get it now for free at http://getnoodl.es/"
+
+  pages:
+    help:
+      need_help: "Need help with Noodles?"
+      help_details: "We're always happy to help you out if you're having any issues with Noodles. Just click the button below, and we'll respond as soon as we possibly can!"
+      contact_us_details: "If you have any questions about Noodles, just click the button below and ask away. We'll respond as soon as we possibly can!"
+
   shared:
     error_messages:
       oops_went_wrong: "Oops! Something went wrong."
     filter:
       filter: "Filter:"
-    footer:
-      footer_copy: "2014 Noodles. Cook better."
-      contact_us: "Contact Us"
-      get_help: "Get Help"

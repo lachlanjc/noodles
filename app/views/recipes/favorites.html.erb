@@ -2,50 +2,49 @@
 
 <%= render 'shared/nav' %>
 
-<%= render 'layouts/flash' %>
+<% if @recipes.count == 0 %>
 
-<% if current_user and @recipes.count == 0 %>
+  <div class="container col-8">
 
-  <div class="page-panel container col-md-8 col-md-offset-2">
+    <h1><%= t('general.favorites') %></h1>
 
-    <div class="panel-title">
-      <%= t('.no_favorites_yet') %>
-    </div>
-    <div class="panel-body">
-      <%= t('.favorites_are') %>
-      <br>
-      <%= t('.to_add_favorites') %>
-      <br>
+    <h2><%= t('.no_favorites_yet') %></h2>
+
+    <p><%= t('.favorites_are') %></p>
+    <p><%= t('.to_add_favorites') %></p>
+    <p>
       <%= link_to t('.back_to_r'), recipes_path, class: 'btn btn-primary' %>
-    </div>
+    </p>
 
   </div>
 
 <% else %>
 
-  <div class="page container col-md-8 col-md-offset-2 recipes-list-container print-full-width">
+  <div class="container col-8 recipe-list-container print-full-width">
 
-    <h1 class="page-title printer-copy">
-      <%= t('.all_recipes') %>
-    </h1>
+    <h1><%= t('general.favorites') %></h1>
 
-    <div class="list-group recipes-list-group">
+    <%= render 'shared/filter' %>
+
+    <div class="recipe-list">
 
       <% @recipes.each do |recipe| %>
 
         <%= link_to (recipe) do %>
-          <div class="list-group-item">
+          <div class="recipe-list-item">
 
-            <% if recipe.favorite == true %>
-              <div class="pull-right">
-                <span class="geomicon geomicon-star text-yellow"></span>
-              </div>
-            <% end %>
+            <div class="indicators">
+              <% if recipe.favorite == true %>
+                <div class="indicator-favorite">
+                  <%= inline_svg('ios7-star.svg') %>
+                </div>
+              <% end %>
+            </div>
 
-            <h3><%= recipe.title %></h3>
+            <h2><%= recipe.title %></h2>
 
             <% unless recipe.description.length == 0 %>
-              <p><%= recipe.description %></p>
+              <p><%= recipe.description.truncate(140) %></p>
             <% end %>
 
           </div>
@@ -63,11 +62,7 @@
 
 <% end %>
 
-<div class="container col-md-8 col-md-offset-2 footer">
-  <%= render 'shared/footer' %>
-</div>
 
-
-<%= link_to :new_recipe, class: 'btn-paper btn-paper-right animated bounceInUp' do %>
-  <span class="geomicon geomicon-plus"></span>
+<%= link_to :new_recipe, class: 'btn-paper' do %>
+  <%= inline_svg('ios7-plus-empty.svg') %>
 <% end %>

@@ -1,27 +1,33 @@
+.cook-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: $grey-lighter;
+}
+
 .cook-header {
-  margin: 2rem auto 3rem auto;
+  margin: 1rem auto;
   width: 80%;
-  text-align: center;
   @include display(flex);
   @include justify-content(space-between);
 
-  h4 {
+  h3 {
     position: relative;
     top: 7px;
+    font-weight: 500;
   }
 
   div {
     position: relative;
-    top: 14px;
+    top: 27px;
   }
 }
 
 .cook-shell {
-  max-width: 90%;
+  max-width: 60%;
   margin: 0 auto;
-}
-
-.cook-flex-container {
   margin: 1em auto;
   @include display(flex);
   @include justify-content(space-between);
@@ -30,13 +36,15 @@
 .cook-list {
   list-style: none;
   padding: 0;
+  margin-top: 0;
 
   > ol {
     padding: 0;
+    margin: 0;
 
     li {
-      padding: 32px;
       font: 400 34px/56px $serif !important;
+      padding: 32px;
     }
   }
 
@@ -75,8 +83,12 @@
   }
 }
 
-.cook-ctrl {
-  font-size: 34px;
-  line-height: 3em;
-  color: #777777;
+.cook-ctrl svg {
+  width: 50px;
+  height: 50px;
+  margin-top: 1em;
+
+  path {
+    fill: #777777;
+  }
 }

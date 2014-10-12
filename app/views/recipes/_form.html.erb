@@ -1,53 +1,49 @@
 <%= form_for(@recipe) do |f| %>
 
-  <div class="row">
-    <%= f.label :title %>
-    <%= f.text_field :title, autofocus: true, class: 'form-control' %>
-  </div>
+  <%= f.label :title %>
+  <%= f.text_field :title, autofocus: true, class: 'text-input' %>
 
-  <div class="row">
-    <%= f.label :description %>
-    <%= f.text_area :description, class: 'form-control' %>
-  </div>
+  <%= f.label :description %>
+  <%= f.text_area :description, class: 'text-input' %>
 
-  <div class="row">
-    <%= f.label t('general.photo') %>
-    <%= f.file_field :img %>
-  </div>
+  <%= f.label t('general.photo') %>
+  <%= f.file_field :img %>
 
-  <div class="row">
-    <%= f.label :ingredients %>
-    <%= f.text_area :ingredients, rows: 6, class: 'form-control serif' %>
-  </div>
+  <br>
 
-  <div class="row">
-    <%= f.label :instructions %>
-    <%= f.text_area :instructions, rows: 10, class: 'form-control serif' %>
-  </div>
+  <%= f.label :ingredients %>
+  <%= f.text_area :ingredients, rows: 6, class: 'text-input serif' %>
 
-  <div class="row col-md-4 no-padding">
-    <div class="action-list">
-      <a class="wtf">
-        <label class="control checkbox">
-          <%= f.check_box :favorite %>
-          <span class="control-indicator geomicon geomicon-star"></span>
-          <span class="text text-black"><%= t('general.fav_this_r') %></span>
-        </label>
-      </a>
-    </div>
-  </div>
+  <%= f.label :instructions %>
+  <%= f.text_area :instructions, rows: 10, class: 'text-input serif' %>
 
-  <br><br><br>
+  <div class="action-list">
+
+    <a class="item-favorite">
+      <label class="control">
+        <%= f.check_box :favorite %>
+        <div class="control-indicator">
+          <%= inline_svg('ios7-star-outline.svg') %>
+        </div>
+        <div class="control-indicator-checked">
+          <%= inline_svg('ios7-star.svg') %>
+        </div>
+        <span><%= t('general.favorite') %></span>
+      </label>
+    </a>
+
+    <% if nav_active?(:edit_recipe) %>
+      <%= link_to @recipe, method: :delete, data: { confirm: t('general.delete_forever') }, class: 'item-danger' do %>
+        <%= inline_svg('ios7-trash-outline.svg') %>
+        <span><%= t('general.delete') %></span>
+      <% end %>
+    <% end %>
+
+  </div>
 
   <div class="row">
     <% if nav_active?(:new_recipe) %>
       <%= f.submit t('general.create_recipe'), class: 'btn btn-primary' %>
-    <% elsif nav_active?(:edit_recipe) %>
-      <%= f.submit t('general.save'), class: 'btn btn-primary' %>
-      <%= link_to @recipe, method: :delete, data: { confirm: t('general.delete_forever') }, class: 'trash-recipe' do %>
-        <span><%= t('general.or') %></span>
-        <span class="geomicon geomicon-trash geomicon-position"></span>
-      <% end %>
     <% else %>
       <%= f.submit t('general.save'), class: 'btn btn-primary' %>
     <% end %>

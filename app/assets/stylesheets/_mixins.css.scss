@@ -24,15 +24,6 @@
   box-shadow: 0 15px 10px rgba(0, 0, 0, 0.22);
 }
 
-// PAPER
-
-@mixin paper {
-  border-radius: $border-radius-small;
-  background-color: white;
-  @include shadow-1;
-  transition: box-shadow 0.24s ease-in-out;
-}
-
 // TEXT STYLES
 
 @mixin text-body {
@@ -77,32 +68,34 @@
   color: $black-54;
 }
 
-// BUTTON STYLES
-
 @mixin button-standard($btn-bg-color) {
   background-color: $btn-bg-color;
-  color: white;
-  transition: box-shadow 0.2s ease-in-out;
-  @include shadow-1;
 
   &:hover {
     background-color: darken($btn-bg-color, 1%);
-    color: white;
-    @include shadow-2;
   }
 
   &:focus,
   &:active {
     background-color: darken($btn-bg-color, 4%);
-    color: darken(white, 3%);
-    @include shadow-4;
   }
+}
 
-  &:visited {
-    color: white;
+@mixin svg($size, $fill) {
+  width: $size;
+  height: $size;
 
-    &:hover {
-      color: white;
-    }
+  path {
+    fill: $fill;
   }
+}
+
+@mixin size($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin up($amount) {
+  position: relative;
+  top: $amount;
 }

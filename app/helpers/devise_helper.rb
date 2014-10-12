@@ -8,17 +8,12 @@ module DeviseHelper
                       :resource => resource.class.model_name.human.downcase)
 
     html = <<-HTML
-    <div class="row">
-      <div class="panel panel-error">
-        <div class="panel-title">
-          <span class="geomicon geomicon-alert"></span>
-          #{sentence}
-        </div>
-        <div class="panel-body">
-          <ul>#{messages}</ul>
-        </div>
-      </div>
+    <hr>
+    <div class="error-container">
+      <h3 class="text-danger">#{sentence}</h3>
+      <ul>#{messages}</ul>
     </div>
+    <hr>
     HTML
 
     html.html_safe

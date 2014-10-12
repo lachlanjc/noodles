@@ -1,32 +1,69 @@
 .action-list a {
-  width: 100%;
-  padding: 3px 0;
-  display: block;
-  border-bottom: 1px solid $brand-border-light;
+  display: inline-block;
+  margin-right: 15px;
   color: $brand-primary;
-  font: 14px/32px $font-base;
 
-  &:first-child {
-    border-top: 1px solid $brand-border-light;
+  svg, span {
+    display: block;
   }
 
-  &:hover {
-    text-decoration: none;
+  svg {
+    width: 40px;
+    height: 40px;
+    margin: 0 8px;
+
+    path {
+      fill: $brand-primary;
+    }
   }
 
-  &:visited span {
+  &.item-disabled {
+    color: $grey-light;
+
+    svg path {
+      fill: $grey-light;
+    }
+  }
+
+  &.item-danger {
+    color: $brand-danger;
+
+    svg path {
+      fill: $brand-danger;
+    }
+  }
+
+  span {
+    text-align: center;
+    font-weight: 500;
+  }
+}
+
+.control {
+  input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1; // Put the input behind the label so it doesn't overlay text
+  }
+
+  .control-indicator-checked {
+    display: none;
+  }
+
+  span {
     color: $brand-primary;
   }
 
-  .geomicon {
-    font-size: 18px;
-    position: relative;
-    top: 3px;
-    margin: 0 7px;
+  input:checked ~ .control-indicator {
+    display: none;
   }
 
-  &.wtf {
-    padding: 5px 0 2px 0 !important;
+  input:checked ~ .control-indicator-checked {
+    display: block;
+
+    svg path {
+      fill: $brand-primary;
+    }
   }
 }
 

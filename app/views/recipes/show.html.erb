@@ -1,68 +1,49 @@
-<% activate_nav!(:recipes) %>
-
 <%= render 'shared/nav' %>
 
-<%= render 'layouts/flash' %>
+<div class="container col-8 print-full-width recipe-print">
 
-<div class="page container col-md-8 col-md-offset-2 print-full-width recipe-print">
-
-  <div class="row">
-
+  <h1>
+    <%= @recipe.title %>
     <% if @recipe.favorite == true %>
-      <div class="pull-right">
-        <span class="geomicon geomicon-star corner-star text-yellow"></span>
+      <div class="favorite">
+        <%= inline_svg('ios7-star.svg') %>
       </div>
     <% end %>
-
-    <h1 class="page-title"><%= @recipe.title %></h1>
-    <p><%= @recipe.description.html_safe %></p>
-
-  </div>
+  </h1>
+  <p><%= @recipe.description.html_safe %></p>
 
   <% if @recipe.img.url != '/imgs/original/missing.png' %>
-    <div class="row img-container">
+    <div class="img-container">
       <%= image_tag @recipe.img.url %>
     </div>
   <% end %>
 
-  <div class="row">
-
-    <h1>Ingredients</h1>
-    <div class="text">
-      <%= simple_format(@recipe.ingredients.html_safe) %>
-    </div>
-
+  <h2>Ingredients</h1>
+  <div class="text">
+    <%= simple_format(@recipe.ingredients.html_safe) %>
   </div>
 
-  <div class="row">
-
-    <h1>Instructions</h1>
-    <div class="text">
-      <%= @recipe.instructions_rendered.html_safe %>
-    </div>
-
+  <h2>Instructions</h2>
+  <div class="text">
+    <%= @recipe.instructions_rendered.html_safe %>
   </div>
 
-  <div class="row col-md-4 no-padding">
+  <div class="action-list">
 
-    <div class="action-list">
+    <%= link_to :edit_recipe do %>
+      <%= inline_svg('ios7-compose-outline.svg') %>
+      <span><%= t('general.edit') %></span>
+    <% end %>
 
-      <%= link_to :edit_recipe do %>
-        <span class="geomicon geomicon-write"></span>
-        <span><%= t('general.edit') %></span>
-      <% end %>
+    <a onclick="window.print();">
+      <%= inline_svg('ios7-printer-outline.svg') %>
+      <span><%= t('general.print') %></span>
+    </a>
 
-      <a onclick="window.print();">
-        <span class="geomicon geomicon-print"></span>
-        <span><%= t('general.print') %></span>
-      </a>
-
-      <!-- <a>
-        <span class="geomicon geomicon-action"></span>
-        <span>Share</span>
-      </a> -->
-
-    </div>
+    <a class="item-disabled">
+      <%= inline_svg('ios7-upload-outline.svg') %>
+      <span>Share</span>
+    </a>
 
   </div>
 

@@ -1,73 +1,22 @@
-.notification {
-  margin-bottom: 0;
-  padding-right: 0;
-  border-bottom: 1px solid darken($notification-bg, 5%);
-  background-color: $notification-bg;
+.flash p {
+  border-left: 2px solid $grey;
+  color: $grey;
+  padding-left: 10px;
 
-  &:last-child {
-    border-bottom: 0;
-  }
-
-  .text {
-    color: white;
-    font: 300 1.12em $font-base;
-    margin-left: $padding-xs-horizontal;
-
-    a {
-      color: white;
-      font-weight: bold;
-
-      &:hover {
-        color: $grey-lighter;
-        text-decoration: none;
-        transition: box-shadow 0.18s ease-in-out;
-        box-shadow: 0 2px $grey-lighter;
-      }
-    }
-  }
-
-  .container-fluid {
-    margin: auto;
-    padding: 6px 8px 6px 24px;
-    box-shadow: none;
-  }
-
-  .geomicon {
-    font-size: 22px;
-    top: 4px;
-    position: relative;
-  }
-
-  .close-button {
-    float: right;
-    background-color: transparent;
-    padding: 3px 12px 3px 6px;
-
-    .geomicon {
-      color: white;
-      opacity: 0.5;
-
-      &:hover {
-        opacity: 0.75;
-      }
-    }
+  a {
+    color: inherit;
+    font-weight: bold;
   }
 }
 
-.notification-success .geomicon {
-  color: $brand-success;
+.flash-success p {
+  border-color: $brand-success;
 }
 
-.notification-info .geomicon {
-  color: $brand-info;
+.flash-info p {
+  border-color: $brand-info;
 }
 
-.notification-danger .geomicon {
-  color: $brand-danger;
-}
-
-@media print {
-  .notification {
-    display: none;
-  }
+.flash-danger p {
+  border-color: $brand-danger;
 }

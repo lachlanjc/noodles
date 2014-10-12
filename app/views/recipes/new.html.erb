@@ -2,18 +2,10 @@
 
 <%= render 'shared/nav' %>
 
-<%= render 'layouts/flash' %>
+<div class="page container col-8">
 
-<div class="page container col-md-8 col-md-offset-2">
-
-  <div class="row">
-    <h1 class="page-title"><%= t('.new_recipe') %></h1>
-  </div>
+  <h1><%= t('.new_recipe') %></h1>
 
   <%= render 'form' %>
 
-</div>
-
-<div class="container col-md-8 col-md-offset-2 footer">
-  <%= render 'shared/footer' %>
 </div>

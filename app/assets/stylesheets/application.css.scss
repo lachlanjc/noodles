@@ -1,27 +1,23 @@
 @import 'bourbon';
 
-@import 'bootstrap-sprockets';
-@import 'bootstrap';
-
 @import 'animate';
 
 @import 'variables';
 @import 'mixins';
 
 @import 'base/base';
+@import 'base/grid';
 @import 'base/printer';
 @import 'base/type';
 
 @import 'modules/action-list';
 @import 'modules/buttons';
 @import 'modules/cook';
-@import 'modules/cuisines';
+@import 'modules/filter';
 @import 'modules/flash';
 @import 'modules/footer';
 @import 'modules/forms';
-@import 'modules/geomicons';
 @import 'modules/nav';
-@import 'modules/panels';
 @import 'modules/recipe';
 @import 'modules/recipe-list';
 @import 'modules/search';

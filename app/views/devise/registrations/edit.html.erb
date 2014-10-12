@@ -1,75 +1,37 @@
+<% activate_nav!(:settings) %>
+
 <%= render 'shared/nav' %>
 
-<%= render 'layouts/flash' %>
+<div class="container col-8 print-full-width">
 
-<div class="page container col-md-8 col-md-offset-2 print-full-width">
+  <h1><%= t('.account_settings') %></h1>
 
-    <div class="row">
-      <h1 class="page-title"><%= t('.account_settings') %></h1>
-    </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
-    <div class="row">
-      <h1><%= t('.info_and_pass') %></h1>
-    </div>
+    <%= devise_error_messages! %>
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= f.label t('.fn') %>
+    <%= f.text_field :first_name, class: 'text-input', id: 'name-full', required: true %>
 
-      <%= devise_error_messages! %>
+    <%= f.label t('.email_a') %>
+    <%= f.email_field :email, class: 'text-input' %>
 
-      <div class="row">
-        <%= f.label t('devise.registrations.new.first_name') %>
-        <%= f.text_field :first_name, class: 'form-control', id: 'name-full', required: true %>
-      </div>
+    <%= f.label t('.current_pass') %>
+    <%= f.password_field :current_password, autocomplete: 'off', class: 'text-input' %>
 
-      <div class="row">
-        <%= f.label t('devise.registrations.new.email_check') %>
-        <%= f.email_field :email, class: 'form-control' %>
-      </div>
+    <%= f.label :password %> <i><%= t('.can_leave_blank') %></i><br />
+    <%= f.password_field :password, autocomplete: 'off', class: 'text-input' %>
 
-      <div class="row">
-        <%= f.label t('.current_pass') %>
-        <%= f.password_field :current_password, autocomplete: 'off', class: 'form-control' %>
-      </div>
+    <%= f.submit t('general.update'), class: 'btn btn-primary' %>
 
-      <div class="row">
-        <%= f.label :password %> <i><%= t('.can_leave_blank') %></i><br />
-        <%= f.password_field :password, autocomplete: 'off', class: 'form-control' %>
-      </div>
+  <% end %>
 
-      <div class="row">
-        <%= f.submit t('general.update'), class: 'btn btn-default' %>
-      </div>
+  <hr>
 
-    <% end %>
+  <h2><%= t('.delete_account') %></h2>
+  <p><%= t('.want_account_gone') %></p>
+  <%= button_to t('.delete_my_account'), registration_path(resource_name), class: 'btn btn-sm btn-danger', data: { confirm: "Are you sure you want to erase your account? Once deleted you cannot restore it." }, method: :delete %>
 
-    <div class="row">
-      <hr>
-    </div>
-
-    <div class="row">
-      <h1><%= t('.need_help') %></h1>
-      <p><%= t('.unhappy_want_support') %></p>
-      <p>
-        <a href="#" class="btn btn-default" data-helpful="noodles" data-helpful-email="<%= current_user.email %>"><%= t('shared.footer.get_help') %></a>
-      </p>
-    </div>
-
-    <div class="row">
-      <h2><%= t('.delete_account') %></h2>
-      <p><%= t('.want_account_gone') %></p>
-      <%= button_to t('.delete_my_account'), registration_path(resource_name), class: 'btn btn-sm btn-danger', data: { confirm: "Are you sure you want to erase your account? Once deleted you cannot restore it." }, method: :delete %>
-    </div>
-
-    <div class="row">
-      <%= render 'shared/printer' %>
-    </div>
-
-  </div>
+  <%= render 'shared/printer' %>
 
 </div>
-
-<div class="container col-md-8 col-md-offset-2 footer">
-  <%= render 'shared/footer' %>
-</div>
-
-<br>

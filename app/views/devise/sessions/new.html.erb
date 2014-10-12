@@ -2,31 +2,23 @@
 
 <%= render 'shared/nav' %>
 
-<%= render 'layouts/flash' %>
+<div class="container col-6">
 
-<div class="container page col-md-6 col-md-offset-3">
-
-  <div class="row">
-    <h1 class="page-title"><%= t('.sign_in_to_n') %></h1>
-    <p><%= t('.enter_info') %></p>
-  </div>
+  <h1><%= t('.sign_in_to_n') %></h1>
+  <p><%= t('.enter_info') %></p>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-    <div class="row">
       <%= devise_error_messages! %>
 
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control', required: true, autofocus: true %>
+    <%= f.label :email %>
+    <%= f.email_field :email, class: 'text-input', required: true, autofocus: true %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control', required: true, pattern: '.{8,}', title: 'Make sure you use at least 8 characters' %>
-    </div>
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'text-input', required: true, pattern: '.{8,}', title: 'Make sure you use at least 8 characters' %>
 
-    <div class="row">
-      <%= f.check_box :remember_me, class: 'switch' %>
-      <%= f.label :remember_me, class: 'control-label' %>
-    </div>
+    <%= f.check_box :remember_me, class: 'switch' %>
+    <%= f.label :remember_me, class: 'control-label' %>
 
     <br>
 
@@ -36,8 +28,4 @@
 
   <% end %>
 
-</div>
-
-<div class="container col-md-6 col-md-offset-3 footer">
-  <%= render 'shared/footer' %>
 </div>

@@ -1,135 +1,25 @@
-.navbar-noodles {
-  background-color: $brand-primary;
-  border: 0;
-  border-radius: 0;
-  margin-bottom: 0;
-  height: 64px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
-  display: flex;
-  justify-content: space-between;
+nav {
+  padding-left: 20px;
 
-  > div {
-    display: inline-block;
-  }
+  a {
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 8px;
 
-  .container {
-    margin: 0 auto;
-    padding: 2px 0;
-    float: none;
-  }
-
-  .nav-link {
-    display: inline-block;
-    margin: 0 1.25em;
-    height: 64px;
-
-    &.active .title {
-      font-weight: bold;
-    }
-
-    &.pull-right {
-      margin: 0;
-    }
-
-    > a {
-      position: relative;
-      top: 16px;
-      color: white;
-      font-weight: 400;
-      font-size: 16px;
-      text-decoration: none !important;
-
-      &:hover {
-        color: white;
-        padding-bottom: 4px;
-        transition: box-shadow 0.15s ease-in-out;
-        box-shadow: 0 2px white;
-      }
-
-      .geomicon {
-        position: relative;
-        top: 2px;
-        margin-right: 6px;
-      }
-
-      .badge {
-        background-color: white;
-        color: $brand-primary;
-        position: relative;
-        left: 4px;
-      }
-      
-      .caret {
-        position: relative;
-        top: -1px;
-      }
+    &.active {
+      font-weight: 500;
     }
   }
 
-  .nav-brand-text {
-    color: white;
-    font-weight: 200;
-    font-size: 32px;
-    position: relative;
-    top: 2px;
-    left: 15px;
-    display: inline-block;
-
-    &:focus,
-    &:visited, &:visited:hover,
-    &:hover {
-      color: white !important;
-      text-decoration: none;
-    }
+  .sub {
+    margin-left: 12px;
   }
-
-  .dropdown-menu-icons {
-    margin-top: 0;
-
-    li a {
-      padding: 5px 15px !important;
-
-      .geomicon {
-        position: relative;
-        top: 2px;
-        margin-right: 5px;
-      }
-    }
-  }
-
-  > .pull-right {
-    position: relative;
-    right: 15px;
-
-    > a {
-      display: block;
-
-      .geomicon {
-        font-size: 1.25em;
-        line-height: 1.66;
-      }
-    }
-
-    .nav-link:last-child {
-      margin-right: 0 !important;
-    }
-
-    .dropdown-menu {
-      top: 62px;
-
-      .divider {
-        margin: 4px 0 !important;
-      }
-    }
-  }
-}
-
-.nav-logged-out {
-  display: block !important;
 }
 
 @media print {
-  .navbar-noodles {
-    display: none;
+  nav {
+    display: none !important;
   }
 }

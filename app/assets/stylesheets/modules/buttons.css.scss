@@ -1,17 +1,57 @@
-button {
-  border: 0;
-  display: inline-block;
+.btn:focus, .btn:active:focus {
+  outline: none;
+}
+
+.btn:active {
+  background-image: none;
   outline: 0;
 }
 
-.btn {
-  font-weight: 400;
-  border: 0;
-  text-transform: uppercase;
-  padding: 6px 16px;
+.btn[disabled],
+fieldset[disabled] .btn {
+  pointer-events: none;
+  cursor: not-allowed;
+  filter: alpha(opacity=65);
+  box-shadow: none;
+  opacity: .65;
+}
 
-  &:focus {
+.btn {
+  display: inline-block;
+  font: 14px $font-base;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  user-select: none;
+  background-image: none;
+  border: 0;
+  border-radius: 4px;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  color: white;
+  transition: box-shadow 0.2s ease-in-out;
+  @include shadow-1;
+
+  &:hover {
+    color: white;
+    @include shadow-2;
+  }
+
+  &:focus,
+  &:active {
+    color: darken(white, 3%);
+    @include shadow-4;
     outline: 0;
+  }
+
+  &:visited {
+    color: white;
+
+    &:hover {
+      color: white;
+    }
   }
 }
 
@@ -21,32 +61,29 @@ a.btn:visited:hover {
 
 .btn-paper {
   position: fixed;
-  bottom: $padding-base-horizontal;
-  right: $padding-base-horizontal;
-  padding: 15px 15px 13px 16px;
-  color: white;
+  bottom: $padding-large;
+  right: $padding-large;
+  height: 45px;
+  padding: 0 0 6px 0;
   background-color: $brand-primary;
   border-radius: 50%;
-  font-size: 18px;
-  line-height: 1.25;
   transition: box-shadow 0.2s ease-in-out;
   @include shadow-2;
 
   &:hover {
     @include shadow-3;
-    text-decoration: none;
-    color: white;
   }
 
   &:active {
     @include shadow-5;
   }
 
-  &:visited {
-    color: white;
+  svg {
+    width: 50px;
+    height: 50px;
 
-    &:hover {
-      color: white;
+    path {
+      fill: white;
     }
   }
 }
@@ -81,18 +118,8 @@ a.btn:visited:hover {
   @include button-standard($brand-danger);
 }
 
-.btn {
-  @include button-size($padding-base-vertical, $btn-padding-base-horizontal, $font-size-base, $line-height-base, $btn-radius);
-}
-
 .btn-lg {
-  @include button-size($padding-large-vertical, $btn-padding-large-horizontal, $font-size-large, $line-height-large, $btn-radius);
-}
-
-.btn-sm {
-  @include button-size($padding-small-vertical, $btn-padding-small-horizontal, $font-size-small, $line-height-small, $btn-radius);
-}
-
-.btn-xs {
-  @include button-size($padding-xs-vertical, $btn-padding-xs-horizontal, $font-size-small, $line-height-small, $btn-radius);
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 6px;
 }

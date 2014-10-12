@@ -6,7 +6,6 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'autoprefixer-rails'
 gem 'aws-sdk'
 gem 'bcrypt', '~> 3.1.7'
-gem 'bootstrap-sass', '~> 3.2.0'
 gem 'bourbon'
 gem 'devise'
 gem 'devise_marketable'
@@ -24,6 +23,7 @@ gem 'will_paginate'
 
 group :development do
   gem 'better_errors'
+  gem 'seed_dump'
   gem 'tracer_bullets'
 end
 
