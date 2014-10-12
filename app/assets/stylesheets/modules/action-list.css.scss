@@ -46,24 +46,24 @@
     z-index: -1; // Put the input behind the label so it doesn't overlay text
   }
 
-  .control-indicator {
-    user-select: none;
-
-    svg path {
-      fill: $grey-light !important;
-    }
+  .control-indicator-checked {
+    display: none;
   }
 
   span {
-    color: $grey-light;
+    color: $brand-primary;
   }
 
-  input:checked ~ .control-indicator path {
-    fill: $yellow !important;
+  input:checked ~ .control-indicator {
+    display: none;
   }
 
-  input:checked ~ span {
-    color: $yellow !important;
+  input:checked ~ .control-indicator-checked {
+    display: block;
+
+    svg path {
+      fill: $brand-primary;
+    }
   }
 }
 

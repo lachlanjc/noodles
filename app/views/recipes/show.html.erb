@@ -2,13 +2,14 @@
 
 <div class="container col-8 print-full-width recipe-print">
 
-  <% if @recipe.favorite == true %>
-    <div class="pull-right">
-      <span class="geomicon geomicon-star corner-star text-yellow"></span>
-    </div>
-  <% end %>
-
-  <h1><%= @recipe.title %></h1>
+  <h1>
+    <%= @recipe.title %>
+    <% if @recipe.favorite == true %>
+      <div class="favorite">
+        <%= inline_svg('ios7-star.svg') %>
+      </div>
+    <% end %>
+  </h1>
   <p><%= @recipe.description.html_safe %></p>
 
   <% if @recipe.img.url != '/imgs/original/missing.png' %>
