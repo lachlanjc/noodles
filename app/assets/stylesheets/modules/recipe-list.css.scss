@@ -2,7 +2,7 @@
   padding: 0;
 }
 
-.recipe-list .recipe-list-item {
+.recipe-list-item {
   padding: 15px;
   border-bottom: 1px solid $grey-lighter;
 
@@ -14,9 +14,10 @@
     color: $grey-light;
   }
 
-  .geomicon-star {
+  .indicators {
     opacity: 0;
-    color: white;
+    float: right;
+    display: inline-block;
   }
 
   &:hover {
@@ -27,8 +28,14 @@
       color: white;
     }
 
-    .geomicon-star {
+    .indicators {
       opacity: 1;
+
+      .indicator-favorite {
+        svg {
+          @include svg(18px, white);
+        }
+      }
     }
   }
 
