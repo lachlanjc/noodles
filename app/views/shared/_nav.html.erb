@@ -11,7 +11,7 @@
     <%= link_to t('general.recipes'), :recipes, class: nav_active_class(:recipes) %>
     <% if nav_active?(:recipes) or nav_active?(:favorites) %>
       <div class="sub">
-        <%= link_to t('general.favorites'), :recipes, class: nav_active_class(:favorites) %>
+        <%= link_to t('general.favorites'), :favorites, class: nav_active_class(:favorites) %>
       </div>
     <% end %>
     <%= link_to t('general.tags'), :recipes, class: nav_active_class(:tags) %>
