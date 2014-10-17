@@ -21,11 +21,6 @@ $brand-info:             $yellow;
 $brand-warning:          $yellow;
 $brand-danger:           $red;
 
-$brand-bg:               #E8E8E8;
-$brand-border:           $grey-lighter;
-$brand-border-light:     lighten($brand-border, 6%);
-$brand-border-dark:      darken($brand-border, 10%);
-
 $black-54:               #65636A; // lighten(black, 46%);
 $black-64:               lighten(black, 36%);
 $black-87:               #343434; // lighten(black, 13%);
@@ -49,8 +44,9 @@ $line-height:            1.8;
 
 // Padding
 
+$padding-xs:                8px;
+$padding-small:             12px;
 $padding-base:              16px;
-$padding-small:             8px;
 $padding-large:             24px;
 
 $padding-base-vertical:     6px;

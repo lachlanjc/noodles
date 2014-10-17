@@ -25,9 +25,9 @@ fieldset[disabled] .btn {
   touch-action: manipulation;
   cursor: pointer;
   user-select: none;
-  background-image: none;
-  border: 0;
-  border-radius: 4px;
+  background-image: none !important;
+  border: 0 !important;
+  border-radius: 4px !important;
   text-transform: uppercase;
   padding: 8px 16px;
   color: white;
@@ -61,8 +61,8 @@ a.btn:visited:hover {
 
 .btn-paper {
   position: fixed;
-  bottom: $padding-large;
-  right: $padding-large;
+  bottom: $padding-base;
+  right: $padding-base;
   height: 45px;
   padding: 0 0 6px 0;
   background-color: $brand-primary;

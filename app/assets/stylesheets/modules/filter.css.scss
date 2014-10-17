@@ -7,7 +7,7 @@
 
   .search {
     svg {
-      @include svg(32px, $grey-light);
+      @include svg(32px, $grey);
     }
 
     span {
