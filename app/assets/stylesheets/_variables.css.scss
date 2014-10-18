@@ -26,17 +26,10 @@ $black-64:               lighten(black, 36%);
 $black-87:               #343434; // lighten(black, 13%);
 
 
-// Scaffolding
-
-$body-bg:                $brand-bg;
-$text-color:             $black;
-
-$link-color:             $brand-primary;
-
 // Typography
 
-$font-base:              'museo-sans', $helvetica;
-$serif:                  'Source Serif Pro', Georgia, 'Times New Roman', Times, serif;
+$font-base:              'proxima-nova', $helvetica;
+$serif:                  'source-serif-pro', Georgia, 'Times New Roman', Times, serif;
 $font-monospace:         'InputMono', 'Source Code Pro', Consolas, monospace;
 
 $line-height:            1.8;

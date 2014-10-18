@@ -2,19 +2,17 @@ nav {
   padding-left: 20px;
 
   a {
-    text-transform: uppercase;
-    font-weight: 300;
     font-size: 16px;
     display: block;
     margin-bottom: 8px;
 
     &.active {
-      font-weight: 500;
+      box-shadow: -8px 0 white, -10px 0 $brand-primary;
     }
   }
 
   .sub {
-    margin-left: 12px;
+    margin-left: $padding-small;
   }
 }
 

@@ -1,13 +1,18 @@
 body {
   font-family: $font-base;
   line-height: $line-height;
-  font-weight: 300;
+  font-weight: 400;
+}
+
+h2, h3, h4, h5, h6 {
+  font-weight: 400;
 }
 
 h1 {
   color: $brand-primary;
   text-transform: uppercase;
   font-size: 37px;
+  font-weight: 300;
   line-height: 1.25;
   margin: 15px 0 0 0;
 }
@@ -15,11 +20,7 @@ h1 {
 h2 {
   color: $black;
   font-size: 21px;
-  margin: 20px 0;
-}
-
-h2, h3, h4, h5, h6 {
-  font-weight: 500;
+  margin: 12px 0;
 }
 
 h6 {
@@ -31,17 +32,18 @@ h6 {
 }
 
 p {
-  font: 300 16px $font-base;
+  font: 400 16px $font-base;
   line-height: $line-height;
+  margin: $padding-small 0;
 }
 
 a, a:visited {
   text-decoration: none;
-  color: $link-color;
+  color: $brand-primary;
 
   &:hover {
     text-decoration: none;
-    color: darken($link-color, 4%);
+    color: darken($brand-primary, 6%);
   }
 }
 
@@ -49,7 +51,7 @@ small {
   font: 1em $font-base;
 }
 
-.left-align {
+.left {
   text-align: left !important;
 }
 

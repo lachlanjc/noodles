@@ -1,6 +1,5 @@
 label {
   color: $black;
-  font-weight: 500;
   font-size: 16px;
 }
 
@@ -12,24 +11,24 @@ label {
   display: block;
   padding: 4px 8px;
   margin-bottom: 1em;
-  border: 0;
-  border-left: 1px solid $brand-border;
+  background-image: none;
+  border: 1px solid $grey-lighter;
+  border-radius: 4px;
   width: 16em;
-  font: 300 16px $font-base;
+  font: 400 16px $font-base;
   color: $grey;
 
   &:focus {
     transition: all 0.08s ease-in;
-    border-color: $brand-border-dark;
+    border-color: $blue;
     outline: 0;
-    padding: 4px 12px;
-    font-size: 18px;
+    padding: 4px 8px;
     color: $black;
   }
 }
 
 textarea.text-input {
-  line-height: 1.8;
+  line-height: 1.66;
   width: 32em;
 
   &.js-auto-size {

@@ -18,8 +18,9 @@
   }
 
   p, li {
-    font-family: $serif;
-    @include text-body;
+    font: 400 16px $serif;
+    line-height: 1.66;
+    color: $black;
   }
 }
 
