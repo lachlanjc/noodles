@@ -11,12 +11,12 @@ label {
   display: block;
   padding: 4px 8px;
   margin-bottom: 1em;
-  background-image: none;
   border: 1px solid $grey-lighter;
   border-radius: 4px;
   width: 16em;
   font: 400 16px $font-base;
   color: $grey;
+  -webkit-appearance: none;
 
   &:focus {
     transition: all 0.08s ease-in;
