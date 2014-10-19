@@ -65,3 +65,13 @@ textarea.text-input {
     color: $grey;
   }
 }
+
+@media (max-width: $screen-phone) {
+  input.text-input, textarea.text-input {
+    width: 95% !important;
+  }
+
+  label {
+    font-size: 12px !important;
+  }
+}
