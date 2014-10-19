@@ -1,25 +1,12 @@
 .container {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 480px) {
   .container {
-    width: 750px;
-  }
-}
-
-@media (min-width: 992px) {
-  .container {
-    width: 970px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .container {
-    width: 1170px;
+    padding: 0 8px !important;
   }
 }
 
