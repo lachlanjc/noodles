@@ -4,8 +4,12 @@ class RecipesController < ApplicationController
   # GET /recipes
   def index
     if current_user
-      @recipes = Recipe.where(:user_id => current_user.id)
-      @recipe_count = @recipes.count
+      if params[:filter] == "favorites"
+        @recipes = Recipe.where(:user_id => current_user.id, :favorite => true)
+      else
+        @recipes = Recipe.where(:user_id => current_user.id)
+        @favorites_count = @recipes.where(:favorite => true).count
+      end
     else
       render "home"
     end
@@ -77,6 +81,7 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
+    @recipe.shared = false
     @recipe.instructions_rendered = markdown(@recipe.instructions)
 
     if @recipe.save

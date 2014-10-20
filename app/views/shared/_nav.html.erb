@@ -9,14 +9,23 @@
     <%= render 'layouts/flash' %>
 
     <%= link_to t('general.recipes'), :recipes, class: nav_active_class(:recipes) %>
+
     <% if nav_active?(:recipes) or nav_active?(:favorites) %>
       <div class="sub">
-        <%= link_to t('general.favorites'), :favorites, class: nav_active_class(:favorites) %>
+        <% if @favorites_count == 0 %>
+          <%= link_to t('general.favorites'), :help_favorites %>
+        <% else %>
+          <%= link_to t('general.favorites'), recipes_path(:filter => 'favorites'), class: nav_active_class(:favorites) %>
+        <% end %>
       </div>
     <% end %>
+
     <%= link_to t('general.tags'), :recipes, class: nav_active_class(:tags) %>
+
     <%= link_to t('general.settings'), :edit_user_registration, class: nav_active_class(:settings) %>
-    <%= link_to t('general.help'), :help, class: nav_active_class(:help) %>
+
+    <%= link_to t('general.help'), help_path, class: nav_active_class(:help) %>
+
     <%= link_to t('general.sign_out'), :destroy_user_session %>
 
   <% else %>
