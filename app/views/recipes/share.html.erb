@@ -4,6 +4,7 @@
 
   <h1><%= @recipe.title %></h1>
   <p><%= @recipe.description.html_safe %></p>
+  <p class="text-muted">Created by <%= User.find(@recipe.user_id).first_name %></p>
 
   <% if current_user && current_user.id == @recipe.user_id %>
     <div class="panel">
@@ -33,11 +34,6 @@
     <a onclick="window.print();">
       <%= inline_svg('ios7-printer-outline.svg') %>
       <span><%= t('general.print') %></span>
-    </a>
-
-    <a href="#">
-      <%= inline_svg('ios7-upload-outline.svg') %>
-      <span>Share</span>
     </a>
 
   </div>
