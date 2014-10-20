@@ -34,9 +34,10 @@ class RecipesController < ApplicationController
   end
 
   def share
-    @recipe = Recipe.find(params[:id])
+    @recipe_id = params[:id]
+    @recipe = Recipe.find(@recipe_id)
 
-    if @recipe.shared === false
+    if current_user && @recipe.shared == false
       if @recipe.user_id == current_user.id
         @recipe.shared = true
         render 'share'
