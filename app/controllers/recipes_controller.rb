@@ -34,12 +34,11 @@ class RecipesController < ApplicationController
   end
 
   def share
-    @recipe = Recipe.find(params[:recipe_id])
+    @recipe = Recipe.find(params[:id])
 
     if @recipe.shared === false
       if @recipe.user_id == current_user.id
         @recipe.shared = true
-        params[:show_info] = true
         render 'share'
       else
         flash[:view] = "You can't share recipes that aren't yours!"

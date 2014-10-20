@@ -40,7 +40,7 @@
       <span><%= t('general.print') %></span>
     </a>
 
-    <%= link_to recipe_share_path(:recipe_id => @recipe.id) do %>
+    <%= link_to recipe_share_path(:id => @recipe.id) do %>
       <%= inline_svg('ios7-upload-outline.svg') %>
       <span>Share</span>
     <% end %>
