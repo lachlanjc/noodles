@@ -2,15 +2,15 @@
 
 <div class="container col-8 print-full-width recipe-print">
 
-  <h1>
-    <%= @recipe.title %>
-    <% if @recipe.favorite == true %>
-      <div class="favorite">
-        <%= inline_svg('ios7-star.svg') %>
-      </div>
-    <% end %>
-  </h1>
+  <h1><%= @recipe.title %></h1>
   <p><%= @recipe.description.html_safe %></p>
+
+  <% if params[:show_info] == true %>
+    <div class="panel">
+      Great, your recipe is public! Send someone this link:
+      <a>http://app.getnoodl.es/s/<%= @recipe.id %></a>
+    </div>
+  <% end %>
 
   <% if @recipe.img.url != '/imgs/original/missing.png' %>
     <div class="img-container">
@@ -30,20 +30,15 @@
 
   <div class="action-list">
 
-    <%= link_to :edit_recipe do %>
-      <%= inline_svg('ios7-compose-outline.svg') %>
-      <span><%= t('general.edit') %></span>
-    <% end %>
-
     <a onclick="window.print();">
       <%= inline_svg('ios7-printer-outline.svg') %>
       <span><%= t('general.print') %></span>
     </a>
 
-    <%= link_to recipe_share_path(:recipe_id => @recipe.id) do %>
+    <a href="#">
       <%= inline_svg('ios7-upload-outline.svg') %>
       <span>Share</span>
-    <% end %>
+    </a>
 
   </div>
 
@@ -52,7 +47,3 @@
   </div>
 
 </div>
-
-<%= link_to recipe_cook_path(:recipe_id => @recipe.id), class: 'btn-paper btn-paper-right animated bounceInUp' do %>
-  <span class="geomicon geomicon-desktop"></span>
-<% end %>

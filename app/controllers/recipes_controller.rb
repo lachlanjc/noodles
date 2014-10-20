@@ -29,6 +29,23 @@ class RecipesController < ApplicationController
     end
   end
 
+  def share
+    @recipe = Recipe.find(params[:recipe_id])
+
+    if @recipe.shared === false
+      if @recipe.user_id == current_user.id
+        @recipe.shared = true
+        params[:show_info] = true
+        render 'share'
+      else
+        flash[:view] = "You can't share recipes that aren't yours!"
+        redirect_to root_url
+      end
+    else
+      render 'share'
+    end
+  end
+
   # GET /recipes/new
   def new
     if current_user

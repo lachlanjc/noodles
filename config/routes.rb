@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get '/cook' => 'cook#index'
   end
 
+  get '/s/:id' => 'recipes#share', as: :recipe_share
   get '/recipes/favorites' => 'recipes#favorites', as: :favorites
 
   get '/home' => 'recipes#home'
