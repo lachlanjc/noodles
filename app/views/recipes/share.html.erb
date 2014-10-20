@@ -5,10 +5,10 @@
   <h1><%= @recipe.title %></h1>
   <p><%= @recipe.description.html_safe %></p>
 
-  <% if params[:show_info] == true %>
+  <% if current_user.id == @recipe.user_id %>
     <div class="panel">
       Great, your recipe is public! Send someone this link:
-      <a>http://app.getnoodl.es/s/<%= @recipe.id %></a>
+      <a href="http://app.getnoodl.es/s/<%= @recipe.id %>">http://app.getnoodl.es/s/<%= @recipe.id %></a>
     </div>
   <% end %>
 
