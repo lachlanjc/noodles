@@ -9,9 +9,4 @@ class CookController < ApplicationController
       redirect_to root_url
     end
   end
-
-  private
-    def set_recipe
-      @recipe = Recipe.find(params[:recipe_id])
-    end
 end

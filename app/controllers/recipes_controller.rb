@@ -4,8 +4,12 @@ class RecipesController < ApplicationController
   # GET /recipes
   def index
     if current_user
-      @recipes = Recipe.where(:user_id => current_user.id)
-      @recipe_count = @recipes.count
+      if params[:filter] == "favorites"
+        @recipes = Recipe.where(:user_id => current_user.id, :favorite => true)
+      else
+        @recipes = Recipe.where(:user_id => current_user.id)
+        @favorites_count = @recipes.where(:favorite => true).count
+      end
     else
       render "home"
     end
@@ -26,6 +30,23 @@ class RecipesController < ApplicationController
     else
       flash[:view] = "Sorry, you can't look at that recipe."
       redirect_to root_url
+    end
+  end
+
+  def share
+    @recipe = Recipe.find(params[:recipe_id])
+
+    if @recipe.shared === false
+      if @recipe.user_id == current_user.id
+        @recipe.shared = true
+        params[:show_info] = true
+        render 'share'
+      else
+        flash[:view] = "You can't share recipes that aren't yours!"
+        redirect_to root_url
+      end
+    else
+      render 'share'
     end
   end
 
@@ -60,6 +81,7 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
+    @recipe.shared = false
     @recipe.instructions_rendered = markdown(@recipe.instructions)
 
     if @recipe.save

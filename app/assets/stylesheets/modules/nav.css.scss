@@ -6,8 +6,8 @@ nav {
     display: block;
     margin-bottom: 8px;
 
-    &.active {
-      box-shadow: -8px 0 white, -10px 0 $brand-primary;
+    &.active:before {
+      content: '> ';
     }
   }
 

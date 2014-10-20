@@ -86,14 +86,8 @@ en:
       hey: "Hey there!"
       welcome_to_n: "Welcome to Noodles."
       no_recipes: "You don't have any recipes yet! To create one, click the button below."
-      and_if_need_help: "And if at any point you need anything, click the Help link in the navigation on the left."
+      and_if_need_help: "And if at any point you need anything, click the Help link on the left."
       create_first: "Create your first recipe"
-      all_recipes: "All Recipes"
-    favorites:
-      no_favorites_yet: "You don't have any Favorites yet."
-      favorites_are: "Favorites are an easy way to quickly bookmark recipes you love."
-      to_add_favorites: "To add a favorite, edit a recipe and click the Favorites star at the bottom of the page. All your Favorites will show up here."
-      back_to_r: "Back to All Your Recipes"
     new:
       new_recipe: "New Recipe"
     edit:
@@ -103,11 +97,16 @@ en:
     printing:
       print_copy: "Search, share, and organize your recipes like never before with Noodles. Get it now for free at http://getnoodl.es/"
 
-  pages:
+  help:
     help:
       need_help: "Need help with Noodles?"
       help_details: "We're always happy to help you out if you're having any issues with Noodles. Just click the button below, and we'll respond as soon as we possibly can!"
       contact_us_details: "If you have any questions about Noodles, just click the button below and ask away. We'll respond as soon as we possibly can!"
+    favorites:
+      no_favorites_yet: "You don't have any Favorites yet."
+      favorites_are: "Favorites are an easy way to quickly bookmark recipes you love. They're marked with a star."
+      to_add_favorites: "To add a favorite, edit a recipe and click the Favorites star at the bottom of the page. All your Favorites will show up here."
+      back_to_r: "Back to All Your Recipes"
 
   shared:
     error_messages:

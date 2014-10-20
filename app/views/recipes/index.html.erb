@@ -1,4 +1,8 @@
-<% activate_nav!(:recipes) %>
+<% if params[:filter] == 'favorites' %>
+  <% activate_nav!(:favorites) %>
+<% else %>
+  <% activate_nav!(:recipes) %>
+<% end %>
 
 <%= render 'shared/nav' %>
 
@@ -19,7 +23,11 @@
 
   <div class="container col-8 print-full-width">
 
-    <h1><%= t('general.recipes') %></h1>
+    <% if params[:filter] == 'favorites' %>
+      <h1><%= t('general.favorites') %></h1>
+    <% else %>
+      <h1><%= t('general.recipes') %></h1>
+    <% end %>
 
     <%= render 'shared/filter' %>
 
