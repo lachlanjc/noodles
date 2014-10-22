@@ -63,10 +63,22 @@ small {
   color: $brand-danger !important;
 }
 
+.text-success {
+  color: $brand-success !important;
+}
+
+.text-blue {
+  color: $blue !important;
+}
+
 .text-muted {
   color: $grey !important;
 
   &:hover {
     color: darken($grey, 8%);
   }
+}
+
+.text-decoration {
+  text-decoration: underline !important;
 }
