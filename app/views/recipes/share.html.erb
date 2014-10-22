@@ -3,13 +3,14 @@
 <div class="container col-8 print-full-width recipe-print">
 
   <h1><%= @recipe.title %></h1>
+  <p class="text-muted m0">Published by <%= User.find(@recipe.user_id).first_name %></p>
   <p><%= @recipe.description.html_safe %></p>
-  <p class="text-muted">Created by <%= User.find(@recipe.user_id).first_name %></p>
 
   <% if current_user && current_user.id == @recipe.user_id %>
     <div class="panel">
-      Great, your recipe is public! Send someone this link:
-      <a href="http://app.getnoodl.es/s/<%= @recipe.id %>">http://app.getnoodl.es/s/<%= @recipe.id %></a>
+      <h2 class="text-success m0">Great, your recipe is now public!</h2>
+      <span class="text">Send someone this link:</span>
+      <a href="http://app.getnoodl.es/s/<%= @recipe.id %>" class="text-blue text-decoration">http://app.getnoodl.es/s/<%= @recipe.id %></a>
     </div>
   <% end %>
 
