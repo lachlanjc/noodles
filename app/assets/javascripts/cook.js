@@ -1,4 +1,3 @@
-<script>
 window.onload = function() {
     var s = document.getElementsByTagName('li'), ti;
     if (!s) return;
@@ -68,66 +67,3 @@ window.onload = function() {
     };
     go(big.current);
 };
-</script>
-
-<div class="cook-container">
-
-  <header class="cook-header center">
-
-    <%= link_to root_path do %>
-      <h1 class="text-muted">N</h1>
-    <% end %>
-
-    <%= link_to @recipe do %>
-      <h3 class="text-muted" id="recipeTitle">
-        <%= @recipe.title %>
-      </h3>
-    <% end %>
-
-    <div class="text-muted">
-      <%= t('.step') %>
-      <span id="currentStepInCount"></span>
-      <%= t('.of') %>
-      <span><%= @recipe_step_count %></span>
-    </div>
-
-  </header>
-
-  <div class="cook-shell">
-
-    <div class="cook-ctrl" id="cookCtrlRev">
-      <%= inline_svg('ios7-arrow-left.svg') %>
-    </div>
-
-    <ul class="cook-list" id="cook-list">
-
-      <li>
-        <div class="panel-title">
-          <span class="lightweight"><%= t('.cooking_with') %></span>
-          <%= @recipe.title %>
-        </div>
-        <% if @recipe.description.length > 0 %>
-          <div class="panel-body">
-            <p class="text-muted"><%= @recipe.description %></p>
-          </div>
-        <% end %>
-      </li>
-
-      <li class="text-left-align">
-        <div class="panel-title">Ingredients</div>
-        <div class="panel-body">
-          <%= simple_format(@recipe.ingredients.html_safe) %>
-        </div>
-      </li>
-
-      <%= @recipe.instructions_rendered.html_safe %>
-
-    </ul>
-
-    <div class="cook-ctrl" id="cookCtrlFwd">
-      <%= inline_svg('ios7-arrow-right.svg') %>
-    </div>
-
-  </div>
-
-</div>
