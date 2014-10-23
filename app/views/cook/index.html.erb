@@ -46,7 +46,11 @@
       <li class="text-left-align">
         <div class="panel-title">Ingredients</div>
         <div class="panel-body">
-          <%= simple_format(@recipe.ingredients.html_safe) %>
+          <% if @recipe.ingredients.length == 0 %>
+            <span class="text-muted">Your recipe has no ingredients.</span>
+          <% else %>
+            <%= simple_format(@recipe.ingredients.html_safe) %>
+          <% end %>
         </div>
       </li>
 
