@@ -7,8 +7,7 @@
   outline: 0;
 }
 
-.btn[disabled],
-fieldset[disabled] .btn {
+.btn[disabled] {
   pointer-events: none;
   cursor: not-allowed;
   filter: alpha(opacity=65);
@@ -104,14 +103,6 @@ a.btn:visited:hover {
 
 .btn-success {
   @include button-standard($brand-success);
-}
-
-.btn-info {
-  @include button-standard($brand-info);
-}
-
-.btn-warning {
-  @include button-standard($brand-warning);
 }
 
 .btn-danger {
