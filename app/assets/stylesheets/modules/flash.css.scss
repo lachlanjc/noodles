@@ -1,4 +1,4 @@
-.flash p {
+.flash {
   border-left: 2px solid $grey;
   color: $grey;
   padding-left: 10px;
@@ -9,14 +9,14 @@
   }
 }
 
-.flash-success p {
+.flash-success {
   border-color: $brand-success;
 }
 
-.flash-info p {
+.flash-info {
   border-color: $brand-info;
 }
 
-.flash-danger p {
+.flash-danger {
   border-color: $brand-danger;
 }
