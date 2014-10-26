@@ -32,6 +32,11 @@
 
   <div class="action-list">
 
+    <%= link_to :save_to_noodles do %>
+      <%= inline_svg('ios7-download-outline.svg') %>
+      <span>Save</span>
+    <% end %>
+
     <a onclick="window.print();">
       <%= inline_svg('ios7-printer-outline.svg') %>
       <span><%= t('general.print') %></span>

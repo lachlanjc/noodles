@@ -50,6 +50,24 @@ class RecipesController < ApplicationController
     end
   end
 
+  def save_to_noodles
+    set_recipe
+
+    @save_recipe = Recipe.new do |r|
+      r.user_id = current_user.id
+      r.title = @recipe.title
+      r.ingredients = @recipe.ingredients
+      r.instructions = @recipe.instructions
+      r.instructions_rendered = @recipe.instructions_rendered
+      r.favorite = false
+      r.shared = false
+      r.save
+    end
+
+    flash[:success] = "#{@save_recipe.title} (published by #{User.find(@recipe.user_id).first_name}) has been saved to your Noodles account."
+    render :show
+  end
+
   # GET /recipes/new
   def new
     if current_user

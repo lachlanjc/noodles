@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   end
 
   get '/s/:id' => 'recipes#share', as: :recipe_share
+  get '/s/:id/save' => 'recipes#save_to_noodles', as: :save_to_noodles
+
   get '/recipes/favorites' => 'recipes#favorites', as: :favorites
 
   get '/home' => 'recipes#home', as: :home
