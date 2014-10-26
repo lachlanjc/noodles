@@ -1,6 +1,6 @@
 .recipe-list-item {
-  padding: 15px;
   border-bottom: 1px solid $grey-lighter;
+  padding: 15px;
 
   h2, p {
     margin: 0;
@@ -19,7 +19,7 @@
   }
 
   &:hover {
-    transition: all 0.18s ease-in-out;
+    @include transition(all 0.2s ease-in-out);
     background-color: $brand-primary;
 
     h2, p {

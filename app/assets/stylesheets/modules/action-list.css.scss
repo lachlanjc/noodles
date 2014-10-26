@@ -1,7 +1,7 @@
 .action-list a {
-  display: inline-block;
-  margin-right: 15px;
   color: $brand-primary;
+  margin-right: 15px;
+  display: inline-block;
 
   svg, span {
     display: block;
@@ -17,14 +17,6 @@
     }
   }
 
-  &.item-disabled {
-    color: $grey-light;
-
-    svg path {
-      fill: $grey-light;
-    }
-  }
-
   &.item-danger {
     color: $brand-danger;
 
@@ -35,15 +27,14 @@
 
   span {
     text-align: center;
-    font-weight: 500;
   }
 }
 
 .control {
   input {
-    position: absolute;
     opacity: 0;
     z-index: -1; // Put the input behind the label so it doesn't overlay text
+    position: absolute;
   }
 
   .control-indicator-checked {

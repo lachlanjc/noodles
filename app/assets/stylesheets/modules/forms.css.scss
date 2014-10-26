@@ -1,29 +1,24 @@
 label {
-  color: $black;
-  font-size: 16px;
-}
-
-.row {
-  margin: 5px 0;
+  @include text-body;
 }
 
 .text-input {
-  display: block;
-  padding: 4px 8px;
-  margin-bottom: 1em;
+  @include text-body;
+  -webkit-appearance: none;
   border: 1px solid $grey-lighter;
   border-radius: 4px;
-  width: 16em;
-  font: 400 16px $font-base;
   color: $grey;
-  -webkit-appearance: none;
+  width: 16em;
+  padding: 4px 8px;
+  margin-bottom: 1em;
+  display: block;
 
   &:focus {
-    transition: all 0.08s ease-in;
-    border-color: $blue;
-    outline: 0;
     padding: 4px 8px;
+    @include transition(all 0.1s ease-in);
+    border-color: $blue;
     color: $black;
+    outline: 0;
   }
 }
 
@@ -36,21 +31,15 @@ textarea.text-input {
   }
 }
 
+@media (max-width: $screen-phone) {
+  input.text-input, textarea.text-input {
+    width: 95% !important;
+  }
+}
+
 .radio label {
   line-height: 1.42;
   text-transform: none;
-}
-
-.field_with_errors {
-  display: inline !important;
-
-  label, i {
-    color: $brand-danger;
-  }
-
-  input {
-    border-color: $brand-danger;
-  }
 }
 
 .error-container {
@@ -59,19 +48,21 @@ textarea.text-input {
   }
 
   ul {
-    margin-top: 0;
-    padding-left: 0;
-    list-style: none;
     color: $grey;
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
   }
 }
 
-@media (max-width: $screen-phone) {
-  input.text-input, textarea.text-input {
-    width: 95% !important;
-  }
+.field_with_errors {
+  display: inline !important;
 
   label {
-    font-size: 12px !important;
+    color: $brand-danger;
+  }
+
+  input {
+    border-color: $brand-danger;
   }
 }

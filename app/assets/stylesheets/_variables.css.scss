@@ -1,19 +1,20 @@
 // COLORS
 
-$grey-lighter:  #DDDDDD;
-$grey-light:    #AAAAAA;
-$grey:          #878787;
-$black:         #555555;
+$grey-lighter:           #DDDDDD;
+$grey-light:             #AAAAAA;
+$grey:                   #878787;
+$black-64:               lighten(black, 36%);
+$black-75:               lighten(black, 25%);
+$black-87:               #343434; // lighten(black, 13%);
+$black:                  #555555;
 
-$red:           #FF3D00;
+$red:                    #FF3D00;
+$yellow:                 #FBE500;
+$green:                  #53B813;
 
-$yellow:        #FBE500;
-
-$green:         #53B813;
-
-$blue:          #00B0FF;
-$light-blue:    lighten($blue, 8%);
-$dark-blue:     darken($blue, 10%);
+$blue:                   #00B0FF;
+$light-blue:             lighten($blue, 8%);
+$dark-blue:              darken($blue, 10%);
 
 $brand-primary:          #FF6D00;
 $brand-success:          $green;
@@ -21,16 +22,18 @@ $brand-info:             $yellow;
 $brand-warning:          $yellow;
 $brand-danger:           $red;
 
-$black-54:               #65636A; // lighten(black, 46%);
-$black-64:               lighten(black, 36%);
-$black-87:               #343434; // lighten(black, 13%);
-
 
 // Typography
 
 $font-base:              'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $serif:                  'source-serif-pro', Georgia, 'Times New Roman', Times, serif;
 $font-monospace:         'InputMono', 'Source Code Pro', Consolas, monospace;
+
+$type-page-title:        37px;
+$type-header:            28px;
+$type-headline:          21px;
+$type-body:              16px;
+$type-caption:           12px;
 
 $line-height:            1.8;
 

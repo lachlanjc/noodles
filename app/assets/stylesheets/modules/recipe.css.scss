@@ -8,13 +8,12 @@
 }
 
 .img-container img {
-  display: block;
   width: 100%;
+  display: block;
 }
 
 .text, .text p, .text li {
-  font: 400 16px $serif;
-  line-height: 1.66;
+  @include text-serif;
   color: $black;
 }
 
@@ -25,7 +24,7 @@ ol, ul {
 @media print {
   .recipe-print {
     .page-title {
-      @include text-h1;
+      @include text-header;
     }
 
     .favorite {
