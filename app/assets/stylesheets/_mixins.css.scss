@@ -1,3 +1,38 @@
+// TEXT STYLES
+
+@mixin text-page-title {
+  font: 300 $type-page-title $font-base;
+  color: $brand-primary;
+  text-transform: uppercase;
+  line-height: 1.25;
+}
+
+@mixin text-header {
+  font: 400 $type-header $font-base;
+  color: $black-64;
+}
+
+@mixin text-headline {
+  font: 400 $type-headline $font-base;
+  color: $black-75;
+}
+
+@mixin text-body {
+  font: 400 $type-body $font-base;
+  line-height: $line-height;
+}
+
+@mixin text-serif {
+  font: 400 $type-body $serif;
+  line-height: $line-height;
+}
+
+@mixin text-microcopy {
+  font: 400 $type-caption $font-base;
+  color: $grey;
+}
+
+
 // SHADOWS
 
 @mixin shadow-1 {
@@ -24,49 +59,7 @@
   box-shadow: 0 15px 10px rgba(0, 0, 0, 0.22);
 }
 
-// TEXT STYLES
-
-@mixin text-body {
-  font-weight: 400;
-  font-size: 16px; // 14px;
-  color: $black-87;
-}
-
-@mixin text-label {
-  font-weight: 500;
-  font-size: 14px;
-  color: $black-64;
-}
-
-@mixin text-caption {
-  font-weight: 400;
-  font-size: 12px;
-  color: $black-54;
-}
-
-@mixin text-title {
-  font-weight: 500;
-  font-size: 20px;
-  color: $black-87;
-}
-
-@mixin text-headline {
-  font-weight: 400;
-  font-size: 24px;
-  color: $black-64;
-}
-
-@mixin text-h1 {
-  font-weight: 300;
-  font-size: 34px;
-  color: $black-64;
-}
-
-@mixin text-page-title {
-  font-weight: 400;
-  font-size: 56px;
-  color: $black-54;
-}
+// BUTTON STYLING
 
 @mixin button-standard($btn-bg-color) {
   background-color: $btn-bg-color;
@@ -80,6 +73,8 @@
     background-color: darken($btn-bg-color, 4%);
   }
 }
+
+// UTILITIES
 
 @mixin svg($size, $fill) {
   width: $size;

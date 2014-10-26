@@ -1,54 +1,45 @@
 body {
-  font-family: $font-base;
-  line-height: $line-height;
-  font-weight: 400;
-}
-
-h2, h3, h4, h5, h6, strong {
-  font-weight: 400;
+  @include text-body;
 }
 
 h1 {
-  color: $brand-primary;
-  text-transform: uppercase;
-  font-size: 37px;
-  font-weight: 300;
-  line-height: 1.25;
+  @include text-page-title;
   margin: 15px 0 0 0;
 }
 
 h2 {
-  color: $black;
-  font-size: 21px;
-  margin: 12px 0;
+  @include text-headline;
+  margin: $padding-xs 0;
+}
+
+h3, h4, h5, h6, strong {
+  font-weight: 400;
 }
 
 h6 {
+  font-size: $type-caption;
   color: $grey;
-  font-size: 1rem;
   margin: 8px 0;
-  text-transform: uppercase;
   letter-spacing: 0.02rem;
+  text-transform: uppercase;
 }
 
 p {
-  font: 400 16px $font-base;
-  line-height: $line-height;
+  @include text-body;
   margin: $padding-small 0;
 }
 
 a, a:visited {
-  text-decoration: none;
   color: $brand-primary;
+  text-decoration: none;
 
   &:hover {
-    text-decoration: none;
     color: darken($brand-primary, 6%);
   }
 }
 
 small {
-  font: 1em $font-base;
+  @include text-microcopy;
 }
 
 .left {
