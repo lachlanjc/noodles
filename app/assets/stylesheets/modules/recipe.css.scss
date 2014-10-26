@@ -1,5 +1,5 @@
 .favorite {
-  display: inline;
+  margin-left: $padding-xs;
 
   svg {
     @include svg(30px, $brand-primary);
@@ -12,16 +12,14 @@
   width: 100%;
 }
 
-.text {
-  ol, ul {
-    padding-left: 22px;
-  }
+.text, .text p, .text li {
+  font: 400 16px $serif;
+  line-height: 1.66;
+  color: $black;
+}
 
-  p, li {
-    font: 400 16px $serif;
-    line-height: 1.66;
-    color: $black;
-  }
+ol, ul {
+  padding-left: 22px;
 }
 
 @media print {

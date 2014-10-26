@@ -2,15 +2,15 @@
 
 <div class="container col-8 print-full-width recipe-print">
 
-  <h1>
-    <%= @recipe.title %>
-    <% if @recipe.favorite == true %>
-      <div class="favorite">
-        <%= inline_svg('ios7-star.svg') %>
-      </div>
-    <% end %>
-  </h1>
-  <p><%= @recipe.description.html_safe %></p>
+  <%= header_cleaner(@recipe.title, class: 'ib') %>
+
+  <% if @recipe.favorite == true %>
+    <h1 class="favorite ib">
+      <%= inline_svg('ios7-star.svg') %>
+    </h1>
+  <% end %>
+
+  <p><%= cleaner(@recipe.description) %></p>
 
   <% if @recipe.img.url != '/imgs/original/missing.png' %>
     <div class="img-container">
@@ -19,9 +19,7 @@
   <% end %>
 
   <h2>Ingredients</h1>
-  <div class="text">
-    <%= simple_format(@recipe.ingredients.html_safe) %>
-  </div>
+  <%= list_cleaner(@recipe.ingredients, class: 'text') %>
 
   <h2>Instructions</h2>
   <div class="text">

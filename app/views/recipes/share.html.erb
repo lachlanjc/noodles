@@ -2,9 +2,9 @@
 
 <div class="container col-8 print-full-width recipe-print">
 
-  <h1><%= @recipe.title %></h1>
+  <%= header_cleaner(@recipe.title, class: 'ib') %>
   <p class="text-muted m0">Published by <%= User.find(@recipe.user_id).first_name %></p>
-  <p><%= @recipe.description.html_safe %></p>
+  <p><%= cleaner(@recipe.description) %></p>
 
   <% if current_user && current_user.id == @recipe.user_id %>
     <div class="panel">
@@ -21,9 +21,7 @@
   <% end %>
 
   <h2>Ingredients</h1>
-  <div class="text">
-    <%= simple_format(@recipe.ingredients.html_safe) %>
-  </div>
+  <%= list_cleaner(@recipe.ingredients, class: 'text') %>
 
   <h2>Instructions</h2>
   <div class="text">
