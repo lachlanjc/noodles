@@ -1,5 +1,5 @@
 .btn:focus, .btn:active:focus {
-  outline: none;
+  outline: 0;
 }
 
 .btn:active {
@@ -16,41 +16,36 @@
 }
 
 .btn {
-  display: inline-block;
   font: 14px $font-base;
+  color: white;
   text-align: center;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border: 0 !important;
+  border-radius: 4px !important;
+  display: inline-block;
   white-space: nowrap;
   vertical-align: middle;
   touch-action: manipulation;
   cursor: pointer;
   user-select: none;
   -webkit-appearance: none;
-  border: 0 !important;
-  border-radius: 4px !important;
-  text-transform: uppercase;
-  padding: 8px 16px;
-  color: white;
-  transition: box-shadow 0.2s ease-in-out;
+  @include transition(box-shadow 0.2s ease-in-out);
   @include shadow-1;
 
   &:hover {
-    color: white;
+    // color: white;
     @include shadow-2;
   }
 
-  &:focus,
-  &:active {
+  &:active, &:focus {
     color: darken(white, 3%);
     @include shadow-4;
     outline: 0;
   }
 
-  &:visited {
+  &:visited, &:visited:hover {
     color: white;
-
-    &:hover {
-      color: white;
-    }
   }
 }
 
@@ -59,21 +54,21 @@ a.btn:visited:hover {
 }
 
 .btn-paper {
+  background-color: $brand-primary;
+  border-radius: 50%;
+  height: 45px;
+  padding: 0 0 6px 0;
   position: fixed;
   bottom: $padding-base;
   right: $padding-base;
-  height: 45px;
-  padding: 0 0 6px 0;
-  background-color: $brand-primary;
-  border-radius: 50%;
-  transition: box-shadow 0.2s ease-in-out;
+  @include transition(box-shadow 0.2s ease-in-out);
   @include shadow-2;
 
   &:hover {
     @include shadow-3;
   }
 
-  &:active {
+  &:active, &:focus {
     @include shadow-5;
   }
 
@@ -110,7 +105,7 @@ a.btn:visited:hover {
 }
 
 .btn-lg {
-  padding: 10px 20px;
   font-size: 18px;
   border-radius: 6px;
+  padding: 10px 20px;
 }
