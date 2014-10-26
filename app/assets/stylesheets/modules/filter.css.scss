@@ -1,9 +1,9 @@
 .filter-bar {
+  border-bottom: 1px solid $grey-lighter;
   width: 100%;
   margin-top: 1em;
   @include display(flex);
   @include justify-content(space-between);
-  border-bottom: 1px solid $grey-lighter;
 
   .search {
     svg {
@@ -12,8 +12,8 @@
 
     span {
       color: $grey;
-      margin-left: 4px;
       vertical-align: top;
+      margin-left: 4px;
       @include up(3px);
     }
   }
