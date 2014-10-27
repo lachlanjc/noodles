@@ -56,6 +56,7 @@ class RecipesController < ApplicationController
     @save_recipe = Recipe.new do |r|
       r.user_id = current_user.id
       r.title = @recipe.title
+      r.description = @recipe.description
       r.ingredients = @recipe.ingredients
       r.instructions = @recipe.instructions
       r.instructions_rendered = @recipe.instructions_rendered
