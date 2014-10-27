@@ -57,6 +57,7 @@ class RecipesController < ApplicationController
       r.user_id = current_user.id
       r.title = @recipe.title
       r.description = @recipe.description
+      r.img = @recipe.img
       r.ingredients = @recipe.ingredients
       r.instructions = @recipe.instructions
       r.instructions_rendered = @recipe.instructions_rendered
