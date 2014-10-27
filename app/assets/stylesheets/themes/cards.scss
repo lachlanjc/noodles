@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+}
+
+.cards-body {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: $grey-lighter;
+}
+
+.cards-header {
+  margin: 1rem auto;
+  width: 80%;
+  @include display(flex);
+  @include justify-content(space-between);
+
+  h3 {
+    position: relative;
+    top: 7px;
+    font-weight: 500;
+  }
+
+  div {
+    position: relative;
+    top: 27px;
+  }
+}
+
+.cards-shell {
+  max-width: 60%;
+  margin: 1em auto;
+  @include display(flex);
+  @include justify-content(space-between);
+}

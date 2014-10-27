@@ -1,8 +1,9 @@
+<%= stylesheet_link_tag 'cook' %>
 <%= javascript_include_tag 'cook' %>
 
-<div class="cook-container">
+<div class="cards-body">
 
-  <header class="cook-header center">
+  <header class="cards-header center">
 
     <%= link_to root_path do %>
       <h1 class="text-muted">N</h1>
@@ -23,7 +24,7 @@
 
   </header>
 
-  <div class="cook-shell">
+  <div class="cards-shell">
 
     <div class="cook-ctrl" id="cookCtrlRev">
       <%= inline_svg('ios7-arrow-left.svg') %>
@@ -32,26 +33,22 @@
     <ul class="cook-list" id="cook-list">
 
       <li>
-        <div class="panel-title">
+        <h2>
           <span class="lightweight"><%= t('.cooking_with') %></span>
           <%= @recipe.title %>
-        </div>
-        <% if @recipe.description.length > 0 %>
-          <div class="panel-body">
-            <p class="text-muted"><%= @recipe.description %></p>
-          </div>
+        </h2>
+        <% unless @recipe.description.length == 0 %>
+          <p class="text-muted"><%= @recipe.description %></p>
         <% end %>
       </li>
 
-      <li class="text-left-align">
-        <div class="panel-title">Ingredients</div>
-        <div class="panel-body">
-          <% if @recipe.ingredients.length == 0 %>
-            <span class="text-muted">Your recipe has no ingredients.</span>
-          <% else %>
-            <%= simple_format(@recipe.ingredients.html_safe) %>
-          <% end %>
-        </div>
+      <li class="text-left">
+        <h2>Ingredients</h2>
+        <% if @recipe.ingredients.length == 0 %>
+          <span class="text-muted">Your recipe has no ingredients.</span>
+        <% else %>
+          <%= simple_format(@recipe.ingredients.html_safe) %>
+        <% end %>
       </li>
 
       <%= @recipe.instructions_rendered.html_safe %>
