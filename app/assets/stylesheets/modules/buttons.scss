@@ -17,30 +17,21 @@
 
 .btn {
   font: 14px $font-base;
+  padding: 6px 12px;
+  background: $brand-primary;
   color: white;
-  text-align: center;
-  text-transform: uppercase;
-  padding: 8px 16px;
-  border: 0 !important;
-  border-radius: 4px !important;
-  display: inline-block;
-  white-space: nowrap;
-  vertical-align: middle;
-  touch-action: manipulation;
-  cursor: pointer;
-  user-select: none;
+  text-decoration: none;
   -webkit-appearance: none;
+  border-radius: 5px;
   @include transition(box-shadow 0.2s ease-in-out);
-  @include shadow-1;
+  box-shadow: 0 1px 1px rgba(black, 0.2);
 
   &:hover {
-    @include shadow-2;
+    box-shadow: 0 1px 3px rgba(black, 0.3);
   }
 
   &:active, &:focus {
-    color: darken(white, 3%);
-    @include shadow-4;
-    outline: 0;
+    box-shadow: 0 2px 6px rgba(black, 0.3);
   }
 
   &:visited, &:visited:hover {
