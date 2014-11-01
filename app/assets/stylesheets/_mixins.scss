@@ -1,9 +1,8 @@
 // TEXT STYLES
 
 @mixin text-page-title {
-  font: 300 $type-page-title $font-base;
+  font: 400 $type-page-title $font-base;
   color: $brand-primary;
-  text-transform: uppercase;
   line-height: 1.25;
 }
 
@@ -19,6 +18,7 @@
 
 @mixin text-body {
   font: 400 $type-body $font-base;
+  color: $black-75;
   line-height: $line-height;
 }
 
@@ -68,8 +68,7 @@
     background-color: darken($btn-bg-color, 1%);
   }
 
-  &:focus,
-  &:active {
+  &:focus, &:active {
     background-color: darken($btn-bg-color, 4%);
   }
 }

@@ -1,10 +1,7 @@
-.favorite {
-  margin-left: $padding-xs;
-
-  svg {
-    @include svg(30px, $brand-primary);
-    @include up(1px);
-  }
+.favorite svg {
+  margin-left: 2px;
+  @include svg(30px, $brand-primary);
+  @include up(2px);
 }
 
 .img-container img {

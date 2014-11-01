@@ -29,7 +29,7 @@
   </div>
 
   <div class="action-list">
-  
+
     <% unless current_user && @recipe.user_id == current_user.id %>
       <%= link_to :save_to_noodles do %>
         <%= inline_svg('ios7-download-outline.svg') %>
