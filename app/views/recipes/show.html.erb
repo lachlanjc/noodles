@@ -23,9 +23,7 @@
   <% end %>
 
   <% if @recipe.img.url != '/imgs/original/missing.png' %>
-    <div class="img-container">
-      <%= image_tag @recipe.img.url %>
-    </div>
+    <%= image_tag @recipe.img.url %>
   <% end %>
 
   <h2>Ingredients</h1>
