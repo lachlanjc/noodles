@@ -68,7 +68,13 @@
 }
 
 .btn-default {
-  @include button-standard($blue);
+  background-color: white !important;
+  color: $black !important;
+
+  &:hover, &:visited:hover {
+    background-color: white !important;
+    color: $black !important;
+  }
 }
 
 .btn-success {

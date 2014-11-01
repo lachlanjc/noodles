@@ -19,6 +19,18 @@ hr {
   }
 }
 
+.well {
+  border: 1px solid $grey-lighter;
+  border-radius: 3px;
+  padding: 20px 16px;
+  margin: $padding-base 0;
+  background-color: #F2F2F2;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
 .ib {
   display: inline-block !important;
 }

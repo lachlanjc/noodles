@@ -6,10 +6,15 @@
   <%= f.label :description %>
   <%= f.text_area :description, class: 'text-input js-auto-size' %>
 
-  <%= f.label t('general.photo') %>
-  <%= f.file_field :img %>
+  <div class="well">
+    <h2>Add a photo</h2>
 
-  <br>
+    <span>Upload a file:</span> <%= f.file_field :img %>
+    <br>
+    <span>Or by URL:</span> <%= f.text_field :img, class: 'text-input ib', id: 'recipeImageField' %>
+    <br>
+    <a onclick="document.getElementById('recipeImageField').value = '';" class="btn btn-sm btn-default">Remove image</a>
+  </div>
 
   <%= f.label :ingredients %>
   <%= f.text_area :ingredients, class: 'text-input js-auto-size serif' %>
