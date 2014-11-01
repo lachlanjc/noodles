@@ -1,16 +1,17 @@
 .btn {
-  font: 14px $font-base;
+  font: 16px $font-base;
   padding: 6px 12px;
   background: $brand-primary;
   color: white;
-  text-decoration: none;
   -webkit-appearance: none;
+  -webkit-tap-highlight-color: rgba(black, 0.12);
   border: 0;
   border-radius: 5px;
   @include transition(box-shadow 0.2s ease-in-out);
   box-shadow: 0 1px 1px rgba(black, 0.2);
 
   &:hover {
+    color: white;
     box-shadow: 0 1px 3px rgba(black, 0.3);
   }
 
@@ -21,10 +22,6 @@
   &:visited, &:visited:hover {
     color: white;
   }
-}
-
-a.btn:hover, a.btn:visited:hover {
-  color: white;
 }
 
 .btn[disabled] {
@@ -70,10 +67,6 @@ a.btn:hover, a.btn:visited:hover {
   }
 }
 
-.btn-primary {
-  @include button-standard($brand-primary);
-}
-
 .btn-default {
   @include button-standard($blue);
 }
@@ -87,7 +80,7 @@ a.btn:hover, a.btn:visited:hover {
 }
 
 .btn-lg {
-  font-size: 18px;
-  border-radius: 6px;
-  padding: 10px 20px;
+  font-size: 21px;
+  padding: 10px 16px;
+  vertical-align: text-top;
 }
