@@ -13,6 +13,26 @@ nav {
   }
 }
 
+@media (max-width: $screen-phone) {
+  nav {
+    padding-left: 2px;
+
+    h1 {
+      margin-top: 8px;
+    }
+
+    a {
+      margin: 0 8px;
+      display: inline-block !important;
+
+      &:not(:first-child) {
+        @include up(-6px);
+        font-size: 21px !important;
+      }
+    }
+  }
+}
+
 @media print {
   nav {
     display: none !important;

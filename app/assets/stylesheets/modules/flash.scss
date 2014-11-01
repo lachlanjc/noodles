@@ -20,3 +20,9 @@
 .flash-danger {
   border-color: $brand-danger;
 }
+
+@media (max-width: $screen-phone) {
+  .flash {
+    margin: 0 0 12px 8px;
+  }
+}
