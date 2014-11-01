@@ -14,11 +14,6 @@
     color: $black-64;
   }
 
-  .print-full-width {
-    width: 100% !important;
-    margin-left: 0 !important;
-  }
-
   .printer-copy {
     display: block;
   }
@@ -31,20 +26,24 @@
     background: transparent !important;
     box-shadow: none !important;
   }
-  a,
-  a:visited {
+
+  a, a:visited {
     text-decoration: underline;
   }
+
   a[href]:after {
     content: " (" attr(href) ")";
   }
+
   a[href^="#"]:after,
   a[href^="javascript:;"]:after {
     content: "";
   }
+
   img {
     max-width: 100% !important;
   }
+
   select {
     background: white !important;
   }

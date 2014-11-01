@@ -1,6 +1,6 @@
 <%= render 'shared/nav' %>
 
-<div class="container col-8 print-full-width recipe-print">
+<div class="container col-8 recipe-print">
 
   <%= header_cleaner(@recipe.title, class: 'ib') %>
   <p class="text-muted m0">Published by <%= User.find(@recipe.user_id).first_name %></p>
