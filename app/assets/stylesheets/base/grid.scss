@@ -1,12 +1,13 @@
 .container {
   width: 100%;
-  padding: 0 15px;
+  padding: 0;
   margin: 0 auto;
 }
 
-@media (min-width: $screen-phone) {
+@media (max-width: $screen-phone) {
   .container {
-    padding: 0 8px !important;
+    width: 92% !important;
+    margin-left: 3%;
   }
 }
 
