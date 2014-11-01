@@ -12,6 +12,16 @@
 
   <p><%= cleaner(@recipe.description) %></p>
 
+  <% if @recipe.shared == true %>
+    <div class="panel">
+      <h2 class="text-success m0">Your recipe is public!</h2>
+      <p>
+        Send someone this link:
+        <a href="http://app.getnoodl.es/s/<%= @recipe.id %>" class="text-blue text-decoration">http://app.getnoodl.es/s/<%= @recipe.id %></a>
+      </p>
+    </div>
+  <% end %>
+
   <% if @recipe.img.url != '/imgs/original/missing.png' %>
     <div class="img-container">
       <%= image_tag @recipe.img.url %>

@@ -9,8 +9,10 @@
   <% if current_user && current_user.id == @recipe.user_id %>
     <div class="panel">
       <h2 class="text-success m0">Great, your recipe is now public!</h2>
-      <span class="text">Send someone this link:</span>
-      <a href="http://app.getnoodl.es/s/<%= @recipe.id %>" class="text-blue text-decoration">http://app.getnoodl.es/s/<%= @recipe.id %></a>
+      <p>
+        Send someone this link:
+        <a href="http://app.getnoodl.es/s/<%= @recipe.id %>" class="text-blue text-decoration">http://app.getnoodl.es/s/<%= @recipe.id %></a>
+      </p>
     </div>
   <% end %>
 
