@@ -1,6 +1,6 @@
 .recipe-list-item {
   border-bottom: 1px solid $grey-lighter;
-  padding: 15px;
+  padding: 15px 12px 12px 12px;
 
   h2, p {
     margin: 0;
@@ -14,7 +14,7 @@
     float: right;
 
     svg {
-      @include svg(18px, white);
+      @include svg(24px, white);
     }
   }
 
