@@ -43,10 +43,10 @@
       </li>
 
       <li class="text-left">
-        <h2>Ingredients</h2>
         <% if @recipe.ingredients.length == 0 %>
           <span class="text-muted">Your recipe has no ingredients.</span>
         <% else %>
+          <h2>Ingredients</h2>
           <%= simple_format(@recipe.ingredients.html_safe) %>
         <% end %>
       </li>
