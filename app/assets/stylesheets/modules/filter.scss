@@ -2,8 +2,7 @@
   border-bottom: 1px solid $grey-lighter;
   width: 100%;
   margin-top: 1em;
-  @include display(flex);
-  @include justify-content(space-between);
+  display: block;
 
   .search {
     svg {
