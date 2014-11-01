@@ -10,12 +10,11 @@
 
   <div class="container col-8">
 
-    <h1><%= t('.hey') %></h1>
-    <h2><%= t('.welcome_to_n') %></h2>
+    <h1 class="friendly">Add your first recipe to Noodles!</h1>
 
     <p><%= t('.no_recipes') %></p>
     <p><%= t('.and_if_need_help') %></p>
-    <p><%= link_to t('.create_first'), new_recipe_path, class: 'btn btn-primary' %></p>
+    <p><%= link_to t('.add_first'), new_recipe_path, class: 'btn' %></p>
 
   </div>
 
@@ -40,9 +39,7 @@
 
             <div class="indicators">
               <% if recipe.favorite == true %>
-                <div class="indicator-favorite">
-                  <%= inline_svg('ios7-star.svg') %>
-                </div>
+                <%= inline_svg('ios7-star.svg') %>
               <% end %>
             </div>
 

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get '/help' => 'help#help'
   get '/help/favorites' => 'help#favorites'
 
-  devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions"}, skip: [:sessions, :registrations]
+  devise_for :users, :controllers => { :registrations => 'registrations' }
 
   as :user do
     get    'sign_in'  => 'devise/sessions#new',         as: :sign_in
@@ -27,6 +27,8 @@ Rails.application.routes.draw do
     post   'sign_up' => 'devise/registrations#create',  as: :add_user
     put    'sign_up' => 'devise/registrations#update',  as: :update_user_registration
     delete 'sign_up' => 'devise/registrations#destroy', as: :destroy_user
+
+    get    'onboarding' => 'devise/registrations#onboarding', as: :onboarding
 
     get    'settings' => 'devise/registrations#edit',    as: :settings
   end
