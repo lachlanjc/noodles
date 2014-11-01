@@ -4,7 +4,12 @@ body {
 
 h1 {
   @include text-page-title;
-  margin: 15px 0 0 0;
+  margin: 15px 0 5px 0;
+
+  &.friendly {
+    color: $black-64;
+    text-transform: none;
+  }
 }
 
 h2 {
@@ -64,10 +69,9 @@ small {
 
 .text-muted {
   color: $grey !important;
-
-  &:hover {
-    color: darken($grey, 8%);
-  }
+}
+a.text-muted:hover {
+  color: darken($grey, 8%);
 }
 
 .text-decoration {
