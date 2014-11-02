@@ -85,6 +85,12 @@
   @include button-standard($brand-danger);
 }
 
+.btn-sm {
+  font-size: 12px;
+  padding: 5px 10px;
+  vertical-align: text-top;
+}
+
 .btn-lg {
   font-size: 21px;
   padding: 10px 16px;
