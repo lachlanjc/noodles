@@ -1,3 +1,7 @@
+label, input {
+  display: block;
+}
+
 label {
   @include text-body;
 }
@@ -35,6 +39,10 @@ textarea.text-input {
   input.text-input, textarea.text-input {
     width: 95% !important;
   }
+}
+
+input[type="file"] {
+  margin: 8px 0;
 }
 
 .radio label {

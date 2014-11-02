@@ -1,6 +1,6 @@
 .favorite svg {
-  margin-left: 2px;
-  @include svg(30px, $brand-primary);
+  margin-left: 4px;
+  @include svg(24px, $brand-primary);
   @include up(2px);
 }
 

@@ -15,14 +15,6 @@ class RecipesController < ApplicationController
     end
   end
 
-  def favorites
-    if current_user
-      @recipes = Recipe.where(:user_id => current_user.id, :favorite => true)
-    else
-      render "home"
-    end
-  end
-
   # GET /recipes/1
   def show
     if @recipe.user_id == current_user.id

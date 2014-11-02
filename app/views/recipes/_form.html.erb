@@ -17,10 +17,10 @@
   </div>
 
   <%= f.label :ingredients %>
-  <%= f.text_area :ingredients, class: 'text-input js-auto-size serif' %>
+  <%= f.text_area :ingredients, class: 'text-input js-auto-size' %>
 
   <%= f.label :instructions %>
-  <%= f.text_area :instructions, class: 'text-input js-auto-size serif' %>
+  <%= f.text_area :instructions, class: 'text-input js-auto-size' %>
 
   <div class="action-list">
 
@@ -48,7 +48,7 @@
 
   <div class="row">
     <% if nav_active?(:new_recipe) %>
-      <%= f.submit t('general.create_recipe'), class: 'btn btn-primary' %>
+      <%= f.submit t('general.add_recipe'), class: 'btn btn-primary' %>
     <% else %>
       <%= f.submit t('general.save'), class: 'btn btn-primary' %>
     <% end %>
