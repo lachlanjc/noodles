@@ -1,22 +1,19 @@
 // COLORS
 
-$grey-lighter:           #DDDDDD;
-$grey-light:             #AAAAAA;
+$grey-lighter:           #dddddd;
+$grey-light:             #aaaaaa;
 $grey:                   #878787;
-$black-64:               lighten(black, 36%);
-$black-75:               lighten(black, 25%);
-$black-87:               #343434; // lighten(black, 13%);
-$black:                  #555555;
+$black:                  #444444;
 
-$red:                    #FF3D00;
-$yellow:                 #FBE500;
-$green:                  #53B813;
+$red:                    #ff3d00;
+$yellow:                 #fbe500;
+$green:                  #53b813;
 
-$blue:                   #00B0FF;
+$blue:                   #00b0ff;
 $light-blue:             lighten($blue, 8%);
 $dark-blue:              darken($blue, 10%);
 
-$brand-primary:          #FF6D00;
+$brand-primary:          #ff6d00;
 $brand-success:          $green;
 $brand-info:             $yellow;
 $brand-warning:          $yellow;
@@ -25,8 +22,8 @@ $brand-danger:           $red;
 
 // Typography
 
-$font-base:              'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$serif:                  'source-serif-pro', Georgia, 'Times New Roman', Times, serif;
+$font-base:              'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$serif:                  'Source Serif Pro', Georgia, 'Times New Roman', Times, serif;
 $font-monospace:         'InputMono', 'Source Code Pro', Consolas, monospace;
 
 $type-page-title:        37px;

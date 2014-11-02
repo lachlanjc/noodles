@@ -8,17 +8,17 @@
 
 @mixin text-header {
   font: 400 $type-header $font-base;
-  color: $black-64;
+  color: $black;
 }
 
 @mixin text-headline {
   font: 400 $type-headline $font-base;
-  color: $black-75;
+  color: $black;
 }
 
 @mixin text-body {
   font: 400 $type-body $font-base;
-  color: $black-75;
+  color: $black;
   line-height: $line-height;
 }
 
