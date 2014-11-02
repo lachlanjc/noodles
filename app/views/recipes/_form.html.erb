@@ -7,13 +7,16 @@
   <%= f.text_area :description, class: 'text-input js-auto-size' %>
 
   <div class="well">
-    <h2>Add a photo</h2>
-
-    <span>Upload a file:</span> <%= f.file_field :img %>
-    <br>
-    <span>Or by URL:</span> <%= f.text_field :img, class: 'text-input ib', id: 'recipeImageField' %>
-    <br>
-    <a onclick="document.getElementById('recipeImageField').value = '';" class="btn btn-sm btn-default">Remove image</a>
+    <% if @recipe.img == nil %>
+      <h2>Add a photo</h2>
+    <% else %>
+      <h2>Change this recipe's photo</h2>
+    <% end %>
+    <%= f.file_field :img %>
+    <% unless @recipe.img == nil %>
+      <span>or </span><%= link_to 'Remove current image', remove_image_path(@recipe), class: 'btn btn-sm btn-default in-text' %>
+      <br>
+    <% end %>
   </div>
 
   <%= f.label :ingredients %>

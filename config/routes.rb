@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     get '/cook' => 'cook#index'
   end
 
+  get '/recipes/:id/edit/remove_image' => 'recipes#remove_image', as: :remove_image
+
   get '/s/:id' => 'recipes#share', as: :recipe_share
   get '/s/:id/save' => 'recipes#save_to_noodles', as: :save_to_noodles
 

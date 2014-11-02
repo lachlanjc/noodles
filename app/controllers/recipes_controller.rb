@@ -25,6 +25,18 @@ class RecipesController < ApplicationController
     end
   end
 
+  def remove_image
+    recipe = Recipe.find(params[:id])
+
+    if current_user && recipe.user_id == current_user.id
+      recipe.img = nil
+      recipe.save
+      redirect_to recipe
+    else
+      flash[:danger] = "That's not your recipe!"
+    end
+  end
+
   def share
     @recipe_id = params[:id]
     @recipe = Recipe.find(@recipe_id)
