@@ -10,9 +10,10 @@
     <div class="panel">
       <h2 class="text-success m0">Great, your recipe is now public!</h2>
       <p>
-        Send someone this link:
+        Share this link:
         <a href="http://app.getnoodl.es/s/<%= @recipe.id %>" class="text-blue text-decoration">http://app.getnoodl.es/s/<%= @recipe.id %></a>
       </p>
+      <%= render 'shared/social' %>
     </div>
   <% end %>
 
@@ -27,6 +28,13 @@
   <div class="text">
     <%= @recipe.instructions_rendered.html_safe %>
   </div>
+
+  <% unless current_user && @recipe.user_id == current_user.id %>
+    <div class="panel">
+      <h2 class="m0">Like this recipe? Share it!</h2>
+      <%= render 'shared/social' %>
+    </div>
+  <% end %>
 
   <div class="action-list">
 

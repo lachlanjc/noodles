@@ -18,6 +18,26 @@ ol, ul {
   padding-left: 22px;
 }
 
+.social {
+  margin-top: 8px;
+
+  a {
+    margin-right: 4px;
+  }
+
+  .social-twitter svg {
+    @include svg(36px, #00ACED);
+  }
+
+  .social-facebook svg {
+    @include svg(36px, #3B5998);
+  }
+
+  .social-email svg {
+    @include svg(36px, $blue);
+  }
+}
+
 @media print {
   .recipe-print {
     .page-title {
