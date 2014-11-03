@@ -5,4 +5,8 @@
     <span><%= t('general.search') %> (<%= pluralize(@recipes.count, t('general.recipe')) %>)...</span>
   </div>
 
+  <%= link_to :random_recipe, class: 'random', title: 'Open a random recipe from your Noodles' do %>
+    <%= inline_svg('ios7-bolt-outline.svg') %>
+  <% end %>
+
 </div>

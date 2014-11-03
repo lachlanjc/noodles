@@ -11,7 +11,7 @@ class RecipesController < ApplicationController
         @favorites_count = @recipes.where(:favorite => true).count
       end
     else
-      render "home"
+      render :home
     end
   end
 
@@ -21,6 +21,17 @@ class RecipesController < ApplicationController
       set_recipe
     else
       flash[:view] = "Sorry, you can't look at that recipe."
+      redirect_to root_url
+    end
+  end
+
+  def random_recipe
+    if current_user
+      recipes = Recipe.where(:user_id => current_user.id)
+      @recipe = recipes[rand(recipes.size)]
+      redirect_to recipe_url(@recipe)
+    else
+      flash[:danger] = "Please sign in to find a random recipe."
       redirect_to root_url
     end
   end

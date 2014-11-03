@@ -2,7 +2,8 @@
   border-bottom: 1px solid $grey-lighter;
   width: 100%;
   margin-top: 1em;
-  display: block;
+  @include display(flex);
+  @include justify-content(space-between);
 
   .search {
     svg {
@@ -14,6 +15,12 @@
       vertical-align: top;
       margin-left: 4px;
       @include up(3px);
+    }
+  }
+
+  .random {
+    svg {
+      @include svg(32px, $yellow);
     }
   }
 }

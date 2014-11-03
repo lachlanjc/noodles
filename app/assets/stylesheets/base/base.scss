@@ -53,6 +53,14 @@ hr {
   width: 33.33333333%;
 }
 
+.float-left {
+  float: left !important;
+}
+
+.float-right {
+  float: right !important;
+}
+
 @media (max-width: $screen-phone) {
   .m1-block-center {
     margin: 2em auto !important;
