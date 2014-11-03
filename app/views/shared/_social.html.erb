@@ -1,11 +1,16 @@
+<p>
+  Share this link:
+  <a href="http://app.getnoodl.es/s/<%= @recipe.id %>" class="text-blue text-decoration">http://app.getnoodl.es/s/<%= @recipe.id %></a>
+</p>
+
 <div class="social">
-  <a href="http://twitter.com/share?text=Check out <%= @recipe.title %> on @noodlesapp:&amp;url=http://app.getnoodl.es/s/<%= @recipe.id %>" class="social-twitter">
+  <a href="http://twitter.com/share?text=Check out <%= @recipe.title %>, published on @noodlesapp:&amp;url=http://app.getnoodl.es/s/<%= @recipe.id %>" class="social-twitter">
     <%= inline_svg('social-twitter.svg') %>
   </a>
   <a href="https://www.facebook.com/sharer/sharer.php?u=http://app.getnoodl.es/s/<%= @recipe.id %>" class="social-facebook">
     <%= inline_svg('social-facebook.svg') %>
   </a>
-  <a href="https://plus.google.com/share?url=http://app.getnoodl.es/s/<%= @recipe.id %>" class="social-plus">
+  <a href="https://plus.google.com/share?url=http%3A%2F%2Fapp.getnoodl.es%2Fs%2F<%= @recipe.id %>" class="social-plus">
     <%= inline_svg('social-googleplus.svg') %>
   </a>
   <a

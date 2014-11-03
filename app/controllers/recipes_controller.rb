@@ -55,6 +55,7 @@ class RecipesController < ApplicationController
     if current_user && @recipe.shared == false
       if @recipe.user_id == current_user.id
         @recipe.shared = true
+        @recipe.save
         render 'share'
       else
         flash[:view] = "You can't share recipes that aren't yours!"

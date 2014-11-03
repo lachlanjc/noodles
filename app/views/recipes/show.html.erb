@@ -9,16 +9,18 @@
       <%= inline_svg('ios7-star.svg') %>
     </h1>
   <% end %>
+  <% if @recipe.shared == true %>
+    <h1 class="favorite ib">
+      <%= inline_svg('ios7-upload.svg') %>
+    </h1>
+  <% end %>
 
   <p><%= cleaner(@recipe.description) %></p>
 
   <% if @recipe.shared == true %>
-    <div class="panel">
-      <h2 class="text-success m0">Your recipe is public!</h2>
-      <p>
-        Send someone this link:
-        <a href="http://app.getnoodl.es/s/<%= @recipe.id %>" class="text-blue text-decoration">http://app.getnoodl.es/s/<%= @recipe.id %></a>
-      </p>
+    <div class="panel social-panel">
+      <h2 class="text-success">Your recipe is public!</h2>
+      <%= render 'shared/social' %>
     </div>
   <% end %>
 

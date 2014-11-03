@@ -7,12 +7,8 @@
   <p><%= cleaner(@recipe.description) %></p>
 
   <% if current_user && current_user.id == @recipe.user_id %>
-    <div class="panel">
-      <h2 class="text-success m0">Great, your recipe is now public!</h2>
-      <p>
-        Share this link:
-        <a href="http://app.getnoodl.es/s/<%= @recipe.id %>" class="text-blue text-decoration">http://app.getnoodl.es/s/<%= @recipe.id %></a>
-      </p>
+    <div class="panel social-panel">
+      <h2 class="text-success">Great, your recipe is now public!</h2>
       <%= render 'shared/social' %>
     </div>
   <% end %>
@@ -30,7 +26,7 @@
   </div>
 
   <% unless current_user && @recipe.user_id == current_user.id %>
-    <div class="panel">
+    <div class="panel social-panel">
       <h2 class="m0">Like this recipe? Share it!</h2>
       <%= render 'shared/social' %>
     </div>
