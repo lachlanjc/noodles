@@ -37,6 +37,10 @@ ol, ul {
     @include svg(36px, #D14836);
   }
 
+  .social-buffer svg {
+    @include svg(36px, #555);
+  }
+
   .social-email svg {
     @include svg(36px, $blue);
   }
