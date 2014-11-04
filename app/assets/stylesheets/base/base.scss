@@ -1,3 +1,5 @@
+// Assorted
+
 html, body {
   height: 100%;
 }
@@ -7,6 +9,8 @@ hr {
   border-bottom: 1px solid $grey-lighter;
   margin: $padding-small 0;
 }
+
+// Content containers
 
 .panel {
   border: 1px solid $grey-lighter;
@@ -35,6 +39,8 @@ hr {
   }
 }
 
+// Helper classes
+
 .ib {
   display: inline-block !important;
 }
@@ -49,6 +55,10 @@ hr {
 
 .m1 {
   margin: 1em;
+}
+
+.m1-top {
+  margin-top: 1em;
 }
 
 .m1-block-center {
