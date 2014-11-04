@@ -33,12 +33,16 @@ ol, ul {
     @include svg(36px, #3B5998);
   }
 
-  .social-plus svg {
-    @include svg(36px, #D14836);
-  }
-
   .social-buffer svg {
     @include svg(36px, #555);
+  }
+
+  .social-pinterest svg {
+    @include svg(36px, #CB2027);
+  }
+
+  .social-plus svg {
+    @include svg(36px, #D14836);
   }
 
   .social-email svg {

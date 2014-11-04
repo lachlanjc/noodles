@@ -10,12 +10,13 @@
   <a href="https://www.facebook.com/sharer/sharer.php?u=http://app.getnoodl.es/s/<%= @recipe.id %>" class="social-facebook">
     <%= inline_svg('social-facebook.svg') %>
   </a>
-  <a href="https://plus.google.com/share?url=http%3A%2F%2Fapp.getnoodl.es%2Fs%2F<%= @recipe.id %>" class="social-plus">
-    <%= inline_svg('social-googleplus.svg') %>
+  <a href="http://www.pinterest.com/pin/create/button/?url=ttp%3A%2F%2Fapp.getnoodl.es%2Fs%2F<%= @recipe.id %><% unless @recipe.img.url == '' %>&media=<%= @recipe.img.url %><% end %>&description=<%= @recipe.title %>+on+Noodles+(<%= @recipe.description %>)" class="social-pinterest">
+    <%= inline_svg('social-pinterest.svg') %>
   </a>
-  <a
   <a href="https://bufferapp.com/add?url=http%3A%2F%2Fapp.getnoodl.es%2Fs%2F<%= @recipe.id %>&text=Check out <%= @recipe.title %>, published on Noodles:" class="social-buffer">
     <%= inline_svg('social-buffer.svg') %>
   </a>
-
+  <a href="https://plus.google.com/share?url=http%3A%2F%2Fapp.getnoodl.es%2Fs%2F<%= @recipe.id %>" class="social-plus">
+    <%= inline_svg('social-googleplus.svg') %>
+  </a>
 </div>
