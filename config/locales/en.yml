@@ -64,7 +64,7 @@ en:
         can_leave_blank: "(leave this blank unless you would like to change it)"
         eight_char: "Please use at least 8 characters."
         delete_account: "Delete your account"
-        want_account_gone: "To delete your account, click the button below. Your data will be erased forever."
+        want_account_gone: "To delete your account, click the button below. All your recipes, as well as shared recipes, will be erased forever."
         delete_my_account: "Delete my account"
         back_to_noodles: "Back to Noodles"
     sessions:
