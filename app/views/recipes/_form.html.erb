@@ -13,7 +13,7 @@
       <h2>Change the recipe's photo</h2>
     <% end %>
     <%= f.file_field :img %>
-    <% if nav_active?(:edit_recipe) && @recipe.img == '' %>
+    <% if nav_active?(:edit_recipe) && @recipe.img.url != '' %>
       <span>or </span><%= link_to 'Remove current image', remove_image_path(@recipe), class: 'btn btn-sm btn-default in-text' %>
       <br>
     <% end %>
