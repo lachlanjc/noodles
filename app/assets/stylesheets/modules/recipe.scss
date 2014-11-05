@@ -52,6 +52,8 @@ ol, ul {
 
 @media print {
   .recipe-print {
+    padding: 16px 32px !important;
+
     .page-title {
       @include text-header;
     }
