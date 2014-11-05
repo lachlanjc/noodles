@@ -1,4 +1,4 @@
-<% activate_nav! :sign_in %>
+<% activate_nav!(:sign_in) %>
 
 <%= render 'shared/nav' %>
 
@@ -9,7 +9,7 @@
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-      <%= devise_error_messages! %>
+    <%= devise_error_messages! %>
 
     <%= f.label :email %>
     <%= f.email_field :email, class: 'text-input', required: true, autofocus: true %>
@@ -19,10 +19,11 @@
 
     <%= f.check_box :remember_me, class: 'ib' %>
     <%= f.label :remember_me, class: 'ib' %>
-
     <br>
 
     <%= f.submit t('.sign_in'), class: 'btn btn-primary' %>
+
+    <small>or did you <%= link_to 'forget your password?', :forgot_password %></small><br>
 
   <% end %>
 

@@ -33,6 +33,9 @@ Rails.application.routes.draw do
     get    'onboarding' => 'devise/registrations#onboarding', as: :onboarding
 
     get    'settings' => 'devise/registrations#edit',    as: :settings
+
+    get    'forgot_password' => 'devise/passwords#new', as: :forgot_password
+    get    'change_password' => 'devise/passwords#edit'
   end
 
   get '/admin/all_users' => 'analytics#all_users', as: :analytics_users

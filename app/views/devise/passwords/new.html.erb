@@ -1,12 +1,23 @@
-<h2>Forgot your password?</h2>
+<% activate_nav!(:forgot_password) %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+<%= render 'shared/nav' %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+<div class="container col-6">
 
-  <div><%= f.submit "Send me reset password instructions" %></div>
-<% end %>
+  <h1>Forgot your password?</h1>
+  <p>We'll get you back into the kitchen in just a minute! Enter your email address below and you'll get a link in the mail to reset your password.</p>
 
-<%= render "devise/shared/links" %>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+
+    <%= devise_error_messages! %>
+
+    <%= f.hidden_field :reset_password_token %>
+
+    <%= f.label 'Email address' %>
+    <%= f.email_field :email, class: 'text-input', autofocus: true, required: true %>
+
+    <%= f.submit 'Send password reset link', class: 'btn' %>
+
+  <% end %>
+
+</div>

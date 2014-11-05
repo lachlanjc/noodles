@@ -1,16 +1,23 @@
-<h2>Change your password</h2>
+<% activate_nav!(:change_password) %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
+<%= render 'shared/nav' %>
 
-  <div><%= f.label :password, "New password" %><br />
-    <%= f.password_field :password, autofocus: true, autocomplete: "off" %></div>
+<div class="container col-6">
 
-  <div><%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+  <h1>Change your password</h1>
+  <p>Just one more step and you can get back into your Noodles account!</p>
 
-  <div><%= f.submit "Change my password" %></div>
-<% end %>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
 
-<%= render "devise/shared/links" %>
+    <%= devise_error_messages! %>
+
+    <%= f.hidden_field :reset_password_token %>
+
+    <%= f.label 'New password' %>
+    <%= f.password_field :password, class: 'text-input', autofocus: true, autocomplete: off, required: true %>
+
+    <%= f.submit 'Change my password', class: 'btn' %>
+
+  <% end %>
+
+</div>
