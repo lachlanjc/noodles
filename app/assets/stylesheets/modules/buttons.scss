@@ -38,8 +38,9 @@
 .btn-paper {
   background-color: $brand-primary;
   border-radius: 50%;
-  height: 45px;
-  padding: 0 0 6px 0;
+  width: 46px;
+  height: 46px;
+  padding: 6px;
   position: fixed;
   bottom: $padding-base;
   right: $padding-base;
@@ -55,8 +56,10 @@
   }
 
   svg {
-    width: 50px;
-    height: 50px;
+    width: 36px;
+    height: 36px;
+    @include up(5px);
+    left: 5px;
 
     path {
       fill: white;
