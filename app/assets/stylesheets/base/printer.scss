@@ -17,9 +17,11 @@
   .printer-copy {
     display: block;
   }
-}
 
-@media print {
+  .print-hide {
+    display: none !important;
+  }
+
   * {
     color: black !important;
     text-shadow: none !important;
@@ -36,7 +38,8 @@
   }
 
   a[href^="#"]:after,
-  a[href^="javascript:;"]:after {
+  a[href^="javascript:;"]:after,
+  a[href^="mailto:*"]:after {
     content: "";
   }
 

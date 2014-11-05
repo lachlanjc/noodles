@@ -28,6 +28,10 @@
       <h1><%= t('general.recipes') %></h1>
     <% end %>
 
+    <% if params[:filter] != 'favorites' && @recipes.count >= 2 && @recipes.count <= 8 %>
+      <p class="print-hide text-muted">Add some more recipes to Noodles and it will be much more useful! You only have <%= @recipes.count %> recipes right now.</p>
+    <% end %>
+
     <%= render 'shared/filter' %>
 
     <div class="recipe-list">
