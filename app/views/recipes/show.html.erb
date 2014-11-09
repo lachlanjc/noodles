@@ -19,7 +19,7 @@
 
   <% if @recipe.shared == true %>
     <div class="panel social-panel">
-      <%= link_to 'View public recipe', recipe_share_path(:id => @recipe.id), class: 'btn btn-sm btn-default float-right' %>
+      <%= link_to 'View public recipe', recipe_share_path(:id => @recipe.id), class: 'btn btn-sm btn-default float-right m0' %>
       <h2 class="text-success">You've shared this recipe.</h2>
       <%= render 'shared/social' %>
     </div>
