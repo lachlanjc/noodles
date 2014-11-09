@@ -6,7 +6,7 @@
   <%= f.label :description %>
   <%= f.text_area :description, class: 'text-input js-auto-size' %>
 
-  <div class="well">
+  <div class="panel">
     <% if @recipe.img.url == '' || nav_active?(:new_recipe) %>
       <h2>Add a photo</h2>
     <% else %>
