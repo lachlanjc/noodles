@@ -1,6 +1,8 @@
 nav {
   background-color: white;
   border-bottom: 1px solid $grey-lighter;
+  @include display(flex);
+  @include justify-content(space-between);
 
   .logo {
     font-size: $type-page-title;
@@ -27,14 +29,23 @@ nav {
 
 @media (max-width: $screen-phone) {
   nav {
-    a {
-      margin: 0 8px;
-      display: inline-block !important;
+    display: block !important;
 
-      &:not(:first-child) {
-        @include up(-6px);
-        font-size: 21px !important;
-      }
+    .logo, div, .links {
+      margin-left: 10px;
+    }
+
+    div {
+      width: 95% !important;
+    }
+
+    .links {
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+
+    .links-logo {
+      margin: 0;
     }
   }
 }

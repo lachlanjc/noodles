@@ -14,8 +14,6 @@ body {
 .cards-header {
   margin: 1rem auto;
   width: 80%;
-  @include display(flex);
-  @include justify-content(space-between);
 
   h3 {
     position: relative;
