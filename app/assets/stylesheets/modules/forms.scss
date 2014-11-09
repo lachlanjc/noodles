@@ -35,6 +35,10 @@ textarea.text-input {
   }
 }
 
+input[type="checkbox"] {
+  @include up(-1px);
+}
+
 @media (max-width: $screen-phone) {
   input.text-input, textarea.text-input {
     width: 95% !important;

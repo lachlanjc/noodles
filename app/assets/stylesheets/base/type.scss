@@ -47,12 +47,16 @@ small {
   @include text-microcopy;
 }
 
-.left {
+.text-left {
   text-align: left !important;
 }
 
-.center {
+.text-center {
   text-align: center !important;
+}
+
+.text-primary {
+  color: $brand-primary !important;
 }
 
 .text-danger {

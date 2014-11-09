@@ -93,12 +93,15 @@
 
 .btn-sm {
   font-size: 12px;
-  border: 1px solid $grey-lighter;
   box-shadow: none;
   padding: 5px 10px;
 
   &.in-text {
     margin: 2px 4px;
+  }
+
+  &.btn-default {
+    border: 1px solid $grey-lighter;
   }
 
   &:hover {

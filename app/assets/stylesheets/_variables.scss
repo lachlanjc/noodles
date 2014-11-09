@@ -1,9 +1,10 @@
 // COLORS
+// http://colorpeek.com/#e8e8e8,aaaaaa,878787,444444
 
-$grey-lighter:           #dddddd;
+$grey-lighter:           #e8e8e8;
 $grey-light:             #aaaaaa;
-$grey:                   #878787;
-$black:                  #444444;
+$grey:                   #87878c; // #878787;
+$black:                  #4f4f50; // #444444;
 
 $red:                    #ff3d00;
 $yellow:                 #fbe500;
@@ -14,11 +15,11 @@ $light-blue:             lighten($blue, 8%);
 $dark-blue:              darken($blue, 10%);
 
 $brand-primary:          #ff6d00;
+$brand-bg:               #fcfcfc;
 $brand-success:          $green;
 $brand-info:             $yellow;
 $brand-warning:          $yellow;
 $brand-danger:           $red;
-
 
 // Typography
 
