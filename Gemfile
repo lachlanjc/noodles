@@ -5,6 +5,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'autoprefixer-rails'
 gem 'aws-sdk'
+gem 'aws-ses'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bourbon'
 gem 'devise'
