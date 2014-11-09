@@ -2,6 +2,12 @@ article {
   margin: auto;
 }
 
+@media (max-width: $screen-phone) {
+  article {
+    width: 92% !important;
+  }
+}
+
 @media print {
   article {
     width: 100% !important;
