@@ -1,7 +1,9 @@
 <% unless flash.empty? %>
-  <% flash.each do |key, value| %>
-    <p class="flash <%= flash_class(key) %>">
-      <%= value %>
-    </p>
-  <% end %>
+  <section class="col-6 center">
+    <% flash.each do |key, value| %>
+      <div class="panel flash <%= flash_class(key) %>">
+        <%= value %>
+      </div>
+    <% end %>
+  </section>
 <% end %>

@@ -1,7 +1,6 @@
 .flash {
   border-left: 2px solid $grey;
   color: $grey;
-  padding-left: 10px;
 
   a {
     color: inherit;
@@ -10,15 +9,15 @@
 }
 
 .flash-success {
-  border-color: $brand-success;
+  border-left-color: $brand-success;
 }
 
 .flash-info {
-  border-color: $brand-info;
+  border-left-color: $brand-info;
 }
 
 .flash-danger {
-  border-color: $brand-danger;
+  border-left-color: $brand-danger;
 }
 
 @media (max-width: $screen-phone) {
