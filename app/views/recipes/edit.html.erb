@@ -6,7 +6,7 @@
 
   <h1>
     <%= t('.editing') %>
-    <%= @recipe.title %>
+    <%= header_cleaner(@recipe.title, class: 'ib') %>
   </h1>
 
   <%= render 'form' %>
