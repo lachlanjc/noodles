@@ -8,12 +8,10 @@ module DeviseHelper
                       :resource => resource.class.model_name.human.downcase)
 
     html = <<-HTML
-    <hr>
-    <div class="error-container">
-      <h3 class="text-danger">#{sentence}</h3>
+    <div class="panel">
+      <h2 class="text-primary">The Noodles are in a bit of a tangle.</h2>
       <ul>#{messages}</ul>
     </div>
-    <hr>
     HTML
 
     html.html_safe
