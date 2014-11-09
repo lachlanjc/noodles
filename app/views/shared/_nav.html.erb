@@ -1,44 +1,43 @@
-<nav class="col-2" role="navigation">
-
-  <%= link_to root_url do %>
-    <h1>N</h1>
-  <% end %>
+<nav role="navigation" class="flex flex-between">
 
   <% if current_user %>
 
-    <%= render 'layouts/flash' %>
+    <div>
+      <%= link_to 'N', root_url, class: 'logo' %>
 
-    <%= link_to t('general.recipes'), :recipes, class: nav_active_class(:recipes) %>
+      <div class="links-logo ib">
+        <%= link_to t('general.recipes'), :recipes, class: nav_active_class(:recipes) %>
+        <% if nav_active?(:recipes) or nav_active?(:favorites) %>
+          <% if @favorites_count == 0 %>
+            <%= link_to t('general.favorites'), :help_favorites %>
+          <% else %>
+            <%= link_to t('general.favorites'), recipes_path(:filter => 'favorites'), class: nav_active_class(:favorites) %>
+          <% end %>
+        <% end %>
+        <%= link_to t('general.tags'), :recipes, class: nav_active_class(:tags) %>
+      </div>
+    </div>
 
-    <% if nav_active?(:recipes) or nav_active?(:favorites) %>
-      <% if @favorites_count == 0 %>
-        <%= link_to t('general.favorites'), :help_favorites %>
-      <% else %>
-        <%= link_to t('general.favorites'), recipes_path(:filter => 'favorites'), class: nav_active_class(:favorites) %>
-      <% end %>
-    <% end %>
-
-    <%= link_to t('general.tags'), :recipes, class: nav_active_class(:tags) %>
-
-    <%= link_to t('general.settings'), :settings, class: nav_active_class(:settings) %>
-
-    <%= link_to t('general.help'), :help, class: nav_active_class(:help) %>
-
-    <%= link_to t('general.sign_out'), :sign_out %>
+    <div class="links">
+      <%= link_to t('general.settings'), :settings, class: nav_active_class(:settings) %>
+      <%= link_to t('general.help'), :help, class: nav_active_class(:help) %>
+      <%= link_to t('general.sign_out'), :sign_out %>
+    </div>
 
   <% else %>
 
-    <% if nav_active?(:sign_up) or nav_active?(:home) %>
-      <%= link_to t('general.sign_in'), :sign_in %>
-    <% elsif nav_active?(:sign_in) %>
-      <%= link_to t('general.sign_up'), :sign_up %>
-    <% else %>
-      <%= link_to t('general.sign_in'), :sign_in %>
-      <%= link_to t('general.sign_up'), :sign_up %>
-    <% end %>
+    <div>
+      <%= link_to 'N', root_url, class: 'logo' %>
+    </div>
 
-    <%= link_to t('general.contact_us'), :help %>
+    <div class="links">
+      <%= link_to t('general.contact_us'), :help, class: nav_active_class(:help) %>
+      <%= link_to t('general.sign_in'), :sign_in, class: nav_active_class(:sign_in) %>
+      <%= link_to t('general.sign_up'), :sign_up, class: nav_active_class(:sign_up) %>
+    </div>
 
   <% end %>
 
 </nav>
+
+<%= render 'layouts/flash' %>
