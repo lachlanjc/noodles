@@ -43,6 +43,10 @@
 }
 
 @media print {
+  .recipe-list-container {
+    width: 100% !important;
+  }
+
   .recipe-list {
     margin-top: 1em;
     border-top: 1px solid $grey-lighter;
