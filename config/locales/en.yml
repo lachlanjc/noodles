@@ -98,8 +98,8 @@ en:
   help:
     help:
       need_help: "Need help with Noodles?"
-      help_details: "We're always happy to help you out if you're having any issues with Noodles. Just click the button below, and we'll respond as soon as we possibly can!"
-      contact_us_details: "If you have any questions about Noodles, just click the button below and ask away. We'll respond as soon as we possibly can!"
+      help_details: "I'm always happy to help you out if you're having any issues with Noodles. Just click the button below, and I'll respond as soon as possible!"
+      contact_us_details: "If you have any questions about Noodles, ask me with the button below. I'll respond to you as soon as possible!"
     favorites:
       no_favorites_yet: "You don't have any Favorites yet."
       favorites_are: "Favorites are an easy way to quickly bookmark recipes you love. They're marked with a star."
