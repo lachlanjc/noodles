@@ -17,7 +17,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1
   def show
-    if @recipe.user_id == current_user.id
+    if current_user && @recipe.user_id == current_user.id
       set_recipe
     else
       flash[:view] = "Sorry, you can't look at that recipe."
@@ -69,21 +69,25 @@ class RecipesController < ApplicationController
   def save_to_noodles
     set_recipe
 
-    @save_recipe = Recipe.new do |r|
-      r.user_id = current_user.id
-      r.title = @recipe.title
-      r.description = @recipe.description
-      r.img = @recipe.img
-      r.ingredients = @recipe.ingredients
-      r.instructions = @recipe.instructions
-      r.instructions_rendered = @recipe.instructions_rendered
-      r.favorite = false
-      r.shared = false
-      r.save
-    end
+    if current_user
+      @save_recipe = Recipe.new do |r|
+        r.user_id = current_user.id
+        r.title = @recipe.title
+        r.description = @recipe.description
+        r.img = @recipe.img
+        r.ingredients = @recipe.ingredients
+        r.instructions = @recipe.instructions
+        r.instructions_rendered = @recipe.instructions_rendered
+        r.favorite = false
+        r.shared = false
+        r.save
+      end
 
-    flash[:success] = "#{@save_recipe.title} (published by #{User.find(@recipe.user_id).first_name}) has been saved to your Noodles account."
-    render :show
+      flash[:success] = "#{@save_recipe.title} (published by #{User.find(@recipe.user_id).first_name}) has been saved to your Noodles account."
+      render :show
+    else
+      flash[:info] = "Hey there! Please create a Noodles account to save #{@recipe.title}"
+    end
   end
 
   # GET /recipes/new
@@ -104,12 +108,6 @@ class RecipesController < ApplicationController
       flash[:view] = "Sorry, you can't edit that recipe."
       redirect_to root_url
     end
-  end
-
-  # Markdown processing
-  def markdown(str)
-    md = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, underline: true, space_after_headers: true, strikethrough: true)
-    return md.render(str)
   end
 
   # POST /recipes
@@ -147,6 +145,12 @@ class RecipesController < ApplicationController
   end
 
   private
+    # Markdown processing
+    def markdown(str)
+      md = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, underline: true, space_after_headers: true, strikethrough: true)
+      return md.render(str)
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_recipe
       @recipe = Recipe.find(params[:id])
