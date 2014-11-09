@@ -103,7 +103,7 @@ en:
     favorites:
       no_favorites_yet: "You don't have any Favorites yet."
       favorites_are: "Favorites are an easy way to quickly bookmark recipes you love. They're marked with a star."
-      to_add_favorites: "To add a favorite, edit a recipe and click the Favorites star at the bottom of the page. All your Favorites will show up here."
+      to_add_favorites: "To add a favorite, click the Favorites star at the bottom of the page while you're editing a recipe. Your Favorites will then show up here."
       back_to_r: "Back to All Your Recipes"
 
   shared:
