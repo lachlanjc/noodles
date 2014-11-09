@@ -8,7 +8,7 @@
 
 <% if @recipes.count == 0 %>
 
-  <div class="container col-8">
+  <article class="col-8">
 
     <h1 class="friendly">Add your first recipe to Noodles!</h1>
 
@@ -16,11 +16,11 @@
     <p><%= t('.and_if_need_help') %></p>
     <p><%= link_to t('.add_first'), new_recipe_path, class: 'btn' %></p>
 
-  </div>
+  </article>
 
 <% else %>
 
-  <div class="container col-8">
+  <article class="col-8 recipe-list-container">
 
     <% if params[:filter] == 'favorites' %>
       <h1><%= t('general.favorites') %></h1>
@@ -63,7 +63,7 @@
       <%= t('recipes.printing.print_copy') %>
     </p>
 
-  </div>
+  </article>
 
 <% end %>
 

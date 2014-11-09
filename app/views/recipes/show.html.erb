@@ -1,6 +1,6 @@
 <%= render 'shared/nav' %>
 
-<div class="container col-8 recipe-print">
+<article class="col-8 recipe-print">
 
   <%= header_cleaner(@recipe.title, class: 'ib') %>
 
@@ -60,7 +60,7 @@
     <%= render 'shared/printer' %>
   </div>
 
-</div>
+</article>
 
 <%= link_to recipe_cook_path(:recipe_id => @recipe.id), class: 'btn-paper' do %>
   <%= inline_svg('ios7-photos.svg') %>
