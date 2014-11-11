@@ -14,7 +14,7 @@
             <%= link_to t('general.favorites'), recipes_path(:filter => 'favorites'), class: nav_active_class(:favorites) %>
           <% end %>
         <% end %>
-        <%= link_to t('general.tags'), :recipes, class: nav_active_class(:tags) %>
+        <span class="text-muted <% nav_active_class(:tags) %>"><%= t('general.tags') %></span>
       </div>
     </div>
 
