@@ -21,7 +21,13 @@
 }
 
 @media (max-width: $screen-phone) {
-  .flash {
-    margin: 16px;
+  section.col-6 {
+    padding: 0 16px !important;
+    width: 90% !important;
+
+    .flash {
+      padding: 10px 12px !important;
+      margin: 16px;
+    }
   }
 }
