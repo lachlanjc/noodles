@@ -11,7 +11,7 @@ img {
 
 .text, .text p, .text li {
   @include text-serif;
-  color: $black;
+  color: #333;
 }
 
 ol, ul {
