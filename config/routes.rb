@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     get    'settings' => 'devise/registrations#edit',    as: :settings
 
     get    'forgot_password' => 'devise/passwords#new', as: :forgot_password
-    get    'change_password' => 'devise/passwords#edit'
+    get    'change_password' => 'devise/passwords#edit', as: :change_password
   end
 
   get '/admin/all_users' => 'analytics#all_users', as: :analytics_users
