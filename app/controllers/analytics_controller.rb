@@ -11,23 +11,23 @@ class AnalyticsController < ApplicationController
     if current_user
       check_access(current_user.id)
     else
-      flash[:error] = "Sorry, you can't look at that page."
+      flash[:danger] = "Sorry, you can't look at that page."
       redirect_to root_url
     end
   end
 
   def recipes
     authenticate
-    @recipes = Recipe.all.reverse
+    @recipes = Recipe.all.order(created_at: :desc)
   end
 
   def all_users
     authenticate
-    @users = User.all.reverse
+    @users = User.all.order(created_at: :desc)
   end
 
   def marketable
     authenticate
-    @users = User.all.reverse
+    @users = User.all.order(created_at: :desc)
   end
 end

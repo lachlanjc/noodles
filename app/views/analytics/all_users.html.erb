@@ -4,34 +4,29 @@
 
 <% if @access == true %>
 
-  <div class="page container col-md-8 col-md-offset-2 print-full-width">
+  <article class="col-8">
 
-    <div class="row">
-      <h1 class="page-title">
-        All Users (<%= @users.count %>)
-      </h1>
-    </div>
+    <h1>Users (<%= @users.count %>)</h1>
 
-    <div class="row">
-      <table class="table">
-        <thead>
-          <tr style="font-weight: bold;">
-            <td>ID</td>
-            <td>First Name</td>
-            <td>Email</td>
+    <table class="table">
+      <thead>
+        <tr style="font-weight: bold;">
+          <td>ID</td>
+          <td>First Name</td>
+          <td>Email</td>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.first_name %></td>
+            <td><%= user.email %></td>
           </tr>
-        </thead>
-        <tbody>
-          <% @users.each do |user| %>
-            <tr>
-              <td><%= user.id %></td>
-              <td><%= user.first_name %></td>
-              <td><%= user.email %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+        <% end %>
+      </tbody>
+    </table>
 
   </div>
 

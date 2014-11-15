@@ -34,7 +34,7 @@ en:
       updated: "You updated your account successfully."
     sessions:
       signed_in: "Great, you've signed in. Enjoy your cooking!"
-      signed_out: "You've been signed out. Have a fabulous day."
+      signed_out: "You're signed out. Have a fabulous day!"
     unlocks:
       send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
