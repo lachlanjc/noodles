@@ -1,0 +1,39 @@
+<% activate_nav!(:announcements) %>
+
+<%= render 'shared/nav' %>
+
+<article class="col-8">
+
+  <h1>Noodles keeps getting better.</h1>
+  <h2 class="text-muted">Check back here for the latest updates.</h2>
+
+  <hr>
+
+  <% @announcements.each do |announcement| %>
+    <%= link_to (announcement) do %>
+      <div class="panel">
+        <div class="center">
+          <h2><%= announcement.title %></h2>
+          <p class="text-muted m0">
+            <% if announcement.author_id == 1 %>
+              Lachlan Campbell
+            <% else %>
+              Taran Samarth
+            <% end %>
+            on <%= announcement.created_at.strftime('%B %e, %Y') %>
+          </p>
+          <div class="text-dark">
+            <%= announcement.body.truncate(200) %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+</article>
+
+<% if @admin == true %>
+  <%= link_to :new_announcement, class: 'btn-paper' do %>
+    <%= inline_svg('ios7-plus-empty.svg') %>
+  <% end %>
+<% end %>

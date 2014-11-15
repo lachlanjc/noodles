@@ -19,6 +19,7 @@
     </div>
 
     <div class="links">
+      <%= link_to 'Announcements', :announcements, class: nav_active_class(:announcements) %>
       <%= link_to t('general.settings'), :settings, class: nav_active_class(:settings) %>
       <%= link_to t('general.help'), :help, class: nav_active_class(:help) %>
       <%= link_to t('general.sign_out'), :sign_out %>

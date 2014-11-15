@@ -1,0 +1,21 @@
+.bio {
+  .author-photo {
+    width: 4em;
+    float: left;
+
+    img {
+      border-radius: 50%;
+      @include shadow-light;
+    }
+  }
+
+  .author-info {
+    display: inline-block;
+    margin-left: $padding-base;
+
+    .token {
+      margin-left: $padding-xs;
+      padding: 2px 12px;
+    }
+  }
+}

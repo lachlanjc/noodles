@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     get '/cook' => 'cook#index'
   end
 
+  resources :announcements
+
   get '/recipes/favorites' => 'recipes#favorites', as: :favorites
   get '/random_recipe' => 'recipes#random_recipe', as: :random_recipe
   get '/recipes/:id/edit/remove_image' => 'recipes#remove_image', as: :remove_image
