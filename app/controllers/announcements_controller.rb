@@ -86,7 +86,7 @@ class AnnouncementsController < ApplicationController
 
   private
     def check_admin
-      if current_user && (current_user.id == 1 || current_user.id == 4)
+      if current_user && (current_user.id == 1 || current_user.id == 23)
         @admin = true
       else
         @admin = false
