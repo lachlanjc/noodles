@@ -68,6 +68,11 @@
 }
 
 @media print {
+  .btn {
+    background-color: transparent !important;
+    border: 1px solid #ccc;
+  }
+
   .btn-paper {
     display: none;
   }
