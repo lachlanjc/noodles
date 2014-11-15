@@ -110,6 +110,7 @@
 }
 
 .btn-lg {
+  @extend .btn;
   font-size: 21px;
   padding: 10px 16px;
   vertical-align: text-top;
