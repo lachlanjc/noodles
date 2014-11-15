@@ -32,7 +32,7 @@
   <h2>Ingredients</h1>
   <%= list_cleaner(@recipe.ingredients, class: 'text') %>
 
-  <h2>Instructions</h2>
+  <h2 class="m1-top">Instructions</h2>
   <div class="text">
     <%= @recipe.instructions_rendered.html_safe %>
   </div>
