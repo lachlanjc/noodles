@@ -9,14 +9,17 @@
 }
 
 .flash-success {
+  @extend .flash;
   border-left-color: $brand-success;
 }
 
 .flash-info {
+  @extend .flash;
   border-left-color: $brand-info;
 }
 
 .flash-danger {
+  @extend .flash;
   border-left-color: $brand-danger;
 }
 

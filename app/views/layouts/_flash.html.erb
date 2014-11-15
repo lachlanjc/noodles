@@ -1,7 +1,7 @@
 <% unless flash.empty? %>
   <section class="col-6 center">
     <% flash.each do |key, value| %>
-      <div class="panel flash <%= flash_class(key) %>">
+      <div class="panel <%= flash_class(key) %>">
         <%= value %>
       </div>
     <% end %>
