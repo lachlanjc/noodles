@@ -29,6 +29,28 @@ hr {
   }
 }
 
+.token {
+  font-size: $type-body;
+  text-align: center;
+  margin-right: 12px;
+  min-width: 48px;
+  padding: 0 12px;
+  border-radius: 16px;
+  display: inline-block;
+}
+
+.token-outline {
+  @extend .token;
+  border: 1px solid $blue;
+  color: $blue !important;
+}
+
+.token-full {
+  @extend .token;
+  background-color: $blue;
+  color: white !important;
+}
+
 // .well {
 //   border: 1px solid $grey-lighter;
 //   border-radius: 3px;
