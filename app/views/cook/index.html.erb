@@ -24,7 +24,7 @@
 
   </header>
 
-  <div class="cards-shell">
+  <section class="cards-shell flex flex-between">
 
     <div class="cook-ctrl" id="cookCtrlRev">
       <%= inline_svg('ios7-arrow-left.svg') %>
@@ -42,16 +42,12 @@
         <% end %>
       </li>
 
-      <li class="text-left">
-        <% if @recipe.ingredients.length == 0 %>
-          <span class="text-muted">Your recipe has no ingredients.</span>
-        <% else %>
-          <h2>Ingredients</h2>
-          <%= simple_format(@recipe.ingredients.html_safe) %>
-        <% end %>
-      </li>
-
       <%= @recipe.instructions_rendered.html_safe %>
+
+      <li>
+        <h2>All done!</h2>
+        <p>Have a fabulous time eating <%= @recipe.title %>.</p>
+      </li>
 
     </ul>
 
@@ -59,6 +55,20 @@
       <%= inline_svg('ios7-arrow-right.svg') %>
     </div>
 
-  </div>
+  </section>
+
+  <section class="cards-shell col-4">
+    <div class="ingredients-accordion">
+      <input type="checkbox" id="accordion-button">
+      <label for="accordion-button" class="accordion-label">Ingredients</label>
+      <div class="content">
+        <% if @recipe.ingredients.length == 0 %>
+          <span class="text-muted">Your recipe has no ingredients.</span>
+        <% else %>
+          <%= simple_format(@recipe.ingredients.html_safe) %>
+        <% end %>
+      </div>
+    </div>
+  </section>
 
 </div>

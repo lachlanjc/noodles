@@ -30,6 +30,4 @@ body {
 .cards-shell {
   max-width: 60%;
   margin: 1em auto;
-  @include display(flex);
-  @include justify-content(space-between);
 }

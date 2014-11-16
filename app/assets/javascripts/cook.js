@@ -24,15 +24,12 @@ window.onload = function() {
             // e.style.fontSize = (i -= 2) + 'px';
         }
         // e.style.marginTop = ((window.innerHeight - e.offsetHeight) / 2) + 'px';
-        // if (window.location.hash !== n) window.location.hash = n;
-        var currentStep = n - 1;
+        if (window.location.hash !== n) window.location.hash = n;
+        var currentStep = n;
         var currentStepTitle = currentStep;
         var currentStepTitleEnd = 'Step ' + currentStepTitle;
-        if (currentStep === -1) {
+        if (currentStep === 0) {
           currentStepTitleEnd = 'Title Card';
-          currentStep = 0;
-        } else if (currentStep === 0) {
-          currentStepTitleEnd = 'Ingredients';
           currentStep = 0;
         }
         document.title = document.getElementById('recipeTitle').innerHTML + '· ' + currentStepTitleEnd;
