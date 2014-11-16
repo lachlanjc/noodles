@@ -8,13 +8,8 @@
   }
 
   svg {
-    width: 40px;
-    height: 40px;
-    margin: 0 8px;
-
-    path {
-      fill: $brand-primary;
-    }
+    @include svg(40px, $brand-primary);
+    margin: 0 $padding-xs;
   }
 
   &.item-danger {
@@ -23,10 +18,6 @@
     svg path {
       fill: $brand-danger;
     }
-  }
-
-  span {
-    text-align: center;
   }
 }
 
