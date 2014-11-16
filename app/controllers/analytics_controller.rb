@@ -18,16 +18,31 @@ class AnalyticsController < ApplicationController
 
   def recipes
     authenticate
-    @recipes = Recipe.all.order(created_at: :desc)
+    if @access == true
+      @recipes = Recipe.all.order(created_at: :desc)
+    else
+      flash[:danger] = "You're not allowed to see those."
+      redirect_to root_url
+    end
   end
 
   def all_users
     authenticate
-    @users = User.all.order(created_at: :desc)
+    if @access == true
+      @users = User.all.order(created_at: :desc)
+    else
+      flash[:danger] = "You're not allowed to see those."
+      redirect_to root_url
+    end
   end
 
   def marketable
     authenticate
-    @users = User.all.order(created_at: :desc)
+    if @access == true
+      @users = User.all.order(created_at: :desc)
+    else
+      flash[:danger] = "You're not allowed to see those."
+      redirect_to root_url
+    end
   end
 end
