@@ -14,6 +14,7 @@
         <td>ID</td>
         <td>First Name</td>
         <td>Email</td>
+        <td>Recipe count</td>
       </tr>
     </thead>
 
@@ -23,6 +24,7 @@
           <td><%= user.id %></td>
           <td><%= user.first_name %></td>
           <td><%= user.email %></td>
+          <td><%= Recipe.where(:user_id => user.id).count %>
         </tr>
       <% end %>
     </tbody>
