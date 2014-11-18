@@ -1,10 +1,11 @@
 class AnnouncementsController < ApplicationController
   before_action :set_announcement, only: [:show, :edit, :update, :destroy]
+  before_filter :check_admin, only: [:new, :edit, :update, :destroy]
 
   # GET /announcements
   def index
-    @announcements = Announcement.all.reverse
     check_admin
+    @announcements = Announcement.all.reverse
   end
 
   # GET /announcements/1
@@ -14,29 +15,21 @@ class AnnouncementsController < ApplicationController
 
   # GET /announcements/new
   def new
-    check_admin
     if @admin == true
       @announcement = Announcement.new
-    else
-      flash[:danger] = 'Only members of the Noodles team can write on the blog.'
-      redirect_to root_url
+      render :new
     end
   end
 
   # GET /announcements/1/edit
   def edit
-    check_admin
     if @admin == true
       render :edit
-    else
-      flash[:danger] = 'Only members of the Noodles team can write on the blog.'
-      redirect_to root_url
     end
   end
 
   # POST /announcements
   def create
-    check_admin
     if @admin == true
       @announcement = Announcement.new(announcement_params)
       @announcement.body_rendered = markdown(@announcement.body)
@@ -47,15 +40,11 @@ class AnnouncementsController < ApplicationController
       else
         render :new
       end
-    else
-      flash[:danger] = 'Only members of the Noodles team can write on the blog.'
-      redirect_to root_url
     end
   end
 
   # PATCH/PUT /announcements/1
   def update
-    check_admin
     if @admin == true
       @announcement.body_rendered = markdown(@announcement.body)
 
@@ -65,22 +54,15 @@ class AnnouncementsController < ApplicationController
       else
         render :edit
       end
-    else
-      flash[:danger] = 'Only members of the Noodles team can write on the blog.'
-      redirect_to root_url
     end
   end
 
   # DELETE /announcements/1
   def destroy
-    check_admin
     if @admin == true
       @announcement.destroy
       flash[:danger] = 'Announcement deleted.'
       redirect_to announcements_url
-    else
-      flash[:danger] = 'Only members of the Noodles team can delete posts on the blog.'
-      redirect_to root_url
     end
   end
 
@@ -90,6 +72,8 @@ class AnnouncementsController < ApplicationController
         @admin = true
       else
         @admin = false
+        flash[:danger] = "Sorry, you can't access that page."
+        redirect_to root_url
       end
     end
 
