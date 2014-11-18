@@ -2,32 +2,30 @@
 
 <%= render 'shared/analytics_nav' %>
 
-<% if @access == true %>
+<article class="col-8">
 
-  <article class="col-8">
+  <h1>Users (<%= @users.count %>)</h1>
 
-    <h1>Users (<%= @users.count %>)</h1>
+  <style> td { padding: 6px; } </style>
 
-    <table class="table">
-      <thead>
-        <tr style="font-weight: bold;">
-          <td>ID</td>
-          <td>First Name</td>
-          <td>Email</td>
+  <table class="table">
+    <thead>
+      <tr style="font-weight: bold;">
+        <td>ID</td>
+        <td>First Name</td>
+        <td>Email</td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.first_name %></td>
+          <td><%= user.email %></td>
         </tr>
-      </thead>
+      <% end %>
+    </tbody>
+  </table>
 
-      <tbody>
-        <% @users.each do |user| %>
-          <tr>
-            <td><%= user.id %></td>
-            <td><%= user.first_name %></td>
-            <td><%= user.email %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-  </div>
-
-<% end %>
+</div>
