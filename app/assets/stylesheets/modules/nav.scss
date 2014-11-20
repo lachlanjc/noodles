@@ -1,6 +1,7 @@
 nav {
   background-color: white;
   border-bottom: 1px solid $grey-lighter;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.02);
   @include display(flex);
   @include justify-content(space-between);
 
