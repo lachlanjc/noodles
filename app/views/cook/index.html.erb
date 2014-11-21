@@ -1,75 +1,70 @@
 <%= stylesheet_link_tag 'cook' %>
 <%= javascript_include_tag 'cook' %>
 
-<div class="cards-body">
+<header class="cards-header text-center flex flex-between">
 
-  <header class="cards-header text-center flex flex-between">
+  <%= link_to root_path do %>
+    <h1 class="text-muted">N</h1>
+  <% end %>
 
-    <%= link_to root_path do %>
-      <h1 class="text-muted">N</h1>
-    <% end %>
+  <%= link_to @recipe do %>
+    <h3 class="text-muted" id="recipeTitle">
+      <%= @recipe.title %>
+    </h3>
+  <% end %>
 
-    <%= link_to @recipe do %>
-      <h3 class="text-muted" id="recipeTitle">
+  <div class="text-muted">
+    <%= t('.step') %>
+    <span id="currentStepInCount"></span>
+    <%= t('.of') %>
+    <span><%= @recipe_step_count %></span>
+  </div>
+
+</header>
+
+<section class="cards-shell flex flex-between">
+
+  <div class="cook-ctrl" id="cookCtrlRev">
+    <%= inline_svg('ios7-arrow-left.svg') %>
+  </div>
+
+  <ul class="cook-list m0" id="cook-list">
+
+    <li>
+      <h2>
+        <%= t('.cooking_with') %>
         <%= @recipe.title %>
-      </h3>
-    <% end %>
-
-    <div class="text-muted">
-      <%= t('.step') %>
-      <span id="currentStepInCount"></span>
-      <%= t('.of') %>
-      <span><%= @recipe_step_count %></span>
-    </div>
-
-  </header>
-
-  <section class="cards-shell flex flex-between">
-
-    <div class="cook-ctrl" id="cookCtrlRev">
-      <%= inline_svg('ios7-arrow-left.svg') %>
-    </div>
-
-    <ul class="cook-list" id="cook-list">
-
-      <li>
-        <h2>
-          <span class="lightweight"><%= t('.cooking_with') %></span>
-          <%= @recipe.title %>
-        </h2>
-        <% unless @recipe.description.length == 0 %>
-          <p class="text-muted"><%= @recipe.description %></p>
-        <% end %>
-      </li>
-
-
-      <li>
-        <h2>All done!</h2>
-        <p>Have a fabulous time eating <%= @recipe.title %>.</p>
-      </li>
-
-    </ul>
-
-    <div class="cook-ctrl" id="cookCtrlFwd">
-      <%= inline_svg('ios7-arrow-right.svg') %>
-    </div>
-
-  </section>
-
-  <section class="cards-shell col-4">
-    <div class="ingredients-accordion">
-      <input type="checkbox" id="accordion-button">
-      <label for="accordion-button" class="accordion-label">Ingredients</label>
-      <div class="content">
-        <% if @recipe.ingredients.length == 0 %>
-          <span class="text-muted">Your recipe has no ingredients.</span>
-        <% else %>
-          <%= simple_format(@recipe.ingredients.html_safe) %>
-        <% end %>
-      </div>
+      </h2>
+      <% unless @recipe.description.length == 0 %>
+        <p class="text-muted"><%= @recipe.description %></p>
+      <% end %>
+    </li>
 
     <%= sanitize @recipe.instructions_rendered %>
-    </div>
-  </section>
 
-</div>
+    <li>
+      <h2>All done!</h2>
+      <p>Enjoy eating your <%= @recipe.title.downcase %>.</p>
+    </li>
+
+  </ul>
+
+  <div class="cook-ctrl" id="cookCtrlFwd">
+    <%= inline_svg('ios7-arrow-right.svg') %>
+  </div>
+
+</section>
+
+<section class="cards-shell col-4">
+  <div class="ingredients-accordion">
+    <input type="checkbox" id="accordion-button">
+    <label for="accordion-button" class="accordion-label">Ingredients</label>
+    <div class="content">
+      <% if @recipe.ingredients.length == 0 %>
+        <p class="text-muted">Your recipe has no ingredients.</p>
+      <% else %>
+        <%= simple_format(@recipe.ingredients) %>
+      <% end %>
+    </div>
+  </div>
+</section>
