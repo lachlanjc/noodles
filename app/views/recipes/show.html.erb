@@ -33,7 +33,7 @@
     <%= image_tag @recipe.img %>
   <% end %>
 
-  <h2>Ingredients</h1>
+  <h2 class="m1-top">Ingredients</h1>
   <%= simple_format(@recipe.ingredients, class: 'text') %>
 
   <h2 class="m1-top">Instructions</h2>
@@ -41,7 +41,7 @@
     <%= sanitize @recipe.instructions_rendered %>
   </div>
 
-  <div class="action-list">
+  <div class="action-list m1-top">
 
     <%= link_to :edit_recipe do %>
       <%= inline_svg('ios7-compose-outline.svg') %>
