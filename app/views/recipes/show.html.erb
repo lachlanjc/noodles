@@ -7,16 +7,17 @@
   <h1>
     <%= @recipe.title %>
 
-  <% if @recipe.favorite == true %>
-    <h1 class="favorite ib">
+    <% if @recipe.favorite == true %>
+    <div class="header-indicator">
       <%= inline_svg('ios7-star.svg') %>
-    </h1>
-  <% end %>
-  <% if @recipe.shared == true %>
-    <h1 class="favorite ib">
+    </div>
+    <% end %>
+
+    <% if @recipe.shared == true %>
+    <div class="header-indicator">
       <%= inline_svg('ios7-upload.svg') %>
-    </h1>
-  <% end %>
+    </div>
+    <% end %>
   </h1>
 
   <%= simple_format(@recipe.description, class: 'm0') %>

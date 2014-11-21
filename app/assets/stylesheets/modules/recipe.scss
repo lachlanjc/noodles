@@ -1,7 +1,11 @@
-.favorite svg {
+.header-indicator {
   margin-left: 4px;
-  @include svg(24px, $brand-primary);
+  display: inline-block;
   @include up(2px);
+
+  svg {
+    @include svg(24px, $brand-primary);
+  }
 }
 
 img {
