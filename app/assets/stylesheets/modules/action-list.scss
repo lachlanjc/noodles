@@ -1,6 +1,7 @@
 .action-list a {
   color: $brand-primary;
-  margin-right: 15px;
+  text-align: center;
+  margin-right: 18px;
   display: inline-block;
 
   svg, span {
@@ -9,7 +10,6 @@
 
   svg {
     @include svg(40px, $brand-primary);
-    margin: 0 $padding-xs;
   }
 
   &.item-danger {
