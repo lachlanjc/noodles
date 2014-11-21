@@ -42,7 +42,6 @@
         <% end %>
       </li>
 
-      <%= @recipe.instructions_rendered.html_safe %>
 
       <li>
         <h2>All done!</h2>
@@ -68,6 +67,8 @@
           <%= simple_format(@recipe.ingredients.html_safe) %>
         <% end %>
       </div>
+
+    <%= sanitize @recipe.instructions_rendered %>
     </div>
   </section>
 

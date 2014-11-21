@@ -4,7 +4,8 @@
 
 <article class="col-8 recipe-print">
 
-  <%= header_cleaner(@recipe.title, class: 'ib') %>
+  <h1>
+    <%= @recipe.title %>
 
   <% if @recipe.favorite == true %>
     <h1 class="favorite ib">
@@ -16,8 +17,9 @@
       <%= inline_svg('ios7-upload.svg') %>
     </h1>
   <% end %>
+  </h1>
 
-  <p><%= cleaner(@recipe.description) %></p>
+  <%= simple_format(@recipe.description, class: 'm0') %>
 
   <% if @recipe.shared == true %>
     <div class="panel social-panel">
@@ -32,11 +34,11 @@
   <% end %>
 
   <h2>Ingredients</h1>
-  <%= list_cleaner(@recipe.ingredients, class: 'text') %>
+  <%= simple_format(@recipe.ingredients, class: 'text') %>
 
   <h2 class="m1-top">Instructions</h2>
   <div class="text">
-    <%= @recipe.instructions_rendered.html_safe %>
+    <%= sanitize @recipe.instructions_rendered %>
   </div>
 
   <div class="action-list">

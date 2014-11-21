@@ -1,5 +1,4 @@
 module NavHelper
-
   def nav_active_class(nav)
     'active' if nav_active?(nav)
   end
@@ -13,5 +12,4 @@ module NavHelper
     @navs ||= []
     @navs.push(nav.to_sym)
   end
-
 end

@@ -1,3 +1,2 @@
 module CookHelper
-
 end
