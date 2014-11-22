@@ -49,12 +49,10 @@
 
   </div>
 
-  <div class="row">
-    <% if nav_active?(:new_recipe) %>
-      <%= f.submit t('general.add_recipe'), class: 'btn btn-primary' %>
-    <% else %>
-      <%= f.submit t('general.save'), class: 'btn btn-primary' %>
-    <% end %>
-  </div>
+  <% if nav_active?(:new_recipe) %>
+    <%= f.submit t('general.add_recipe'), class: 'btn btn-primary' %>
+  <% else %>
+    <%= f.submit t('general.save'), class: 'btn btn-primary' %>
+  <% end %>
 
 <% end %>
