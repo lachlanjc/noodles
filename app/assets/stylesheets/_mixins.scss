@@ -79,6 +79,7 @@
 // BUTTON STYLING
 
 @mixin button-standard($btn-bg-color) {
+  @extend .btn;
   background-color: $btn-bg-color;
 
   &:hover {
