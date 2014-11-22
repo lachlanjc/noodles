@@ -4,9 +4,9 @@
 
 <article class="col-8 recipe-print">
 
-  <%= header_cleaner(@recipe.title, class: 'ib') %>
+  <h1><%= @recipe.title %></h1>
   <p class="text-muted m0">Published by <%= User.find(@recipe.user_id).first_name %></p>
-  <p><%= cleaner(@recipe.description) %></p>
+  <%= simple_format(@recipe.description, class: 'm1-top') %>
 
   <% if current_user && current_user.id == @recipe.user_id %>
     <div class="panel social-panel">
@@ -20,17 +20,17 @@
     <%= image_tag @recipe.img %>
   <% end %>
 
-  <h2>Ingredients</h1>
-  <%= list_cleaner(@recipe.ingredients, class: 'text') %>
+  <h2 class="m1-top">Ingredients</h1>
+  <%= simple_format(@recipe.ingredients, class: 'text') %>
 
   <h2 class="m1-top">Instructions</h2>
   <div class="text">
-    <%= @recipe.instructions_rendered.html_safe %>
+    <%= sanitize @recipe.instructions_rendered %>
   </div>
 
   <% unless current_user && @recipe.user_id == current_user.id %>
     <div class="panel social-panel">
-      <h2 class="m0">Like this recipe? Share it!</h2>
+      <h2 class="m0">If you like this this recipe, share it.</h2>
       <%= render 'shared/social' %>
     </div>
   <% end %>
