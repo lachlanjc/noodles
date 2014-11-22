@@ -1,0 +1,19 @@
+<% activate_nav!(:analytics_recipes) %>
+
+<%= render 'shared/analytics_nav' %>
+
+<article class="col-8">
+
+  <h1>Shared Recipes (<%= @recipes.count %> out of <%= Recipe.all.count %>)</h1>
+
+  <% @recipes.each do |recipe| %>
+    <div class="panel">
+      <h2><%= recipe.title %><span class="text-muted"> #<%= recipe.id %></span></h2>
+      <p>Published by: <%= User.find(recipe.user_id).first_name %></p>
+
+      <%= link_to 'View', recipe, class: 'btn btn-default btn-sm' %>
+      <%= link_to 'Delete', recipe, method: :delete, data: { confirm: t('general.delete_forever') }, class: 'btn-danger btn-sm' %>
+    </div>
+  <% end %>
+
+</article>

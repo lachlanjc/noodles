@@ -42,6 +42,6 @@ Rails.application.routes.draw do
 
   get '/admin/all_users' => 'analytics#all_users', as: :analytics_users
   get '/admin/user_marketable' => 'analytics#marketable', as: :analytics_marketable
-  get '/admin/recipes' => 'analytics#recipes', as: :analytics_recipes
+  get '/admin/shared_recipes' => 'analytics#shared_recipes', as: :analytics_recipes
 
 end

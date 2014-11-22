@@ -1,9 +1,9 @@
 class AnalyticsController < ApplicationController
   before_filter :authenticate
 
-  def recipes
+  def shared_recipes
     if @access == true
-      @recipes = Recipe.all.order(created_at: :desc)
+      @recipes = Recipe.where(:shared => true).order(created_at: :desc)
     end
   end
 
