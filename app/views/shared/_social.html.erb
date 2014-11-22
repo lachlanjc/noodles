@@ -22,7 +22,7 @@
   <% if current_user && current_user.id == @recipe.user_id %>
     <a href="mailto:?subject=Check out <%= @recipe.title %> on Noodles&body=Hey there! I published a new recipe on Noodles (http://getnoodl.es), <%= @recipe.title %>. Check it out: http://app.getnoodl.es/s/<%= @recipe.id %>" class="social-email" target="_blank">
   <% else %>
-    <a href="mailto:?subject=Check out <%= @recipe.title %> on Noodles&body=Hey there! Look at this recipe on Noodles (http://getnoodl.es), <%= @recipe.title %>. Check it out: http://app.getnoodl.es/s/<%= @recipe.id %>" class="social-email" target="_blank">
+    <a href="mailto:?subject=Check out <%= @recipe.title %> on Noodles&body=Hey there! I saw a recipe called <%= @recipe.title %> on Noodles (http://getnoodl.es) today. Check it out: http://app.getnoodl.es/s/<%= @recipe.id %>" class="social-email" target="_blank">
   <% end %>
     <%= inline_svg('ios7-email.svg') %>
   </a>
