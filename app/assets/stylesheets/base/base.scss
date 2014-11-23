@@ -29,6 +29,10 @@ hr {
   }
 }
 
+.notes {
+  background-color: $notes;
+}
+
 .token {
   font-size: $type-body;
   text-align: center;
@@ -87,6 +91,11 @@ hr {
 
 .m1-top {
   margin-top: 1em;
+}
+
+.m1-btm {
+  margin-top: 0;
+  margin-bottom: 1em;
 }
 
 .m1-5-top {

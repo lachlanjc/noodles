@@ -37,3 +37,18 @@ body {
     margin: 1em 0 0 0;
   }
 }
+
+#editor-details-btn svg {
+  @include svg(28px, $grey);
+  @include up(8px);
+  margin-right: 3px;
+
+  circle {
+    fill: $grey;
+  }
+}
+
+.btn-full-form {
+  width: 100%;
+  padding: 8px 0;
+}

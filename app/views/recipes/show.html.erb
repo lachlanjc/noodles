@@ -42,6 +42,22 @@
     <%= sanitize @recipe.instructions_rendered %>
   </div>
 
+  <p id="recipe-details-btn" class="text-primary block m1-top">
+    <%= inline_svg('ios7-information-outline.svg') %>
+    Show Details
+  </p>
+
+  <div class="hide" id="recipe-details-container">
+    <h2 class="m1-top">Details</h2>
+    <p class="text-muted">Source: <%= @recipe.source %>
+    <p class="text-muted">Serves: <%= @recipe.serves %>
+
+    <h2 class="m1-top">Notes</h2>
+    <div class="panel notes">
+      <%= @recipe.notes %>
+    </div>
+  </div>
+
   <div class="action-list m1-top">
 
     <%= link_to :edit_recipe do %>

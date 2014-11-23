@@ -23,6 +23,10 @@ label {
     color: $black;
     outline: 0;
   }
+
+  &.notes:focus {
+    border-color: $grey-lighter;
+  }
 }
 
 textarea.text-input {

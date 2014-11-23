@@ -4,11 +4,38 @@
 
   <%= f.text_area :description, class: 'invisble-input full-width m0 js-auto-size', placeholder: 'Write a description for the recipe.', autocomplete: 'off', rows: '1' %>
   <%= f.text_area :ingredients, class: 'invisble-input full-width m0 js-auto-size', placeholder: 'Add your recipe\'s ingredients. Put one on each line.', rows: '3', autocomplete: 'off' %>
-  <%= f.text_area :instructions, id: 'instructions-input', onfocus: 'numberRow();', class: 'invisble-input full-width m0 js-auto-size', placeholder: 'How do you make this recipe? Number each step.', rows: '3', autocomplete: 'off' %>
+  <%= f.text_area :instructions, id: 'instructions-input', class: 'invisble-input full-width m0 js-auto-size', placeholder: 'How do you make this recipe? Number each step.', rows: '3', autocomplete: 'off' %>
 
-  <a href="#" id="details-btn" onclick="showDetails();">Show Details</a>
+  <p id="editor-details-btn" class="text-muted block m1-btm">
+    <%= inline_svg('ios7-information-outline.svg') %>
+    Show Details
+  </p>
 
-  <div id="details-container" class="hide">
+  <div class="hide" id="editor-details-container">
+    <h2>Details</h2>
+
+    <div class="panel">
+      <% if @recipe.img.url == '' || nav_active?(:new_recipe) %>
+        <h4 class="m0">Add a photo</h4>
+      <% else %>
+        <h4 class="m0">Change the recipe's photo</h4>
+      <% end %>
+      <%= f.file_field :img %>
+      <% if nav_active?(:edit_recipe) && @recipe.img.url != '' %>
+        <span>or </span><%= link_to 'Remove current image', remove_image_path(@recipe), class: 'btn btn-sm btn-default in-text' %>
+        <br>
+      <% end %>
+    </div>
+
+    <%= f.label :source %>
+    <%= f.text_field :source, class: 'text-input' %>
+
+    <%= f.label :serves %>
+    <%= f.text_field :serves, class: 'text-input' %>
+
+    <%= f.label :notes %>
+    <%= f.text_area :notes, class: 'text-input panel m1-btm notes js-auto-size' %>
+
     <div class="action-list">
 
       <a class="item-favorite">
@@ -32,21 +59,10 @@
       <% end %>
 
     </div>
-
-    <div class="panel">
-      <% if @recipe.img.url == '' || nav_active?(:new_recipe) %>
-        <h2>Add a photo</h2>
-      <% else %>
-        <h2>Change the recipe's photo</h2>
-      <% end %>
-      <%= f.file_field :img %>
-      <% if nav_active?(:edit_recipe) && @recipe.img.url != '' %>
-        <span>or </span><%= link_to 'Remove current image', remove_image_path(@recipe), class: 'btn btn-sm btn-default in-text' %>
-        <br>
-      <% end %>
-    </div>
   </div>
 
-  <%= f.submit t('general.save'), class: 'btn block' %>
+  <article class="col-8">
+    <%= f.submit t('general.save'), class: 'btn-default btn-full-form' %>
+  </article>
 
 <% end %>
