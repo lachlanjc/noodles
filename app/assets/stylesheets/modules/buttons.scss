@@ -79,8 +79,10 @@
 }
 
 .btn-default {
+  @extend .btn;
   background-color: white !important;
   color: $black !important;
+  border: 0;
 
   &:hover, &:visited:hover {
     background-color: white !important;

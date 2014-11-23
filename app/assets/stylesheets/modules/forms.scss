@@ -38,7 +38,7 @@ textarea.text-input {
   }
 }
 
-input[type="checkbox"] {
+.checkbox {
   @include up(-1px);
 }
 
