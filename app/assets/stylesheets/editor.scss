@@ -1,0 +1,39 @@
+@import 'variables';
+@import 'mixins';
+
+body {
+  background-color: $grey-lighter;
+}
+
+.logo-nav {
+  position: absolute;
+  top: 16px;
+  left: 24px;
+  font-size: $type-header;
+}
+
+.invisble-input {
+  @include text-body;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: 0;
+  color: $black;
+  width: 16em;
+  padding: 4px 0;
+  margin-bottom: 1em;
+  display: block;
+  resize: none;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &.full-width {
+    width: 100%;
+  }
+
+  &.header {
+    font-size: $type-header;
+    margin: 1em 0 0 0;
+  }
+}
