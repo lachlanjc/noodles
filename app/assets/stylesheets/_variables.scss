@@ -1,10 +1,10 @@
 // COLORS
-// http://colorpeek.com/#e8e8e8,aaaaaa,878787,444444
+// http://colorpeek.com/#e8e8e8,9e9e9e,757575,455a64
 
 $grey-lighter:           #e8e8e8;
-$grey-light:             #aaaaaa;
-$grey:                   #87878c; // #878787;
-$black:                  #4f4f50; // #444444;
+$grey-light:             #9e9e9e;
+$grey:                   #757575;
+$black:                  #455a64;
 
 $red:                    #ff3d00;
 $yellow:                 #fbe500;
@@ -16,6 +16,7 @@ $dark-blue:              darken($blue, 10%);
 
 $brand-primary:          #ff6d00;
 $brand-bg:               #fcfcfd;
+$notes:                  #ffffcc;
 $brand-success:          $green;
 $brand-info:             $yellow;
 $brand-warning:          $yellow;
