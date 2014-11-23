@@ -1,58 +1,66 @@
 <%= form_for(@recipe) do |f| %>
 
-  <%= f.label :title %>
-  <%= f.text_field :title, autofocus: true, class: 'text-input' %>
+  <%= f.text_field :title, autofocus: true, class: 'invisble-input full-width header', placeholder: 'Name your recipe...', autocomplete: 'off' %>
 
-  <%= f.label :description %>
-  <%= f.text_area :description, class: 'text-input js-auto-size' %>
+  <%= f.text_area :description, class: 'invisble-input full-width m0 js-auto-size', placeholder: 'Write a description for the recipe.', autocomplete: 'off', rows: '1' %>
+  <%= f.text_area :ingredients, class: 'invisble-input full-width m0 js-auto-size', placeholder: 'Add your recipe\'s ingredients. Put one on each line.', rows: '3', autocomplete: 'off' %>
+  <%= f.text_area :instructions, id: 'instructions-input', onfocus: 'numberRow();', class: 'invisble-input full-width m0 js-auto-size', placeholder: 'How do you make this recipe? Number each step.', rows: '3', autocomplete: 'off' %>
 
-  <div class="panel">
-    <% if @recipe.img.url == '' || nav_active?(:new_recipe) %>
-      <h2>Add a photo</h2>
-    <% else %>
-      <h2>Change the recipe's photo</h2>
-    <% end %>
-    <%= f.file_field :img %>
-    <% if nav_active?(:edit_recipe) && @recipe.img.url != '' %>
-      <span>or </span><%= link_to 'Remove current image', remove_image_path(@recipe), class: 'btn btn-sm btn-default in-text' %>
-      <br>
-    <% end %>
-  </div>
+  <a href="#" id="details-btn" onclick="showDetails();">Show Details</a>
 
-  <%= f.label :ingredients %>
-  <%= f.text_area :ingredients, class: 'text-input js-auto-size' %>
+  <div id="details-container" class="hide">
+    <div class="action-list">
 
-  <%= f.label :instructions %>
-  <%= f.text_area :instructions, class: 'text-input js-auto-size' %>
+      <a class="item-favorite">
+        <label class="control">
+          <%= f.check_box :favorite %>
+          <div class="control-indicator">
+            <%= inline_svg('ios7-star-outline.svg') %>
+          </div>
+          <div class="control-indicator-checked">
+            <%= inline_svg('ios7-star.svg') %>
+          </div>
+          <span><%= t('general.favorite') %></span>
+        </label>
+      </a>
 
-  <div class="action-list">
-
-    <a class="item-favorite">
-      <label class="control">
-        <%= f.check_box :favorite %>
-        <div class="control-indicator">
-          <%= inline_svg('ios7-star-outline.svg') %>
-        </div>
-        <div class="control-indicator-checked">
-          <%= inline_svg('ios7-star.svg') %>
-        </div>
-        <span><%= t('general.favorite') %></span>
-      </label>
-    </a>
-
-    <% if nav_active?(:edit_recipe) %>
-      <%= link_to @recipe, method: :delete, data: { confirm: t('general.delete_forever') }, class: 'item-danger' do %>
-        <%= inline_svg('ios7-trash-outline.svg') %>
-        <span><%= t('general.delete') %></span>
+      <% if nav_active?(:edit_recipe) %>
+        <%= link_to @recipe, method: :delete, data: { confirm: t('general.delete_forever') }, class: 'item-danger' do %>
+          <%= inline_svg('ios7-trash-outline.svg') %>
+          <span><%= t('general.delete') %></span>
+        <% end %>
       <% end %>
-    <% end %>
 
+    </div>
+
+    <div class="panel">
+      <% if @recipe.img.url == '' || nav_active?(:new_recipe) %>
+        <h2>Add a photo</h2>
+      <% else %>
+        <h2>Change the recipe's photo</h2>
+      <% end %>
+      <%= f.file_field :img %>
+      <% if nav_active?(:edit_recipe) && @recipe.img.url != '' %>
+        <span>or </span><%= link_to 'Remove current image', remove_image_path(@recipe), class: 'btn btn-sm btn-default in-text' %>
+        <br>
+      <% end %>
+    </div>
   </div>
 
-  <% if nav_active?(:new_recipe) %>
-    <%= f.submit t('general.add_recipe'), class: 'btn btn-primary' %>
-  <% else %>
-    <%= f.submit t('general.save'), class: 'btn btn-primary' %>
-  <% end %>
+  <%= f.submit t('general.save'), class: 'btn block' %>
+
+  <script>
+  function showDetails() {
+    document.getElementById('details-container').setAttribute('class', 'show');
+    document.getElementById('details-btn').setAttribute('class', 'hide');
+  }
+
+  function numberRow() {
+    value = document.getElementById('instructions-input').value;
+    if (value.length === 0) {
+      value = '1. ';
+    }
+  }
+  </script>
 
 <% end %>

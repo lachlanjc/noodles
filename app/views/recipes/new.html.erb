@@ -1,10 +1,12 @@
 <% activate_nav!(:new_recipe) %>
 
-<%= render 'shared/nav' %>
+<style>
+body { background-color: #F2F2F2; }
+</style>
+
+<%# render 'shared/nav' %>
 
 <article class="col-8">
-
-  <h1><%= t('.new_recipe') %></h1>
 
   <%= render 'form' %>
 

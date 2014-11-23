@@ -18,7 +18,6 @@ label {
   display: block;
 
   &:focus {
-    padding: 4px 8px;
     @include transition(all 0.1s ease-in);
     border-color: $blue;
     color: $black;
@@ -32,6 +31,32 @@ textarea.text-input {
 
   &.js-auto-size {
     resize: none;
+  }
+}
+
+.invisble-input {
+  @include text-body;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: 0;
+  color: $black;
+  width: 16em;
+  padding: 4px 0;
+  margin-bottom: 1em;
+  display: block;
+  resize: none;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &.full-width {
+    width: 100%;
+  }
+
+  &.header {
+    font-size: $type-header;
+    margin: 1.5em 0 0 0;
   }
 }
 
