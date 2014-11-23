@@ -84,7 +84,7 @@ en:
       cook_better_with: "Cook better with Noodles."
     index:
       no_recipes: "You don't have any recipes yet! To add one, click the button below."
-      and_if_need_help: "And if you ever need anything, contact me by clicking Help (on the left)."
+      and_if_need_help: "And if you ever need anything, contact me by clicking Help (at the top)."
       add_first: "Add your first recipe"
     new:
       new_recipe: "New Recipe"

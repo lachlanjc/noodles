@@ -21,7 +21,7 @@
     <%= f.label t('.current_pass') %>
     <%= f.password_field :current_password, autocomplete: 'off', class: 'text-input' %>
 
-    <%= f.label :password %> <i><%= t('.can_leave_blank') %></i><br />
+    <%= f.label :password, class: 'ib' %><small> <%= t('.can_leave_blank') %></small>
     <%= f.password_field :password, autocomplete: 'off', class: 'text-input' %>
 
     <%= f.submit t('general.update'), class: 'btn btn-primary' %>
