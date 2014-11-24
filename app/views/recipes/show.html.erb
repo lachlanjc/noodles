@@ -53,9 +53,13 @@
     <p class="text-muted">Serves: <%= @recipe.serves %>
 
     <h2 class="m1-top">Notes</h2>
-    <div class="panel notes">
-      <%= @recipe.notes %>
-    </div>
+    <% if @recipe.notes.length == 0 %>
+      <p class="text-muted">You have no notes for this recipe.</p>
+    <% else %>
+      <div class="panel notes">
+        <%= @recipe.notes %>
+      </div>
+    <% end %>
   </div>
 
   <div class="action-list m1-top">
