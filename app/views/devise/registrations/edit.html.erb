@@ -13,10 +13,10 @@
     <%= devise_error_messages! %>
 
     <%= f.label t('.fn') %>
-    <%= f.text_field :first_name, class: 'text-input', id: 'name-full', required: true %>
+    <%= f.text_field :first_name, class: 'text-input', name: 'fname', required: true %>
 
     <%= f.label t('.email_a') %>
-    <%= f.email_field :email, class: 'text-input' %>
+    <%= f.email_field :email, class: 'text-input', name: 'email', autocomplete: 'email' %>
 
     <%= f.label t('.current_pass') %>
     <%= f.password_field :current_password, autocomplete: 'off', class: 'text-input' %>
