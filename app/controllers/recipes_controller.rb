@@ -80,7 +80,7 @@ class RecipesController < ApplicationController
         r.instructions_rendered = @recipe.instructions_rendered
         r.source = @recipe.source
         r.serves = @recipe.serves
-        r.notes = nil
+        r.notes = ''
         r.favorite = false
         r.shared = false
         r.save
