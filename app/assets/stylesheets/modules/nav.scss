@@ -2,12 +2,11 @@ nav {
   background-color: white;
   border-bottom: 1px solid $grey-lighter;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.02);
-  @include display(flex);
-  @include justify-content(space-between);
 
-  .logo {
-    font-size: $type-page-title;
-    margin-left: 18px;
+  .logo img {
+    margin: 18px 6px 10px 12px;
+    width: 18px !important;
+    display: inline-block;
   }
 
   .links {
@@ -15,7 +14,8 @@ nav {
   }
 
   .links-logo {
-    @include up(-7px);
+    position: relative;
+    bottom: 18px;
   }
 
   a {
