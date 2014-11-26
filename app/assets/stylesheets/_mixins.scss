@@ -19,6 +19,10 @@
   top: $amount;
 }
 
+@mixin elegance {
+  @include transition(all .28s cubic-bezier(.4,0,.2,1));
+}
+
 // TEXT STYLES
 
 @mixin text-page-title {

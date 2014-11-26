@@ -9,16 +9,16 @@
   border: 0;
   border-radius: 5px;
   margin: 8px 0;
-  @include transition(box-shadow 0.2s ease-in-out);
-  box-shadow: 0 1px 1px rgba(black, 0.2);
+  @include elegance;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .16);
 
   &:hover {
     color: white;
-    box-shadow: 0 1px 3px rgba(black, 0.3);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .23);
   }
 
   &:active, &:focus {
-    box-shadow: 0 2px 6px rgba(black, 0.3);
+    box-shadow: 0 4px 10px 2px rgba(0, 0, 0, .48);
     outline: 0;
   }
 
@@ -40,26 +40,26 @@
   border-radius: 50%;
   width: 46px;
   height: 46px;
-  padding: 6px;
+  padding: 8px;
   position: fixed;
   bottom: $padding-base;
   right: $padding-base;
-  @include transition(box-shadow 0.2s ease-in-out);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.24);
+  @include elegance;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.23);
 
   &:hover {
-    @include shadow-3;
+    box-shadow: 0 3px 6px 2px rgba(0, 0, 0, .23);
   }
 
   &:active, &:focus {
-    @include shadow-5;
+    box-shadow: 0 4px 10px 4px rgba(0, 0, 0, .48);
   }
 
   svg {
-    width: 36px;
-    height: 36px;
-    @include up(5px);
-    left: 5px;
+    width: 32px;
+    height: 32px;
+    @include up(7px);
+    left: 7px;
 
     path {
       fill: white;
