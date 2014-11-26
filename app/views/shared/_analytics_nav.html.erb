@@ -1,7 +1,9 @@
-<nav role="navigation">
+<nav role="navigation" class="flex flex-between">
 
   <div>
-    <%= link_to 'N', root_url, class: 'logo' %>
+    <%= link_to root_url, class: 'logo' do %>
+      <%= image_tag('logo-nav.png') %>
+    <% end %>
 
     <div class="links-logo ib">
       <%= link_to 'Shared Recipes', :analytics_recipes, class: nav_active_class(:analytics_recipes) %>
