@@ -9,18 +9,18 @@
 
     <% if @recipe.favorite == true %>
     <div class="header-indicator">
-      <%= inline_svg('ios7-star.svg') %>
+      <%= inline_svg('favorite.svg') %>
     </div>
     <% end %>
 
     <% if @recipe.shared == true %>
     <div class="header-indicator">
-      <%= inline_svg('ios7-upload.svg') %>
+      <%= inline_svg('share.svg') %>
     </div>
     <% end %>
   </h1>
 
-  <%= simple_format(@recipe.description, class: 'm0') %>
+  <%= simple_format(@recipe.description, class: 'm1-btm') %>
 
   <% if @recipe.shared == true %>
     <div class="panel social-panel">
@@ -43,7 +43,7 @@
   </div>
 
   <p id="recipe-details-btn" class="text-primary block m1-top">
-    <%= inline_svg('ios7-information-outline.svg') %>
+    <%= inline_svg('info_outline.svg') %>
     Show Details
   </p>
 
@@ -65,17 +65,17 @@
   <div class="action-list m1-top">
 
     <%= link_to :edit_recipe do %>
-      <%= inline_svg('ios7-compose-outline.svg') %>
+      <%= inline_svg('edit.svg') %>
       <span><%= t('general.edit') %></span>
     <% end %>
 
     <a onclick="window.print();">
-      <%= inline_svg('ios7-printer-outline.svg') %>
+      <%= inline_svg('print.svg') %>
       <span><%= t('general.print') %></span>
     </a>
 
     <%= link_to recipe_share_path(:id => @recipe.id) do %>
-      <%= inline_svg('ios7-upload-outline.svg') %>
+      <%= inline_svg('share.svg') %>
       <span>Share</span>
     <% end %>
 
@@ -86,5 +86,5 @@
 </article>
 
 <%= link_to recipe_cook_path(:recipe_id => @recipe.id), class: 'btn-paper' do %>
-  <%= inline_svg('ios7-photos.svg') %>
+  <%= inline_svg('cook.svg') %>
 <% end %>

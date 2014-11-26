@@ -9,25 +9,6 @@
   <%= f.label :author_id, 'Author (1 or 2)' %>
   <%= f.text_field :author_id, class: 'text-input' %>
 
-  <div class="action-list">
-
-    <a class="item-favorite">
-      <label class="control">
-        <%= f.check_box :mail %>
-        <div class="control-indicator">
-          <%= inline_svg('ios7-email-outline.svg') %>
-        </div>
-        <div class="control-indicator-checked">
-          <%= inline_svg('ios7-email.svg') %>
-        </div>
-        <span>Email</span>
-      </label>
-    </a>
-
-  </div>
-
-  <div class="row">
-    <%= f.submit t('general.save'), class: 'btn' %>
-  </div>
+  <%= f.submit t('general.save'), class: 'btn' %>
 
 <% end %>

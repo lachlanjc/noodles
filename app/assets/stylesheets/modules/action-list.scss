@@ -9,8 +9,8 @@
   }
 
   svg {
-    @include svg(40px, $brand-primary);
-    margin-left: 5px;
+    @include svg(32px, $brand-primary);
+    margin-left: 2px;
   }
 
   &.item-danger {

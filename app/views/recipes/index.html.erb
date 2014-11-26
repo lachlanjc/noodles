@@ -45,7 +45,7 @@
 
             <div class="indicators">
               <% if recipe.favorite == true %>
-                <%= inline_svg('ios7-star.svg') %>
+                <%= inline_svg('favorite.svg') %>
               <% end %>
             </div>
 
@@ -71,5 +71,5 @@
 
 
 <%= link_to :new_recipe, class: 'btn-paper' do %>
-  <%= inline_svg('ios7-plus-empty.svg') %>
+  <%= inline_svg('add.svg') %>
 <% end %>

@@ -7,20 +7,20 @@
 
   .search {
     svg {
-      @include svg(32px, $grey);
+      @include svg(28px, $grey-light);
+      @include up(4px);
     }
 
     span {
       color: $grey;
       vertical-align: top;
-      margin-left: 4px;
       @include up(3px);
     }
   }
 
   .random {
     svg {
-      @include svg(32px, $yellow);
+      @include svg(28px, $yellow);
     }
   }
 }

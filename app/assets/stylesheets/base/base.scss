@@ -24,6 +24,11 @@ hr {
     margin: 0;
   }
 
+  h4 svg {
+    @include svg(24px, $black);
+    @include up(6px);
+  }
+
   p:last-child {
     margin-bottom: 0;
   }

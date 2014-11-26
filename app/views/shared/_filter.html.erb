@@ -1,12 +1,12 @@
 <div class="filter-bar">
 
   <div class="search">
-    <%= inline_svg('ios7-search.svg') %>
+    <%= inline_svg('search.svg') %>
     <span><%= t('general.search') %> (<%= pluralize(@recipes.count, t('general.recipe')) %>)...</span>
   </div>
 
   <%= link_to :random_recipe, class: 'random', title: 'Open a random recipe from your Noodles' do %>
-    <%= inline_svg('ios7-bolt-outline.svg') %>
+    <%= inline_svg('random.svg') %>
   <% end %>
 
 </div>
