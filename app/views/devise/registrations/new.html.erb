@@ -15,7 +15,7 @@
     <%= f.text_field :first_name, class: 'text-input', name: 'fname', autofocus: true %>
 
     <%= f.label t('.email_check') %>
-    <%= f.email_field :email, class: 'text-input', name: 'email', autocomplete: 'email', required: true %>
+    <%= f.email_field :email, class: 'text-input', required: true, autocomplete: 'email' %>
 
     <%= f.label :password, class: 'ib' %> <small><%= t('.eight_char') %></small>
     <%= f.password_field :password, class: 'text-input', required: true, id: 'new-password', pattern: '.{8,}' %>
