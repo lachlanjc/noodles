@@ -12,7 +12,7 @@
     <%= devise_error_messages! %>
 
     <%= f.label t('.first_name') %>
-    <%= f.text_field :first_name, class: 'text-input', name: 'fname', autofocus: true %>
+    <%= f.text_field :first_name, class: 'text-input', id: 'fname', autofocus: true %>
 
     <%= f.label t('.email_check') %>
     <%= f.email_field :email, class: 'text-input', required: true, autocomplete: 'email' %>
