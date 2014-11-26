@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     get    'change_password' => 'devise/passwords#edit', as: :change_password
   end
 
+  get '/admin/dashboard' => 'analytics#dashboard', as: :analytics_dash
   get '/admin/all_users' => 'analytics#all_users', as: :analytics_users
   get '/admin/user_marketable' => 'analytics#marketable', as: :analytics_marketable
   get '/admin/shared_recipes' => 'analytics#shared_recipes', as: :analytics_recipes
