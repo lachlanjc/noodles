@@ -1,9 +1,11 @@
-<nav role="navigation">
+<nav role="navigation" class="flex flex-between">
 
   <% if current_user %>
 
     <div>
-      <%= link_to 'N', root_url, class: 'logo' %>
+      <%= link_to root_url, class: 'logo' do %>
+        <%= image_tag('logo-nav.png', alt: 'Noodles logo') %>
+      <% end %>
 
       <div class="links-logo ib">
         <%= link_to t('general.recipes'), :recipes, class: nav_active_class(:recipes) %>
@@ -27,9 +29,9 @@
 
   <% else %>
 
-    <div>
-      <%= link_to 'N', root_url, class: 'logo' %>
-    </div>
+    <%= link_to root_url, class: 'logo' do %>
+      <%= image_tag('logo-nav.png', alt: 'Noodles logo') %>
+    <% end %>
 
     <div class="links">
       <%= link_to t('general.contact_us'), :help, class: nav_active_class(:help) %>

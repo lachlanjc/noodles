@@ -10,7 +10,7 @@
 
   svg {
     @include svg(32px, $brand-primary);
-    margin-left: 2px;
+    margin-left: 6px;
   }
 
   &.item-danger {
