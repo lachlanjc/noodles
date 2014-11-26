@@ -1,6 +1,5 @@
 .recipe-list-item {
-  border-top: 1px solid $grey-lighter;
-  border-bottom: 1px solid $grey-lighter;
+  border-top: 1px solid $grey-lighter;;
   padding: 15px 12px 12px 12px;
 
   h2, p {
@@ -28,6 +27,10 @@
     h2, p {
       color: white;
     }
+  }
+
+  &:first-child {
+    border-top: 1px solid $grey-lighter;
   }
 
   &:last-child .list-group-item {
