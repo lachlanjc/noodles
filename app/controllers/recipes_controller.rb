@@ -20,8 +20,7 @@ class RecipesController < ApplicationController
     if current_user && @recipe.user_id == current_user.id
       set_recipe
     else
-      flash[:view] = "Sorry, you can't look at that recipe."
-      redirect_to root_url
+      render :locked
     end
   end
 
@@ -52,17 +51,14 @@ class RecipesController < ApplicationController
     @recipe_id = params[:id]
     @recipe = Recipe.find(@recipe_id)
 
-    if current_user && @recipe.shared == false
-      if @recipe.user_id == current_user.id
-        @recipe.shared = true
-        @recipe.save
-        render 'share'
-      else
-        flash[:view] = "You can't share recipes that aren't yours!"
-        redirect_to root_url
-      end
+    if current_user && @recipe.user_id == current_user.id && @recipe.shared == false
+      @recipe.shared = true
+      @recipe.save
+      render :share
+    elsif @recipe.shared == false
+      render :locked
     else
-      render 'share'
+      render :share
     end
   end
 

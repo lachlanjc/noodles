@@ -22,6 +22,10 @@ img {
   padding-left: 22px;
 }
 
+.locked svg {
+  @include svg(200px, $grey-light);
+}
+
 #recipe-details-btn svg {
   @include svg(28px, $brand-primary);
   @include up(8px);
