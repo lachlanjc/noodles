@@ -1,6 +1,6 @@
 class AnnouncementsController < ApplicationController
   before_action :set_announcement, only: [:show, :edit, :update, :destroy]
-  before_filter :check_admin, only: [:new, :edit, :update, :destroy]
+  before_filter :check_admin_and_redirect, only: [:new, :edit, :update, :destroy]
 
   # GET /announcements
   def index
@@ -68,6 +68,14 @@ class AnnouncementsController < ApplicationController
 
   private
     def check_admin
+      if current_user && (current_user.id == 1 || current_user.id == 23)
+        @admin = true
+      else
+        @admin = false
+      end
+    end
+
+    def check_admin_and_redirect
       if current_user && (current_user.id == 1 || current_user.id == 23)
         @admin = true
       else
