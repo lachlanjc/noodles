@@ -8,14 +8,11 @@ body {
   width: 80%;
 
   h3 {
-    position: relative;
-    top: 7px;
-    font-weight: 500;
+   @include up(7px);
   }
 
   div {
-    position: relative;
-    top: 27px;
+    @include up(27px);
   }
 }
 
