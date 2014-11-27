@@ -11,7 +11,7 @@ class RecipesController < ApplicationController
         @favorites_count = @recipes.where(:favorite => true).count
       end
     else
-      render :home
+      redirect_to 'http://www.getnoodl.es'
     end
   end
 
