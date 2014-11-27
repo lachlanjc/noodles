@@ -74,7 +74,7 @@ class RecipesController < ApplicationController
         r.ingredients = @recipe.ingredients
         r.instructions = @recipe.instructions
         r.instructions_rendered = @recipe.instructions_rendered
-        r.source = @recipe.source
+        r.source = 'http://app.getnoodl.es/s/' + @recipe.id.to_s
         r.serves = @recipe.serves
         r.notes = ''
         r.favorite = false
