@@ -83,9 +83,9 @@ class RecipesController < ApplicationController
       end
 
       flash[:success] = "#{@save_recipe.title} (published by #{User.find(@recipe.user_id).first_name}) has been saved to your Noodles account."
-      render :show
+      redirect_to @save_recipe
     else
-      flash[:info] = "Hey there! Please create a Noodles account to save #{@recipe.title}"
+      flash[:info] = "Hey there! Please create a Noodles account to save #{@recipe.title}: http://app.getnoodl.es/sign_up"
     end
   end
 
