@@ -69,15 +69,15 @@
       <span><%= t('general.edit') %></span>
     <% end %>
 
-    <a onclick="window.print();">
-      <%= inline_svg('print.svg') %>
-      <span><%= t('general.print') %></span>
-    </a>
-
     <%= link_to recipe_share_path(:id => @recipe.id) do %>
       <%= inline_svg('share.svg') %>
       <span>Share</span>
     <% end %>
+
+    <a id="printRecipe">
+      <%= inline_svg('print.svg') %>
+      <span><%= t('general.print') %></span>
+    </a>
 
   </div>
 
