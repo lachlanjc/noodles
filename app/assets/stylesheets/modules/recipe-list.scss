@@ -1,5 +1,5 @@
 .recipe-list-item {
-  border-top: 1px solid $grey-lighter;;
+  border-top: 1px solid $grey-lighter;
   padding: 15px 12px 12px 12px;
 
   h2, p {
@@ -28,14 +28,10 @@
       color: white;
     }
   }
+}
 
-  &:first-child {
-    border-top: 1px solid $grey-lighter;
-  }
-
-  &:last-child .list-group-item {
-    border-bottom: 0;
-  }
+.recipe-list a:last-child .recipe-list-item {
+  border-bottom: 1px solid $grey-lighter;
 }
 
 @media (max-width: $screen-phone) {
