@@ -53,7 +53,7 @@
     <p>Serves: <%= @recipe.serves %>
 
     <h2 class="m1-top">Notes</h2>
-    <% if @recipe.notes == nil %>
+    <% if @recipe.notes == '' %>
       <p class="text-muted">You have no notes for this recipe.</p>
     <% else %>
       <div class="panel notes">
