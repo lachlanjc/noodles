@@ -45,6 +45,12 @@ class AnalyticsController < ApplicationController
     end
   end
 
+  def performance
+    @cohorts = CohortMe.analyze(period: "weeks",
+    activation_class: Recipe)
+    render action: 'performance'
+  end
+
   def marketable
     if @access == true
       @users = User.all.order(created_at: :desc)

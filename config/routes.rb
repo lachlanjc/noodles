@@ -46,6 +46,7 @@ Rails.application.routes.draw do
     get '/dashboard' => 'analytics#dashboard', as: :analytics_dash
     get '/all_users' => 'analytics#all_users', as: :analytics_users
     get '/user_marketable' => 'analytics#marketable', as: :analytics_marketable
+    get '/performance' => 'analytics#performance', as: :analytics_performance
     get '/shared_recipes' => 'analytics#shared_recipes', as: :analytics_recipes
   end
 

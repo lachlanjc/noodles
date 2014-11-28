@@ -61,6 +61,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    cohort_me (0.0.3)
     devise (3.3.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -204,6 +205,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   better_errors
   bourbon
+  cohort_me
   devise
   devise_marketable
   dotenv-rails
