@@ -12,10 +12,11 @@ Rails.application.routes.draw do
   get '/random_recipe' => 'recipes#random_recipe', as: :random_recipe
   get '/recipes/:id/edit/remove_image' => 'recipes#remove_image', as: :remove_image
 
-  get '/s/:id' => 'recipes#share', as: :recipe_share
-  get '/s/:id/save' => 'recipes#save_to_noodles', as: :save_to_noodles
-
-  get '/home' => 'recipes#home', as: :home
+  # Shared recipes
+  scope '/s' do
+    get '/:id' => 'recipes#share', as: :recipe_share
+    get '/:id/save' => 'recipes#save_to_noodles', as: :save_to_noodles
+  end
 
   get '/help' => 'help#help'
   get '/help/favorites' => 'help#favorites'
@@ -42,6 +43,7 @@ Rails.application.routes.draw do
     get    'change_password' => 'devise/passwords#edit', as: :change_password
   end
 
+  # Admin stuff
   scope '/admin' do
     get '/dashboard' => 'analytics#dashboard', as: :analytics_dash
     get '/all_users' => 'analytics#all_users', as: :analytics_users
