@@ -19,9 +19,6 @@ Rails.application.routes.draw do
   end
 
   get '/help' => 'help#help'
-  get '/help/favorites' => 'help#favorites'
-  get '/terms' => 'help#terms', as: :terms
-  get '/privacy' => 'help#privacy', as: :privacy
 
   devise_for :users, :controllers => { :registrations => 'registrations' }
 
