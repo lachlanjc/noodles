@@ -1,5 +1,7 @@
+# Autosize.js for expanding textareas
 #= require autosize
 
+# Editor CoffeeScript
 @showEditorDetails = ->
   document.getElementById('editor-details-container').setAttribute 'class', 'show panel'
   document.getElementById('editor-details-btn').setAttribute 'class', 'hide'

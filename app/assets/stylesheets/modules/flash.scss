@@ -34,3 +34,9 @@
     }
   }
 }
+
+@media print {
+  .flash, .flash-success, .flash-info, .flash-danger {
+    display: none !important;
+  }
+}

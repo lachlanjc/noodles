@@ -85,7 +85,11 @@ img {
     }
   }
 
-  .social-panel {
+  .social-panel, .header-indicator, #recipe-details-btn {
     display: none !important;
+  }
+
+  #details-container {
+    display: block !important;
   }
 }

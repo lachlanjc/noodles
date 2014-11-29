@@ -79,9 +79,5 @@ small {
   color: $grey !important;
 }
 a.text-muted:hover {
-  color: darken($grey, 8%);
-}
-
-.text-decoration {
-  text-decoration: underline !important;
+  color: darken($grey, 8%) !important;
 }
