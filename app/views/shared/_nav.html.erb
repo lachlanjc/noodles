@@ -10,9 +10,9 @@
       <div class="links-logo ib">
         <%= link_to t('general.recipes'), :recipes, class: nav_active_class(:recipes) %>
         <% if @favorites_count == 0 %>
-          <%= link_to t('general.favorites'), :help_favorites %>
+        <a href="http://docs.getnoodl.es/favorites"><%= t('general.favorites') %></a>
         <% else %>
-          <%= link_to t('general.favorites'), recipes_path(:filter => 'favorites'), class: nav_active_class(:favorites) %>
+        <%= link_to t('general.favorites'), recipes_path(:filter => 'favorites'), class: nav_active_class(:favorites) %>
         <% end %>
       </div>
     </div>
