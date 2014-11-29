@@ -1,8 +1,23 @@
 <%= form_for(@recipe) do |f| %>
 
+  <% if @recipe.img.url == '' || nav_active?(:new_recipe) %>
+  <%= f.file_field :img, id: 'file' %>
+  <div class="upload-button m0" id="file-button">
+    <%= inline_svg('photo-upload.svg') %>
+    <span id="file-name">Upload a photo</span>
+  </div>
+  <% else %>
+  <%= f.file_field :img, id: 'file' %>
+  <div class="upload-button m0" id="file-button">
+    <%= inline_svg('photo-upload.svg') %>
+    <span id="file-name">Pick a different photo</span>
+    <span>or <%= link_to ' Remove current image', remove_image_path(@recipe), class: 'btn btn-sm btn-default', style: 'margin-left: 6px;' %></span>
+  </div>
+  <% end %>
+
   <%= f.text_field :title, autofocus: true, class: 'invisble-input full-width header', placeholder: 'Name your recipe...', autocomplete: 'off' %>
 
-  <%= f.text_area :description, class: 'invisble-input full-width m0 js-auto-size', placeholder: 'Write a description for the recipe.', autocomplete: 'off', rows: '1' %>
+  <%= f.text_area :description, class: 'invisble-input full-width m0 js-auto-size', placeholder: 'Optionally, write a description for the recipe.', autocomplete: 'off', rows: '1' %>
   <%= f.text_area :ingredients, class: 'invisble-input full-width m0 js-auto-size', placeholder: 'Add your recipe\'s ingredients. Put one on each line.', rows: '3', autocomplete: 'off' %>
   <%= f.text_area :instructions, id: 'instructions-input', class: 'invisble-input full-width m0 js-auto-size', placeholder: 'How do you make this recipe? Number each step.', rows: '3', autocomplete: 'off' %>
 
@@ -14,32 +29,13 @@
   <div class="hide" id="editor-details-container">
     <h2>Details</h2>
 
-    <div class="panel">
-      <% if @recipe.img.url == '' || nav_active?(:new_recipe) %>
-        <h4 class="m0">
-          <%= inline_svg('upload.svg') %>
-          Add a photo
-        </h4>
-      <% else %>
-        <h4 class="m0">
-          <%= inline_svg('upload.svg') %>
-          Change the recipe's photo
-        </h4>
-      <% end %>
-      <%= f.file_field :img %>
-      <% if nav_active?(:edit_recipe) && @recipe.img.url != '' %>
-        <span>or </span><%= link_to 'Remove current image', remove_image_path(@recipe), class: 'btn btn-sm btn-default in-text' %>
-        <br>
-      <% end %>
-    </div>
-
-    <%= f.label :source %>
+    <%= f.label :source, class: 'description m1-top' %><small>Where did this recipe come from?</small>
     <%= f.text_field :source, class: 'text-input' %>
 
-    <%= f.label :serves %>
+    <%= f.label :serves, class: 'description' %><small>How many servings does your recipe produce?</small>
     <%= f.text_field :serves, class: 'text-input' %>
 
-    <%= f.label :notes %>
+    <%= f.label :notes, class: 'description' %><small>What are your tips, tricks, or secrets for this recipe?</small>
     <%= f.text_area :notes, class: 'text-input panel m1-btm notes js-auto-size' %>
 
     <div class="action-list">

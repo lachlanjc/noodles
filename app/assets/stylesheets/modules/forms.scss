@@ -4,6 +4,11 @@ label, input {
 
 label {
   @include text-body;
+
+  &.description {
+    display: inline-block;
+    margin-right: 6px;
+  }
 }
 
 .text-input {

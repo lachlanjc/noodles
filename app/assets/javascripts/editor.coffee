@@ -13,8 +13,15 @@
 @window.onload = ->
   document.getElementById('instructions-input').addEventListener 'focus', @numberRow, false
   document.getElementById('editor-details-btn').addEventListener 'click', @showEditorDetails, false
-  return
 
-@window.onload = ->
-  $(".js-auto-size").autosize()
-  return
+  $ ->
+    $('.js-auto-size').autosize()
+    $('#file-button').click ->
+      $('#file').click()
+      return
+    $('#file').change ->
+      path = document.getElementById('file').value
+      fileName = path.match(/[^\/\\]+$/)
+      document.getElementById('file-name').innerHTML = fileName
+      return
+    return

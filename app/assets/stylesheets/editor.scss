@@ -12,6 +12,24 @@ body {
   font-size: $type-header;
 }
 
+.upload-button {
+  cursor: pointer;
+
+  svg {
+    @include svg(32px, $grey-light);
+  }
+
+  span {
+    @include up(-10px);
+    color: $grey;
+    padding-left: 4px;
+  }
+}
+
+#file {
+  visibility: hidden;
+}
+
 .invisble-input {
   @include text-body;
   -webkit-appearance: none;
@@ -34,13 +52,14 @@ body {
 
   &.header {
     font-size: $type-header;
-    margin: 1em 0 0 0;
+    margin: 0;
   }
 }
 
 #editor-details-btn svg {
   @include svg(28px, $grey);
   @include up(8px);
+  cursor: pointer;
   margin-right: 3px;
 
   circle {
