@@ -23,14 +23,14 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :registrations => 'registrations' }
 
   as :user do
-    get    'sign_in'  => 'devise/sessions#new',         as: :sign_in
-    post   'sign_in'  => 'devise/sessions#create',      as: :update_user_session
-    get    'sign_out' => 'devise/sessions#destroy',     as: :sign_out
+    get    'login'  => 'devise/sessions#new',           as: :sign_in
+    post   'login'  => 'devise/sessions#create',        as: :update_user_session
+    get    'logout'  => 'devise/sessions#destroy',      as: :sign_out
 
-    get    'sign_up' => 'devise/registrations#new',     as: :sign_up
-    post   'sign_up' => 'devise/registrations#create',  as: :add_user
-    put    'sign_up' => 'devise/registrations#update',  as: :update_user_registration
-    delete 'sign_up' => 'devise/registrations#destroy', as: :destroy_user
+    get    'signup' => 'devise/registrations#new',      as: :sign_up
+    post   'signup' => 'devise/registrations#create',   as: :add_user
+    put    'signup' => 'devise/registrations#update',   as: :update_user_registration
+    delete 'nomore' => 'devise/registrations#destroy',  as: :destroy_user
 
     get    'onboarding' => 'devise/registrations#onboarding', as: :onboarding
 
