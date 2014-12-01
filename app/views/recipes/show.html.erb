@@ -49,7 +49,7 @@
 
   <div class="hide" id="recipe-details-container">
     <h2 class="m1-top">Details</h2>
-    <% if @recipe.source.length == 0 && @recipe.serves.length == 0 %>
+    <% if @recipe.source == '' && @recipe.serves == '' %>
     <p class="text-muted">You have no details for this recipes</p>
     <% else %>
     <p>Source: <%= @recipe.source %>
