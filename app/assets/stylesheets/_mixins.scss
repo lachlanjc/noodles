@@ -26,23 +26,28 @@
 // TEXT STYLES
 
 @mixin text-page-title {
-  font: 400 $type-page-title $font-base;
+  font-size: $type-page-title;
+  font-weight: 400;
   color: $brand-primary;
   line-height: 1.25;
 }
 
 @mixin text-header {
-  font: 400 $type-header $font-base;
+  font-size: $type-header;
+  font-weight: 400;
   color: $black;
 }
 
 @mixin text-headline {
-  font: 400 $type-headline $font-base;
+  font-size: $type-headline;
+  font-weight: 400;
   color: $black;
 }
 
 @mixin text-body {
-  font: 400 $type-body $font-base;
+  font-family: $font-base;
+  font-size: $type-body;
+  font-weight: 300;
   color: $black;
   line-height: $line-height;
 }

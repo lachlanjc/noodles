@@ -37,14 +37,20 @@ p {
 a, a:visited {
   color: $brand-primary;
   text-decoration: none;
+  border-bottom: 1px solid $grey-light;
 
   &:hover {
-    color: darken($brand-primary, 6%);
+    color: lighten($brand-primary, 6%);
+    border-bottom-color: lighten($brand-primary, 6%);
   }
 }
 
 small {
   @include text-microcopy;
+}
+
+.strong {
+  font-weight: 400;
 }
 
 .text-left {

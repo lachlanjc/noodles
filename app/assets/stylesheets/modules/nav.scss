@@ -5,7 +5,7 @@ nav {
 
   .logo img {
     margin: 18px 6px 10px 12px;
-    width: 18px !important;
+    width: 18px;
     display: inline-block;
   }
 
@@ -20,6 +20,8 @@ nav {
 
   a {
     margin: 0 8px;
+    border-bottom: 0;
+    font-weight: 400;
 
     &.active {
       padding-bottom: 2px;

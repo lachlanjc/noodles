@@ -23,7 +23,7 @@ label {
   display: block;
 
   &:focus {
-    @include transition(all 0.1s ease-in);
+    @include elegance;
     border-color: $blue;
     color: $black;
     outline: 0;

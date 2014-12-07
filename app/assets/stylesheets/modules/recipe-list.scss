@@ -1,15 +1,14 @@
 .recipe-list-item {
   border-top: 1px solid $grey-lighter;
-  padding: 15px 12px 12px 12px;
+  padding: 12px 10px 10px 10px;
 
   h2, p {
     margin: 0;
+    line-height: 1.6;
   }
 
   p {
     color: $grey-light;
-    line-height: 1.5;
-    margin-top: 4px;
   }
 
   .indicators {
