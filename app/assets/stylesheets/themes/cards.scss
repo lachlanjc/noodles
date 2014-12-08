@@ -14,9 +14,25 @@ body {
   div {
     @include up(27px);
   }
+
+  a {
+    border-bottom: 0;
+  }
 }
 
 .cards-shell {
   max-width: 60%;
   margin: 1em auto;
+}
+
+@media (max-width: $screen-tablet) {
+  .cards-shell {
+    max-width: 85%;
+  }
+}
+
+@media (max-width: $screen-phone) {
+  .cards-shell {
+    max-width: 96%;
+  }
 }

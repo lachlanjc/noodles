@@ -23,14 +23,13 @@ h3, h4, h5, h6, strong {
 
 h6 {
   font-size: $type-caption;
-  color: $grey;
-  margin: 8px 0;
   letter-spacing: 0.02rem;
   text-transform: uppercase;
+  color: $grey;
+  margin: 8px 0;
 }
 
 p {
-  @include text-body;
   margin: $padding-small 0;
 }
 

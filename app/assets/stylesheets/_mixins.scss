@@ -58,7 +58,8 @@
 }
 
 @mixin text-microcopy {
-  font: 400 $type-caption $font-base;
+  font-size: $type-caption;
+  font-weight: 400;
   color: $grey;
 }
 

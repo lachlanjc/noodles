@@ -38,6 +38,7 @@
 .btn-paper {
   background-color: $brand-primary;
   border-radius: 50%;
+  border-bottom: 0;
   width: 46px;
   height: 46px;
   padding: 8px;
@@ -45,6 +46,7 @@
   bottom: $padding-base;
   right: $padding-base;
   @include elegance;
+  -webkit-user-select: none;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.23);
 
   &:hover {
