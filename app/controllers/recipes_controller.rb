@@ -79,7 +79,7 @@ class RecipesController < ApplicationController
         r.notes = ''
         r.favorite = false
         r.shared = false
-        r.created_at = Time.now
+        r.created_at = @recipe.updated_at
         r.updated_at = Time.now
         r.save
       end
