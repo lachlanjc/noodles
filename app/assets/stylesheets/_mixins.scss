@@ -47,19 +47,17 @@
 @mixin text-body {
   font-family: $font-base;
   font-size: $type-body;
-  font-weight: 300;
   color: $black;
   line-height: $line-height;
 }
 
 @mixin text-serif {
-  font: 400 $type-body $serif;
+  font: $type-body $serif;
   line-height: $line-height;
 }
 
 @mixin text-microcopy {
   font-size: $type-caption;
-  font-weight: 400;
   color: $grey;
 }
 
