@@ -7,9 +7,10 @@ body {
 
 .logo-nav {
   position: absolute;
-  top: 16px;
-  left: 24px;
+  top: 12px;
+  left: 20px;
   font-size: $type-header;
+  border-bottom: 0;
 }
 
 .upload-button {
