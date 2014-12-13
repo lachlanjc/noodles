@@ -7,7 +7,7 @@ showRecipeDetails = ->
   return
 
 printRecipe = ->
-  toPrint = confirm('Do you really need to print this recipe? If you can, look at it on a screen to save paper.')
+  toPrint = confirm('Do you really need to print this out? If you can, look at it on a mobile device or laptop to save paper.')
   window.print() if toPrint == true
   return
 
