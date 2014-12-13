@@ -10,12 +10,7 @@
   }
 
   .author-info {
-    display: inline-block;
     margin-left: $padding-base;
-
-    .token {
-      margin-left: $padding-xs;
-      padding: 2px 12px;
-    }
+    @include up(8px);
   }
 }

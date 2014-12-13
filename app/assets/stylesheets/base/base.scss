@@ -40,12 +40,11 @@ hr {
 
 .token {
   font-size: $type-body;
-  text-align: center;
-  margin-right: 12px;
+  margin-right: 8px;
   min-width: 48px;
-  padding: 0 12px;
+  padding: 5px 10px;
   border-radius: 16px;
-  display: inline-block;
+  border: 0;
 }
 
 .token-outline {
@@ -92,6 +91,10 @@ hr {
 
 .m1 {
   margin: 1em;
+}
+
+.m-small-left {
+  margin-left: 8px;
 }
 
 .m1-top {
