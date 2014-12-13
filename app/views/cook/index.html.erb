@@ -1,72 +1,29 @@
+<%- title 'Cooking ' + @recipe.title %>
 <%= stylesheet_link_tag 'cook' %>
-<%= javascript_include_tag 'cook' %>
 
-<link rel="stylesheet" href="//brick.a.ssl.fastly.net/Source+Serif+Pro:400">
+<main class="m2 flex center">
 
-<header class="cards-header text-center flex flex-between">
+  <aside class="col-3 cards-header ib m2">
+    <h1 class="m0"><%= @recipe.title.truncate(12) %></h2>
+    <div class="text-muted"><%= @recipe_step_count %> steps</div>
+    <%= link_to @recipe, class: 'exit text-muted block m1-5-top' do %>
+      <%= inline_svg('exit.svg') %>
+      <span>Exit Cook Mode</span>
+    <% end %>
 
-  <%= link_to root_path do %>
-    <h1 class="text-muted">N</h1>
-  <% end %>
+    <hr class="col-10">
 
-  <%= link_to @recipe do %>
-    <h3 class="text-muted" id="recipeTitle">
-      <%= @recipe.title %>
-    </h3>
-  <% end %>
+    <h2 class="mb0">Ingredients</h2>
+    <% if @recipe.ingredients.length == 0 %>
+    <p class="text-muted">Your recipe has no ingredients.</p>
+    <% else %>
+    <%= simple_format(@recipe.ingredients) %>
+    <% end %>
+  </aside>
 
-  <div class="text-muted">
-    <%= t('.step') %>
-    <span id="currentStepInCount"></span>
-    <%= t('.of') %>
-    <span><%= @recipe_step_count %></span>
-  </div>
-
-</header>
-
-<section class="cards-shell flex flex-between">
-
-  <div class="cook-ctrl" id="cookCtrlRev">
-    <%= inline_svg('chev-left.svg') %>
-  </div>
-
-  <ul class="cook-list m0" id="cook-list">
-
-    <li>
-      <h2>
-        <%= t('.cooking_with') %>
-        <%= @recipe.title %>
-      </h2>
-      <% unless @recipe.description.length == 0 %>
-        <h4 class="text-muted"><%= @recipe.description %></h4>
-      <% end %>
-    </li>
-
+  <ul class="cook-list m2-left ib">
     <%= sanitize @recipe.instructions_rendered %>
-
-    <li>
-      <h2>All done!</h2>
-      <p>Enjoy eating your <%= @recipe.title.downcase %>.</p>
-    </li>
-
+    <li>Done! Enjoy your meal.</li>
   </ul>
 
-  <div class="cook-ctrl" id="cookCtrlFwd">
-    <%= inline_svg('chev-right.svg') %>
-  </div>
-
-</section>
-
-<section class="cards-shell col-4">
-  <div class="ingredients-accordion">
-    <input type="checkbox" id="accordion-button">
-    <label for="accordion-button" class="accordion-label">Ingredients</label>
-    <div class="content">
-      <% if @recipe.ingredients.length == 0 %>
-        <p class="text-muted">Your recipe has no ingredients.</p>
-      <% else %>
-        <%= simple_format(@recipe.ingredients) %>
-      <% end %>
-    </div>
-  </div>
-</section>
+</main>

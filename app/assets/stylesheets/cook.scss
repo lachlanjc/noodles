@@ -3,18 +3,8 @@
 
 @import 'themes/cards';
 
-.cook-list {
-  list-style: none;
+.cook-list ol {
   padding: 0;
-  margin-top: 0;
-
-  > ol {
-    padding: 0;
-  }
-
-  li {
-    text-align: center;
-  }
 }
 
 .cook-ctrl svg {
@@ -23,41 +13,19 @@
 }
 
 .cook-list li {
-  font: 400 28px/50px 'Source Serif Pro', Georgia, 'Times New Roman', Times, serif;;
-
-  h2, h4 {
-    font-family: $font-base;
-  }
+  font-size: $type-headline;
+  line-height: 37px;
+  text-align: center;
 }
 
 .cook-list li, .ingredients-accordion {
-  color: #444;
-  background-color: white;
-  border-radius: $border-radius-small;
-  @include shadow-1;
-  min-height: 20px;
-  max-width: 90%;
-  padding: 12px 24px;
-  margin: 0 auto !important;
-}
-
-#accordion-button, .content {
-  display: none;
-}
-
-.accordion-label {
-  font-size: 21px;
-
-  &:after {
-    content: ' (click to open)';
-    color: $grey-light;
-    font-size: 16px;
-  }
-}
-
-#accordion-button:checked ~ .accordion-label:after {
-  content: ' (click to close)';
-}
-#accordion-button:checked ~ .content {
+  list-style: none;
   display: block;
+  width: -webkit-max-content;
+  margin: 1em auto;
+  padding: 12px 24px;
+  background-color: white;
+  border-radius: 5px;
+  @include shadow-1;
+  max-width: 600px;
 }
