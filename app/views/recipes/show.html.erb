@@ -1,3 +1,5 @@
+<%- title @recipe.title %>
+
 <%= render 'shared/nav' %>
 
 <article class="col-8 recipe-print">
@@ -33,7 +35,7 @@
   <% end %>
 
   <h2 class="m1-top">Ingredients</h1>
-  <%= simple_format(@recipe.ingredients, class: 'text') %>
+  <%= simple_format(@recipe.ingredients) %>
 
   <h2 class="m1-top">Instructions</h2>
   <div class="text">

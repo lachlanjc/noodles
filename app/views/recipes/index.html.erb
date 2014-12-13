@@ -1,7 +1,9 @@
 <% if params[:filter] == 'favorites' %>
   <% activate_nav!(:favorites) %>
+  <%- title 'Favorites' %>
 <% else %>
   <% activate_nav!(:recipes) %>
+  <%- title 'Recipes' %>
 <% end %>
 
 <%= render 'shared/nav' %>

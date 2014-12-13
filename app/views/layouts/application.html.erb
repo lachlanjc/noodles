@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>
+    <% if content_for?(:title) %>
+      <%= content_for(:title) + ' · Noodles' %>
+    <% else %>
+      'Noodles'
+    <% end %>
+  </title>
   <% if content_for?(:meta) %>
-    <%= yield(:meta) -%>
+  <%= yield(:meta) -%>
   <% else %>
-    <title>Noodles</title>
-    <meta property="og:site_name" content="Noodles" />
-    <meta property="og:title" content="Noodles">
-    <meta property="og:url" content="http://getnoodl.es/">
-    <meta property="og:image" content="<%= image_url('apple-touch-icon.png') %>"/>
-    <meta property="og:description" content="Cook better with Noodles, a simple app for all your recipes.">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Noodles">
-    <meta name="twitter:description" content="Cook better with Noodles, a simple app for all your recipes.">
-    <meta name="twitter:image:src" content="<%= image_url('apple-touch-icon.png') %>">
-    <meta name="twitter:domain" content="getnoodl.es">
+  <meta property="og:site_name" content="Noodles" />
+  <meta property="og:title" content="Noodles">
+  <meta property="og:url" content="http://getnoodl.es/">
+  <meta property="og:image" content="<%= image_url('apple-touch-icon.png') %>"/>
+  <meta property="og:description" content="Cook better with Noodles, a simple app for all your recipes.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Noodles">
+  <meta name="twitter:description" content="Cook better with Noodles, a simple app for all your recipes.">
+  <meta name="twitter:image:src" content="<%= image_url('apple-touch-icon.png') %>">
+  <meta name="twitter:domain" content="getnoodl.es">
   <% end %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
