@@ -1,4 +1,5 @@
-# Autosize.js for expanding textareas
+# Autosize.js for expanding textareas, requires jQuery
+#= require jquery
 #= require autosize
 
 # Editor CoffeeScript
