@@ -19,7 +19,8 @@ img {
 }
 
 .text ol, .text ul {
-  padding-left: 22px;
+  padding: 0;
+  margin: 0;
 }
 
 .locked svg {
@@ -76,17 +77,9 @@ img {
     .page-title {
       @include text-header;
     }
-
-    .favorite {
-      display: none !important;
-    }
-
-    p {
-      font-size: 1em !important;
-    }
   }
 
-  .social-panel, .header-indicator, #recipe-details-btn {
+  .header-indicator, .social-panel, .header-indicator, #recipe-details-btn {
     display: none !important;
   }
 

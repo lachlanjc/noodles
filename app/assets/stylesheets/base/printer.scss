@@ -29,25 +29,7 @@
     box-shadow: none !important;
   }
 
-  a, a:visited {
-    text-decoration: underline;
-  }
-
-  a[href]:after {
-    content: " (" attr(href) ")";
-  }
-
-  a[href^="#"]:after,
-  a[href^="javascript:;"]:after,
-  a[href^="mailto:*"]:after {
-    content: "";
-  }
-
   img {
     max-width: 100% !important;
-  }
-
-  select {
-    background: white !important;
   }
 }
