@@ -20,17 +20,18 @@ $brand-info:             $yellow;
 $brand-warning:          $yellow;
 $brand-danger:           $red;
 
-// Typography
+// Typophilic Manifestation
+// otherwise known as typography styling
 
-$font-base:              Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$serif:                  'Source Serif Pro', Georgia, 'Times New Roman', Times, serif;
-$font-monospace:         'InputMono', 'Source Code Pro', Consolas, monospace;
+// http://modularscale.com/scale/?px1=14&px2=25&ra1=1.5&ra2=0
+
+$font-base:              'Gotham A', 'Gotham B', 'Lucida Grande', 'Helvetica Neue', Helvetica, sans-serif;
 
 $type-page-title:        37px;
-$type-header:            28px;
+$type-header:            25px;
 $type-headline:          21px;
-$type-body:              16px;
-$type-caption:           12px;
+$type-body:              14px;
+$type-caption:           11px;
 
 $line-height:            1.8;
 

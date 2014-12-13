@@ -13,11 +13,6 @@ img {
   display: block;
 }
 
-.text, .text p, .text li {
-  @include text-serif;
-  color: #333;
-}
-
 .text ol, .text ul {
   padding: 0;
   margin: 0;

@@ -35,24 +35,17 @@
 @mixin text-header {
   font-size: $type-header;
   font-weight: 400;
-  color: $black;
 }
 
 @mixin text-headline {
   font-size: $type-headline;
   font-weight: 400;
-  color: $black;
 }
 
 @mixin text-body {
   font-family: $font-base;
   font-size: $type-body;
   color: $black;
-  line-height: $line-height;
-}
-
-@mixin text-serif {
-  font: $type-body $serif;
   line-height: $line-height;
 }
 
