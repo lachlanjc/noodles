@@ -32,7 +32,7 @@ window.onload = function() {
           currentStepTitleEnd = 'Title Card';
           currentStep = 0;
         }
-        document.title = document.getElementById('recipeTitle').innerHTML + '· ' + currentStepTitleEnd;
+        document.title = document.getElementById('recipeTitle').innerHTML + ' · ' + currentStepTitleEnd;
         document.getElementById('currentStepInCount').innerHTML = currentStep;
     }
     // document.onclick = function() { go(++big.current % (s.length)); };
