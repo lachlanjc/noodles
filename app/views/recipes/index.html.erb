@@ -49,7 +49,7 @@
 
             <h2><%= recipe.title %></h2>
             <% unless recipe.description.length == 0 %>
-              <p><%= recipe.description.truncate(140) %></p>
+              <p><%= recipe.description.truncate(140, :omission => ' [...]') %></p>
             <% end %>
 
           </div>
