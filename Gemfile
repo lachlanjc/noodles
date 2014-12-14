@@ -17,6 +17,7 @@ gem 'paperclip'
 gem 'pg'
 gem 'puma'
 gem 'rails', '4.1.2'
+gem 'rake'
 gem 'redcarpet'
 gem 'sass-rails'
 gem 'stripe'
@@ -33,7 +34,6 @@ end
 group :development, :test do
   gem 'factory_girl_rails', '~> 4.2.1'
   gem 'json_spec'
-  gem 'rake'
 end
 
 group :production do
