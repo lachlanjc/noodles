@@ -18,7 +18,7 @@
     </div>
 
     <div class="links">
-      <% unless nav_active?(:recipes) || nav_active?(:announcements) || nav_active?(:settings) %>
+      <% unless nav_active?(:shared_recipe) || nav_active?(:recipe) %>
       <%= link_to 'Announcements', :announcements, class: nav_active_class(:announcements) %>
       <% end %>
       <%= link_to t('general.settings'), :settings, class: nav_active_class(:settings) %>
