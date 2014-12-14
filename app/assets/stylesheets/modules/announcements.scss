@@ -1,6 +1,8 @@
 .bio {
+  height: 85px;
+
   .author-photo {
-    width: 4em;
+    width: 85px;
     float: left;
 
     img {
@@ -10,7 +12,8 @@
   }
 
   .author-info {
+    float: left;
     margin-left: $padding-base;
-    @include up(8px);
+    @include up(4px);
   }
 }

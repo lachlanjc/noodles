@@ -34,8 +34,8 @@ en:
     favorites: "Favorites"
     shared: "Shared"
     search: "Search"
+    about: "About"
     help: "Help"
-    contact_us: "Contact Us"
     settings: "Settings"
     sign_up: "Sign Up"
     sign_in: "Sign In"
@@ -73,19 +73,7 @@ en:
         enter_info: "Just enter your email and password and you can get right back to cooking!"
         sign_in: "Sign in"
 
-  cook:
-    index:
-      step: "Step"
-      of: "of"
-      cooking_with: "Today you're cooking:"
-
   recipes:
-    home:
-      cook_better_with: "Cook better with Noodles."
-    index:
-      no_recipes: "You don't have any recipes yet! To add one, click the button below."
-      and_if_need_help: "And if you ever need anything, contact me by clicking Help (at the top)."
-      add_first: "Add your first recipe"
     new:
       new_recipe: "New Recipe"
     edit:
