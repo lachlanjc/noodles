@@ -21,6 +21,14 @@
       fill: $brand-danger;
     }
   }
+
+  &.disabled {
+    color: $grey-light;
+
+    svg path {
+      fill: $grey-light;
+    }
+  }
 }
 
 .control {

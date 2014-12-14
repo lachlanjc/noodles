@@ -62,6 +62,7 @@
     <p class="text-muted">Serves: <%= @recipe.serves %>
   </div>
 
+  <%# Unless it's your recipe, show sharing buttons %>
   <% unless current_user && @recipe.user_id == current_user.id %>
     <div class="panel social-panel">
       <h2 class="m0">If you like this this recipe, share it.</h2>
@@ -69,14 +70,27 @@
     </div>
   <% end %>
 
+  <%# If it's your recipe, hint about saving %>
+  <% if current_user && @recipe.user_id == current_user.id %>
   <div class="action-list">
+    <a class="disabled" title="Others can click this button to save a copy of the recipe to their Noodles accounts">
+      <%= inline_svg('save.svg') %>
+      <span>Save</span>
+    </a>
 
-    <% unless current_user && @recipe.user_id == current_user.id %>
-      <%= link_to :save_to_noodles do %>
-        <%= inline_svg('save.svg') %>
-        <span>Save</span>
-      <% end %>
+  <%# If you're logged in, show Save button %>
+  <% elsif current_user %>
+  <div class="action-list">
+    <%= link_to :save_to_noodles, title: 'Save a copy of this recipe to your own account' do %>
+      <%= inline_svg('save.svg') %>
+      <span>Save</span>
     <% end %>
+
+  <%# Everyone else should sign up for Noodles %>
+  <% else %>
+  <p><a href="http://www.getnoodl.es">Noodles</a> is a simple place to keep all your recipes. <%= link_to 'Sign up', :sign_up %> to save this recipe &mdash; it's fast and completely free.</p>
+  <div class="action-list">
+  <% end %>
 
     <a id="printRecipe">
       <%= inline_svg('print.svg') %>
