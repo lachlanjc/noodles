@@ -30,45 +30,22 @@
   <article class="col-8 recipe-list-container">
 
     <% if params[:filter] == 'favorites' %>
-      <h1><%= t('general.favorites') %></h1>
+    <h1><%= t('general.favorites') %></h1>
     <% else %>
-      <h1><%= t('general.recipes') %></h1>
+    <h1><%= t('general.recipes') %></h1>
     <% end %>
 
     <% if params[:filter] != 'favorites' && @recipes.count >= 2 && @recipes.count <= 8 %>
-      <p class="print-hide text-muted">
-        You only have <%= @recipes.count %> recipes in Noodles right now...<%= link_to 'adding more', :new_recipe %> will make it much more useful!
-      </p>
+    <p class="print-hide text-muted">
+      You only have <%= @recipes.count %> recipes in Noodles right now...<%= link_to 'adding more', :new_recipe %> will make it much more useful!
+    </p>
     <% end %>
 
     <div class="recipe-list">
-
-      <% @recipes.each do |recipe| %>
-
-        <%= link_to recipe do %>
-          <div class="recipe-list-item">
-
-            <div class="indicators">
-              <% if recipe.favorite == true %>
-                <%= inline_svg('favorite.svg') %>
-              <% end %>
-            </div>
-
-            <h2><%= recipe.title %></h2>
-            <% unless recipe.description.length == 0 %>
-              <p><%= recipe.description.truncate(140, :omission => ' [...]') %></p>
-            <% end %>
-
-          </div>
-        <% end %>
-
-      <% end %>
-
+      <%= render partial: 'recipe', collection: @recipes, cache: true %>
     </div>
 
-    <p class="printer-copy">
-      <%= t('recipes.printing.print_copy') %>
-    </p>
+    <p class="printer-copy"><%= t('recipes.printing.print_copy') %></p>
 
   </article>
 

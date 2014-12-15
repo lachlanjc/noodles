@@ -1,0 +1,14 @@
+<%= link_to recipe do %>
+  <div class="recipe-list-item">
+    <div class="indicators">
+      <% if recipe.favorite == true %>
+        <%= inline_svg('favorite.svg') %>
+      <% end %>
+    </div>
+
+    <h2><%= recipe.title %></h2>
+    <% unless recipe.description.length == 0 %>
+    <p><%= recipe.description.truncate(140, :omission => ' [...]') %></p>
+    <% end %>
+  </div>
+<% end %>
