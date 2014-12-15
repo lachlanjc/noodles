@@ -1,6 +1,6 @@
 class AnnouncementsController < ApplicationController
   before_action :set_announcement, only: [:show, :edit, :update, :destroy]
-  before_filter :check_admin_and_redirect, only: [:new, :edit, :update, :destroy]
+  before_filter :check_admin_and_redirect, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /announcements
   def index
