@@ -12,6 +12,7 @@
     <thead>
       <tr style="text-decoration: underline">
         <td>ID</td>
+        <td>newsletter_sent</td>
         <td>First Name</td>
         <td>Email</td>
         <td>Recipe count</td>
@@ -22,6 +23,7 @@
       <% @users.each do |user| %>
         <tr>
           <td><%= user.id %></td>
+          <td><%= user.newsletter_sent %></td>
           <td><%= user.first_name %></td>
           <td><%= user.email %></td>
           <td><%= Recipe.where(:user_id => user.id).count %>
