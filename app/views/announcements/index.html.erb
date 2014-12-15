@@ -24,7 +24,7 @@
             on <%= announcement.created_at.strftime('%B %e, %Y') %>
           </p>
           <div class="text-dark">
-            <%= announcement.body.truncate(200, :omission => ' [...]') %>
+            <%= announcement.body_rendered.truncate(200, :omission => ' [...]').html_safe %>
           </div>
         </div>
       </div>
