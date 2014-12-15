@@ -30,7 +30,6 @@ Rails.application.routes.draw do
     get    'signup' => 'devise/registrations#new',      as: :sign_up
     post   'signup' => 'devise/registrations#create',   as: :add_user
     put    'signup' => 'devise/registrations#update',   as: :update_user_registration
-    delete 'nomore' => 'devise/registrations#destroy',  as: :destroy_user
 
     get    'onboarding' => 'devise/registrations#onboarding', as: :onboarding
 
