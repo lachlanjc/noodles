@@ -4,9 +4,9 @@ article {
 
 @media (max-width: $screen-phone) {
   article {
-    padding: 0 16px !important;
+    padding: 0 16px;
     width: 100% !important;
-    box-sizing: border-box !important;
+    box-sizing: border-box;
   }
 }
 
