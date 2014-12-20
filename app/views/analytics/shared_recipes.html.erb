@@ -9,7 +9,9 @@
   <% @recipes.each do |recipe| %>
     <div class="panel">
       <h2><%= recipe.title %><span class="text-muted"> #<%= recipe.id %></span></h2>
-      <p>Published by: <%= User.find(recipe.user_id).first_name %></p>
+      <% if User.exists?(recipe.user_id) %>
+      <p class="m1-btm">Published by: <%= User.find(recipe.user_id).first_name %></p>
+      <% end %>
       <a href="http://app.getnoodl.es/s/<%= recipe.id %>" class="btn-default btn-sm">View</a>
       <%= link_to 'Delete', recipe, method: :delete, data: { confirm: t('general.delete_forever') }, class: 'btn-danger btn-sm' %>
     </div>
