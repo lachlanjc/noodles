@@ -5,9 +5,9 @@ class RecipesController < ApplicationController
   def index
     if current_user
       if params[:filter] == "favorites"
-        @recipes = Recipe.where(:user_id => current_user.id, :favorite => true)
+        @recipes = Recipe.where(:user_id => current_user.id, :favorite => true).order(created_at: :desc)
       else
-        @recipes = Recipe.where(:user_id => current_user.id)
+        @recipes = Recipe.where(:user_id => current_user.id).order(created_at: :desc)
         @favorites_count = @recipes.where(:favorite => true).count
       end
     else
