@@ -1,5 +1,7 @@
 <% activate_nav!(:analytics_users) %>
 
+<%= javascript_include_tag :jquery %>
+
 <%= render 'shared/analytics_nav' %>
 
 <article class="col-8">
@@ -12,10 +14,10 @@
     <thead>
       <tr style="text-decoration: underline">
         <td>ID</td>
-        <td>newsletter_sent</td>
         <td>First Name</td>
         <td>Email</td>
         <td>Recipe count</td>
+        <td>Delete</td>
       </tr>
     </thead>
 
@@ -23,10 +25,10 @@
       <% @users.each do |user| %>
         <tr>
           <td><%= user.id %></td>
-          <td><%= user.newsletter_sent %></td>
           <td><%= user.first_name %></td>
           <td><%= user.email %></td>
-          <td><%= Recipe.where(:user_id => user.id).count %>
+          <td><%= Recipe.where(:user_id => user.id).count %></td>
+          <td><%= link_to 'Delete', registration_path(user), class: 'text-danger', data: { confirm: "Are you sure you want to delete this Noodles account?" }, method: :delete %></td>
         </tr>
       <% end %>
     </tbody>

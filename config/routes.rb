@@ -4,13 +4,13 @@ Rails.application.routes.draw do
 
   resources :recipes do
     get '/cook' => 'cook#index'
+    get '/edit/remove_image' => 'recipes#remove_image', as: :remove_image
   end
 
   resources :announcements
 
   get '/recipes/favorites' => 'recipes#favorites', as: :favorites
   get '/random_recipe' => 'recipes#random_recipe', as: :random_recipe
-  get '/recipes/:id/edit/remove_image' => 'recipes#remove_image', as: :remove_image
 
   # Shared recipes
   scope '/s' do
@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     get    'signup' => 'devise/registrations#new',      as: :sign_up
     post   'signup' => 'devise/registrations#create',   as: :add_user
     put    'signup' => 'devise/registrations#update',   as: :update_user_registration
+    delete 'signup' => 'devise/registrations#destroy', as: :destroy_user
 
     get    'onboarding' => 'devise/registrations#onboarding', as: :onboarding
 
