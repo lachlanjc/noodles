@@ -5,10 +5,10 @@
 
   <aside class="cook-info ib m2">
     <h1 class="m0 text-dark"><%= @recipe.title.truncate(12) %></h2>
-    <div class="text-muted"><%= @recipe_step_count %> steps</div>
+    <div class="text-muted text"><%= @recipe_step_count %> steps</div>
     <%= link_to @recipe, class: 'exit text-muted block m1-5-top' do %>
       <%= inline_svg('exit.svg') %>
-      <span class="text-muted">Exit Cook Mode</span>
+      <span class="text-muted text">Exit Cook Mode</span>
     <% end %>
 
     <hr class="col-10">
@@ -23,7 +23,7 @@
 
   <ul class="cook-list m2 ib">
     <%= sanitize @recipe.instructions_rendered %>
-    <li>Done! Enjoy your meal.</li>
+    <li>Finished! Enjoy your meal.</li>
   </ul>
 
 </main>
