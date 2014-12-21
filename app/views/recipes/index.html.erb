@@ -35,7 +35,7 @@
     <h1><%= t('general.recipes') %></h1>
     <% end %>
 
-    <% if params[:filter] != 'favorites' && @recipes.count >= 2 && @recipes.count <= 8 %>
+    <% if params[:filter] != 'favorites' && @recipes.count > 1 && @recipes.count < 6 %>
     <p class="print-hide text-muted">
       You only have <%= @recipes.count %> recipes in Noodles right now...<%= link_to 'adding more', :new_recipe %> will make it much more useful!
     </p>
