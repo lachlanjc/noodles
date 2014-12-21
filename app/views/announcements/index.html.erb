@@ -10,26 +10,7 @@
 
   <hr>
 
-  <% @announcements.each do |announcement| %>
-    <%= link_to (announcement) do %>
-      <div class="panel">
-        <div class="center">
-          <h2><%= announcement.title %></h2>
-          <p class="text-muted m0">
-            <% if announcement.author_id == 1 %>
-              Lachlan Campbell
-            <% else %>
-              Taran Samarth
-            <% end %>
-            on <%= announcement.created_at.strftime('%B %e, %Y') %>
-          </p>
-          <div class="text-dark">
-            <%= announcement.body_rendered.truncate(200, :omission => ' [...]').html_safe %>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
+  <%= render partial: 'announcement', collection: @announcements, cache: true %>
 
 </article>
 
