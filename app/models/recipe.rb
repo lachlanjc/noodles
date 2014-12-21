@@ -1,6 +1,8 @@
 class Recipe < ActiveRecord::Base
   belongs_to :user
 
+  validates :title, length: { minimum: 4 }
+
   has_attached_file :img,
     :path => 'recipes/:id/img/:style.:extension',
     :default_url => ''
