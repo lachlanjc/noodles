@@ -5,7 +5,7 @@ class AnnouncementsController < ApplicationController
   # GET /announcements
   def index
     check_admin
-    @announcements = Announcement.all.reverse
+    @announcements = Announcement.all.order(created_at: :desc)
   end
 
   # GET /announcements/1
