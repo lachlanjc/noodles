@@ -1,11 +1,15 @@
 .action-list a {
+  @extend %pointer;
   color: $brand-primary;
-  border-bottom: 0;
-  text-align: center;
-  margin-right: 18px;
   display: inline-block;
+  font-size: $size-h4;
+  font-weight: 600;
+  margin-right: 18px;
+  text-align: center;
+  text-decoration: none;
 
-  svg, span {
+  svg,
+  span {
     display: block;
   }
 
@@ -27,34 +31,6 @@
 
     svg path {
       fill: $grey-light;
-    }
-  }
-}
-
-.control {
-  input {
-    opacity: 0;
-    z-index: -1; // Put the input behind the label so it doesn't overlay text
-    position: absolute;
-  }
-
-  .control-indicator-checked {
-    display: none;
-  }
-
-  span {
-    color: $brand-primary;
-  }
-
-  input:checked ~ .control-indicator {
-    display: none;
-  }
-
-  input:checked ~ .control-indicator-checked {
-    display: block;
-
-    svg path {
-      fill: $brand-primary;
     }
   }
 }

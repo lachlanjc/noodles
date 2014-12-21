@@ -1,31 +1,52 @@
 @import 'variables';
 @import 'mixins';
 
-@import 'themes/cards';
-
-.cook-list ol {
-  padding: 0;
+body {
+  background-color: $grey-lighter;
 }
 
-.cook-ctrl svg {
-  @include svg(50px, #777777);
-  margin-top: 1em;
+.cook-info {
+  max-width: 20em;
+
+  h1 {
+    color: $black;
+  }
+
+  .exit {
+    border-bottom: 0;
+
+    span {
+      @include up(-9px);
+      left: 3px;
+    }
+  }
+
+  svg {
+    @include svg(28px, $grey);
+  }
+
+  hr {
+    border-color: $grey;
+  }
 }
 
-.cook-list li {
-  font-size: $type-headline;
-  line-height: 37px;
-  text-align: center;
-}
+.cook-list {
+  ol {
+    padding: 0;
+  }
 
-.cook-list li, .ingredients-accordion {
-  list-style: none;
-  display: block;
-  width: -webkit-max-content;
-  margin: 1em auto;
-  padding: 12px 24px;
-  background-color: white;
-  border-radius: 5px;
-  @include shadow-1;
-  max-width: 600px;
+  li {
+    @include shadow-standard;
+    background-color: #fff;
+    border-radius: 5px;
+    display: block;
+    font-size: $type-headline;
+    line-height: $type-page-title;
+    list-style: none;
+    margin: 1em auto;
+    max-width: 600px;
+    padding: $padding-small $padding-large;
+    text-align: center;
+    width: -webkit-max-content;
+  }
 }

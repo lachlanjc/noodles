@@ -1,58 +1,50 @@
 nav {
-  background-color: white;
+  @include display(flex);
+  @include justify-content(space-between);
+  background-color: #fff;
   border-bottom: 1px solid $grey-lighter;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .02);
+  padding: 18px;
 
-  .logo img {
-    margin: 18px 6px 10px 12px;
-    width: 18px;
+  img {
     display: inline-block;
+    margin: 16px 6px 14px 10px;
+    width: 18px;
   }
 
-  .links {
-    margin: 18px 18px 0 0;
-  }
-
-  .links-logo {
-    position: relative;
-    bottom: 14px;
-  }
-
-  a {
-    margin: 0 8px;
+  a,
+  a:visited {
     border-bottom: 0;
-    font-weight: 400;
+    color: $brand-primary;
+    font-size: $size-body;
+    font-weight: 600;
+    line-height: 20px;
+    margin: 0 8px;
+    text-decoration: none;
 
-    &.active {
-      padding-bottom: 2px;
-      border-bottom: 2px solid $brand-primary;
+    &:hover {
+      color: lighten($brand-primary, 8%);
+      text-decoration: none;
     }
+  }
+
+  .active {
+    border-bottom: 2px solid $brand-primary;
+    padding-bottom: 2px;
   }
 }
 
 @media (max-width: $screen-phone) {
   nav {
     display: block !important;
-
-    .logo, div, .links {
-      margin-left: 10px;
-    }
-
-    div {
-      width: 95% !important;
-    }
-
-    .logo {
-      margin-left: 0;
-    }
+    padding: 15px 10px;
 
     .links {
-      margin-top: 0;
-      margin-bottom: 10px;
-    }
+      display: block !important;
 
-    .links-logo {
-      margin: 10px 0 0 0;
+      &:first-child {
+        margin-bottom: 10px;
+      }
     }
   }
 }

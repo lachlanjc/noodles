@@ -3,9 +3,9 @@
 
 <%= render 'shared/nav' %>
 
-<article class="col-8 recipe-print">
+<article class="col-8 recipe-print document">
 
-  <h1>
+  <h1 class="m0">
     <%= @recipe.title %>
 
     <% if @recipe.favorite == true %>
@@ -21,7 +21,7 @@
     <% end %>
   </h1>
 
-  <%= simple_format(@recipe.description, class: 'm1-btm') %>
+  <%= simple_format(@recipe.description, class: 'm1-btm text') %>
 
   <% if @recipe.shared == true %>
     <div class="panel social-panel">
@@ -36,14 +36,14 @@
   <% end %>
 
   <h2 class="m1-top">Ingredients</h1>
-  <%= simple_format(@recipe.ingredients) %>
+  <%= simple_format(@recipe.ingredients, class: 'text') %>
 
   <h2 class="m1-top">Instructions</h2>
   <div class="text">
     <%= sanitize @recipe.instructions_rendered %>
   </div>
 
-  <p id="recipe-details-btn" class="text-primary block m1-top">
+  <p id="recipe-details-btn" class="text-primary block m1-top show-details">
     <%= inline_svg('info_outline.svg') %>
     Show Details
   </p>
@@ -51,7 +51,7 @@
   <div class="hide" id="recipe-details-container">
     <h2 class="m1-top">Details</h2>
     <% if @recipe.source == '' && @recipe.serves == '' %>
-    <p class="text-muted">You have no details for this recipes</p>
+    <p class="text-muted">You have no details for this recipes.</p>
     <% else %>
     <p>Source: <%= @recipe.source %>
     <p>Serves: <%= @recipe.serves %>

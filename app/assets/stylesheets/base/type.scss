@@ -1,88 +1,116 @@
 body {
-  @include text-body;
+  color: $black;
+  font: 13px/1.4 $font-base;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.1;
+  margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 h1 {
-  @include text-page-title;
-  margin: 15px 0 5px 0;
-
-  &.friendly {
-    color: $black;
-    text-transform: none;
-  }
+  color: $brand-primary;
+  font-size: $size-h1;
 }
 
 h2 {
-  @include text-headline;
-  margin: $padding-xs 0;
+  font-size: $size-h2;
 }
 
-h3, h4, h5, h6, strong {
-  font-weight: 400;
+h3 {
+  font-size: $size-h3;
+}
+
+h4 {
+  font-size: $size-h4;
+}
+
+h5 {
+  font-size: $size-h5;
 }
 
 h6 {
-  font-size: $type-caption;
-  letter-spacing: 0.02rem;
-  text-transform: uppercase;
   color: $grey;
+  font-size: $size-h6;
+  letter-spacing: .02rem;
   margin: 8px 0;
-}
-
-p {
-  margin: $padding-small 0;
-}
-
-a, a:visited {
-  color: $brand-primary;
-  text-decoration: none;
-  border-bottom: 1px solid $grey-light;
-
-  &:hover {
-    color: lighten($brand-primary, 6%);
-    border-bottom-color: lighten($brand-primary, 6%);
-  }
+  text-transform: uppercase;
 }
 
 small {
-  @include text-microcopy;
+  font-size: 90%;
 }
 
-.strong {
-  font-weight: 400;
+p {
+  @extend .text;
+  margin-bottom: 16px;
+  margin-top: 0;
 }
+
+a,
+a:visited {
+  color: $blue;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.link-reset {
+  color: inherit;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.text {
+  font: 400 16px/1.6 $font-base;
+  word-wrap: break-word;
+
+  ol,
+  ul {
+    padding-left: 23px;
+  }
+}
+
+// Helper Classes
 
 .text-left {
-  text-align: left !important;
+  text-align: left;
 }
 
 .text-center {
-  text-align: center !important;
+  text-align: center;
 }
 
 .text-primary {
-  color: $brand-primary !important;
+  color: $brand-primary;
 }
 
 .text-danger {
-  color: $brand-danger !important;
+  color: $brand-danger;
 }
 
 .text-success {
-  color: $brand-success !important;
+  color: $brand-success;
 }
 
 .text-blue {
-  color: $blue !important;
+  color: $blue;
 }
 
 .text-dark {
-  color: $black !important;
+  color: $black;
 }
 
 .text-muted {
-  color: $grey !important;
-}
-a.text-muted:hover {
-  color: darken($grey, 8%) !important;
+  color: $grey;
 }

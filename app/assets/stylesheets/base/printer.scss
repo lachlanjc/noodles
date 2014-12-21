@@ -1,19 +1,12 @@
 .printer-copy {
-  @include text-body;
   display: none;
 
   hr {
-    margin: 25px 0 12px 0;
+    margin: 24px 0 12px;
   }
 }
 
 @media print {
-  h1:not(.page-title) {
-    font-size: 24px;
-    font-weight: 300;
-    color: black;
-  }
-
   .printer-copy {
     display: block;
   }
@@ -23,13 +16,9 @@
   }
 
   * {
-    color: black !important;
-    text-shadow: none !important;
     background: transparent !important;
     box-shadow: none !important;
-  }
-
-  img {
-    max-width: 100% !important;
+    color: #000 !important;
+    text-shadow: none !important;
   }
 }

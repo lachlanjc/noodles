@@ -1,7 +1,7 @@
 .header-indicator {
-  margin-left: 4px;
-  display: inline-block;
   @include up(2px);
+  display: inline-block;
+  margin-left: 4px;
 
   svg {
     @include svg(24px, $brand-primary);
@@ -9,43 +9,44 @@
 }
 
 img {
-  max-width: 100%;
   display: block;
-}
-
-.text ol, .text ul {
-  padding: 0;
-  margin: 0;
+  max-width: 100%;
 }
 
 .locked svg {
   @include svg(200px, $grey-light);
 }
 
-#recipe-details-btn svg {
-  @include svg(28px, $brand-primary);
-  @include up(8px);
-  margin-right: 3px;
+.show-details {
+  @extend %pointer;
+  font-weight: 600;
 
-  circle {
-    fill: $brand-primary;
+  svg {
+    @include up(8px);
+    @include size(28px);
+    margin-right: 3px;
+
+    path,
+    circle {
+      fill: $brand-primary;
+    }
   }
 }
 
 .social {
-  margin-top: 8px;
+  margin-top: $padding-xs;
 
   a {
-    margin-right: 4px;
     border-bottom: 0;
+    margin-right: 4px;
   }
 
   .social-twitter svg {
-    @include svg(36px, #00ACED);
+    @include svg(36px, #00aced);
   }
 
   .social-facebook svg {
-    @include svg(36px, #3B5998);
+    @include svg(36px, #3b5998);
   }
 
   .social-buffer svg {
@@ -53,11 +54,11 @@ img {
   }
 
   .social-pinterest svg {
-    @include svg(36px, #CB2027);
+    @include svg(36px, #cb2027);
   }
 
   .social-plus svg {
-    @include svg(36px, #D14836);
+    @include svg(36px, #d14836);
   }
 
   .social-email svg {
@@ -68,13 +69,11 @@ img {
 @media print {
   .recipe-print {
     padding: 16px 32px !important;
-
-    .page-title {
-      @include text-header;
-    }
   }
 
-  .header-indicator, .social-panel, .header-indicator, #recipe-details-btn {
+  .header-indicator,
+  .social-panel,
+  .show-details {
     display: none !important;
   }
 

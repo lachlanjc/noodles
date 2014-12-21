@@ -1,11 +1,13 @@
 .recipe-list-item {
   border-top: 1px solid $grey-lighter;
-  padding: 12px 10px 14px 10px;
   color: $black;
+  padding: 12px 10px 14px;
 
-  h2, p {
-    margin: 0;
+  h2,
+  p {
+    font-weight: 400;
     line-height: 1.6;
+    margin: 0;
   }
 
   p {
@@ -16,29 +18,35 @@
     float: right;
 
     svg {
-      @include svg(24px, white);
+      @include svg(24px, #fff);
     }
   }
 
   &:hover {
-    @include transition(all 0.2s ease-in-out);
+    @include elegance;
     background-color: $brand-primary;
 
-    h2, p {
-      color: white;
+    h2,
+    p {
+      color: #fff;
     }
   }
 }
 
-.recipe-list a:last-child .recipe-list-item {
-  border-bottom: 1px solid $grey-lighter;
+.recipe-list a {
+  text-decoration: none;
+
+  &:last-child .recipe-list-item {
+    border-bottom: 1px solid $grey-lighter;
+  }
 }
 
 @media (max-width: $screen-phone) {
   .recipe-list-item {
     padding: 10px 0 !important;
 
-    &:hover h2, &:hover p {
+    &:hover h2,
+    &:hover p {
       color: $brand-primary !important;
     }
   }
@@ -50,7 +58,7 @@
   }
 
   .recipe-list {
-    margin-top: 1em;
     border-top: 1px solid $grey-lighter;
+    margin-top: 1em;
   }
 }

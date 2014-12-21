@@ -1,25 +1,20 @@
-<nav role="navigation" class="flex flex-between">
+<nav role="navigation">
 
   <% if current_user %>
 
-    <div>
-      <%= link_to root_url, class: 'logo' do %>
-        <%= image_tag('logo-nav.png', alt: 'Noodles logo') %>
+    <div class="links ib">
+      <%= link_to t('general.home'), root_url %>
+      <%= link_to t('general.recipes'), :recipes, class: nav_active_class(:recipes) %>
+      <% if @favorites_count == 0 %>
+      <a href="http://noodles.withdraft.com/#favorites"><%= t('general.favorites') %></a>
+      <% else %>
+      <%= link_to t('general.favorites'), recipes_path(:filter => 'favorites'), class: nav_active_class(:favorites) %>
       <% end %>
-
-      <div class="links-logo ib">
-        <%= link_to t('general.recipes'), :recipes, class: nav_active_class(:recipes) %>
-        <% if @favorites_count == 0 %>
-        <a href="http://noodles.withdraft.com/#favorites"><%= t('general.favorites') %></a>
-        <% else %>
-        <%= link_to t('general.favorites'), recipes_path(:filter => 'favorites'), class: nav_active_class(:favorites) %>
-        <% end %>
-      </div>
     </div>
 
-    <div class="links">
+    <div class="links ib">
       <% unless nav_active?(:shared_recipe) || nav_active?(:recipe) %>
-      <%= link_to 'Announcements', :announcements, class: nav_active_class(:announcements) %>
+      <%= link_to 'Blog', :announcements, class: nav_active_class(:announcements) %>
       <% end %>
       <%= link_to t('general.settings'), :settings, class: nav_active_class(:settings) %>
       <%= link_to t('general.help'), :help, class: nav_active_class(:help) %>
@@ -28,12 +23,13 @@
 
   <% else %>
 
-    <%= link_to root_url, class: 'logo' do %>
-      <%= image_tag('logo-nav.png', alt: 'Noodles logo') %>
-    <% end %>
-
-    <div class="links">
+    <div class="links ib">
+      <%= link_to t('general.home'), root_url %>
+      <%= link_to t('general.features'), 'http://noodles.withdraft.com/' %>
       <%= link_to t('general.about'), :help, class: nav_active_class(:help) %>
+    </div>
+
+    <div class="links ib">
       <%= link_to t('general.sign_in'), :sign_in, class: nav_active_class(:sign_in) %>
       <%= link_to t('general.sign_up'), :sign_up, class: nav_active_class(:sign_up) %>
     </div>

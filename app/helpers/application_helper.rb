@@ -5,6 +5,7 @@ module ApplicationHelper
       when :success then 'flash-success'
       when :danger then 'flash-danger'
       when :view then 'flash-danger'
+      else 'flash'
     end
   end
 

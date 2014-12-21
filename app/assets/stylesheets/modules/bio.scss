@@ -2,18 +2,18 @@
   height: 85px;
 
   .author-photo {
-    width: 85px;
     float: left;
+    width: 85px;
 
     img {
-      border-radius: 50%;
       @include shadow-light;
+      border-radius: 50%;
     }
   }
 
   .author-info {
+    @include up(4px);
     float: left;
     margin-left: $padding-base;
-    @include up(4px);
   }
 }

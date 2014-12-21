@@ -6,11 +6,14 @@ body {
 }
 
 .logo-nav {
+  left: 16px;
   position: absolute;
-  top: 12px;
-  left: 20px;
-  font-size: $type-header;
-  border-bottom: 0;
+  text-decoration: none;
+  top: 16px;
+
+  svg {
+    @include svg(32px, $grey);
+  }
 }
 
 .upload-button {
@@ -32,16 +35,12 @@ body {
 }
 
 .invisble-input {
-  @include text-body;
-  -webkit-appearance: none;
   background-color: transparent;
   border: 0;
   color: $black;
-  width: 16em;
-  padding: 4px 0;
-  margin-bottom: 1em;
   display: block;
   resize: none;
+  padding: 0;
 
   &:focus {
     outline: 0;
@@ -52,7 +51,8 @@ body {
   }
 
   &.header {
-    font-size: $type-header;
+    font-size: $size-h1;
+    font-weight: 600;
     margin: 0;
   }
 }
@@ -68,7 +68,32 @@ body {
   }
 }
 
-.btn-full-form {
-  width: 100%;
+.control {
+  input {
+    opacity: 0;
+    position: absolute;
+    z-index: -1; // Put the input behind the label so it doesn't overlay text
+  }
+
+  .control-indicator-checked,
+  input:checked ~ .control-indicator {
+    display: none;
+  }
+
+  span {
+    color: $brand-primary;
+  }
+
+  input:checked ~ .control-indicator-checked {
+    display: block;
+
+    svg path {
+      fill: $brand-primary;
+    }
+  }
+}
+
+.btn-full {
   padding: 8px 0;
+  width: 100%;
 }

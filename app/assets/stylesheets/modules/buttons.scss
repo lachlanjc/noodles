@@ -1,70 +1,71 @@
 .btn {
-  font: $type-body $font-base;
-  padding: 6px 12px;
-  background: $brand-primary;
-  box-sizing: border-box;
-  color: white;
+  @include elegance;
+  @include shadow-standard;
   -webkit-appearance: none;
-  -webkit-tap-highlight-color: rgba(black, 0.12);
+  background: $brand-primary;
   border: 0;
   border-radius: 5px;
+  color: #fff;
+  font: 13px $font-base;
   margin: 8px 0;
-  @include elegance;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, .16);
+  padding: 6px 12px;
+  -webkit-tap-highlight-color: rgba(#000, .12);
 
   &:hover {
-    color: white;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, .23);
+    @include shadow-hover;
+    color: #fff;
   }
 
-  &:active, &:focus {
-    box-shadow: 0 4px 10px 2px rgba(0, 0, 0, .48);
+  &:active,
+  &:focus {
+    @include shadow-active;
     outline: 0;
   }
 
-  &:visited, &:visited:hover {
-    color: white;
+  &:visited,
+  &:visited:hover {
+    color: #fff;
   }
 }
 
 .btn[disabled] {
-  pointer-events: none;
+  box-shadow: none;
   cursor: not-allowed;
   filter: alpha(opacity=65);
-  box-shadow: none;
   opacity: .65;
+  pointer-events: none;
 }
 
 .btn-paper {
+  @include elegance;
+  @include size(46px);
+  @include shadow-standard;
   background-color: $brand-primary;
-  border-radius: 50%;
   border-bottom: 0;
-  width: 46px;
-  height: 46px;
+  border-radius: 50%;
+  bottom: $padding-base;
   padding: 8px;
   position: fixed;
-  bottom: $padding-base;
   right: $padding-base;
-  @include elegance;
-  -webkit-user-select: none;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.23);
+  user-select: none;
 
   &:hover {
-    box-shadow: 0 3px 6px 2px rgba(0, 0, 0, .23);
+    @include shadow-hover;
   }
 
-  &:active, &:focus {
-    box-shadow: 0 4px 10px 4px rgba(0, 0, 0, .48);
+  &:active,
+  &:focus {
+    @include shadow-active;
   }
 
   svg {
-    width: 32px;
-    height: 32px;
     @include up(7px);
+    height: 32px;
     left: 7px;
+    width: 32px;
 
     path {
-      fill: white;
+      fill: #fff;
     }
   }
 }
@@ -82,13 +83,14 @@
 
 .btn-default {
   @extend .btn;
-  background-color: white !important;
-  color: $black !important;
+  background-color: #fff !important;
   border: 0;
+  color: #000 !important;
 
-  &:hover, &:visited:hover {
-    background-color: white !important;
-    color: $black !important;
+  &:hover,
+  &:visited:hover {
+    background-color: #fff !important;
+    color: #000 !important;
   }
 }
 
@@ -101,8 +103,8 @@
 }
 
 .btn-sm {
-  font-size: 12px;
   box-shadow: none;
+  font-size: $size-h5;
   padding: 5px 10px;
 
   &.in-text {
@@ -120,7 +122,11 @@
 
 .btn-lg {
   @extend .btn;
-  font-size: 21px;
+  font-size: $size-h2;
   padding: 10px 16px;
-  vertical-align: text-top;
+}
+
+%pointer,
+.pointer {
+  cursor: pointer;
 }

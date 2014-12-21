@@ -1,18 +1,10 @@
 <% if target.errors.any? %>
-  <div class="panel panel-error error-message">
-    <span class="geomicon geomicon-alert"></span>
-    <div class="panel-title">
-      <%= t('.oops_went_wrong')
-    </div>
-
-    <div class="panel-body">
-      <ul>
-        <% target.errors.full_messages.each do |message| %>
-          <li>
-            <%= message %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
+  <div class="panel">
+    <h2 class="text-red"><%= t('.oops_went_wrong') %></h2>
+    <ul>
+      <% target.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
   </div>
 <% end %>

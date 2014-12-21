@@ -1,11 +1,9 @@
 .flash {
+  @extend %box;
   border-left: 2px solid $grey;
   color: $grey;
-
-  a {
-    color: inherit;
-    font-weight: bold;
-  }
+  margin: $padding-base 0;
+  padding: 20px 16px;
 }
 
 .flash-success {
@@ -24,19 +22,19 @@
 }
 
 @media (max-width: $screen-phone) {
-  section.col-6 {
-    padding: 0 16px !important;
+  .flash-container {
+    padding: 0 16px;
     width: 90% !important;
 
-    .flash-success, .flash-info, .flash-danger {
-      padding: 10px 12px !important;
+    div {
       margin: 16px;
+      padding: 10px 12px !important;
     }
   }
 }
 
 @media print {
-  .flash, .flash-success, .flash-info, .flash-danger {
+  .flash-container {
     display: none !important;
   }
 }

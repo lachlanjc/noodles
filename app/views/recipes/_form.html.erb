@@ -15,11 +15,10 @@
   </div>
   <% end %>
 
-  <%= f.text_field :title, autofocus: true, class: 'invisble-input full-width header', placeholder: 'Name your recipe...', autocomplete: 'off' %>
-
-  <%= f.text_area :description, class: 'invisble-input full-width m0 js-auto-size', placeholder: 'Optionally, write a description for the recipe.', autocomplete: 'off', rows: '1' %>
-  <%= f.text_area :ingredients, class: 'invisble-input full-width m0 js-auto-size', placeholder: 'Add your recipe\'s ingredients. Put one on each line.', rows: '3', autocomplete: 'off' %>
-  <%= f.text_area :instructions, id: 'instructions-input', class: 'invisble-input full-width m0 js-auto-size', placeholder: 'How do you make this recipe? Number each step.', rows: '3', autocomplete: 'off' %>
+  <%= f.text_field :title, autofocus: true, class: 'text-input invisble-input full-width header', placeholder: 'Name your recipe...', autocomplete: 'off' %>
+  <%= f.text_area :description, class: 'text-input invisble-input full-width m0 js-auto-size', placeholder: 'Optionally, write a description for the recipe.', rows: '1', autocomplete: 'off' %>
+  <%= f.text_area :ingredients, class: 'text-input invisble-input full-width m0 js-auto-size', placeholder: 'Add your recipe\'s ingredients. Put one on each line.', rows: '3', autocomplete: 'off' %>
+  <%= f.text_area :instructions, id: 'instructions-input', class: 'text-input invisble-input full-width m0 js-auto-size', placeholder: 'How do you make this recipe? Number each step.', rows: '4', autocomplete: 'off' %>
 
   <p id="editor-details-btn" class="text-muted block m1-btm">
     <%= inline_svg('info_outline.svg') %>
@@ -64,7 +63,7 @@
   </div>
 
   <article class="col-8">
-    <%= f.submit t('general.save'), class: 'btn-default btn-full-form' %>
+    <%= f.submit t('general.save'), class: 'btn-default btn-full' %>
   </article>
 
 <% end %>

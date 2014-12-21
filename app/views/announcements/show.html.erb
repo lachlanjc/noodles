@@ -3,33 +3,36 @@
 
 <%= render 'shared/nav' %>
 
-<article class="col-8">
-  <div class="panel">
-    <div class="m1">
-      <h1 class="m0 text-dark"><%= @announcement.title %></h1>
-      <p class="text-muted m0">
-        <% if @announcement.author_id == 1 %>
-          Lachlan Campbell
-        <% else %>
-          Taran Samarth
-        <% end %>
-        on <%= @announcement.created_at.strftime('%B %e, %Y') %>
+<article class="col-8 document">
+  <h1 class="m0 text-dark"><%= @announcement.title %></h1>
 
-        <% if @admin == true %>
-          | <%= link_to 'Edit', edit_announcement_path(@announcement) %>
-          | <%= link_to 'Delete', @announcement, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% end %>
-      </p>
+  <p class="text-muted m0">
+  <% case @announcement.author_id
+    when 1 %>
+    Lachlan Campbell
+  <% when 2 %>
+    Taran Samarth
+  <% end %>
 
-      <%= @announcement.body_rendered.html_safe %>
+    on <%= @announcement.created_at.strftime('%B %e, %Y') %>
 
-      <hr>
+  <% if @admin == true %>
+    <%= javascript_include_tag :jquery %>
+    · <%= link_to 'Edit', edit_announcement_path(@announcement) %>
+    · <%= link_to 'Delete', @announcement, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+  </p>
 
-      <% if @announcement.author_id == 1 %>
-        <%= render 'shared/bio_lachlan' %>
-      <% else %>
-        <%= render 'shared/bio_taran' %>
-      <% end %>
-    </div>
+  <div class="text m1-top">
+    <%= @announcement.body_rendered.html_safe %>
   </div>
+
+  <hr>
+
+  <% case @announcement.author_id
+  when 1 %>
+    <%= render 'shared/bio_lachlan' %>
+  <% when 2 %>
+    <%= render 'shared/bio_taran' %>
+  <% end %>
 </article>

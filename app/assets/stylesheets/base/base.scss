@@ -1,9 +1,8 @@
 // Assorted
 
 body {
-  height: 100%;
-  margin: 0;
   background-color: $brand-bg;
+  margin: 0;
 }
 
 hr {
@@ -12,21 +11,34 @@ hr {
   margin: $padding-base 0;
 }
 
-.panel {
-  background-color: white;
+%box {
+  background-color: #fff;
   border: 1px solid $grey-lighter;
-  border-radius: 3px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.02);
-  padding: 20px 16px;
+  border-radius: $radius;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .02);
+}
+
+.document {
+  @extend %box;
+  margin: 2em auto;
+  padding: 2em;
+}
+
+@media (max-width: $screen-phone) {
+  .document {
+    border-left: 0;
+    border-radius: 0;
+    border-right: 0;
+  }
+}
+
+.panel {
+  @extend %box;
   margin: $padding-base 0;
+  padding: 20px 16px;
 
   h2 {
     margin: 0;
-  }
-
-  h4 svg {
-    @include svg(24px, $black);
-    @include up(6px);
   }
 
   p:last-child {
@@ -38,25 +50,25 @@ hr {
   background-color: $notes;
 }
 
-.token {
-  font-size: $type-body;
+%token {
+  border-bottom: 0;
+  border-radius: ($radius * 4);
+  font-size: $size-h3;
   margin-right: 8px;
   min-width: 48px;
   padding: 5px 10px;
-  border-radius: 16px;
-  border: 0;
 }
 
 .token-outline {
-  @extend .token;
+  @extend %token;
   border: 1px solid $blue;
   color: $blue !important;
 }
 
 .token-full {
-  @extend .token;
+  @extend %token;
   background-color: $blue;
-  color: white !important;
+  color: #fff !important;
 }
 
 // .well {
@@ -76,20 +88,12 @@ hr {
 .block {
   display: block !important;
 }
-
 .ib {
   display: inline-block !important;
 }
 
-.inline {
-  display: inline !important;
-}
-
 .m0 {
   margin: 0 !important;
-}
-.m1 {
-  margin: 1em;
 }
 .m2 {
   margin: 2em;
@@ -113,8 +117,8 @@ hr {
   margin-bottom: 0;
 }
 .m1-btm {
-  margin-top: 0;
   margin-bottom: 1em;
+  margin-top: 0;
 }
 
 .m2-block-center {
@@ -123,16 +127,13 @@ hr {
   width: 33.33333333%;
 }
 
-.float-left {
-  float: left !important;
-}
-
 .float-right {
-  float: right !important;
+  float: right;
 }
 
 .center {
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .flex {
@@ -152,7 +153,7 @@ hr {
 }
 
 @media (max-width: $screen-phone) {
-  .m1-block-center {
+  .m2-block-center {
     margin: 2em auto !important;
     width: 95% !important;
   }

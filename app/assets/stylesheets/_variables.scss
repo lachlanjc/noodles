@@ -1,59 +1,52 @@
-// COLORS
-// http://colorpeek.com/#e8e8e8,9e9e9e,757575,455a64
+// Colors
 
 $grey-lighter:           #e8e8e8;
 $grey-light:             #9e9e9e;
 $grey:                   #757575;
-$black:                  #455a64;
+$black:                  #444;
 
-$red:                    #ff3d00;
-$yellow:                 #fbe500;
-$green:                  #64dd17;
+$red:                    #d50000;
+$yellow:                 #ffd600;
+$green:                  #00c853;
 
-$blue:                   #00b0ff;
+$blue:                   #0091ea;
 
 $brand-primary:          #ff6d00;
 $brand-bg:               #fcfcfd;
-$notes:                  #ffffcc;
+$notes:                  #ffc;
 $brand-success:          $green;
 $brand-info:             $yellow;
 $brand-warning:          $yellow;
 $brand-danger:           $red;
 
-// Typophilic Manifestation
-// otherwise known as typography styling
+// Typographic Manifestation
 
-// http://modularscale.com/scale/?px1=14&px2=25&ra1=1.5&ra2=0
+$font-base:              Lato, 'Helvetica Neue', Helvetica, sans-serif;
 
-$font-base:              'Gotham A', 'Gotham B', 'Lucida Grande', 'Helvetica Neue', Helvetica, sans-serif;
+$size-h1:                30px;
+$size-h2:                21px;
+$size-h3:                16px;
+$size-h4:                14px;
+$size-h5:                12px;
+$size-h6:                11px;
 
-$type-page-title:        37px;
-$type-header:            25px;
-$type-headline:          21px;
-$type-body:              14px;
-$type-caption:           11px;
+$size-body:              $size-h3;
 
-$line-height:            1.8;
+$line-height:            1.6;
 
 
 // Padding
 
-$padding-xs:                8px;
-$padding-small:             12px;
-$padding-base:              16px;
-$padding-large:             24px;
+$padding-xs:             8px;
+$padding-small:          12px;
+$padding-base:           16px;
+$padding-large:          24px;
 
-$padding-base-vertical:     6px;
-$padding-base-horizontal:   12px;
-
-$border-radius-base:        4px;
-$border-radius-large:       6px;
-$border-radius-small:       3px;
-$border-radius-xl:          12px;
+$radius:                 4px;
 
 
 // Media queries breakpoints
 
-$screen-phone:             480px;
-$screen-tablet:            768px;
-$screen-desktop:           1225px;
+$screen-phone:           480px;
+$screen-tablet:          768px;
+$screen-desktop:         1225px;

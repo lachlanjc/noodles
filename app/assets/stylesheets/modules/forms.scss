@@ -1,9 +1,10 @@
-label, input {
+label,
+input {
   display: block;
 }
 
 label {
-  @include text-body;
+  @extend .text;
 
   &.description {
     display: inline-block;
@@ -12,15 +13,14 @@ label {
 }
 
 .text-input {
-  @include text-body;
+  @extend .text;
   -webkit-appearance: none;
   border: 1px solid $grey-lighter;
   border-radius: 4px;
   color: $grey;
-  width: 16em;
-  padding: 4px 8px;
   margin-bottom: 1em;
-  display: block;
+  padding: 4px 8px;
+  width: 16em;
 
   &:focus {
     @include elegance;
@@ -48,7 +48,7 @@ textarea.text-input {
 }
 
 @media (max-width: $screen-phone) {
-  input.text-input, textarea.text-input {
+  .text-input {
     width: 95% !important;
   }
 }
@@ -63,13 +63,13 @@ input[type="file"] {
 }
 
 .field_with_errors {
-  display: inline !important;
+  display: inline;
 
   label {
     color: $brand-danger;
   }
 
-  input {
+  .text-input {
     border-color: $brand-danger;
   }
 }
