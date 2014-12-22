@@ -11,7 +11,7 @@
   <div class="upload-button m0" id="file-button">
     <%= inline_svg('photo-upload.svg') %>
     <span id="file-name">Pick a different photo</span>
-    <span>or <%= link_to ' Remove current image', remove_image_path(@recipe), class: 'btn btn-sm btn-default', style: 'margin-left: 6px;' %></span>
+    <span>or <%= link_to ' Remove current image', recipe_remove_image_path(@recipe), class: 'btn btn-sm btn-default', style: 'margin-left: 6px;' %></span>
   </div>
   <% end %>
 
