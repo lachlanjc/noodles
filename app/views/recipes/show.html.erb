@@ -5,7 +5,7 @@
 
 <article class="col-8 recipe-print document">
 
-  <h1 class="m0">
+  <h1 class="m0 ib">
     <%= @recipe.title %>
 
     <% if @recipe.favorite == true %>
@@ -21,7 +21,11 @@
     <% end %>
   </h1>
 
-  <%= simple_format(@recipe.description, class: 'm1-btm text') %>
+  <% unless @recipe.img.url == '' %>
+  <%= image_tag @recipe.img, class: 'recipe-photo' %>
+  <% end %>
+
+  <div class="text m1-btm"><%= markdown(@recipe.description) %></div>
 
   <% if @recipe.shared == true %>
     <div class="panel social-panel">
@@ -29,10 +33,6 @@
       <h2 class="text-success">You've shared this recipe.</h2>
       <%= render 'shared/social' %>
     </div>
-  <% end %>
-
-  <% unless @recipe.img.url == '' %>
-    <%= image_tag @recipe.img %>
   <% end %>
 
   <h2 class="m1-top">Ingredients</h1>

@@ -13,6 +13,15 @@ img {
   max-width: 100%;
 }
 
+.recipe-photo {
+  @include shadow-1;
+  border-radius: $radius;
+  float: right;
+  margin: 1.5em;
+  margin-top: .5em;
+  max-width: 45%;
+}
+
 .locked svg {
   @include svg(200px, $grey-light);
 }
@@ -63,6 +72,14 @@ img {
 
   .social-email svg {
     @include svg(36px, $blue);
+  }
+}
+
+@media (max-width: $screen-phone) {
+  .recipe-photo {
+    float: none;
+    margin: 1em 0;
+    max-width: 100%;
   }
 }
 

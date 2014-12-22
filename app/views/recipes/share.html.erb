@@ -28,9 +28,16 @@
 
 <article class="col-8 recipe-print document">
 
-  <h1 class="m0"><%= @recipe.title %></h1>
-  <p class="text-muted m1-btm">Published by <%= User.find(@recipe.user_id).first_name %></p>
-  <%= simple_format(@recipe.description, class: 'm1-top') %>
+  <h1 class="m0 ib"><%= @recipe.title %></h1>
+
+  <% unless @recipe.img.url == '' %>
+  <%= image_tag @recipe.img, class: 'recipe-photo' %>
+  <% end %>
+
+  <div class="text m1-btm">
+    <p class="text-muted">Published by <%= User.find(@recipe.user_id).first_name %></p>
+    <%= markdown(@recipe.description) %>
+  </div>
 
   <% if current_user && current_user.id == @recipe.user_id %>
     <div class="panel social-panel">
@@ -38,10 +45,6 @@
       <h2 class="text-success">Great, your recipe is public!</h2>
       <%= render 'shared/social' %>
     </div>
-  <% end %>
-
-  <% unless @recipe.img.url == '' %>
-    <%= image_tag @recipe.img %>
   <% end %>
 
   <h2 class="m1-top">Ingredients</h1>
