@@ -1,0 +1,7 @@
+<%= form_for(@recipe) do |f| %>
+
+  <%= f.label :notes, 'Anything you want to remember for next time?', class: 'm1-top' %>
+  <%= f.text_area :notes, class: 'text-input panel full-width m1-btm notes js-auto-size' %>
+  <%= f.submit t('general.save'), class: 'btn-success btn-sm float-right m0' %>
+
+<% end %>

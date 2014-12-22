@@ -28,7 +28,11 @@
 
   <ul class="cook-list ib">
     <%= sanitize @recipe.instructions_rendered %>
-    <li>Finished! Enjoy your meal.</li>
+    <li>
+      Finished! Enjoy your meal.
+
+      <%= render 'notes' %>
+    </li>
   </ul>
 
 </main>
