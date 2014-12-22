@@ -60,3 +60,35 @@ body {
     width: 600px;
   }
 }
+
+@media (max-width: $screen-tablet) {
+  .cook-list {
+    padding: 0 !important;
+
+    li {
+      width: 385px !important;
+    }
+  }
+}
+
+@media (max-width: $screen-phone) {
+  main,
+  aside,
+  ul {
+    display: block !important;
+  }
+
+  aside {
+    margin: 16px !important;
+  }
+
+  .cook-list {
+    padding: 16px !important;
+
+    li {
+      box-sizing: border-box;
+      margin: 1em 0 !important;
+      width: 100% !important;
+    }
+  }
+}
