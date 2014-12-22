@@ -40,8 +40,7 @@
   </div>
 
   <% if current_user && current_user.id == @recipe.user_id %>
-    <div class="panel social-panel">
-      <%= link_to 'View private recipe', :recipe, class: 'btn btn-sm btn-default float-right m0' %>
+    <div class="panel ib social-panel">
       <h2 class="text-success">Great, your recipe is public!</h2>
       <%= render 'shared/social' %>
     </div>
