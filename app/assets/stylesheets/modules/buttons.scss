@@ -1,10 +1,10 @@
 .btn {
   @include elegance;
-  @include shadow-standard;
+  @include shadow-1;
   -webkit-appearance: none;
   background: $brand-primary;
   border: 0;
-  border-radius: 5px;
+  border-radius: $radius;
   color: #fff;
   font: 13px $font-base;
   margin: 8px 0;
@@ -12,13 +12,14 @@
   -webkit-tap-highlight-color: rgba(#000, .12);
 
   &:hover {
-    @include shadow-hover;
+    @include shadow-2;
     color: #fff;
+    text-decoration: none;
   }
 
   &:active,
   &:focus {
-    @include shadow-active;
+    @include shadow-3;
     outline: 0;
   }
 
@@ -39,7 +40,7 @@
 .btn-paper {
   @include elegance;
   @include size(46px);
-  @include shadow-standard;
+  @include shadow-2;
   background-color: $brand-primary;
   border-bottom: 0;
   border-radius: 50%;
@@ -50,12 +51,12 @@
   user-select: none;
 
   &:hover {
-    @include shadow-hover;
+    @include shadow-3;
   }
 
   &:active,
   &:focus {
-    @include shadow-active;
+    @include shadow-4;
   }
 
   svg {

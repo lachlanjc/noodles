@@ -36,7 +36,7 @@ body {
   }
 
   li {
-    @include shadow-standard;
+    @include shadow-2;
     background-color: #fff;
     border-radius: 5px;
     display: block;
