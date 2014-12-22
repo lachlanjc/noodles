@@ -36,12 +36,12 @@
   <% if user_signed_in? %>
   <script>
   window.intercomSettings = {
-    app_id = 'ep8jyd6i',
-    name = '<%= current_user.first_name %>',
-    recipes_count = <%= user_recipe_count(current_user) %>,
-    shared_recipes_count = <%= user_shared_recipe_count(current_user) %>,
-    referring_url = '<%= current_user.referring_url %>',
-    landing_url = '<%= current_user.landing_url %>'
+    app_id: 'ep8jyd6i',
+    name: '<%= current_user.first_name %>',
+    recipes_count: <%= user_recipe_count(current_user) %>,
+    shared_recipes_count: <%= user_shared_recipe_count(current_user) %>,
+    referring_url: '<%= current_user.referring_url %>',
+    landing_url: '<%= current_user.landing_url %>'
   }
   </script>
   <% end %>
