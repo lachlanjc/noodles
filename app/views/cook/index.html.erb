@@ -17,7 +17,12 @@
     <% if @recipe.ingredients.length == 0 %>
     <p class="text-muted">Your recipe has no ingredients.</p>
     <% else %>
-    <%= simple_format(@recipe.ingredients) %>
+      <% @recipe.ingredients.to_s.each_line do |line| %>
+      <label>
+        <input type="checkbox" class="checkbox checklist">
+        <span><%= line %></span>
+      </label>
+      <% end %>
     <% end %>
   </aside>
 

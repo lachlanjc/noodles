@@ -30,6 +30,17 @@ body {
   }
 }
 
+.checklist {
+  display: inline-block;
+  margin-right: 10px;
+
+  &:checked + span {
+    @include elegance;
+    text-decoration: line-through;
+    color: $grey-light;
+  }
+}
+
 .cook-list {
   ol {
     padding: 0;
