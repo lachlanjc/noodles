@@ -59,7 +59,7 @@
   <%# If it's your recipe, hint about saving %>
   <% if current_user && @recipe.user_id == current_user.id %>
   <div class="action-list">
-    <a class="disabled" title="Others can click this button to save a copy of the recipe to their Noodles accounts">
+    <a class="disabled" title="Others can click this button to save a copy of your recipe to their Noodles account.">
       <%= inline_svg('save.svg') %>
       <span>Save</span>
     </a>

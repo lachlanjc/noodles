@@ -1,5 +1,4 @@
-<p class="m-small-top m0-btm">Here's the public link to share:</p>
-<p><a href="http://app.getnoodl.es/s/<%= @recipe.id %>">http://app.getnoodl.es/s/<%= @recipe.id %></a></p>
+<p class="m-small-top m0-btm">The public link is <a href="http://app.getnoodl.es/s/<%= @recipe.id %>">http://app.getnoodl.es/s/<%= @recipe.id %></a>.</p>
 
 <div class="social">
   <a href="http://twitter.com/share?text=Check out <%= @recipe.title %>, published on @noodlesapp:&amp;url=http://app.getnoodl.es/s/<%= @recipe.id %>" class="social-twitter" target="_blank">
@@ -28,4 +27,6 @@
 
 <% if nav_active?(:shared_recipe) %>
 <p class="text-muted">Or view the <%= link_to 'private recipe', @recipe %>.</p>
+<% elsif nav_active?(:recipe) %>
+<p class="text-muted">Why don't you <%= link_to 'check it out yourself', recipe_share_path(:id => @recipe.id) %>?</p>
 <% end %>
