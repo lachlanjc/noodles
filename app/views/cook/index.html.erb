@@ -24,6 +24,14 @@
       </label>
       <% end %>
     <% end %>
+
+    <% unless @recipe.notes == '' || @recipe.notes == nil %>
+    <hr class="col-10">
+    <div class="panel">
+      <h2>Notes</h2><br>
+      <%= sanitize markdown(@recipe.notes) %>
+    </div>
+    <% end %>
   </aside>
 
   <ul class="cook-list ib">
