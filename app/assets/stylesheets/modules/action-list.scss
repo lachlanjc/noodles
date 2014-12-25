@@ -1,12 +1,15 @@
-.action-list a {
+.action-list a, .control {
   @extend %pointer;
   color: $brand-primary;
   display: inline-block;
   font-size: $size-h4;
   font-weight: 600;
-  margin-right: 18px;
   text-align: center;
   text-decoration: none;
+}
+
+.action-list a {
+  margin-right: 16px;
 
   svg,
   span {
