@@ -43,14 +43,15 @@ class RecipesController < ApplicationController
   end
 
   def remove_image
-    recipe = Recipe.find(params[:id])
+    recipe = Recipe.find(params[:recipe_id])
 
     if current_user && recipe.user_id == current_user.id
       recipe.img = nil
       recipe.save
-      redirect_to recipe
+      redirect_to edit_recipe_path(recipe)
     else
       flash[:danger] = "That's not your recipe!"
+      redirect_to root_url
     end
   end
 

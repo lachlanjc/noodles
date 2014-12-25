@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :recipes do
     get '/cook' => 'cook#index'
-    get '/edit/remove_image' => 'recipes#remove_image', as: :remove_image
+    get '/remove_image' => 'recipes#remove_image', as: :remove_image
   end
 
   resources :announcements

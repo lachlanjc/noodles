@@ -8,10 +8,12 @@
   </div>
   <% else %>
   <%= f.file_field :img, id: 'file' %>
-  <div class="upload-button m0" id="file-button">
-    <%= inline_svg('photo-upload.svg') %>
-    <span id="file-name">Pick a different photo</span>
-    <span>or <%= link_to ' Remove current image', recipe_remove_image_path(@recipe), class: 'btn btn-sm btn-default', style: 'margin-left: 6px;' %></span>
+  <div class="upload-button m0">
+    <div id="file-button" class="ib">
+      <%= inline_svg('photo-upload.svg') %>
+      <span id="file-name">Pick a different photo</span>
+    </div>
+    <span>or <%= link_to 'Remove current photo', recipe_remove_image_path(:recipe_id => @recipe.id), class: 'btn btn-sm btn-default', style: 'margin-left: 6px;' %></span>
   </div>
   <% end %>
 
