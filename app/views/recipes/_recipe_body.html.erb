@@ -1,0 +1,32 @@
+<h2 class="m1-top">Ingredients</h1>
+<%= simple_format(@recipe.ingredients, class: 'text') %>
+
+<h2 class="m1-top">Instructions</h2>
+<div class="text">
+  <%= sanitize @recipe.instructions_rendered %>
+</div>
+
+<p id="recipe-details-btn" class="text-primary block m1-top show-details">
+  <%= inline_svg('info_outline.svg') %>
+  Show Details
+</p>
+
+<div class="hide" id="recipe-details-container">
+  <h2 class="m1-top">Details</h2>
+  <% if @recipe.source == '' && @recipe.serves == '' %>
+  <p class="text-muted">You have no details for this recipes.</p>
+  <% else %>
+  <p>Source: <%= @recipe.source %>
+  <p>Serves: <%= @recipe.serves %>
+  <% end %>
+
+  <div class="panel notes m1-top">
+    <% if @recipe.notes == '' || @recipe.notes == nil %>
+    <p class="text-muted">You have no notes for this recipe.</p>
+    <% else %>
+    <h2>Notes</h2>
+    <br>
+    <%= sanitize markdown(@recipe.notes) %>
+    <% end %>
+  </div>
+</div>
