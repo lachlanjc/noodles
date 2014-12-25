@@ -3,12 +3,19 @@ class RecipesController < ApplicationController
 
   # GET /recipes
   def index
-    if current_user
-      if params[:filter] == "favorites"
-        @recipes = Recipe.where(:user_id => current_user.id, :favorite => true).order(created_at: :desc)
+    if user_signed_in?
+      @recipes = if params[:favorites]
+        Recipe.where(:favorite => true)
       else
-        @recipes = Recipe.where(:user_id => current_user.id).order(created_at: :desc)
-        @favorites_count = @recipes.where(:favorite => true).count
+        Recipe.all
+      end.where(:user_id => current_user.id).order(created_at: :desc)
+
+      @recipes_count = @recipes.count
+      @favorites_count = @recipes.where(:favorite => true).count
+
+      case @recipes_count
+      when 0 then render :no_recipes_yet
+      else render :recipe_list
       end
     else
       redirect_to 'http://www.getnoodl.es'

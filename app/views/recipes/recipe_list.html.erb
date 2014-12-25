@@ -1,0 +1,46 @@
+<% if params[:favorites] %>
+  <%- title 'Favorites' %>
+  <% activate_nav!(:favorites) %>
+<% else %>
+  <%- title 'Recipes' %>
+  <% activate_nav!(:recipes) %>
+<% end %>
+
+<%= render 'shared/nav' %>
+
+<article class="col-8 recipe-list-container">
+
+  <% if params[:favorites] %>
+  <h1><%= t('general.favorites') %></h1>
+  <% else %>
+  <h1>
+    <%= t('general.recipes') %>
+    <%= link_to :random_recipe, class: 'random', title: 'Open a random recipe from your Noodles' do %>
+      <%= inline_svg('random.svg') %>
+    <% end %>
+  </h1>
+  <% end %>
+
+  <% unless params[:favorites] %>
+    <% if @recipes_count < 6 %>
+    <p class="print-hide panel">
+      You only have <%= pluralize(@recipes_count, 'recipe') %> in Noodles right now...<%= link_to 'add more', :new_recipe %> and you'll get a lot more value out of it.
+    </p>
+    <% elsif @recipes_count > 8 && @favorites_count == 0 %>
+    <p class="print-hide panel">
+      You've got <%= @recipes_count %> recipes in Noodles, but you haven't marked any as Favorites. Why don't you <a href="http://noodles.withdraft.com/#favorites">check them out</a>?
+    </p>
+    <% end %>
+  <% end %>
+
+  <div class="recipe-list">
+    <%= render partial: 'recipe', collection: @recipes, cache: true %>
+  </div>
+
+  <p class="printer-copy"><%= t('recipes.printing.print_copy') %></p>
+
+</article>
+
+<%= link_to :new_recipe, class: 'btn-paper' do %>
+  <%= inline_svg('add.svg') %>
+<% end %>

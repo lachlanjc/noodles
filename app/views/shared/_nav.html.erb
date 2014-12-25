@@ -1,14 +1,14 @@
 <nav role="navigation">
 
-  <% if current_user %>
+  <% if user_signed_in? %>
 
     <div class="links ib">
       <%= link_to t('general.home'), root_url %>
       <%= link_to t('general.recipes'), :recipes, class: nav_active_class(:recipes) %>
-      <% if @favorites_count == 0 %>
+      <% if nav_active?(:recipes) && @favorites_count == 0 %>
       <a href="http://noodles.withdraft.com/#favorites"><%= t('general.favorites') %></a>
       <% else %>
-      <%= link_to t('general.favorites'), recipes_path(:filter => 'favorites'), class: nav_active_class(:favorites) %>
+      <%= link_to t('general.favorites'), recipes_path(:favorites => true), class: nav_active_class(:favorites) %>
       <% end %>
     </div>
 

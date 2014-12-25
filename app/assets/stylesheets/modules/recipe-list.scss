@@ -1,3 +1,8 @@
+.random svg {
+  @include up(4px);
+  @include svg(28px, $yellow);
+}
+
 .recipe-list-item {
   border-top: 1px solid $grey-lighter;
   color: $black;

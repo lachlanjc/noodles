@@ -17,12 +17,6 @@
       vertical-align: top;
     }
   }
-
-  .random {
-    svg {
-      @include svg(28px, $yellow);
-    }
-  }
 }
 
 @media print {

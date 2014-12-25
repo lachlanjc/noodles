@@ -1,0 +1,19 @@
+<%- title 'Getting Started' %>
+<% activate_nav!(:recipes) %>
+
+<%= render 'shared/nav' %>
+
+<article class="col-8">
+
+  <h1 class="text-dark">Add your first recipe to Noodles!</h1>
+  <p>For Noodles to be useful, you need to add recipes.</p>
+
+  <h2>Have one on hand?</h2>
+  <p><%= link_to 'Add it here.', new_recipe_path %></p>
+
+  <h2>Need some inspiration?</h2>
+  <p>Check this one out (click the "Save" button at the bottom to save a copy to your own Noodles account):</p>
+  <p><a href="http://app.getnoodl.es/s/152">>> Banana Cream Pie</a></p>
+  <p>And if you ever need anything, contact me <a href="https://twitter.com/lachlanjc">@lachlanjc</a>, or by clicking Help, at the top.</p>
+
+</article>
