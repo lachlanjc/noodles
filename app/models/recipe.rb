@@ -1,7 +1,8 @@
 class Recipe < ActiveRecord::Base
   belongs_to :user
 
-  validates :title, length: { minimum: 4 }
+  validates :title, presence: true, length: { minimum: 4 }
+  validates :user_id, presence: true
 
   has_attached_file :img,
     :path => 'recipes/:id/img/:style.:extension',
