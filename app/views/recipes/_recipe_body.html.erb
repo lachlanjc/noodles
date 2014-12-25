@@ -6,6 +6,10 @@
   <%= sanitize @recipe.instructions_rendered %>
 </div>
 
+<% unless @recipe.img == nil %>
+<%= image_tag @recipe.img, class: 'recipe-photo' %>
+<% end %>
+
 <p id="recipe-details-btn" class="text-primary block m1-top show-details">
   <%= inline_svg('info_outline.svg') %>
   Show Details

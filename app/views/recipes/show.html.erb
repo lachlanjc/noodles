@@ -21,10 +21,6 @@
     <% end %>
   </h1>
 
-  <% unless @recipe.img.url == '' %>
-  <%= image_tag @recipe.img, class: 'recipe-photo' %>
-  <% end %>
-
   <div class="text m1-btm"><%= markdown(@recipe.description) %></div>
 
   <% if @recipe.shared == true %>

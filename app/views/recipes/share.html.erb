@@ -30,10 +30,6 @@
 
   <h1 class="m0 ib"><%= @recipe.title %></h1>
 
-  <% unless @recipe.img.url == '' %>
-  <%= image_tag @recipe.img, class: 'recipe-photo' %>
-  <% end %>
-
   <div class="text m1-btm">
     <p class="text-muted">Published by <%= User.find(@recipe.user_id).first_name %></p>
     <%= markdown(@recipe.description) %>

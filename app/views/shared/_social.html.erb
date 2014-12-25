@@ -26,7 +26,7 @@
 </div>
 
 <% if nav_active?(:shared_recipe) %>
-<p class="text-muted">Or view the <%= link_to 'private recipe', @recipe %>.</p>
+<p class="text-muted">Or go back to the <%= link_to 'private recipe', @recipe %>.</p>
 <% elsif nav_active?(:recipe) %>
 <p class="text-muted">Why don't you <%= link_to 'check it out yourself', recipe_share_path(:id => @recipe.id) %>?</p>
 <% end %>
