@@ -103,6 +103,7 @@ class RecipesController < ApplicationController
   def new
     if current_user
       @recipe = Recipe.new
+      render :edit
     else
       flash[:info] = "You must sign up or sign in to create new recipes."
       redirect_to root_url
@@ -112,7 +113,7 @@ class RecipesController < ApplicationController
   # GET /recipes/1/edit
   def edit
     if @recipe.user_id == current_user.id
-      set_recipe
+      render :edit
     else
       flash[:view] = "Sorry, you can't edit that recipe."
       redirect_to root_url
