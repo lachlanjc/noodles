@@ -28,7 +28,9 @@ namespace :newsletter do
     puts 'Finished!'
   end
 
+  desc 'Send the newsletter to LJC'
   task :test_send => :environment do
     NewsletterMailer.newsletter(User.find(1)).deliver
+    puts 'And he\'s off!'
   end
 end
