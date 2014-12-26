@@ -11,8 +11,6 @@
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
-    <h2>Account Information</h2>
-
     <%= devise_error_messages! %>
 
     <%= f.label t('.fn') %>
@@ -20,6 +18,9 @@
 
     <%= f.label t('.email_a') %>
     <%= f.email_field :email, class: 'text-input', name: 'email', autocomplete: 'email' %>
+
+    <%= f.check_box :want_newsletter, class: 'checkbox' %>
+    <%= f.label :want_newsletter, 'Receive monthly Noodles Announcements', class: 'ib m1-btm' %>
 
     <%= f.label t('.current_pass') %>
     <%= f.password_field :current_password, autocomplete: 'off', class: 'text-input' %>

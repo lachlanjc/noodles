@@ -45,6 +45,7 @@ textarea.text-input {
 
 .checkbox {
   @include up(-1px);
+  display: inline-block;
 }
 
 @media (max-width: $screen-phone) {
@@ -62,14 +63,6 @@ input[type="file"] {
   text-transform: none;
 }
 
-.field_with_errors {
-  display: inline;
-
-  label {
-    color: $brand-danger;
-  }
-
-  .text-input {
-    border-color: $brand-danger;
-  }
+.field_with_errors .text-input {
+  border-color: $brand-danger;
 }

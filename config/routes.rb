@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   end
 
   get '/help' => 'help#help'
+  get '/announcements/unsubscribe/EAY7pdX9/:user_id' => 'announcements#unsubscribe'
 
   devise_for :users, :controllers => { :registrations => 'registrations' }
 

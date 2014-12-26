@@ -66,6 +66,14 @@ class AnnouncementsController < ApplicationController
     end
   end
 
+  def unsubscribe
+    user = User.find(params[:user_id])
+    user.want_newsletter = false
+    user.save
+    flash[:success] = "You've successfully unsubscribed."
+    redirect_to root_url
+  end
+
   private
     def check_admin
       if current_user && (current_user.id == 1 || current_user.id == 23)
