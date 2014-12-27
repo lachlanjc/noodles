@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_filter :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_filter :set_recipe, only: [:show, :edit, :update, :destroy, :save_to_noodles]
 
   # GET /recipes
   def index
@@ -71,32 +71,25 @@ class RecipesController < ApplicationController
   end
 
   def save_to_noodles
-    set_recipe
-
-    if current_user
-      @save_recipe = Recipe.new do |r|
-        r.user_id = current_user.id
-        r.title = @recipe.title
-        r.description = @recipe.description
-        r.img = @recipe.img
-        r.ingredients = @recipe.ingredients
-        r.instructions = @recipe.instructions
-        r.instructions_rendered = @recipe.instructions_rendered
-        r.source = 'http://app.getnoodl.es/s/' + @recipe.id.to_s
-        r.serves = @recipe.serves
-        r.notes = @recipe.notes
-        r.favorite = false
-        r.shared = false
-        r.created_at = @recipe.updated_at
-        r.updated_at = Time.now
-        r.save
-      end
-
-      flash[:success] = "#{@save_recipe.title} (published by #{User.find(@recipe.user_id).first_name}) has been saved to your Noodles account."
-      redirect_to @save_recipe
-    else
-      flash[:info] = "Hey there! Please create a Noodles account to save #{@recipe.title}: http://app.getnoodl.es/sign_up"
+    @save_recipe = Recipe.new do |r|
+      r.user_id = current_user.id
+      r.title = @recipe.title
+      r.description = @recipe.description
+      r.img = @recipe.img
+      r.ingredients = @recipe.ingredients
+      r.instructions = @recipe.instructions
+      r.instructions_rendered = @recipe.instructions_rendered
+      r.source = 'http://app.getnoodl.es/s/' + @recipe.id.to_s
+      r.serves = @recipe.serves
+      r.notes = @recipe.notes
+      r.favorite = false
+      r.shared = false
+      r.created_at = Time.now
+      r.updated_at = Time.now
+      r.save
     end
+    flash[:success] = "#{@save_recipe.title} (published by #{User.find(@recipe.user_id).first_name}) has been saved to your Noodles account."
+    redirect_to @save_recipe
   end
 
   # GET /recipes/new
