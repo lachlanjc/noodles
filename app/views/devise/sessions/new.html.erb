@@ -3,7 +3,7 @@
 
 <%= render 'shared/nav' %>
 
-<article class="col-6">
+<article class="document col-6">
 
   <h1><%= t('.sign_in_to_n') %></h1>
   <p><%= t('.enter_info') %></p>
@@ -16,15 +16,15 @@
     <%= f.email_field :email, class: 'text-input', required: true, autofocus: true %>
 
     <%= f.label :password %>
-    <%= f.password_field :password, class: 'text-input', required: true, pattern: '.{8,}', title: 'Make sure you use at least 8 characters' %>
+    <%= f.password_field :password, class: 'text-input m0', required: true, pattern: '.{8,}', title: 'Make sure you use at least 8 characters' %>
 
     <%= f.check_box :remember_me, class: 'ib checkbox' %>
-    <%= f.label :remember_me, class: 'ib' %>
+    <%= f.label :remember_me, class: 'ib m1-top' %>
     <br>
 
-    <%= f.submit t('.sign_in'), class: 'btn btn-primary' %>
+    <%= f.submit t('.sign_in'), class: 'btn m1-top' %>
 
-    <small>or did you <%= link_to 'forget your password?', :forgot_password %></small><br>
+    <small class="m1-top block">or did you <%= link_to 'forget your password?', :forgot_password %></small>
 
   <% end %>
 
