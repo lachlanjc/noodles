@@ -6,7 +6,7 @@
   <%= sanitize @recipe.instructions_rendered %>
 </div>
 
-<% unless @recipe.img == nil %>
+<% unless @recipe.img.url == '' %>
 <%= image_tag @recipe.img, class: 'recipe-photo' %>
 <% end %>
 
