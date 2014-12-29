@@ -80,16 +80,17 @@ body {
     display: none;
   }
 
+  .control-indicator,
+  input:checked ~ .control-indicator-checked {
+    display: inline-block;
+  }
+
   span {
     color: $brand-primary;
   }
 
-  input:checked ~ .control-indicator-checked {
-    display: block;
-
-    svg path {
-      fill: $brand-primary;
-    }
+  svg path {
+    fill: $brand-primary;
   }
 }
 

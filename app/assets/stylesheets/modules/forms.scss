@@ -15,7 +15,7 @@ label {
 .text-input {
   @extend .text;
   -webkit-appearance: none;
-  border: 1px solid $grey-lighter;
+  border: $border;
   border-radius: 4px;
   color: $grey;
   margin-bottom: 1em;
