@@ -59,6 +59,10 @@
       <%= inline_svg('save.svg') %>
       <span>Save</span>
     </a>
+    <%= link_to recipe_un_share_path(@recipe) do %>
+      <%= inline_svg('un_share.svg') %>
+      <span>Un-share</span>
+    <% end %>
 
   <%# If you're logged in, show Save button %>
   <% elsif current_user %>

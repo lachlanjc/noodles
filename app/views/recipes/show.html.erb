@@ -39,13 +39,15 @@
       <span><%= t('general.edit') %></span>
     <% end %>
 
-    <%= link_to recipe_share_path(:id => @recipe.id) do %>
-      <%= inline_svg('share.svg') %>
-      <% case @recipe.shared
-      when true %>
-      <span>Shared!</span>
-      <% else %>
-      <span>Share</span>
+    <% if recipe_shared? %>
+      <%= link_to recipe_un_share_path(@recipe) do %>
+        <%= inline_svg('un_share.svg') %>
+        <span>Un-share</span>
+      <% end %>
+    <% else %>
+      <%= link_to recipe_share_path(:id => @recipe.id) do %>
+        <%= inline_svg('share.svg') %>
+        <span>Share</span>
       <% end %>
     <% end %>
 

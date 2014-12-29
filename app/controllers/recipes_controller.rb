@@ -56,8 +56,7 @@ class RecipesController < ApplicationController
   end
 
   def share
-    @recipe_id = params[:id]
-    @recipe = Recipe.find(@recipe_id)
+    @recipe = Recipe.find(params[:id])
 
     if current_user && @recipe.user_id == current_user.id && @recipe.shared == false
       @recipe.shared = true
@@ -67,6 +66,16 @@ class RecipesController < ApplicationController
       render :locked
     else
       render :share
+    end
+  end
+
+  def un_share
+    @recipe = Recipe.find(params[:recipe_id])
+
+    if current_user && @recipe.user_id == current_user.id && @recipe.shared == true
+      @recipe.shared = false
+      @recipe.save
+      redirect_to @recipe
     end
   end
 
