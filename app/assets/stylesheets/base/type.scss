@@ -81,7 +81,11 @@ a:visited {
   }
 }
 
-// Helper Classes
+// Helpers
+
+%astro {
+  letter-spacing: 0.02rem;
+}
 
 .text-left {
   text-align: left;

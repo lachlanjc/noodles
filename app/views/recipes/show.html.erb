@@ -5,25 +5,28 @@
 
 <article class="col-8 recipe-print document">
 
-  <h1 class="m0 ib">
-    <%= @recipe.title %>
+  <% if recipe_shared? %>
+  <ul class="pieces">
+    <li class="piece active">
+      <%= link_to 'Private Recipe', @recipe %>
+    </li>
+    <li class="piece">
+      <%= link_to 'Public Recipe', recipe_share_path(:id => @recipe.id) %>
+    </li>
+  </ul>
+  <% end %>
 
+  <h1 class="m0"><%= @recipe.title %>
     <% if @recipe.favorite == true %>
     <div class="header-indicator">
       <%= inline_svg('favorite.svg') %>
-    </div>
-    <% end %>
-
-    <% if @recipe.shared == true %>
-    <div class="header-indicator">
-      <%= inline_svg('share.svg') %>
     </div>
     <% end %>
   </h1>
 
   <div class="text m1-btm"><%= markdown(@recipe.description) %></div>
 
-  <% if @recipe.shared == true %>
+  <% if recipe_shared? %>
     <div class="panel social-panel">
       <h2 class="text-success">You've shared this recipe.</h2>
       <%= render 'shared/social' %>

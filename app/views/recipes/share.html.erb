@@ -28,6 +28,17 @@
 
 <article class="col-8 recipe-print document">
 
+  <% if me_owns_recipe? %>
+  <ul class="pieces">
+    <li class="piece">
+      <%= link_to 'Private Recipe', @recipe %>
+    </li>
+    <li class="piece active">
+      <%= link_to 'Public Recipe', recipe_share_path(:id => @recipe.id) %>
+    </li>
+  </ul>
+  <% end %>
+
   <h1 class="m0 ib"><%= @recipe.title %></h1>
 
   <div class="text m1-btm">
