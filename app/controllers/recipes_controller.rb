@@ -26,6 +26,11 @@ class RecipesController < ApplicationController
   def show
     if current_user && @recipe.user_id == current_user.id
       set_recipe
+
+      respond_to do |format|
+        format.html
+        format.json { render json: @recipe }
+      end
     else
       render :locked
     end

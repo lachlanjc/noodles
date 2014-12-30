@@ -34,7 +34,7 @@ hr {
 
 .panel {
   @extend %box;
-  margin: $padding-base 0;
+  margin: $padding-small 0;
   padding: 20px 16px;
 
   h2 {
