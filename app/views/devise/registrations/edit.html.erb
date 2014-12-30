@@ -37,7 +37,7 @@
   <h2 class="m1-top"><%= t('.delete_account') %></h2>
   <p><%= t('.want_account_gone') %></p>
   <p>If you just need help with something in Noodles, go to <%= link_to 'Help', :help %> (it's in the navigation at the top as well).</p>
-  <%= link_to t('.delete_my_account'), user_registration_path(resource_name), class: 'text-danger', data: { confirm: "Are you sure you want to delete your Noodles account and your recipes? If so, hit OK." }, method: :delete %>
+  <%= link_to t('.delete_my_account'), user_registration_path(resource_name), class: 'text-danger', data: { confirm: "Are you sure you want to delete your Noodles account and your recipes? If so, hit OK." }, method: :delete, rel: 'nofollow' %>
 
   <%= render 'shared/printer' %>
 
