@@ -20,7 +20,7 @@
   <% if @recipe.source == '' && @recipe.serves == '' %>
   <p class="text-muted">You have no details for this recipes.</p>
   <% else %>
-  <p>Source: <%= @recipe.source %>
+  <p>Source: <%= auto_link(@recipe.source, :html => {:rel => 'nofollow'}) %>
   <p>Serves: <%= @recipe.serves %>
   <% end %>
 
