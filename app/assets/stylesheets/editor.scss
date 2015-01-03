@@ -16,6 +16,17 @@ body {
   }
 }
 
+@media (max-width: $screen-phone) {
+  .logo-nav {
+    position: static;
+
+    svg {
+      margin: 1em auto 0 auto;
+      display: block;
+    }
+  }
+}
+
 .upload-button {
   cursor: pointer;
 
