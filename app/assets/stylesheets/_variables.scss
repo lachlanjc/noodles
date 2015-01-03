@@ -8,16 +8,11 @@ $black:                  #444;
 $red:                    #d50000;
 $yellow:                 #ffd600;
 $green:                  #00c853;
-
 $blue:                   #0091ea;
 
 $brand-primary:          #ff6d00;
 $brand-bg:               #fcfcfd;
 $notes:                  #ffc;
-$brand-success:          $green;
-$brand-info:             $yellow;
-$brand-warning:          $yellow;
-$brand-danger:           $red;
 
 $border:                 1px solid $grey-lighter;
 
@@ -35,6 +30,7 @@ $size-h6:                11px;
 $size-body:              $size-h3;
 
 $line-height:            1.6;
+$spacing:                0.02rem;
 
 
 // Padding
@@ -44,7 +40,7 @@ $padding-small:          12px;
 $padding-base:           16px;
 $padding-large:          24px;
 
-$radius:                 4px;
+$radius:                 6px;
 
 
 // Media queries breakpoints
