@@ -6,6 +6,10 @@ nav {
   box-shadow: 0 1px 1px rgba(0, 0, 0, .02);
   padding: 18px;
 
+  div {
+    display: inline-block;
+  }
+
   a,
   a:visited {
     border-bottom: 0;
@@ -33,12 +37,8 @@ nav {
     display: block !important;
     padding: 15px 10px;
 
-    .links {
-      display: block !important;
-
-      &:first-child {
-        margin-bottom: 10px;
-      }
+    div:first-child {
+      margin-bottom: 10px;
     }
   }
 }

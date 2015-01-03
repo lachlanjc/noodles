@@ -2,13 +2,13 @@
 
   <% if user_signed_in? %>
 
-    <div class="links ib">
+    <div>
       <%= link_to t('general.home'), root_url %>
       <%= link_to t('general.recipes'), :recipes, class: nav_active_class(:recipes) %>
       <%= link_to t('general.favorites'), :favorites, class: nav_active_class(:favorites) %>
     </div>
 
-    <div class="links ib">
+    <div>
       <% unless nav_active?(:shared_recipe) || nav_active?(:recipe) %>
       <%= link_to 'Blog', :announcements, class: nav_active_class(:announcements) %>
       <% end %>
@@ -19,13 +19,13 @@
 
   <% else %>
 
-    <div class="links ib">
+    <div>
       <%= link_to t('general.home'), root_url %>
       <%= link_to t('general.features'), 'http://noodles.withdraft.com/' %>
       <%= link_to t('general.about'), :help, class: nav_active_class(:help) %>
     </div>
 
-    <div class="links ib">
+    <div>
       <%= link_to t('general.sign_in'), :sign_in, class: nav_active_class(:sign_in) %>
       <%= link_to t('general.sign_up'), :sign_up, class: nav_active_class(:sign_up) %>
     </div>
