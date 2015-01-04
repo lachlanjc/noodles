@@ -13,7 +13,7 @@
     <% end %>
   </h1>
 
-  <div class="text m1-btm"><%= markdown(@recipe.description) %></div>
+  <div class="text m1-btm"><%= markdown(@recipe.description.to_s) %></div>
 
   <% if @recipe.shared? || @recipe.private_share? %>
     <div class="panel ib social-panel">
@@ -44,6 +44,9 @@
 </article>
 
 <div id="shareModal" class="modal">
+  <a class="modal-close float-right" href="#">
+    <%= inline_svg('close.svg') %>
+  </a>
   <h2>Share this recipe</h2>
   <hr>
 
@@ -72,7 +75,7 @@
       <p>Your recipe is already privately shared.</p>
       <p><%= link_to 'Check it out!', private_share_path(:private_id => @recipe.private_id) %></p>
       <% else %>
-      <p>Sharing a recipe privately gives you a link you can share just with your friends. However, no login is required to view it.</p>
+      <p>Anyone with this link can see your recipe and save their own copy. However, it will not be published to your profile.</p>
       <p><%= link_to 'Share this recipe', private_share_path(:private_id => @recipe.private_id), class: 'btn-blue' %></p>
       <% end %>
     </div>

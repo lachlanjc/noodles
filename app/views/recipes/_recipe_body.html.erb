@@ -21,7 +21,7 @@
   <p class="text-muted">No details here at the moment. Details describe where the recipe came from and how much food the recipe produces.</p>
   <% else %>
   <p>Source: <%= auto_link(@recipe.source, :html => {:rel => 'nofollow'}) %>
-  <p>Serves: <%= @recipe.serves %>
+  <p>Yield: <%= @recipe.serves %>
   <% end %>
 
   <div class="panel notes m1-top">

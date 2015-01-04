@@ -10,7 +10,7 @@
 <article class="col-8">
   <%= form_for(@recipe) do |f| %>
 
-  <% if @recipe.img.url == '' %>
+  <% if @recipe.img.url.blank? %>
   <%= f.file_field :img, id: 'file', class: 'hide' %>
   <div class="upload-button m0" id="file-button">
     <%= inline_svg('photo-upload.svg') %>
@@ -43,7 +43,7 @@
     <%= f.label :source, class: 'description m1-top' %><small>Where did this recipe come from?</small>
     <%= f.text_field :source, class: 'text-input' %>
 
-    <%= f.label :serves, class: 'description' %><small>How many servings does your recipe produce?</small>
+    <%= f.label :serves, 'Yield', class: 'description' %><small>How many servings does your recipe produce?</small>
     <%= f.text_field :serves, class: 'text-input' %>
 
     <%= f.label :notes, class: 'description' %><small>What are your tips, tricks, or secrets for this recipe?</small>
@@ -62,9 +62,7 @@
       </label>
     </div>
 
-    <%= link_to @recipe, method: :delete, data: { confirm: t('general.delete_forever') }, class: 'btn-red btn-sm m1-top' do %>
-      <span><%= t('general.delete') %></span>
-    <% end %>
+    <%= link_to t('general.delete'), @recipe, method: :delete, data: { confirm: t('general.delete_forever') }, class: 'btn-red btn-sm m1-top' %>
   </div>
 
   <%= f.submit t('general.save'), class: 'btn btn-save' %>

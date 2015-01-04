@@ -24,3 +24,7 @@
     margin-top: 0;
   }
 }
+
+.modal-close svg {
+  @include svg($size-h2, $grey-light);
+}

@@ -33,11 +33,18 @@
 </article>
 
 <div id="importModal" role="dialog" class="modal">
-  <h2>Import a Recipe</h2>
+  <a class="modal-close float-right" href="#">
+    <%= inline_svg('close.svg') %>
+  </a>
+  <h2>Import a Recipe from the Web</h2>
   <hr>
-  <p>Paste the URL of a recipe</p>
-  <input type="text" class="text-input" placeholder="www.epicurious.com/an-awesome-recipe">
-  <small>Currently we support <a href="http://www.epicurious.com/">Epicurious</a>, <a href="www.bonappetit.com/">Bon Appetit</a>, <a href="http://foodandwine.com/">Food and Wine</a>, and <a href="http://allrecipes.com/">Allrecipes</a>.</small>
+  <p class="m0">Paste the URL of a recipe below to save it to Noodles.</p>
+  <small class="block">Websites supported: <a href="http://www.epicurious.com/">Epicurious</a>, <a href="www.bonappetit.com/">Bon Appetit</a>, <a href="http://foodandwine.com/">Food and Wine</a>, and <a href="http://allrecipes.com/">Allrecipes</a>.</small>
+  <br>
+  <%= form_tag('/import', method: 'get') do %>
+    <%= url_field_tag :url, nil, class: 'text-input' %>
+    <%= submit_tag('Import', name: nil, class: 'float-right btn-blue') %>
+  <% end %>
 </div>
 
 <a class="btn-paper-mini" id="importModalTrigger" name="importModal" href="#importModal">

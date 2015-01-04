@@ -1,5 +1,7 @@
 class RecipesController < ApplicationController
+  include ApplicationHelper
   include RecipesHelper
+  include ScrapingHelper
 
   before_filter :set_recipe, only: [:show, :edit, :update, :destroy, :save_to_noodles, :share]
 
@@ -120,10 +122,14 @@ class RecipesController < ApplicationController
       r.notes = @recipe.notes
       r.favorite = false
       r.shared = false
+      r.private_share = false
       r.created_at = Time.now
       r.updated_at = Time.now
       r.save
     end
+    @save_recipe.private_id = generate_private_id(@save_recipe.id)
+    @save_recipe.save
+
     flash[:success] = "#{@save_recipe.title} (published by #{User.find(@recipe.user_id).first_name}) has been saved to your Noodles account."
     redirect_to @save_recipe
   end
@@ -185,13 +191,42 @@ class RecipesController < ApplicationController
     redirect_to recipes_url
   end
 
-  private
-    # Markdown processing
-    def markdown(str)
-      md = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, underline: true, space_after_headers: true, strikethrough: true)
-      return md.render(str)
-    end
+  def scrape
+    recipe_src = params[:url]
+    recipe = master_scrape(recipe_src)
 
+    if recipe == 'unsupported'
+      flash[:info] = recipe
+      flash[:danger] = 'Sorry, that site isn\'t supported yet.'
+      redirect_to :recipes
+    else
+      @ingredients_prepared = write_ingredients_to_list(recipe['ingredients'])
+      @instructions_prepared = form_markdown_for_instructions(recipe['instructions'])
+      @instructions_rendered_prepared = markdown(@instructions_prepared.to_s)
+
+      @create_recipe = Recipe.new do |r|
+        r.user_id = current_user.id
+        r.title = recipe['title']
+        r.ingredients = @ingredients_prepared
+        r.instructions = @instructions_prepared
+        r.instructions_rendered = @instructions_rendered_prepared
+        r.source = recipe_src
+        r.serves = recipe['serves']
+        r.notes = ''
+        r.favorite = false
+        r.private_share = false
+        r.shared = false
+        r.save
+      end
+      @create_recipe.description = recipe['description'].to_s
+      @create_recipe.private_id = generate_private_id(@create_recipe.id)
+      @create_recipe.save
+      flash[:success] = 'Recipe imported!'
+      redirect_to @create_recipe
+    end
+  end
+
+  private
     # Use callbacks to share common setup or constraints between actions.
     def set_recipe
       @recipe = Recipe.find(params[:id])
@@ -200,5 +235,30 @@ class RecipesController < ApplicationController
     # Only allow trusted parameters
     def recipe_params
       params.require(:recipe).permit(:title, :description, :img, :ingredients, :instructions, :favorite, :source, :serves, :notes, :private_share, :private_id)
+    end
+
+    # Wombat returns arrays for ingredients and instructions.
+    # These methods convert the arrays of strings into usable text.
+    # The second method writes its own Markdown for the instructions.
+
+    def write_ingredients_to_list(ingredients)
+      ingredients_list = ''
+      ingredients.each do |ingredient|
+        # Add ingredient to the next line of ingredients_list
+        # Double quotes must be used for \n
+        ingredients_list << ingredient.to_s + "\n"
+      end
+
+      return ingredients_list
+    end
+
+    def form_markdown_for_instructions(steps)
+      instructions_md = ''
+      # each_with_index produces the step number
+      steps.each_with_index do |step, id|
+        # Arrays start at 0
+        instructions_md << (id + 1).to_s + '. ' + step + "\n"
+      end
+      return instructions_md
     end
 end

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   get '/favorites' => 'recipes#favorites', as: :favorites
   get '/random_recipe' => 'recipes#random_recipe', as: :random_recipe
+  get '/import' => 'recipes#scrape', as: :import
 
   # Shared recipes
   scope '/s' do
