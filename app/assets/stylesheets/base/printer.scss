@@ -4,6 +4,13 @@
 }
 
 @media print {
+  @page {
+    size: 8.5in 11in;
+    margin-top: 40pt;
+    margin-left: 20pt;
+    margin-right: 40pt;
+  }
+
   .printer-copy {
     display: block;
   }
@@ -17,5 +24,13 @@
     box-shadow: none !important;
     color: #000 !important;
     text-shadow: none !important;
+    word-wrap: break-word;
+  }
+
+  article,
+  .document {
+    border: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 }
