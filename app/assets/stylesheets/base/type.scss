@@ -19,17 +19,18 @@ h1 {
   font-size: $size-h1;
 }
 
-h2 {
+h2,
+.text h1 {
   font-size: $size-h2;
 }
 
 h3,
-.text h1 {
+.text h2 {
   font-size: $size-h3;
 }
 
 h4,
-.text h2 {
+.text h3 {
   font-size: $size-h4;
 }
 
@@ -80,6 +81,12 @@ a:visited {
   ol,
   ul {
     padding-left: 23px;
+  }
+
+  h1 {
+    @extend %astro;
+    color: $black;
+    text-transform: uppercase;
   }
 }
 

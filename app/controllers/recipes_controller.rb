@@ -152,9 +152,9 @@ class RecipesController < ApplicationController
 
   # PATCH/PUT /recipes/1
   def update
-    @recipe.instructions_rendered = markdown(@recipe.instructions)
-
     if @recipe.update(recipe_params)
+      @recipe.instructions_rendered = markdown(@recipe.instructions)
+      @recipe.save
       flash[:success] = "Awesome, your changes have been saved."
       redirect_to @recipe
     else
