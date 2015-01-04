@@ -1,24 +1,22 @@
 .btn {
+  @extend %pointer;
   @include elegance;
-  @include shadow-1;
   -webkit-appearance: none;
   background: $brand-primary;
   border: 0;
   border-radius: $radius;
   color: #fff;
-  font: 13px $font-base;
-  padding: 6px 12px;
+  font: $size-h3 $font-base;
+  padding: 8px 16px;
   -webkit-tap-highlight-color: rgba(#000, .12);
 
   &:hover {
-    @include shadow-2;
     color: #fff;
     text-decoration: none;
   }
 
   &:active,
   &:focus {
-    @include shadow-3;
     outline: 0;
   }
 
@@ -36,10 +34,70 @@
   pointer-events: none;
 }
 
+@media print {
+  .btn {
+    background-color: transparent !important;
+    border: 1px solid #ccc;
+  }
+
+  .btn-paper {
+    display: none;
+  }
+}
+
+// .btn-default {
+//   @extend .btn;
+//   background-color: #fff !important;
+//   border: 0;
+//   color: #000 !important;
+//
+//   &:hover,
+//   &:visited:hover {
+//     background-color: #fff !important;
+//     color: #000 !important;
+//   }
+// }
+
+.btn-blue {
+  @include button-standard($blue);
+}
+
+.btn-green {
+  @include button-standard($green);
+}
+
+.btn-red {
+  @include button-standard($red);
+}
+
+.btn-sm {
+  box-shadow: none;
+  font-size: $size-h5;
+  padding: 5px 10px;
+
+  &.in-text {
+    margin: 2px 4px;
+  }
+
+  &.btn-default {
+    border: 1px solid $grey-lighter;
+
+    &:hover {
+      border-color: #ccc;
+    }
+  }
+}
+
+.btn-lg {
+  @extend .btn;
+  font-size: $size-h2;
+  padding: 10px 20px;
+}
+
 .btn-paper {
   @include elegance;
   @include size(46px);
-  @include shadow-2;
+  @include shadow-3;
   background-color: $brand-primary;
   border-bottom: 0;
   border-radius: 50%;
@@ -70,60 +128,19 @@
   }
 }
 
-@media print {
-  .btn {
-    background-color: transparent !important;
-    border: 1px solid #ccc;
+.btn-paper-mini {
+  @extend .btn-paper;
+  bottom: 90px;
+  height: 30px;
+  padding: 6px;
+  right: 27px;
+  width: 30px;
+
+  svg {
+    @include size(30px);
+    left: 0;
+    top: 0;
   }
-
-  .btn-paper {
-    display: none;
-  }
-}
-
-.btn-default {
-  @extend .btn;
-  background-color: #fff !important;
-  border: 0;
-  color: #000 !important;
-
-  &:hover,
-  &:visited:hover {
-    background-color: #fff !important;
-    color: #000 !important;
-  }
-}
-
-.btn-success {
-  @include button-standard($brand-success);
-}
-
-.btn-danger {
-  @include button-standard($brand-danger);
-}
-
-.btn-sm {
-  box-shadow: none;
-  font-size: $size-h5;
-  padding: 5px 10px;
-
-  &.in-text {
-    margin: 2px 4px;
-  }
-
-  &.btn-default {
-    border: 1px solid $grey-lighter;
-
-    &:hover {
-      border-color: #ccc;
-    }
-  }
-}
-
-.btn-lg {
-  @extend .btn;
-  font-size: $size-h2;
-  padding: 10px 16px;
 }
 
 %pointer,

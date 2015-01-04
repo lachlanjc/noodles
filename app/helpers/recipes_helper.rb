@@ -7,10 +7,12 @@ module RecipesHelper
     end
   end
 
-  def recipe_shared?
-    case @recipe.shared
-    when true then true
-    else false
-    end
+  def shared_url(id)
+    return 'http://app.getnoodl.es/' + id.to_s
+  end
+
+  def generate_private_id(id)
+    hashids = Hashids.new '113011262014'
+    return hashids.encode(id * 11262014)
   end
 end

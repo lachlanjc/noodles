@@ -1,6 +1,5 @@
-.random svg {
-  @include up(4px);
-  @include svg(28px, $yellow);
+.random svg path {
+  fill: $yellow;
 }
 
 .recipe-list-item {

@@ -1,5 +1,7 @@
 class RecipesController < ApplicationController
-  before_filter :set_recipe, only: [:show, :edit, :update, :destroy, :save_to_noodles]
+  include RecipesHelper
+
+  before_filter :set_recipe, only: [:show, :edit, :update, :destroy, :save_to_noodles, :share]
 
   # GET /recipes
   def index
@@ -65,6 +67,18 @@ class RecipesController < ApplicationController
     else
       flash[:danger] = "That's not your recipe!"
       redirect_to root_url
+    end
+  end
+
+  def private_share
+    @recipe = Recipe.find_by_private_id(params[:private_id])
+
+    if @recipe.private_share == false
+      @recipe.private_share = true
+      @recipe.save
+      render :private_share
+    else
+      render :private_share
     end
   end
 
@@ -140,6 +154,8 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
     @recipe.shared = false
+    @recipe.private_share = false
+    @recipe.private_id = generate_private_id(@recipe.id)
     @recipe.instructions_rendered = markdown(@recipe.instructions)
 
     if @recipe.save
@@ -183,6 +199,6 @@ class RecipesController < ApplicationController
 
     # Only allow trusted parameters
     def recipe_params
-      params.require(:recipe).permit(:title, :description, :img, :ingredients, :instructions, :favorite, :source, :serves, :notes)
+      params.require(:recipe).permit(:title, :description, :img, :ingredients, :instructions, :favorite, :source, :serves, :notes, :private_share, :private_id)
     end
 end

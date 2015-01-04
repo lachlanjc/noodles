@@ -5,7 +5,11 @@
 
 <article class="col-7 recipe-list-container">
 
-  <h1><%= t('general.favorites') %></h1>
+  <h1><%= t('general.favorites') %>
+    <div class="header-indicator favorite">
+      <%= inline_svg('favorite.svg') %>
+    </div>
+  </h1>
 
   <h3><%= link_to '« All recipes', recipes_path %></h3>
 

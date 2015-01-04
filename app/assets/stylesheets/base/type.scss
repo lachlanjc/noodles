@@ -93,7 +93,7 @@ a:visited {
 // Helpers
 
 %astro {
-  letter-spacing: 0.02rem;
+  letter-spacing: $spacing;
 }
 
 .text-left {
@@ -108,12 +108,12 @@ a:visited {
   color: $brand-primary;
 }
 
-.text-danger {
-  color: $brand-danger;
+.text-red {
+  color: $red;
 }
 
-.text-success {
-  color: $brand-success;
+.text-green {
+  color: $green !important;
 }
 
 .text-blue {

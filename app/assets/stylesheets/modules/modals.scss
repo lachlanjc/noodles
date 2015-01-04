@@ -1,0 +1,26 @@
+#lean_overlay {
+  background: #000;
+  display: none;
+  height: 100%;
+  left: 0px;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 100;
+}
+
+.modal {
+  background-color: #fff;
+  border-radius: 6px;
+  display: none;
+  left: 25%;
+  padding: 15px;
+  position: fixed;
+  top: 10%;
+  width: 560px;
+  z-index: 1050;
+
+  h2 {
+    margin-top: 0;
+  }
+}

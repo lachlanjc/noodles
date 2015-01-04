@@ -26,18 +26,7 @@
 
 <%= render 'shared/nav' %>
 
-<article class="col-8 recipe-print document">
-
-  <% if me_owns_recipe? %>
-  <ul class="pieces">
-    <li class="piece">
-      <%= link_to 'Private Recipe', @recipe %>
-    </li>
-    <li class="piece active">
-      <%= link_to 'Public Recipe', recipe_share_path(:id => @recipe.id) %>
-    </li>
-  </ul>
-  <% end %>
+<article class="col-7 recipe-print document">
 
   <h1 class="m0 ib"><%= @recipe.title %></h1>
 
@@ -46,53 +35,36 @@
     <%= markdown(@recipe.description) %>
   </div>
 
-  <% if current_user && current_user.id == @recipe.user_id %>
+  <% if me_owns_recipe? %>
     <div class="panel ib social-panel">
-      <h2 class="text-success">Great, your recipe is public!</h2>
+      <h2>Great, your recipe is public!</h2>
       <%= render 'shared/social' %>
     </div>
   <% end %>
 
   <%= render 'recipe_body', cache: true %>
 
-  <%# Unless it's your recipe, show sharing buttons %>
-  <% unless current_user && @recipe.user_id == current_user.id %>
-    <div class="panel social-panel">
-      <h2 class="m0">If you like this this recipe, share it.</h2>
-      <%= render 'shared/social' %>
-    </div>
-  <% end %>
-
   <%# If it's your recipe, hint about saving %>
-  <% if current_user && @recipe.user_id == current_user.id %>
-  <div class="action-list">
-    <a class="disabled" title="Others can click this button to save a copy of your recipe to their Noodles account.">
-      <%= inline_svg('save.svg') %>
-      <span>Save</span>
-    </a>
-    <%= link_to recipe_un_share_path(@recipe) do %>
-      <%= inline_svg('un_share.svg') %>
-      <span>Un-share</span>
-    <% end %>
+  <% if me_owns_recipe? %>
+  <div class="m1-5-top print-hide">
+    <a class="btn m1-right" title="Others can click this button to save a copy of your recipe to their Noodles account." disabled>Save</a>
+    <%= link_to 'Un-share', recipe_un_share_path(@recipe), class: 'btn-red m1-right' %>
+    <a class="btn-blue" id="printRecipe"><%= t('general.print') %></a>
 
   <%# If you're logged in, show Save button %>
-  <% elsif current_user %>
-  <div class="action-list">
-    <%= link_to :save_to_noodles, title: 'Save a copy of this recipe to your own account' do %>
-      <%= inline_svg('save.svg') %>
-      <span>Save</span>
-    <% end %>
+  <% elsif user_signed_in? %>
+  <div class="m1-5-top print-hide">
+    <%= link_to 'Save', :pulic_save_to_noodles, title: 'Save a copy of this recipe to your own account', class: 'btn m1-right' %>
+    <a class="btn-blue" id="printRecipe"><%= t('general.print') %></a>
 
   <%# Everyone else should sign up for Noodles %>
   <% else %>
-  <p><a href="http://www.getnoodl.es">Noodles</a> is a simple place to keep all your recipes. <%= link_to 'Sign up', :sign_up %> to save this recipe &mdash; it's fast and completely free.</p>
-  <div class="action-list">
+  <div class="panel print-hide center col-8">
+    <h2>Wondering about Noodles?</h2>
+    <p><a href="http://www.getnoodl.es">Noodles</a> is a simple app for you to collect, cook, and share your favorite recipes.
+    <p><%= link_to 'Sign up', :sign_up %> to save this recipe &mdash; it's fast and completely free.</p>
+  </div>
   <% end %>
-
-    <a id="printRecipe">
-      <%= inline_svg('print.svg') %>
-      <span><%= t('general.print') %></span>
-    </a>
 
   </div>
 

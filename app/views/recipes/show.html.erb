@@ -3,22 +3,11 @@
 
 <%= render 'shared/nav' %>
 
-<article class="col-8 recipe-print document">
-
-  <% if recipe_shared? %>
-  <ul class="pieces">
-    <li class="piece active">
-      <%= link_to 'Private Recipe', @recipe %>
-    </li>
-    <li class="piece">
-      <%= link_to 'Public Recipe', recipe_share_path(:id => @recipe.id) %>
-    </li>
-  </ul>
-  <% end %>
+<article class="col-7 recipe-print document">
 
   <h1 class="m0"><%= @recipe.title %>
-    <% if @recipe.favorite == true %>
-    <div class="header-indicator">
+    <% if @recipe.favorite? %>
+    <div class="header-indicator favorite">
       <%= inline_svg('favorite.svg') %>
     </div>
     <% end %>
@@ -26,44 +15,71 @@
 
   <div class="text m1-btm"><%= markdown(@recipe.description) %></div>
 
-  <% if recipe_shared? %>
-    <div class="panel social-panel">
-      <h2 class="text-success">You've shared this recipe.</h2>
+  <% if @recipe.shared? || @recipe.private_share? %>
+    <div class="panel ib social-panel">
+      <% if @recipe.shared? %>
+      <h2>You've shared this recipe.</h2>
       <%= render 'shared/social' %>
+      <% elsif @recipe.private_share? %>
+      <h2>This recipe has a private share link.</h2>
+      <p class="m1-top">
+        No login is required to open this recipe from its link.
+        <br>
+        <%= link_to 'http://app.getnoodl.es/p/' + @recipe.private_id.to_s, private_share_path(@recipe.private_id) %>
+      </p>
+      <% end %>
     </div>
   <% end %>
 
   <%= render 'recipe_body', cache: true %>
 
-  <div class="action-list m1-top">
-
-    <%= link_to :edit_recipe do %>
-      <%= inline_svg('edit.svg') %>
-      <span><%= t('general.edit') %></span>
-    <% end %>
-
-    <% if recipe_shared? %>
-      <%= link_to recipe_un_share_path(@recipe) do %>
-        <%= inline_svg('un_share.svg') %>
-        <span>Un-share</span>
-      <% end %>
-    <% else %>
-      <%= link_to recipe_share_path(:id => @recipe.id) do %>
-        <%= inline_svg('share.svg') %>
-        <span>Share</span>
-      <% end %>
-    <% end %>
-
-    <a id="printRecipe">
-      <%= inline_svg('print.svg') %>
-      <span><%= t('general.print') %></span>
-    </a>
-
+  <div class="print-hide m1-5-top">
+    <%= link_to t('general.edit'), :edit_recipe, class: 'btn m1-right' %>
+    <a id="shareModalTrigger" href="#shareModal" class="btn-green m1-right">Share</a>
+    <a id="printRecipe" class="btn-blue m1-right"><%= t('general.print') %></a>
   </div>
 
   <%= render 'shared/printer' %>
 
 </article>
+
+<div id="shareModal" class="modal">
+  <h2>Share this recipe</h2>
+  <hr>
+
+  <div class="tabs-container">
+
+    <input type="radio" name="tabs" id="tab-1" checked>
+    <label for="tab-1">Share Publicly</label>
+
+    <input type="radio" name="tabs" id="tab-2">
+    <label for="tab-2">Share Privately</label>
+
+    <br>
+
+    <div class="content content-1">
+      <% if @recipe.shared? %>
+      <p>Your recipe is already publicly shared!</p>
+      <p><%= link_to 'Check it out.', public_share_path(:id => @recipe.id) %></p>
+      <% else %>
+      <p>Sharing publicly will publish this recipe to your profile and give you a link to share with anyone.</p>
+      <p><%= link_to 'Share this recipe', public_share_path(:id => @recipe.id), class: 'btn-blue' %></p>
+      <% end %>
+    </div>
+
+    <div class="content content-2">
+      <% if @recipe.private_share? %>
+      <p>Your recipe is already privately shared.</p>
+      <p><%= link_to 'Check it out!', private_share_path(:private_id => @recipe.private_id) %></p>
+      <% else %>
+      <p>Sharing a recipe privately gives you a link you can share just with your friends. However, no login is required to view it.</p>
+      <p><%= link_to 'Share this recipe', private_share_path(:private_id => @recipe.private_id), class: 'btn-blue' %></p>
+      <% end %>
+    </div>
+
+  </div>
+
+</div>
 
 <%= link_to recipe_cook_path(:recipe_id => @recipe.id), class: 'btn-paper' do %>
   <%= inline_svg('cook.svg') %>

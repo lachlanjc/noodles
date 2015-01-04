@@ -3,13 +3,14 @@
 
 body {
   background-color: $grey-lighter;
+  padding-top: 15px;
 }
 
 .logo-nav {
-  left: 16px;
+  left: 15px;
   position: absolute;
   text-decoration: none;
-  top: 16px;
+  top: 15px;
 
   svg {
     @include svg(32px, $grey);
@@ -69,11 +70,12 @@ body {
 }
 
 #editor-details-btn svg {
-  @include svg(28px, $grey);
+  @include size(28px);
   @include up(8px);
   cursor: pointer;
   margin-right: 3px;
 
+  path,
   circle {
     fill: $grey;
   }
@@ -96,16 +98,27 @@ body {
     display: inline-block;
   }
 
-  span {
-    color: $brand-primary;
+  .control-indicator {
+    height: 24px;
   }
 
-  svg path {
-    fill: $brand-primary;
+  svg {
+    @include size(24px);
+  }
+
+  span {
+    @include up(-6px);
+    color: $pink;
   }
 }
 
-.btn-full {
-  padding: 8px 0;
-  width: 100%;
+.btn-save {
+  background-color: $grey-light;
+  color: $grey-lighter;
+  letter-spacing: $spacing;
+  text-transform: uppercase;
+
+  &:hover {
+    color: $grey-lighter;
+  }
 }
