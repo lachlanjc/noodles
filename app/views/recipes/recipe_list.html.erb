@@ -12,9 +12,9 @@
     <% end %>
   </h1>
 
-  <% if @recipes_count < 6 %>
+  <% if @recipes_count > 1 && @recipes_count < 7 %>
   <p class="print-hide panel">
-    You only have <%= pluralize(@recipes_count, 'recipe') %> in Noodles right now...<%= link_to 'add more', :new_recipe %> and you'll get a lot more value out of it.
+    Cookbooks with only <%= pluralize(@recipes_count, 'recipe') %> in them aren't very useful. <%= link_to 'Add some more', :new_recipe %>!
   </p>
   <% elsif @recipes_count > 8 && @favorites_count == 0 %>
   <p class="print-hide panel">
