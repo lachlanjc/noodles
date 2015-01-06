@@ -36,7 +36,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1
   def show
-    if current_user && @recipe.user_id == current_user.id
+    if me_owns_recipe?
       set_recipe
 
       respond_to do |format|
@@ -49,7 +49,7 @@ class RecipesController < ApplicationController
   end
 
   def random_recipe
-    if current_user
+    if user_signed_in?
       recipes = Recipe.where(:user_id => current_user.id)
       @recipe = recipes[rand(recipes.size)]
       redirect_to recipe_url(@recipe)
@@ -62,7 +62,7 @@ class RecipesController < ApplicationController
   def remove_image
     recipe = Recipe.find(params[:recipe_id])
 
-    if current_user && recipe.user_id == current_user.id
+    if me_owns_recipe?
       recipe.img = nil
       recipe.save
       redirect_to edit_recipe_path(recipe)
