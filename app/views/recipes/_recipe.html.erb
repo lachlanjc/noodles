@@ -8,7 +8,7 @@
 
     <h2><%= recipe.title %></h2>
     <% unless recipe.description.blank? %>
-    <p><%= recipe.description.truncate(140, :omission => ' [...]') %></p>
+    <p><%= recipe.description.truncate(180) %></p>
     <% end %>
   </div>
 <% end %>

@@ -6,7 +6,7 @@
   <%= sanitize @recipe.instructions_rendered %>
 </div>
 
-<% unless @recipe.img.url == '' %>
+<% unless @recipe.img.url.blank? %>
 <%= image_tag @recipe.img, class: 'recipe-photo' %>
 <% end %>
 
@@ -17,16 +17,16 @@
 
 <div class="hide" id="recipe-details-container">
   <h2 class="m1-top">Details</h2>
-  <% if @recipe.source == '' && @recipe.serves == '' %>
-  <p class="text-muted">You have no details for this recipes.</p>
+  <% if @recipe.source.blank? && @recipe.serves.blank? %>
+  <p class="text-muted">No details here at the moment. Details describe where the recipe came from and how much food the recipe produces.</p>
   <% else %>
   <p>Source: <%= auto_link(@recipe.source, :html => {:rel => 'nofollow'}) %>
-  <p>Serves: <%= @recipe.serves %>
+  <p>Yield: <%= @recipe.serves %>
   <% end %>
 
   <div class="panel notes m1-top">
-    <% if @recipe.notes == '' || @recipe.notes == nil %>
-    <p class="text-muted">You have no notes for this recipe.</p>
+    <% if @recipe.notes.blank? || @recipe.notes == nil %>
+    <p class="text-muted">No notes for this recipe &mdash; yet!</p>
     <% else %>
     <h2>Notes</h2>
     <br>

@@ -1,3 +1,5 @@
+#= require jquery
+#= require modals
 # require turbolinks
 
 showRecipeDetails = ->
@@ -13,6 +15,11 @@ printRecipe = ->
 window.onload = ->
   if document.getElementById('recipe-details-btn') != null
     document.getElementById('recipe-details-btn').addEventListener 'click', showRecipeDetails, false
+  $(document).ready ->
+    if document.getElementById('importModalTrigger') != null
+      $('#importModalTrigger').leanModal()
+    if document.getElementById('shareModalTrigger') != null
+      $('#shareModalTrigger').leanModal()
   if document.getElementById('printRecipe') != null
     document.getElementById('printRecipe').addEventListener 'click', printRecipe, false
     return

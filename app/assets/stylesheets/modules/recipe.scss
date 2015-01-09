@@ -1,10 +1,8 @@
 .header-indicator {
   @include up(2px);
-  display: inline-block;
-  margin-left: 4px;
 
   svg {
-    @include svg(24px, $brand-primary);
+    @include svg(28px, $brand-primary);
   }
 }
 
@@ -40,6 +38,10 @@ img {
   }
 }
 
+.favorite svg path {
+  fill: $pink;
+}
+
 .social {
   margin: $padding-xs 0;
 
@@ -48,28 +50,32 @@ img {
     margin-right: 4px;
   }
 
-  .social-twitter svg {
-    @include svg(36px, #00aced);
+  svg {
+    @include size(36px);
   }
 
-  .social-facebook svg {
-    @include svg(36px, #3b5998);
+  .social-twitter path {
+    fill: #00aced;
   }
 
-  .social-buffer svg {
-    @include svg(36px, #555);
+  .social-facebook path {
+    fill: #3b5998;
   }
 
-  .social-pinterest svg {
-    @include svg(36px, #cb2027);
+  .social-buffer path {
+    fill: #555;
   }
 
-  .social-plus svg {
-    @include svg(36px, #d14836);
+  .social-pinterest path {
+    fill: #cb2027;
   }
 
-  .social-email svg {
-    @include svg(36px, $blue);
+  .social-plus path {
+    fill: #d14836;
+  }
+
+  .social-email path {
+    fill: $blue;
   }
 }
 

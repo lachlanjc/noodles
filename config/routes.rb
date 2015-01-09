@@ -11,11 +11,16 @@ Rails.application.routes.draw do
 
   get '/recipes/favorites' => 'recipes#favorites', as: :favorites
   get '/random_recipe' => 'recipes#random_recipe', as: :random_recipe
+  get '/import' => 'recipes#scrape', as: :import
 
   # Shared recipes
   scope '/s' do
-    get '/:id' => 'recipes#share', as: :recipe_share
-    get '/:id/save' => 'recipes#save_to_noodles', as: :save_to_noodles
+    get '/:id' => 'recipes#share', as: :public_share
+    get '/:id/save' => 'recipes#save_to_noodles', as: :public_save_to_noodles
+  end
+  scope '/p' do
+    get '/:private_id' => 'recipes#private_share', as: :private_share
+    get '/:private_id/save' => 'recipes#save_to_noodles', as: :private_save_to_noodles
   end
 
   get '/about' => 'pages#about', as: :about

@@ -1,38 +1,27 @@
-<% if params[:favorites] %>
-  <%- title 'Favorites' %>
-  <% activate_nav!(:favorites) %>
-<% else %>
-  <%- title 'Recipes' %>
-  <% activate_nav!(:recipes) %>
-<% end %>
+<%- title 'Recipes' %>
+<% activate_nav!(:recipes) %>
 
 <%= render 'shared/nav' %>
 
-<article class="col-8 recipe-list-container">
+<article class="col-7 recipe-list-container">
 
-  <% if params[:favorites] %>
-  <h1><%= t('general.favorites') %></h1>
-  <% else %>
   <h1>
     <%= t('general.recipes') %>
-    <%= link_to :random_recipe, class: 'random', title: 'Open a random recipe from your Noodles' do %>
+    <%= link_to :random_recipe, class: 'header-indicator random', title: 'Open a random recipe from your Noodles' do %>
       <%= inline_svg('random.svg') %>
     <% end %>
   </h1>
-  <% end %>
 
-  <% unless params[:favorites] %>
-    <% if @recipes_count < 6 %>
-    <p class="print-hide panel">
-      You only have <%= pluralize(@recipes_count, 'recipe') %> in Noodles right now...<%= link_to 'add more', :new_recipe %> and you'll get a lot more value out of it.
-    </p>
-    <% elsif @recipes_count > 8 && @favorites_count == 0 %>
-    <p class="print-hide panel">
-      Favorites are a great way to quickly access your best recipes. To mark a Favorite, click the heart under Details while you edit a recipe.
-      <br>
-      Or <a href="http://noodles.withdraft.com/#favorites">learn more about Favorites</a>.
-    </p>
-    <% end %>
+  <% if @recipes_count > 1 && @recipes_count < 7 %>
+  <p class="print-hide panel">
+    Cookbooks with only <%= pluralize(@recipes_count, 'recipe') %> in them aren't very useful. <%= link_to 'Add some more', :new_recipe %>!
+  </p>
+  <% elsif @recipes_count > 8 && @favorites_count == 0 %>
+  <p class="print-hide panel">
+    Favorites are a great way to quickly access your best recipes. To mark a Favorite, click the heart under Details while you edit a recipe.
+    <br>
+    Or <a href="http://noodles.withdraft.com/#favorites">learn more about Favorites</a>.
+  </p>
   <% end %>
 
   <div class="recipe-list">
@@ -42,6 +31,25 @@
   <p class="printer-copy"><%= t('recipes.printing.print_copy') %></p>
 
 </article>
+
+<div id="importModal" role="dialog" class="modal">
+  <a class="modal-close float-right" href="#">
+    <%= inline_svg('close.svg') %>
+  </a>
+  <h2>Import a Recipe from the Web</h2>
+  <hr>
+  <p class="m0">Paste the URL of a recipe below to save it to Noodles.</p>
+  <small class="block">Websites supported: <a href="http://www.epicurious.com/">Epicurious</a>, <a href="www.bonappetit.com/">Bon Appetit</a>, <a href="http://foodandwine.com/">Food and Wine</a>, and <a href="http://allrecipes.com/">Allrecipes</a>.</small>
+  <br>
+  <%= form_tag('/import', method: 'get') do %>
+    <%= url_field_tag :url, nil, class: 'text-input' %>
+    <%= submit_tag('Import', name: nil, class: 'float-right btn-blue') %>
+  <% end %>
+</div>
+
+<a class="btn-paper-mini" id="importModalTrigger" name="importModal" href="#importModal">
+  <%= inline_svg('import.svg') %>
+</a>
 
 <%= link_to :new_recipe, class: 'btn-paper' do %>
   <%= inline_svg('add.svg') %>

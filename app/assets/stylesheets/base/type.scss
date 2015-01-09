@@ -19,15 +19,18 @@ h1 {
   font-size: $size-h1;
 }
 
-h2 {
+h2,
+.text h1 {
   font-size: $size-h2;
 }
 
-h3 {
+h3,
+.text h2 {
   font-size: $size-h3;
 }
 
-h4 {
+h4,
+.text h3 {
   font-size: $size-h4;
 }
 
@@ -79,12 +82,18 @@ a:visited {
   ul {
     padding-left: 23px;
   }
+
+  h1 {
+    @extend %astro;
+    color: $black;
+    text-transform: uppercase;
+  }
 }
 
 // Helpers
 
 %astro {
-  letter-spacing: 0.02rem;
+  letter-spacing: $spacing;
 }
 
 .text-left {
@@ -99,12 +108,12 @@ a:visited {
   color: $brand-primary;
 }
 
-.text-danger {
-  color: $brand-danger;
+.text-red {
+  color: $red;
 }
 
-.text-success {
-  color: $brand-success;
+.text-green {
+  color: $green !important;
 }
 
 .text-blue {
