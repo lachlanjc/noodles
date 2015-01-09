@@ -18,7 +18,7 @@ class RecipesController < ApplicationController
       else render :recipe_list
       end
     else
-      redirect_to 'http://www.getnoodl.es'
+      redirect_to root_url
     end
   end
 

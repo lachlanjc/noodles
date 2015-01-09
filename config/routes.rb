@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
 
-  root 'recipes#index'
+  root 'pages#home'
+  get '/home' => 'pages#home_forced', as: :home
 
   resources :recipes do
     get '/cook' => 'cook#index'
     get '/un_share' => 'recipes#un_share', as: :un_share
     get '/remove_image' => 'recipes#remove_image', as: :remove_image
   end
-
-  resources :announcements
 
   get '/recipes/favorites' => 'recipes#favorites', as: :favorites
   get '/random_recipe' => 'recipes#random_recipe', as: :random_recipe
@@ -19,7 +18,10 @@ Rails.application.routes.draw do
     get '/:id/save' => 'recipes#save_to_noodles', as: :save_to_noodles
   end
 
-  get '/help' => 'help#help'
+  get '/about' => 'pages#about', as: :about
+  get '/help' => 'pages#about', as: :help
+
+  resources :announcements
   get '/announcements/unsubscribe/EAY7pdX9/:user_id' => 'announcements#unsubscribe'
 
   devise_for :users, :controllers => { :registrations => 'registrations' }

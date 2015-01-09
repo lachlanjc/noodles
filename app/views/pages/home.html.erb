@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Noodles.</title>
+  <meta name="keywords" content="noodles,cook,recipe,recipes,food,getnoodles,share recipes,online cookbook">
+  <meta name="description" content="Noodles, a simple app for all your recipes.">
+  <%= stylesheet_link_tag 'home', 'data-turbolinks-track' => false %>
+  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Lato:400,600">
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Lato:400">
+  <meta property="og:site_name" content="Noodles">
+  <meta property="og:title" content="Noodles">
+  <meta property="og:url" content="http://getnoodl.es/">
+  <meta property="og:image" content="http://assets.getnoodl.es/assets/apple-touch-icon-a13cd6de917f3b9e4602a7f7ae7b895b.png">
+  <meta property="og:description" content="Cook better with Noodles, a simple app for all your recipes.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@noodlesapp">
+  <meta name="twitter:title" content="Noodles">
+  <meta name="twitter:description" content="Cook better with Noodles, a simple app for all your recipes.">
+  <meta name="twitter:image:src" content="http://assets.getnoodl.es/assets/apple-touch-icon-a13cd6de917f3b9e4602a7f7ae7b895b.png">
+  <meta name="twitter:domain" content="getnoodl.es">
+  <script>
+  !function(g,s,q,r,d){r=g[r]=g[r]||function(){(r.q=r.q||[]).push(
+    arguments)};d=s.createElement(q);q=s.getElementsByTagName(q)[0];
+    d.src='//d1l6p2sc9645hc.cloudfront.net/tracker.js';q.parentNode.
+    insertBefore(d,q)}(window,document,'script','_gs');
+
+    _gs('GSN-107564-I');
+    </script>
+  </head>
+  <body>
+    <header class="hero">
+      <nav>
+        <%= link_to 'Home', root_url, class: 'active' %>
+        <%= link_to 'About/Help', help_path %>
+        <a href="http://noodles.withdraft.com/">Features</a>
+        <%= link_to 'Log in', sign_in_path %>
+      </nav>
+      <section>
+        <h1>Cook better with Noodles.</h1>
+        <h3>A simple app for all your recipes.</h3>
+        <a class="btn" onclick="_gs('event', 'Clicked hero button'); window.location='http://getnoodl.es/signup'">Sign Up</a>
+      </section>
+    </header>
+    <a class="paper-btn paper-arrow" href="#main">
+      <%= image_tag 'home/down.png', alt: 'Arrow down' %>
+    </a>
+    <article id="main">
+      <p class="intro grey">Noodles is a simple place for all your recipes. Add your favorite chocolate cake to Noodles with a few keystrokes, then pull it up in the kitchen to make an awesome birthday cake. The app is uncomplicated and free to use. It works from your computer, your tablet, your phone, or any other device you have...get started and cook better.</p>
+      <section>
+        <header>
+          <div class="paper-btn feature-icon">
+            <%= image_tag 'cloud_done.svg', alt: 'Cloud icon' %>
+          </div>
+          <h2>Ready to Go</h2>
+        </header>
+        <p>Your recipes are seamlessly synced through Noodles, so you can access your recipes from any device, at any time.</p>
+      </section>
+      <section>
+        <header>
+          <div class="paper-btn feature-icon">
+            <%= image_tag 'cook.svg', alt: 'Cook Mode icon' %>
+          </div>
+          <h2>Cook Mode</h2>
+        </header>
+        <p>Cook Mode is the best way to cook with your recipes in the kitchen. Only what you really need is displayed on your screen, and big controls let you easily navigate.</p>
+      </section>
+      <section>
+        <header>
+          <div class="paper-btn feature-icon">
+            <%= image_tag 'share.svg', alt: 'Sharing icon' %>
+          </div>
+          <h2>Share Recipes</h2>
+        </header>
+        <p>Any recipe you have in Noodles can be shared. A shared recipe has a public link that anyone can view — show your friends on Facebook, send it to your co-workers over Slack, or share the link on your food blog. Shared recipes can be saved into someone else's Noodles.</p>
+      </section>
+      <hr>
+      <section>
+        <blockquote class="text-center">
+          <h2>&ldquo;Whether you want to keep your own recipes or you need to jot a recipe you find online or on TV, this website is handy.&rdquo;</h2>
+          <p class="grey">- Laxman Singh</p>
+        </blockquote>
+      </section>
+      <hr>
+      <section class="text-center">
+        <h2>Noodles is completely free, so try it out and start cooking better.</h2>
+        <a class="btn" onclick="_gs('event', 'Clicked hero button'); window.location='http://getnoodl.es/signup'">Sign Up</a>
+      </section>
+    </article>
+
+    <footer class="text-center">
+      <a href="http://noodles.withdraft.com/pages/558276">Terms</a>
+      <a href="http://noodles.withdraft.com/pages/558280">Privacy Policy</a>
+      <%= link_to 'Blog', announcements_path %>
+      <a href="https://www.facebook.com/pages/Noodles/698221030285633">Facebook</a>
+      <a href="https://twitter.com/noodlesapp">Twitter</a>
+    </footer>
+  </body>
+  </html>
