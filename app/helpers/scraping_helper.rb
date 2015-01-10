@@ -23,6 +23,10 @@ module ScrapingHelper
       load 'scrapers/food_and_wine.rb'
       content = FoodWineScraper.new.scrape(path)
       return content
+    elsif host == 'nytimes.com'
+      load 'scrapers/ny_cooking.rb'
+      content = NYCookingScraper.new.scrape_and_process(path)
+      return content
     elsif host == 'allrecipes.com'
       load 'scrapers/allrecipes.rb'
       content = AllRecipesScraper.new.scrape_and_process(path)

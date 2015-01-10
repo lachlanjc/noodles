@@ -207,7 +207,7 @@ class RecipesController < ApplicationController
         r.instructions_rendered = @instructions_rendered_prepared
         r.source = recipe_src
         r.serves = recipe['serves']
-        r.notes = ''
+        r.notes = recipe['notes'].to_s
         r.favorite = false
         r.private_share = false
         r.shared = false
