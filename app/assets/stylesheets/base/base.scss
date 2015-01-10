@@ -1,5 +1,3 @@
-// Assorted
-
 body {
   background-color: $brand-bg;
   margin: 0;
@@ -50,38 +48,24 @@ hr {
   background-color: $notes;
 }
 
-%token {
-  border-bottom: 0;
-  border-radius: ($radius * 4);
-  font-size: $size-h3;
-  margin-right: 8px;
-  min-width: 48px;
-  padding: 5px 10px;
+.badge {
+  @extend .ib;
+  @extend .m-small-left;
+  background-color: #78909C;
+  border-radius: 20px;
+  color: #fff;
+  font-size: $size-h5;
+  font-weight: 600;
+  padding: 2px 8px;
+  vertical-align: super;
 }
 
-.token-outline {
-  @extend %token;
-  border: 1px solid $blue;
-  color: $blue !important;
+ul,
+ol,
+blockquote {
+  margin: 0;
+  padding: 0;
 }
-
-.token-full {
-  @extend %token;
-  background-color: $blue;
-  color: #fff !important;
-}
-
-// .well {
-//   border: 1px solid $grey-lighter;
-//   border-radius: 3px;
-//   padding: 20px 16px;
-//   margin: $padding-base 0;
-//   background-color: #F2F2F2;
-//
-//   p:last-child {
-//     margin-bottom: 0;
-//   }
-// }
 
 // Helper classes
 
