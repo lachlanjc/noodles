@@ -23,7 +23,7 @@
       <%= inline_svg('photo-upload.svg') %>
       <span id="file-name">Pick a different photo</span>
     </div>
-    <span>or <%= link_to 'Remove current photo', recipe_remove_image_path(:recipe_id => @recipe.id), class: 'btn btn-sm btn-default', style: 'margin-left: 6px;' %></span>
+    <span>or <%= link_to 'remove current photo', recipe_remove_image_path(:recipe_id => @recipe.id) %></span>
   </div>
   <% end %>
 

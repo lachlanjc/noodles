@@ -5,19 +5,17 @@
 
 <article class="col-7 recipe-list-container">
 
-  <h1>
-    <%= t('general.recipes') %>
-    <%= link_to :random_recipe, class: 'header-indicator random', title: 'Open a random recipe from your Noodles' do %>
-      <%= inline_svg('random.svg') %>
-    <% end %>
-  </h1>
+  <h1 class="ib"><%= t('general.recipes') %></h1>
+  <%= link_to :random_recipe, class: 'header-indicator random', title: 'Open a random recipe from your Noodles' do %>
+    <%= inline_svg('random.svg') %>
+  <% end %>
 
   <% if @recipes_count > 1 && @recipes_count < 7 %>
-  <p class="print-hide panel">
+  <p class="print-hide panel m1-btm">
     Cookbooks with only <%= pluralize(@recipes_count, 'recipe') %> in them aren't very useful. <%= link_to 'Add some more', :new_recipe %>!
   </p>
   <% elsif @recipes_count > 8 && @favorites_count == 0 %>
-  <p class="print-hide panel">
+  <p class="print-hide panel m1-btm">
     Favorites are a great way to quickly access your best recipes. To mark a Favorite, click the heart under Details while you edit a recipe.
     <br>
     Or <a href="http://noodles.withdraft.com/#favorites">learn more about Favorites</a>.

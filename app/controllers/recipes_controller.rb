@@ -156,10 +156,10 @@ class RecipesController < ApplicationController
     @recipe.user_id = current_user.id
     @recipe.shared = false
     @recipe.private_share = false
-    @recipe.private_id = generate_private_id(@recipe.id)
-    @recipe.instructions_rendered = markdown(@recipe.instructions)
 
     if @recipe.save
+      @recipe.private_id = generate_private_id(@recipe.id)
+      @recipe.instructions_rendered = markdown(@recipe.instructions)
       flash[:success] = "Your recipe has been created."
       redirect_to @recipe
     else

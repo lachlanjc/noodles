@@ -19,11 +19,6 @@
   &:focus {
     outline: 0;
   }
-
-  &:visited,
-  &:visited:hover {
-    color: #fff;
-  }
 }
 
 .btn[disabled] {
@@ -51,8 +46,7 @@
 //   border: 0;
 //   color: #000 !important;
 //
-//   &:hover,
-//   &:visited:hover {
+//   &:hover {
 //     background-color: #fff !important;
 //     color: #000 !important;
 //   }
@@ -77,14 +71,6 @@
 
   &.in-text {
     margin: 2px 4px;
-  }
-
-  &.btn-default {
-    border: 1px solid $grey-lighter;
-
-    &:hover {
-      border-color: #ccc;
-    }
   }
 }
 
