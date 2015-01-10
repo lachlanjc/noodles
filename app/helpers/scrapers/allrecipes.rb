@@ -21,7 +21,9 @@ def scrape_and_process(url_path)
   allrecipes = AllRecipesScraper.new.scrape(url_path)
   allrecipes["ingredients"] = allrecipes["ingredients_raw"]
   allrecipes["ingredients"].each do |line|
-    line.sub!(/\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s/, " ")
+    5.times do
+      line.sub!(/\s\s/, " ")
+    end
   end
   allrecipes.delete("ingredients_raw")
   return allrecipes

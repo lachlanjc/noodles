@@ -20,8 +20,9 @@ class BonAppetitScraper
     bonappetit = scrape(url_path)
     bonappetit["ingredients"] = bonappetit["ingredients_raw"]
     bonappetit["ingredients"].each do |line|
-      line.sub!(/\n/, " ")
-      line.sub!(/\n/, " ")
+      2.times do
+        line.sub!(/\n/, " ")
+      end
     end
     bonappetit.delete("ingredients_raw")
     return bonappetit
