@@ -1,19 +1,20 @@
 .bio {
   height: 85px;
+}
 
-  .author-photo {
-    float: left;
-    width: 85px;
+.bio-photo {
+  @extend .float-left;
+  @extend .ib;
+  width: 85px;
 
-    img {
-      @include shadow-1;
-      border-radius: 50%;
-    }
+  img {
+    @include shadow-1;
+    border-radius: 50%;
   }
+}
 
-  .author-info {
-    @include up(4px);
-    float: left;
-    margin-left: $padding-base;
-  }
+.bio-info {
+  @extend .ib;
+  @include up(4px);
+  margin-left: $padding-base;
 }
