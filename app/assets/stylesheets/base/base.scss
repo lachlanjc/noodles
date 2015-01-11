@@ -40,6 +40,10 @@ hr {
     margin: 0;
   }
 
+  ul {
+    @extend .text;
+  }
+
   p:last-child {
     margin-bottom: 0;
   }
@@ -119,6 +123,9 @@ blockquote {
   width: 33.33333333%;
 }
 
+.float-left {
+  float: left;
+}
 .float-right {
   float: right;
 }

@@ -40,7 +40,7 @@ en:
         account_settings: "Account Settings"
         fn: "First name"
         email_a: "Email address"
-        current_pass: "Current Password"
+        current_pass: "Current password"
         can_leave_blank: "(leave this blank unless you would like to change it)"
         eight_char: "Please use at least 8 characters."
         delete_account: "Delete your account"
