@@ -43,15 +43,9 @@ class RecipesController < ApplicationController
     end
   end
 
-  def random_recipe
-    if user_signed_in?
-      recipes = Recipe.where(:user_id => current_user.id)
-      @recipe = recipes[rand(recipes.size)]
-      redirect_to recipe_url(@recipe)
-    else
-      flash[:danger] = "Please sign in to find a random recipe."
-      redirect_to root_url
-    end
+  def random
+    recipe = Recipe.where(:user_id => current_user.id).order("RANDOM()").limit(1).first
+    redirect_to recipe_url(recipe)
   end
 
   def remove_image
