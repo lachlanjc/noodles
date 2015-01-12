@@ -1,8 +1,10 @@
 .header-indicator {
-  @include up(2px);
+  @extend .ib;
+  @extend .float-right;
+  margin-left: 4px;
 
   svg {
-    @include svg(28px, $brand-primary);
+    @include svg(32px, $brand-primary);
   }
 }
 

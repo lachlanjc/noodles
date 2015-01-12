@@ -15,12 +15,8 @@ Rails.application.routes.draw do
 
   # Shared recipes
   scope '/s' do
-    get '/:id' => 'recipes#share', as: :public_share
-    get '/:id/save' => 'recipes#save_to_noodles', as: :public_save_to_noodles
-  end
-  scope '/p' do
-    get '/:private_id' => 'recipes#private_share', as: :private_share
-    get '/:private_id/save' => 'recipes#save_to_noodles', as: :private_save_to_noodles
+    get '/:shared_id' => 'recipes#share', as: :share
+    get '/:shared_id/save' => 'recipes#save_to_noodles', as: :save_to_noodles
   end
 
   get '/about' => 'pages#about', as: :about

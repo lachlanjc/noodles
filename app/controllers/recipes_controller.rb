@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
   include RecipesHelper
   include ScrapingHelper
 
-  before_filter :set_recipe, only: [:show, :edit, :update, :destroy, :save_to_noodles, :share]
+  before_filter :set_recipe, only: [:show, :edit, :update, :destroy, :save_to_noodles]
 
   # GET /recipes
   def index
@@ -37,6 +37,7 @@ class RecipesController < ApplicationController
   # GET /recipes/1
   def show
     if me_owns_recipe?
+      @shared_url = shared_url(@recipe.shared_id)
       render :show
     else
       render :locked
@@ -61,28 +62,18 @@ class RecipesController < ApplicationController
     end
   end
 
-  def private_share
-    @recipe = Recipe.find_by_private_id(params[:private_id])
-
-    if @recipe.private_share == false
-      @recipe.private_share = true
-      @recipe.save
-      render :private_share
-    else
-      render :private_share
-    end
-  end
-
   def share
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.find_by_shared_id(params[:shared_id])
 
-    if current_user && @recipe.user_id == current_user.id && @recipe.shared == false
+    if me_owns_recipe? && @recipe.shared == false
       @recipe.shared = true
       @recipe.save
+      @shared_url = shared_url(@recipe.shared_id)
       render :share
     elsif @recipe.shared == false
       render :locked
     else
+      @shared_url = shared_url(@recipe.shared_id)
       render :share
     end
   end
@@ -90,9 +81,10 @@ class RecipesController < ApplicationController
   def un_share
     @recipe = Recipe.find(params[:recipe_id])
 
-    if current_user && @recipe.user_id == current_user.id && @recipe.shared == true
+    if me_owns_recipe?
       @recipe.shared = false
       @recipe.save
+      flash[:success] = "Recipe unshared."
       redirect_to @recipe
     end
   end
@@ -111,12 +103,11 @@ class RecipesController < ApplicationController
       r.notes = @recipe.notes
       r.favorite = false
       r.shared = false
-      r.private_share = false
       r.created_at = Time.now
       r.updated_at = Time.now
       r.save
     end
-    @save_recipe.private_id = generate_private_id(@save_recipe.id)
+    @save_recipe.shared_id = generate_shared_id(@save_recipe.id)
     @save_recipe.save
 
     flash[:success] = "#{@save_recipe.title} (published by #{User.find(@recipe.user_id).first_name}) has been saved to your Noodles account."
@@ -136,7 +127,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1/edit
   def edit
-    if @recipe.user_id == current_user.id
+    if me_owns_recipe?
       render :edit
     else
       flash[:view] = "Sorry, you can't edit that recipe."
@@ -149,10 +140,9 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
     @recipe.shared = false
-    @recipe.private_share = false
 
     if @recipe.save
-      @recipe.private_id = generate_private_id(@recipe.id)
+      @recipe.shared_id = generate_shared_id(@recipe.id)
       @recipe.instructions_rendered = markdown(@recipe.instructions)
       flash[:success] = "Your recipe has been created."
       redirect_to @recipe
@@ -203,12 +193,11 @@ class RecipesController < ApplicationController
         r.serves = recipe['serves']
         r.notes = recipe['notes'].to_s
         r.favorite = false
-        r.private_share = false
         r.shared = false
         r.save
       end
       @create_recipe.description = recipe['description'].to_s
-      @create_recipe.private_id = generate_private_id(@create_recipe.id)
+      @create_recipe.shared_id = generate_shared_id(@create_recipe.id)
       @create_recipe.save
       flash[:success] = 'Recipe imported!'
       redirect_to @create_recipe

@@ -5,7 +5,7 @@
   <meta name="twitter:card" content="summary">
   <meta property="og:site_name" content="Noodles" />
   <meta name="twitter:domain" content="getnoodl.es">
-  <meta property="og:url" content="http://app.getnoodl.es/s/<%= @recipe.id %>">
+  <meta property="og:url" content="<%= @shared_url %>">
   <meta property="og:title" content="<%= @recipe.title %>">
   <meta name="twitter:title" content="<%= @recipe.title %>">
   <% if @recipe.img.url == '' %>
@@ -30,10 +30,8 @@
 
   <h1 class="m0 ib"><%= @recipe.title %></h1>
 
-  <div class="text m1-btm">
-    <p class="text-muted">Published by <%= User.find(@recipe.user_id).first_name %></p>
-    <%= markdown(@recipe.description) %>
-  </div>
+  <p class="text-muted m1-btm">Shared by <%= User.find(@recipe.user_id).first_name %></p>
+  <%= markdown(@recipe.description) %>
 
   <% if me_owns_recipe? %>
     <div class="panel ib social-panel">
@@ -54,15 +52,16 @@
   <%# If you're logged in, show Save button %>
   <% elsif user_signed_in? %>
   <div class="m1-5-top print-hide">
-    <%= link_to 'Save', :pulic_save_to_noodles, title: 'Save a copy of this recipe to your own account', class: 'btn m1-right' %>
+    <%= link_to 'Save', :save_to_noodles, title: 'Save a copy of this recipe to your own account', class: 'btn m1-right' %>
     <a class="btn-blue" id="printRecipe"><%= t('general.print') %></a>
 
   <%# Everyone else should sign up for Noodles %>
   <% else %>
   <div class="panel print-hide center col-8">
     <h2>Wondering about Noodles?</h2>
-    <p><a href="http://www.getnoodl.es">Noodles</a> is a simple app for you to collect, cook, and share your favorite recipes.
-    <p><%= link_to 'Sign up', :sign_up %> to save this recipe &mdash; it's fast and completely free.</p>
+    <p><%= link_to 'Noodles', root_url, class: 'text-primary' %> is a simple app for you to collect, cook, and share your favorite recipes.
+    <p><%= link_to 'Sign up', :sign_up, class: 'text-primary' %> to save this recipe &mdash; it's fast and completely free.</p>
+    <p><%= link_to 'Try Noodles', :sign_up, class: 'btn' %>
   </div>
   <% end %>
 

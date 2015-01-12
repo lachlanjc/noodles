@@ -12,22 +12,14 @@
   </div>
   <% end %>
 
-  <div class="text m1-btm"><%= markdown(@recipe.description.to_s) %></div>
+  <div class="text m1"><%= markdown(@recipe.description.to_s) %></div>
 
-  <% if @recipe.shared? || @recipe.private_share? %>
-    <div class="panel ib social-panel">
-      <% if @recipe.shared? %>
-      <h2>You've shared this recipe.</h2>
-      <%= render 'shared/social' %>
-      <% elsif @recipe.private_share? %>
-      <h2>This recipe has a private share link.</h2>
-      <p class="m1-top">
-        No login is required to open this recipe from its link.
-        <br>
-        <%= link_to 'http://app.getnoodl.es/p/' + @recipe.private_id.to_s, private_share_path(@recipe.private_id) %>
-      </p>
-      <% end %>
-    </div>
+  <% if @recipe.shared? %>
+  <div class="panel ib print-hide">
+    <h2>You've shared this recipe.</h2>
+    <%= render 'shared/social' %>
+    <p class="m1-top"><strong><%= link_to 'Check it out.', @shared_url, class: 'btn-blue' %></strong></p>
+  </div>
   <% end %>
 
   <%= render 'recipe_body', cache: true %>
@@ -46,40 +38,16 @@
   <a class="modal-close float-right" href="#">
     <%= inline_svg('close.svg') %>
   </a>
+
+  <% if @recipe.shared? %>
+  <p>Your recipe is already shared!</p>
+  <p><%= link_to 'Check it out.', @shared_url %></p>
+  <% else %>
   <h2>Share this recipe</h2>
   <hr>
-
-  <div class="tabs-container">
-
-    <input type="radio" name="tabs" id="tab-1" checked>
-    <label for="tab-1">Share Publicly</label>
-
-    <input type="radio" name="tabs" id="tab-2">
-    <label for="tab-2">Share Privately</label>
-
-    <br>
-
-    <div class="content content-1">
-      <% if @recipe.shared? %>
-      <p>Your recipe is already publicly shared!</p>
-      <p><%= link_to 'Check it out.', public_share_path(:id => @recipe.id) %></p>
-      <% else %>
-      <p>Sharing publicly will publish this recipe to your profile and give you a link to share with anyone.</p>
-      <p><%= link_to 'Share this recipe', public_share_path(:id => @recipe.id), class: 'btn-blue' %></p>
-      <% end %>
-    </div>
-
-    <div class="content content-2">
-      <% if @recipe.private_share? %>
-      <p>Your recipe is already privately shared.</p>
-      <p><%= link_to 'Check it out!', private_share_path(:private_id => @recipe.private_id) %></p>
-      <% else %>
-      <p>Anyone with this link can see your recipe and save their own copy. However, it will not be published to your profile.</p>
-      <p><%= link_to 'Share this recipe', private_share_path(:private_id => @recipe.private_id), class: 'btn-blue' %></p>
-      <% end %>
-    </div>
-
-  </div>
+  <p>Anyone with this link can see your recipe and save a copy to their own Noodles account.</p>
+  <p><%= link_to 'Share this recipe', @shared_url, class: 'btn-blue' %></p>
+  <% end %>
 
 </div>
 

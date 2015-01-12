@@ -1,7 +1,4 @@
-<p class="m-small-top m0-btm">The public link is <a rel="nofollow" href="http://app.getnoodl.es/s/<%= @recipe.id %>">http://app.getnoodl.es/s/<%= @recipe.id %></a>.</p>
-<% if @recipe.private_share? %>
-<p>The private link is <%= link_to 'http://app.getnoodl.es/p/' + @recipe.private_id.to_s, private_share_path(@recipe.private_id) %>.
-<% end %>
+<p class="m-small-top m0-btm">The public link is <%= link_to @shared_url %>.</p>
 
 <div class="social">
   <a rel="nofollow" href="http://twitter.com/share?text=Check out <%= @recipe.title %>, published on @noodlesapp:&amp;url=http://app.getnoodl.es/s/<%= @recipe.id %>" class="social-twitter" target="_blank">
@@ -10,7 +7,7 @@
   <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://app.getnoodl.es/s/<%= @recipe.id %>" class="social-facebook" target="_blank">
     <%= inline_svg('social-facebook.svg') %>
   </a>
-  <a rel="nofollow" href="http://www.pinterest.com/pin/create/button/?url=ttp%3A%2F%2Fapp.getnoodl.es%2Fs%2F<%= @recipe.id %><% unless @recipe.img.url == '' %>&media=<%= @recipe.img.url %><% end %>&description=<%= @recipe.title %>+on+Noodles+(<%= @recipe.description %>)" class="social-pinterest" target="_blank">
+  <a rel="nofollow" href="http://www.pinterest.com/pin/create/button/?url=ttp%3A%2F%2Fapp.getnoodl.es%2Fs%2F<%= @recipe.id %><% unless @recipe.img.url.blank? %>&media=<%= @recipe.img.url %><% end %>&description=<%= @recipe.title %>+on+Noodles+(<%= @recipe.description %>)" class="social-pinterest" target="_blank">
     <%= inline_svg('social-pinterest.svg') %>
   </a>
   <a rel="nofollow" href="https://bufferapp.com/add?url=http%3A%2F%2Fapp.getnoodl.es%2Fs%2F<%= @recipe.id %>&text=Check out <%= @recipe.title %>, published on Noodles:" class="social-buffer" target="_blank">
@@ -19,10 +16,10 @@
   <a rel="nofollow" href="https://plus.google.com/share?url=http%3A%2F%2Fapp.getnoodl.es%2Fs%2F<%= @recipe.id %>" class="social-plus" target="_blank">
     <%= inline_svg('social-googleplus.svg') %>
   </a>
-  <% if current_user && current_user.id == @recipe.user_id %>
-    <a rel="nofollow" href="mailto:?subject=Check out <%= @recipe.title %> on Noodles&body=Hey there! I published a new recipe on Noodles (http://www.getnoodl.es), <%= @recipe.title %>. Check it out: http://app.getnoodl.es/s/<%= @recipe.id %>" class="social-email" target="_blank">
+  <% if me_owns_recipe? %>
+    <a href="mailto:?subject=Check out <%= @recipe.title %> on Noodles&body=Hey there! I published a new recipe on Noodles (http://www.getnoodl.es), <%= @recipe.title %>. Check it out: http://app.getnoodl.es/s/<%= @recipe.id %>" class="social-email">
   <% else %>
-    <a rel="nofollow" href="mailto:?subject=Check out <%= @recipe.title %> on Noodles&body=Hey there! I saw a recipe called <%= @recipe.title %> on Noodles (http://www.getnoodl.es) today. Check it out: http://app.getnoodl.es/s/<%= @recipe.id %>" class="social-email" target="_blank">
+    <a href="mailto:?subject=Check out <%= @recipe.title %> on Noodles&body=Hey there! I saw a recipe called <%= @recipe.title %> on Noodles (http://www.getnoodl.es) today. Check it out: <%= @shared_url %>" class="social-email">
   <% end %>
     <%= inline_svg('mail.svg') %>
   </a>
