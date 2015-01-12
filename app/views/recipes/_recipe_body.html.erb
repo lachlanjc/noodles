@@ -10,27 +10,49 @@
 <%= image_tag @recipe.img, class: 'recipe-photo' %>
 <% end %>
 
-<p id="recipe-details-btn" class="text-primary block m1-top show-details">
-  <%= inline_svg('info_outline.svg') %>
-  Show Details
-</p>
+<h2 class="m1-top">Details</h2>
+<% if @recipe.source.blank? && @recipe.serves.blank? %>
+<p class="text-muted">You don't yet have any details for this recipe. Details describe where the recipe came from and the recipe's yield.</p>
+<% else %>
+<p>Source: <%= auto_link(@recipe.source, :html => {:rel => 'nofollow'}) %>
+<p>Yield: <%= @recipe.serves %>
+<% end %>
 
-<div class="hide" id="recipe-details-container">
-  <h2 class="m1-top">Details</h2>
-  <% if @recipe.source.blank? && @recipe.serves.blank? %>
-  <p class="text-muted">No details here at the moment. Details describe where the recipe came from and how much food the recipe produces.</p>
-  <% else %>
-  <p>Source: <%= auto_link(@recipe.source, :html => {:rel => 'nofollow'}) %>
-  <p>Yield: <%= @recipe.serves %>
-  <% end %>
+<h2 class="m1-top">Notes</h2>
 
-  <div class="panel notes m1-top">
-    <% if @recipe.notes.blank? || @recipe.notes == nil %>
+<% if me_owns_recipe? %>
+  <div class="tabs-container">
+
+    <input type="radio" name="tabs" id="tab-1" checked>
+    <label for="tab-1">View</label>
+
+    <input type="radio" name="tabs" id="tab-2">
+    <label for="tab-2">Write Notes</label>
+
+    <br>
+
+    <div class="content content-1 notes text">
+      <% if @recipe.notes.blank? %>
+        <p class="text-muted">No notes for this recipe &mdash; yet!</p>
+      <% else %>
+      <%= sanitize markdown(@recipe.notes) %>
+      <% end %>
+    </div>
+
+    <div class="content content-2">
+      <%= form_for(@recipe) do |f| %>
+        <%= f.text_area :notes, class: 'text-input full-width m1 notes js-auto-size', placeholder: 'Click here to add Notes to your recipe.' %>
+        <%= f.submit t('general.save'), class: 'btn-blue btn-sm m1 block' %>
+      <% end %>
+    </div>
+
+  </div>
+<% else %>
+  <div class="panel notes text">
+    <% if @recipe.notes.blank? %>
     <p class="text-muted">No notes for this recipe &mdash; yet!</p>
     <% else %>
-    <h2>Notes</h2>
-    <br>
     <%= sanitize markdown(@recipe.notes) %>
     <% end %>
   </div>
-</div>
+<% end %>
