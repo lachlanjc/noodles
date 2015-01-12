@@ -2,25 +2,24 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Noodles.</title>
+  <title>Noodles · Keep, cook, and share your recipes.</title>
   <meta name="keywords" content="noodles,cook,recipe,recipes,food,getnoodles,share recipes,online cookbook">
-  <meta name="description" content="Noodles, a simple app for all your recipes.">
+  <meta name="description" content="Noodles, a simple app for you to keep, cook, and share your recipes.">
   <%= stylesheet_link_tag 'home', 'data-turbolinks-track' => false %>
-  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Lato:400,600">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Lato:400,600">
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Lato:400">
   <meta property="og:site_name" content="Noodles">
   <meta property="og:title" content="Noodles">
-  <meta property="og:url" content="http://getnoodl.es/">
-  <meta property="og:image" content="http://assets.getnoodl.es/assets/apple-touch-icon-a13cd6de917f3b9e4602a7f7ae7b895b.png">
+  <meta property="og:url" content="http://www.getnoodl.es/">
+  <meta property="og:image" content="<%= image_path('apple-touch-icon.png') %>">
   <meta property="og:description" content="Cook better with Noodles, a simple app for all your recipes.">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@noodlesapp">
   <meta name="twitter:title" content="Noodles">
   <meta name="twitter:description" content="Cook better with Noodles, a simple app for all your recipes.">
-  <meta name="twitter:image:src" content="http://assets.getnoodl.es/assets/apple-touch-icon-a13cd6de917f3b9e4602a7f7ae7b895b.png">
-  <meta name="twitter:domain" content="getnoodl.es">
+  <meta name="twitter:image:src" content="<%= image_path('apple-touch-icon.png') %>">
+  <meta name="twitter:domain" content="www.getnoodl.es">
   <script>
   !function(g,s,q,r,d){r=g[r]=g[r]||function(){(r.q=r.q||[]).push(
     arguments)};d=s.createElement(q);q=s.getElementsByTagName(q)[0];
@@ -34,8 +33,8 @@
     <header class="hero">
       <nav>
         <%= link_to 'Home', root_url, class: 'active' %>
-        <%= link_to 'About/Help', help_path %>
         <a href="http://noodles.withdraft.com/">Features</a>
+        <%= link_to 'About/Help', help_path %>
         <%= link_to 'Log in', sign_in_path %>
       </nav>
       <section>
