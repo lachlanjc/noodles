@@ -47,17 +47,6 @@ body {
 }
 
 .invisble-input {
-  background-color: transparent;
-  border: 0;
-  color: $black;
-  display: block;
-  resize: none;
-  padding: 0;
-
-  &:focus {
-    outline: 0;
-  }
-
   &.full-width {
     width: 100%;
   }

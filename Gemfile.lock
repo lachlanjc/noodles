@@ -182,6 +182,8 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (~> 1.1)
+    search_cop (1.0.4)
+      treetop
     seed_dump (3.2.1)
       activerecord (~> 4)
       activesupport (~> 4)
@@ -255,6 +257,7 @@ DEPENDENCIES
   rake
   redcarpet
   sass-rails
+  search_cop
   seed_dump
   stripe
   tracer_bullets

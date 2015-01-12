@@ -8,7 +8,7 @@ class RecipesController < ApplicationController
   # GET /recipes
   def index
     if user_signed_in?
-      @recipes = Recipe.where(:user_id => current_user.id).order(created_at: :desc)
+      @recipes = Recipe.where(:user_id => current_user.id).search(params[:search]).order(created_at: :desc)
       @recipes_count = @recipes.count
 
       case @recipes_count

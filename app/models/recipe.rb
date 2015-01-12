@@ -1,4 +1,10 @@
 class Recipe < ActiveRecord::Base
+  include SearchCop
+
+  search_scope :search do
+    attributes :title, :description
+  end
+
   belongs_to :user
 
   validates :title, presence: true, length: { minimum: 4 }

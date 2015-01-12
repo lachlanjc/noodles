@@ -1,15 +1,25 @@
+<% if params[:search] %>
+<%- title 'Search' %>
+<% else %>
 <%- title 'Recipes' %>
+<% end %>
 <% activate_nav!(:recipes) %>
 
 <%= render 'shared/nav' %>
 
 <article class="col-7 recipe-list-container">
 
-  <h1 class="ib"><%= t('general.recipes') %></h1>
+  <% if params[:search] %>
+  <h1>Searching for <%= params[:search] %></h1>
+  <% else %>
+  <h1><%= t('general.recipes') %></h1>
   <%= link_to :random_recipe, class: 'header-indicator random', title: 'Open a random recipe from your Noodles' do %>
     <%= inline_svg('random.svg') %>
   <% end %>
+  <% end %>
 
+  <%# Onboarding cards, prevent from showing in search results %>
+  <% unless params[:search] %>
   <% if @recipes_count > 1 && @recipes_count < 7 %>
   <p class="print-hide panel m1-btm">
     Cookbooks with only <%= pluralize(@recipes_count, 'recipe') %> in them aren't very useful. <%= link_to 'Add some more', :new_recipe %>!
@@ -20,6 +30,16 @@
     <br>
     Or <a href="http://noodles.withdraft.com/#favorites">learn more about Favorites</a>.
   </p>
+  <% end %>
+  <% end %>
+
+  <%= form_tag recipes_path, :method => 'get' do %>
+  <div class="search-form">
+    <%= label_tag :search do %>
+      <%= inline_svg('search.svg') %>
+    <% end %>
+    <%= text_field_tag :search, params[:search], class: 'text-input invisble-input m0-btm', placeholder: ('Search ' + pluralize(@recipes.count, t('general.recipe')) + '... ') %>
+  </div>
   <% end %>
 
   <div class="recipe-list">

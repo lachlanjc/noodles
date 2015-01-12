@@ -82,6 +82,7 @@ blockquote {
 }
 
 .full-width {
+  box-sizing: border-box;
   width: 100% !important;
 }
 
@@ -114,7 +115,7 @@ blockquote {
 }
 
 .m0-btm {
-  margin-bottom: 0;
+  margin-bottom: 0 !important;
 }
 .m1-btm {
   margin-bottom: 1em;
