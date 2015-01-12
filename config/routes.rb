@@ -9,8 +9,8 @@ Rails.application.routes.draw do
     get '/remove_image' => 'recipes#remove_image', as: :remove_image
   end
 
-  get '/recipes/favorites' => 'recipes#favorites', as: :favorites
-  get '/random_recipe' => 'recipes#random_recipe', as: :random_recipe
+  get '/favorites' => 'recipes#favorites', as: :favorites
+  get '/random' => 'recipes#random', as: :random_recipe
   get '/import' => 'recipes#scrape', as: :import
 
   # Shared recipes
