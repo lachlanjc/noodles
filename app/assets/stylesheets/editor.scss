@@ -71,28 +71,8 @@ body {
 }
 
 .control {
-  input {
-    opacity: 0;
-    position: absolute;
-    z-index: -1; // Put the input behind the label so it doesn't overlay text
-  }
-
-  .control-indicator-checked,
-  input:checked ~ .control-indicator {
-    display: none;
-  }
-
-  .control-indicator,
-  input:checked ~ .control-indicator-checked {
-    display: inline-block;
-  }
-
-  .control-indicator {
-    height: 24px;
-  }
-
   svg {
-    @include size(24px);
+    @include svg(24px, $brand-primary);
   }
 
   span {

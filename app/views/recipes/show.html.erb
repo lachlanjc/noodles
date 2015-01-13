@@ -5,12 +5,19 @@
 
 <article class="col-7 recipe-print document">
 
-  <h1 class="m0 ib"><%= @recipe.title %></h1>
-  <% if @recipe.favorite? %>
-  <div class="header-indicator">
-    <%= inline_svg('favorite.svg') %>
-  </div>
+  <%= form_for(@recipe, html: { id: 'recipeFavoriteForm' }) do |f| %>
+    <label class="control favorite-btn">
+      <%= f.check_box :favorite, id: 'recipeFavoriteTrigger' %>
+      <div class="control-indicator">
+        <%= inline_svg('favorite_outline.svg') %>
+      </div>
+      <div class="control-indicator-checked">
+        <%= inline_svg('favorite.svg') %>
+      </div>
+    </label>
   <% end %>
+
+  <h1 class="m0 ib"><%= @recipe.title %></h1>
 
   <div class="text m1"><%= markdown(@recipe.description.to_s) %></div>
 
