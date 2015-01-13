@@ -28,3 +28,11 @@
 .modal-close svg {
   @include svg($size-h2, $grey-light);
 }
+
+@media (max-width: $screen-phone) {
+  .modal {
+    box-sizing: border-box;
+    max-width: 95% !important;
+    top: 2rem !important;
+  }
+}
