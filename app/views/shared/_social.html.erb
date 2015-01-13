@@ -1,4 +1,6 @@
-<p class="m-small-top m0-btm">The public link is <%= link_to @shared_url %>.</p>
+<h2>You've shared this recipe.</h2>
+
+<p class="m-small-top m0-btm">Share this link with anyone: <%= link_to  @shared_url %></p>
 
 <div class="social">
   <a rel="nofollow" href="http://twitter.com/share?text=Check out <%= @recipe.title %>, published on @noodlesapp:&amp;url=http://app.getnoodl.es/s/<%= @recipe.id %>" class="social-twitter" target="_blank">
@@ -26,5 +28,5 @@
 </div>
 
 <% if me_owns_recipe? %>
-<p class="text-muted">Or you can <%= link_to 'un-share this recipe', recipe_un_share_path(@recipe) %>.</p>
+<p class="text-muted">Or you could <%= link_to 'un-share this recipe', recipe_un_share_path(@recipe) %>.</p>
 <% end %>

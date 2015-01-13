@@ -34,10 +34,9 @@
   <%= markdown(@recipe.description) %>
 
   <% if me_owns_recipe? %>
-    <div class="panel ib social-panel">
-      <h2>Great, your recipe is public!</h2>
-      <%= render 'shared/social' %>
-    </div>
+  <div class="panel ib print-hide">
+    <%= render 'shared/social' %>
+  </div>
   <% end %>
 
   <%= render 'recipe_body', cache: true %>

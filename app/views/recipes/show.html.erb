@@ -16,7 +16,6 @@
 
   <% if @recipe.shared? %>
   <div class="panel ib print-hide">
-    <h2>You've shared this recipe.</h2>
     <%= render 'shared/social' %>
     <p class="m1-top"><strong><%= link_to 'Check it out.', @shared_url, class: 'btn-blue' %></strong></p>
   </div>
