@@ -26,3 +26,9 @@
     outline: 0;
   }
 }
+
+@media (max-width: $screen-phone) {
+  .search-form .text-input {
+    width: 75% !important;
+  }
+}
