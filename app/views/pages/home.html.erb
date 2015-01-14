@@ -38,6 +38,11 @@
         <%= link_to 'Log in', sign_in_path %>
       </nav>
       <section>
+        <% unless flash.empty? %>
+          <% flash.each do |key, value| %>
+          <h3 class="text-center"><%= value unless value.blank? %></h2>
+          <% end %>
+        <% end %>
         <h1>Cook better with Noodles.</h1>
         <h3>A simple app for all your recipes.</h3>
         <a class="btn" onclick="_gs('event', 'Clicked hero button'); window.location='http://www.getnoodl.es/signup'">Sign Up</a>
