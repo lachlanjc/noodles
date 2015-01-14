@@ -42,6 +42,10 @@
   </div>
   <% end %>
 
+  <% if params[:search] && @recipes_count == 0 %>
+  <p class="m1-top">Sorry, no search results!</p>
+  <% end %>
+
   <div class="recipe-list">
     <%= render partial: 'recipe', collection: @recipes, cache: true %>
   </div>

@@ -12,7 +12,7 @@ class RecipesController < ApplicationController
       @recipes_count = @recipes.count
 
       case @recipes_count
-      when 0 then render :no_recipes_yet
+      when 0 && params[:search] == false then render :no_recipes_yet
       else render :recipe_list
       end
     else
