@@ -52,7 +52,7 @@
   <h2>Share this recipe</h2>
   <hr>
   <p>Anyone with this link can see your recipe and save a copy to their own Noodles account.</p>
-  <p><%= link_to 'Share this recipe', @shared_url, class: 'btn-blue' %></p>
+  <p><%= link_to 'Share this recipe', recipe_share_it_path(@recipe), class: 'btn-blue' %></p>
   <% end %>
 
 </div>

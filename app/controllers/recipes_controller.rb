@@ -62,15 +62,23 @@ class RecipesController < ApplicationController
     end
   end
 
+  def share_this_recipe
+    @recipe = Recipe.find(params[:recipe_id])
+
+    if me_owns_recipe?
+      @recipe.shared = true
+      @recipe.save
+      redirect_to shared_url(@recipe.shared_id)
+    else
+      flash[:danger] = "No, you can't share someone else's recipes..."
+      redirect_to recipes_path
+    end
+  end
+
   def share
     @recipe = Recipe.find_by_shared_id(params[:shared_id])
 
-    if me_owns_recipe? && @recipe.shared == false
-      @recipe.shared = true
-      @recipe.save
-      @shared_url = shared_url(@recipe.shared_id)
-      render :share
-    elsif @recipe.shared == false
+    if @recipe.shared == false
       render :locked
     else
       @shared_url = shared_url(@recipe.shared_id)
