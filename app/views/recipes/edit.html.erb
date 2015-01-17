@@ -27,7 +27,14 @@
   </div>
   <% end %>
 
-  <%= f.text_field :title, autofocus: true, class: "text-input invisble-input full-width header", placeholder: "Click here and title your recipe...", autocomplete: "off" %>
+  <% if @recipe.errors.any? %>
+  <div class="flash-danger panel">
+    <h2>Oops! You need to title the recipe.</h2>
+    <p>Click below and type a name for your recipe.</p>
+  </div>
+  <% end %>
+
+  <%= f.text_field :title, autofocus: true, required: true, class: "text-input invisble-input full-width header", placeholder: "Click here and title your recipe...", autocomplete: "off" %>
 
   <%= f.text_area :description, class: "text-input invisble-input full-width js-auto-size", placeholder: "Optionally, write a description for the recipe right here.", rows: "1", autocomplete: "off" %>
 

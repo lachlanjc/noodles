@@ -155,7 +155,7 @@ class RecipesController < ApplicationController
       flash[:success] = "Your recipe has been created."
       redirect_to @recipe
     else
-      render :new
+      render :edit
     end
   end
 
