@@ -41,8 +41,8 @@
 
     <div class="content content-2">
       <%= form_for(@recipe) do |f| %>
-        <%= f.text_area :notes, class: 'text-input full-width m1 notes js-auto-size', placeholder: 'Click here to add Notes to your recipe.' %>
-        <%= f.submit t('general.save'), class: 'btn-blue btn-sm m1 block' %>
+        <%= f.text_area :notes, class: 'text-input full-width m1-btm notes', placeholder: 'Click here to add Notes to your recipe.', rows: '4' %>
+        <%= f.submit t('general.save'), class: 'btn-blue btn-sm block' %>
       <% end %>
     </div>
 

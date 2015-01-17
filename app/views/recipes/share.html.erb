@@ -28,7 +28,7 @@
 
 <article class="col-7 recipe-print document">
 
-  <h1 class="m0 ib"><%= @recipe.title %></h1>
+  <h1 class="m0"><%= @recipe.title %></h1>
 
   <p class="text-muted m1-btm">Shared by <%= User.find(@recipe.user_id).first_name %></p>
   <%= markdown(@recipe.description) %>
