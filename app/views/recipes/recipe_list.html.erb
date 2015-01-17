@@ -1,20 +1,20 @@
 <% if params[:search] %>
-<%- title 'Search' %>
+<%- title "Search" %>
 <% else %>
-<%- title 'Recipes' %>
+<%- title "Recipes" %>
 <% end %>
 <% activate_nav!(:recipes) %>
 
-<%= render 'shared/nav' %>
+<%= render "shared/nav" %>
 
 <article class="col-7 recipe-list-container">
 
   <% if params[:search] %>
   <h1>Searching for <%= params[:search] %></h1>
   <% else %>
-  <h1><%= t('general.recipes') %></h1>
-  <%= link_to :random_recipe, class: 'header-indicator random', title: 'Open a random recipe from your Noodles' do %>
-    <%= inline_svg('random.svg') %>
+  <h1><%= t("general.recipes") %></h1>
+  <%= link_to :random_recipe, class: "header-indicator has-tooltip random", data: { tooltip: "Random recipe!" } do %>
+    <%= inline_svg("random.svg") %>
   <% end %>
   <% end %>
 
@@ -22,7 +22,7 @@
   <% unless params[:search] %>
   <% if @recipes_count > 1 && @recipes_count < 7 %>
   <p class="print-hide panel m1-btm">
-    Cookbooks with only <%= pluralize(@recipes_count, 'recipe') %> in them aren't very useful. <%= link_to 'Add some more', :new_recipe %>!
+    Cookbooks with only <%= pluralize(@recipes_count, "recipe") %> in them aren't very useful. <%= link_to "Add some more", :new_recipe %>!
   </p>
   <% elsif @recipes_count > 8 && @favorites_count == 0 %>
   <p class="print-hide panel m1-btm">
@@ -33,12 +33,12 @@
   <% end %>
   <% end %>
 
-  <%= form_tag recipes_path, :method => 'get' do %>
+  <%= form_tag recipes_path, :method => "get" do %>
   <div class="search-form">
     <%= label_tag :search do %>
-      <%= inline_svg('search.svg') %>
+      <%= inline_svg("search.svg") %>
     <% end %>
-    <%= text_field_tag :search, params[:search], class: 'text-input invisble-input m0-btm', placeholder: ('Search ' + pluralize(@recipes.count, t('general.recipe')) + '... ') %>
+    <%= text_field_tag :search, params[:search], class: "text-input invisble-input m0-btm", placeholder: ("Search " + pluralize(@recipes.count, t("general.recipe")) + "... ") %>
   </div>
   <% end %>
 
@@ -47,32 +47,33 @@
   <% end %>
 
   <div class="recipe-list">
-    <%= render partial: 'recipe', collection: @recipes, cache: true %>
+    <%= render partial: "recipe", collection: @recipes, cache: true %>
   </div>
 
-  <p class="printer-copy"><%= t('recipes.printing.print_copy') %></p>
+  <p class="printer-copy"><%= t("recipes.printing.print_copy") %></p>
 
 </article>
 
 <div id="importModal" role="dialog" class="modal">
   <a class="modal-close float-right" href="#">
-    <%= inline_svg('close.svg') %>
+    <%= inline_svg("close.svg") %>
   </a>
   <h2>Import a Recipe from the Web</h2>
   <hr>
   <p class="m0">Paste the URL of a recipe below to save it to Noodles.</p>
   <small class="block">Websites supported: <a href="http://www.epicurious.com/">Epicurious</a>, <a href="www.bonappetit.com/">Bon Appetit</a>, <a href="http://cooking.nytimes.com">NYTimes Cooking</a>, <a href="http://foodandwine.com/">Food and Wine</a>, and <a href="http://allrecipes.com/">Allrecipes</a>.</small>
   <br>
-  <%= form_tag('/import', method: 'get') do %>
-    <%= url_field_tag :url, nil, class: 'text-input' %>
-    <%= submit_tag('Import', name: nil, class: 'float-right btn-blue') %>
+  <%= form_tag("/import", method: "get") do %>
+    <%= url_field_tag :url, nil, class: "text-input" %>
+    <%= submit_tag("Import", name: nil, class: "float-right btn-blue") %>
   <% end %>
 </div>
 
-<a class="btn-paper-mini" id="importModalTrigger" name="importModal" href="#importModal">
-  <%= inline_svg('import.svg') %>
+
+<a class="has-tooltip btn-paper-mini" id="importModalTrigger" name="importModal" href="#importModal" data-tooltip="Import from a link">
+  <%= inline_svg("import.svg") %>
 </a>
 
-<%= link_to :new_recipe, class: 'btn-paper' do %>
-  <%= inline_svg('add.svg') %>
+<%= link_to :new_recipe, class: "has-tooltip btn-paper", data: { tooltip: "Add a new recipe"} do %>
+  <%= inline_svg("add.svg") %>
 <% end %>

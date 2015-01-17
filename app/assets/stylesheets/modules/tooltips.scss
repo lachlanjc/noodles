@@ -1,0 +1,36 @@
+.has-tooltip:before {
+  @include shadow-compact;
+  background: rgba(70, 70, 70, 0.9);
+  border-radius: $radius;
+  box-sizing: border-box;
+  color: $grey-lighter;
+  content: attr(data-tooltip);
+  display: inline-block;
+  font-weight: bold;
+  line-height: 1;
+  opacity: 0;
+  padding: 6px 8px;
+  position: relative;
+  text-align: center;
+  width: 10em;
+}
+
+.has-tooltip:hover:before {
+  opacity: 1;
+  transition: opacity $elegance-transition;
+}
+
+.btn-paper.has-tooltip:before {
+  margin-top: 10px;
+  right: 12em;
+}
+
+.btn-paper-mini.has-tooltip:before {
+  margin-top: 2px;
+  right: 12em;
+}
+
+.random.has-tooltip:before {
+  top: -10px;
+  right: 5px;
+}

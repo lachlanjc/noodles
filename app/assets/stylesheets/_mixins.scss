@@ -1,12 +1,9 @@
 @import 'bourbon';
 
 @mixin svg($size, $fill) {
-  width: $size;
+  fill: $fill;
   height: $size;
-
-  path {
-    fill: $fill;
-  }
+  width: $size;
 }
 
 @mixin size($size) {
@@ -20,7 +17,7 @@
 }
 
 @mixin elegance {
-  @include transition(all .28s cubic-bezier(.4, 0, .2, 1));
+  @include transition(all $elegance-transition);
 }
 
 

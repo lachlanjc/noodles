@@ -81,18 +81,14 @@
   padding: 10px 20px;
 }
 
-.btn-paper {
+%fab {
   @include elegance;
-  @include size(46px);
   @include shadow-3;
   background: $brand-primary $gradient-darken;
-  border-bottom: 0;
   border-radius: 50%;
-  bottom: $padding-base;
-  padding: 8px;
   position: fixed;
-  right: $padding-base;
-  user-select: none;
+  -webkit-user-select: none;
+  z-index: 20;
 
   &:hover {
     @include shadow-3;
@@ -104,36 +100,45 @@
   }
 
   svg {
-    @include up(7px);
-    height: 32px;
-    left: 7px;
-    width: 32px;
+    position: absolute;
+    @include size(30px);
+  }
 
-    path {
-      fill: #fff;
-    }
+  path {
+    fill: #fff;
+  }
+}
+
+.btn-paper {
+  @extend %fab;
+  @include size(46px);
+  bottom: $padding-base;
+  padding: 8px;
+  right: $padding-base;
+
+  svg {
+    left: 16px;
+    top: 16px;
   }
 }
 
 .btn-paper-mini {
-  @extend .btn-paper;
+  @extend %fab;
+  @include size(30px);
   bottom: 90px;
-  height: 30px;
   padding: 6px;
   right: 27px;
-  width: 30px;
 
   svg {
     @include size(30px);
-    left: 0;
-    top: 0;
+    left: 6px;
+    top: 5px;
   }
 }
 
 .btn-paper-mini-inline {
-  @extend .btn-paper;
+  @extend .btn-paper-mini;
   @extend .ib;
-  @include size(30px);
   background-color: $bright-blue;
   bottom: 0;
   position: initial;
@@ -144,13 +149,13 @@
   }
 
   svg {
-    @include size(24px);
-    left: 3px;
-    top: 3px;
+    @include size(25px);
+    @include up(2px);
+    left: 2px;
   }
 
   path {
-    fill: #06647F;
+    fill: #06647f;
   }
 }
 
