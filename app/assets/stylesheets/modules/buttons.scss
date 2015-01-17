@@ -54,7 +54,7 @@
 // }
 
 .btn-blue {
-  @include button-standard($blue);
+  @include button-standard($bright-blue);
 }
 
 .btn-green {
@@ -127,6 +127,30 @@
     @include size(30px);
     left: 0;
     top: 0;
+  }
+}
+
+.btn-paper-mini-inline {
+  @extend .btn-paper;
+  @extend .ib;
+  @include size(30px);
+  background-color: $bright-blue;
+  bottom: 0;
+  position: initial;
+  right: 0;
+
+  + h2 {
+    @extend .ib;
+  }
+
+  svg {
+    @include size(24px);
+    left: 3px;
+    top: 3px;
+  }
+
+  path {
+    fill: #06647F;
   }
 }
 

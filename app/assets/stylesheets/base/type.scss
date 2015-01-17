@@ -21,6 +21,17 @@ h1 {
   &:first-child {
     margin-top: 0;
   }
+
+  &.mega {
+    font-size: $size-h1 * 1.8;
+    line-height: $size-h1 * 2;
+  }
+}
+
+@media (max-width: $screen-phone) {
+  h1.mega {
+    font-size: $size-h1;
+  }
 }
 
 h2,
@@ -58,6 +69,16 @@ p {
   @extend .text;
   margin-bottom: 16px;
   margin-top: 0;
+}
+
+.lead {
+  font-size: $size-h2;
+  color: $grey;
+  line-height: ($size-h2 * 1.5);
+}
+
+.normal {
+  font-weight: normal !important;
 }
 
 a {
@@ -121,6 +142,10 @@ a {
 
 .text-blue {
   color: $blue;
+}
+
+.text-bright-blue {
+  color: $bright-blue;
 }
 
 .text-dark {

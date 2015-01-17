@@ -5,8 +5,21 @@
   <title>Noodles · Keep, cook, and share your recipes.</title>
   <meta name="keywords" content="noodles,cook,recipe,recipes,food,getnoodles,share recipes,online cookbook">
   <meta name="description" content="Noodles, a simple app for you to keep, cook, and share your recipes.">
-  <%= stylesheet_link_tag 'home', 'data-turbolinks-track' => false %>
-  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Lato:400,600">
+  <%= stylesheet_link_tag "application", "data-turbolinks-track" => true %>
+  <style>
+  .hero {
+    background: url(<%= asset_path 'home/background.jpg' %>) no-repeat;
+    background-position: 45% 55%;
+    background-size: cover;
+    box-shadow: inset 0 -5rem 6rem rgba(0, 0, 0, 0.4);
+    padding: 10em 0;
+  }
+  .hero h1 {
+    color: #fff !important;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+  }
+  </style>
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Lato:400,700">
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta property="og:site_name" content="Noodles">
@@ -21,85 +34,76 @@
   <meta name="twitter:image:src" content="<%= image_path('apple-touch-icon.png') %>">
   <meta name="twitter:domain" content="www.getnoodl.es">
   <script>
-  !function(g,s,q,r,d){r=g[r]=g[r]||function(){(r.q=r.q||[]).push(
-    arguments)};d=s.createElement(q);q=s.getElementsByTagName(q)[0];
-    d.src='//d1l6p2sc9645hc.cloudfront.net/tracker.js';q.parentNode.
-    insertBefore(d,q)}(window,document,'script','_gs');
-
-    _gs('GSN-107564-I');
+  !function(g,s,q,r,d){r=g[r]=g[r]||function(){(r.q=r.q||[]).push(arguments)};
+  d=s.createElement(q);q=s.getElementsByTagName(q)[0];
+  d.src="http://d1l6p2sc9645hc.cloudfront.net/tracker.js";q.parentNode.insertBefore(d,q)}(window, document, "script", "_gs");
+  _gs("GSN-107564-I");
     </script>
   </head>
   <body>
-    <header class="hero">
-      <nav>
-        <%= link_to 'Home', root_url, class: 'active' %>
+    <nav role="navigation" class="m0">
+      <div>
+        <%= link_to "Home", root_url, class: "active" %>
         <a href="http://noodles.withdraft.com/">Features</a>
-        <%= link_to 'About/Help', help_path %>
-        <%= link_to 'Log in', sign_in_path %>
-      </nav>
-      <section>
-        <% unless flash.empty? %>
-          <% flash.each do |key, value| %>
-          <h3 class="text-center"><%= value unless value.blank? %></h2>
-          <% end %>
+        <%= link_to "About", help_path %>
+      </div>
+      <% unless flash.empty? %>
+        <% flash.each do |key, value| %>
+        <div class="<%= flash_class(key) %>" style="padding:4px 12px;margin:0">
+          <p class="m0"><%= value unless value.blank? %></p>
+        </div>
         <% end %>
-        <h1>Cook better with Noodles.</h1>
-        <h3>A simple app for all your recipes.</h3>
-        <a class="btn" onclick="_gs('event', 'Clicked hero button'); window.location='http://www.getnoodl.es/signup'">Sign Up</a>
-      </section>
+      <% end %>
+      <div>
+        <%= link_to "Log in", sign_in_path %>
+      </div>
+    </nav>
+    <header class="hero">
+      <div class="col-7 container text-center">
+        <h1 class="text-dark mega m1-btm">Keep, cook, and share your recipes with Noodles.</h1>
+        <a class="btn m-small-top ib" style="font-size:28px" onclick="_gs('event', 'Clicked hero button'); window.location='http://www.getnoodl.es/signup'">Sign Up</a>
+      </div>
     </header>
-    <a class="paper-btn paper-arrow" href="#main">
-      <%= image_tag 'home/down.png', alt: 'Arrow down' %>
-    </a>
-    <article id="main">
-      <p class="intro grey">Noodles is a simple place for all your recipes. Add your favorite chocolate cake to Noodles with a few keystrokes, then pull it up in the kitchen to make an awesome birthday cake. The app is uncomplicated and free to use. It works from your computer, your tablet, your phone, or any other device you have...get started and cook better.</p>
-      <section>
-        <header>
-          <div class="paper-btn feature-icon">
-            <%= image_tag 'cloud_done.svg', alt: 'Cloud icon' %>
-          </div>
-          <h2>Ready to Go</h2>
-        </header>
-        <p>Your recipes are seamlessly synced through Noodles, so you can access your recipes from any device, at any time.</p>
+    <p class="lead text-dark col-7 mobile-full-width center m2">Noodles is a simple place for all your recipes. Add your chocolate cake to Noodles with a few keystrokes, then pull it up in the kitchen to make an awesome birthday cake. No more binders, print-outs, or scribbled annotations.</p>
+    <article class="flex flex-around mobile-no-flex col-9 container">
+      <section class="col-4 mobile-full-width mobile-padding-1 m1-right panel">
+        <div class="btn-paper-mini-inline m1-right m1-btm">
+          <%= inline_svg("cloud_done.svg") %>
+        </div>
+        <h2>Ready to Go</h2>
+        <p>Your recipes are seamlessly synced through Noodles, so you can access your recipes from any of your device, at any time. Everything is private by default.</p>
       </section>
-      <section>
-        <header>
-          <div class="paper-btn feature-icon">
-            <%= image_tag 'cook.svg', alt: 'Cook Mode icon' %>
-          </div>
-          <h2>Cook Mode</h2>
-        </header>
-        <p>Cook Mode is the best way to cook with your recipes in the kitchen. Only what you really need is displayed on your screen, and big controls let you easily navigate.</p>
+      <section class="col-4 mobile-full-width mobile-padding-1 m1-right panel">
+        <div class="btn-paper-mini-inline m1-right m1-btm">
+          <%= inline_svg("cook.svg") %>
+        </div>
+        <h2>Cook Mode</h2>
+        <p>Cook Mode is the best way to cook with your recipes in the kitchen. It shows what you really need, and helps you out with ingredient checklists, notes, and more.</p>
+        <p><a href="http://www.getnoodl.es/recipes/45/cook" class="btn-blue">Try Cook Mode</a></p>
       </section>
-      <section>
-        <header>
-          <div class="paper-btn feature-icon">
-            <%= image_tag 'share.svg', alt: 'Sharing icon' %>
-          </div>
-          <h2>Share Recipes</h2>
-        </header>
-        <p>Any recipe you have in Noodles can be shared. A shared recipe has a public link that anyone can view — show your friends on Facebook, send it to your co-workers over Slack, or share the link on your food blog. Shared recipes can be saved into someone else's Noodles.</p>
-      </section>
-      <hr>
-      <section>
-        <blockquote class="text-center">
-          <h2>&ldquo;Whether you want to keep your own recipes or you need to jot a recipe you find online or on TV, this website is handy.&rdquo;</h2>
-          <p class="grey">- Laxman Singh</p>
-        </blockquote>
-      </section>
-      <hr>
-      <section class="text-center">
-        <h2>Noodles is completely free, so try it out and start cooking better.</h2>
-        <a class="btn" onclick="_gs('event', 'Clicked hero button'); window.location='http://www.getnoodl.es/signup'">Sign Up</a>
+      <section class="col-4 mobile-full-width mobile-padding-1 panel">
+        <div class="btn-paper-mini-inline m1-right m1-btm">
+          <%= inline_svg("share.svg") %>
+        </div>
+        <h2>Share Recipes</h2>
+        <p>Give your friends great recipes with a unique Noodles link that you can post anywhere. Anyone else can then save their own copy and make their own changes.</p>
+        <p><a href="http://www.getnoodl.es/s/ZWBEmQv" class="btn-blue">See a shared recipe</a></p>
       </section>
     </article>
-
-    <footer class="text-center">
-      <a href="http://noodles.withdraft.com/pages/558276">Terms</a>
-      <a href="http://noodles.withdraft.com/pages/558280">Privacy Policy</a>
-      <%= link_to 'Blog', announcements_path %>
-      <a href="https://www.facebook.com/pages/Noodles/698221030285633">Facebook</a>
-      <a href="https://twitter.com/noodlesapp">Twitter</a>
+    <section class="col-6 container text-center" style="float:none">
+      <blockquote class="lead text-dark m1 float-left">
+        &ldquo;Whether you want to keep your own recipes or you need to jot a recipe you find online or on TV, this website is handy.&rdquo;
+      </blockquote>
+      <div style="height:1rem" class="float-left full-width"></div>
+      <h1 class="normal block m1-top">Noodles is free. Try it out!</h1>
+      <a class="btn ib text-center m-small-top" style="font-size:21px" onclick="_gs('event', 'Clicked hero button'); window.location='http://www.getnoodl.es/signup'">Sign Up</a>
+    </section>
+    <footer class="text-center block m1-top">
+      <a href="http://noodles.withdraft.com/pages/558276" class="m1-right link-reset text-muted">Terms</a>
+      <a href="http://noodles.withdraft.com/pages/558280" class="m1-right link-reset text-muted">Privacy</a>
+      <%= link_to "Announcements", announcements_path, class: 'm1-right link-reset text-muted' %>
+      <a href="https://www.facebook.com/pages/Noodles/698221030285633" class="m1-right link-reset text-muted">Facebook</a>
+      <a href="https://twitter.com/noodlesapp" class="m1-right link-reset text-muted">Twitter</a>
     </footer>
   </body>
   </html>

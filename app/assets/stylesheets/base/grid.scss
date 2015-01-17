@@ -1,17 +1,21 @@
-article {
+article,
+.container {
   margin: auto;
 }
 
 @media (max-width: $screen-phone) {
-  article {
+  article,
+  .container,
+  .mobile-full-width {
     box-sizing: border-box;
-    padding: 0 16px;
+    padding: 0 16px !important;
     width: 100% !important;
   }
 }
 
 @media print {
-  article {
+  article,
+  .container {
     margin: 0 !important;
     width: 100% !important;
   }

@@ -29,6 +29,10 @@ hr {
     border-radius: 0;
     border-right: 0;
   }
+
+  .panel.mobile-full-width {
+    padding: 1rem !important;
+  }
 }
 
 .panel {
@@ -89,8 +93,11 @@ blockquote {
 .m0 {
   margin: 0 !important;
 }
+.m1 {
+  margin: 1rem;
+}
 .m2 {
-  margin: 2em;
+  margin: 2rem;
 }
 
 .m-small-left {
@@ -157,6 +164,10 @@ blockquote {
 }
 
 @media (max-width: $screen-phone) {
+  .mobile-no-flex {
+    display: block !important;
+  }
+
   .m2-block-center {
     margin: 2em auto !important;
     width: 95% !important;
