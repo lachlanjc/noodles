@@ -5,10 +5,7 @@
 
 @media print {
   @page {
-    size: 8.5in 11in;
-    margin-top: 40pt;
-    margin-left: 20pt;
-    margin-right: 40pt;
+    margin: 1cm;
   }
 
   .printer-copy {
@@ -23,14 +20,19 @@
     background: transparent !important;
     box-shadow: none !important;
     color: #000 !important;
-    text-shadow: none !important;
-    word-wrap: break-word;
+    hyphens: auto !important;
+    max-width: 100% !important;
+    word-wrap: break-word !important;
+  }
+
+  .text {
+    max-width: 95% !important;
   }
 
   article,
   .document {
     border: 0 !important;
     margin: 0 !important;
-    padding: 0 !important;
+    padding: 16px !important;
   }
 }
