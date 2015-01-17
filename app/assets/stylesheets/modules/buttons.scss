@@ -2,7 +2,8 @@
   @extend %pointer;
   @include elegance;
   -webkit-appearance: none;
-  background: $brand-primary;
+  background: $brand-primary $gradient-darken;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.04);
   border: 0;
   border-radius: $radius;
   color: #fff;
@@ -84,7 +85,7 @@
   @include elegance;
   @include size(46px);
   @include shadow-3;
-  background-color: $brand-primary;
+  background: $brand-primary $gradient-darken;
   border-bottom: 0;
   border-radius: 50%;
   bottom: $padding-base;
