@@ -1,17 +1,17 @@
 #= require jquery
+#= require jquery.turbolinks
 #= require modals
-# require turbolinks
+#= require turbolinks
 
 printRecipe = ->
-  toPrint = confirm("Do you really need to print this out? If you can, look at it on a mobile device or laptop to save paper.")
+  toPrint = confirm("Just remember the trees.")
   window.print() if toPrint == true
   return
 
-window.onload = ->
+$(document).ready ->
   if document.getElementById("recipeFavoriteTrigger") != null
     $("#recipeFavoriteTrigger").click ->
       $("#recipeFavoriteForm").submit()
-      return
   $(document).ready ->
     if document.getElementById("importModalTrigger") != null
       $("#importModalTrigger").leanModal()
