@@ -58,7 +58,7 @@ body {
   }
 }
 
-#editor-details-btn svg {
+.details-btn svg {
   @include size(28px);
   @include up(8px);
   cursor: pointer;

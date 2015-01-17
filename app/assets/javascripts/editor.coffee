@@ -1,30 +1,27 @@
-# Autosize.js for expanding textareas, requires jQuery
-#= require jquery
 #= require autosize
 
-# Editor CoffeeScript
-@showEditorDetails = ->
-  document.getElementById('editor-details-container').setAttribute 'class', 'show panel'
-  document.getElementById('editor-details-btn').setAttribute 'class', 'hide'
+numberRow = ->
+  recipeInstructs = document.getElementById("recipe_instructions")
+  recipeInstructs.value = "1. " if recipeInstructs.value.length == 0
   return
 
-@numberRow = ->
-  @value = document.getElementById('instructions-input').value
-  @value = '1. '  if @value.length is 0
-  return
+$(document).ready ->
+  document.getElementById("recipe_instructions").addEventListener("focus", numberRow, false)
 
-@window.onload = ->
-  document.getElementById('instructions-input').addEventListener 'focus', @numberRow, false
-  document.getElementById('editor-details-btn').addEventListener 'click', @showEditorDetails, false
+  $(".details-btn").click ->
+    $(".details-panel").toggleClass("hide show")
+    $(".details-btn").toggleClass("block hide")
 
-  $ ->
-    $('.js-auto-size').autosize()
-    $('#file-button').click ->
-      $('#file').click()
-      return
-    $('#file').change ->
-      path = document.getElementById('file').value
-      fileName = path.match(/[^\/\\]+$/)
-      document.getElementById('file-name').innerHTML = fileName
-      return
-    return
+  # Autosize textareas
+  $(".js-auto-size").autosize()
+
+  # When you click the nice file button
+  $("#file-button").click ->
+    # Click the actual file input. Shows dialog.
+    $("#file").click()
+  # When a file is picked
+  $("#file").change ->
+    # Find the name of the file
+    fileName = document.getElementById("file").value.match(/[^\/\\]+$/)
+    # Show the file"s name instead of "Pick something"
+    document.getElementById("file-name").innerHTML = fileName
