@@ -49,13 +49,13 @@ body {
   li {
     @include shadow-2;
     background-color: #fff;
-    border-radius: 5px;
+    border-radius: $radius;
     display: block;
-    font-size: $size-h3;
+    font-size: $size-h2;
     line-height: 37px;
     list-style: none;
     margin: 1em auto;
-    padding: $padding-small $padding-large;
+    padding: $padding-large;
     text-align: center;
     width: 600px;
   }
