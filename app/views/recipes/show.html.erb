@@ -5,7 +5,7 @@
 
 <article class="col-7 recipe-print document">
 
-  <%= form_for(@recipe, html: { id: 'recipeFavoriteForm' }) do |f| %>
+  <%= form_for(@recipe, remote: true, html: { id: 'recipeFavoriteForm' }) do |f| %>
     <label class="control favorite-btn">
       <%= f.check_box :favorite, id: 'recipeFavoriteTrigger' %>
       <div class="control-indicator">
