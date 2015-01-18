@@ -3,7 +3,7 @@
 <head>
   <title>
     <% if content_for?(:title) %>
-      <%= content_for(:title) + ' · Noodles' %>
+      <%= content_for(:title) + " · Noodles" %>
     <% else %>
       Noodles
     <% end %>
@@ -22,9 +22,9 @@
   <meta name="twitter:image:src" content="<%= image_url('apple-touch-icon.png') %>">
   <meta name="twitter:domain" content="getnoodl.es">
   <% end %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Lato:400,600">
+  <%= stylesheet_link_tag    "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Lato:400,600">
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta name="apple-mobile-web-app-capable" content="yes">

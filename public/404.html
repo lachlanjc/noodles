@@ -3,32 +3,52 @@
 <head>
   <title>404 :(</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Lato:400">
   <script async src="https://assets.helpful.io/assets/widget.js"></script>
   <style>
   body {
     background-color: #fcfcfd;
     color: #455a64;
     text-align: center;
-    font-family: Lato, 'Helvetica Neue', Helvetica, sans-serif;
+    font-family: Lato, "Helvetica Neue", Helvetica, sans-serif;
   }
-
-  h1 {
-    color: #ff6d00;
+  .document {
+    background-color: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 6px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .02);
+    margin: 2em auto;
+    padding: 1rem;
+    display: inline-block;
+  }
+  @media (max-width: 480px) {
+    .document {
+      border-left: 0;
+      border-radius: 0;
+      border-right: 0;
+    }
+  }
+  h1, h2 {
     font-weight: 400;
-    margin-top: 2em;
+    margin: 12px 0;
   }
-
-  a, a:visited {
-    color: #00b0ff;
+  h1 {
+    color: #ff0013;
+    font-size: 30px;
+  }
+  h2 {
+    font-size: 21px;
+  }
+  a {
+    color: #0c7ee8;
   }
   </style>
 </head>
-
 <body>
-  <h1>404. Our Noodles are in a bit of a tangle.</h1>
-  <p>Sorry, we can't find that page! You can either go back home or help us fix this by reporting the error.</p>
-  <a href="http://www.getnoodl.es/">Home</a>
-  <span>or</span>
-  <a href="mailto:noodles@helpful.io" data-helpful="noodles-a737a789-bc32-4d41-afb7-b01d18044823">Report this error</a>
+  <article class="document">
+    <h1>404. The Noodles are in a bit of a tangle.</h1>
+    <h2>You may have mistyped the URL.</h2>
+    <p><a href="javascript:window.history.back();">Go back to the previous page</a> or <a href="mailto:noodles@helpful.io" data-helpful="noodles-a737a789-bc32-4d41-afb7-b01d18044823">report the error</a> so that I can fix it.</p>
+  </article>
 </body>
 </html>
