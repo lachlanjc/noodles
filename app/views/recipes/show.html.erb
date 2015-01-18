@@ -1,18 +1,18 @@
 <%- title @recipe.title %>
 <% activate_nav!(:recipe) %>
 
-<%= render 'shared/nav' %>
+<%= render "shared/nav" %>
 
 <article class="col-7 recipe-print document">
 
-  <%= form_for(@recipe, remote: true, html: { id: 'recipeFavoriteForm' }) do |f| %>
+  <%= form_for(@recipe, remote: true, html: { id: "recipeFavoriteForm" }) do |f| %>
     <label class="control favorite-btn">
-      <%= f.check_box :favorite, id: 'recipeFavoriteTrigger' %>
+      <%= f.check_box :favorite, id: "recipeFavoriteTrigger" %>
       <div class="control-indicator">
-        <%= inline_svg('favorite_outline.svg') %>
+        <%= inline_svg("favorite_outline.svg") %>
       </div>
       <div class="control-indicator-checked">
-        <%= inline_svg('favorite.svg') %>
+        <%= inline_svg("favorite.svg") %>
       </div>
     </label>
   <% end %>
@@ -23,40 +23,40 @@
 
   <% if @recipe.shared? %>
   <div class="panel ib print-hide">
-    <%= render 'shared/social' %>
-    <p class="m1-top"><strong><%= link_to 'Check it out.', @shared_url, class: 'btn-blue' %></strong></p>
+    <%= render "shared/social" %>
+    <p class="m1-top"><strong><%= link_to "Check it out.", @shared_url, class: "btn-blue" %></strong></p>
   </div>
   <% end %>
 
-  <%= render 'recipe_body', cache: true %>
+  <%= render "recipe_body", cache: true %>
 
   <div class="print-hide m1-5-top">
-    <%= link_to t('general.edit'), :edit_recipe, class: 'btn m1-right' %>
+    <%= link_to t("general.edit"), :edit_recipe, class: "btn m1-right" %>
     <a id="shareModalTrigger" href="#shareModal" class="btn-green m1-right">Share</a>
-    <a id="printRecipe" class="btn-blue m1-right"><%= t('general.print') %></a>
+    <a id="printRecipe" class="btn-blue m1-right"><%= t("general.print") %></a>
   </div>
 
-  <%= render 'shared/printer' %>
+  <%= render "shared/printer" %>
 
 </article>
 
 <div id="shareModal" class="modal">
   <a class="modal-close float-right" href="#">
-    <%= inline_svg('close.svg') %>
+    <%= inline_svg("close.svg") %>
   </a>
 
   <% if @recipe.shared? %>
   <p>Your recipe is already shared!</p>
-  <p><%= link_to 'Check it out.', @shared_url %></p>
+  <p><%= link_to "Check it out.", @shared_url %></p>
   <% else %>
   <h2>Share this recipe</h2>
   <hr>
   <p>Anyone with this link can see your recipe and save a copy to their own Noodles account.</p>
-  <p><%= link_to 'Share this recipe', recipe_share_it_path(@recipe), class: 'btn-blue' %></p>
+  <p><%= link_to "Share this recipe", recipe_share_it_path(@recipe), class: "btn-blue" %></p>
   <% end %>
 
 </div>
 
-<%= link_to recipe_cook_path(:recipe_id => @recipe.id), class: 'btn-paper' do %>
-  <%= inline_svg('cook.svg') %>
+<%= link_to recipe_cook_path(:recipe_id => @recipe.id), class: "btn-paper has-tooltip", data: { tooltip: "Open Cook Mode" } do %>
+  <%= inline_svg("cook.svg") %>
 <% end %>
