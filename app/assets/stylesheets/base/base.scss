@@ -60,13 +60,13 @@ hr {
 .badge {
   @extend .ib;
   @extend .m-small-left;
-  background-color: $bright-blue;
+  background: #78909C;
   border-radius: 20px;
   color: #fff;
   font-size: $size-h5;
   font-weight: 600;
-  padding: 2px 8px;
-  vertical-align: super;
+  padding: 4px 6px;
+  vertical-align: middle;
 }
 
 ul,
