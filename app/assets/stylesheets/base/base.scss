@@ -60,7 +60,7 @@ hr {
 .badge {
   @extend .ib;
   @extend .m-small-left;
-  background-color: #78909C;
+  background-color: $bright-blue;
   border-radius: 20px;
   color: #fff;
   font-size: $size-h5;
