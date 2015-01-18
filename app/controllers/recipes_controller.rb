@@ -8,13 +8,10 @@ class RecipesController < ApplicationController
   # GET /recipes
   def index
     if user_signed_in?
-      @recipes = Recipe.where(:user_id => current_user.id).search(params[:search]).order(created_at: :desc)
+      @recipes = Recipe.where(user_id: current_user.id).search(params[:search]).order(created_at: :desc)
       @recipes_count = @recipes.count
-
-      case @recipes_count
-      when 0 && params[:search] == false then render :no_recipes_yet
-      else render :recipe_list
-      end
+      params[:onboarding] = true if @recipes_count == 0 && params[:search].blank?
+      render :recipe_list
     else
       redirect_to root_url
     end
@@ -50,12 +47,12 @@ class RecipesController < ApplicationController
   end
 
   def remove_image
-    recipe = Recipe.find(params[:recipe_id])
+    @recipe = Recipe.find(params[:recipe_id])
 
     if me_owns_recipe?
-      recipe.img = nil
-      recipe.save
-      redirect_to edit_recipe_path(recipe)
+      @recipe.img = nil
+      @recipe.save
+      redirect_to edit_recipe_path(@recipe)
     else
       flash[:danger] = "That's not your recipe!"
       redirect_to root_url
