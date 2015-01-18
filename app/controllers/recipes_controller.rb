@@ -10,7 +10,6 @@ class RecipesController < ApplicationController
     if user_signed_in?
       @recipes = Recipe.where(user_id: current_user.id).search(params[:search]).order(created_at: :desc)
       @recipes_count = @recipes.count
-      params[:onboarding] = true if @recipes_count == 0 && params[:search].blank?
       render :recipe_list
     else
       redirect_to root_url

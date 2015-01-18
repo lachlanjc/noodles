@@ -1,7 +1,36 @@
-<%- title 'Welcome' %>
+<%- title "Welcome" %>
+<% activate_nav!(:onboarding) %>
 
-<article class="m2-block-center">
-  <h2>Awesome! You're all signed up and ready to go.</h2>
-  <p class="text-muted">I hope you enjoy your experience with Noodles. Kick the tires, create some recipes, give it a shot in the kitchen. If you have any feedback, don't hesitate to send it to me!</p>
-  <%= link_to 'Explore your new Noodles account', recipes_path, class: 'btn btn-success' %>
-</article>
+<%= render "shared/nav" %>
+
+<div class="panel m2-block-center">
+  <h2>Hey <%= current_user.first_name %>! Let's get cooking.</h2>
+  <hr>
+  <p>First, add a recipe. Click the big "+" button in the corner, or add a recipe from the web using the "link" button.</p>
+</div>
+
+<div id="importModal" role="dialog" class="modal">
+  <a class="modal-close float-right" href="#">
+    <%= inline_svg("close.svg") %>
+  </a>
+  <h2>Import a Recipe from the Web</h2>
+  <hr>
+  <p class="m0">Paste the URL of a recipe below to save it to Noodles.</p>
+  <small class="block">
+    Websites supported: <a href="http://www.epicurious.com/">Epicurious</a>, <a href="www.bonappetit.com/">Bon Appetit</a>, <a href="http://cooking.nytimes.com">NYTimes Cooking</a>, <a href="http://foodandwine.com/">Food and Wine</a>, and <a href="http://allrecipes.com/">Allrecipes</a>.
+  </small>
+  <br>
+  <%= form_tag("/import", method: "get") do %>
+    <%= url_field_tag :url, nil, class: "text-input" %>
+    <%= submit_tag("Import", name: nil, class: "float-right btn-blue") %>
+  <% end %>
+</div>
+
+
+<a class="has-tooltip btn-paper-mini" id="importModalTrigger" name="importModal" href="#importModal" data-tooltip="Import from a link">
+  <%= inline_svg("import.svg") %>
+</a>
+
+<%= link_to :new_recipe, class: "has-tooltip btn-paper", data: { tooltip: "Add a new recipe"} do %>
+<%= inline_svg("add.svg") %>
+<% end %>
