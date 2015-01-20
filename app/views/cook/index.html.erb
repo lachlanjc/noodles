@@ -1,23 +1,30 @@
-<%- title 'Cooking ' + @recipe.title %>
-<%= stylesheet_link_tag 'cook' %>
+<%- title "Cooking " + @recipe.title %>
+<%= stylesheet_link_tag "cook" %>
 
 <main class="flex center">
 
   <aside class="cook-info ib m2">
     <h1 class="m0 text-dark"><%= @recipe.title %></h2>
-    <div class="text-muted text"><%= @recipe_step_count %> steps</div>
-    <%= link_to @recipe, class: 'exit text-muted block m1-5-top' do %>
-      <%= inline_svg('exit.svg') %>
-      <span class="text-muted text">Exit Cook Mode</span>
+    <p class="text-muted m0"><%= "Published by " + User.find(@recipe.user_id).first_name + " · " unless me_owns_recipe? %><%= @recipe_step_count %> steps</p>
+    <% if me_owns_recipe? %>
+      <%= link_to @recipe, class: "exit block m1-5-top" do %>
+        <%= inline_svg("exit.svg") %>
+        <span class="text-muted text">Exit Cook Mode</span>
+      <% end %>
+    <% else %>
+      <%= link_to share_path(@recipe.shared_id), class: "exit block m1-5-top" do %>
+        <%= inline_svg("exit.svg") %>
+        <span class="text-muted text">Exit Cook Mode</span>
+      <% end %>
     <% end %>
 
     <hr class="col-10">
 
     <h2 class="mb0">Ingredients</h2>
-    <% if @recipe.ingredients.length == 0 %>
+    <% if @recipe.ingredients.blank? %>
     <p class="text-muted">Your recipe has no ingredients.</p>
     <% else %>
-      <% @recipe.ingredients.to_s.each_line do |line| %>
+      <% @recipe.ingredients.each_line do |line| %>
       <label>
         <input type="checkbox" class="checkbox checklist">
         <span><%= line %></span>
@@ -25,7 +32,7 @@
       <% end %>
     <% end %>
 
-    <% unless @recipe.notes == '' || @recipe.notes == nil %>
+    <% unless @recipe.notes.blank? %>
     <hr class="col-10">
     <div class="panel">
       <h2>Notes</h2><br>
@@ -38,8 +45,9 @@
     <%= sanitize @recipe.instructions_rendered %>
     <li>
       Finished! Enjoy your meal.
-
-      <%= render 'notes' %>
+      <% if me_owns_recipe? %>
+      <%= render "notes" %>
+      <% end %>
     </li>
   </ul>
 
