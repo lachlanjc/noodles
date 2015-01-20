@@ -1,6 +1,10 @@
 module NavHelper
   def nav_active_class(nav)
-    'active' if nav_active?(nav)
+    if nav_active?(nav)
+      return " active"
+    else
+      return ""
+    end
   end
 
   def nav_active?(nav)

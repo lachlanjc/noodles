@@ -24,7 +24,7 @@ label {
 
   &:focus {
     @include elegance;
-    border-color: $blue;
+    border-color: $bright-blue;
     color: $black;
     outline: 0;
   }
@@ -44,8 +44,8 @@ textarea.text-input {
 }
 
 .checkbox {
+  @extend .ib;
   @include up(-1px);
-  display: inline-block;
 }
 
 @media (max-width: $screen-phone) {

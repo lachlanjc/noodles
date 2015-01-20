@@ -1,37 +1,37 @@
-<nav role="navigation">
+<nav role="navigation" class="nav">
 
   <% if user_signed_in? %>
 
-    <div>
-      <%= link_to t('general.home'), root_url %>
-      <%= link_to t('general.recipes'), :recipes, class: nav_active_class(:recipes) %>
-      <%= link_to t('general.favorites'), :favorites, class: nav_active_class(:favorites) %>
+    <div class="nav-section">
+      <%= link_to t("general.home"), root_url, class: "nav-link" %>
+      <%= link_to t("general.recipes"), :recipes, class: "nav-link" + nav_active_class(:recipes) %>
+      <%= link_to t("general.favorites"), :favorites, class: "nav-link" + nav_active_class(:favorites) %>
     </div>
 
-    <div>
+    <div class="nav-section">
       <% unless nav_active?(:shared_recipe) || nav_active?(:onboarding) %>
-      <%= link_to 'Blog', :announcements, class: nav_active_class(:announcements) %>
+      <%= link_to "Blog", :announcements, class: "nav-link" + nav_active_class(:announcements) %>
       <% end %>
-      <%= link_to t('general.settings'), :settings, class: nav_active_class(:settings) %>
-      <%= link_to t('general.help'), :help, class: nav_active_class(:help) %>
-      <%= link_to t('general.sign_out'), :sign_out %>
+      <%= link_to t("general.settings"), :settings, class:  "nav-link" + nav_active_class(:settings) %>
+      <%= link_to t("general.help"), :help, class: "nav-link" + nav_active_class(:help) %>
+      <%= link_to t("general.sign_out"), :sign_out %>
     </div>
 
   <% else %>
 
-    <div>
-      <%= link_to t('general.home'), root_url %>
-      <%= link_to t('general.features'), 'http://noodles.withdraft.com/' %>
-      <%= link_to t('general.about'), :help, class: nav_active_class(:help) %>
+    <div class="nav-section">
+      <%= link_to t("general.home"), root_url, class: "nav-link" %>
+      <%= link_to t("general.features"), "http://noodles.withdraft.com/", class: "nav-link" %>
+      <%= link_to t("general.about"), :help, class: "nav-link" + nav_active_class(:help) %>
     </div>
 
-    <div>
-      <%= link_to t('general.sign_in'), :sign_in, class: nav_active_class(:sign_in) %>
-      <%= link_to t('general.sign_up'), :sign_up, class: nav_active_class(:sign_up) %>
+    <div class="nav-section">
+      <%= link_to t("general.sign_in"), :sign_in, class: "nav-link" + nav_active_class(:sign_in) %>
+      <%= link_to t("general.sign_up"), :sign_up, class: "nav-link" + nav_active_class(:sign_up) %>
     </div>
 
   <% end %>
 
 </nav>
 
-<%= render 'layouts/flash' %>
+<%= render "layouts/flash" %>

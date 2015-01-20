@@ -1,25 +1,22 @@
-nav {
-  @include display(flex);
-  @include justify-content(space-between);
+.nav {
+  @extend .flex;
+  @extend .flex-between;
   background-color: #fff;
   border-bottom: 1px solid $grey-lighter;
   box-shadow: 0 1px 1px rgba(0, 0, 0, .02);
   margin-bottom: 20px;
   padding: 18px;
 
-  div {
-    display: inline-block;
+  .nav-section {
+    @extend .ib;
   }
 
-  a,
-  a:visited {
-    border-bottom: 0;
+  .nav-link {
     color: $brand-primary;
     font-size: $size-body;
     font-weight: 600;
     line-height: 20px;
     margin: 0 8px;
-    text-decoration: none;
 
     &:hover {
       color: lighten($brand-primary, 8%);
@@ -34,18 +31,18 @@ nav {
 }
 
 @media (max-width: $screen-phone) {
-  nav {
+  .nav {
     display: block !important;
     padding: 15px 10px;
 
-    div:first-child {
+    .nav-section:first-child {
       margin-bottom: 10px;
     }
   }
 }
 
 @media print {
-  nav {
+  .nav {
     display: none !important;
   }
 }
