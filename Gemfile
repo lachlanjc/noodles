@@ -1,48 +1,48 @@
-source 'https://rubygems.org'
-ruby '2.1.3'
+source "https://rubygems.org"
+ruby "2.2.0"
 
-gem 'dotenv-rails', groups: [:development, :test]
+gem "dotenv-rails", groups: [:development, :test]
 
-gem 'rails_autolink'
-gem 'autoprefixer-rails'
-gem 'aws-sdk'
-gem 'aws-ses'
-gem 'bcrypt', '~> 3.1.7'
-gem 'bourbon'
-gem 'devise'
-gem 'devise_marketable'
-gem 'cohort_me'
-gem 'hashids'
-gem 'intercom-rails'
-gem 'jquery-turbolinks'
-gem 'multi_fetch_fragments'
-gem 'newrelic_rpm'
-gem 'paperclip'
-gem 'pg'
-gem 'puma'
-gem 'rails', '4.1.2'
-gem 'rake'
-gem 'redcarpet'
-gem 'sass-rails'
-gem 'search_cop'
-gem 'stripe'
-gem 'turbolinks'
-gem 'uglifier', '>= 1.3.0'
-gem 'will_paginate'
-gem 'wombat'
+gem "rails_autolink"
+gem "autoprefixer-rails"
+gem "aws-sdk"
+gem "aws-ses"
+gem "bcrypt", "~> 3.1.7"
+gem "bourbon"
+gem "devise"
+gem "devise_marketable"
+gem "cohort_me"
+gem "hashids"
+gem "intercom-rails"
+gem "jquery-turbolinks"
+gem "multi_fetch_fragments"
+gem "newrelic_rpm"
+gem "paperclip"
+gem "pg"
+gem "puma"
+gem "rails", "4.1.9"
+gem "rake"
+gem "redcarpet"
+gem "sass-rails"
+gem "search_cop"
+gem "stripe"
+gem "turbolinks"
+gem "uglifier", ">= 1.3.0"
+gem "will_paginate"
+gem "wombat"
 
 group :development do
-  gem 'better_errors'
-  gem 'seed_dump'
-  gem 'tracer_bullets'
+  gem "better_errors"
+  gem "seed_dump"
+  gem "tracer_bullets"
 end
 
 group :development, :test do
-  gem 'factory_girl_rails', '~> 4.2.1'
-  gem 'json_spec'
+  gem "factory_girl_rails", "~> 4.2.1"
+  gem "json_spec"
 end
 
 group :production do
-  gem 'font_assets'
-  gem 'rails_12factor'
+  gem "font_assets"
+  gem "rails_12factor"
 end
