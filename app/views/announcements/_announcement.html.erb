@@ -1,15 +1,17 @@
-<%= link_to announcement, class: 'link-reset' do %>
-  <h2 class="text-primary m0"><%= announcement.title %></h2>
-  <p class="text-muted m0">
+<%= link_to announcement, class: "link-reset" do %>
+  <h1 class="m0"><%= announcement.title %></h1>
+  <p class="text-muted m1-btm">
     <% if announcement.author_id == 1 %>
       Lachlan Campbell
     <% else %>
       Taran Samarth
     <% end %>
-    on <%= announcement.created_at.strftime('%B %e, %Y') %>
+    on <%= announcement.created_at.strftime("%B %e, %Y") %>
   </p>
 
-  <div class="text m1-top">
+  <div class="text m1-btm">
     <%= announcement.body_rendered.html_safe %>
   </div>
 <% end %>
+
+<hr class="m2">

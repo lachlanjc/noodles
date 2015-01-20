@@ -51,11 +51,9 @@ class AnnouncementsController < ApplicationController
 
   # DELETE /announcements/1
   def destroy
-    if @admin == true
-      @announcement.destroy
-      flash[:danger] = "Announcement deleted."
-      redirect_to announcements_url
-    end
+    @announcement.destroy
+    flash[:danger] = "Announcement deleted."
+    redirect_to announcements_url
   end
 
   def unsubscribe
