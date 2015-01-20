@@ -31,6 +31,7 @@ h1 {
 @media (max-width: $screen-phone) {
   h1.mega {
     font-size: $size-h1;
+    line-height: $size-h1 * 1.2;
   }
 }
 

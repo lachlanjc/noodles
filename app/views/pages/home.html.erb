@@ -8,11 +8,11 @@
   <%= stylesheet_link_tag "application", "data-turbolinks-track" => true %>
   <style>
   .hero {
-    background: url(<%= asset_path 'home/background.jpg' %>) no-repeat;
+    background: url(<%= asset_path "home/background.jpg" %>) no-repeat;
     background-position: 45% 55%;
     background-size: cover;
     box-shadow: inset 0 -5rem 6rem rgba(0, 0, 0, 0.4);
-    padding: 10em 0;
+    padding: 9rem 0;
   }
   .hero h1 {
     color: #fff !important;
@@ -104,7 +104,7 @@
     <footer class="text-center block m1-top">
       <a href="http://noodles.withdraft.com/pages/558276" class="m1-right link-reset text-muted">Terms</a>
       <a href="http://noodles.withdraft.com/pages/558280" class="m1-right link-reset text-muted">Privacy</a>
-      <%= link_to "Announcements", announcements_path, class: 'm1-right link-reset text-muted' %>
+      <%= link_to "Announcements", announcements_path, class: "m1-right link-reset text-muted" %>
       <a href="https://www.facebook.com/pages/Noodles/698221030285633" class="m1-right link-reset text-muted">Facebook</a>
       <a href="https://twitter.com/noodlesapp" class="m1-right link-reset text-muted">Twitter</a>
     </footer>
