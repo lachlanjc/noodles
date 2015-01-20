@@ -21,7 +21,7 @@ class RecipesController < ApplicationController
       @recipes = Recipe.where(:user_id => current_user.id, :favorite => true).order(created_at: :desc)
 
       if @recipes.count == 0
-        redirect_to 'http://noodles.withdraft.com/#favorites'
+        redirect_to "http://noodles.withdraft.com/#favorites"
       else
         render :favorites
       end
@@ -41,7 +41,7 @@ class RecipesController < ApplicationController
   end
 
   def random
-    recipe = Recipe.where(:user_id => current_user.id).order("RANDOM()").limit(1).first
+    recipe = Recipe.where(:user_id => current_user.id).order("RANDOM()").first
     redirect_to recipe_url(recipe)
   end
 
@@ -53,7 +53,7 @@ class RecipesController < ApplicationController
       @recipe.save
       redirect_to edit_recipe_path(@recipe)
     else
-      flash[:danger] = "That's not your recipe!"
+      flash[:danger] = "That\'s not your recipe!"
       redirect_to root_url
     end
   end
@@ -66,7 +66,7 @@ class RecipesController < ApplicationController
       @recipe.save
       redirect_to shared_url(@recipe.shared_id)
     else
-      flash[:danger] = "No, you can't share someone else's recipes..."
+      flash[:danger] = "No, you can\'t share someone else\'s recipes..."
       redirect_to recipes_path
     end
   end
@@ -102,7 +102,7 @@ class RecipesController < ApplicationController
       r.ingredients = @recipe.ingredients
       r.instructions = @recipe.instructions
       r.instructions_rendered = @recipe.instructions_rendered
-      r.source = 'http://app.getnoodl.es/s/' + @recipe.id.to_s
+      r.source = "http://www.getnoodl.es/s/" + @recipe.id.to_s
       r.serves = @recipe.serves
       r.notes = @recipe.notes
       r.favorite = false
@@ -134,7 +134,7 @@ class RecipesController < ApplicationController
     if me_owns_recipe?
       render :edit
     else
-      flash[:view] = "Sorry, you can't edit that recipe."
+      flash[:view] = "Sorry, you can\'t edit that recipe."
       redirect_to root_url
     end
   end
@@ -178,32 +178,32 @@ class RecipesController < ApplicationController
     recipe_src = params[:url]
     recipe = master_scrape(recipe_src)
 
-    if recipe == 'unsupported'
+    if recipe == "unsupported"
       flash[:info] = recipe
-      flash[:danger] = 'Sorry, that site isn\'t supported yet.'
+      flash[:danger] = "Sorry, that site isn\'t supported yet."
       redirect_to :recipes
     else
-      @ingredients_prepared = write_ingredients_to_list(recipe['ingredients'])
-      @instructions_prepared = form_markdown_for_instructions(recipe['instructions'])
+      @ingredients_prepared = write_ingredients_to_list(recipe["ingredients"])
+      @instructions_prepared = form_markdown_for_instructions(recipe["instructions"])
       @instructions_rendered_prepared = markdown(@instructions_prepared.to_s)
 
       @create_recipe = Recipe.new do |r|
         r.user_id = current_user.id
-        r.title = recipe['title']
+        r.title = recipe["title"]
         r.ingredients = @ingredients_prepared
         r.instructions = @instructions_prepared
         r.instructions_rendered = @instructions_rendered_prepared
         r.source = recipe_src
-        r.serves = recipe['serves']
-        r.notes = recipe['notes'].to_s
+        r.serves = recipe["serves"]
+        r.notes = recipe["notes"].to_s
         r.favorite = false
         r.shared = false
         r.save
       end
-      @create_recipe.description = recipe['description'].to_s
+      @create_recipe.description = recipe["description"].to_s
       @create_recipe.shared_id = generate_shared_id(@create_recipe.id)
       @create_recipe.save
-      flash[:success] = 'Recipe imported!'
+      flash[:success] = "Recipe imported!"
       redirect_to @create_recipe
     end
   end
@@ -224,7 +224,7 @@ class RecipesController < ApplicationController
     # The second method writes its own Markdown for the instructions.
 
     def write_ingredients_to_list(ingredients)
-      ingredients_list = ''
+      ingredients_list = ""
       ingredients.each do |ingredient|
         # Add ingredient to the next line of ingredients_list
         # Double quotes must be used for \n
@@ -235,11 +235,11 @@ class RecipesController < ApplicationController
     end
 
     def form_markdown_for_instructions(steps)
-      instructions_md = ''
+      instructions_md = ""
       # each_with_index produces the step number
       steps.each_with_index do |step, id|
         # Arrays start at 0
-        instructions_md << (id + 1).to_s + '. ' + step + "\n"
+        instructions_md << (id + 1).to_s + ". " + step + "\n"
       end
       return instructions_md
     end
