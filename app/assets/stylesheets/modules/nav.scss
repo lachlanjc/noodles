@@ -6,25 +6,25 @@
   box-shadow: 0 1px 1px rgba(0, 0, 0, .02);
   margin-bottom: 20px;
   padding: 18px;
+}
 
-  .nav-section {
-    @extend .ib;
+.nav-side {
+  @extend .ib;
+}
+
+.nav-link {
+  color: $brand-primary;
+  font-size: $size-body;
+  font-weight: 600;
+  line-height: 20px;
+  margin: 0 8px;
+
+  &:hover {
+    color: lighten($brand-primary, 8%);
+    text-decoration: none;
   }
 
-  .nav-link {
-    color: $brand-primary;
-    font-size: $size-body;
-    font-weight: 600;
-    line-height: 20px;
-    margin: 0 8px;
-
-    &:hover {
-      color: lighten($brand-primary, 8%);
-      text-decoration: none;
-    }
-  }
-
-  .active {
+  &.active {
     border-bottom: 2px solid $brand-primary;
     padding-bottom: 2px;
   }

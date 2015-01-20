@@ -41,23 +41,26 @@
     </script>
   </head>
   <body>
-    <nav role="navigation" class="m0">
-      <div>
-        <%= link_to "Home", root_url, class: "active" %>
-        <a href="http://noodles.withdraft.com/">Features</a>
-        <%= link_to "About", help_path %>
+    <nav role="navigation" class="nav m0">
+      <div class="nav-side m0">
+        <%= link_to t("general.home"), root_url, class: "nav-link active" %>
+        <%= link_to t("general.features"), "http://noodles.withdraft.com/", class: "nav-link" %>
+        <%= link_to t("general.about"), :help, class: "nav-link" %>
       </div>
+
       <% unless flash.empty? %>
-        <% flash.each do |key, value| %>
-        <div class="<%= flash_class(key) %>" style="padding:4px 12px;margin:0">
-          <p class="m0"><%= value unless value.blank? %></p>
-        </div>
-        <% end %>
+      <% flash.each do |key, value| %>
+      <div class="<%= flash_class(key) %>" style="padding:4px 12px;margin:0">
+        <p class="m0"><%= value unless value.blank? %></p>
+      </div>
       <% end %>
-      <div>
-        <%= link_to "Log in", sign_in_path %>
+      <% end %>
+
+      <div class="nav-side">
+        <%= link_to t("general.sign_in"), sign_in_path, class: "nav-link" %>
       </div>
     </nav>
+
     <header class="hero">
       <div class="col-7 container text-center">
         <h1 class="text-dark mega m1-btm">Keep, cook, and share your recipes with Noodles.</h1>

@@ -1,8 +1,8 @@
 <%= link_to recipe do %>
   <div class="recipe-list-item">
     <div class="indicators">
-      <% if recipe.favorite == true %>
-        <%= inline_svg('favorite.svg') %>
+      <% if recipe.favorite? %>
+        <%= inline_svg("favorite.svg") %>
       <% end %>
     </div>
 
