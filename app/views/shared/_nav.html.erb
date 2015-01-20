@@ -14,7 +14,7 @@
       <% end %>
       <%= link_to t("general.settings"), :settings, class:  "nav-link" + nav_active_class(:settings) %>
       <%= link_to t("general.help"), :help, class: "nav-link" + nav_active_class(:help) %>
-      <%= link_to t("general.sign_out"), :sign_out %>
+      <%= link_to t("general.sign_out"), :sign_out, class: "nav-link" %>
     </div>
 
   <% else %>

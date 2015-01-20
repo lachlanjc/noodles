@@ -10,12 +10,8 @@
 
   <hr>
 
-  <%= render partial: 'announcement', collection: @announcements, cache: true %>
+  <div class="document">
+    <%= render partial: 'announcement', collection: @announcements, cache: true %>
+  </div>
 
 </article>
-
-<% if @admin == true %>
-  <%= link_to :new_announcement, class: 'btn-paper' do %>
-    <%= inline_svg('add.svg') %>
-  <% end %>
-<% end %>

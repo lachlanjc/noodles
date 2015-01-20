@@ -1,7 +1,18 @@
-<%= render 'shared/nav' %>
+<%= render "shared/nav" %>
 
 <article class="col-8">
-  <h1>Edit announcement</h1>
+<%= form_for(@announcement) do |f| %>
 
-  <%= render 'form' %>
+  <%= f.label :title %>
+  <%= f.text_field :title, autofocus: true, class: "text-input" %>
+
+  <%= f.label :body %>
+  <%= f.text_area :body, class: "text-input", rows: 8 %>
+
+  <%= f.label :author_id, "Author (1 or 2)" %>
+  <%= f.text_field :author_id, class: "text-input" %>
+
+  <%= f.submit t("general.save"), class: "btn-blue" %>
+
+<% end %>
 </article>
