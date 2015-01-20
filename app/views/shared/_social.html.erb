@@ -4,29 +4,29 @@
 
 <div class="social">
   <a rel="nofollow" href="http://twitter.com/share?text=Check out <%= @recipe.title %>, published on @noodlesapp:&amp;url=http://app.getnoodl.es/s/<%= @recipe.id %>" class="social-twitter" target="_blank">
-    <%= inline_svg('social-twitter.svg') %>
+    <%= inline_svg("social-twitter.svg") %>
   </a>
   <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://app.getnoodl.es/s/<%= @recipe.id %>" class="social-facebook" target="_blank">
-    <%= inline_svg('social-facebook.svg') %>
+    <%= inline_svg("social-facebook.svg") %>
   </a>
   <a rel="nofollow" href="http://www.pinterest.com/pin/create/button/?url=ttp%3A%2F%2Fapp.getnoodl.es%2Fs%2F<%= @recipe.id %><% unless @recipe.img.url.blank? %>&media=<%= @recipe.img.url %><% end %>&description=<%= @recipe.title %>+on+Noodles+(<%= @recipe.description %>)" class="social-pinterest" target="_blank">
-    <%= inline_svg('social-pinterest.svg') %>
+    <%= inline_svg("social-pinterest.svg") %>
   </a>
   <a rel="nofollow" href="https://bufferapp.com/add?url=http%3A%2F%2Fapp.getnoodl.es%2Fs%2F<%= @recipe.id %>&text=Check out <%= @recipe.title %>, published on Noodles:" class="social-buffer" target="_blank">
-    <%= inline_svg('social-buffer.svg') %>
+    <%= inline_svg("social-buffer.svg") %>
   </a>
   <a rel="nofollow" href="https://plus.google.com/share?url=http%3A%2F%2Fapp.getnoodl.es%2Fs%2F<%= @recipe.id %>" class="social-plus" target="_blank">
-    <%= inline_svg('social-googleplus.svg') %>
+    <%= inline_svg("social-googleplus.svg") %>
   </a>
   <% if me_owns_recipe? %>
     <a href="mailto:?subject=Check out <%= @recipe.title %> on Noodles&body=Hey there! I published a new recipe on Noodles (http://www.getnoodl.es), <%= @recipe.title %>. Check it out: http://app.getnoodl.es/s/<%= @recipe.id %>" class="social-email">
   <% else %>
     <a href="mailto:?subject=Check out <%= @recipe.title %> on Noodles&body=Hey there! I saw a recipe called <%= @recipe.title %> on Noodles (http://www.getnoodl.es) today. Check it out: <%= @shared_url %>" class="social-email">
   <% end %>
-    <%= inline_svg('mail.svg') %>
+    <%= inline_svg("mail.svg") %>
   </a>
 </div>
 
 <% if me_owns_recipe? %>
-<p class="text-muted">Or you could <%= link_to 'un-share this recipe', recipe_un_share_path(@recipe) %>.</p>
+<p class="text-muted">Or you could <%= link_to "un-share this recipe", recipe_un_share_path(@recipe) %>.</p>
 <% end %>

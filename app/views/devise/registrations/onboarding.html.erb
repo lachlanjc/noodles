@@ -21,7 +21,7 @@
   </small>
   <br>
   <%= form_tag("/import", method: "get") do %>
-    <%= url_field_tag :url, nil, class: "text-input" %>
+    <%= url_field_tag :url, nil, class: "text-input full-width", placeholder: "Paste the URL here" %>
     <%= submit_tag("Import", name: nil, class: "float-right btn-blue") %>
   <% end %>
 </div>

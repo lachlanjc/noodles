@@ -1,17 +1,17 @@
-<nav role="navigation" class="flex flex-between">
+<nav role="navigation" class="nav flex flex-between">
 
-  <div class="links ib">
-    <%= link_to 'Dashboard', :analytics_dash, class: nav_active_class(:analytics_dash) %>
-    <%= link_to 'Users', :analytics_users, class: nav_active_class(:analytics_users) %>
-    <%= link_to 'Shared Recipes', :analytics_recipes, class: nav_active_class(:analytics_recipes) %>
-    <%= link_to 'Performance', :analytics_performance, class: nav_active_class(:analytics_performance) %>
-    <%= link_to 'Marketable', :analytics_marketable, class: nav_active_class(:analytics_marketable) %>
+  <div class="nav-section">
+    <%= link_to "Dashboard", :analytics_dash, class: "nav-link" + nav_active_class(:analytics_dash) %>
+    <%= link_to "Users", :analytics_users, class: "nav-link" + nav_active_class(:analytics_users) %>
+    <%= link_to "Shared Recipes", :analytics_recipes, class: "nav-link" + nav_active_class(:analytics_recipes) %>
+    <%= link_to "Performance", :analytics_performance, class: "nav-link" + nav_active_class(:analytics_performance) %>
+    <%= link_to "Marketable", :analytics_marketable, class: "nav-link" + nav_active_class(:analytics_marketable) %>
   </div>
 
-  <div class="links ib">
-    <%= link_to 'Back to Recipes', :recipes %>
+  <div class="nav_section">
+    <%= link_to "Back to Recipes", recipes_path, class: "nav-link" %>
   </div>
 
 </nav>
 
-<%= render 'layouts/flash' %>
+<%= render "layouts/flash" %>

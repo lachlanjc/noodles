@@ -1,44 +1,42 @@
-<%- title 'Edit your account' %>
+<%- title "Settings" %>
 <% activate_nav!(:settings) %>
 
-<%= javascript_include_tag :jquery %>
-
-<%= render 'shared/nav' %>
+<%= render "shared/nav" %>
 
 <article class="col-6">
 
-  <h1><%= t('.account_settings') %></h1>
+  <h1><%= t(".account_settings") %></h1>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
     <%= devise_error_messages! %>
 
-    <%= f.label t('.fn') %>
-    <%= f.text_field :first_name, class: 'text-input', name: 'fname', required: true %>
+    <%= f.label t(".fn") %>
+    <%= f.text_field :first_name, class: "text-input", name: "fname", required: true %>
 
-    <%= f.label t('.email_a') %>
-    <%= f.email_field :email, class: 'text-input', name: 'email', autocomplete: 'email' %>
+    <%= f.label t(".email_a") %>
+    <%= f.email_field :email, class: "text-input", name: "email", autocomplete: "email" %>
 
-    <%= f.check_box :want_newsletter, class: 'checkbox' %>
-    <%= f.label :want_newsletter, 'Receive monthly Noodles Announcements', class: 'ib m1-btm' %>
+    <%= f.check_box :want_newsletter, class: "checkbox" %>
+    <%= f.label :want_newsletter, "Receive monthly Noodles Announcements", class: "ib m1-btm" %>
 
-    <%= f.label t('.current_pass') %>
-    <%= f.password_field :current_password, autocomplete: 'off', class: 'text-input' %>
+    <%= f.label t(".current_pass") %>
+    <%= f.password_field :current_password, autocomplete: "off", class: "text-input" %>
 
-    <%= f.label :password, class: 'ib' %><small> <%= t('.can_leave_blank') %></small>
-    <%= f.password_field :password, autocomplete: 'off', class: 'text-input' %>
+    <%= f.label :password, class: "ib" %><small> <%= t(".can_leave_blank") %></small>
+    <%= f.password_field :password, autocomplete: "off", class: "text-input" %>
 
-    <%= f.submit t('general.update'), class: 'btn btn-primary' %>
+    <%= f.submit t("general.update"), class: "btn-blue" %>
 
   <% end %>
 
   <hr>
 
-  <h2 class="m1-top"><%= t('.delete_account') %></h2>
-  <p><%= t('.want_account_gone') %></p>
-  <p>If you just need help with something in Noodles, go to <%= link_to 'Help', :help %> (it's in the navigation at the top as well).</p>
-  <%= link_to t('.delete_my_account'), user_registration_path(resource_name), class: 'text-danger', data: { confirm: "Are you sure you want to delete your Noodles account and your recipes? If so, hit OK." }, method: :delete, rel: 'nofollow' %>
+  <h2 class="m1-top"><%= t(".delete_account") %></h2>
+  <p><%= t(".want_account_gone") %></p>
+  <p>If you just need help with something in Noodles, go to <%= link_to "Help", :help %> (it's in the navigation at the top as well).</p>
+  <%= link_to t(".delete_my_account"), user_registration_path(resource_name), class: "btn-sm btn-red", data: { confirm: "Are you sure you want to delete your Noodles account and your recipes? If so, hit OK." }, method: :delete, rel: "nofollow" %>
 
-  <%= render 'shared/printer' %>
+  <%= render "shared/printer" %>
 
 </article>

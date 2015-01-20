@@ -1,31 +1,31 @@
-<%- title 'Sign Up' %>
+<%- title "Sign Up" %>
 <% activate_nav!(:sign_up) %>
 
-<%= render 'shared/nav' %>
+<%= render "shared/nav" %>
 
-<article class="col-6">
+<article class="col-7 document">
 
-  <h1><%= t('.welcome') %></h1>
-  <p><%= t('.sign_up_and') %></p>
+  <h1><%= t(".welcome") %></h1>
+  <p><%= t(".sign_up_and") %></p>
 
-  <%= form_for @user, url: registration_path(resource_name), html: {name: 'reg'} do |f| %>
+  <%= form_for @user, url: registration_path(resource_name), html: { name: "reg" } do |f| %>
 
     <%= devise_error_messages! %>
 
-    <%= f.label t('.first_name') %>
-    <%= f.text_field :first_name, class: 'text-input', id: 'fname', autofocus: true %>
+    <%= f.label t(".first_name") %>
+    <%= f.text_field :first_name, class: "text-input", id: "fname", autofocus: true %>
 
-    <%= f.label t('.email_check') %>
-    <%= f.email_field :email, class: 'text-input', required: true, autocomplete: 'email' %>
+    <%= f.label t(".email_check") %>
+    <%= f.email_field :email, class: "text-input", required: true, autocomplete: "email" %>
 
-    <%= f.label :password, class: 'ib' %> <small><%= t('.eight_char') %></small>
-    <%= f.password_field :password, class: 'text-input', required: true, id: 'new-password', pattern: '.{8,}' %>
+    <%= f.label :password, class: "ib" %> <small><%= t(".eight_char") %></small>
+    <%= f.password_field :password, class: "text-input", required: true, id: "new-password", pattern: ".{8,}" %>
 
     <%= f.hidden_field :want_newsletter, value: true %>
 
-    <%= f.submit t('general.sign_up'), class: 'btn' %>
+    <%= f.submit t("general.sign_up"), class: "btn" %>
 
-    <small>By signing up for Noodles you are agreeing to our <a href="http://docs.getnoodl.es/terms">Terms of Service</a> and <a href="http://docs.getnoodl.es/privacy">Privacy Policy</a>.</small>
+    <small>By signing up for and using Noodles you are agreeing to our <a href="http://noodles.withdraft.com/pages/558276">Terms</a> and <a href="http://noodles.withdraft.com/pages/558280">Privacy Policy</a>.</small>
 
   <% end %>
 

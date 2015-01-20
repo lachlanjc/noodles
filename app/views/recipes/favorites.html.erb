@@ -1,26 +1,26 @@
-<%- title 'Favorites' %>
+<%- title "Favorites" %>
 <% activate_nav!(:favorites) %>
 
-<%= render 'shared/nav' %>
+<%= render "shared/nav" %>
 
 <article class="col-7 recipe-list-container">
 
-  <h1><%= t('general.favorites') %>
+  <h1><%= t("general.favorites") %>
     <div class="header-indicator favorite">
-      <%= inline_svg('favorite.svg') %>
+      <%= inline_svg("favorite.svg") %>
     </div>
   </h1>
 
-  <h3><%= link_to '« All recipes', recipes_path %></h3>
+  <h3><%= link_to "« All recipes", recipes_path %></h3>
 
   <div class="recipe-list">
-    <%= render partial: 'recipe', collection: @recipes, cache: true %>
+    <%= render partial: "recipe", collection: @recipes, cache: true %>
   </div>
 
-  <p class="printer-copy"><%= t('recipes.printing.print_copy') %></p>
+  <p class="printer-copy"><%= t("recipes.printing.print_copy") %></p>
 
 </article>
 
-<%= link_to :new_recipe, class: 'btn-paper' do %>
-  <%= inline_svg('add.svg') %>
+<%= link_to :new_recipe, class: "btn-paper" do %>
+  <%= inline_svg("add.svg") %>
 <% end %>
