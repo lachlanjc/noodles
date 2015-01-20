@@ -33,18 +33,6 @@
   <script type="text/javascript">
   if("standalone"in window.navigator&&window.navigator.standalone){var noddy,remotes=false;document.addEventListener("click",function(e){noddy=e.target;while(noddy.nodeName!=="A"&&noddy.nodeName!=="HTML"){noddy=noddy.parentNode}if("href"in noddy&&noddy.href.indexOf("http")!==-1&&(noddy.href.indexOf(document.location.host)!==-1||remotes)){e.preventDefault();document.location.href=noddy.href}},false)}
   </script>
-  <% if user_signed_in? %>
-  <script>
-  window.intercomSettings = {
-    "app_id": "ep8jyd6i",
-    "name": "<%= current_user.first_name %>",
-    "recipes_count": "<%= user_recipe_count(current_user) %>",
-    "shared_recipes_count": "<%= user_shared_recipe_count(current_user) %>",
-    "referring_url": "<%= current_user.referring_url %>",
-    "landing_url": "<%= current_user.landing_url %>"
-  }
-  </script>
-  <% end %>
   <link rel="apple-touch-icon" sizes="57x57" href="<%= asset_path 'apple-touch-icon-57x57.png' %>">
   <link rel="apple-touch-icon" sizes="114x114" href="<%= asset_path 'apple-touch-icon-114x114.png' %>">
   <link rel="apple-touch-icon" sizes="72x72" href="<%= asset_path 'apple-touch-icon-72x72.png' %>">
@@ -61,6 +49,21 @@
   <link rel="icon" type="image/png" href="<%= asset_path 'favicon-32x32.png' %>" sizes="32x32">
   <meta name="msapplication-TileColor" content="#00a300">
   <meta name="msapplication-TileImage" content="<%= asset_path 'favicon-144x144.png' %>">
+
+  <% if user_signed_in? %>
+  <%= intercom_script_tag({
+    :app_id => ENV["INTERCOM_APP_ID"],
+    :user_id => current_user.id,
+    :email => current_user.email,
+    :name => current_user.first_name,
+    :custom_data => {
+      recipes_count: user_recipe_count(current_user),
+      shared_recipes_count: user_shared_recipe_count(current_user),
+      referring_url: current_user.referring_url,
+      landing_url: current_user.landing_url
+    }
+  }) %>
+  <% end %>
 </head>
 <body>
   <%= yield %>
