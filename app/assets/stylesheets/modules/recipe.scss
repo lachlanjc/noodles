@@ -4,24 +4,24 @@
   margin-left: 4px;
 
   svg {
-    @include svg(32px, $brand-primary);
+    @include svg-large($brand-primary);
   }
 }
 
-img {
-  display: block;
-  max-width: 100%;
-}
-
 .recipe-photo {
-  @include shadow-1;
-  border-radius: $radius;
+  @extend %rounded;
+  @include shadow-compact;
   margin: 1.5em 0;
   max-width: 80%;
 }
 
 .locked svg {
-  @include svg(200px, $grey-light);
+  @include size(200px);
+  fill: $grey-light;
+}
+
+.notes {
+  background-color: $notes;
 }
 
 .control {
@@ -54,7 +54,6 @@ img {
   margin: $padding-xs 0;
 
   a {
-    border-bottom: 0;
     margin-right: 4px;
   }
 
@@ -87,12 +86,6 @@ img {
   }
 }
 
-@media (max-width: $screen-phone) {
-  .recipe-photo {
-    max-width: 100%;
-  }
-}
-
 @media print {
   .recipe-print {
     padding: 16px 32px !important;
@@ -102,9 +95,5 @@ img {
   .social-panel,
   .show-details {
     display: none !important;
-  }
-
-  #details-container {
-    display: block !important;
   }
 }

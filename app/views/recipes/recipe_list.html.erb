@@ -12,7 +12,7 @@
   <% if params[:search] %>
   <h1>Searching for <%= params[:search] %></h1>
   <% else %>
-  <h1><%= t("general.recipes") %></h1>
+  <h1 class="ib"><%= t("general.recipes") %></h1>
   <%= link_to :random_recipe, class: "header-indicator has-tooltip random", data: { tooltip: "Random recipe!" } do %>
     <%= inline_svg("random.svg") %>
   <% end %>

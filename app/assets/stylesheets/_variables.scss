@@ -9,20 +9,20 @@ $pink:                   #e91e63;
 $red:                    #ff0013;
 $yellow:                 #ffeb3b;
 $green:                  #64dd17;
-$blue:                   #0C7EE8;
-$bright-blue:            #12B4FF;
+$blue:                   #0c7ee8;
+$bright-blue:            #12b4ff;
 
 $brand-primary:          #ff6d00;
 $brand-bg:               #fcfcfd;
 $notes:                  #fffbc4;
 
 $border:                 1px solid $grey-lighter;
-$gradient-darken:        linear-gradient(transparent, rgba(0, 0, 0, 0.04));
+$gradient-darken:        linear-gradient(transparent, rgba(0, 0, 0, .04));
 $elegance-transition:    .28s cubic-bezier(.4, 0, .2, 1);
 
 // Typographic Manifestation
 
-$font-base:              Lato, 'Helvetica Neue', Helvetica, sans-serif;
+$font-base:              Lato, "Helvetica Neue", Helvetica, sans-serif;
 
 $size-h1:                30px;
 $size-h2:                21px;
@@ -34,7 +34,7 @@ $size-h6:                11px;
 $size-body:              $size-h3;
 
 $line-height:            1.6;
-$spacing:                0.02rem;
+$spacing:                .03rem;
 
 
 // Padding

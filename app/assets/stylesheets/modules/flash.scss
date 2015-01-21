@@ -1,9 +1,10 @@
 .flash {
   @extend %box;
-  border-left: 2px solid $grey;
+  @extend .col-6;
+  border-left: 2px solid $bright-blue;
   color: $grey;
-  margin: $padding-base 0;
-  padding: 20px 16px;
+  margin: $padding-base auto;
+  padding: 16px;
 }
 
 .flash-success {
@@ -22,19 +23,13 @@
 }
 
 @media (max-width: $screen-phone) {
-  .flash-container {
-    padding: 0 16px;
-    width: 90% !important;
-
-    div {
-      margin: 16px;
-      padding: 10px 12px !important;
-    }
+  .flash {
+    width: 80%;
   }
 }
 
 @media print {
-  .flash-container {
+  .flash {
     display: none !important;
   }
 }

@@ -1,26 +1,30 @@
 body {
+  @extend .m0;
   background-color: $brand-bg;
-  margin: 0;
 }
 
 hr {
   border: 0;
-  border-bottom: 1px solid $grey-lighter;
+  border-bottom: $border;
   height: 0;
   margin: $padding-base 0;
 }
 
+img {
+  max-width: 100%;
+}
+
 %box {
-  background-color: #fff;
-  border: 1px solid $grey-lighter;
-  border-radius: $radius;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, .02);
+  @extend %bg-white;
+  @extend %bordered;
+  @extend %rounded;
+  @include shadow-compact;
 }
 
 .document {
   @extend %box;
-  margin: 2em auto;
-  padding: 2em;
+  @extend .center;
+  padding: 24px;
 }
 
 @media (max-width: $screen-phone) {
@@ -42,7 +46,7 @@ hr {
   padding: 20px 16px;
 
   h2 {
-    margin: 0;
+    @extend .m0;
   }
 
   ul {
@@ -54,14 +58,10 @@ hr {
   }
 }
 
-.notes {
-  background-color: $notes;
-}
-
 .badge {
   @extend .ib;
   @extend .m-small-left;
-  background: #78909C;
+  background: #78909c;
   border-radius: 20px;
   color: #fff;
   font-size: $size-h5;
@@ -75,105 +75,4 @@ ol,
 blockquote {
   margin: 0;
   padding: 0;
-}
-
-// Helper classes
-
-.block {
-  display: block !important;
-}
-.ib {
-  display: inline-block !important;
-}
-.inline {
-  display: inline !important;
-}
-
-.full-width {
-  box-sizing: border-box;
-  width: 100% !important;
-}
-
-.m0 {
-  margin: 0 !important;
-}
-.m1 {
-  margin: 1rem;
-}
-.m2 {
-  margin: 2rem;
-}
-
-.m-small-left {
-  margin-left: 8px;
-}
-.m2-left {
-  margin-left: 2em;
-}
-
-.m-small-top {
-  margin-top: 8px;
-}
-.m1-top {
-  margin-top: 1em;
-}
-.m1-5-top {
-  margin-top: 1.5em;
-}
-
-.m1-right {
-  margin-right: 1em;
-}
-
-.m0-btm {
-  margin-bottom: 0 !important;
-}
-.m1-btm {
-  margin-bottom: 1em;
-  margin-top: 0;
-}
-
-.m2-block-center {
-  display: block;
-  margin: 2em auto;
-  width: 33.33333333%;
-}
-
-.float-left {
-  float: left;
-}
-.float-right {
-  float: right;
-}
-
-.center {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.flex {
-  @include display(flex);
-}
-
-.flex-between {
-  @include justify-content(space-between);
-}
-
-.show {
-  display: block;
-}
-
-.hide {
-  display: none;
-}
-
-@media (max-width: $screen-phone) {
-  .mobile-no-flex {
-    display: block !important;
-  }
-
-  .m2-block-center {
-    margin: 2em auto !important;
-    width: 95% !important;
-  }
 }

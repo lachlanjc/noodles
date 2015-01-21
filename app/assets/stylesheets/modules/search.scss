@@ -3,32 +3,27 @@
     @extend .ib;
 
     svg {
-      @include svg(28px, $grey-light);
+      @include size(28px);
+      fill: $grey-light;
     }
   }
 
   .text-input {
     @extend .ib;
     @include up(-8px);
-    font-size: $size-h3;
     margin-left: 4px;
   }
 }
 
 .invisble-input {
-  background-color: transparent;
+  background: transparent;
   border: 0;
-  display: block;
   resize: none;
   padding: 0;
-
-  &:focus {
-    outline: 0;
-  }
 }
 
 @media (max-width: $screen-phone) {
   .search-form .text-input {
-    width: 75% !important;
+    width: 14rem !important;
   }
 }

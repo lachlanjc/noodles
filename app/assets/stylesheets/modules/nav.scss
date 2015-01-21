@@ -1,11 +1,11 @@
 .nav {
-  @extend .flex;
+  @extend %bg-white;
   @extend .flex-between;
-  background-color: #fff;
+  @extend .flex;
+  @include shadow-compact;
   border-bottom: 1px solid $grey-lighter;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, .02);
   margin-bottom: 20px;
-  padding: 18px;
+  padding: 16px 10px;
 }
 
 .nav-side {
@@ -13,10 +13,8 @@
 }
 
 .nav-link {
-  color: $brand-primary;
   font-size: $size-body;
   font-weight: 600;
-  line-height: 20px;
   margin: 0 8px;
 
   &:hover {
@@ -26,23 +24,21 @@
 
   &.active {
     border-bottom: 2px solid $brand-primary;
-    padding-bottom: 2px;
   }
 }
 
 @media (max-width: $screen-phone) {
   .nav {
-    display: block !important;
-    padding: 15px 10px;
+    display: block;
+  }
 
-    .nav-section:first-child {
-      margin-bottom: 10px;
-    }
+  .nav-side:first-child {
+    margin-bottom: 10px;
   }
 }
 
 @media print {
   .nav {
-    display: none !important;
+    display: none;
   }
 }

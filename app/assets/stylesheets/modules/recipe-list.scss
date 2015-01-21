@@ -1,4 +1,4 @@
-.random svg path {
+.random svg {
   fill: $yellow;
 }
 
@@ -22,7 +22,7 @@
     float: right;
 
     svg {
-      @include svg(24px, #fff);
+      @include svg-small(#fff);
     }
   }
 

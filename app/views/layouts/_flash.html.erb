@@ -1,9 +1,7 @@
 <% unless flash.empty? %>
-  <section class="col-6 center flash-container">
-    <% flash.each do |key, value| %>
-      <div class="<%= flash_class(key) %>">
-        <%= value unless value.blank? %>
-      </div>
-    <% end %>
-  </section>
+<% flash.each do |key, value| %>
+  <div class="<%= flash_class(key) %>">
+    <%= value unless value.blank? %>
+  </div>
+<% end %>
 <% end %>

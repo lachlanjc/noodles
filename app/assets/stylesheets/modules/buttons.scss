@@ -1,38 +1,32 @@
 .btn {
   @extend %pointer;
+  @extend %rounded;
   @include elegance;
   -webkit-appearance: none;
   background: $brand-primary $gradient-darken;
-  text-shadow: 0 1px rgba(0, 0, 0, 0.04);
   border: 0;
-  border-radius: $radius;
   color: #fff;
   font: $size-h3 $font-base;
+  outline: 0;
   padding: 8px 16px;
   -webkit-tap-highlight-color: rgba(#000, .12);
+  text-shadow: 0 1px rgba(0, 0, 0, .04);
 
   &:hover {
     color: #fff;
     text-decoration: none;
-  }
-
-  &:active,
-  &:focus {
-    outline: 0;
   }
 }
 
 .btn[disabled] {
   box-shadow: none;
   cursor: not-allowed;
-  filter: alpha(opacity=65);
   opacity: .65;
   pointer-events: none;
 }
 
 @media print {
   .btn {
-    background-color: transparent !important;
     border: 1px solid #ccc;
   }
 
@@ -40,18 +34,6 @@
     display: none;
   }
 }
-
-// .btn-default {
-//   @extend .btn;
-//   background-color: #fff !important;
-//   border: 0;
-//   color: #000 !important;
-//
-//   &:hover {
-//     background-color: #fff !important;
-//     color: #000 !important;
-//   }
-// }
 
 .btn-blue {
   @include button-standard($bright-blue);
@@ -100,8 +82,8 @@
   }
 
   svg {
-    position: absolute;
     @include size(30px);
+    position: absolute;
   }
 
   path {
@@ -157,9 +139,4 @@
   path {
     fill: #06647f;
   }
-}
-
-%pointer,
-.pointer {
-  cursor: pointer;
 }

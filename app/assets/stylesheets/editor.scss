@@ -1,5 +1,5 @@
-@import 'variables';
-@import 'mixins';
+@import "variables";
+@import "mixins";
 
 body {
   background-color: $grey-lighter;
@@ -13,7 +13,7 @@ body {
   top: 15px;
 
   svg {
-    @include svg(32px, $grey);
+    @include svg-large($grey);
   }
 }
 
@@ -22,8 +22,8 @@ body {
     position: static;
 
     svg {
-      margin: 1em auto 0 auto;
       display: block;
+      margin: 1em auto 0;
     }
   }
 }
@@ -32,7 +32,7 @@ body {
   cursor: pointer;
 
   svg {
-    @include svg(32px, $grey-light);
+    @include svg-large($grey-light);
   }
 
   span {
@@ -62,17 +62,13 @@ body {
   @include size(28px);
   @include up(8px);
   cursor: pointer;
+  fill: $grey;
   margin-right: 3px;
-
-  path,
-  circle {
-    fill: $grey;
-  }
 }
 
 .control {
   svg {
-    @include svg(24px, $brand-primary);
+    @include svg-small($brand-primary);
   }
 
   span {
@@ -82,12 +78,7 @@ body {
 }
 
 .btn-save {
-  background-color: $grey-light;
+  background: $grey-light $gradient-darken;
   color: $grey-lighter;
   letter-spacing: $spacing;
-  text-transform: uppercase;
-
-  &:hover {
-    color: $grey-lighter;
-  }
 }

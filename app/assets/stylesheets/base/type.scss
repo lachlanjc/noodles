@@ -24,12 +24,12 @@ h1 {
 
   &.mega {
     font-size: $size-h1 * 1.8;
-    line-height: $size-h1 * 2;
+    line-height: $size-h1 * 1.8;
   }
 }
 
 @media (max-width: $screen-phone) {
-  h1.mega {
+  .mega {
     font-size: $size-h1;
     line-height: $size-h1 * 1.2;
   }
@@ -55,11 +55,10 @@ h5 {
 }
 
 h6 {
-  color: $grey;
+  @extend .text-muted;
+  @extend %astro;
+  @extend %caps;
   font-size: $size-h6;
-  letter-spacing: .02rem;
-  margin: 8px 0;
-  text-transform: uppercase;
 }
 
 small {
@@ -68,25 +67,22 @@ small {
 
 p {
   @extend .text;
-  margin-bottom: 16px;
-  margin-top: 0;
+  margin-bottom: 8px;
+  margin-top: 8px;
 }
 
 .lead {
-  font-size: $size-h2;
   color: $grey;
+  font-size: $size-h2;
   line-height: ($size-h2 * 1.5);
 }
 
-.normal {
-  font-weight: normal !important;
-}
-
 a {
-  color: $blue;
+  @extend .text-primary;
   text-decoration: none;
 
   &:hover {
+    outline: 0;
     text-decoration: underline;
   }
 }
@@ -110,49 +106,6 @@ a {
 
   h1 {
     @extend %astro;
-    color: $black;
-    text-transform: uppercase;
+    @extend .text-dark;
   }
-}
-
-// Helpers
-
-%astro {
-  letter-spacing: $spacing;
-}
-
-.text-left {
-  text-align: left;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.text-primary {
-  color: $brand-primary;
-}
-
-.text-red {
-  color: $red;
-}
-
-.text-green {
-  color: $green !important;
-}
-
-.text-blue {
-  color: $blue;
-}
-
-.text-bright-blue {
-  color: $bright-blue;
-}
-
-.text-dark {
-  color: $black;
-}
-
-.text-muted {
-  color: $grey;
 }

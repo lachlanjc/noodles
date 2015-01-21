@@ -14,11 +14,11 @@ label {
 
 .text-input {
   @extend .text;
+  @extend %rounded;
+  @extend %bordered;
   -webkit-appearance: none;
-  border: $border;
-  border-radius: 4px;
   color: $grey;
-  margin-bottom: 1em;
+  margin-bottom: 16px;
   padding: 4px 8px;
   width: 16em;
 

@@ -1,5 +1,5 @@
-@import 'variables';
-@import 'mixins';
+@import "variables";
+@import "mixins";
 
 body {
   background-color: $grey-lighter;
@@ -12,22 +12,21 @@ body {
     color: $black;
   }
 
-  .exit {
-    border-bottom: 0;
-
-    span {
-      @include up(-9px);
-      left: 3px;
-    }
-  }
-
   svg {
-    @include svg(28px, $grey);
+    @include svg-small($grey);
   }
+}
 
-  hr {
-    border-color: $grey;
+.exit {
+  border-bottom: 0;
+
+  span {
+    @include up(-6px);
   }
+}
+
+hr {
+  border-color: $grey;
 }
 
 .checklist {
@@ -36,25 +35,23 @@ body {
 
   &:checked + span {
     @include elegance;
-    text-decoration: line-through;
     color: $grey-light;
+    text-decoration: line-through;
   }
 }
 
 .cook-list {
-  ol {
-    padding: 0;
-  }
+  padding: 0;
 
   li {
     @include shadow-2;
-    background-color: #fff;
+    background: #fff;
     border-radius: $radius;
     display: block;
     font-size: $size-h2;
     line-height: 37px;
     list-style: none;
-    margin: 1em auto;
+    margin: 1em 0;
     padding: $padding-large;
     text-align: center;
     width: 600px;
@@ -62,12 +59,8 @@ body {
 }
 
 @media (max-width: $screen-tablet) {
-  .cook-list {
-    padding: 0 !important;
-
-    li {
-      width: 385px !important;
-    }
+  .cook-list li {
+    width: 385px;
   }
 }
 
@@ -75,7 +68,7 @@ body {
   main,
   aside,
   ul {
-    display: block !important;
+    display: block;
   }
 
   aside {
@@ -83,12 +76,11 @@ body {
   }
 
   .cook-list {
-    padding: 16px !important;
+    padding: 16px;
 
     li {
       box-sizing: border-box;
-      margin: 1em 0 !important;
-      width: 100% !important;
+      width: 100%;
     }
   }
 }

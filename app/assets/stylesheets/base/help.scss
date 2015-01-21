@@ -1,0 +1,165 @@
+
+%pointer {
+  cursor: pointer;
+}
+
+%rounded {
+  border-radius: $radius;
+}
+
+%bg-white {
+  background: #fff;
+}
+
+%bordered {
+  border: $border;
+}
+
+%b-x {
+  box-sizing: border-box;
+}
+
+.block {
+  display: block !important;
+}
+
+.ib {
+  display: inline-block !important;
+}
+
+.inline {
+  display: inline !important;
+}
+
+.full-width {
+  box-sizing: border-box;
+  width: 100% !important;
+}
+
+.m0 {
+  margin: 0 !important;
+}
+
+.m1 {
+  margin: 1rem;
+}
+
+.m2 {
+  margin: 2rem;
+}
+
+.m-small-left {
+  margin-left: 8px;
+}
+
+.m2-left {
+  margin-left: 2em;
+}
+
+.m-small-top {
+  margin-top: 8px;
+}
+
+.m1-top {
+  margin-top: 1em;
+}
+
+.m1-5-top {
+  margin-top: 1.5em;
+}
+
+.m1-right {
+  margin-right: 1em;
+}
+
+.m0-btm {
+  margin-bottom: 0 !important;
+}
+
+.m1-btm {
+  margin-bottom: 1em;
+  margin-top: 0;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flex {
+  @include display(flex);
+}
+
+.flex-between {
+  @include justify-content(space-between);
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+@media (max-width: $screen-phone) {
+  .mobile-no-flex {
+    display: block !important;
+  }
+}
+
+%astro {
+  letter-spacing: $spacing;
+}
+
+%caps {
+  text-transform: uppercase;
+}
+
+.normal {
+  font-weight: normal !important;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: $brand-primary;
+}
+
+.text-red {
+  color: $red;
+}
+
+.text-green {
+  color: $green;
+}
+
+.text-blue {
+  color: $blue;
+}
+
+.text-bright-blue {
+  color: $bright-blue;
+}
+
+.text-dark {
+  color: $black;
+}
+
+.text-muted {
+  color: $grey;
+}

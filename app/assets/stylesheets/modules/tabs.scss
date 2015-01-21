@@ -4,18 +4,18 @@
   }
 
   label {
-    display: inline-block;
+    @extend .ib;
+    @extend %bordered;
     background-color: $grey-lighter;
-    border: $border;
     border-bottom: 0;
     border-radius: $radius $radius 0 0;
     padding: 6px $padding-small;
   }
 
   .content {
-    display: none;
-    border: $border;
     border-radius: 0 $radius $radius;
+    border: $border;
+    display: none;
     padding: $padding-small;
   }
 

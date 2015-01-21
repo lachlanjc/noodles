@@ -2,16 +2,17 @@
   background: #000;
   display: none;
   height: 100%;
-  left: 0px;
+  left: 0;
   position: fixed;
-  top: 0px;
+  top: 0;
   width: 100%;
   z-index: 100;
 }
 
 .modal {
-  background-color: #fff;
-  border-radius: 6px;
+  @extend %rounded;
+  @extend .hide;
+  @extend %bg-white;
   display: none;
   left: 25%;
   padding: 15px;
@@ -26,7 +27,7 @@
 }
 
 .modal-close svg {
-  @include svg($size-h2, $grey-light);
+  @include svg-small($grey-light);
 }
 
 @media (max-width: $screen-phone) {
