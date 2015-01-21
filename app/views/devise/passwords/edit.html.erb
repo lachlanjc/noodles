@@ -1,11 +1,11 @@
 <% activate_nav!(:change_password) %>
 
-<%= render 'shared/nav' %>
+<%= render "shared/nav" %>
 
-<article class="col-6">
+<article class="document col-6">
 
   <h1>Change your password</h1>
-  <p>Just one more step and you can get back into your Noodles account!</p>
+  <p>Just one more step and you can get back into your Noodles account.</p>
 
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
 
@@ -13,10 +13,10 @@
 
     <%= f.hidden_field :reset_password_token %>
 
-    <%= f.label 'New password' %>
-    <%= f.password_field :password, class: 'text-input', autofocus: true, autocomplete: false, required: true %>
+    <%= f.label "New password" %>
+    <%= f.password_field :password, class: "text-input", autofocus: true, required: true, id: "new-password", pattern: ".{8,}" %>
 
-    <%= f.submit 'Change my password', class: 'btn' %>
+    <%= f.submit "Change my password", class: "btn" %>
 
   <% end %>
 

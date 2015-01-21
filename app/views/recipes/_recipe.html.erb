@@ -1,10 +1,8 @@
-<%= link_to recipe do %>
+<%= link_to recipe, class: "link-reset" do %>
   <div class="recipe-list-item">
-    <div class="indicators">
-      <% if recipe.favorite? %>
-        <%= inline_svg("favorite.svg") %>
-      <% end %>
-    </div>
+    <% if recipe.favorite? %>
+      <%= inline_svg("favorite.svg") %>
+    <% end %>
 
     <h2><%= recipe.title %></h2>
     <% unless recipe.description.blank? %>

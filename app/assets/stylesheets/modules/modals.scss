@@ -1,8 +1,7 @@
 #lean_overlay {
+  @extend .hide;
   background: #000;
-  display: none;
   height: 100%;
-  left: 0;
   position: fixed;
   top: 0;
   width: 100%;
@@ -17,9 +16,7 @@
   left: 25%;
   padding: 15px;
   position: fixed;
-  top: 10%;
   width: 560px;
-  z-index: 1050;
 
   h2 {
     margin-top: 0;

@@ -1,11 +1,11 @@
 <% activate_nav!(:forgot_password) %>
 
-<%= render 'shared/nav' %>
+<%= render "shared/nav" %>
 
-<article class="col-6">
+<article class="document col-6">
 
   <h1>Forgot your password?</h1>
-  <p>We'll get you back into the kitchen in just a minute! Enter your email address below and you'll get a link in the mail to reset your password.</p>
+  <p>We'll get you back into the kitchen in just a minute! Enter your email address below and you'll get a link in your email to reset your password.</p>
 
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
 
@@ -13,10 +13,10 @@
 
     <%= f.hidden_field :reset_password_token %>
 
-    <%= f.label 'Email address' %>
-    <%= f.email_field :email, class: 'text-input', autofocus: true, required: true %>
+    <%= f.label "Email address" %>
+    <%= f.email_field :email, class: "text-input", autofocus: true, required: true %>
 
-    <%= f.submit 'Send password reset link', class: 'btn' %>
+    <%= f.submit "Send password reset link", class: "btn" %>
 
   <% end %>
 

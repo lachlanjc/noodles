@@ -1,19 +1,15 @@
 label,
 input {
+  @extend .text;
   display: block;
+  outline: 0;
 }
 
-label {
-  @extend .text;
-
-  &.description {
-    display: inline-block;
-    margin-right: 6px;
-  }
+input[type="checkbox"], input[type="checkbox"] + label {
+  display: inline-block;
 }
 
 .text-input {
-  @extend .text;
   @extend %rounded;
   @extend %bordered;
   -webkit-appearance: none;
@@ -26,7 +22,6 @@ label {
     @include elegance;
     border-color: $bright-blue;
     color: $black;
-    outline: 0;
   }
 
   &.notes:focus {
@@ -43,19 +38,10 @@ textarea.text-input {
   }
 }
 
-.checkbox {
-  @extend .ib;
-  @include up(-1px);
-}
-
 @media (max-width: $screen-phone) {
   .text-input {
     width: 95% !important;
   }
-}
-
-input[type="file"] {
-  margin: 8px 0;
 }
 
 .radio label {

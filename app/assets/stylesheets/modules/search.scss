@@ -3,15 +3,13 @@
     @extend .ib;
 
     svg {
-      @include size(28px);
-      fill: $grey-light;
+      @include svg-small($grey-light)
     }
   }
 
   .text-input {
     @extend .ib;
-    @include up(-8px);
-    margin-left: 4px;
+    @include up(-7px);
   }
 }
 
