@@ -1,11 +1,11 @@
 module ApplicationHelper
   def flash_class(level)
     case level.to_sym
-      when :info then 'flash-info'
-      when :success then 'flash-success'
-      when :danger then 'flash-danger'
-      when :view then 'flash-danger'
-      else 'flash'
+      when :info then "flash flash-info"
+      when :success then "flash flash-success"
+      when :danger then "flash flash-danger"
+      when :view then "flash flash-danger"
+      else "flash"
     end
   end
 

@@ -25,3 +25,9 @@
     width: 14rem !important;
   }
 }
+
+@media print {
+  .search-form {
+    display: none;
+  }
+}

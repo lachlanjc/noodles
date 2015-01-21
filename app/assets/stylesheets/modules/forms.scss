@@ -19,7 +19,7 @@ input[type="checkbox"], input[type="checkbox"] + label {
   width: 16em;
 
   &:focus {
-    @include elegance;
+    @extend %elegance;
     border-color: $bright-blue;
     color: $black;
   }

@@ -1,9 +1,13 @@
+%btn-orange-bg {
+  background: $brand-primary $gradient-darken;
+}
+
 .btn {
+  @extend %btn-orange-bg;
   @extend %pointer;
   @extend %rounded;
   @include elegance;
   -webkit-appearance: none;
-  background: $brand-primary $gradient-darken;
   border: 0;
   color: #fff;
   font: $size-h3 $font-base;
@@ -64,9 +68,9 @@
 }
 
 %fab {
-  @include elegance;
+  @extend %btn-orange-bg;
+  @extend %elegance;
   @include shadow-3;
-  background: $brand-primary $gradient-darken;
   border-radius: 50%;
   position: fixed;
   -webkit-user-select: none;
@@ -83,11 +87,8 @@
 
   svg {
     @include size(30px);
-    position: absolute;
-  }
-
-  path {
     fill: #fff;
+    position: absolute;
   }
 }
 
@@ -133,10 +134,7 @@
   svg {
     @include size(25px);
     @include up(2px);
-    left: 2px;
-  }
-
-  path {
     fill: #06647f;
+    left: 2px;
   }
 }

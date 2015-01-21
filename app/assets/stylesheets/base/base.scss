@@ -42,15 +42,12 @@ img {
 
 .panel {
   @extend %box;
+  @extend .text;
   margin: $padding-small 0;
   padding: 20px 16px;
 
   h2 {
     @extend .m0;
-  }
-
-  ul {
-    @extend .text;
   }
 
   p:last-child {
