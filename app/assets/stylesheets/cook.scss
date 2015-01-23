@@ -13,7 +13,7 @@ body {
   }
 
   svg {
-    @include svg-small($grey);
+    fill: $grey;
   }
 }
 

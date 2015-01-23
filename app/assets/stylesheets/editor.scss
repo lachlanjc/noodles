@@ -68,7 +68,7 @@ body {
 
 .control {
   svg {
-    @include svg-small($brand-primary);
+    fill: $brand-primary;
   }
 
   span {
