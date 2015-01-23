@@ -9,7 +9,7 @@ $(document).ready ->
   document.getElementById("recipe_instructions").addEventListener("focus", numberRow, false)
 
   $(".details-btn").click ->
-    $(".details-panel").toggleClass("hide show")
+    $(".details-panel").toggleClass("hide block")
     $(".details-btn").toggleClass("block hide")
 
   # Autosize textareas

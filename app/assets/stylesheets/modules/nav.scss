@@ -1,9 +1,9 @@
 .nav {
-  @extend %bg-white;
   @extend .flex-between;
   @extend .flex;
   @include shadow-compact;
-  border-bottom: 1px solid $grey-lighter;
+  background: #fff;
+  border-bottom: $border;
   margin-bottom: 20px;
   padding: 16px 10px;
 }

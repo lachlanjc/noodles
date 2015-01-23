@@ -19,8 +19,8 @@
   }
 
   svg {
-    @include svg-small(#fff);
-    float: right;
+    @extend .float-right;
+    fill: #fff;
   }
 
   &:hover {

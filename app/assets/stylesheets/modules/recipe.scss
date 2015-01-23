@@ -1,6 +1,6 @@
 .header-indicator {
-  @extend .ib;
   @extend .float-right;
+  display: inline-block;
   margin-left: 4px;
 
   svg {
@@ -9,8 +9,8 @@
 }
 
 .recipe-photo {
-  @extend %rounded;
   @include shadow-compact;
+  border-radius: $radius;
   margin: 1.5em 0;
   max-width: 80%;
 }
@@ -92,7 +92,6 @@
   }
 
   .header-indicator,
-  .social-panel,
   .show-details {
     display: none !important;
   }

@@ -12,9 +12,9 @@ input[type="checkbox"], input[type="checkbox"] + label {
 .text-input {
   @extend .text;
   @extend %rounded;
-  @extend %bordered;
   -webkit-appearance: none;
   color: $grey;
+  border: $border;
   margin-bottom: 16px;
   outline: 0;
   padding: 4px 8px;
@@ -44,11 +44,6 @@ textarea.text-input {
   .text-input {
     width: 95% !important;
   }
-}
-
-.radio label {
-  line-height: 1.42;
-  text-transform: none;
 }
 
 .field_with_errors .text-input {

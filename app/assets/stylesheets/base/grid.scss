@@ -1,5 +1,7 @@
 article,
-.container {
+.container,
+.mobile-full-width {
+  box-sizing: border-box;
   margin: auto;
 }
 
@@ -7,7 +9,6 @@ article,
   article,
   .container,
   .mobile-full-width {
-    box-sizing: border-box;
     padding: 0 16px !important;
     width: 100% !important;
   }

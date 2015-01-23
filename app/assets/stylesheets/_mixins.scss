@@ -5,11 +5,6 @@
   width: $size;
 }
 
-@mixin svg-small($fill) {
-  @include size(24px);
-  fill: $fill;
-}
-
 @mixin svg-large($fill) {
   @include size(32px);
   fill: $fill;

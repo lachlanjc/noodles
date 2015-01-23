@@ -13,11 +13,10 @@ $(document).ready ->
   if document.getElementById("recipeFavoriteTrigger") != null
     $("#recipeFavoriteTrigger").click ->
       $("#recipeFavoriteForm").submit()
-  $(document).ready ->
-    if document.getElementById("importModalTrigger") != null
-      $("#importModalTrigger").leanModal()
-    if document.getElementById("shareModalTrigger") != null
-      $("#shareModalTrigger").leanModal()
+  if document.getElementById("importModalTrigger") != null
+    $("#importModalTrigger").leanModal()
+  if document.getElementById("shareModalTrigger") != null
+    $("#shareModalTrigger").leanModal()
   if document.getElementById("printRecipe") != null
     document.getElementById("printRecipe").addEventListener "click", printRecipe, false
   return

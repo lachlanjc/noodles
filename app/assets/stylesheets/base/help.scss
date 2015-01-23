@@ -18,10 +18,6 @@
   border: $border;
 }
 
-%b-x {
-  box-sizing: border-box;
-}
-
 .block {
   display: block !important;
 }
@@ -44,11 +40,11 @@
 }
 
 .m1 {
-  margin: 1rem;
+  margin: 1rrem;
 }
 
 .m2 {
-  margin: 2rem;
+  margin: 2rrem;
 }
 
 .m-small-left {
@@ -56,7 +52,7 @@
 }
 
 .m2-left {
-  margin-left: 2em;
+  margin-left: 2rem;
 }
 
 .m-small-top {
@@ -64,15 +60,15 @@
 }
 
 .m1-top {
-  margin-top: 1em;
+  margin-top: 1rem;
 }
 
 .m1-5-top {
-  margin-top: 1.5em;
+  margin-top: 1.5rem;
 }
 
 .m1-right {
-  margin-right: 1em;
+  margin-right: 1rem;
 }
 
 .m0-btm {
@@ -80,7 +76,7 @@
 }
 
 .m1-btm {
-  margin-bottom: 1em;
+  margin-bottom: 1rem;
   margin-top: 0;
 }
 

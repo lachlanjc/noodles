@@ -24,7 +24,7 @@
 }
 
 .modal-close svg {
-  @include svg-small($grey-light);
+  fill: $grey-light;
 }
 
 @media (max-width: $screen-phone) {

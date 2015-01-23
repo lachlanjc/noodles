@@ -15,10 +15,10 @@ img {
 }
 
 %box {
-  @extend %bg-white;
   @extend %bordered;
   @extend %rounded;
   @include shadow-compact;
+  background: #fff;
 }
 
 .document {

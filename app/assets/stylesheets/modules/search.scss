@@ -3,7 +3,7 @@
     @extend .ib;
 
     svg {
-      @include svg-small($grey-light)
+      fill: $grey-light;
     }
   }
 
