@@ -1,0 +1,39 @@
+@import "variables";
+
+.hero {
+  background-position: 45% 55%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 -5rem 6rem rgba(0,0,0,0.4);
+  padding: 9rem 0;
+
+  h1 {
+    color: #fff !important;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+  }
+
+  + .lead {
+    margin: 1.33rem auto;
+  }
+}
+
+.btn-lg {
+  font-size: $size-h2;
+  padding: 10px 20px;
+}
+
+.btn-paper-mini-inline {
+  margin-right: 8px;
+
+  & + h2 {
+    position: relative;
+    top: -4px;
+  }
+}
+
+@media (max-width: $screen-phone) {
+  .hero {
+    padding: 4rem 1rem;
+    background-size: 200%;
+  }
+}

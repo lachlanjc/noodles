@@ -61,12 +61,6 @@
   }
 }
 
-.btn-lg {
-  @extend .btn;
-  font-size: $size-h2;
-  padding: 10px 20px;
-}
-
 %fab {
   @extend %btn-orange-bg;
   @extend %elegance;

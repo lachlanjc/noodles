@@ -21,17 +21,17 @@ h1 {
   &:first-child {
     margin-top: 0;
   }
+}
 
-  &.mega {
-    font-size: $size-h1 * 1.8;
-    line-height: $size-h1 * 1.8;
-  }
+.mega {
+  font-size: $size-h1 * 1.66;
+  line-height: $size-h1 * 2;
 }
 
 @media (max-width: $screen-phone) {
   .mega {
-    font-size: $size-h1;
-    line-height: $size-h1 * 1.2;
+    font-size: $size-h1 * 1.2;
+    line-height: $size-h1 * 1.5;
   }
 }
 
