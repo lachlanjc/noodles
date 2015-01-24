@@ -38,7 +38,7 @@
     <%= label_tag :search do %>
       <%= inline_svg("search.svg") %>
     <% end %>
-    <%= text_field_tag :search, params[:search], class: "text-input invisble-input m0-btm", placeholder: ("Search " + pluralize(@recipes.count, t("general.recipe")) + "... ") %>
+    <%= text_field_tag :search, params[:search], class: "text-input invisible-input m0-btm", placeholder: ("Search " + pluralize(@recipes.count, t("general.recipe")) + "... ") %>
   </div>
   <% end %>
 
@@ -74,6 +74,6 @@
   <%= inline_svg("import.svg") %>
 </a>
 
-<%= link_to :new_recipe, class: "has-tooltip btn-paper", data: { tooltip: "Add a new recipe"} do %>
+<%= link_to :new_recipe, class: "has-tooltip btn-paper", data: { tooltip: "Add a new recipe" } do %>
   <%= inline_svg("add.svg") %>
 <% end %>
