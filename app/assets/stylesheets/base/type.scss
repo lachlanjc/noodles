@@ -17,10 +17,10 @@ h6 {
 h1 {
   color: $brand-primary;
   font-size: $size-h1;
+}
 
-  &:first-child {
-    margin-top: 0;
-  }
+article h1:first-child {
+  margin-top: 0;
 }
 
 .mega {

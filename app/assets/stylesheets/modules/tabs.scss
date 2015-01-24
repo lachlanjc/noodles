@@ -5,8 +5,8 @@
 
   label {
     @extend .ib;
-    @extend %bordered;
     background-color: $grey-lighter;
+    border: $border;
     border-bottom: 0;
     border-radius: $radius $radius 0 0;
     padding: 6px $padding-small;

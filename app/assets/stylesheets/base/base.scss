@@ -15,10 +15,10 @@ img {
 }
 
 %box {
-  @extend %bordered;
-  @extend %rounded;
   @include shadow-compact;
   background: #fff;
+  border-radius: $radius;
+  border: $border;
 }
 
 .document {

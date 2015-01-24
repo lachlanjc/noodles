@@ -9,10 +9,9 @@
 }
 
 .modal {
-  @extend %rounded;
   @extend .hide;
-  @extend %bg-white;
-  display: none;
+  background: #fff;
+  border-radius: $radius;
   left: 25%;
   padding: 15px;
   position: fixed;

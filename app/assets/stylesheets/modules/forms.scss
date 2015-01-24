@@ -11,10 +11,10 @@ input[type="checkbox"], input[type="checkbox"] + label {
 
 .text-input {
   @extend .text;
-  @extend %rounded;
   -webkit-appearance: none;
   color: $grey;
   border: $border;
+  border-radius: $radius;
   margin-bottom: 16px;
   outline: 0;
   padding: 4px 8px;

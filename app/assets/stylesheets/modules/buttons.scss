@@ -5,10 +5,10 @@
 .btn {
   @extend %btn-orange-bg;
   @extend %pointer;
-  @extend %rounded;
   @include elegance;
   -webkit-appearance: none;
   border: 0;
+  border-radius: $radius;
   color: #fff;
   font: $size-h3 $font-base;
   outline: 0;

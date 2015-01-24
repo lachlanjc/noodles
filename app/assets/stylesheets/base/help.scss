@@ -6,18 +6,6 @@
   cursor: pointer;
 }
 
-%rounded {
-  border-radius: $radius;
-}
-
-%bg-white {
-  background: #fff;
-}
-
-%bordered {
-  border: $border;
-}
-
 .block {
   display: block !important;
 }
@@ -149,6 +137,10 @@
 
 .text-bright-blue {
   color: $bright-blue;
+}
+
+.text-white {
+  color: #fff;
 }
 
 .text-dark {
