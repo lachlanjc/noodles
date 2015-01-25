@@ -7,7 +7,7 @@
   <%= inline_svg("home.svg") %>
 <% end %>
 
-<article class="col-7">
+<article class="col-7 container">
   <%= form_for(@recipe) do |f| %>
 
   <% if @recipe.img.url.blank? %>
@@ -34,7 +34,7 @@
   </div>
   <% end %>
 
-  <%= f.text_field :title, autofocus: true, required: true, class: "text-input invisible-input full-width header", placeholder: "Click here and title your recipe...", autocomplete: "off" %>
+  <%= f.text_field :title, autofocus: true, required: true, class: "text-input invisible-input full-width recipe-title", placeholder: "Click here and title your recipe...", autocomplete: "off" %>
 
   <%= f.text_area :description, class: "text-input invisible-input full-width js-auto-size", placeholder: "Optionally, write a description for the recipe right here.", rows: "1", autocomplete: "off" %>
 

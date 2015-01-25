@@ -7,40 +7,30 @@
 
 <%= render "shared/nav" %>
 
-<article class="col-7 recipe-list-container">
+<article class="col-7 container">
 
-  <% if params[:search] %>
-  <h1>Searching for <%= params[:search] %></h1>
-  <% else %>
-  <h1 class="ib"><%= t("general.recipes") %></h1>
-  <%= link_to :random_recipe, class: "header-indicator has-tooltip random", data: { tooltip: "Random recipe!" } do %>
-    <%= inline_svg("random.svg") %>
-  <% end %>
-  <% end %>
-
-  <%# Onboarding cards, prevent from showing in search results %>
-  <% unless params[:search] %>
-  <% if @recipes_count > 1 && @recipes_count < 7 %>
-  <p class="print-hide panel m1-btm">
-    Cookbooks with only <%= pluralize(@recipes_count, "recipe") %> in them aren't very useful. <%= link_to "Add some more", :new_recipe %>!
-  </p>
-  <% elsif @recipes_count > 8 && @favorites_count == 0 %>
-  <p class="print-hide panel m1-btm">
-    Favorites are a great way to quickly access your best recipes. To mark a Favorite, click the heart under Details while you edit a recipe.
-    <br>
-    Or <a href="http://noodles.withdraft.com/#favorites">learn more about Favorites</a>.
-  </p>
-  <% end %>
-  <% end %>
-
-  <%= form_tag recipes_path, :method => "get" do %>
-  <div class="search-form">
-    <%= label_tag :search do %>
-      <%= inline_svg("search.svg") %>
+  <header class="text-center">
+    <% if params[:search] %>
+    <h1 class="m0">Searching for <mark><%= params[:search] %></mark></h1>
+    <% else %>
+    <h1 class="m1-btm"><%= t("general.recipes") %></h1>
     <% end %>
-    <%= text_field_tag :search, params[:search], class: "text-input invisible-input m0-btm", placeholder: ("Search " + pluralize(@recipes.count, t("general.recipe")) + "... ") %>
-  </div>
-  <% end %>
+
+    <%# Onboarding cards, but prevent them from showing in search results %>
+    <% unless params[:search] %>
+    <% if @recipes_count > 1 && @recipes_count < 7 %>
+    <p class="print-hide text-muted m1-btm">
+      Cookbooks with only <%= pluralize(@recipes_count, "recipe") %> in them aren't very useful. <%= link_to "Add some more", :new_recipe %>!
+    </p>
+    <% elsif @recipes_count > 8 && @favorites_count == 0 %>
+    <p class="print-hide text-muted m1-btm">
+      Favorites are a great way to quickly access your best recipes. To mark a Favorite, click the heart under Details while you edit a recipe.
+      <br>
+      Or <a href="http://noodles.withdraft.com/#favorites">learn more about Favorites</a>.
+    </p>
+    <% end %>
+    <% end %>
+  </header>
 
   <% if params[:search] && @recipes_count == 0 %>
   <p class="m1-top">Sorry, no search results!</p>

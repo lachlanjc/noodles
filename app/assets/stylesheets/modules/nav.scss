@@ -1,15 +1,14 @@
 .nav {
   @extend .flex-between;
   @extend .flex;
-  @include shadow-compact;
   background: #fff;
   border-bottom: $border;
   margin-bottom: 20px;
-  padding: 16px 10px;
 }
 
 .nav-side {
-  @extend .ib;
+  display: inline-block;
+  margin: 16px 10px;
 }
 
 .nav-link {

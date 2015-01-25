@@ -1,50 +1,17 @@
 .random svg {
-  fill: $yellow;
+  @include up(15px);
+  fill: $grey-light;
 }
 
-.recipe-list-item {
-  border-top: 1px solid $grey-lighter;
-  color: $black;
-  padding: 12px;
-
-  h2 {
-    font-weight: 400;
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  p {
-    color: $grey-light;
-    margin: 0;
-  }
-
+.recipe-list .panel {
   svg {
     @extend .float-right;
-    fill: #fff;
+    fill: $brand-primary;
   }
 
-  &:hover {
+  &:hover h2 {
     @include elegance;
-    background: $brand-primary;
-
-    h2,
-    p {
-      color: #fff;
-    }
-  }
-}
-
-.recipe-list a {
-  text-decoration: none;
-
-  &:last-child .recipe-list-item {
-    border-bottom: 1px solid $grey-lighter;
-  }
-}
-
-@media (max-width: $screen-phone) {
-  .recipe-list-item {
-    padding: 10px 0;
+    color: $brand-primary;
   }
 }
 

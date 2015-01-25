@@ -1,12 +1,12 @@
 <%= link_to recipe, class: "link-reset" do %>
-  <div class="recipe-list-item">
+  <div class="panel">
     <% if recipe.favorite? %>
       <%= inline_svg("favorite.svg") %>
     <% end %>
 
     <h2><%= recipe.title %></h2>
     <% unless recipe.description.blank? %>
-    <p><%= recipe.description.truncate(180) %></p>
+    <p class="text-muted"><%= recipe.description.truncate(180) %></p>
     <% end %>
   </div>
 <% end %>

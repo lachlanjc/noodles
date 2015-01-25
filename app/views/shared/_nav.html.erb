@@ -4,13 +4,27 @@
 
     <div class="nav-side">
       <%= link_to t("general.home"), root_url, class: "nav-link" %>
-      <%= link_to t("general.recipes"), :recipes, class: "nav-link" + nav_active_class(:recipes) %>
-      <%= link_to t("general.favorites"), :favorites, class: "nav-link" + nav_active_class(:favorites) %>
+      <%= link_to t("general.recipes"), recipes_path, class: "nav-link" + nav_active_class(:recipes) %>
+      <%= link_to t("general.favorites"), favorites_path, class: "nav-link" + nav_active_class(:favorites) %>
     </div>
+
+    <% if nav_active?(:recipes) %>
+    <div>
+      <%= form_tag recipes_path, method: "get", class: "search-form" do %>
+        <%= label_tag :search do %>
+          <%= inline_svg("search.svg") %>
+        <% end %>
+        <%= text_field_tag :search, params[:search], class: "text-input invisible-input m0-btm", placeholder: ("Search " + pluralize(@recipes.count, t("general.recipe")) + "... ") %>
+      <% end %>
+      <%= link_to random_recipe_path, class: "random", data: { tooltip: "Random recipe!" } do %>
+        <%= inline_svg("random.svg") %>
+      <% end %>
+    </div>
+    <% end %>
 
     <div class="nav-side">
       <% unless nav_active?(:shared_recipe) || nav_active?(:onboarding) %>
-      <%= link_to "Blog", :announcements, class: "nav-link" + nav_active_class(:announcements) %>
+      <%= link_to "Blog", announcements_path, class: "nav-link" + nav_active_class(:announcements) %>
       <% end %>
       <%= link_to t("general.settings"), :settings, class:  "nav-link" + nav_active_class(:settings) %>
       <%= link_to t("general.help"), :help, class: "nav-link" + nav_active_class(:help) %>

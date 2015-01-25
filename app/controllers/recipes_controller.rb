@@ -42,6 +42,7 @@ class RecipesController < ApplicationController
 
   def random
     recipe = Recipe.where(:user_id => current_user.id).order("RANDOM()").first
+    flash[:default] = "Here's your random recipe."
     redirect_to recipe_url(recipe)
   end
 
@@ -216,7 +217,7 @@ class RecipesController < ApplicationController
 
     # Only allow trusted parameters
     def recipe_params
-      params.require(:recipe).permit(:title, :description, :img, :ingredients, :instructions, :favorite, :source, :serves, :notes, :private_share, :private_id)
+      params.require(:recipe).permit(:title, :description, :img, :ingredients, :instructions, :favorite, :source, :serves, :notes, :shared_id)
     end
 
     # Wombat returns arrays for ingredients and instructions.

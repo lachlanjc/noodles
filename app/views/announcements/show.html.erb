@@ -17,7 +17,6 @@
     on <%= @announcement.created_at.strftime('%B %e, %Y') %>
 
   <% if @admin == true %>
-    <%= javascript_include_tag :jquery %>
     · <%= link_to 'Edit', edit_announcement_path(@announcement) %>
     · <%= link_to 'Delete', @announcement, method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>

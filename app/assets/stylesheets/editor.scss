@@ -2,7 +2,6 @@
 @import "mixins";
 
 body {
-  background-color: $grey-lighter;
   padding-top: 15px;
 }
 
@@ -50,12 +49,12 @@ body {
   &.full-width {
     width: 100%;
   }
+}
 
-  &.header {
-    font-size: $size-h1;
-    font-weight: 600;
-    margin: 0;
-  }
+.recipe-title {
+  font-size: $size-h1 !important;
+  font-weight: 600;
+  margin: 0;
 }
 
 .details-btn svg {
@@ -79,6 +78,6 @@ body {
 
 .btn-save {
   background: $grey-light $gradient-darken;
-  color: $grey-lighter;
+  color: $brand-bg;
   letter-spacing: $spacing;
 }
