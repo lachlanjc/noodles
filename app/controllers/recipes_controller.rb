@@ -35,7 +35,7 @@ class RecipesController < ApplicationController
   def show
     if me_owns_recipe?
       @shared_url = shared_url(@recipe.shared_id)
-      @embed_code = '<script async src="http://www.getnoodl.es/embed/' + @recipe.shared_id + '"></script>'
+      @embed_code = '<script async src="http://www.getnoodl.es/embed/' + @recipe.shared_id.to_s + '"></script>'
       render :show
     else
       render :locked, status: 403
