@@ -1,3 +1,4 @@
+Rails.application.config.assets.precompile += %w(embed.css)
 Rails.application.config.assets.precompile += %w(cook.css)
 Rails.application.config.assets.precompile += %w(home.css)
 Rails.application.config.assets.precompile += %w(editor.css)

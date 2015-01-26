@@ -102,6 +102,9 @@
     <input type="radio" name="tab-set-2" class="tab-2" id="tab-2-2">
     <label for="tab-2-2">Download a PDF</label>
 
+    <input type="radio" name="tab-set-2" class="tab-3" id="tab-2-3">
+    <label for="tab-2-3">Embed on the Web</label>
+
     <br>
 
     <div class="content content-1">
@@ -117,6 +120,16 @@
     <div class="content content-2">
       <p>Click the button below to download a PDF of your recipe.</p>
       <p><%= link_to "Download PDF", recipe_export_pdf_path(@recipe), class: "btn-blue" %></p>
+    </div>
+
+    <div class="content content-3">
+      <p>Copy and paste the code below onto your website or blog to embed this recipe.</p>
+
+      <pre class="m0"><%= @embed_code %></pre>
+
+      <p><%= link_to "Need help?"
+
+      <p class="m1-top"><a href="mailto:noodles@helpful.io" data-helpful="noodles-a737a789-bc32-4d41-afb7-b01d18044823" data-helpful-name="<%= current_user.first_name %>" data-helpful-email="<%= current_user.email %>">Need help?</a></p>
     </div>
 
   </div>

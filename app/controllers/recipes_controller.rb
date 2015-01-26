@@ -4,6 +4,7 @@ class RecipesController < ApplicationController
   include ScrapingHelper
 
   before_filter :set_recipe, only: [:show, :edit, :update, :destroy, :save_to_noodles]
+  protect_from_forgery except: :embed_js
 
   # GET /recipes
   def index
@@ -34,6 +35,7 @@ class RecipesController < ApplicationController
   def show
     if me_owns_recipe?
       @shared_url = shared_url(@recipe.shared_id)
+      @embed_code = '<script async src="http://www.getnoodl.es/embed/' + @recipe.shared_id + '"></script>'
       render :show
     else
       render :locked, status: 403
@@ -50,6 +52,11 @@ class RecipesController < ApplicationController
       flash[:danger] = "That's not yours!"
       redirect_to recipes_path
     end
+  end
+
+  def embed_js
+    @recipe = Recipe.find_by_shared_id(params[:shared_id])
+    render "recipes/embed.js", layout: false
   end
 
   def random

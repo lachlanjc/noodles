@@ -2,11 +2,11 @@
 <html>
 <head>
   <title>
-    <% if content_for?(:title) %>
-      <%= content_for(:title) + " · Noodles" %>
-    <% else %>
-      Noodles
-    <% end %>
+  <% if content_for?(:title) %>
+    <%= content_for(:title) + " · Noodles" %>
+  <% else %>
+    Noodles
+  <% end %>
   </title>
   <% if content_for?(:meta) %>
   <%= yield(:meta) -%>
