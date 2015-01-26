@@ -31,14 +31,59 @@
   <%= render "recipe_body", cache: true %>
 
   <div class="print-hide m1-5-top">
-    <%= link_to t("general.edit"), :edit_recipe, class: "btn m1-right" %>
+    <%= link_to t("general.edit"), :edit_recipe, class: "btn-blue m1-right" %>
+    <a id="collectModalTrigger" href="#collectModal" class="btn m1-right">Add to Collection</a>
     <a id="shareModalTrigger" href="#shareModal" class="btn-green m1-right">Share</a>
-    <a id="printRecipe" class="btn-blue m1-right"><%= t("general.print") %></a>
+    <a id="printRecipe" class="btn-blue m1-right">Print</a>
   </div>
 
   <%= render "shared/printer" %>
 
 </article>
+
+<div id="collectModal" class="modal">
+  <a class="modal-close float-right" href="#">
+    <%= inline_svg("close.svg") %>
+  </a>
+
+  <h2>Add to Collection</h2>
+  <hr>
+  <% @collections = Collection.where(:user_id => current_user) %>
+
+  <% if @collections.any? %>
+    <% if @recipe.collections == [] %>
+    <p>To add "<%= @recipe.title %>" to your collections, select them from the list below.</p>
+    <% else %>
+    <p>"<%= @recipe.title %>" is already in <%= pluralize(@recipe.collections.reject!(&:blank?).length, "collection") %>. To add it to more, click more of your collections below.</p>
+    <% end %>
+
+    <%= form_for(@recipe) do |f| %>
+      <ul class="collection-list">
+        <%= collection_check_boxes(:recipe, :collections, @collections, :id, :name) do |b| %>
+        <li>
+          <%= b.label(class: "collection-list-item") do %>
+            <% if @recipe.collections.include?(b.value.to_s) %>
+            <%= b.check_box(:checked => "checked") %>
+            <% else %>
+            <%= b.check_box %>
+            <% end %>
+            <%= content_tag(:span, b.text) %>
+          <% end %>
+        </li>
+        <% end %>
+        <li>
+          <p><a href="<%= collections_path %>#newCollection" class="text-primary">Create a New Collection...</a></p>
+        </li>
+      </ul>
+      <%= f.submit "Save", class: "btn-blue float-right" %>
+    <% end %>
+  <% else %>
+    <div class="well text">
+      You don't have any collections yet. Why don't you <a href="<%= collections_path %>#newCollection" class="text-blue">create one</a>?
+    </div>
+  <% end %>
+
+</div>
 
 <div id="shareModal" class="modal">
   <a class="modal-close float-right" href="#">

@@ -97,7 +97,9 @@ a {
 
 .text {
   color: $text-color;
-  font: 400 16px/1.6 $font-base;
+  font-size: $size-body;
+  font-weight: 400;
+  line-height: 1.6;
   word-wrap: break-word;
 
   ol,

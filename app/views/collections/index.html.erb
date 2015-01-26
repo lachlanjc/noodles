@@ -1,0 +1,32 @@
+<%= render "shared/nav" %>
+
+<article class="col-7">
+  <h1>Collections</h1>
+  <div class="collection-list">
+    <%= render partial: "collection", collection: @collections, cache: true %>
+  </div>
+</article>
+
+<div class="modal" id="newCollection">
+  <h2>Create a Collection</h2>
+  <hr>
+  <%= form_for(Collection.new) do |f| %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "text-input", placeholder: "Spectacular Desserts" %>
+
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "text-input", placeholder: "The best food to end your meal." %>
+
+    <br>
+    <%= f.label :photo, class: "ib" %><small class="m-small-left">(optional)</small>
+    <%= f.file_field :photo, class: "line-height-reset" %>
+
+    <%= f.submit "Create", class: "btn-blue float-right" %>
+
+  <% end %>
+</div>
+
+<a href="#newCollection" class="btn-paper modalTrigger">
+  <%= inline_svg("add.svg") %>
+</a>

@@ -23,7 +23,8 @@ Rails.application.routes.draw do
   get '/about' => 'pages#about', as: :about
   get '/help' => 'pages#about', as: :help
 
-  resources :announcements
+  resources :announcements, :collections, except: [:new, :edit]
+
   get '/announcements/unsubscribe/EAY7pdX9/:user_id' => 'announcements#unsubscribe'
 
   devise_for :users, :controllers => { :registrations => 'registrations' }
