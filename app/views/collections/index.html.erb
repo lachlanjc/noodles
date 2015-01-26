@@ -8,6 +8,9 @@
 </article>
 
 <div class="modal" id="newCollection">
+  <a class="modal-close float-right" href="#">
+    <%= inline_svg("close.svg") %>
+  </a>
   <h2>Create a Collection</h2>
   <hr>
   <%= form_for(Collection.new) do |f| %>
