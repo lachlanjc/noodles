@@ -1,10 +1,14 @@
 <%= render "shared/nav" %>
 
 <article class="col-7">
-  <h1>Collections</h1>
+  <h1 class="text-center">Collections</h1>
+  <% if @collections.any? %>
   <div class="collection-list">
     <%= render partial: "collection", collection: @collections, cache: true %>
   </div>
+  <% else %>
+  <div class="panel col-6 center">You don't have any collections yet. Why don't you <a href="#newCollection" class="modalTrigger">create your first one</a>?</div>
+  <% end %>
 </article>
 
 <div class="modal" id="newCollection">
