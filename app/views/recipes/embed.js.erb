@@ -1,18 +1,1 @@
-document.write('<link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Lato:400"><%= stylesheet_link_tag "embed", media: "all" %>');
-document.write('
-<% if @recipe.img.url.blank? %>
-<div class="noodles-embed" onclick="window.location=\'http://www.getnoodl.es/s/<%= @recipe.shared_id %>\';">
-<% else %>
-<div class="noodles-embed has-bg-img" style="background-image: url(<%= @recipe.img.url %>);" onclick="window.location=\'http://www.getnoodl.es/s/<%= @recipe.shared_id %>\';">
-<% end %>
-  <div class="noodles-embed-container">
-    <h1 class="noodles-header"><%= @recipe.title %></h1>
-    <p class="noodles-author">By <%= User.find(@recipe.user_id).first_name %></p>
-    <% unless @recipe.description.blank? %>
-    <p class="noodles-description"><%= @recipe.description %></p>
-    <% end %>
-  </div>
-  <div class="noodles-bar">
-    <p class="noodles-info">Published with &#10084; on <%= link_to "Noodles", root_url %></p>
-  </div>
-</div>');
+document.write('<link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Lato:400"><%= stylesheet_link_tag "embed", media: "all" %>'); document.write(' <% if @recipe.img.url.blank? %> <div class="noodles-embed" onclick="window.location=\'http://www.getnoodl.es/s/<%= @recipe.shared_id %>\';"> <% else %> <div class="noodles-embed has-bg-img" style="background-image: url(<%= @recipe.img.url %>);" onclick="window.location=\'http://www.getnoodl.es/s/<%= @recipe.shared_id %>\';"> <% end %> <div class="noodles-embed-container"> <h1 class="noodles-header"><%= @recipe.title %></h1> <p class="noodles-author">By <%= User.find(@recipe.user_id).first_name %></p> <% unless @recipe.description.blank? %> <p class="noodles-description"><%= @recipe.description %></p> <% end %> </div> <div class="noodles-bar"> <p class="noodles-info">Published with &#10084; on <%= link_to "Noodles", root_url %></p> </div> </div>');
