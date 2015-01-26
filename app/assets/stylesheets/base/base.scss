@@ -35,19 +35,26 @@ body {
   margin: $padding-small 0;
   padding: 20px 16px;
 
-  h2 {
-    @extend .m0;
+  h2:not(.collection-name) {
+    margin: 0;
   }
 
-  p:last-child {
+  p:last-child:not(.collection-description) {
     margin-bottom: 0;
   }
 }
 
-.well {
-  background-color: #fafafa;
-  border-radius: $radius;
+.outlined {
   border: 1px solid $grey-lighter;
+  border-radius: $radius;
+  padding: 8px;
+  text-align: center;
+}
+
+.well {
+  background-color: $brand-bg;
+  border: 1px solid $grey-lighter;
+  border-radius: $radius;
   box-shadow: inset 0 0 10px rgba(0,0,0,.05);
   padding: 30px;
   text-align: center;

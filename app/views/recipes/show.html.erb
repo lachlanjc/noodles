@@ -21,14 +21,16 @@
 
   <div class="text m1-top"><%= markdown(@recipe.description.to_s) %></div>
 
+  <%= render "recipe_body", cache: true %>
+
   <% if @recipe.shared? %>
-  <div class="panel ib print-hide">
+  <div class="flex">
+  <div class="outlined ib center print-hide m1-top">
     <%= render "shared/social" %>
     <p class="m1-top"><strong><%= link_to "Check it out.", @shared_url, class: "btn-blue" %></strong></p>
   </div>
+  </div>
   <% end %>
-
-  <%= render "recipe_body", cache: true %>
 
   <div class="print-hide m1-5-top">
     <%= link_to t("general.edit"), :edit_recipe, class: "btn-blue m1-right" %>
@@ -72,7 +74,7 @@
         </li>
         <% end %>
         <li>
-          <p><a href="<%= collections_path %>#newCollection" class="text-primary">Create a New Collection...</a></p>
+          <p><a href="/collections#newCollection" class="text-primary">Create a New Collection...</a></p>
         </li>
       </ul>
       <%= f.submit "Save", class: "btn-blue float-right" %>
@@ -82,7 +84,6 @@
       You don't have any collections yet. Why don't you <a href="<%= collections_path %>#newCollection" class="text-blue">create one</a>?
     </div>
   <% end %>
-
 </div>
 
 <div id="shareModal" class="modal">
@@ -99,7 +100,6 @@
   <p>Anyone with this link can see your recipe and save a copy to their own Noodles account.</p>
   <p><%= link_to "Share this recipe", recipe_share_it_path(@recipe), class: "btn-blue" %></p>
   <% end %>
-
 </div>
 
 <%= link_to recipe_cook_path(:recipe_id => @recipe.id), class: "btn-paper has-tooltip", data: { tooltip: "Open Cook Mode" } do %>

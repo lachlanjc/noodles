@@ -34,8 +34,11 @@
   <%= markdown(@recipe.description) %>
 
   <% if me_owns_recipe? %>
-  <div class="panel ib print-hide">
-    <%= render "shared/social" %>
+  <div class="flex">
+    <div class="outlined ib center print-hide">
+      <%= render "shared/social" %>
+      <p class="m1-top"><strong><%= link_to "Check it out.", @shared_url, class: "btn-blue" %></strong></p>
+    </div>
   </div>
   <% end %>
 
