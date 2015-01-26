@@ -40,6 +40,18 @@ class RecipesController < ApplicationController
     end
   end
 
+  def export_pdf
+    @recipe = Recipe.find(params[:recipe_id])
+
+    if me_owns_recipe?
+      prawnto inline: true, filename: "#{@recipe.title}"
+      render "recipes/show.pdf"
+    else
+      flash[:danger] = "That's not yours!"
+      redirect_to recipes_path
+    end
+  end
+
   def random
     recipe = Recipe.where(:user_id => current_user.id).order("RANDOM()").first
     flash[:default] = "Here's your random recipe."

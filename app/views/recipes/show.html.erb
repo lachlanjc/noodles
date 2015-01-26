@@ -91,15 +91,36 @@
     <%= inline_svg("close.svg") %>
   </a>
 
-  <% if @recipe.shared? %>
-  <p>Your recipe is already shared!</p>
-  <p><%= link_to "Check it out.", @shared_url %></p>
-  <% else %>
   <h2>Share this recipe</h2>
   <hr>
-  <p>Anyone with this link can see your recipe and save a copy to their own Noodles account.</p>
-  <p><%= link_to "Share this recipe", recipe_share_it_path(@recipe), class: "btn-blue" %></p>
-  <% end %>
+
+  <div class="tab-container">
+
+    <input type="radio" name="tab-set-2" class="tab-1" id="tab-2-1" checked>
+    <label for="tab-2-1">Share a link</label>
+
+    <input type="radio" name="tab-set-2" class="tab-2" id="tab-2-2">
+    <label for="tab-2-2">Download a PDF</label>
+
+    <br>
+
+    <div class="content content-1">
+      <% if @recipe.shared? %>
+      <p>Your recipe is already shared!</p>
+      <p><%= link_to "Check it out", @shared_url, class: "btn-blue" %></p>
+      <% else %>
+      <p>Anyone with this link can see your recipe and save a copy to their own Noodles account.</p>
+      <p><%= link_to "Share this recipe", recipe_share_it_path(@recipe), class: "btn-blue" %></p>
+      <% end %>
+    </div>
+
+    <div class="content content-2">
+      <p>Click the button below to download a PDF of your recipe.</p>
+      <p><%= link_to "Download PDF", recipe_export_pdf_path(@recipe), class: "btn-blue" %></p>
+    </div>
+
+  </div>
+
 </div>
 
 <%= link_to recipe_cook_path(:recipe_id => @recipe.id), class: "btn-paper has-tooltip", data: { tooltip: "Open Cook Mode" } do %>
