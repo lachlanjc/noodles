@@ -9,6 +9,7 @@ h3,
 h4,
 h5,
 h6 {
+  color: darken($text-color, 4%);
   line-height: 1.1;
   margin-bottom: 15px;
   margin-top: 15px;
@@ -36,17 +37,17 @@ article h1:first-child {
 }
 
 h2,
-.text h1 {
+.text-normalized h1 {
   font-size: $size-h2;
 }
 
 h3,
-.text h2 {
+.text-normalized h2 {
   font-size: $size-h3;
 }
 
 h4,
-.text h3 {
+.text-normalized h3 {
   font-size: $size-h4;
 }
 
@@ -67,8 +68,7 @@ small {
 
 p {
   @extend .text;
-  margin-bottom: 8px;
-  margin-top: 8px;
+  margin: 0 0 12px;
 }
 
 .lead {
@@ -96,7 +96,10 @@ a {
 }
 
 .text {
-  font: 400 16px/1.6 $font-base;
+  color: $text-color;
+  font-size: $size-body;
+  font-weight: 400;
+  line-height: 1.6;
   word-wrap: break-word;
 
   ol,

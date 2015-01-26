@@ -15,6 +15,7 @@ input[type="checkbox"], input[type="checkbox"] + label {
   color: $grey;
   border: $border;
   border-radius: $radius;
+  font-family: $font-base;
   margin-bottom: 16px;
   outline: 0;
   padding: 4px 8px;
@@ -22,7 +23,7 @@ input[type="checkbox"], input[type="checkbox"] + label {
 
   &:focus {
     @extend %elegance;
-    border-color: $bright-blue;
+    border-color: $blue;
     color: $black;
   }
 
@@ -38,6 +39,10 @@ textarea.text-input {
   &.js-auto-size {
     resize: none;
   }
+}
+
+.line-height-reset {
+  line-height: 1 !important;
 }
 
 @media (max-width: $screen-phone) {

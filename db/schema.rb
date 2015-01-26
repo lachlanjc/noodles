@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150111223717) do
+ActiveRecord::Schema.define(version: 20150124152851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,20 @@ ActiveRecord::Schema.define(version: 20150111223717) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "collections", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "collections", ["user_id"], name: "index_collections_on_user_id", using: :btree
 
   create_table "recipes", force: true do |t|
     t.string   "title"
@@ -45,6 +59,7 @@ ActiveRecord::Schema.define(version: 20150111223717) do
     t.text     "notes"
     t.string   "serves"
     t.string   "shared_id"
+    t.text     "collections",           default: [], array: true
   end
 
   create_table "users", force: true do |t|

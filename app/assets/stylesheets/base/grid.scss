@@ -2,7 +2,14 @@ article,
 .container,
 .mobile-full-width {
   box-sizing: border-box;
-  margin: auto;
+  margin: 1rem auto;
+}
+
+@media (max-width: $screen-tablet) {
+  .col-7,
+  .container {
+    width: 83.33333333% !important;
+  }
 }
 
 @media (max-width: $screen-phone) {
