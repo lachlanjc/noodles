@@ -1,3 +1,4 @@
+<% activate_nav!(:collections) %>
 <%= render "shared/nav" %>
 
 <% if @collection.photo.url.blank? %>
@@ -22,7 +23,7 @@
 </header>
 <% end %>
 
-<article class="col-7">
+<article class="col-7 recipe-list">
   <% if @recipes.any? %>
     <%= render partial: "recipes/recipe", collection: @recipes, cache: true %>
   <% else %>
