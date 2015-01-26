@@ -4,7 +4,7 @@
       <%= inline_svg("favorite.svg") %>
     <% end %>
 
-    <h2><%= recipe.title %></h2>
+    <h3 class="m0"><%= recipe.title %></h3>
     <% unless recipe.description.blank? %>
     <p class="text-muted"><%= recipe.description.truncate(180) %></p>
     <% end %>

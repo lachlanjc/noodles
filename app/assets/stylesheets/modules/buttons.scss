@@ -10,7 +10,7 @@
   border: 0;
   border-radius: $radius;
   color: #fff;
-  font: $size-h3 $font-base;
+  font: $size-body $font-base;
   outline: 0;
   padding: 8px 16px;
   -webkit-tap-highlight-color: rgba(#000, .12);
@@ -40,7 +40,7 @@
 }
 
 .btn-blue {
-  @include button-standard($bright-blue);
+  @include button-standard($blue);
 }
 
 .btn-green {
@@ -115,20 +115,4 @@
 
 .btn-paper-mini-inline {
   @extend .btn-paper-mini;
-  @extend .ib;
-  background-color: $bright-blue;
-  bottom: 0;
-  position: initial;
-  right: 0;
-
-  + h2 {
-    @extend .ib;
-  }
-
-  svg {
-    @include size(25px);
-    @include up(2px);
-    fill: #06647f;
-    left: 2px;
-  }
 }

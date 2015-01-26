@@ -9,7 +9,11 @@
     fill: $brand-primary;
   }
 
-  &:hover h2 {
+  h3 {
+    color: $header-color;
+  }
+
+  &:hover h3 {
     @include elegance;
     color: $brand-primary;
   }
