@@ -1,7 +1,7 @@
-<%- title 'Announcements' %>
+<%- title "Announcements" %>
 <% activate_nav!(:announcements) %>
 
-<%= render 'shared/nav' %>
+<%= render "shared/nav" %>
 
 <article class="col-8">
 
@@ -10,8 +10,7 @@
 
   <hr>
 
-  <div class="document">
-    <%= render partial: 'announcement', collection: @announcements, cache: true %>
-  </div>
+  <%= javascript_include_tag "reactive", "data-turbolinks-track" => true %>
+  <%= react_component("AnnouncementList", announcements: @announcements.as_json) %>
 
 </article>
