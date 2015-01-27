@@ -9,7 +9,7 @@ class CookController < ApplicationController
       @recipe_step_count = @recipe.instructions.lines.count
       render :index
     else
-      flash[:view] = "You can't cook with private recipes!"
+      flash[:view] = "You can't cook with recipes that aren't yours!"
       redirect_to root_url
     end
   end
