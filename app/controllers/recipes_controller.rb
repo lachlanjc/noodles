@@ -46,7 +46,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:recipe_id])
 
     if me_owns_recipe?
-      prawnto inline: true, filename: "#{@recipe.title}"
+      prawnto filename: @recipe.title, :inline => true
       render "recipes/show.pdf"
     else
       flash[:danger] = "That's not yours!"
