@@ -1,8 +1,6 @@
 #= require jquery
 #= require jquery_ujs
-#= require jquery.turbolinks
 #= require modals
-#= require turbolinks
 
 printRecipe = ->
   toPrint = confirm("Just remember the trees.")

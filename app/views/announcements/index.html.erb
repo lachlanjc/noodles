@@ -10,7 +10,7 @@
 
   <hr>
 
-  <%= javascript_include_tag "reactive", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "reactive" %>
   <%= react_component("AnnouncementList", announcements: @announcements.as_json) %>
 
 </article>
