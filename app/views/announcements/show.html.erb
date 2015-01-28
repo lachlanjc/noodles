@@ -1,37 +1,11 @@
 <%- title @announcement.title %>
 <% activate_nav!(:announcements) %>
 
-<%= render 'shared/nav' %>
+<%= render "shared/nav" %>
 
-<article class="col-8 document">
-  <h1 class="m0 text-dark"><%= @announcement.title %></h1>
+<%= javascript_include_tag "reactive" %>
+<%= react_component("AnnouncementBody", announcement: @announcement.as_json) %>
 
-  <p class="text-muted m0">
-  <% case @announcement.author_id
-    when 1 %>
-    Lachlan Campbell
-  <% when 2 %>
-    Taran Samarth
-  <% end %>
-
-    on <%= @announcement.created_at.strftime('%B %e, %Y') %>
-
-  <% if @admin == true %>
-    · <%= link_to 'Edit', edit_announcement_path(@announcement) %>
-    · <%= link_to 'Delete', @announcement, method: :delete, data: { confirm: 'Are you sure?' } %>
-  <% end %>
-  </p>
-
-  <div class="text m1-top">
-    <%= @announcement.body_rendered.html_safe %>
-  </div>
-
-  <hr>
-
-  <% case @announcement.author_id
-  when 1 %>
-    <%= render 'shared/bio_lachlan' %>
-  <% when 2 %>
-    <%= render 'shared/bio_taran' %>
-  <% end %>
-</article>
+<% if @admin == true %>
+  <%= link_to "Delete", @announcement, method: :delete, data: { confirm: "Are you sure?" } %>
+<% end %>

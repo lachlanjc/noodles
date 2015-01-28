@@ -1,9 +1,21 @@
 var AnnouncementItem = React.createClass({
   render: function() {
     return <div className="panel">
-      <h1 className="m0">{this.props.data.title}</h1>
-      <p className="text-myted">Published by Lachlan on {this.props.data.created_at}</p>
-      <div className="text" dangerouslySetInnerHTML={{ __html: this.props.data.body_rendered }}></div>
+      <h1 className="m0"><a href={this.props.data.url}>{this.props.data.title}</a></h1>
+      <p className="text-muted">Published by Lachlan on {this.props.data.created_at}</p>
+      <div className="text" dangerouslySetInnerHTML={{ __html: this.props.data.body_rendered }} />
+    </div>
+  }
+});
+var AnnouncementBody = React.createClass({
+  render: function() {
+    return <div className="document col-7">
+      <h1 className="m0">{this.props.announcement.title}</h1>
+      <p className="text-muted">Published by Lachlan on {this.props.announcement.created_at}</p>
+      <div className="text" dangerouslySetInnerHTML={{ __html: this.props.announcement.body_rendered }}></div>
+      <hr />
+      <BioLachlan />
+      <hr />
     </div>
   }
 });
