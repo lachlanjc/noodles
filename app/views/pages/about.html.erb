@@ -1,5 +1,6 @@
 <% activate_nav!(:help) %>
 
+<%= javascript_include_tag "reactive" %>
 <script async src="https://assets.helpful.io/assets/widget.js"></script>
 
 <%= render "shared/nav" %>
@@ -10,7 +11,7 @@
 
   <h1>Need help?</h1>
 
-  <%= markdown("First, check out [this guide](http://noodles.withdraft.com) for help with various features, such as Cook Mode, Sharing, Favorites, and others.") %>
+  <%= markdown("First, check out [this guide](http://noodles.withdraft.com) for help with various features, such as Cook Mode, Sharing, Web Import, Favorites, and others.") %>
 
   <p class="text-center m2"><a href="mailto:noodles@helpful.io" data-helpful="noodles-a737a789-bc32-4d41-afb7-b01d18044823" data-helpful-name="<%= current_user.first_name %>" data-helpful-email="<%= current_user.email %>" class="btn-blue">Ask a question</a></p>
 
@@ -19,8 +20,8 @@
   <hr>
 
   <h2>About Noodles</h2>
-
-  <%= render "creators" %>
+  <%= react_component("BioLachlan") %>
+  <%= react_component("BioTaran") %>
 
   <% else %>
 
@@ -28,7 +29,8 @@
 
   <%= markdown("Noodles is a cooking app — a simple and free place for all your recipes. Check out [the homepage](http://www.getnoodl.es/) or the [Features page](http://noodles.withdraft.com) for more information on the app.") %>
 
-  <%= render "creators" %>
+  <%= react_component("BioLachlan") %>
+  <%= react_component("BioTaran") %>
 
   <hr>
 
