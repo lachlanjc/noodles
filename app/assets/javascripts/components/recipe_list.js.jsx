@@ -9,12 +9,12 @@ var RecipeItem = React.createClass({
       <div className="panel">
         {favoriteData}
         <h3 className="m0">{this.props.data.title}</h3>
-        <div className="text text-muted">{this.props.data.description}</div>
+        <div className="text text-muted">{this.props.data.description_preview}</div>
       </div>
     </a>
   }
 });
-
+// TODO: Build recipe search in React
 var RecipeList = React.createClass({
   render: function() {
     return (

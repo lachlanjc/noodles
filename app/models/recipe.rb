@@ -23,7 +23,7 @@ class Recipe < ActiveRecord::Base
   def as_json
     {
       title: title,
-      description: description,
+      description_preview: description.truncate(165),
       favorite: favorite,
       url: "/recipes/" + id.to_s,
       notes: notes.to_s,
