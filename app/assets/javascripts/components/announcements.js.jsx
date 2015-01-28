@@ -10,11 +10,14 @@ var AnnouncementItem = React.createClass({
 var AnnouncementList = React.createClass({
   render: function() {
     return (
-      <div>
+      <article className="col-7">
+        <h1>Noodles keeps getting better.</h1>
+        <h2 class="text-muted">Check back here for the latest updates.</h2>
+        <hr />
         {this.props.announcements.map(function(announcement) {
            return <AnnouncementItem key={announcement.id} data={announcement}/>;
         })}
-      </div>
+      </article>
     );
   }
 });

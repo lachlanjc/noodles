@@ -1,16 +1,6 @@
 <%- title "Announcements" %>
 <% activate_nav!(:announcements) %>
+<%= javascript_include_tag "reactive" %>
 
 <%= render "shared/nav" %>
-
-<article class="col-8">
-
-  <h1>Noodles keeps getting better.</h1>
-  <h2 class="text-muted">Check back here for the latest updates.</h2>
-
-  <hr>
-
-  <%= javascript_include_tag "reactive" %>
-  <%= react_component("AnnouncementList", announcements: @announcements.as_json) %>
-
-</article>
+<%= react_component("AnnouncementList", announcements: @announcements.as_json) %>
