@@ -34,9 +34,7 @@
 </article>
 
 <div class="modal" id="editCollection">
-  <a class="modal-close float-right" href="#">
-    <%= inline_svg("close.svg") %>
-  </a>
+  <%= react_component("ModalClose") %>
   <h2>Edit Collection</h2>
   <hr>
   <%= form_for(@collection) do |f| %>
