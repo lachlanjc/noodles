@@ -11,7 +11,7 @@
     </div>
   </h1>
 
-  <h3><%= link_to "« All recipes", recipes_path %></h3>
+  <h4><%= link_to "« All recipes", recipes_path %></h4>
 
   <div class="recipe-list">
     <%= render partial: "recipe", collection: @recipes, cache: true %>
