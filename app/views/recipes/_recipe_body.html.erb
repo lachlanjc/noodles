@@ -1,5 +1,5 @@
 <h2 class="m1-top">Ingredients</h1>
-<%= simple_format(@recipe.ingredients, class: 'text') %>
+<%= simple_format(@recipe.ingredients, class: "text") %>
 
 <h2 class="m1-top">Instructions</h2>
 <div class="text text-normalized">
@@ -7,14 +7,14 @@
 </div>
 
 <% unless @recipe.img.url.blank? %>
-<%= image_tag @recipe.img, class: 'recipe-photo' %>
+<%= image_tag @recipe.img, class: "recipe-photo" %>
 <% end %>
 
 <h2 class="m1-top">Details</h2>
 <% if @recipe.source.blank? && @recipe.serves.blank? %>
 <p class="text-muted">You don't yet have any details for this recipe. Details describe where the recipe came from and the recipe's yield.</p>
 <% else %>
-<p>Source: <%= auto_link(@recipe.source, :html => {:rel => 'nofollow'}) %>
+<p>Source: <%= auto_link(@recipe.source, :html => {:rel => "nofollow"}) %>
 <p>Yield: <%= @recipe.serves %>
 <% end %>
 
@@ -41,8 +41,8 @@
 
     <div class="content content-2">
       <%= form_for(@recipe) do |f| %>
-        <%= f.text_area :notes, class: 'text-input full-width m1-btm notes', placeholder: 'Click here to add Notes to your recipe.', rows: '4' %>
-        <%= f.submit t('general.save'), class: 'btn-blue btn-sm block' %>
+        <%= f.text_area :notes, class: "text-input full-width m1-btm notes", placeholder: "Click here to add Notes to your recipe.", rows: "4" %>
+        <%= f.submit t("general.save"), class: "btn-blue btn-sm block" %>
       <% end %>
     </div>
 
