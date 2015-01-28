@@ -30,9 +30,7 @@
   <p class="m1-top">Sorry, no search results!</p>
   <% end %>
 
-  <div class="recipe-list">
-    <%= react_component("RecipeList", recipes: @recipes.as_json) %>
-  </div>
+  <%= react_component("RecipeList", recipes: @recipes.as_json) %>
 
   <p class="printer-copy"><%= t("recipes.printing.print_copy") %></p>
 
