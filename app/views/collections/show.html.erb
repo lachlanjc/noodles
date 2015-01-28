@@ -1,4 +1,5 @@
 <% activate_nav!(:collections) %>
+<%- title @collection.name %>
 <%= render "shared/nav" %>
 
 <% if @collection.photo.url.blank? %>
