@@ -14,7 +14,7 @@
   <h4><%= link_to "« All recipes", recipes_path %></h4>
 
   <div class="recipe-list">
-    <%= render partial: "recipe", collection: @recipes, cache: true %>
+    <%= react_component("RecipeList", recipes: @recipes.as_json) %>
   </div>
 
   <p class="printer-copy"><%= t("recipes.printing.print_copy") %></p>
