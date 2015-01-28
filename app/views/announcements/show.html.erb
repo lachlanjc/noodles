@@ -2,8 +2,6 @@
 <% activate_nav!(:announcements) %>
 
 <%= render "shared/nav" %>
-
-<%= javascript_include_tag "reactive" %>
 <%= react_component("AnnouncementBody", announcement: @announcement.as_json) %>
 
 <% if @admin == true %>

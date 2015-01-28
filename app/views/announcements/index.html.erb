@@ -1,6 +1,5 @@
 <%- title "Announcements" %>
 <% activate_nav!(:announcements) %>
-<%= javascript_include_tag "reactive" %>
 
 <%= render "shared/nav" %>
 <%= react_component("AnnouncementList", announcements: @announcements.as_json) %>
