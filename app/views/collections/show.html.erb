@@ -3,25 +3,9 @@
 <%= render "shared/nav" %>
 
 <% if @collection.photo.url.blank? %>
-<header class="col-7 container text-center">
-  <h1 class="ib m0"><%= @collection.name %></h1>
-  <a href="#editCollection" class="edit-btn modalTrigger">
-    <%= inline_svg("edit.svg") %>
-  </a>
-  <p class="text m1-btm"><%= @collection.description %></p>
-</header>
+<%= react_component("CollectionHeaderBlank", collection: @collection.as_json) %>
 <% else %>
-<header class="collection-header has-img" style="background-image:url(<%= @collection.photo.url %>)">
-  <div class="col-10 center collection-header-container">
-    <h1 class="collection-name ib"><%= @collection.name %></h1>
-    <a href="#editCollection" class="edit-btn-glass modalTrigger">
-      <%= inline_svg("edit.svg") %>
-    </a>
-    <% unless @collection.description.blank? %>
-    <p class="collection-description lead"><%= @collection.description %></p>
-    <% end %>
-  </div>
-</header>
+<%= react_component("CollectionHeaderImg", collection: @collection.as_json) %>
 <% end %>
 
 <article class="col-7">
