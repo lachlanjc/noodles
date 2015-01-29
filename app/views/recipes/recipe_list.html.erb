@@ -17,12 +17,10 @@
     <% end %>
 
     <%# Onboarding hints, but prevent them from showing in search results %>
-    <% unless params[:search] %>
-    <% if @recipes_count > 1 && @recipes_count < 7 %>
+    <% unless params[:search] && @recipes_count < 1 && @recipes_count > 7 %>
     <p class="print-hide text-muted m1-btm">
       Cookbooks with only <%= pluralize(@recipes_count, "recipe") %> in them aren't very useful. <%= link_to "Add some more", :new_recipe %>!
     </p>
-    <% end %>
     <% end %>
   </header>
 
