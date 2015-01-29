@@ -1,14 +1,4 @@
-.random svg {
-  @include up(15px);
-  fill: $grey-light;
-}
-
 .recipe-list .panel {
-  svg {
-    @extend .float-right;
-    fill: $brand-primary;
-  }
-
   h3 {
     color: $header-color;
   }

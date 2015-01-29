@@ -2,7 +2,7 @@ var RecipeItem = React.createClass({
   render: function() {
     var favoriteData = null;
     if (this.props.data.favorite === true) {
-      favoriteData = <IconFavorite />;
+      favoriteData = <IconFavorite classes="float-right fill-primary" />;
     }
 
     return <a href={this.props.data.url} className="link-reset">
