@@ -29,7 +29,7 @@
     <%= react_component("RecipeList", recipes: @recipes.as_json) %>
   <% else %>
   <div class="panel col-6 center">
-    You don't have any recipes in this collection yet. <%= link_to "Go add some!", recipes_path %>
+    You don't have any recipes in this collection yet. Add some by clicking "Add to Collection" at the bottom of any of your <%= link_to "recipes", recipes_path %>.
   </div>
   <% end %>
 </article>
