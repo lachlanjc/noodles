@@ -10,12 +10,7 @@
 }
 
 @media print {
-  .recipe-list-container {
-    width: 100%;
-  }
-
-  .recipe-list {
-    border-top: $border;
-    margin-top: 1em;
+  .recipe-list .panel {
+    padding: 1rem 0 !important;
   }
 }
