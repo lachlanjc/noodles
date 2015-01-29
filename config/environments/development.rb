@@ -34,4 +34,6 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'noodles.dev' }
   config.action_mailer.delivery_method = :ses
 
+  config.react.variant = :development
+
 end
