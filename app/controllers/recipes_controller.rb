@@ -93,13 +93,7 @@ class RecipesController < ApplicationController
 
   def share
     @recipe = Recipe.find_by_shared_id(params[:shared_id])
-
-    if @recipe.shared == false
-      render :locked, status: 403
-    else
-      @shared_url = shared_url(@recipe.shared_id)
-      render :share
-    end
+    @shared_url = shared_url(@recipe.shared_id)
   end
 
   def un_share
