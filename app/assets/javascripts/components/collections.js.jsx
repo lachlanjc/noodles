@@ -21,8 +21,8 @@ var CollectionHeaderImg = React.createClass({
         <h1 className="collection-name ib">
           {this.props.collection.name}
         </h1>
-        <a href="#editCollection">
-          <IconEdit classes="edit-btn-glass ib m-small-left modalTrigger" />
+        <a href="#editCollection" className="modalTrigger">
+          <IconEdit classes="edit-btn-glass ib m-small-left" />
         </a>
         <div className="collection-description lead">
           {this.props.collection.description}
