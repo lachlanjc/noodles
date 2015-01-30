@@ -41,7 +41,7 @@ Rails.application.configure do
   }
 
   config.action_mailer.default_url_options = { :host => 'www.getnoodl.es' }
-  config.action_mailer.delivery_method = :ses
+  config.action_mailer.delivery_method = :mandrill
 
   config.react.variant = :production
 
