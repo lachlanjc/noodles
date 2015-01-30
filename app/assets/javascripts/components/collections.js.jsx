@@ -2,8 +2,8 @@ var CollectionHeaderBlank = React.createClass({
   render: function() {
     return <header className="col-7 container text-center">
       <h1 className="ib m0">{this.props.collection.name}</h1>
-      <a href="#editCollection">
-        <IconEdit classes="edit-btn ib modalTrigger" />
+      <a href="#editCollection" className="modalTrigger">
+        <IconEdit classes="edit-btn ib" />
       </a>
       <div className="text m1-btm">{this.props.collection.description}</div>
     </header>
