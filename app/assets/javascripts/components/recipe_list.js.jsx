@@ -36,7 +36,7 @@ var RecipeList = React.createClass({
   render: function() {
     var recipes = this.props.recipes;
     var recipeCount = recipes.length;
-    var headerText = "Recipes";
+    var headerText = this.props.headerText;
     var searchString = this.state.searchString.trim().toLowerCase();
 
     if(searchString.length > 0){

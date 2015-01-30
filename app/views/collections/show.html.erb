@@ -10,7 +10,7 @@
 
 <article class="col-7">
   <% if @recipes.any? %>
-    <%= react_component("RecipeList", recipes: @recipes.as_json) %>
+    <%= react_component("RecipeList", headerText: "Recipes", recipes: @recipes.as_json) %>
   <% else %>
   <div class="panel col-6 center">
     You don't have any recipes in this collection yet. Add some by clicking "Add to Collection" at the bottom of any of your <%= link_to "recipes", recipes_path %>.

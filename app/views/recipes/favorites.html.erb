@@ -2,18 +2,8 @@
 <% activate_nav!(:favorites) %>
 
 <%= render "shared/nav" %>
-
 <article class="col-7">
-
-  <%= react_component("IconFavorite", classes: "header-indicator favorite") %>
-  <h1><%= t("general.favorites") %></h1>
-
-  <h4 class="print-hide"><%= link_to "« All recipes", recipes_path %></h4>
-
-  <div class="recipe-list">
-    <%= react_component("RecipeList", recipes: @recipes.as_json) %>
-  </div>
-
+  <%= react_component("RecipeList", headerText: "Favorites", recipes: @recipes.as_json) %>
 </article>
 
 <%= link_to :new_recipe, class: "btn-paper" do %>
