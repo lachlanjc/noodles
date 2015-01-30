@@ -18,7 +18,6 @@
     text-shadow: 0 1px 1px rgba(0, 0, 0, .16);
   }
 
-  .noodles-author,
   .noodles-description {
     color: #fff;
     text-shadow: 0 1px 1px rgba(0, 0, 0, .16);
@@ -33,12 +32,6 @@
 .noodles-header {
   color: #4f545c;
   font-weight: 400;
-  margin: 0;
-}
-
-.noodles-author {
-  color: #666d78;
-  font-size: 13px;
   margin: 0;
 }
 
