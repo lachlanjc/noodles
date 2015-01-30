@@ -1,8 +1,8 @@
 class NewsletterMailer < ActionMailer::Base
-  default from: 'lachlan@getnoodl.es'
+  default from: "Lachlan Campbell <lachlan@getnoodl.es>"
 
   def newsletter(user)
-    @subject = '[Noodles] Web Import, Search, better sharing, and more.'
+    @subject = "[Noodles] Collections, PDF Export, Embed, and more."
     @id = user.id
     mail(to: user.email, subject: @subject)
   end
