@@ -1,5 +1,6 @@
 class Recipe < ActiveRecord::Base
   include SearchCop
+  include MarkdownHelper
 
   search_scope :search do
     attributes :title, :description
@@ -17,5 +18,16 @@ class Recipe < ActiveRecord::Base
 
   def to_param
     "#{id} #{title}".parameterize
+  end
+
+  def as_json
+    {
+      title: title,
+      description_preview: description.truncate(165),
+      favorite: favorite,
+      url: "/recipes/" + id.to_s,
+      notes: notes.to_s,
+      notes_rendered: markdown(notes.to_s)
+    }
   end
 end

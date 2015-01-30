@@ -9,20 +9,6 @@
       <%= link_to t("general.collections"), collections_path, class: "nav-link" + nav_active_class(:collections) %>
     </div>
 
-    <% if nav_active?(:recipes) %>
-    <div>
-      <%= form_tag recipes_path, method: "get", class: "search-form" do %>
-        <%= label_tag :search do %>
-          <%= inline_svg("search.svg") %>
-        <% end %>
-        <%= text_field_tag :search, params[:search], class: "text-input invisible-input m0-btm", placeholder: ("Search " + pluralize(@recipes.count, t("general.recipe")) + "... ") %>
-      <% end %>
-      <%= link_to random_recipe_path, class: "random", data: { tooltip: "Random recipe!" } do %>
-        <%= inline_svg("random.svg") %>
-      <% end %>
-    </div>
-    <% end %>
-
     <div class="nav-side">
       <% unless nav_active?(:shared_recipe) || nav_active?(:onboarding) %>
       <%= link_to "Blog", announcements_path, class: "nav-link" + nav_active_class(:announcements) %>

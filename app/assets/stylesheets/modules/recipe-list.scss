@@ -1,14 +1,10 @@
 .random svg {
-  @include up(15px);
+  @include up(4px);
   fill: $grey-light;
+  margin-left: 4px;
 }
 
 .recipe-list .panel {
-  svg {
-    @extend .float-right;
-    fill: $brand-primary;
-  }
-
   h3 {
     color: $header-color;
   }
@@ -20,12 +16,7 @@
 }
 
 @media print {
-  .recipe-list-container {
-    width: 100%;
-  }
-
-  .recipe-list {
-    border-top: $border;
-    margin-top: 1em;
+  .recipe-list .panel {
+    padding: 1rem 0 !important;
   }
 }

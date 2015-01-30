@@ -1,42 +1,25 @@
 <% activate_nav!(:collections) %>
+<%- title @collection.name %>
 <%= render "shared/nav" %>
 
 <% if @collection.photo.url.blank? %>
-<header class="col-7 container text-center">
-  <h1 class="ib m0"><%= @collection.name %></h1>
-  <a href="#editCollection" class="edit-btn modalTrigger">
-    <%= inline_svg("edit.svg") %>
-  </a>
-  <p class="text m1-btm"><%= @collection.description %></p>
-</header>
+<%= react_component("CollectionHeaderBlank", collection: @collection.as_json) %>
 <% else %>
-<header class="collection-header has-img" style="background-image:url(<%= @collection.photo.url %>)">
-  <div class="col-10 center collection-header-container">
-    <h1 class="collection-name ib"><%= @collection.name %></h1>
-    <a href="#editCollection" class="edit-btn-glass modalTrigger">
-      <%= inline_svg("edit.svg") %>
-    </a>
-    <% unless @collection.description.blank? %>
-    <p class="collection-description lead"><%= @collection.description %></p>
-    <% end %>
-  </div>
-</header>
+<%= react_component("CollectionHeaderImg", collection: @collection.as_json) %>
 <% end %>
 
-<article class="col-7 recipe-list">
+<article class="col-7">
   <% if @recipes.any? %>
-    <%= render partial: "recipes/recipe", collection: @recipes, cache: true %>
+    <%= react_component("RecipeList", recipes: @recipes.as_json) %>
   <% else %>
   <div class="panel col-6 center">
-    You don't have any recipes in this collection yet. <%= link_to "Go add some!", recipes_path %>
+    You don't have any recipes in this collection yet. Add some by clicking "Add to Collection" at the bottom of any of your <%= link_to "recipes", recipes_path %>.
   </div>
   <% end %>
 </article>
 
 <div class="modal" id="editCollection">
-  <a class="modal-close float-right" href="#">
-    <%= inline_svg("close.svg") %>
-  </a>
+  <%= react_component("ModalClose") %>
   <h2>Edit Collection</h2>
   <hr>
   <%= form_for(@collection) do |f| %>

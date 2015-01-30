@@ -1,17 +1,5 @@
-<%- title 'Announcements' %>
+<%- title "Announcements" %>
 <% activate_nav!(:announcements) %>
 
-<%= render 'shared/nav' %>
-
-<article class="col-8">
-
-  <h1>Noodles keeps getting better.</h1>
-  <h2 class="text-muted">Check back here for the latest updates.</h2>
-
-  <hr>
-
-  <div class="document">
-    <%= render partial: 'announcement', collection: @announcements, cache: true %>
-  </div>
-
-</article>
+<%= render "shared/nav" %>
+<%= react_component("AnnouncementList", announcements: @announcements.as_json) %>

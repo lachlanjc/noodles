@@ -118,3 +118,12 @@
 .btn-paper-mini-inline {
   @extend .btn-paper-mini;
 }
+
+@media (max-width: $screen-phone) {
+  .mobile-button {
+    display: block;
+    margin: 6px auto;
+    text-align: center;
+    width: 70%;
+  }
+}

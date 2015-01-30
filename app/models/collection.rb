@@ -12,4 +12,12 @@ class Collection < ActiveRecord::Base
   def to_param
     "#{id} #{name}".parameterize
   end
+
+  def as_json
+    {
+      name: name,
+      description: description,
+      photo_url: photo.url
+    }
+  end
 end

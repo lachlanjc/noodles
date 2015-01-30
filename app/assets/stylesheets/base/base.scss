@@ -21,6 +21,7 @@ body {
     border-radius: 0;
     border-right: 0;
     padding: 16px !important; // override article
+    width: 100%;
   }
 
   .panel.mobile-full-width {
@@ -69,6 +70,10 @@ body {
   font-weight: 600;
   padding: 4px 6px;
   vertical-align: middle;
+}
+
+.fill-primary {
+  fill: $brand-primary;
 }
 
 hr {

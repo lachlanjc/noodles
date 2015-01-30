@@ -3,21 +3,16 @@
 
 <%= render "shared/nav" %>
 
-<article class="col-7 recipe-list-container">
+<article class="col-7">
 
-  <h1><%= t("general.favorites") %>
-    <div class="header-indicator favorite">
-      <%= inline_svg("favorite.svg") %>
-    </div>
-  </h1>
+  <%= react_component("IconFavorite", classes: "header-indicator favorite") %>
+  <h1><%= t("general.favorites") %></h1>
 
-  <h3><%= link_to "« All recipes", recipes_path %></h3>
+  <h4 class="print-hide"><%= link_to "« All recipes", recipes_path %></h4>
 
   <div class="recipe-list">
-    <%= render partial: "recipe", collection: @recipes, cache: true %>
+    <%= react_component("RecipeList", recipes: @recipes.as_json) %>
   </div>
-
-  <p class="printer-copy"><%= t("recipes.printing.print_copy") %></p>
 
 </article>
 

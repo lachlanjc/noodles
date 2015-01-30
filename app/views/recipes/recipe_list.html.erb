@@ -8,46 +8,11 @@
 <%= render "shared/nav" %>
 
 <article class="col-6 container">
-
-  <header class="text-center">
-    <% if params[:search] %>
-    <h1 class="m0">Searching for <mark><%= params[:search] %></mark></h1>
-    <% else %>
-    <h1 class="m1-btm"><%= t("general.recipes") %></h1>
-    <% end %>
-
-    <%# Onboarding cards, but prevent them from showing in search results %>
-    <% unless params[:search] %>
-    <% if @recipes_count > 1 && @recipes_count < 7 %>
-    <p class="print-hide text-muted m1-btm">
-      Cookbooks with only <%= pluralize(@recipes_count, "recipe") %> in them aren't very useful. <%= link_to "Add some more", :new_recipe %>!
-    </p>
-    <% elsif @recipes_count > 8 && @favorites_count == 0 %>
-    <p class="print-hide text-muted m1-btm">
-      Favorites are a great way to quickly access your best recipes. To mark a Favorite, click the heart under Details while you edit a recipe.
-      <br>
-      Or <a href="http://noodles.withdraft.com/#favorites">learn more about Favorites</a>.
-    </p>
-    <% end %>
-    <% end %>
-  </header>
-
-  <% if params[:search] && @recipes_count == 0 %>
-  <p class="m1-top">Sorry, no search results!</p>
-  <% end %>
-
-  <div class="recipe-list">
-    <%= render partial: "recipe", collection: @recipes, cache: true %>
-  </div>
-
-  <p class="printer-copy"><%= t("recipes.printing.print_copy") %></p>
-
+  <%= react_component("RecipeList", showRandom: true, recipes: @recipes.as_json) %>
 </article>
 
 <div id="importModal" role="dialog" class="modal">
-  <a class="modal-close float-right" href="#">
-    <%= inline_svg("close.svg") %>
-  </a>
+  <%= react_component("ModalClose") %>
   <h2>Import a Recipe from the Web</h2>
   <hr>
   <p class="m0">Paste the URL of a recipe below to save it to Noodles.</p>
