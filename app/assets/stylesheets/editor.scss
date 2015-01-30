@@ -77,7 +77,8 @@ body {
 }
 
 .btn-save {
-  background: $grey-light $gradient-darken;
+  @include linear-gradient(transparent, rgba(0, 0, 0, 0.05));
+  background-color: $grey-light;
   color: $brand-bg;
   letter-spacing: $spacing;
 }
