@@ -1,24 +1,16 @@
 .search-form {
   border-radius: 18px;
   border: 1px solid $grey-lighter;
-  display: inline-table;
-  margin-top: 9px;
   padding: 0 8px;
 
-  label,
-  .text-input {
-    display: inline-block;
+  .invisible-input {
     height: 35px;
+    width: 80%;
   }
 
   svg {
     @include up(6px);
     fill: $grey-light;
-    margin-right: 4px;
-  }
-
-  .text-input {
-    width: 11em;
   }
 }
 
@@ -34,12 +26,6 @@ mark {
   background-color: lighten($yellow, 8%);
   color: adjust-hue($text-color, 40%);
   padding: .1em .2em;
-}
-
-@media (max-width: $screen-phone) {
-  .search-form .text-input {
-    width: 14rem !important;
-  }
 }
 
 @media print {

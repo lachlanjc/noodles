@@ -26,11 +26,6 @@
   }
 }
 
-.random svg {
-  @include up(15px);
-  fill: $grey-light;
-}
-
 @media (max-width: $screen-phone) {
   .nav {
     display: block;

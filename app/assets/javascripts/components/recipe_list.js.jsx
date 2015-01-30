@@ -14,15 +14,66 @@ var RecipeItem = React.createClass({
     </a>
   }
 });
-// TODO: Build recipe search in React
-var RecipeList = React.createClass({
+
+var RandomRecipe = React.createClass({
   render: function() {
-    return (
+    return <a href="/random" className="ib">
+      <IconRandom classes="random" />
+    </a>
+  }
+});
+
+
+var RecipeList = React.createClass({
+  getInitialState: function(){
+    return { searchString: '' };
+  },
+
+  handleChange: function(e){
+    this.setState({searchString: e.target.value});
+  },
+
+  render: function() {
+    var recipes = this.props.recipes;
+    var recipeCount = recipes.length;
+    var headerText = "Recipes";
+    var searchString = this.state.searchString.trim().toLowerCase();
+
+    if(searchString.length > 0){
+      // Searching! Filter the results.
+      recipes = recipes.filter(function(l){
+        return l.title.toLowerCase().match(searchString);
+      });
+      recipeCount = recipes.length;
+      headerText = "Searching for "
+    }
+
+    return (<div>
+      <header className="text-center m0">
+        <h1 className="ib">
+          {headerText}
+          {searchString.length > 0 ? <mark>{searchString}</mark> : null }
+          {this.props.randomRecipe === true ? <RandomRecipe /> : null }
+        </h1>
+      </header>
+      <div className="search-form col-8 center flex bg-white shadow">
+        <label for="searchBox">
+          <IconSearch />
+        </label>
+        <input
+          type="text"
+          id="searchBox"
+          className="text-input invisible-input col-8 m0"
+          value={this.state.searchString}
+          onChange={this.handleChange}
+          placeholder="Search recipes..." />
+      </div>
       <div className="recipe-list">
-        {this.props.recipes.map(function(recipe) {
+        {recipes.map(function(recipe) {
            return <RecipeItem key={recipe.id} data={recipe} />;
         })}
+        {(searchString.length > 0) && (recipeCount === 0) ? <div className="col-6 panel center">Sorry, no recipes matched your search.</div> : null}
       </div>
-    );
+    </div>);
   }
 });

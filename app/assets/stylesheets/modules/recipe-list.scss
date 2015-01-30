@@ -1,3 +1,9 @@
+.random svg {
+  @include up(4px);
+  fill: $grey-light;
+  margin-left: 4px;
+}
+
 .recipe-list .panel {
   h3 {
     color: $header-color;

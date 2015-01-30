@@ -8,28 +8,7 @@
 <%= render "shared/nav" %>
 
 <article class="col-6 container">
-
-  <header class="text-center">
-    <% if params[:search] %>
-    <h1 class="m0">Searching for <mark><%= params[:search] %></mark></h1>
-    <% else %>
-    <h1 class="m1-btm"><%= t("general.recipes") %></h1>
-    <% end %>
-
-    <%# Onboarding hints, but prevent them from showing in search results %>
-    <% if params[:search].blank? && @recipes_count > 1 && @recipes_count < 7 %>
-    <p class="print-hide text-muted m1-btm">
-      Cookbooks with only <%= pluralize(@recipes_count, "recipe") %> in them aren't very useful. <%= link_to "Add some more", :new_recipe %>!
-    </p>
-    <% end %>
-  </header>
-
-  <% if params[:search] && @recipes_count == 0 %>
-  <p class="m1-top">Sorry, no search results!</p>
-  <% end %>
-
-  <%= react_component("RecipeList", recipes: @recipes.as_json) %>
-
+  <%= react_component("RecipeList", showRandom: true, recipes: @recipes.as_json) %>
 </article>
 
 <div id="importModal" role="dialog" class="modal">
