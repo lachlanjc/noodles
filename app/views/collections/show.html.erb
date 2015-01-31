@@ -1,14 +1,10 @@
 <% activate_nav!(:collections) %>
 <%- title @collection.name %>
+
 <%= render "shared/nav" %>
+<%= react_component("CollectionHeader", collection: @collection.as_json) %>
 
-<% if @collection.photo.url.blank? %>
-<%= react_component("CollectionHeaderBlank", collection: @collection.as_json) %>
-<% else %>
-<%= react_component("CollectionHeaderImg", collection: @collection.as_json) %>
-<% end %>
-
-<article class="col-7">
+<article class="col-7 container mt0">
   <% if @recipes.any? %>
     <%= react_component("RecipeList", headerText: "Recipes", recipes: @recipes.as_json) %>
   <% else %>
