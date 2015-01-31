@@ -1,6 +1,6 @@
 var AnnouncementItem = React.createClass({
   render: function() {
-    return <div className="bg-white rounded shadow mb2 p2">
+    return <div className="bg-white rounded shadow mb2 p3">
       <h1 className="m0"><a href={this.props.data.url}>{this.props.data.title}</a></h1>
       <p className="text-muted">Published by Lachlan on {this.props.data.created_at}</p>
       <div className="text" dangerouslySetInnerHTML={{ __html: this.props.data.body_rendered }} />
@@ -24,8 +24,7 @@ var AnnouncementList = React.createClass({
     return (
       <article className="col-7">
         <h1>Noodles keeps getting better.</h1>
-        <h2 class="text-muted">Check back here for the latest updates.</h2>
-        <hr />
+        <h2 className="text-muted mt0 mb3">Check back here for the latest updates.</h2>
         {this.props.announcements.map(function(announcement) {
            return <AnnouncementItem key={announcement.id} data={announcement}/>;
         })}

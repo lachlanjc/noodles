@@ -2,7 +2,7 @@
 <% activate_nav!(:favorites) %>
 
 <%= render "shared/nav" %>
-<article class="col-7">
+<article class="col-7 container">
   <%= react_component("RecipeList", headerText: "Favorites", recipes: @recipes.as_json) %>
 </article>
 
