@@ -17,7 +17,8 @@ class Collection < ActiveRecord::Base
     {
       name: name,
       description: description,
-      photo_url: photo.url
+      url: '/collections/' + id.to_s,
+      photo_url: photo.url.to_s
     }
   end
 end
