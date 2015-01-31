@@ -33,6 +33,14 @@ var RecipeList = React.createClass({
     this.setState({searchString: e.target.value});
   },
 
+  renderRandom: function(){
+    if (this.props.showRandom === true) {
+      return (<RandomRecipe />);
+    } else {
+      return null;
+    }
+  },
+
   render: function() {
     var recipes = this.props.recipes;
     var recipeCount = recipes.length;
@@ -53,11 +61,11 @@ var RecipeList = React.createClass({
         <h1 className="ib">
           {headerText}
           {searchString.length > 0 ? <mark>{searchString}</mark> : null }
-          {this.props.randomRecipe === true ? <RandomRecipe /> : null }
+          {this.renderRandom()}
         </h1>
       </header>
-      <div className="search-form col-8 center flex bg-white shadow">
-        <label for="searchBox">
+      <div className="search-form col-8 center flex bg-white border mb2">
+        <label htmlFor="searchBox">
           <IconSearch />
         </label>
         <input
