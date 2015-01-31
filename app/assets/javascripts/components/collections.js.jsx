@@ -6,7 +6,7 @@ var CollectionIndex = React.createClass({
         {this.props.collections.map(function(collection) {
           return <CollectionItem key={collection.id} data={collection} />;
         })}
-        {(this.props.collections.length === 0) ? <div className="col-6 well center">You don't have any collections yet. <a href="#newCollection" className="modalTrigger">Create one!</a></div> : null}
+        {(this.props.collections.length === 0) ? <div className="col-6 well mx-auto">You don't have any collections yet. <a href="#newCollection" className="modalTrigger">Create one!</a></div> : null}
       </div>
     </article>);
   }
@@ -56,7 +56,7 @@ var CollectionHeaderImg = React.createClass({
     };
 
     return <div className="collection-header has-img" style={collectionHeaderStyle}>
-      <div className="col-10 center collection-header-container">
+      <div className="col-10 mx-auto collection-header-container">
         <h1 className="collection-name ib">
           {this.props.collection.name}
         </h1>

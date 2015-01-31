@@ -2,7 +2,7 @@
 @import "mixins";
 
 body {
-  padding-top: 15px;
+  padding-top: 1rem;
 }
 
 .logo-nav {
@@ -52,7 +52,7 @@ body {
 }
 
 .recipe-title {
-  font-size: $size-h1 !important;
+  font-size: $h1 !important;
   font-weight: 600;
   margin: 0;
 }

@@ -148,11 +148,6 @@
   float: right;
 }
 
-.center {
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .flex {
   @include display(flex);
 }
@@ -176,6 +171,7 @@
 }
 
 %caps {
+  @extend %astro;
   text-transform: uppercase;
 }
 

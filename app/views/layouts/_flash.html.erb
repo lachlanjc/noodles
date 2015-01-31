@@ -1,6 +1,6 @@
 <% unless flash.empty? %>
 <% flash.each do |key, value| %>
-  <div class="center bg-white rounded shadow col-4 p2 text-muted <%= flash_class(key) %>">
+  <div class="mx-auto bg-white rounded shadow col-4 p2 text-muted <%= flash_class(key) %>">
     <%= value unless value.blank? %>
   </div>
 <% end %>

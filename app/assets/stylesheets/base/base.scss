@@ -1,6 +1,22 @@
 body {
-  margin: 0;
   background-color: $brand-bg;
+  margin: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+}
+
+img {
+  max-width: 100%;
+}
+
+svg {
+  max-height: 100%;
 }
 
 %box {
@@ -11,7 +27,7 @@ body {
 
 .document {
   @extend %box;
-  @extend .center;
+  @extend .mx-auto;
   padding: 24px;
 }
 
@@ -43,7 +59,7 @@ body {
   background: #78909c;
   border-radius: 20px;
   color: #fff;
-  font-size: $size-h5;
+  font-size: $h5;
   font-weight: 600;
   margin-left: 8px;
   padding: 4px 6px;
@@ -58,11 +74,7 @@ hr {
   border: 0;
   border-bottom: $border;
   height: 0;
-  margin: 8px 0;
-}
-
-img {
-  max-width: 100%;
+  margin: $space-2 auto;
 }
 
 ul,

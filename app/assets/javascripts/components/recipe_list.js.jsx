@@ -64,7 +64,7 @@ var RecipeList = React.createClass({
           {this.renderRandom()}
         </h1>
       </header>
-      <div className="search-form col-8 center flex bg-white border mb2">
+      <div className="search-form col-8 mx-auto flex bg-white border mb2">
         <label htmlFor="searchBox">
           <IconSearch />
         </label>
@@ -80,7 +80,7 @@ var RecipeList = React.createClass({
         {recipes.map(function(recipe) {
            return <RecipeItem key={recipe.id} data={recipe} />;
         })}
-        {(searchString.length > 0) && (recipeCount === 0) ? <div className="col-6 bg-white rounded shadow mb2 p2 center">Sorry, no recipes matched your search.</div> : null}
+        {(searchString.length > 0) && (recipeCount === 0) ? <div className="col-6 bg-white rounded shadow mb2 p2 mx-auto">Sorry, no recipes matched your search.</div> : null}
       </div>
     </div>);
   }

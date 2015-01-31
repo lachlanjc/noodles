@@ -35,7 +35,7 @@
 
   <% if me_owns_recipe? %>
   <div class="flex">
-    <div class="text-center p1 border rounded ib center print-hide">
+    <div class="text-center p1 border rounded ib mx-auto print-hide">
       <%= render "shared/social" %>
       <p class="mt2"><strong><%= link_to "Check it out.", @shared_url, class: "btn-blue" %></strong></p>
     </div>
@@ -59,7 +59,7 @@
 
   <%# Everyone else should sign up for Noodles %>
   <% else %>
-  <div class="bg-white rounded shadow p2 print-hide center col-8">
+  <div class="bg-white rounded shadow p2 print-hide mx-auto col-8">
     <h2>Wondering about Noodles?</h2>
     <p><%= link_to "Noodles", root_url, class: "text-primary" %> is a simple app for you to collect, cook, and share your favorite recipes.
     <p><%= link_to "Sign up", :sign_up, class: "text-primary" %> to save this recipe &mdash; it's fast and completely free.</p>

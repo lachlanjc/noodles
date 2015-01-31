@@ -1,6 +1,8 @@
 body {
   color: $black;
-  font: 13px/1.4 $font-base;
+  font-family: $font-family;
+  font-size: 100%;
+  line-height: $line-height;
 }
 
 h1,
@@ -10,56 +12,94 @@ h4,
 h5,
 h6 {
   color: $header-color;
-  line-height: 1.1;
-  margin-bottom: 15px;
-  margin-top: 15px;
+  font-family: $heading-font-family;
+  font-weight: $heading-font-weight;
+  line-height: $heading-line-height;
+  margin-bottom: .5em;
+  margin-top: 1em;
 }
 
-h1 {
+p,
+dl,
+ol,
+ul {
+  font-size: $h4;
+  margin-top: 0;
+  margin-bottom: $space-2;
+}
+
+.text ol,
+.text ul {
+  padding-left: $space-3;
+}
+
+blockquote {
+  color: $grey;
+  font-size: $h3;
+  margin-top: $space-3;
+  margin-bottom: $space-3;
+  margin-left: 0;
+  padding-left: $space-2;
+}
+
+h1,
+.h1 {
   color: $brand-primary;
-  font-size: $size-h1;
+  font-size: $h1;
 }
 
-article h1:first-child {
+h2,
+.h2 {
+  font-size: $h2;
+}
+
+h3,
+.h3,
+.text-normalized h2 {
+  font-size: $h3;
+}
+
+h4,
+.h4,
+.text-normalized h3 {
+  font-size: $h4;
+}
+
+h5,
+.h5 {
+  font-size: $h5;
+}
+
+h6,
+.h6 {
+  @extend %caps;
+  color: $grey;
+  font-size: $h6;
+}
+
+.list-reset {
+  list-style: none;
+  padding-left: 0;
+}
+
+.container h1:first-child {
   margin-top: 0;
 }
 
 .mega {
-  font-size: $size-h1 * 1.66;
-  line-height: $size-h1 * 2;
+  font-size: $h1 * 1.66;
+  line-height: $h1 * 2;
 }
 
 @media (max-width: $screen-phone) {
   .mega {
-    font-size: $size-h1 * 1.2;
-    line-height: $size-h1 * 1.5;
+    font-size: $h1 * 1.2;
+    line-height: $h1 * 1.5;
   }
 }
 
-h2,
-.text-normalized h1 {
-  font-size: $size-h2;
-}
-
-h3,
-.text-normalized h2 {
-  font-size: $size-h3;
-}
-
-h4,
-.text-normalized h3 {
-  font-size: $size-h4;
-}
-
-h5 {
-  font-size: $size-h5;
-}
-
 h6 {
-  @extend .text-muted;
-  @extend %astro;
-  @extend %caps;
-  font-size: $size-h6;
+
 }
 
 small {
@@ -73,8 +113,8 @@ p {
 
 .lead {
   color: $grey;
-  font-size: $size-h2;
-  line-height: ($size-h2 * 1.5);
+  font-size: $h2;
+  line-height: ($h2 * 1.5);
 }
 
 a {
@@ -97,18 +137,14 @@ a {
 
 .text {
   color: $text-color;
-  font-size: $size-body;
-  font-weight: 400;
+  font-size: $h4;
   line-height: 1.6;
   word-wrap: break-word;
+}
 
-  ol,
-  ul {
-    padding-left: 23px;
-  }
-
-  h1 {
-    @extend %astro;
-    @extend .text-dark;
-  }
+.text-normalized h1 {
+  @extend %caps;
+  color: $header-color;
+  font-size: $h3;
+  margin-top: 0.5rem;
 }

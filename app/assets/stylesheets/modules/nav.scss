@@ -1,9 +1,8 @@
 .nav {
-  @extend .flex-between;
   @extend .flex;
+  @extend .flex-between;
   background: #fff;
   border-bottom: $border;
-  margin-bottom: 20px;
 }
 
 .nav-side {
@@ -12,8 +11,8 @@
 }
 
 .nav-link {
-  font-size: $size-body;
-  font-weight: 600;
+  font-size: $h4;
+  font-weight: $bold-font-weight;
   margin: 0 8px;
 
   &:hover {
@@ -28,11 +27,11 @@
 
 @media (max-width: $screen-phone) {
   .nav {
-    display: block;
+    display: block; // overrides flexbox
   }
 
   .nav-side:first-child {
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem;
   }
 }
 
