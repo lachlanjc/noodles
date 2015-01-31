@@ -7,12 +7,12 @@
   <h1>Shared Recipes <span class="badge"><%= @recipes.count %></span></h1>
 
   <% @recipes.each do |recipe| %>
-    <div class="panel">
+    <div class="bg-white rounded shadow p2 mb2">
       <h2><%= recipe.title %><span class="text-muted"> #<%= recipe.id %></span></h2>
       <% if User.exists?(recipe.user_id) %>
-      <p class="m1-btm">Published by: <%= User.find(recipe.user_id).first_name.to_s %></p>
+      <p class="mb2">Published by: <%= User.find(recipe.user_id).first_name.to_s %></p>
       <% end %>
-      <%= link_to "View", share_path(:shared_id => recipe.shared_id), class: "btn-blue btn-sm m1-right" %>
+      <%= link_to "View", share_path(:shared_id => recipe.shared_id), class: "btn-blue btn-sm mr2" %>
       <%= link_to "Delete", recipe, method: :delete, data: { confirm: t("general.delete_forever") }, class: "btn-red btn-sm" %>
     </div>
   <% end %>

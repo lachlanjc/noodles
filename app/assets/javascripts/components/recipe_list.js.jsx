@@ -6,7 +6,7 @@ var RecipeItem = React.createClass({
     }
 
     return <a href={this.props.data.url} className="link-reset">
-      <div className="panel">
+      <div className="bg-white rounded shadow mb2 p2">
         {favoriteData}
         <h3 className="m0">{this.props.data.title}</h3>
         <div className="text text-muted">{this.props.data.description_preview ? this.props.data.description_preview : null}</div>
@@ -72,7 +72,7 @@ var RecipeList = React.createClass({
         {recipes.map(function(recipe) {
            return <RecipeItem key={recipe.id} data={recipe} />;
         })}
-        {(searchString.length > 0) && (recipeCount === 0) ? <div className="col-6 panel center">Sorry, no recipes matched your search.</div> : null}
+        {(searchString.length > 0) && (recipeCount === 0) ? <div className="col-6 bg-white rounded shadow mb2 p2 center">Sorry, no recipes matched your search.</div> : null}
       </div>
     </div>);
   }

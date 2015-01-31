@@ -9,14 +9,14 @@
     border: $border;
     border-bottom: 0;
     border-radius: $radius $radius 0 0;
-    padding: 6px $padding-small;
+    padding: 6px 8px;
   }
 
   .content {
     border-radius: 0 $radius $radius;
     border: $border;
     display: none;
-    padding: $padding-small;
+    padding: 8px;
   }
 
   input:checked + label {

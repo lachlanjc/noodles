@@ -19,12 +19,12 @@
     <%= f.password_field :password, class: "text-input m0", required: true, pattern: ".{8,}", title: "Make sure you use at least 8 characters" %>
 
     <%= f.check_box :remember_me %>
-    <%= f.label :remember_me, class: "m1-top" %>
+    <%= f.label :remember_me, class: "mt2" %>
     <br>
 
-    <%= f.submit t(".sign_in"), class: "btn m1-top" %>
+    <%= f.submit t(".sign_in"), class: "btn mt2" %>
 
-    <small class="m1-top block">or did you <%= link_to "forget your password?", :forgot_password %></small>
+    <small class="mt2 block">or did you <%= link_to "forget your password?", :forgot_password %></small>
 
   <% end %>
 

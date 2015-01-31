@@ -19,24 +19,24 @@
 
   <h1 class="m0 inline"><%= @recipe.title %></h1>
 
-  <div class="text m1-top"><%= markdown(@recipe.description.to_s) %></div>
+  <div class="text mt2"><%= markdown(@recipe.description.to_s) %></div>
 
   <%= render "recipe_body", cache: true %>
 
   <% if @recipe.shared? %>
   <div class="flex">
-  <div class="outlined ib center print-hide m1-top">
+  <div class="text-center p1 border rounded ib center print-hide mt2">
     <%= render "shared/social" %>
-    <p class="m1-top"><strong><%= link_to "Check it out.", @shared_url, class: "btn-blue" %></strong></p>
+    <p class="mt2"><strong><%= link_to "Check it out.", @shared_url, class: "btn-blue" %></strong></p>
   </div>
   </div>
   <% end %>
 
-  <div class="print-hide m1-5-top">
-    <%= link_to t("general.edit"), :edit_recipe, class: "btn-blue mobile-button m1-right" %>
-    <a id="collectModalTrigger" href="#collectModal" class="btn mobile-button m1-right">Add to Collection</a>
-    <a id="shareModalTrigger" href="#shareModal" class="btn-green mobile-button m1-right">Share</a>
-    <a id="printRecipe" class="btn-blue mobile-button m1-right">Print</a>
+  <div class="print-hide mt3 mb2">
+    <%= link_to t("general.edit"), :edit_recipe, class: "btn-blue mobile-button mr1" %>
+    <a id="collectModalTrigger" href="#collectModal" class="btn mobile-button mr1">Add to Collection</a>
+    <a id="shareModalTrigger" href="#shareModal" class="btn-green mobile-button mr1">Share</a>
+    <a id="printRecipe" class="btn-blue mobile-button mr1">Print</a>
   </div>
 
   <%= render "shared/printer" %>

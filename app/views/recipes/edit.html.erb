@@ -28,7 +28,7 @@
   <% end %>
 
   <% if @recipe.errors.any? %>
-  <div class="flash-danger panel">
+  <div class="flash-danger bg-white rounded shadow mb2 p2">
     <h2>Oops! You need to title the recipe.</h2>
     <p>Click below and type a name for your recipe.</p>
   </div>
@@ -42,25 +42,25 @@
 
   <%= f.text_area :instructions, class: "text-input invisible-input full-width m0 js-auto-size", placeholder: "Type the recipe\'s instructions here. Number each step.", rows: "4", autocomplete: "off" %>
 
-  <p class="text-muted block m1-btm details-btn">
+  <p class="text-muted block mb2 details-btn">
     <%= inline_svg("info_outline.svg") %>
     Show Details
   </p>
 
-  <div class="hide panel details-panel">
-    <h2>Details</h2>
+  <div class="hide bg-white rounded shadow mb2 p2 details-panel">
+    <h2 class="m0">Details</h2>
 
-    <%= f.label :source, class: "ib m1-top" %><small class="m-small-left text-muted">Where did this recipe come from?</small>
+    <%= f.label :source, class: "ib mt2" %><small class="ml1 text-muted">Where did this recipe come from?</small>
     <%= f.text_field :source, class: "text-input" %>
 
-    <%= f.label :serves, "Yield", class: "ib" %><small class="m-small-left text-muted">How many servings does your recipe produce?</small>
+    <%= f.label :serves, "Yield", class: "ib" %><small class="ml1 text-muted">How many servings does your recipe produce?</small>
     <%= f.text_field :serves, class: "text-input" %>
 
-    <%= f.label :notes, class: "ib" %><small class="m-small-left text-muted">Add some more information about the recipe.</small>
-    <%= f.text_area :notes, class: "text-input panel block m1-btm notes js-auto-size" %>
+    <%= f.label :notes, class: "ib" %><small class="ml1 text-muted">Add some more information about the recipe.</small>
+    <%= f.text_area :notes, class: "text-input mb1 notes js-auto-size" %>
 
     <div>
-      <label class="control m1-btm">
+      <label class="control mb2">
         <%= f.check_box :favorite %>
         <div class="control-indicator">
           <%= inline_svg("favorite_outline.svg") %>
@@ -72,10 +72,10 @@
       </label>
     </div>
 
-    <%= link_to t("general.delete"), @recipe, method: :delete, data: { confirm: t("general.delete_forever") }, class: "btn-red btn-sm m1-top" %>
+    <%= link_to t("general.delete"), @recipe, method: :delete, data: { confirm: t("general.delete_forever") }, class: "btn-red btn-sm mt2" %>
   </div>
 
-  <%= f.submit t("general.save"), class: "btn btn-save m1-btm", data: { disable_with: "Saving..." } %>
+  <%= f.submit t("general.save"), class: "btn btn-save mb2", data: { disable_with: "Saving..." } %>
 
   <% end %>
 </article>

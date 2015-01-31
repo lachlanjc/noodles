@@ -4,11 +4,7 @@
   margin-left: 4px;
 }
 
-.recipe-list .panel {
-  h3 {
-    color: $header-color;
-  }
-
+.recipe-list .bg-white.mb2 {
   &:hover h3 {
     @include elegance;
     color: $brand-primary;

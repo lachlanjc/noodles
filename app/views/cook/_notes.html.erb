@@ -1,5 +1,5 @@
 <%= form_for(@recipe) do |f| %>
-  <%= f.label :notes, 'Anything you want to remember for next time?', class: 'm1-top' %>
-  <%= f.text_area :notes, class: 'text-input panel full-width m0 notes js-auto-size' %>
-  <%= f.submit t('general.save'), class: 'btn-blue btn-sm m1-btm center' %>
+  <%= f.label :notes, "Anything you want to remember for next time?", class: "mt2" %>
+  <%= f.text_area :notes, class: "text-input full-width m0 notes js-auto-size" %>
+  <%= f.submit t("general.save"), class: "btn-blue btn-sm mb2 center" %>
 <% end %>

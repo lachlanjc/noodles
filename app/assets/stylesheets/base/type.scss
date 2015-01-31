@@ -9,7 +9,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: darken($text-color, 4%);
+  color: $header-color;
   line-height: 1.1;
   margin-bottom: 15px;
   margin-top: 15px;

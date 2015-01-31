@@ -4,7 +4,6 @@
 
 .bio-photo {
   @extend .float-left;
-  display: inline-block;
   width: 85px;
 
   img {
@@ -15,5 +14,4 @@
 
 .bio-info {
   display: inline-block;
-  margin-left: $padding-base;
 }

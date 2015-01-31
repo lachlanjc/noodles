@@ -24,32 +24,10 @@ body {
     width: 100%;
   }
 
-  .panel.mobile-full-width {
+  .bg-white.mobile-full-width {
     margin: 1rem 0 !important;
     padding: 1rem !important;
   }
-}
-
-.panel {
-  @extend %box;
-  @extend .text;
-  margin: $padding-small 0;
-  padding: 20px 16px;
-
-  h2:not(.collection-name) {
-    margin: 0;
-  }
-
-  p:last-child:not(.collection-description) {
-    margin-bottom: 0;
-  }
-}
-
-.outlined {
-  border: 1px solid $grey-lighter;
-  border-radius: $radius;
-  padding: 8px;
-  text-align: center;
 }
 
 .well {
@@ -62,12 +40,12 @@ body {
 }
 
 .badge {
-  @extend .m-small-left;
   background: #78909c;
   border-radius: 20px;
   color: #fff;
   font-size: $size-h5;
   font-weight: 600;
+  margin-left: 8px;
   padding: 4px 6px;
   vertical-align: middle;
 }
@@ -80,7 +58,7 @@ hr {
   border: 0;
   border-bottom: $border;
   height: 0;
-  margin: $padding-base 0;
+  margin: 8px 0;
 }
 
 img {

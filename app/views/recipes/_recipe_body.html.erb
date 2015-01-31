@@ -1,16 +1,16 @@
-<h2 class="m1-top">Ingredients</h1>
+<h2 class="mt2">Ingredients</h1>
 <%= simple_format(@recipe.ingredients, class: "text") %>
 
-<h2 class="m1-top">Instructions</h2>
+<h2 class="mt2">Instructions</h2>
 <div class="text text-normalized">
   <%= sanitize @recipe.instructions_rendered %>
 </div>
 
 <% unless @recipe.img.url.blank? %>
-<%= image_tag @recipe.img, class: "recipe-photo" %>
+<%= image_tag @recipe.img, class: "recipe-photo mt2 mb2 rounded shadow" %>
 <% end %>
 
-<h2 class="m1-top">Details</h2>
+<h2 class="mt2">Details</h2>
 <% if @recipe.source.blank? && @recipe.serves.blank? %>
 <p class="text-muted">You don't yet have any details for this recipe. Details describe where the recipe came from and the recipe's yield.</p>
 <% else %>
@@ -18,7 +18,7 @@
 <p>Yield: <%= @recipe.serves %>
 <% end %>
 
-<h2 class="m1-top">Notes</h2>
+<h2 class="mt2">Notes</h2>
 
 <% if me_owns_recipe? %>
   <div class="tab-container">
@@ -27,7 +27,7 @@
     <label for="tab-1">View</label>
 
     <input type="radio" name="tabs" class="tab-2" id="tab-2">
-    <label for="tab-2">Write Notes</label>
+    <label for="tab-2">Edit Notes</label>
 
     <br>
 
@@ -41,14 +41,14 @@
 
     <div class="content content-2">
       <%= form_for(@recipe) do |f| %>
-        <%= f.text_area :notes, class: "text-input full-width m1-btm notes", placeholder: "Click here to add Notes to your recipe.", rows: "4" %>
+        <%= f.text_area :notes, class: "text-input full-width m0 notes", placeholder: "Click here to add Notes to your recipe.", rows: "4" %>
         <%= f.submit t("general.save"), class: "btn-blue btn-sm block" %>
       <% end %>
     </div>
 
   </div>
 <% else %>
-  <div class="panel notes text text-normalized">
+  <div class="rounded shadow p2 notes text text-normalized">
     <% if @recipe.notes.blank? %>
     <p class="text-muted">No notes for this recipe &mdash; yet!</p>
     <% else %>

@@ -91,9 +91,9 @@
 .btn-paper {
   @extend %fab;
   @include size(46px);
-  bottom: $padding-base;
+  bottom: 1rem;
   padding: 8px;
-  right: $padding-base;
+  right: 1rem;
 
   svg {
     left: 16px;

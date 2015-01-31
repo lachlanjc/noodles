@@ -9,9 +9,6 @@
 }
 
 .recipe-photo {
-  @include shadow-compact;
-  border-radius: $radius;
-  margin: 1.5em 0;
   max-width: 80%;
 }
 
@@ -51,7 +48,7 @@
 }
 
 .social {
-  margin: $padding-xs 0;
+  margin: 8px 0;
 
   a {
     margin-right: 4px;

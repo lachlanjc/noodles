@@ -1,6 +1,6 @@
 var AnnouncementItem = React.createClass({
   render: function() {
-    return <div className="panel">
+    return <div className="bg-white rounded shadow mb2 p2">
       <h1 className="m0"><a href={this.props.data.url}>{this.props.data.title}</a></h1>
       <p className="text-muted">Published by Lachlan on {this.props.data.created_at}</p>
       <div className="text" dangerouslySetInnerHTML={{ __html: this.props.data.body_rendered }} />

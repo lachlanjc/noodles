@@ -1,10 +1,5 @@
 .flash {
-  @extend %box;
-  @extend .col-4;
   border-left: 2px solid $blue;
-  color: $grey;
-  margin: $padding-base auto;
-  padding: 16px;
 }
 
 .flash-success {

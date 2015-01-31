@@ -30,14 +30,14 @@
 
   <h1 class="m0"><%= @recipe.title %></h1>
 
-  <p class="text-muted m1-btm">Shared by <%= User.find(@recipe.user_id).first_name %></p>
+  <p class="text-muted mb1">Shared by <%= User.find(@recipe.user_id).first_name %></p>
   <%= markdown(@recipe.description) %>
 
   <% if me_owns_recipe? %>
   <div class="flex">
-    <div class="outlined ib center print-hide">
+    <div class="text-center p1 border rounded ib center print-hide">
       <%= render "shared/social" %>
-      <p class="m1-top"><strong><%= link_to "Check it out.", @shared_url, class: "btn-blue" %></strong></p>
+      <p class="mt2"><strong><%= link_to "Check it out.", @shared_url, class: "btn-blue" %></strong></p>
     </div>
   </div>
   <% end %>
@@ -46,20 +46,20 @@
 
   <%# If it's your recipe, hint about saving %>
   <% if me_owns_recipe? %>
-  <div class="m1-5-top print-hide">
-    <a class="btn m1-right" title="Others can click this button to save a copy of your recipe to their Noodles account." disabled>Save</a>
-    <%= link_to "Un-share", recipe_un_share_path(@recipe), class: "btn-red mobile-button m1-right" %>
+  <div class="mt2 print-hide">
+    <a class="btn mr1" title="Others can click this button to save a copy of your recipe to their Noodles account." disabled>Save</a>
+    <%= link_to "Un-share", recipe_un_share_path(@recipe), class: "btn-red mobile-button mr1" %>
     <a class="btn-blue" id="printRecipe"><%= t("general.print") %></a>
 
   <%# If you're logged in, show Save button %>
   <% elsif user_signed_in? %>
-  <div class="m1-5-top print-hide">
-    <%= link_to "Save", :save_to_noodles, title: "Save a copy of this recipe to your own account", class: "btn mobile-button m1-right" %>
+  <div class="mt2 print-hide">
+    <%= link_to "Save", :save_to_noodles, title: "Save a copy of this recipe to your own account", class: "btn mobile-button mr1" %>
     <a class="btn-blue" id="printRecipe"><%= t("general.print") %></a>
 
   <%# Everyone else should sign up for Noodles %>
   <% else %>
-  <div class="panel print-hide center col-8">
+  <div class="bg-white rounded shadow p2 print-hide center col-8">
     <h2>Wondering about Noodles?</h2>
     <p><%= link_to "Noodles", root_url, class: "text-primary" %> is a simple app for you to collect, cook, and share your favorite recipes.
     <p><%= link_to "Sign up", :sign_up, class: "text-primary" %> to save this recipe &mdash; it's fast and completely free.</p>
