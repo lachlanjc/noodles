@@ -12,7 +12,7 @@ body {
   top: 15px;
 
   svg {
-    @include svg-large($grey);
+    @include svg-large($grey-3);
   }
 }
 
@@ -65,20 +65,13 @@ body {
   margin-right: 3px;
 }
 
-.control {
-  svg {
-    fill: $brand-primary;
-  }
-
-  span {
-    @include up(-6px);
-    color: $brand-primary;
-  }
+.control span {
+  @include up(-6px);
 }
 
 .btn-save {
   @include linear-gradient(transparent, rgba(0, 0, 0, 0.05));
   background-color: $grey-4;
-  color: $brand-bg;
+  color: $grey-6;
   letter-spacing: $spacing;
 }

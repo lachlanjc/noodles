@@ -42,7 +42,7 @@
 
   <%= f.text_area :instructions, class: "text-input invisible-input full-width m0 js-auto-size", placeholder: "Type the recipe\'s instructions here. Number each step.", rows: "4", autocomplete: "off" %>
 
-  <p class="grey-3 block mb2 details-btn">
+  <p class="grey-4 block mb2 details-btn">
     <%= inline_svg("info_outline.svg") %>
     Show Details
   </p>
@@ -50,25 +50,25 @@
   <div class="hide bg-white rounded shadow mb2 p2 details-panel">
     <h2 class="m0">Details</h2>
 
-    <%= f.label :source, class: "ib mt2" %><small class="ml1 text-muted">Where did this recipe come from?</small>
+    <%= f.label :source, class: "ib mt2" %><small class="ml1 grey-4">Where did this recipe come from?</small>
     <%= f.text_field :source, class: "text-input" %>
 
-    <%= f.label :serves, "Yield", class: "ib" %><small class="ml1 text-muted">How many servings does your recipe produce?</small>
+    <%= f.label :serves, "Yield", class: "ib" %><small class="ml1 grey-4">How many servings does your recipe produce?</small>
     <%= f.text_field :serves, class: "text-input" %>
 
-    <%= f.label :notes, class: "ib" %><small class="ml1 text-muted">Add some more information about the recipe.</small>
+    <%= f.label :notes, class: "ib" %><small class="ml1 grey-4">Add some more information about the recipe.</small>
     <%= f.text_area :notes, class: "text-input mb1 notes js-auto-size" %>
 
     <div>
       <label class="control mb2">
         <%= f.check_box :favorite %>
-        <div class="control-indicator">
+        <div class="control-indicator fill-primary">
           <%= inline_svg("favorite_outline.svg") %>
         </div>
-        <div class="control-indicator-checked">
+        <div class="control-indicator-checked fill-primary">
           <%= inline_svg("favorite.svg") %>
         </div>
-        <span><%= t("general.favorite") %></span>
+        <span class="text-primary"><%= t("general.favorite") %></span>
       </label>
     </div>
 
