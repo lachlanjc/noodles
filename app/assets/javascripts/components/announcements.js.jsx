@@ -9,6 +9,7 @@ var AnnouncementBody = React.createClass({
   render: function() {
     return <div>
       <h1 className="m0 inline">{this.props.data.title}</h1>
+      <a className="float-right grey-5 h5 mt1 caps bold" href={this.props.data.url}>Permalink</a>
       <p className="grey-3">Published by Lachlan on {this.props.data.created_at}</p>
       <div className="text" dangerouslySetInnerHTML={{ __html: this.props.data.body_rendered }}></div>
     </div>
