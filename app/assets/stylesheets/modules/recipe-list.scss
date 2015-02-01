@@ -4,15 +4,17 @@
   margin-left: 4px;
 }
 
-.recipe-list .bg-white.mb2 {
-  &:hover h3 {
-    @include elegance;
-    color: $brand-primary;
-  }
+.recipe-list div:hover h3 {
+  @include elegance;
+  color: $brand-primary;
 }
 
 @media print {
-  .recipe-list .panel {
-    padding: 1rem 0 !important;
+  .recipe-list .bg-white {
+    padding: 8px 0 !important;
+
+    h3 {
+      font-weight: normal;
+    }
   }
 }

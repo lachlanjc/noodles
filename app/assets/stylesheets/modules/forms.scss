@@ -10,12 +10,11 @@ input[type="checkbox"], input[type="checkbox"] + label {
 }
 
 .text-input {
-  @extend .text;
   -webkit-appearance: none;
   color: $grey;
   border: $border;
   border-radius: $radius;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   outline: 0;
   padding: 4px 8px;
   width: 16em;
@@ -32,7 +31,6 @@ input[type="checkbox"], input[type="checkbox"] + label {
 }
 
 textarea.text-input {
-  line-height: 1.66;
   width: 32em;
 
   &.js-auto-size {
