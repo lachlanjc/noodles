@@ -1,21 +1,16 @@
 var AnnouncementItem = React.createClass({
   render: function() {
     return <div className="bg-white rounded shadow mb2 p3">
-      <h1 className="m0"><a href={this.props.data.url}>{this.props.data.title}</a></h1>
-      <p className="text-muted">Published by Lachlan on {this.props.data.created_at}</p>
-      <div className="text" dangerouslySetInnerHTML={{ __html: this.props.data.body_rendered }} />
+      <AnnouncementBody data={this.props.data} />
     </div>
   }
 });
 var AnnouncementBody = React.createClass({
   render: function() {
-    return <div className="document col-7">
-      <h1 className="m0">{this.props.announcement.title}</h1>
-      <p className="text-muted">Published by Lachlan on {this.props.announcement.created_at}</p>
-      <div className="text" dangerouslySetInnerHTML={{ __html: this.props.announcement.body_rendered }}></div>
-      <hr />
-      <BioLachlan />
-      <hr />
+    return <div>
+      <h1 className="m0 inline">{this.props.data.title}</h1>
+      <p className="grey-3">Published by Lachlan on {this.props.data.created_at}</p>
+      <div className="text" dangerouslySetInnerHTML={{ __html: this.props.data.body_rendered }}></div>
     </div>
   }
 });
