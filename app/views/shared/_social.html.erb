@@ -1,32 +1,39 @@
-<h2>You've shared this recipe.</h2>
+<div class="flex mt2">
+  <div class="text-center p1 border rounded ib mx-auto print-hide">
+    <h2 class="mt1">You've shared this recipe.</h2>
+    <p class="mb1">Give this link to whomever: <%= link_to @shared_url %></p>
 
-<p class="m-small-top m0-btm">Give this link to whomever: <%= link_to @shared_url %></p>
+    <div class="social py1">
+      <a rel="nofollow" href="http://twitter.com/share?text=Check out <%= @recipe.title %>, published on @noodlesapp:&amp;url=<%= @shared_url %>" class="social-twitter" target="_blank">
+        <%= inline_svg("social-twitter.svg") %>
+      </a>
+      <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=<%= @shared_url %>" class="social-facebook" target="_blank">
+        <%= inline_svg("social-facebook.svg") %>
+      </a>
+      <a rel="nofollow" href="http://www.pinterest.com/pin/create/button/?url=ttp%3A%2F%2Fwww.getnoodl.es%2Fs%2F<%= @recipe.shared_id %><% unless @recipe.img.url.blank? %>&media=<%= @recipe.img.url %><% end %>&description=<%= @recipe.title %>+on+Noodles+(<%= @recipe.description %>)" class="social-pinterest" target="_blank">
+        <%= inline_svg("social-pinterest.svg") %>
+      </a>
+      <a rel="nofollow" href="https://bufferapp.com/add?url=http%3A%2F%2Fwww.getnoodl.es%2Fs%2F<%= @recipe.shared_id %>&text=Check out <%= @recipe.title %>, published on Noodles:" class="social-buffer" target="_blank">
+        <%= inline_svg("social-buffer.svg") %>
+      </a>
+      <a rel="nofollow" href="https://plus.google.com/share?url=http%3A%2F%2Fwww.getnoodl.es%2Fs%2F<%= @recipe.shared_id %>" class="social-plus" target="_blank">
+        <%= inline_svg("social-googleplus.svg") %>
+      </a>
+      <% if me_owns_recipe? %>
+        <a href="mailto:?subject=Check out <%= @recipe.title %> on Noodles&body=Hey there! I published a new recipe on Noodles (http://www.getnoodl.es), <%= @recipe.title %>. Check it out: <%= @shared_url %>" class="social-email">
+      <% else %>
+        <a href="mailto:?subject=Check out <%= @recipe.title %> on Noodles&body=Hey there! I saw a recipe called <%= @recipe.title %> on Noodles (http://www.getnoodl.es) today. Check it out: <%= @shared_url %>" class="social-email">
+      <% end %>
+        <%= inline_svg("mail.svg") %>
+      </a>
+    </div>
 
-<div class="social">
-  <a rel="nofollow" href="http://twitter.com/share?text=Check out <%= @recipe.title %>, published on @noodlesapp:&amp;url=http://www.getnoodl.es/s/<%= @recipe.shared_id %>" class="social-twitter" target="_blank">
-    <%= inline_svg("social-twitter.svg") %>
-  </a>
-  <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://www.getnoodl.es/s/<%= @recipe.shared_id %>" class="social-facebook" target="_blank">
-    <%= inline_svg("social-facebook.svg") %>
-  </a>
-  <a rel="nofollow" href="http://www.pinterest.com/pin/create/button/?url=ttp%3A%2F%2Fwww.getnoodl.es%2Fs%2F<%= @recipe.shared_id %><% unless @recipe.img.url.blank? %>&media=<%= @recipe.img.url %><% end %>&description=<%= @recipe.title %>+on+Noodles+(<%= @recipe.description %>)" class="social-pinterest" target="_blank">
-    <%= inline_svg("social-pinterest.svg") %>
-  </a>
-  <a rel="nofollow" href="https://bufferapp.com/add?url=http%3A%2F%2Fwww.getnoodl.es%2Fs%2F<%= @recipe.shared_id %>&text=Check out <%= @recipe.title %>, published on Noodles:" class="social-buffer" target="_blank">
-    <%= inline_svg("social-buffer.svg") %>
-  </a>
-  <a rel="nofollow" href="https://plus.google.com/share?url=http%3A%2F%2Fwww.getnoodl.es%2Fs%2F<%= @recipe.shared_id %>" class="social-plus" target="_blank">
-    <%= inline_svg("social-googleplus.svg") %>
-  </a>
-  <% if me_owns_recipe? %>
-    <a href="mailto:?subject=Check out <%= @recipe.title %> on Noodles&body=Hey there! I published a new recipe on Noodles (http://www.getnoodl.es), <%= @recipe.title %>. Check it out: http://www.getnoodl.es/s/<%= @recipe.shared_id %>" class="social-email">
-  <% else %>
-    <a href="mailto:?subject=Check out <%= @recipe.title %> on Noodles&body=Hey there! I saw a recipe called <%= @recipe.title %> on Noodles (http://www.getnoodl.es) today. Check it out: <%= @shared_url %>" class="social-email">
-  <% end %>
-    <%= inline_svg("mail.svg") %>
-  </a>
+    <% if nav_active?(:recipe) %>
+    <p class="mt1"><%= link_to "Check it out.", @shared_url, class: "btn-blue" %></p>
+    <% end %>
+
+    <% if me_owns_recipe? %>
+    <p class="grey-2">Or you could <%= link_to "un-share this recipe", recipe_un_share_path(@recipe) %>.</p>
+    <% end %>
+  </div>
 </div>
-
-<% if me_owns_recipe? %>
-<p class="text-muted">Or you could <%= link_to "un-share this recipe", recipe_un_share_path(@recipe) %>.</p>
-<% end %>

@@ -23,14 +23,7 @@
 
   <%= render "recipe_body", cache: true %>
 
-  <% if @recipe.shared? %>
-  <div class="flex">
-  <div class="text-center p1 border rounded ib mx-auto print-hide mt2">
-    <%= render "shared/social" %>
-    <p class="mt2"><strong><%= link_to "Check it out.", @shared_url, class: "btn-blue" %></strong></p>
-  </div>
-  </div>
-  <% end %>
+  <%= render "shared/social" if @recipe.shared? %>
 
   <div class="print-hide mt2 mb1">
     <%= link_to t("general.edit"), :edit_recipe, class: "btn-blue mobile-button mr1" %>

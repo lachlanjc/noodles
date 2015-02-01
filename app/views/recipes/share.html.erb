@@ -30,17 +30,10 @@
 
   <h1 class="m0"><%= @recipe.title %></h1>
 
-  <p class="text-muted mb1">Shared by <%= User.find(@recipe.user_id).first_name %></p>
+  <p class="grey-3 mb1">Shared by <%= @owner %></p>
   <%= markdown(@recipe.description) %>
 
-  <% if me_owns_recipe? %>
-  <div class="flex">
-    <div class="text-center p1 border rounded ib mx-auto print-hide">
-      <%= render "shared/social" %>
-      <p class="mt2"><strong><%= link_to "Check it out.", @shared_url, class: "btn-blue" %></strong></p>
-    </div>
-  </div>
-  <% end %>
+  <%= render "shared/social" if me_owns_recipe? %>
 
   <%= render "recipe_body", cache: true %>
 
