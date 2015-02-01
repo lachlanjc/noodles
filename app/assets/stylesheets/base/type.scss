@@ -48,6 +48,10 @@ h1,
   font-size: $h1;
 }
 
+h1:first-child {
+  margin-top: 0;
+}
+
 h2,
 .h2 {
   font-size: $h2;
