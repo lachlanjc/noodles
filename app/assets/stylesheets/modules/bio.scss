@@ -1,17 +1,6 @@
 .bio {
   height: 85px;
 }
-
 .bio-photo {
-  @extend .float-left;
   width: 85px;
-
-  img {
-    @include shadow-1;
-    border-radius: 50%;
-  }
-}
-
-.bio-info {
-  display: inline-block;
 }

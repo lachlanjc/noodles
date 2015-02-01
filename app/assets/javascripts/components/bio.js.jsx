@@ -1,8 +1,8 @@
 var BioLachlan = React.createClass({
   render: function() {
     return <div className="bio mt2">
-      <div className="bio-photo ib">
-        <img src="http://d1fmxjrxw87eps.cloudfront.net/me.jpg" />
+      <div className="bio-photo ib float-left">
+        <img src="http://d1fmxjrxw87eps.cloudfront.net/me.jpg" className="circle shadow" />
       </div>
       <div className="bio-info ib mt2 ml2">
         <h2 className="ib m0">Lachlan Campbell</h2>

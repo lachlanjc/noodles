@@ -17,6 +17,9 @@
 .rounded {
   border-radius: $radius;
 }
+.circle {
+  border-radius: 50%;
+}
 
 .block {
   display: block !important;
