@@ -31,12 +31,12 @@ body {
   cursor: pointer;
 
   svg {
-    @include svg-large($grey-light);
+    @include svg-large($grey-4);
   }
 
   span {
     @include up(-10px);
-    color: $grey;
+    color: $grey-3;
     padding-left: 4px;
   }
 }
@@ -61,7 +61,7 @@ body {
   @include size(28px);
   @include up(8px);
   cursor: pointer;
-  fill: $grey;
+  fill: $grey-3;
   margin-right: 3px;
 }
 
@@ -78,7 +78,7 @@ body {
 
 .btn-save {
   @include linear-gradient(transparent, rgba(0, 0, 0, 0.05));
-  background-color: $grey-light;
+  background-color: $grey-4;
   color: $brand-bg;
   letter-spacing: $spacing;
 }

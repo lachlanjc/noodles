@@ -33,7 +33,7 @@
 
 .edit-btn svg {
   @include up(6px);
-  @include svg-large($grey-light);
+  @include svg-large($grey-4);
   display: inline-block;
   left: 4px;
 }

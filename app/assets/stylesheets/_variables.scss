@@ -1,11 +1,14 @@
 // Colors
 
-$grey-lighter: #dbdee3;
-$grey-light: #8b909a;
-$grey: #666d78;
-$text-color: darken($grey, 6%); // #585e67
-$header-color: darken($text-color, 4%); // #4f545c
+$grey-6: #f4f4f5;
+$grey-5: #dbdee3;
+$grey-4: #8b909a;
+$grey-3: #666d78;
+$grey-2: darken($grey-3, 6%); // #585e67
+$grey-1: darken($grey-2, 4%); // #4f545c
 $black: #353941;
+
+$brand-primary: #ff6d00;
 
 $pink: #e91e63;
 $red: #ff0013;
@@ -13,11 +16,9 @@ $yellow: #ffeb3b;
 $green: #64dd17;
 $blue: #00b0ff;
 
-$brand-primary: #ff6d00;
-$brand-bg: #f4f4f5;
 $notes: #fffbc4;
 
-$border: 1px solid $grey-lighter;
+$border: 1px solid $grey-5;
 $elegance-transition: .28s cubic-bezier(.4, 0, .2, 1);
 
 // Typographic Manifestation
@@ -25,7 +26,7 @@ $elegance-transition: .28s cubic-bezier(.4, 0, .2, 1);
 $font-family: Lato, 'Helvetica Neue', Helvetica, sans-serif;
 $line-height: 1.6;
 $heading-font-family: $font-family;
-$heading-font-weight: bold;
+$heading-font-weight: 600;
 $heading-line-height: 1.25;
 $monospace-font-family: 'Source Code Pro', Consolas, monospace;
 $h1: 2rem;

@@ -93,6 +93,7 @@ class RecipesController < ApplicationController
 
   def share
     @recipe = Recipe.find_by_shared_id(params[:shared_id])
+    @owner = User.find(@recipe.user_id).first_name
     @shared_url = shared_url(@recipe.shared_id)
   end
 

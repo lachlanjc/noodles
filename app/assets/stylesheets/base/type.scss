@@ -11,7 +11,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: $header-color;
+  color: $grey-1;
   font-family: $heading-font-family;
   font-weight: $heading-font-weight;
   line-height: $heading-line-height;
@@ -34,7 +34,7 @@ ul {
 }
 
 blockquote {
-  color: $grey;
+  color: $grey-3;
   font-size: $h3;
   margin-top: $space-3;
   margin-bottom: $space-3;
@@ -73,8 +73,8 @@ h5,
 
 h6,
 .h6 {
-  @extend %caps;
-  color: $grey;
+  @extend .caps;
+  color: $grey-3;
   font-size: $h6;
 }
 
@@ -113,7 +113,7 @@ p {
 }
 
 .lead {
-  color: $grey;
+  color: $grey-3;
   font-size: $h2;
   line-height: ($h2 * 1.5);
 }
@@ -137,15 +137,15 @@ a {
 }
 
 .text {
-  color: $text-color;
+  color: $grey-2;
   font-size: $h4;
   line-height: 1.6;
   word-wrap: break-word;
 }
 
 .text-normalized h1 {
-  @extend %caps;
-  color: $header-color;
+  @extend .caps;
+  color: $grey-1;
   font-size: $h3;
   margin-top: 0.5rem;
 }

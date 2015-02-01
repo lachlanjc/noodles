@@ -12,7 +12,7 @@
 
 <h2 class="mt2">Details</h2>
 <% if @recipe.source.blank? && @recipe.serves.blank? %>
-<p class="text-muted">You don't yet have any details for this recipe. Details describe where the recipe came from and the recipe's yield.</p>
+<p class="grey-2">You don't yet have any details for this recipe. Details describe where the recipe came from and the recipe's yield.</p>
 <% else %>
 <p>Source: <%= auto_link(@recipe.source, :html => {:rel => "nofollow"}) %>
 <p>Yield: <%= @recipe.serves %>
@@ -33,7 +33,7 @@
 
     <div class="content content-1 notes text text-normalized">
       <% if @recipe.notes.blank? %>
-        <p class="text-muted">No notes for this recipe &mdash; yet!</p>
+        <p class="grey-3">No notes for this recipe &mdash; yet!</p>
       <% else %>
       <%= sanitize markdown(@recipe.notes) %>
       <% end %>
@@ -50,7 +50,7 @@
 <% else %>
   <div class="rounded shadow p2 notes text text-normalized">
     <% if @recipe.notes.blank? %>
-    <p class="text-muted">No notes for this recipe &mdash; yet!</p>
+    <p class="grey-3">No notes for this recipe &mdash; yet!</p>
     <% else %>
     <%= sanitize markdown(@recipe.notes) %>
     <% end %>

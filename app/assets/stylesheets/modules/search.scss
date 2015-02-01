@@ -1,6 +1,6 @@
 .search-form {
   border-radius: 18px;
-  border: 1px solid $grey-lighter;
+  border: 1px solid $grey-5;
   padding: 0 8px;
 
   .invisible-input {
@@ -10,7 +10,7 @@
 
   svg {
     @include up(6px);
-    fill: $grey-light;
+    fill: $grey-4;
   }
 }
 
@@ -24,7 +24,7 @@
 mark {
   border-radius: .2em;
   background-color: lighten($yellow, 8%);
-  color: adjust-hue($text-color, 40%);
+  color: adjust-hue($grey-2, 40%);
   padding: .1em .2em;
 }
 

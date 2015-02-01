@@ -11,7 +11,7 @@ input[type="checkbox"], input[type="checkbox"] + label {
 
 .text-input {
   -webkit-appearance: none;
-  color: $grey;
+  color: $grey-3;
   border: $border;
   border-radius: $radius;
   margin-bottom: 12px;
@@ -26,7 +26,7 @@ input[type="checkbox"], input[type="checkbox"] + label {
   }
 
   &.notes:focus {
-    border-color: $grey-lighter;
+    border-color: $grey-5;
   }
 }
 

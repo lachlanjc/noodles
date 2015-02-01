@@ -1,6 +1,6 @@
 <% if target.errors.any? %>
   <div class="bg-white rounded shadow p2">
-    <h2 class="text-red"><%= t(".oops_went_wrong") %></h2>
+    <h2 class="red"><%= t(".oops_went_wrong") %></h2>
     <ul>
       <% target.errors.full_messages.each do |message| %>
       <li><%= message %></li>

@@ -4,17 +4,17 @@
 <main class="flex mx-auto">
 
   <aside class="cook-info ib m3">
-    <h1 class="m0 text-dark"><%= @recipe.title %></h2>
-    <p class="text-muted m0"><%= "Published by " + User.find(@recipe.user_id).first_name + " · " unless me_owns_recipe? %><%= @recipe_step_count %> steps</p>
+    <h1 class="m0 black"><%= @recipe.title %></h2>
+    <p class="grey-3 m0"><%= "Published by " + User.find(@recipe.user_id).first_name + " · " unless me_owns_recipe? %><%= @recipe_step_count %> steps</p>
     <% if me_owns_recipe? %>
       <%= link_to @recipe, class: "exit block mt2" do %>
         <%= inline_svg("exit.svg") %>
-        <span class="text-muted text">Exit Cook Mode</span>
+        <span class="grey-3 text">Exit Cook Mode</span>
       <% end %>
     <% else %>
       <%= link_to share_path(@recipe.shared_id), class: "exit block mt2" do %>
         <%= inline_svg("exit.svg") %>
-        <span class="text-muted text">Exit Cook Mode</span>
+        <span class="grey-3 text">Exit Cook Mode</span>
       <% end %>
     <% end %>
 
@@ -22,7 +22,7 @@
 
     <h2 class="mb0">Ingredients</h2>
     <% if @recipe.ingredients.blank? %>
-    <p class="text-muted">Your recipe has no ingredients.</p>
+    <p class="grey-3">Your recipe has no ingredients.</p>
     <% else %>
       <% @recipe.ingredients.each_line do |line| %>
       <label>
