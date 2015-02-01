@@ -152,11 +152,10 @@
 }
 
 .flex {
-  @include display(flex);
+  display: flex;
 }
-
 .flex-between {
-  @include justify-content(space-between);
+  justify-content: space-between;
 }
 
 .hide {

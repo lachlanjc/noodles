@@ -33,15 +33,6 @@ ul {
   padding-left: $space-3;
 }
 
-blockquote {
-  color: $grey-3;
-  font-size: $h3;
-  margin-top: $space-3;
-  margin-bottom: $space-3;
-  margin-left: 0;
-  padding-left: $space-2;
-}
-
 h1,
 .h1 {
   color: $brand-primary;
@@ -83,10 +74,6 @@ h6,
   padding-left: 0;
 }
 
-.container h1:first-child {
-  margin-top: 0;
-}
-
 .mega {
   font-size: $h1 * 1.66;
   line-height: $h1 * 2;
@@ -97,10 +84,6 @@ h6,
     font-size: $h1 * 1.2;
     line-height: $h1 * 1.5;
   }
-}
-
-h6 {
-
 }
 
 small {

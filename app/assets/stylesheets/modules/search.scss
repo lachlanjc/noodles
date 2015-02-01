@@ -1,7 +1,5 @@
 .search-form {
   border-radius: 18px;
-  border: 1px solid $grey-5;
-  padding: 0 8px;
 
   .invisible-input {
     height: 35px;
@@ -22,7 +20,7 @@
 }
 
 mark {
-  border-radius: .2em;
+  border-radius: $radius;
   background-color: lighten($yellow, 8%);
   color: adjust-hue($grey-2, 40%);
   padding: .1em .2em;

@@ -65,7 +65,7 @@ var RecipeList = React.createClass({
           {this.renderRandom()}
         </h1>
       </header>
-      <div className="search-form col-8 mx-auto flex bg-white border mb2">
+      <div className="search-form col-8 mx-auto flex bg-white border mb2 px1">
         <label htmlFor="searchBox">
           <IconSearch />
         </label>
