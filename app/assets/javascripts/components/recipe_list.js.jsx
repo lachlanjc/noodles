@@ -54,6 +54,7 @@ var RecipeList = React.createClass({
       });
       recipeCount = recipes.length;
       headerText = "Searching for "
+      this.props.showRandom = false;
     }
 
     return (<div>
