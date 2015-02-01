@@ -71,8 +71,8 @@
       <%= f.submit "Save", class: "btn-blue float-right" %>
     <% end %>
   <% else %>
-    <div class="well text">
-      You don't have any collections yet. Why don't you <a href="<%= collections_path %>#newCollection" class="text-blue">create one</a>?
+    <div class="well text text-center bg-grey-6 border rounded py3 px2">
+      You don't have any collections yet. Why don't you <a href="<%= collections_path %>#newCollection" class="blue">create one</a>?
     </div>
   <% end %>
 </div>
@@ -114,7 +114,7 @@
     <div class="content content-3">
       <p>Copy and paste the code below onto your website or blog to embed this recipe.</p>
       <pre class="m0"><%= @embed_code %></pre>
-      <p><%= link_to "Need help?", help_path %></p>
+      <p class="mt1"><%= link_to "Need help?", help_path %></p>
     </div>
 
   </div>
