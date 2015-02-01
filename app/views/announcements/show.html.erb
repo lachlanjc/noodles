@@ -2,8 +2,11 @@
 <% activate_nav!(:announcements) %>
 
 <%= render "shared/nav" %>
-<%= react_component("AnnouncementBody", announcement: @announcement.as_json) %>
 
-<% if @admin == true %>
-  <%= link_to "Delete", @announcement, method: :delete, data: { confirm: "Are you sure?" } %>
-<% end %>
+<article class="document col-7">
+  <%= react_component("AnnouncementBody", data: @announcement.as_json) %>
+  <hr>
+  <%= react_component("BioLachlan") %>
+  <hr>
+  <%= link_to "Delete", @announcement, method: :delete, data: { confirm: "Are you sure?" } if @admin == true %>
+</article>
