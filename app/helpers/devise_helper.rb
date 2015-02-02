@@ -8,9 +8,9 @@ module DeviseHelper
                       :resource => resource.class.model_name.human.downcase)
 
     html = <<-HTML
-    <div class="bg-white rounded shadow p2">
-      <h2 class="text-primary">The Noodles are in a bit of a tangle.</h2>
-      <ul>#{messages}</ul>
+    <div class="well text bg-grey-6 border rounded p2 mb2">
+      <h2 class="mt0 red">The Noodles are in a bit of a tangle.</h2>
+      <ul class="px3 text text-left mb1">#{messages}</ul>
     </div>
     HTML
 
