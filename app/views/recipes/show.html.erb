@@ -47,7 +47,7 @@
     <% if @recipe.collections == [] %>
     <p>To add "<%= @recipe.title %>" to your collections, select them from the list below.</p>
     <% else %>
-    <p>"<%= @recipe.title %>" is already in <%= pluralize(@recipe.collections.reject!(&:blank?).length, "collection") %>. To add it to additional collections, add it to more, select them from the list below.</p>
+    <p>"<%= @recipe.title %>" is already in <%= pluralize(@recipe.collections.reject!(&:blank?).length, "collection") %>. To add it to additional collections, select them from the list below.</p>
     <% end %>
 
     <%= form_for(@recipe) do |f| %>
