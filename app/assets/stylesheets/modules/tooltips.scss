@@ -1,5 +1,4 @@
 .has-tooltip:before {
-  @extend .text-center;
   @include shadow-compact;
   background: rgba(70, 70, 70, .9);
   border-radius: $radius;
@@ -8,10 +7,10 @@
   content: attr(data-tooltip);
   display: inline-block;
   font-weight: bold;
-  line-height: 1;
   opacity: 0;
-  padding: 6px 8px;
+  padding: 2px 8px;
   position: relative;
+  text-align: center;
   width: 10em;
 }
 
@@ -28,9 +27,4 @@
 .btn-paper-mini.has-tooltip:before {
   margin-top: 2px;
   right: 12em;
-}
-
-.random.has-tooltip:before {
-  right: 5px;
-  top: -10px;
 }

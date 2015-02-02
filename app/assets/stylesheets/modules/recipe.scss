@@ -55,30 +55,30 @@
   svg {
     @include size(36px);
   }
+}
 
-  .social-twitter path {
-    fill: #00aced;
-  }
+.social-twitter path {
+  fill: #00aced;
+}
 
-  .social-facebook path {
-    fill: #3b5998;
-  }
+.social-facebook path {
+  fill: #3b5998;
+}
 
-  .social-buffer path {
-    fill: #555;
-  }
+.social-buffer path {
+  fill: #555;
+}
 
-  .social-pinterest path {
-    fill: #cb2027;
-  }
+.social-pinterest path {
+  fill: #cb2027;
+}
 
-  .social-plus path {
-    fill: #d14836;
-  }
+.social-plus path {
+  fill: #d14836;
+}
 
-  .social-email path {
-    fill: $blue;
-  }
+.social-email path {
+  fill: $blue;
 }
 
 @media print {

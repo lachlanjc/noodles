@@ -60,7 +60,6 @@
   background-color: $brand-primary;
   border-radius: 50%;
   position: fixed;
-  -webkit-user-select: none;
 
   &:hover {
     @include shadow-3;
