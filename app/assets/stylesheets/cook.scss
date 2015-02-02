@@ -4,21 +4,13 @@
 .cook-info {
   max-width: 20rem;
 
-  h1 {
-    color: $black;
-  }
-
   svg {
     fill: $grey-3;
   }
 }
 
-.exit {
-  border-bottom: 0;
-
-  span {
-    @include up(-6px);
-  }
+.exit span {
+  @include up(-6px);
 }
 
 .checklist {

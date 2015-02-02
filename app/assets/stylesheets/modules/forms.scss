@@ -31,11 +31,12 @@ input[type="checkbox"], input[type="checkbox"] + label {
 }
 
 textarea.text-input {
+  line-height: 1.75;
   width: 32em;
+}
 
-  &.js-auto-size {
-    resize: none;
-  }
+.js-auto-size {
+  resize: none;
 }
 
 .line-height-reset {

@@ -45,18 +45,6 @@ body {
   visibility: hidden;
 }
 
-.invisble-input {
-  &.full-width {
-    width: 100%;
-  }
-}
-
-.recipe-title {
-  font-size: $h1 !important;
-  font-weight: 600;
-  margin: 0;
-}
-
 .details-btn svg {
   @include size(28px);
   @include up(8px);
