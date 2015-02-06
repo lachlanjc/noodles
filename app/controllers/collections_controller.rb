@@ -12,11 +12,6 @@ class CollectionsController < ApplicationController
     end
   end
 
-  def new
-    @collection = Collection.new
-  end
-
-  def edit
   end
 
   def create
@@ -30,7 +25,7 @@ class CollectionsController < ApplicationController
   end
 
   def update
-    collection_flash = "Okay, changes saved!" if @collection.update(collection_params)
+    @collection.update(collection_params)
     redirect_to @collection
   end
 
