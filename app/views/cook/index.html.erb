@@ -21,16 +21,7 @@
     <hr class="col-10">
 
     <h2 class="mb0">Ingredients</h2>
-    <% if @recipe.ingredients.blank? %>
-    <p class="grey-3">Your recipe has no ingredients.</p>
-    <% else %>
-      <% @recipe.ingredients.each_line do |line| %>
-      <label>
-        <input type="checkbox" class="checkbox checklist">
-        <span><%= line %></span>
-      </label>
-      <% end %>
-    <% end %>
+    <%= react_component("IngredientsChecklist", ingredients: @recipe.ingredients.split("\n")) %>
 
     <% unless @recipe.notes.blank? %>
     <hr class="col-10">
