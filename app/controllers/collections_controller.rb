@@ -1,4 +1,6 @@
 class CollectionsController < ApplicationController
+  include CollectionsHelper
+
   before_action :set_collection, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -7,36 +9,41 @@ class CollectionsController < ApplicationController
 
   def show
     @recipes = []
-    Recipe.all.each do |recipe|
+    Recipe.where(:user_id => current_user.id).each do |recipe|
       @recipes.push(recipe) if recipe.collections.include?(@collection.id.to_s)
     end
   end
 
-  def new
-    @collection = Collection.new
-  end
-
-  def edit
-  end
-
-  def create
-    @collection = Collection.new(collection_params)
-    @collection.user_id = current_user.id
-
-    if @collection.save
-      collection_flash = "Boom. You created a new collection"
-      redirect_to @collection
+  def share
+    @collection = Collection.find_by_hash_id(params[:hash_id])
+    @recipes = []
+    Recipe.where(:user_id => @collection.user.id).each do |recipe|
+      @recipes.push(recipe) if recipe.collections.include?(@collection.id.to_s)
     end
   end
 
+  def create
+    @collection = Collection.new do |c|
+      c.name = params[:collection][:name]
+      c.description = params[:collection][:description]
+      c.photo = params[:collection][:photo]
+      c.user = current_user
+      c.save!
+    end
+    @collection.hash_id = generate_hash_id(@collection.id)
+    @collection.save
+    redirect_to @collection
+  end
+
   def update
-    collection_flash = "Okay, changes saved!" if @collection.update(collection_params)
+    @collection.update(collection_params)
     redirect_to @collection
   end
 
   def destroy
     @collection.destroy
-    respond_with(@collection)
+    flash[:danger] = "Buckle up! We're deleting your collection."
+    redirect_to collections_path
   end
 
   private

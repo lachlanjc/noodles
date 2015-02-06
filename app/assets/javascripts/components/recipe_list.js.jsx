@@ -58,6 +58,7 @@ var RecipeList = React.createClass({
     }
 
     return (<div>
+      {this.props.showHeader === true ?
       <header className="text-center m0">
         <h1 className="ib">
           {headerText}
@@ -65,6 +66,7 @@ var RecipeList = React.createClass({
           {this.renderRandom()}
         </h1>
       </header>
+      : null}
       <div className="search-form col-8 mx-auto flex bg-white border mb2 px1">
         <label htmlFor="searchBox">
           <IconSearch />

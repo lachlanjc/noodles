@@ -9,7 +9,7 @@
     <%= react_component("RecipeList", showHeader: false, recipes: @recipes.as_json) %>
   <% else %>
   <div class="bg-white rounded shadow p2 col-6 mx-auto">
-    You don't have any recipes in this collection yet. Add some by clicking "Add to Collection" at the bottom of any of your <%= link_to "recipes", recipes_path %>.
+    There aren't any recipes in this collection. If you're the ownder, add recipes by clicking "Add to Collection" at the bottom of any of your <%= link_to "recipes", recipes_path %>.
   </div>
   <% end %>
 </article>
@@ -18,8 +18,8 @@
   <%= react_component("ModalClose") %>
   <h2>Share Collection</h2>
   <hr>
-  <% @shared_url = "http://www.getnoodl.es/c/" + @collection.hash_id.to_s %>
-  <p>Share this link with anyone to show them your collection: <%= link_to @shared_url, @shared_url %></p>
+  <% @shared_url = "http://www.getnoodl.es" + collection_share_path(:id => @collection.hash_id) %>
+  <p>Love this collection? Share this URL: <%= link_to @shared_url %></p>
   <div class="social py1">
     <a rel="nofollow" href="http://twitter.com/share?text=Check out the collection <%= @collection.name %> on @noodlesapp:&amp;url=<%= @shared_url %>" class="social-twitter" target="_blank">
       <%= inline_svg("social-twitter.svg") %>
@@ -38,23 +38,4 @@
     </a>
   </div>
 
-</div>
-
-<div class="modal" id="editCollection">
-  <%= react_component("ModalClose") %>
-  <h2>Edit Collection</h2>
-  <hr>
-  <%= form_for(@collection) do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name, class: "text-input", placeholder: "Spectacular Desserts" %>
-
-    <%= f.label :description %>
-    <%= f.text_area :description, class: "text-input", placeholder: "The best food to end your meal." %>
-
-    <br>
-    <%= f.label :photo, class: "ib" %><small class="ml1">(optional)</small>
-    <%= f.file_field :photo, class: "line-height-reset" %>
-
-    <%= f.submit "Save", class: "btn-blue float-right" %>
-  <% end %>
 </div>

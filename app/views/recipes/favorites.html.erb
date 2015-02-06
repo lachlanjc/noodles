@@ -3,7 +3,7 @@
 
 <%= render "shared/nav" %>
 <article class="col-7 container">
-  <%= react_component("RecipeList", headerText: "Favorites", recipes: @recipes.as_json) %>
+  <%= react_component("RecipeList", showHeader: true, headerText: "Favorites", recipes: @recipes.as_json) %>
 </article>
 
 <%= link_to :new_recipe, class: "btn-paper" do %>

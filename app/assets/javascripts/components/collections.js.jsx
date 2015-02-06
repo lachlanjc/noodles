@@ -6,7 +6,7 @@ var CollectionIndex = React.createClass({
         {this.props.collections.map(function(collection) {
           return <CollectionItem key={collection.id} data={collection} />;
         })}
-        {(this.props.collections.length === 0) ? <div className="col-6 well mx-auto">You don't have any collections yet. <a href="#newCollection" className="modalTrigger">Create one!</a></div> : null}
+        {(this.props.collections.length === 0) ? <div className="col-6 well text text-center bg-grey-6 border rounded p2 mx-auto">You don't have any collections yet. <a href="#newCollection" className="modalTrigger">Create your first!</a></div> : null}
       </div>
     </article>);
   }
@@ -41,10 +41,10 @@ var CollectionHeader = React.createClass({
     var photo_url = this.props.collection.photo_url;
 
     var headerClass, headerStyle;
-    var editBtnClass = "edit-btn";
+    var actionBtnClass = "btn-action";
     if (photo_url.length > 0) {
       headerClass = "has-img mb2";
-      editBtnClass = "edit-btn-glass";
+      actionBtnClass = "btn-glass";
       var headerStyle = {
         backgroundImage: "url(" + photo_url + ")"
       }
@@ -53,7 +53,10 @@ var CollectionHeader = React.createClass({
     return <header className={"collection-header full-width text-center py3 " + headerClass} style={headerStyle}>
       <h1 className="ib collection-name m0">{this.props.collection.name}</h1>
       <a href="#editCollection" className="modalTrigger">
-        <IconEdit classes={"ib " + editBtnClass} />
+        <IconEdit classes={"ib ml1 " + actionBtnClass} />
+      </a>
+      <a href="#shareCollection" className="modalTrigger">
+        <IconShare classes={"ib " + actionBtnClass} />
       </a>
       <div className="lead collection-description">{this.props.collection.description}</div>
     </header>

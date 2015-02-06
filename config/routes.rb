@@ -22,6 +22,9 @@ Rails.application.routes.draw do
     get "/:shared_id/save" => "recipes#save_to_noodles", as: :save_to_noodles
   end
 
+  # Shared collection
+  get "/c/:hash_id" => "collections#share", as: :collection_share
+
   get "/about" => "pages#about", as: :about
   get "/help" => "pages#about", as: :help
 
