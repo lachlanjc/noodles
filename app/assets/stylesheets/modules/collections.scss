@@ -19,7 +19,7 @@
 
   .collection-name {
     color: #fff;
-    text-shadow: 0 2px 8px rgba(0,0,0,.4);
+    text-shadow: 0 2px 8px rgba(0,0,0,.3);
   }
 
   .collection-description {
@@ -31,14 +31,12 @@
   font-size: $h1 * 1.2; // 36px
 }
 
-.edit-btn svg {
+.btn-action svg {
   @include up(6px);
   @include svg-large($grey-4);
-  display: inline-block;
-  left: 4px;
 }
 
-.edit-btn-glass svg {
+.btn-glass svg {
   fill: #fff;
   opacity: .8;
 }

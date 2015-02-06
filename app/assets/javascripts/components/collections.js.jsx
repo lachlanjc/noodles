@@ -41,10 +41,10 @@ var CollectionHeader = React.createClass({
     var photo_url = this.props.collection.photo_url;
 
     var headerClass, headerStyle;
-    var editBtnClass = "edit-btn";
+    var actionBtnClass = "btn-action";
     if (photo_url.length > 0) {
       headerClass = "has-img mb2";
-      editBtnClass = "edit-btn-glass";
+      actionBtnClass = "btn-glass";
       var headerStyle = {
         backgroundImage: "url(" + photo_url + ")"
       }
@@ -53,7 +53,10 @@ var CollectionHeader = React.createClass({
     return <header className={"collection-header full-width text-center py3 " + headerClass} style={headerStyle}>
       <h1 className="ib collection-name m0">{this.props.collection.name}</h1>
       <a href="#editCollection" className="modalTrigger">
-        <IconEdit classes={"ib " + editBtnClass} />
+        <IconEdit classes={"ib ml1 " + actionBtnClass} />
+      </a>
+      <a href="#shareCollection" className="modalTrigger">
+        <IconShare classes={"ib " + actionBtnClass} />
       </a>
       <div className="lead collection-description">{this.props.collection.description}</div>
     </header>
