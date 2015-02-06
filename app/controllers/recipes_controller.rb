@@ -9,8 +9,7 @@ class RecipesController < ApplicationController
   # GET /recipes
   def index
     if user_signed_in?
-      @recipes = Recipe.where(user_id: current_user.id).search(params[:search]).order(created_at: :desc)
-      @recipes_count = @recipes.count
+      @recipes = Recipe.where(user_id: current_user.id).order(created_at: :desc)
       render :recipe_list
     else
       redirect_to root_url
@@ -21,10 +20,10 @@ class RecipesController < ApplicationController
     if user_signed_in?
       @recipes = Recipe.where(:user_id => current_user.id, :favorite => true).order(created_at: :desc)
 
-      if @recipes.count == 0
-        redirect_to "http://noodles.withdraft.com/#favorites"
-      else
+      if @recipes.any?
         render :favorites
+      else
+        redirect_to "http://noodles.withdraft.com/#favorites"
       end
     else
       redirect_to root_url
