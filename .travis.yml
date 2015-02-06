@@ -1,5 +1,7 @@
 language: ruby
 rvm:
   - 2.2.0
+script:
+  - rake db:create db:migrate
 notifications:
   slack: getnoodles:EQiFyZq4M1Tv94DaXRN8f2Gy
