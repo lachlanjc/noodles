@@ -6,21 +6,19 @@ class AnalyticsController < ApplicationController
     @recipes_shared_count = Recipe.where(:shared => true).count
     @users = User.all.order(created_at: :desc)
 
-    @users_with_one = []
     @users.each do |user|
       if Recipe.where(:user_id => user.id).count == 1
         @users_with_one.push(user)
       end
     end
 
-    @users_with_many = []
     @users.each do |user|
       if Recipe.where(:user_id => user.id).count > 1
         @users_with_many.push(user)
       end
     end
+    @users_with_one, @users_with_many, @users_with_none = []
 
-    @users_with_none = []
     @users.each do |user|
       if Recipe.where(:user_id => user.id).count == 0
         @users_with_none.push(user)
