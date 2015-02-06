@@ -1,3 +1,5 @@
 language: ruby
 rvm:
   - 2.2.0
+notifications:
+  slack: getnoodles:EQiFyZq4M1Tv94DaXRN8f2Gy
