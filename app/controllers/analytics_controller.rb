@@ -9,9 +9,9 @@ class AnalyticsController < ApplicationController
 
     User.all.order(created_at: :desc).each do |user|
       @user_recipe_count = Recipe.where(:user_id => user.id).count
-      @users_with_none.push(user) if @recipes.count == 0
-      @users_with_one.push(user)  if @recipes.count == 1
-      @users_with_many.push(user) if @recipes.count > 1
+      @users_with_none.push(user) if @user_recipe_count == 0
+      @users_with_one.push(user)  if @user_recipe_count == 1
+      @users_with_many.push(user) if @user_recipe_count > 1
     end
   end
 
