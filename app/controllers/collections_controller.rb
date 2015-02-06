@@ -31,7 +31,8 @@ class CollectionsController < ApplicationController
 
   def destroy
     @collection.destroy
-    respond_with(@collection)
+    flash[:danger] = "Buckle up! We're deleting your collection."
+    redirect_to collections_path
   end
 
   private
