@@ -10,3 +10,13 @@ var IngredientsChecklist = React.createClass({
     </div>;
   }
 });
+
+var CookInstructions = React.createClass({
+  render: function() {
+    return <div>
+      {this.props.instructions.map(function(step) {
+        return <li className="bg-white rounded shadow p2 block h2 text-center mb2">{step}</li>;
+      })}
+    </div>;
+  }
+});

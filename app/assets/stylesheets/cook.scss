@@ -24,22 +24,10 @@
   }
 }
 
-.cook-list {
-  padding: 0;
-
-  li {
-    @include shadow-2;
-    background: #fff;
-    border-radius: $radius;
-    display: block;
-    font-size: $h2;
-    line-height: 37px;
-    list-style: none;
-    margin: 1rem 0;
-    padding: 1.5rem;
-    text-align: center;
-    width: 600px;
-  }
+.cook-list li {
+  line-height: 37px;
+  list-style: none;
+  width: 600px;
 }
 
 @media (max-width: $screen-tablet) {
