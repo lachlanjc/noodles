@@ -12,7 +12,6 @@ class AnalyticsController < ApplicationController
         @users_with_one.push(user)
       end
     end
-    @users_with_one_count = @users_with_one.count
 
     @users_with_many = []
     @users.each do |user|
@@ -20,7 +19,6 @@ class AnalyticsController < ApplicationController
         @users_with_many.push(user)
       end
     end
-    @users_with_many_count = @users_with_many.count
 
     @users_with_none = []
     @users.each do |user|
@@ -28,7 +26,6 @@ class AnalyticsController < ApplicationController
         @users_with_none.push(user)
       end
     end
-    @users_with_none_count = @users_with_none.count
   end
 
   def shared_recipes
