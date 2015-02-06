@@ -7,7 +7,7 @@ class CollectionsController < ApplicationController
 
   def show
     @recipes = []
-    Recipe.all.each do |recipe|
+    Recipe.where(:user_id => current_user.id).each do |recipe|
       @recipes.push(recipe) if recipe.collections.include?(@collection.id.to_s)
     end
   end
