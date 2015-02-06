@@ -73,7 +73,7 @@ class RecipesController < ApplicationController
       @recipe.save
       redirect_to edit_recipe_path(@recipe)
     else
-      flash[:danger] = "That\'s not your recipe!"
+      flash[:danger] = "That's not your recipe!"
       redirect_to root_url
     end
   end
@@ -117,7 +117,7 @@ class RecipesController < ApplicationController
       r.ingredients = @recipe.ingredients
       r.instructions = @recipe.instructions
       r.instructions_rendered = @recipe.instructions_rendered
-      r.source = "http://www.getnoodl.es/s/" + @recipe.id.to_s
+      r.source = shared_url(@recipe.id)
       r.serves = @recipe.serves
       r.notes = @recipe.notes
       r.favorite = false
