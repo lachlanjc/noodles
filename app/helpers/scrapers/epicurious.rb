@@ -1,4 +1,4 @@
-require 'wombat'
+require "wombat"
 
 class EpicuriousScraper
   include Wombat::Crawler

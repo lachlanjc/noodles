@@ -1,10 +1,10 @@
-require 'wombat'
+require "wombat"
 
 class BonAppetitScraper
   include Wombat::Crawler
 
   def scrape(url_path)
-    return Wombat.crawl do
+    recipe = Wombat.crawl do
       base_url "http://www.bonappetit.com"
       path url_path
 
@@ -14,17 +14,14 @@ class BonAppetitScraper
       instructions({ css: ".prep-steps-container .preparation ul li" }, :list)
       serves css: ".single-recipe .ingredient-sets .total-servings"
     end
-  end
-
-  def scrape_and_process(url_path)
-    bonappetit = scrape(url_path)
-    bonappetit["ingredients"] = bonappetit["ingredients_raw"]
-    bonappetit["ingredients"].each do |line|
+    recipe = scrape(url_path)
+    recipe["ingredients"] = recipe["ingredients_raw"]
+    recipe["ingredients"].each do |line|
       2.times do
         line.sub!(/\n/, " ")
       end
     end
-    bonappetit.delete("ingredients_raw")
-    return bonappetit
+    recipe.delete("ingredients_raw")
+    return recipe
   end
 end

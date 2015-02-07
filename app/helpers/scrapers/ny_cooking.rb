@@ -1,10 +1,10 @@
-require 'wombat'
+require "wombat"
 
 class NYCookingScraper
   include Wombat::Crawler
 
   def scrape(url_path)
-    return Wombat.crawl do
+    recipe = Wombat.crawl do
       base_url "http://cooking.nytimes.com"
       path url_path
 
@@ -15,17 +15,11 @@ class NYCookingScraper
 
       notes css: ".recipe-note-description"
     end
-  end
-
-  def scrape_and_process(url_path)
-    nyt = scrape(url_path)
-    nyt["ingredients"] = nyt["ingredients_raw"]
-    nyt["ingredients"].each do |line|
-      3.times do
-        line.sub!(/\n/, " ")
-      end
+    recipe["ingredients"] = recipe["ingredients_raw"]
+    recipe["ingredients"].each do |line|
+      3.times { line.sub!(/\n/, " ") }
     end
-    nyt.delete("ingredients_raw")
-    return nyt
+    recipe.delete("ingredients_raw")
+    return recipe
   end
 end
