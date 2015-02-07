@@ -1,11 +1,15 @@
 var RecipeItem = React.createClass({
   render: function() {
     var favoriteData = null;
+    var recipeLink = this.props.data.url;
+    if (this.props.data.linkType === "shared") {
+      recipeLink = this.props.data.shared_url;
+    }
     if (this.props.data.favorite === true) {
       favoriteData = <IconFavorite classes="float-right fill-primary" />;
     }
 
-    return <a href={this.props.data.url} className="link-reset">
+    return <a href={recipeLink} className="link-reset">
       <div className="bg-white rounded shadow mb2 p2">
         {favoriteData}
         <h3 className="m0">{this.props.data.title}</h3>
