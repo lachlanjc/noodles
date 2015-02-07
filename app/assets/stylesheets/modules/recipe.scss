@@ -28,23 +28,19 @@
     z-index: -1; // Put the input behind the label so it doesn't overlay text
   }
 
-  .control-indicator-checked,
-  input:checked ~ .control-indicator {
-    display: none;
-  }
-
-  .control-indicator,
-  input:checked ~ .control-indicator-checked {
-    display: inline-block;
-  }
-
-  .control-indicator {
-    height: 24px;
-  }
-
   &.favorite-btn {
     @extend .header-indicator;
   }
+}
+
+.control-indicator-checked,
+input:checked ~ .control-indicator {
+  display: none;
+}
+
+.control-indicator,
+input:checked ~ .control-indicator-checked {
+  display: inline-block;
 }
 
 .social {
