@@ -16,7 +16,7 @@ class AllRecipesScraper
     end
     recipe["ingredients"] = recipe["ingredients_raw"]
     recipe["ingredients"].each do |line|
-      16.times { line.sub!(/\s\s/, "") }
+      14.times { line.sub!(/\s\s/, "") }
     end
     recipe.delete("ingredients_raw")
     return recipe
