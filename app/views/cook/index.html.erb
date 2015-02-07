@@ -3,7 +3,7 @@
 
 <main class="flex mx-auto">
 
-  <aside class="cook-info ib m3">
+  <aside class="cook-info m3">
     <h1 class="m0 black"><%= @recipe.title %></h2>
     <p class="grey-3 m0"><%= "Published by " + User.find(@recipe.user_id).first_name + " · " unless me_owns_recipe? %><%= @recipe_step_count %> steps</p>
     <% if me_owns_recipe? %>
@@ -34,7 +34,7 @@
     <% end %>
   </aside>
 
-  <ul class="cook-list ib mt3 p0">
+  <ul class="cook-list mt3 p0">
     <%= react_component("CookInstructions", instructions: @recipe.instructions.split("\n")) %>
     <li class="bg-white rounded shadow p2 block h2 text-center mb2">
       Finished! Enjoy your meal.
