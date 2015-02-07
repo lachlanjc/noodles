@@ -17,13 +17,14 @@
   background-size: cover;
   background-repeat: no-repeat;
 
-  .collection-name {
+  .collection-name,
+  div {
     color: #fff;
-    text-shadow: 0 2px 8px rgba(0,0,0,.3);
+    text-shadow: 0 1px 3px rgba(0,0,0,.2);
   }
 
-  .collection-description {
-    color: #fff;
+  .btn-action svg {
+    fill: #fff;
   }
 }
 
@@ -32,12 +33,12 @@
 }
 
 .btn-action svg {
+  @include size(28px);
   @include up(6px);
-  @include svg-large($grey-4);
+  fill: $grey-4;
 }
 
-.btn-glass svg {
-  fill: #fff;
+.glass {
   opacity: .8;
 }
 

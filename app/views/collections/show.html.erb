@@ -2,7 +2,7 @@
 <%- title @collection.name %>
 
 <%= render "shared/nav" %>
-<%= react_component("CollectionHeader", collection: @collection.as_json) %>
+<%= react_component("CollectionHeader", showEdit: true, showPublisher: false, collection: @collection.as_json) %>
 
 <article class="col-7 container mt0">
   <% if @recipes.any? %>

@@ -2,11 +2,11 @@
 <%- title @collection.name %>
 
 <%= render "shared/nav" %>
-<%= react_component("CollectionHeader", collection: @collection.as_json) %>
+<%= react_component("CollectionHeader", showEdit: false, showPublisher: true, collection: @collection.as_json) %>
 
 <article class="col-7 container mt0">
   <% if @recipes.any? %>
-    <%= react_component("RecipeList", showHeader: false, recipes: @recipes.as_json) %>
+    <%= react_component("RecipeList", showHeader: false, linkType: "shared", recipes: @recipes.as_json) %>
   <% else %>
   <div class="bg-white rounded shadow p2 col-6 mx-auto">
     There aren't any recipes in this collection. If you're the ownder, add recipes by clicking "Add to Collection" at the bottom of any of your <%= link_to "recipes", recipes_path %>.

@@ -194,6 +194,9 @@
 .text-primary {
   color: $brand-primary;
 }
+.fill-primary {
+  fill: $brand-primary;
+}
 
 .red {
   color: $red;
@@ -212,6 +215,9 @@
 }
 .bg-white {
   background-color: #fff;
+}
+.fill-white {
+  fill: #fff;
 }
 
 .grey-6 {
