@@ -193,9 +193,8 @@ class RecipesController < ApplicationController
     recipe = master_scrape(recipe_src)
 
     if recipe == "unsupported"
-      flash[:info] = recipe
-      flash[:danger] = "Sorry, that site isn\'t supported yet."
-      redirect_to :recipes
+      flash[:danger] = "Sorry, that site isn't supported yet."
+      redirect_to recipes_path
     else
       @ingredients_prepared = write_ingredients_to_list(recipe["ingredients"])
       @instructions_prepared = form_markdown_for_instructions(recipe["instructions"])
