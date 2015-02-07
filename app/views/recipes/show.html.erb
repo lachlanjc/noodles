@@ -6,8 +6,8 @@
 <article class="col-7 recipe-print document">
 
   <%= form_for(@recipe, remote: true, html: { id: "recipeFavoriteForm" }) do |f| %>
-    <label class="control favorite-btn">
-      <%= f.check_box :favorite, id: "recipeFavoriteTrigger" %>
+    <label class="control header-indicator">
+      <%= f.check_box :favorite, class: "control-checkbox", id: "recipeFavoriteTrigger" %>
       <div class="control-indicator">
         <%= inline_svg("favorite_outline.svg") %>
       </div>

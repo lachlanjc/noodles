@@ -15,18 +15,17 @@
 
 .checklist {
   display: inline-block;
-  margin-right: 3px;
-
-  &:checked + span {
-    @include elegance;
-    color: $grey-4;
-    text-decoration: line-through;
-  }
+  margin-right: 4px;
 }
 
-.cook-list li {
+.checklist:checked + span,
+.instructions-checklist:checked ~ span {
+  color: $grey-4;
+  text-decoration: line-through;
+}
+
+.cook-list div {
   line-height: 37px;
-  list-style: none;
   width: 600px;
 }
 
@@ -38,8 +37,7 @@
 
 @media (max-width: $screen-phone) {
   main,
-  aside,
-  ul {
+  aside {
     display: block !important;
   }
 
@@ -50,7 +48,7 @@
   .cook-list {
     padding: 16px;
 
-    li {
+    div {
       box-sizing: border-box;
       width: 100%;
     }

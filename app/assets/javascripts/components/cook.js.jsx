@@ -45,7 +45,12 @@ var CookInstructions = React.createClass({
   render: function() {
     return <div>
       {this.props.instructions.map(function(step) {
-        return <li className="bg-white rounded shadow p2 block h2 text-center mb2">{step}</li>;
+        return <div className="bg-white rounded shadow p2 block mb2 control">
+          <label className="h2">
+            <input type="checkbox" className="control-checkbox instructions-checklist" />
+            {step}
+          </label>
+        </div>;
       })}
     </div>;
   }

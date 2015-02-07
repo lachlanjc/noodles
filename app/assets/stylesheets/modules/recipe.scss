@@ -21,25 +21,19 @@
   background-color: $notes;
 }
 
-.control {
-  input {
-    opacity: 0;
-    position: absolute;
-    z-index: -1; // Put the input behind the label so it doesn't overlay text
-  }
-
-  &.favorite-btn {
-    @extend .header-indicator;
-  }
+.control-checkbox {
+  opacity: 0;
+  position: absolute;
+  z-index: -1; // Put the input behind the label so it doesn't overlay text
 }
 
-.control-indicator-checked,
-input:checked ~ .control-indicator {
-  display: none;
+.control-checkbox:checked ~ .control-indicator,
+.control-indicator-checked {
+  @extend .hide;
 }
 
 .control-indicator,
-input:checked ~ .control-indicator-checked {
+.control-checkbox:checked ~ .control-indicator-checked {
   display: inline-block;
 }
 
