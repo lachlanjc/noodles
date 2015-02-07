@@ -2,10 +2,11 @@ class AnalyticsController < ApplicationController
   before_filter :authenticate
 
   def dashboard
+    @users_count = User.all.count
     @recipes_count = Recipe.all.count
     @recipes_shared_count = Recipe.where(:shared => true).count
 
-    @users_with_one, @users_with_many, @users_with_none = []
+    @users_with_one = @users_with_many = @users_with_none = []
 
     User.all.order(created_at: :desc).each do |user|
       @user_recipe_count = Recipe.where(:user_id => user.id).count
@@ -15,11 +16,15 @@ class AnalyticsController < ApplicationController
     end
   end
 
-  def shared_recipes
-    @recipes = Recipe.where(:shared => true).order(created_at: :desc)
+  def all_users
+    @users = User.all.order(created_at: :desc)
   end
 
-  def all_users
+  def collections
+    @collections = Collection.all.order(created_at: :desc)
+  end
+
+  def marketable
     @users = User.all.order(created_at: :desc)
   end
 
@@ -28,8 +33,8 @@ class AnalyticsController < ApplicationController
     activation_class: Recipe)
   end
 
-  def marketable
-    @users = User.all.order(created_at: :desc)
+  def shared_recipes
+    @recipes = Recipe.where(:shared => true).order(created_at: :desc)
   end
 
   private

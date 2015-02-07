@@ -2,40 +2,36 @@
 
 <%= render "shared/analytics_nav" %>
 
-<article class="col-8">
+<article class="container col-6">
 
-  <section class="flex flex-between">
-    <div class="bg-white rounded border p2 ib col-3">
-      <h1 class="m0 mega"><%= @users.count %></h1>
-      <p class="lead">users</p>
-    </div>
+  <div class="bg-white rounded shadow py1 px2 m2">
+    <h1 class="m0 mega"><%= @users_count %></h1>
+    <p class="lead">users</p>
+  </div>
 
-    <div class="bg-white rounded border p2 ib col-3">
-      <h1 class="m0 mega"><%= @recipes_count %></h1>
-      <p class="lead">recipes</p>
-    </div>
+  <div class="bg-white rounded shadow py1 px2 m2">
+    <h1 class="m0 mega"><%= @recipes_count %></h1>
+    <p class="lead">recipes</p>
+  </div>
 
-    <div class="bg-white rounded border p2 ib col-3">
-      <h1 class="m0 mega"><%= @recipes_shared_count %></h1>
-      <p class="lead">shared recipes</p>
-    </div>
-  </section>
+  <div class="bg-white rounded shadow py1 px2 m2">
+    <h1 class="m0 mega"><%= @recipes_shared_count %></h1>
+    <p class="lead">shared recipes</p>
+  </div>
 
-  <section class="flex flex-between">
-    <div class="bg-white rounded border p2 ib col-3">
-      <h1 class="m0 mega"><%= @users_with_none.count %></h1>
-      <p class="lead">users have no recipes</p>
-    </div>
+  <div class="bg-white rounded shadow py1 px2 m2">
+    <h1 class="m0 mega"><%= @users_with_none.count %></h1>
+    <p class="lead">users have no recipes</p>
+  </div>
 
-    <div class="bg-white rounded border p2 ib col-3">
-      <h1 class="m0 mega"><%= @users_with_one.count %></h1>
-      <p class="lead">users have 1 recipe</p>
-    </div>
+  <div class="bg-white rounded shadow py1 px2 m2">
+    <h1 class="m0 mega"><%= @users_with_one.count %></h1>
+    <p class="lead">users have 1 recipe</p>
+  </div>
 
-    <div class="bg-white rounded border p2 ib col-3">
-      <h1 class="m0 mega"><%= @users_with_many.count %></h1>
-      <p class="lead">users have several recipes</p>
-    </div>
-  </section>
+  <div class="bg-white rounded shadow py1 px2 m2">
+    <h1 class="m0 mega"><%= @users_with_many.count %></h1>
+    <p class="lead">users have several recipes</p>
+  </div>
 
 </div>

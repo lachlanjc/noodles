@@ -1,10 +1,10 @@
 <% activate_nav!(:analytics_users) %>
 
-<%= render 'shared/analytics_nav' %>
+<%= render "shared/analytics_nav" %>
 
 <article class="col-8">
 
-  <h1>Users (<%= @users.count %>)</h1>
+  <h1>Users <span class="badge"><%= @users.count %></span></h1>
 
   <style> td { padding: 6px; } </style>
 
