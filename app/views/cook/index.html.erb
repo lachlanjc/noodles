@@ -39,9 +39,7 @@
     <%= react_component("CookInstructions", instructions: @recipe.instructions.split("\n")) %>
     <div class="bg-white rounded shadow p2 block h2 text-center mb2 grey-2">
       Finished! Enjoy your meal.
-      <% if me_owns_recipe? %>
-      <%= render "notes" %>
-      <% end %>
+      <%= render "notes" if me_owns_recipe? %>
     </div>
   </article>
 
