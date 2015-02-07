@@ -11,26 +11,22 @@ module ScrapingHelper
     host = find_host(url)
     path = find_path(url)
 
-    if host == "epicurious.com"
+    case host
+    when "epicurious.com"
       load "scrapers/epicurious.rb"
-      content = EpicuriousScraper.new.scrape(path)
-      return content
-    elsif host == "bonappetit.com"
+      return EpicuriousScraper.new.scrape(path)
+    when "bonappetit.com"
       load "scrapers/bon_appetit.rb"
-      content = BonAppetitScraper.new.scrape_and_process(path)
-      return content
-    elsif host == "foodandwine.com"
+      return BonAppetitScraper.new.scrape_and_process(path)
+    when "foodandwine.com"
       load "scrapers/food_and_wine.rb"
-      content = FoodWineScraper.new.scrape(path)
-      return content
-    elsif host == "nytimes.com"
+      return FoodWineScraper.new.scrape(path)
+    when "nytimes.com"
       load "scrapers/ny_cooking.rb"
-      content = NYCookingScraper.new.scrape_and_process(path)
-      return content
-    elsif host == "allrecipes.com"
+      return NYCookingScraper.new.scrape_and_process(path)
+    when "allrecipes.com"
       load "scrapers/allrecipes.rb"
-      content = AllRecipesScraper.new.scrape_and_process(path)
-      return content
+      return AllRecipesScraper.new.scrape(path)
     else
       return "unsupported"
     end
