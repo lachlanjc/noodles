@@ -4,7 +4,7 @@ class AllRecipesScraper
   include Wombat::Crawler
 
   def scrape(url_path)
-    return Wombat.crawl do
+    recipe = Wombat.crawl do
       base_url "http://allrecipes.com"
       path url_path
 
@@ -14,17 +14,11 @@ class AllRecipesScraper
       instructions({ css: ".directions ol li" }, :list)
       serves css: ".servings #lblYield"
     end
-  end
-end
-
-def scrape_and_process(url_path)
-  allrecipes = AllRecipesScraper.new.scrape(url_path)
-  allrecipes["ingredients"] = allrecipes["ingredients_raw"]
-  allrecipes["ingredients"].each do |line|
-    5.times do
-      line.sub!(/\s\s/, " ")
+    recipe["ingredients"] = recipe["ingredients_raw"]
+    recipe["ingredients"].each do |line|
+      16.times { line.sub!(/\s\s/, "") }
     end
+    recipe.delete("ingredients_raw")
+    return recipe
   end
-  allrecipes.delete("ingredients_raw")
-  return allrecipes
 end
