@@ -17,11 +17,13 @@ var RecipeItem = React.createClass({
 
 var RandomRecipe = React.createClass({
   render: function() {
-    return {(this.showRandom === true) ?
-      <a href="/random" className="ib">
+    if (this.props.showRandom === true) {
+      return (<a href="/random" className="ib">
         <IconRandom classes="random" />
-      </a>
-    : null}
+      </a>);
+    } else {
+      return null;
+    }
   }
 });
 
@@ -57,7 +59,7 @@ var RecipeList = React.createClass({
         <h1 className="ib">
           {headerText}
           {searchString.length > 0 ? <mark>{searchString}</mark> : null }
-          <RandomRecipe showButton={this.props.showRandom} />
+          <RandomRecipe showRandom={this.props.showRandom} />
         </h1>
       </header>
       : null}
