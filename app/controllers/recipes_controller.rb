@@ -35,7 +35,6 @@ class RecipesController < ApplicationController
     if me_owns_recipe?
       @shared_url = shared_url(@recipe.shared_id)
       @embed_code = '<script src="http://www.getnoodl.es/embed/' + @recipe.shared_id.to_s + '"></script>'
-      render :show
     else
       render :locked, status: 403
     end
@@ -115,7 +114,6 @@ class RecipesController < ApplicationController
       r.img = @recipe.img
       r.ingredients = @recipe.ingredients
       r.instructions = @recipe.instructions
-      r.instructions_rendered = @recipe.instructions_rendered
       r.source = shared_url(@recipe.id)
       r.serves = @recipe.serves
       r.notes = @recipe.notes
@@ -161,7 +159,6 @@ class RecipesController < ApplicationController
 
     if @recipe.save
       @recipe.shared_id = generate_shared_id(@recipe.id)
-      @recipe.instructions_rendered = markdown(@recipe.instructions)
       flash[:success] = "Your recipe has been created."
       redirect_to @recipe
     else
@@ -172,7 +169,6 @@ class RecipesController < ApplicationController
   # PATCH/PUT /recipes/1
   def update
     if @recipe.update(recipe_params)
-      @recipe.instructions_rendered = markdown(@recipe.instructions)
       @recipe.save
       flash[:success] = "Awesome, your changes have been saved."
       redirect_to @recipe
@@ -198,14 +194,12 @@ class RecipesController < ApplicationController
     else
       @ingredients_prepared = write_ingredients_to_list(recipe["ingredients"])
       @instructions_prepared = form_markdown_for_instructions(recipe["instructions"])
-      @instructions_rendered_prepared = markdown(@instructions_prepared.to_s)
 
       @create_recipe = Recipe.new do |r|
         r.user_id = current_user.id
         r.title = recipe["title"]
         r.ingredients = @ingredients_prepared
         r.instructions = @instructions_prepared
-        r.instructions_rendered = @instructions_rendered_prepared
         r.source = recipe_src
         r.serves = recipe["serves"]
         r.notes = recipe["notes"].to_s
