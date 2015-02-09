@@ -3,7 +3,7 @@
 
 <h2 class="mt2">Instructions</h2>
 <div class="text text-normalized">
-  <%= sanitize @recipe.instructions_rendered %>
+  <%= sanitize markdown(@recipe.instructions) %>
 </div>
 
 <% unless @recipe.img.url.blank? %>
