@@ -101,7 +101,7 @@ class RecipesController < ApplicationController
     if me_owns_recipe?
       @recipe.shared = false
       @recipe.save
-      flash[:success] = "Recipe unshared."
+      flash[:success] = "Okay, the padlock is back on this recipe."
       redirect_to @recipe
     end
   end
@@ -136,8 +136,8 @@ class RecipesController < ApplicationController
       @recipe = Recipe.new
       render :edit
     else
-      flash[:info] = "You must sign up or sign in to create new recipes."
-      redirect_to root_url
+      flash[:info] = "You must have an account to create new recipes."
+      redirect_to sign_up_path
     end
   end
 
@@ -146,7 +146,7 @@ class RecipesController < ApplicationController
     if me_owns_recipe?
       render :edit
     else
-      flash[:view] = "Sorry, you can\'t edit that recipe."
+      flash[:view] = "Dude, that's not yours."
       redirect_to root_url
     end
   end
@@ -170,7 +170,7 @@ class RecipesController < ApplicationController
   def update
     if @recipe.update(recipe_params)
       @recipe.save
-      flash[:success] = "Awesome, your changes have been saved."
+      flash[:success] = "Awesome: changes saved!"
       redirect_to @recipe
     else
       render :edit
@@ -180,7 +180,7 @@ class RecipesController < ApplicationController
   # DELETE /recipes/1
   def destroy
     @recipe.destroy
-    flash[:danger] = "Your recipe has been deleted."
+    flash[:danger] = "Okay, we've tossed that recipe into the recycling bin."
     redirect_to recipes_url
   end
 
@@ -189,7 +189,7 @@ class RecipesController < ApplicationController
     recipe = master_scrape(recipe_src)
 
     if recipe == "unsupported"
-      flash[:danger] = "Sorry, that site isn't supported yet."
+      flash[:danger] = "Hmm, we don't support that site yet."
       redirect_to recipes_path
     else
       @ingredients_prepared = write_ingredients_to_list(recipe["ingredients"])
