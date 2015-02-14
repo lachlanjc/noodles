@@ -2,7 +2,7 @@ var RecipeItem = React.createClass({
   render: function() {
     var favoriteData = null;
     var recipeLink = this.props.data.url;
-    if (this.props.data.linkType === "shared") {
+    if (this.props.linkType === "public") {
       recipeLink = this.props.data.shared_url;
     }
     if (this.props.data.favorite === true) {
@@ -45,6 +45,7 @@ var RecipeList = React.createClass({
     var recipes = this.props.recipes;
     var recipeCount = recipes.length;
     var headerText = this.props.headerText;
+    var linkType = this.props.linkType;
     var searchString = this.state.searchString.trim().toLowerCase();
 
     if(searchString.length > 0){
@@ -81,7 +82,7 @@ var RecipeList = React.createClass({
       </div>
       <div className="recipe-list">
         {recipes.map(function(recipe) {
-           return <RecipeItem key={recipe.id} data={recipe} />;
+           return <RecipeItem key={recipe.id} linkType={linkType} data={recipe} />;
         })}
         {(searchString.length > 0) && (recipeCount === 0) ? <div className="col-6 bg-white rounded shadow mb2 p2 mx-auto">Sorry, no recipes matched your search.</div> : null}
       </div>
