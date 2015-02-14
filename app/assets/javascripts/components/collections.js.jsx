@@ -39,18 +39,18 @@ var CollectionItem = React.createClass({
 var CollectionHeader = React.createClass({
   render: function() {
     var photo_url = this.props.collection.photo_url;
-
-    var headerClass, headerStyle;
+    var headerStyle;
+    var headerClass = "mt3 py1";
     var actionBtnClass = "btn-action";
     if (photo_url.length > 0) {
-      headerClass = "has-img mb2";
+      headerClass = "has-img mb2 py3";
       actionBtnClass = "btn-action glass";
       var headerStyle = {
         backgroundImage: "url(" + photo_url + ")"
       }
     }
 
-    return <header className={"collection-header full-width text-center py3 " + headerClass} style={headerStyle}>
+    return <header className={"collection-header full-width text-center " + headerClass} style={headerStyle}>
       <h1 className="ib collection-name m0">{this.props.collection.name}</h1>
       {this.props.showEdit === true ?
         <a href="#editCollection" className="modalTrigger">
@@ -62,7 +62,7 @@ var CollectionHeader = React.createClass({
       </a>
       <div className="lead">{this.props.collection.description}</div>
       {this.props.showPublisher === true ?
-        <div className="mt2 mb0 h4 grey-3">Published by {this.props.collection.publisher}</div>
+        <div className="mt1 mb0 h4 grey-3">Published by {this.props.collection.publisher}</div>
       : null}
     </header>
   }
