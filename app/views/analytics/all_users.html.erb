@@ -2,32 +2,25 @@
 
 <%= render "shared/analytics_nav" %>
 
-<article class="col-8">
+<article class="container col-8">
 
   <h1>Users <span class="badge"><%= @users.count %></span></h1>
 
-  <style> td { padding: 6px; } </style>
-
-  <table class="text">
-    <thead>
-      <tr style="text-decoration: underline">
-        <td>ID</td>
-        <td>First Name</td>
-        <td>Email</td>
-        <td>Recipe count</td>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @users.each do |user| %>
-        <tr>
-          <td><%= user.id %></td>
-          <td><%= user.first_name %></td>
-          <td><%= user.email %></td>
-          <td><%= Recipe.where(:user_id => user.id).count %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <% @users.each do |user| %>
+  <div class="bg-white rounded shadow mb2 p2 text">
+    <h2 class="mt0 ib mr1">
+      <%= user.first_name %>
+      <small class="px1 grey-3 h4">#<%= user.id %></small>
+    </h2>
+    <ul class="px1">
+      <li>Recipes: <%= Recipe.where(:user_id => user.id).count %></li>
+      <li>Sessions: <%= user.sign_in_count %></li>
+      <li>Signed up: <%= user.created_at.strftime("%B %e, %Y") %></li>
+      <li>Referring URL: <%= link_to user.referring_url %></li>
+      <li>Landing URL: <%= user.landing_url %></li>
+      <li>Email: <%= link_to user.email, "mailto:" + user.email %></li>
+    </ul>
+  </div>
+  <% end %>
 
 </div>

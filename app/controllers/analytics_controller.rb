@@ -28,10 +28,6 @@ class AnalyticsController < ApplicationController
     @collections = Collection.all.order(created_at: :desc)
   end
 
-  def marketable
-    @users = User.all.order(created_at: :desc)
-  end
-
   def performance
     @cohorts = CohortMe.analyze(period: "weeks",
     activation_class: Recipe)
