@@ -1,6 +1,19 @@
 <%- title @announcement.title %>
 <% activate_nav!(:announcements) %>
 
+<% content_for :meta do -%>
+  <meta name="twitter:card" content="summary">
+  <meta property="og:site_name" content="Noodles" />
+  <meta name="twitter:domain" content="getnoodl.es">
+  <meta property="og:url" content="http://www.getnoodl.es/announcements/<%= @announcement.id %>">
+  <meta property="og:title" content="<%= @announcement.title %>">
+  <meta name="twitter:title" content="<%= @announcement.title %>">
+  <meta property="og:image" content="<%= image_url('apple-touch-icon.png') %>"/>
+  <meta name="twitter:image:src" content="<%= image_url('apple-touch-icon.png') %>">
+  <meta property="og:description" content="Check out these updates to Noodles, a simple app to help you cook better.">
+  <meta name="twitter:description" content="Check out these updates to Noodles, a simple app to help you cook better.">
+<% end -%>
+
 <%= render "shared/nav" %>
 
 <article class="document col-7">
