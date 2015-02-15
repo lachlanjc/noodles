@@ -1,4 +1,4 @@
-.nav-container .collections-active { background-image: url("http://assets.getnoodl.es/collections-active.svg"); }
+.nav-container .collections-active { background-image: url("http://noodles.s3.amazonaws.com/collections-active.svg"); }
 .container {
   width: 100%;
   font-family: "proxima-nova", "Proxima Nova", sans-serif;
@@ -16,7 +16,7 @@
 }
 .add {
   background: #fff;
-  background: url("http://assets.getnoodl.es/add.svg") no-repeat;
+  background: url("http://noodles.s3.amazonaws.com/add.svg") no-repeat;
   background-position: 100px;
   background-size: 50px;
   border: 3px solid #fa6713;

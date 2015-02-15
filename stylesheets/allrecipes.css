@@ -1,4 +1,4 @@
-.nav-container .recipes-active { background-image: url("http://assets.getnoodl.es/recipes-active.svg"); }
+.nav-container .recipes-active { background-image: url("http://noodles.s3.amazonaws.com/recipes-active.svg"); }
 
 header .label {
   color: #fa6713;
@@ -13,10 +13,10 @@ header .filter button {
   margin-top: 5px;
 }
 header .filter button:focus { outline: none; }
-#clock { background-image: url("http://assets.getnoodl.es/clock.svg"); }
+#clock { background-image: url("http://noodles.s3.amazonaws.com/clock.svg"); }
 header .search {
   box-sizing: border-box;
-  background: url("http://assets.getnoodl.es/search-grey.svg") no-repeat !important;
+  background: url("http://noodles.s3.amazonaws.com/search-grey.svg") no-repeat !important;
   background-size: 18px !important;
   background-position: 6px !important;
   margin-right: 0.66em !important;
@@ -24,7 +24,7 @@ header .search {
   padding-left: 2em !important;
   letter-spacing: 0 !important;
 }
-header .search:focus { background-image: url("http://assets.getnoodl.es/search.svg") !important; }
+header .search:focus { background-image: url("http://noodles.s3.amazonaws.com/search.svg") !important; }
 .recipes ul {
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;

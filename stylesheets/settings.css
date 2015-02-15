@@ -1,4 +1,4 @@
-.nav-container .settings-active { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/settings-active.svg"); }
+.nav-container .settings-active { background-image: url("https://noodles.s3.amazonaws.com/settings-active.svg"); }
 .flex {
   display: flex;
   display: -webkit-flex;
@@ -39,7 +39,7 @@
 
 @media only screen and (max-width: 1025px) { .plans { width: 100% !important; } }
 @media only screen and (max-width: 950px) {
-  
+
 }
 @media only screen and (max-width: 825px) {
   article { width: 85%; }

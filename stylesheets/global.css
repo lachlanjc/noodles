@@ -40,12 +40,12 @@ button:focus { outline: none; }
   height: 35px;
   margin: 0 auto 35px 13px;
 }
-.nav-container .add { background-image: url("http://assets.getnoodl.es/add.svg"); }
-.nav-container .recipes { background-image: url("http://assets.getnoodl.es/recipes.svg"); }
-.nav-container .collections { background-image: url("http://assets.getnoodl.es/collections.svg"); }
-.nav-container .ingredients { background-image: url("http://assets.getnoodl.es/ingredients.svg"); }
-.nav-container .cuisines { background-image: url("http://assets.getnoodl.es/cuisines.svg"); }
-.nav-container .settings { background-image: url("http://assets.getnoodl.es/settings.svg"); }
+.nav-container .add { background-image: url("http://noodles.s3.amazonaws.com/add.svg"); }
+.nav-container .recipes { background-image: url("http://noodles.s3.amazonaws.com/recipes.svg"); }
+.nav-container .collections { background-image: url("http://noodles.s3.amazonaws.com/collections.svg"); }
+.nav-container .ingredients { background-image: url("http://noodles.s3.amazonaws.com/ingredients.svg"); }
+.nav-container .cuisines { background-image: url("http://noodles.s3.amazonaws.com/cuisines.svg"); }
+.nav-container .settings { background-image: url("http://noodles.s3.amazonaws.com/settings.svg"); }
 .nav-container .active {
     background-color: #fa6713;
     padding: 17px 25px 17px 17px;
@@ -73,14 +73,13 @@ header {
 }
 .button {
   background-color: #fa6713;
-  border-radius: 10px;
+  border-radius: 6px;
   border: 0;
-  padding: 8px 10px;
-  margin: 1.25em 5px auto 0;
   color: #fff;
+  font: 1rem "proxima-nova", "Proxima Nova", sans-serif !important;
+  margin: 1.25em 6px auto 0;
+  padding: 8px 16px;
   text-align: center;
-  font-size: 1em;
-  font-family: "proxima-nova", "Proxima Nova", sans-serif !important;
 }
 .button:active {
   outline: 0;

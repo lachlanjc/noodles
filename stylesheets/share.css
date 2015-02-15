@@ -65,7 +65,7 @@ button:focus { outline: none; }
 .scale {
   width: 16px;
   height: 16px;
-  background-image: url("https://d1nk51tq4b83ct.cloudfront.net/scale.svg");
+  background-image: url("https://noodles.s3.amazonaws.com/scale.svg");
 }
 .body-container {
   width: 100%;
@@ -100,7 +100,7 @@ article h2 { letter-spacing: -0.03rem !important; }
   height: 315px;
   margin: 2em auto 2px 0;
   border-radius: 0.75em;
-  background-image: url("https://d1nk51tq4b83ct.cloudfront.net/note_background.svg");
+  background-image: url("https://noodles.s3.amazonaws.com/note_background.svg");
   background-size: auto 400px;
   display: flex;
   display: -webkit-flex;
@@ -174,8 +174,8 @@ article small a { color: #507bab; }
   margin-top: 3px;
   margin-right: 10px;
 }
-#print { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/print.svg"); }
-#share { background-image: url("https://d1nk51tq4b83ct.cloudfront.net/options.svg"); }
+#print { background-image: url("https://noodles.s3.amazonaws.com/print.svg"); }
+#share { background-image: url("https://noodles.s3.amazonaws.com/options.svg"); }
 article button.save { margin: 0 auto 2em auto !important; }
 
 @media only screen and (max-width: 1025px) {

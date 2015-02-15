@@ -1,4 +1,4 @@
-.nav-container .ingredients-active { background-image: url("http://assets.getnoodl.es/ingredients-active.svg"); }
+.nav-container .ingredients-active { background-image: url("http://noodles.s3.amazonaws.com/ingredients-active.svg"); }
 #ingredients-list {
   width: 75%;
   list-style: none;
@@ -16,7 +16,7 @@
   display: inline-block;
 }
 .remove {
-  background: url("http://assets.getnoodl.es/close.svg") no-repeat;
+  background: url("http://noodles.s3.amazonaws.com/close.svg") no-repeat;
   width: 10px;
   height: 10px;
   background-size: 100%;
