@@ -159,6 +159,7 @@ class RecipesController < ApplicationController
 
     if @recipe.save
       @recipe.shared_id = generate_shared_id(@recipe.id)
+      @recipe.save
       flash[:success] = "Your recipe has been created."
       redirect_to @recipe
     else
