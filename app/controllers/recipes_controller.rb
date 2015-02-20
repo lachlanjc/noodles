@@ -107,6 +107,7 @@ class RecipesController < ApplicationController
   end
 
   def save_to_noodles
+    @recipe = Recipe.find_by_shared_id(params[:shared_id])
     @save_recipe = Recipe.new do |r|
       r.user_id = current_user.id
       r.title = @recipe.title
