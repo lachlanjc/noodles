@@ -19,7 +19,7 @@
   <% else %>
   <%= f.file_field :img, id: "file", class: "hide" %>
   <div class="upload-button m0">
-    <div id="file-button" class="ib">
+    <div id="file-button" class="inline-block">
       <%= inline_svg("photo-upload.svg") %>
       <span id="file-name">Pick a different photo?</span>
     </div>
@@ -50,25 +50,25 @@
   <div class="hide bg-white rounded shadow mb2 p2 details-panel">
     <h2 class="m0">Details</h2>
 
-    <%= f.label :source, class: "ib mt2" %><small class="ml1 grey-4">Where did this recipe come from?</small>
+    <%= f.label :source, class: "inline-block mt2" %><small class="ml1 grey-4">Where did this recipe come from?</small>
     <%= f.text_field :source, class: "text-input" %>
 
-    <%= f.label :serves, "Yield", class: "ib" %><small class="ml1 grey-4">How many servings does your recipe produce?</small>
+    <%= f.label :serves, "Yield", class: "inline-block" %><small class="ml1 grey-4">How many servings does your recipe produce?</small>
     <%= f.text_field :serves, class: "text-input" %>
 
-    <%= f.label :notes, class: "ib" %><small class="ml1 grey-4">Add some more information about the recipe.</small>
+    <%= f.label :notes, class: "inline-block" %><small class="ml1 grey-4">Add some more information about the recipe.</small>
     <%= f.text_area :notes, class: "text-input notes block mb1 js-auto-size" %>
 
     <div>
       <label class="control mb2">
         <%= f.check_box :favorite, class: "control-checkbox" %>
-        <div class="control-indicator fill-primary">
+        <div class="control-indicator fill-orange">
           <%= inline_svg("favorite_outline.svg") %>
         </div>
-        <div class="control-indicator-checked fill-primary">
+        <div class="control-indicator-checked fill-orange">
           <%= inline_svg("favorite.svg") %>
         </div>
-        <span class="text-primary"><%= t("general.favorite") %></span>
+        <span class="orange"><%= t("general.favorite") %></span>
       </label>
     </div>
 

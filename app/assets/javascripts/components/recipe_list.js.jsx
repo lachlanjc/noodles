@@ -6,7 +6,7 @@ var RecipeItem = React.createClass({
       recipeLink = this.props.data.shared_url;
     }
     if (this.props.data.favorite === true) {
-      favoriteData = <IconFavorite classes="float-right fill-primary" />;
+      favoriteData = <IconFavorite classes="right fill-orange" />;
     }
 
     return <a href={recipeLink} className="link-reset">
@@ -22,8 +22,8 @@ var RecipeItem = React.createClass({
 var RandomRecipe = React.createClass({
   render: function() {
     if (this.props.showRandom === true) {
-      return (<a href="/random" className="ib">
-        <IconRandom classes="random" />
+      return (<a href="/random" className="inline-block">
+        <IconRandom classes="inline-block ml1 fill-grey-4 random" />
       </a>);
     } else {
       return null;
@@ -60,8 +60,8 @@ var RecipeList = React.createClass({
 
     return (<div>
       {this.props.showHeader === true ?
-      <header className="text-center m0">
-        <h1 className="ib">
+      <header className="center m0">
+        <h1 className="inline-block">
           {headerText}
           {searchString.length > 0 ? <mark>{searchString}</mark> : null }
           <RandomRecipe showRandom={this.props.showRandom} />
@@ -69,13 +69,13 @@ var RecipeList = React.createClass({
       </header>
       : null}
       <div className="search-form col-8 mx-auto flex bg-white border mb2 px1">
-        <label htmlFor="searchBox">
-          <IconSearch />
+        <label htmlFor="searchBox" className="mt0">
+          <IconSearch classes="fill-grey-4" />
         </label>
         <input
           type="text"
           id="searchBox"
-          className="text-input invisible-input col-8 m0"
+          className="mb0 text-input invisible-input col-8"
           value={this.state.searchString}
           onChange={this.handleChange}
           placeholder="Search recipes..." />

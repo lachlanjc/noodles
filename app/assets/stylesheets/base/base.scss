@@ -1,44 +1,33 @@
-button,
-input,
-select,
-textarea {
-  font-family: inherit;
-  font-size: 100%;
-}
-
-img {
-  max-width: 100%;
-}
-
-svg {
-  max-height: 100%;
+.shadow {
+  @include shadow-compact;
 }
 
 %box {
-  @include shadow-compact;
+  @extend .shadow;
   background: #fff;
-  border-radius: $radius;
+  border-radius: $border-radius;
 }
 
 .document {
   @extend %box;
   @extend .mx-auto;
-  padding: 24px;
+  @extend .p3;
 }
 
 @media (max-width: $screen-phone) {
   .document {
-    border-left: 0;
+    border: 0;
     border-radius: 0;
     border-right: 0;
     padding: 1rem; // override article
-    width: 100%;
+    width: 95%;
   }
+}
 
-  .bg-white.mobile-full-width {
-    margin: 1rem 0 !important;
-    padding: 1rem !important;
-  }
+hr {
+  border: 0;
+  border-bottom: $border;
+  margin: $space-2 auto;
 }
 
 .well {
@@ -54,17 +43,4 @@ svg {
   margin-left: 8px;
   padding: 4px 6px;
   vertical-align: middle;
-}
-
-hr {
-  border: 0;
-  border-bottom: $border;
-  margin: $space-2 auto;
-}
-
-ul,
-ol,
-blockquote {
-  margin: 0;
-  padding: 0;
 }

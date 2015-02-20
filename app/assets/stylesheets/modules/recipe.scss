@@ -1,10 +1,10 @@
 .header-indicator {
-  @extend .float-right;
+  @extend .right;
   display: inline-block;
   margin-left: 4px;
 
   svg {
-    @include svg-large($brand-primary);
+    @include svg-large($orange);
   }
 }
 
@@ -18,7 +18,7 @@
 }
 
 .notes {
-  background-color: $notes;
+  background-color: $light-yellow;
 }
 
 .control-checkbox {
@@ -34,7 +34,7 @@
 
 .control-indicator,
 .control-checkbox:checked ~ .control-indicator-checked {
-  display: inline-block;
+  @extend .inline-block;
 }
 
 .social {

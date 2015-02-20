@@ -1,0 +1,45 @@
+.flex {
+  display: flex;
+}
+
+.flex-between {
+  justify-content: space-between;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-auto {
+  flex: 1 1 auto;
+}
+
+.flex-grow {
+  flex: 1 0 auto;
+}
+
+.flex-none {
+  flex: none;
+}
+
+.flex > div,
+.sm-flex > div,
+.md-flex > div {
+  box-sizing: border-box;
+}
+
+@media #{$breakpoint-sm} {
+  .sm-flex {
+    display: flex;
+  }
+}
+
+@media #{$breakpoint-md} {
+  .md-flex {
+    display: flex;
+  }
+}

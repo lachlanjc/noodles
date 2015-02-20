@@ -2,19 +2,16 @@
   @include up(-20px);
 
   &.has-img {
-    background-position-y: 40%;
     box-shadow: inset 0 -5rem 6rem rgba(0,0,0,.4);
     padding: 5rem 0;
   }
 }
 
 .collection-preview.has-img {
-  background-position-y: 30%;
   box-shadow: inset 0 -2rem 6rem 1rem rgba(0,0,0,.4);
 }
 
 .has-img {
-  background-size: cover;
   background-repeat: no-repeat;
 
   .collection-name,
@@ -42,16 +39,10 @@
   opacity: .8;
 }
 
-.collection-list {
-  list-style: none;
-}
-
 .collection-list-item {
   span {
-    border: 1px solid $brand-primary;
-    color: $brand-primary;
+    border: 1px solid $orange;
     cursor: pointer;
-    padding: 4px 10px;
   }
 
   a {
@@ -64,6 +55,6 @@
 
   input:checked + span {
     color: #fff;
-    background-color: $brand-primary;
+    background-color: $orange;
   }
 }

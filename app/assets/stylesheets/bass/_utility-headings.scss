@@ -1,0 +1,9 @@
+.h0 {
+  font-size: $h1;
+}
+
+@media #{$breakpoint-sm} {
+  .h0 {
+    font-size: $h0;
+  }
+}

@@ -1,7 +1,7 @@
 .has-tooltip:before {
   @include shadow-compact;
   background: rgba(70, 70, 70, .9);
-  border-radius: $radius;
+  border-radius: $border-radius;
   box-sizing: border-box;
   color: $grey-5;
   content: attr(data-tooltip);

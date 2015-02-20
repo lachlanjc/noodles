@@ -1,0 +1,36 @@
+body,
+button,
+ ul,
+ ol,
+ blockquote {
+  margin: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+}
+
+img {
+  max-width: 100%;
+}
+
+svg {
+  max-height: 100%;
+}
+
+.list-reset {
+  list-style: none;
+  padding-left: 0;
+}
+
+.link-reset {
+  color: inherit;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
