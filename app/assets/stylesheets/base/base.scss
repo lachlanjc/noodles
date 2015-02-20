@@ -11,15 +11,12 @@
 .document {
   @extend %box;
   @extend .mx-auto;
-  @extend .p3;
+  padding: $space-3;
 }
 
-@media (max-width: $screen-phone) {
+@media #{$breakpoint-sm} {
   .document {
-    border: 0;
-    border-radius: 0;
-    border-right: 0;
-    padding: 1rem; // override article
+    padding: $space-2;
     width: 95%;
   }
 }
