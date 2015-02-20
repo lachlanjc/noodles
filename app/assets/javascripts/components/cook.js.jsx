@@ -20,7 +20,7 @@ var IngredientsChecklist = React.createClass({
 
     return <div>
       <div className="search-form col-8 mx-auto flex bg-white shadow mt1 mb1 px1">
-        <label htmlFor="searchBox">
+        <label htmlFor="searchBox" className="mt0">
           <IconSearch />
         </label>
         <input

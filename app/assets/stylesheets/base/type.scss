@@ -74,18 +74,6 @@ h6,
   padding-left: 0;
 }
 
-.mega {
-  font-size: $h1 * 1.66;
-  line-height: $h1 * 2;
-}
-
-@media (max-width: $screen-phone) {
-  .mega {
-    font-size: $h1 * 1.2;
-    line-height: $h1 * 1.5;
-  }
-}
-
 small {
   font-size: 90%;
 }
@@ -114,7 +102,6 @@ a {
 .text {
   color: $grey-2;
   font-size: $h4;
-  line-height: 1.6;
   word-wrap: break-word;
 }
 

@@ -14,14 +14,13 @@ input[type="submit"] {
 }
 
 .text-input {
-  @extend .text;
   -webkit-appearance: none;
   color: $grey-3;
-  display: block;
   border: $border;
   border-radius: $border-radius;
+  display: block;
   padding: 4px 8px;
-  width: 16rem;
+  width: 16em;
 
   &:focus {
     @include elegance;

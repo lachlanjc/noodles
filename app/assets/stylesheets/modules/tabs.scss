@@ -19,14 +19,14 @@
 }
 
 .content {
-  @extend .border;
-  @extend .hide;
-  @extend .p1;
   @extend .rounded-bottom;
+  border: $border;
+  display: none;
+  padding: $space-1;
 }
 
 .tab-1:checked ~ .content-1,
 .tab-2:checked ~ .content-2,
 .tab-3:checked ~ .content-3 {
-  @extend .block;
+  display: block;
 }
