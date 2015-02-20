@@ -35,7 +35,7 @@ ul {
 
 h1,
 .h1 {
-  color: $brand-primary;
+  color: $orange;
   font-size: $h1;
   margin-top: 0;
 }
@@ -102,20 +102,12 @@ p {
 }
 
 a {
-  @extend .text-primary;
+  color: $orange;
   text-decoration: none;
 
   &:hover {
     outline: 0;
     text-decoration: underline;
-  }
-}
-
-.link-reset {
-  color: inherit;
-
-  &:hover {
-    text-decoration: none;
   }
 }
 
@@ -127,8 +119,7 @@ a {
 }
 
 .text-normalized h1 {
-  @extend .caps;
   color: $grey-1;
   font-size: $h3;
-  margin-top: 0.5rem;
+  margin-top: $space-1;
 }

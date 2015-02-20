@@ -1,32 +1,32 @@
 .tab-container {
   > input {
     display: none;
+
+    &:checked + label {
+      background: #fff;
+      font-weight: $bold-font-weight;
+    }
   }
 
   label {
+    @extend .rounded-top;
     display: inline-block;
     background: $grey-5;
     border: $border;
     border-bottom: 0;
-    border-radius: $radius $radius 0 0;
     padding: 6px 12px;
-  }
-
-  input:checked + label {
-    background: #fff;
-    font-weight: 600;
   }
 }
 
 .content {
-  border-radius: 0 $radius $radius;
-  border: $border;
-  display: none;
-  padding: .5rem;
+  @extend .border;
+  @extend .hide;
+  @extend .p1;
+  @extend .rounded-bottom;
 }
 
 .tab-1:checked ~ .content-1,
 .tab-2:checked ~ .content-2,
 .tab-3:checked ~ .content-3 {
-  display: block;
+  @extend .block;
 }

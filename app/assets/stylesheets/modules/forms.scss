@@ -1,28 +1,33 @@
-label,
-input {
+label {
   @extend .text;
   display: block;
+  margin-top: .5rem;
   outline: 0;
 }
 
-input[type="checkbox"], input[type="checkbox"] + label {
+input[type="checkbox"] + label {
   display: inline-block;
 }
 
+input[type="submit"] {
+  @extend .mt2;
+}
+
 .text-input {
+  @extend .text;
   -webkit-appearance: none;
   color: $grey-3;
+  display: block;
   border: $border;
-  border-radius: $radius;
-  margin-bottom: 12px;
-  outline: 0;
+  border-radius: $border-radius;
   padding: 4px 8px;
-  width: 16em;
+  width: 16rem;
 
   &:focus {
-    @extend %elegance;
+    @include elegance;
     border-color: $blue;
     color: $black;
+    outline: 0;
   }
 
   &.notes:focus {

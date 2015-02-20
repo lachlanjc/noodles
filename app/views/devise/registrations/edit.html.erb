@@ -17,13 +17,15 @@
     <%= f.label t(".email_a") %>
     <%= f.email_field :email, class: "text-input", name: "email", autocomplete: "email" %>
 
-    <%= f.check_box :want_newsletter %>
-    <%= f.label :want_newsletter, "Receive monthly Noodles Announcements", class: "ib mb2" %>
+    <div>
+      <%= f.check_box :want_newsletter %>
+      <%= f.label :want_newsletter, "Receive monthly Noodles Announcements" %>
+    </div>
 
     <%= f.label t(".current_pass") %>
     <%= f.password_field :current_password, autocomplete: "off", class: "text-input" %>
 
-    <%= f.label :password, class: "ib" %><small> <%= t(".can_leave_blank") %></small>
+    <%= f.label :password %>
     <%= f.password_field :password, autocomplete: "off", class: "text-input" %>
 
     <%= f.submit t("general.update"), class: "btn-blue" %>

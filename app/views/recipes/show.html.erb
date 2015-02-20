@@ -60,18 +60,18 @@
             <% else %>
             <%= b.check_box %>
             <% end %>
-            <%= content_tag(:span, b.text, class: "rounded block bold mb1 text-primary") %>
+            <%= content_tag(:span, b.text, class: "rounded block bold mb1 orange p1") %>
           <% end %>
         </li>
         <% end %>
         <li>
-          <p><a href="/collections" class="text-primary">Create a New Collection...</a></p>
+          <p><a href="/collections" class="orange">Create a New Collection...</a></p>
         </li>
       </ul>
       <%= f.submit "Save", class: "btn-blue float-right" %>
     <% end %>
   <% else %>
-    <div class="well text text-center bg-grey-6 border rounded py3 px2">
+    <div class="well text center bg-grey-6 border rounded py3 px2">
       You don't have any collections yet. Why don't you <a href="<%= collections_path %>#newCollection" class="blue">create one</a>?
     </div>
   <% end %>

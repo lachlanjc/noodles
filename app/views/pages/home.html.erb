@@ -5,7 +5,7 @@
   <title>Noodles · Keep, cook, and share your recipes.</title>
   <meta name="keywords" content="recipes,noodles,cook,recipe,food,getnoodles,share recipes,online,cookbook">
   <meta name="description" content="Noodles is a simple online app for you to keep, cook, and share all your recipes. Cook better.">
-  <%= stylesheet_link_tag "home", "data-turbolinks-track" => false %>
+  <%= stylesheet_link_tag "home" %>
   <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Lato:400">
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,67 +27,70 @@
   _gs("GSN-107564-I");
     </script>
   </head>
-  <body class="text-center m0 bg-grey-6">
-    <nav role="navigation" class="nav">
-      <div class="nav-side">
-        <%= link_to t("general.home"), root_url, class: "nav-link normal active" %>
-        <%= link_to t("general.features"), "http://noodles.withdraft.com/", class: "nav-link normal" %>
-        <%= link_to t("general.about"), :help, class: "nav-link normal" %>
+  <body class="center m0 bg-grey-6">
+    <nav role="navigation" class="md-flex bg-white p2 print-hide">
+      <div>
+        <%= link_to t("general.home"), root_url, class: "px1 orange regular active" %>
+        <%= link_to t("general.features"), "http://noodles.withdraft.com/", class: "px1 orange regular" %>
+        <%= link_to t("general.about"), help_path, class: "px1 orange regular" %>
       </div>
 
       <% unless flash.empty? %>
-      <% flash.each do |key, value| %>
-      <div class="p2">
-        <p class="m0"><%= value unless value.blank? %></p>
-      </div>
-      <% end %>
+        <% flash.each do |key, value| %>
+        <div class="p2">
+          <p class="m0"><%= value unless value.blank? %></p>
+        </div>
+        <% end %>
+      <% else %>
+        <div class="flex-auto"></div>
       <% end %>
 
-      <div class="nav-side">
-        <%= link_to t("general.sign_in"), sign_in_path, class: "nav-link normal" %>
+      <div>
+        <%= link_to t("general.sign_in"), sign_in_path, class: "px1 orange regular" %>
       </div>
     </nav>
 
-    <header class="hero" style="background:url(<%= asset_path 'home/background.jpg' %>) no-repeat">
-      <div class="col-7 container">
-        <h1 class="black mega mb2" style="font-weight:400">Keep, cook, and share your recipes with Noodles.</h1>
-        <a class="btn btn-lg mt1 ib" onclick="_gs('event', 'Clicked hero button'); window.location='http://www.getnoodl.es/signup'">Sign Up</a>
+    <header class="hero bg-cover bg-center bg-no-repeat" style="background-image:url(<%= asset_path 'home/background.jpg' %>)">
+      <div class="md-col-8 sm-col-11 mx-auto">
+        <h1 class="white h0 regular">Keep, cook, and share all your recipes with Noodles.</h1>
+        <a class="btn btn-lg mt2" onclick="_gs('event', 'Clicked hero button'); window.location='http://www.getnoodl.es/signup'">Sign Up</a>
       </div>
     </header>
-    <p class="lead col-7 mobile-full-width mx-auto mt3 text-left">Noodles is a simple place for all your recipes. Add your chocolate cake to Noodles with a few keystrokes, then pull it up in the kitchen to make an awesome birthday cake. No more binders, print-outs, or scribbled annotations.</p>
-    <article class="flex flex-around mobile-no-flex col-9 container">
-      <section class="col-4 mobile-full-width mr2 bg-white rounded shadow p2">
-        <div class="btn-paper-mini-inline">
-          <%= inline_svg("cloud_done.svg") %>
-        </div>
-        <h3 class="normal">Always Ready to Go.</h3>
-        <p class="text-left">Your recipes are seamlessly synced through Noodles, so you can access your recipes from any of your device, at any time. Your recipes are private by default.</p>
-      </section>
-      <section class="col-4 mobile-full-width mobile-padding-1 mr2 bg-white rounded shadow p2">
-        <div class="btn-paper-mini-inline">
-          <%= inline_svg("cook.svg") %>
-        </div>
-        <h3 class="normal">Cook Mode</h3>
-        <p class="text-left">Cook Mode is the best way to cook with your recipes in the kitchen. It shows what you really need, and helps you out with ingredient checklists, notes, and more.</p>
-        <p><a href="http://www.getnoodl.es/recipes/45/cook" class="btn-blue">Try Cook Mode</a></p>
-      </section>
-      <section class="col-4 mobile-full-width mobile-padding-1 bg-white rounded shadow p2">
-        <div class="btn-paper-mini-inline">
+    <p class="lead sm-col-10 md-col-8 mx-auto px2 left-align mt3 mb2">Noodles is a simple library of all your recipes. It takes just a few clicks to add a recipe, and you you'll never worry about finding one. And Noodles is designed for the kitchen — cooking is hard enough as it is. No more folders of print-outs and scribbled notecards.</p>
+    <article class="sm-col-11 md-col-10 mx-auto mt3 md-flex flex-between">
+      <section class="sm-col-11 sm-block m1 md-col-3 bg-white rounded shadow py2 px3">
+        <div class="btn-paper-mini-inline mx-auto">
           <%= inline_svg("share.svg") %>
         </div>
-        <h3 class="normal">Share Recipes</h3>
-        <p class="text-left">Give your friends great recipes with a unique Noodles link that you can post anywhere. Anyone else can then save their own copy and make their own changes.</p>
-        <p><a href="http://www.getnoodl.es/s/ZWBEmQv" class="btn-blue">See a shared recipe</a></p>
+        <h3 class="regular mt1">Share Recipes</h3>
+        <p>Share favorites with friends with a quick link (they can save their own copies!), embed a recipe online, or even download a PDF.</p>
+        <p><a href="http://www.getnoodl.es/s/2rAW0DA" class="btn-blue">Check out a recipe</a></p>
+      </section>
+      <section class="sm-col-11 sm-block m1 md-col-4 bg-white rounded shadow p2">
+        <div class="btn-paper-mini-inline mx-auto">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.1 13.34l2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/></svg>
+        </div>
+        <h3 class="regular mt1">Cook Mode</h3>
+        <p>In the kitchen, Cook Mode helps you out. It features big text, a minimal, focused interface, ingredient checklists, notes, and more.</p>
+        <p><a href="http://www.getnoodl.es/recipes/45/cook" class="btn-blue">Try Cook Mode</a></p>
+      </section>
+      <section class="sm-col-10 sm-block m1 md-col-3 bg-white rounded shadow py2 px3">
+        <div class="btn-paper-mini-inline mx-auto">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+        </div>
+        <h3 class="regular mt1">Collections</h3>
+        <p>Organize your recipes into collections, which are groups of recipes. Then, share a collection with just a click.</p>
+        <p><a href="http://www.getnoodl.es/c/2A1J3Q" class="btn-blue">See a collection</a></p>
       </section>
     </article>
-    <section class="col-7 container">
-      <blockquote class="lead black py1">
+    <section class="mx-auto sm-col-10 md-col-8">
+      <blockquote class="lead sm-col-9 mx-auto mt2">
         &ldquo;Whether you want to keep your own recipes or you need to jot a recipe you find online or on TV, this website is handy.&rdquo;
       </blockquote>
-      <h1 class="normal block mt2">Noodles is free. Try it out!</h1>
-      <a class="btn btn-lg ib mt1" onclick="_gs('event', 'Clicked hero button'); window.location='http://www.getnoodl.es/signup'">Sign Up</a>
+      <h1 class="regular mt2">Noodles is free. Try it out!</h1>
+      <a class="btn btn-lg inline-block mt1" onclick="_gs('event', 'Clicked hero button'); window.location='http://www.getnoodl.es/signup'">Sign Up</a>
     </section>
-    <footer class="block mt2 grey-3">
+    <footer class="block mt1 py2 grey-4">
       <a href="http://noodles.withdraft.com/pages/558276" class="px2 link-reset">Terms</a>
       <a href="http://noodles.withdraft.com/pages/558280" class="px2 link-reset">Privacy</a>
       <%= link_to "Announcements", announcements_path, class: "px2 link-reset" %>

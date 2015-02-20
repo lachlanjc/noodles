@@ -2,20 +2,18 @@
 @import "mixins";
 
 @import "base/base";
-@import "base/grid";
-@import "base/help";
+@import "base/color";
+@import "base/reset";
 @import "base/type";
+@import "bass/*";
+
 @import "modules/buttons";
-@import "modules/nav";
 
 .hero {
-  background-position: 45% 55%;
-  background-size: cover !important;
   box-shadow: inset 0 -5rem 6rem rgba(0,0,0,.4);
-  padding: 9rem 0;
+  padding: 8rem 0;
 
   h1 {
-    color: #fff;
     text-shadow: 0 1px 8px rgba(0,0,0,.5);
   }
 }
@@ -28,7 +26,6 @@
 
 .btn-paper-mini-inline {
   bottom: 0;
-  margin: auto;
   position: initial;
   right: 0;
 
@@ -36,13 +33,12 @@
     height: 24px;
     left: 0;
     position: relative;
-    top: 2px;
+    top: 3px;
   }
 }
 
 @media (max-width: $screen-phone) {
   .hero {
     padding: 4rem 1rem;
-    background-size: 200%;
   }
 }

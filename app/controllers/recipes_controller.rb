@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
   include RecipesHelper
   include ScrapingHelper
 
-  before_filter :set_recipe, only: [:show, :edit, :update, :destroy, :save_to_noodles]
+  before_filter :set_recipe, only: [:show, :edit, :update, :destroy]
   protect_from_forgery except: :embed_js
 
   # GET /recipes

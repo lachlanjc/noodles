@@ -1,5 +1,3 @@
-// Colors
-
 $grey-6: #f4f4f5;
 $grey-5: #dbdee3;
 $grey-4: #8b909a;
@@ -8,27 +6,28 @@ $grey-2: darken($grey-3, 6%); // #585e67
 $grey-1: darken($grey-2, 4%); // #4f545c
 $black: #353941;
 
-$brand-primary: #ff6d00;
+$darken-1: rgba(#000,.0625);
+$darken-2: rgba(#000,.125);
+$darken-3: rgba(#000,.25);
+$darken-4: rgba(#000,.5);
+$hover-background-color: $darken-1;
 
 $pink: #e91e63;
 $red: #ff0013;
+$orange: #ff6d00;
 $yellow: #ffeb3b;
+  $light-yellow: #fffbc4;
 $green: #64dd17;
 $blue: #00b0ff;
 
-$notes: #fffbc4;
+$border-width: 1px;
+$border-color: $grey-5;
+$border: $border-width solid $border-color;
+$border-radius: 4px;
 
-$border: 1px solid $grey-5;
 $elegance-transition: .28s cubic-bezier(.4, 0, .2, 1);
 
-// Typographic Manifestation
-
-$font-family: Lato, 'Helvetica Neue', Helvetica, sans-serif;
-$line-height: 1.6;
-$heading-font-family: $font-family;
-$heading-font-weight: 600;
-$heading-line-height: 1.25;
-$monospace-font-family: 'Source Code Pro', Consolas, monospace;
+$h0: 3rem;
 $h1: 2rem;
 $h2: 1.5rem;
 $h3: 1.25rem;
@@ -36,21 +35,25 @@ $h4: 1rem;
 $h5: .875rem;
 $h6: .75rem;
 $bold-font-weight: 600;
-$spacing: .03rem;
-
-
-// Whitespace
+$spacing: .1em;
+$font-family: Lato, 'Helvetica Neue', Helvetica, sans-serif;
+$line-height: 1.6;
+$heading-font-family: $font-family;
+$heading-font-weight: $bold-font-weight;
+$heading-line-height: 1.25;
+$monospace-font-family: 'Source Code Pro', Consolas, monospace;
 
 $space-1: .5rem;
 $space-2: 1rem;
 $space-3: 2rem;
 $space-4: 4rem;
 
-$radius: 4px;
-
-
-// Media queries breakpoints
+$container-width: 64em;
 
 $screen-phone: 480px;
 $screen-tablet: 768px;
 $screen-desktop: 1225px;
+
+$breakpoint-sm: '(min-width: 40em)';
+$breakpoint-md: '(min-width: 52em)';
+$breakpoint-lg: '(min-width: 64em)';

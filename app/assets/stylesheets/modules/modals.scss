@@ -1,6 +1,6 @@
 #lean_overlay {
-  @extend .hide;
   background: #000;
+  display: none;
   height: 100%;
   position: fixed;
   top: 0;
@@ -8,9 +8,9 @@
 }
 
 .modal {
-  @extend .hide;
   background: #fff;
-  border-radius: $radius;
+  border-radius: $border-radius;
+  display: none;
   padding: 15px;
   width: 560px;
 

@@ -37,7 +37,7 @@
 
   <article class="cook-list mt3 ml0 p0">
     <%= react_component("CookInstructions", instructions: @recipe.instructions.split("\n")) %>
-    <div class="bg-white rounded shadow p2 block h2 text-center mb2 grey-2">
+    <div class="bg-white rounded shadow p2 block h2 center mb2 grey-2">
       Finished! Enjoy your meal.
       <%= render "notes" if me_owns_recipe? %>
     </div>

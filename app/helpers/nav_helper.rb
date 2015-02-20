@@ -1,7 +1,7 @@
 module NavHelper
   def nav_active_class(nav)
     if nav_active?(nav)
-      return " active"
+      return " bold"
     else
       return ""
     end
