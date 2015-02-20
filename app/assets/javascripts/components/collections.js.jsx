@@ -51,14 +51,14 @@ var CollectionHeader = React.createClass({
     }
 
     return <header className={"collection-header full-width center " + headerClass} style={headerStyle}>
-      <h1 className="ib collection-name m0">{this.props.collection.name}</h1>
+      <h1 className="inline-block collection-name m0">{this.props.collection.name}</h1>
       {this.props.showEdit === true ?
         <a href="#editCollection" className="modalTrigger">
-          <IconEdit classes={"ib ml1 " + actionBtnClass} />
+          <IconEdit classes={"inline-block ml1 " + actionBtnClass} />
         </a>
       : null}
       <a href="#shareCollection" className="modalTrigger">
-        <IconShare classes={"ib ml1 " + actionBtnClass} />
+        <IconShare classes={"inline-block ml1 " + actionBtnClass} />
       </a>
       <div className="lead">{this.props.collection.description}</div>
       {this.props.showPublisher === true ?
