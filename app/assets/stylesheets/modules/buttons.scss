@@ -7,11 +7,11 @@
   cursor: pointer;
   display: inline-block;
   color: #fff;
-  padding: .5rem 1rem;
+  padding: .35em .75em;
   outline: 0;
   vertical-align: middle;
   -webkit-appearance: none;
-  -webkit-tap-highlight-color: rgba(#000, .12);
+  -webkit-tap-highlight-color: rgba(#000,.12);
 
   &:hover {
     color: #fff;
@@ -50,7 +50,7 @@
 
 .btn-sm {
   font-size: $h5;
-  padding: .25rem .5rem;
+  padding: .1rem .5rem;
 }
 
 %fab {
