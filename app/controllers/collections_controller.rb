@@ -8,18 +8,12 @@ class CollectionsController < ApplicationController
   end
 
   def show
-    @recipes = []
-    Recipe.where(:user_id => current_user.id).each do |recipe|
-      @recipes.push(recipe) if recipe.collections.include?(@collection.id.to_s)
-    end
+    populate_collection
   end
 
   def share
     @collection = Collection.find_by_hash_id(params[:hash_id])
-    @recipes = []
-    Recipe.where(:user_id => @collection.user.id).each do |recipe|
-      @recipes.push(recipe) if recipe.collections.include?(@collection.id.to_s)
-    end
+    populate_collection
   end
 
   def create
@@ -42,7 +36,7 @@ class CollectionsController < ApplicationController
 
   def destroy
     @collection.destroy
-    flash[:danger] = "Buckle up! We're deleting your collection."
+    flash[:danger] = "All gone."
     redirect_to collections_path
   end
 
@@ -53,5 +47,12 @@ class CollectionsController < ApplicationController
 
     def collection_params
       params.require(:collection).permit(:name, :description, :photo, :user_id)
+    end
+
+    def populate_collection
+      @recipes = []
+      Recipe.where(:user_id => @collection.user.id).each do |recipe|
+        @recipes.push(recipe) if recipe.collections.include?(@collection.id.to_s)
+      end
     end
 end
