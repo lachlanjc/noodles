@@ -16,10 +16,10 @@ class NYCookingScraper
       notes css: ".recipe-note-description"
     end
     recipe["ingredients"] = recipe["ingredients_raw"]
-    recipe["ingredients"].each do |line|
-      3.times { line.sub!(/\n/, " ") }
-    end
     recipe.delete("ingredients_raw")
+    recipe["ingredients"].each do |line|
+      8.times { line.sub!(/\n/, " ") }
+    end
     return recipe
   end
 end

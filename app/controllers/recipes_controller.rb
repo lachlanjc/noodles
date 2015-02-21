@@ -187,29 +187,25 @@ class RecipesController < ApplicationController
   end
 
   def scrape
-    recipe_src = params[:url]
-    recipe = master_scrape(recipe_src)
+    recipe_data = master_scrape(params[:url])
 
-    if recipe == "unsupported"
-      flash[:danger] = "Hmm, we don't support that site yet."
+    if recipe_data == "unsupported"
+      flash[:danger] = "Sorry, we don't support that site yet."
       redirect_to recipes_path
     else
-      @ingredients_prepared = write_ingredients_to_list(recipe["ingredients"])
-      @instructions_prepared = form_markdown_for_instructions(recipe["instructions"])
-
       @create_recipe = Recipe.new do |r|
         r.user_id = current_user.id
-        r.title = recipe["title"]
-        r.ingredients = @ingredients_prepared
-        r.instructions = @instructions_prepared
-        r.source = recipe_src
-        r.serves = recipe["serves"]
-        r.notes = recipe["notes"].to_s
+        r.title = recipe_data["title"]
+        r.description = recipe_data["description"].to_s
+        r.ingredients = write_ingredients_to_list(recipe_data["ingredients"])
+        r.instructions = form_markdown_for_instructions(recipe_data["instructions"])
+        r.source = params[:url]
+        r.serves = recipe_data["serves"].to_s
+        r.notes = recipe_data["notes"].to_s
         r.favorite = false
         r.shared = false
         r.save
       end
-      @create_recipe.description = recipe["description"].to_s
       @create_recipe.shared_id = generate_shared_id(@create_recipe.id)
       @create_recipe.save
       flash[:success] = "Recipe imported!"
@@ -228,28 +224,9 @@ class RecipesController < ApplicationController
       params.require(:recipe).permit(:title, :description, :img, :ingredients, :instructions, :favorite, :source, :serves, :notes, :shared_id, { collections: [] })
     end
 
-    # Wombat returns arrays for ingredients and instructions.
-    # These methods convert the arrays of strings into usable text.
-    # The second method writes its own Markdown for the instructions.
-
-    def write_ingredients_to_list(ingredients)
-      ingredients_list = ""
-      ingredients.each do |ingredient|
-        # Add ingredient to the next line of ingredients_list
-        # Double quotes must be used for \n
-        ingredients_list << ingredient.to_s + "\n"
       end
-
-      return ingredients_list
     end
 
-    def form_markdown_for_instructions(steps)
-      instructions_md = ""
-      # each_with_index produces the step number
-      steps.each_with_index do |step, id|
-        # Arrays start at 0
-        instructions_md << (id + 1).to_s + ". " + step + "\n"
       end
-      return instructions_md
     end
 end
