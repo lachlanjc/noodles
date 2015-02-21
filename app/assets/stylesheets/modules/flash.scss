@@ -3,25 +3,13 @@
 }
 
 .flash-success {
-  border-left-color: $green;
+  border-color: $green;
 }
 
 .flash-info {
-  border-left-color: $yellow;
+  border-color: $yellow;
 }
 
 .flash-danger {
-  border-left-color: $red;
-}
-
-@media (max-width: $screen-phone) {
-  .flash {
-    width: 80%;
-  }
-}
-
-@media print {
-  .flash {
-    display: none;
-  }
+  border-color: $red;
 }
