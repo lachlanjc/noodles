@@ -4,7 +4,7 @@
 <%= render "shared/nav" %>
 <%= react_component("CollectionHeader", showEdit: true, showPublisher: false, collection: @collection.as_json) %>
 
-<article class="col-7 container mt0">
+<article class="sm-col-11 md-col-7 mx-auto mt0">
   <% if @recipes.any? %>
     <%= react_component("RecipeList", showHeader: false, linkType: "normal", recipes: @recipes.as_json) %>
   <% else %>

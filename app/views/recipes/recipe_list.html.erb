@@ -7,7 +7,7 @@
 
 <%= render "shared/nav" %>
 
-<article class="col-7 container">
+<article class="sm-col-11 md-col-7 mx-auto">
   <%= react_component("RecipeList", showHeader: true, linkType: "normal", headerText: "Recipes", showRandom: true, recipes: @recipes.as_json) %>
 </article>
 
