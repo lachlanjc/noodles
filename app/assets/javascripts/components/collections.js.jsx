@@ -1,6 +1,6 @@
 var CollectionIndex = React.createClass({
   render: function() {
-    return (<article className="col-7">
+    return (<article className="col-7 mx-auto">
       <h1 className="center">Collections</h1>
       <div className="collection-list">
         {this.props.collections.map(function(collection) {
