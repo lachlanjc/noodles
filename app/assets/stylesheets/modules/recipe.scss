@@ -27,9 +27,9 @@
   z-index: -1; // Put the input behind the label so it doesn't overlay text
 }
 
-.control-checkbox:checked ~ .control-indicator,
+.control-checkbox:checked + .control-indicator,
 .control-indicator-checked {
-  @extend .hide;
+  display: none;
 }
 
 .control-indicator,

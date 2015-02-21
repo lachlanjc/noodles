@@ -5,10 +5,12 @@ body {
   padding-top: 1rem;
 }
 
+.invisible-input.full-width {
+  width: 100% !important;
+}
+
 .logo-nav {
   left: 15px;
-  position: absolute;
-  text-decoration: none;
   top: 15px;
 
   svg {

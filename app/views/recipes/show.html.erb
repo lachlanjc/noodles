@@ -6,7 +6,7 @@
 <article class="document recipe-print">
 
   <%= form_for(@recipe, remote: true, html: { id: "recipeFavoriteForm" }) do |f| %>
-    <label class="control header-indicator">
+    <label class="control header-indicator m0">
       <%= f.check_box :favorite, class: "control-checkbox", id: "recipeFavoriteTrigger" %>
       <div class="control-indicator">
         <%= inline_svg("favorite_outline.svg") %>
@@ -75,7 +75,7 @@
     <% end %>
   <% else %>
     <div class="well text center bg-grey-6 border rounded py3 px2">
-      You don't have any collections yet. Why don't you <a href="<%= collections_path %>#newCollection" class="blue">create one</a>?
+      You don't have any collections yet. Why don't you <%= link_to "create one", collections_path(:new_collection => true), class: "blue" %>?
     </div>
   <% end %>
 </div>

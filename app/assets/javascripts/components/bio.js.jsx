@@ -1,13 +1,13 @@
 var BioLachlan = React.createClass({
   render: function() {
     return <div className="bio mt2">
-      <div className="bio-photo inline-block float-left">
+      <div className="bio-photo inline-block left">
         <img src="http://d1fmxjrxw87eps.cloudfront.net/me.jpg" className="circle shadow" />
       </div>
       <div className="bio-info inline-block mt2 ml2">
         <h2 className="inline-block m0">Lachlan Campbell</h2>
         <a href="https://twitter.com/lachlanjc" className="badge">@lachlanjc</a>
-        <p>Design, hacking, and middle school. Founder of Noodles.</p>
+        <p>Design + hack + middle school. Founder of Noodles.</p>
       </div>
     </div>
   }

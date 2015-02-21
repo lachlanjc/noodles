@@ -3,7 +3,7 @@
 <%= stylesheet_link_tag "editor" %>
 <%= javascript_include_tag "editor" %>
 
-<%= link_to root_url, class: "logo-nav" do %>
+<%= link_to recipes_path, class: "logo-nav fixed" do %>
   <%= inline_svg("home.svg") %>
 <% end %>
 
@@ -12,13 +12,13 @@
 
   <% if @recipe.img.url.blank? %>
   <%= f.file_field :img, id: "file", class: "hide" %>
-  <div class="upload-button m0" id="file-button">
+  <div class="upload-button" id="file-button">
     <%= inline_svg("photo-upload.svg") %>
     <span id="file-name">Click to upload a photo</span>
   </div>
   <% else %>
   <%= f.file_field :img, id: "file", class: "hide" %>
-  <div class="upload-button m0">
+  <div class="upload-button">
     <div id="file-button" class="inline-block">
       <%= inline_svg("photo-upload.svg") %>
       <span id="file-name">Pick a different photo?</span>

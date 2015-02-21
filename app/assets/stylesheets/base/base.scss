@@ -34,12 +34,11 @@ hr {
 }
 
 .badge {
-  background: #78909c;
-  border-radius: 20px;
+  background: $grey-4;
+  border-radius: 16px;
   color: #fff;
   font-size: $h5;
-  font-weight: 600;
   margin-left: 8px;
-  padding: 4px 6px;
+  padding: 3px 7px;
   vertical-align: middle;
 }
