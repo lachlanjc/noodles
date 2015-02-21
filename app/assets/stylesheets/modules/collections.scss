@@ -40,21 +40,16 @@
 }
 
 .collection-list-item {
-  span {
-    border: 1px solid $orange;
-    cursor: pointer;
-  }
+  cursor: pointer;
 
-  a {
-    text-decoration: none;
-  }
+  input:checked {
+    + span {
+      color: $orange;
+    }
 
-  input[type="checkbox"] {
-    display: none;
-  }
-
-  input:checked + span {
-    color: #fff;
-    background-color: $orange;
+    ~ .checkmark {
+      display: inline-block !important; // overrides .hide !important
+      fill: $orange;
+    }
   }
 }

@@ -5,14 +5,21 @@
 <%= react_component("CollectionIndex", collections: @collections.as_json) %>
 
 <div class="modal" id="newCollection">
-  <a class="modal-close float-right" href="#">
-    <%= inline_svg("close.svg") %>
-  </a>
+  <%= react_component("ModalClose") %>
   <h2>Create a Collection</h2>
   <hr>
   <%= render "form" %>
 </div>
 
-<a href="#newCollection" class="btn-paper modalTrigger">
+<a href="#newCollection" class="btn-paper modalTrigger" id="newCollectionBtn">
   <%= inline_svg("add.svg") %>
 </a>
+
+<% if params[:new_collection] %>
+<!-- Stupid hack alert! -->
+<script type="text/javascript">
+$(function() {
+  $("#newCollectionBtn").click();
+});
+</script>
+<% end %>

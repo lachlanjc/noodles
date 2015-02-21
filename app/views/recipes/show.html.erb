@@ -44,23 +44,26 @@
   <% @collections = Collection.where(:user_id => current_user) %>
 
   <% if @collections.any? %>
-    <% if @recipe.collections == [] %>
-    <p>To add "<%= @recipe.title %>" to your collections, select them from the list below.</p>
+    <% if @recipe.collections.length <= 4 %>
+    <p>Add this recipe to your collections by clicking them from the list below.</p>
     <% else %>
-    <p>"<%= @recipe.title %>" is already in <%= pluralize(@recipe.collections.reject!(&:blank?).length, "collection") %>. To add it to additional collections, select them from the list below.</p>
+    <p>"<%= @recipe.title %>" is already in <%= pluralize(@recipe.collections.reject!(&:blank?).length, "collection") %>. To add it to additional collections, click on them in the list below.</p>
     <% end %>
 
     <%= form_for(@recipe) do |f| %>
-      <ul class="collection-list">
+      <ul class="list-reset sm-col-10 md-col-5 mx-auto">
         <%= collection_check_boxes(:recipe, :collections, @collections, :id, :name) do |b| %>
-        <li>
-          <%= b.label(class: "collection-list-item") do %>
+        <li class="border-top">
+          <%= b.label(class: "collection-list-item m0 p1") do %>
             <% if @recipe.collections.include?(b.value.to_s) %>
-            <%= b.check_box(:checked => "checked") %>
+            <%= b.check_box(checked: "checked", class: "hide") %>
             <% else %>
-            <%= b.check_box %>
+            <%= b.check_box(class: "hide") %>
             <% end %>
-            <%= content_tag(:span, b.text, class: "rounded block bold mb1 orange p1") %>
+            <%= content_tag(:span, b.text) %>
+            <div class="checkmark fill-orange right hide">
+              <%= inline_svg("check.svg") %>
+            </div>
           <% end %>
         </li>
         <% end %>
