@@ -5,6 +5,7 @@ class CollectionsController < ApplicationController
 
   def index
     @collections = Collection.where(:user_id => current_user)
+    @collection = Collection.new
   end
 
   def show
@@ -36,7 +37,7 @@ class CollectionsController < ApplicationController
 
   def destroy
     @collection.destroy
-    flash[:danger] = "All gone."
+    flash[:danger] = "Your collection is all gone."
     redirect_to collections_path
   end
 

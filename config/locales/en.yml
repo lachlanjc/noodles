@@ -11,6 +11,7 @@ en:
     favorite: "Favorite"
     delete: "Delete"
     delete_forever: "Delete your recipe forever? Forever is a long, long time."
+    delete_collection_forever: "Delete this collection forever? Forever is a long, long time."
     favorites: "Favorites"
     shared: "Shared"
     search: "Search"
