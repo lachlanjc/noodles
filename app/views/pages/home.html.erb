@@ -35,15 +35,13 @@
         <%= link_to t("general.about"), help_path, class: "px1 orange regular" %>
       </div>
 
-      <% unless flash.empty? %>
+      <div class="flex-auto">
+        <% unless flash.empty? %>
         <% flash.each do |key, value| %>
-        <div class="p2">
-          <p class="m0"><%= value unless value.blank? %></p>
-        </div>
+        <p class="mb0 center bold <%= flash_color_class(key) %>"><%= value unless value.blank? %></p>
         <% end %>
-      <% else %>
-        <div class="flex-auto"></div>
-      <% end %>
+        <% end %>
+      </div>
 
       <div>
         <%= link_to t("general.sign_in"), sign_in_path, class: "px1 orange regular" %>

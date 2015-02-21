@@ -1,13 +1,12 @@
 module ApplicationHelper
   include MarkdownHelper
 
-  def flash_class(level)
+  def flash_color_class(level)
     case level.to_sym
-      when :info then "flash flash-info"
-      when :success then "flash flash-success"
-      when :danger then "flash flash-danger"
-      when :view then "flash flash-danger"
-      else "flash"
+    when :info then "blue"
+    when :success then "green"
+    when :danger then "red"
+    else "grey-2"
     end
   end
 
