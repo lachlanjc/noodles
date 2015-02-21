@@ -28,8 +28,8 @@ var CollectionItem = React.createClass({
     return <a href={this.props.data.url} className="link-reset">
       <div className={"collection-preview rounded shadow mb2 py3" + imgClass} style={imgStyle}>
         <div className="collection-preview-container center">
-          <h2 className="collection-name m0">{this.props.data.name}</h2>
-          <div className="lead mt1">{this.props.data.description ? this.props.data.description : null}</div>
+          <h2 className="collection-name m0 h1">{this.props.data.name}</h2>
+          <div className="lead">{this.props.data.description ? this.props.data.description : null}</div>
         </div>
       </div>
     </a>
@@ -39,28 +39,30 @@ var CollectionItem = React.createClass({
 var CollectionHeader = React.createClass({
   render: function() {
     var photo_url = this.props.collection.photo_url;
-    var headerStyle;
-    var headerClass = "mt3 py1";
-    var actionBtnClass = "btn-action";
+    var headerStyle, headerClass;
+    var actionClass = "grey-4 py2"
+    var nameClass = "h1";
     if (photo_url.length > 0) {
-      headerClass = "has-img bg-center bg-no-repeat bg-cover mb2 py3";
-      actionBtnClass = "btn-action glass";
+      nameClass = "h0";
+      headerClass = "has-img bg-center bg-no-repeat bg-cover mb2";
+      actionClass = "right-align p1 block white p2 mb2 ";
       var headerStyle = {
         backgroundImage: "url(" + photo_url + ")"
       }
     }
 
     return <header className={"collection-header full-width center " + headerClass} style={headerStyle}>
-      <h1 className="inline-block collection-name m0">{this.props.collection.name}</h1>
-      {this.props.showEdit === true ?
-        <a href="#editCollection" className="modalTrigger">
-          <IconEdit classes={"inline-block ml1 " + actionBtnClass} />
-        </a>
-      : null}
-      <a href="#shareCollection" className="modalTrigger">
-        <IconShare classes={"inline-block ml1 " + actionBtnClass} />
-      </a>
+      <div className={"caps h4 " + actionClass}>
+        {this.props.showEdit === true ?
+          <a href="#editCollection" className="modalTrigger link-reset">Edit · </a>
+        : null}
+        <a href="#shareCollection" className="modalTrigger link-reset">Share</a>
+      </div>
+      <h1 className={"inline-block collection-name m0 " + nameClass}>{this.props.collection.name}</h1>
       <div className="lead">{this.props.collection.description}</div>
+      {photo_url.length > 0 ?
+        <hr className="mt4" />
+      : null}
       {this.props.showPublisher === true ?
         <div className="mt1 mb0 h4 grey-3">Published by {this.props.collection.publisher}</div>
       : null}
