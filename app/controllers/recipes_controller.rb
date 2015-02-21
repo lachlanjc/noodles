@@ -3,30 +3,25 @@ class RecipesController < ApplicationController
   include RecipesHelper
   include ScrapingHelper
 
+  before_filter :please_sign_in, only: [:index, :favorites, :random, :create]
   before_filter :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_filter :locate_recie, only: [:export_pdf, :remove_image, :un_share]
+  before_filter :not_the_owner, only: [:update, :export_pdf, :remove_image, :share_this_recipe, :un_share, :destroy]
   protect_from_forgery except: :embed_js
 
   # GET /recipes
   def index
-    if user_signed_in?
-      @recipes = Recipe.where(user_id: current_user.id).order(created_at: :desc)
-      render :recipe_list
-    else
-      redirect_to root_url
-    end
+    @recipes = Recipe.where(user_id: current_user.id).order(created_at: :desc)
+    render :recipe_list
   end
 
   def favorites
-    if user_signed_in?
-      @recipes = Recipe.where(:user_id => current_user.id, :favorite => true).order(created_at: :desc)
+    @recipes = Recipe.where(:user_id => current_user.id, :favorite => true).order(created_at: :desc)
 
-      if @recipes.any?
-        render :favorites
-      else
-        redirect_to "http://noodles.withdraft.com/#favorites"
-      end
+    if @recipes.any?
+      render :favorites
     else
-      redirect_to root_url
+      redirect_to "http://noodles.withdraft.com/#favorites"
     end
   end
 
@@ -41,15 +36,8 @@ class RecipesController < ApplicationController
   end
 
   def export_pdf
-    @recipe = Recipe.find(params[:recipe_id])
-
-    if me_owns_recipe?
-      prawnto filename: @recipe.title, :inline => true
-      render "recipes/show.pdf"
-    else
-      flash[:danger] = "That's not yours!"
-      redirect_to recipes_path
-    end
+    prawnto filename: @recipe.title, :inline => true
+    render "recipes/show.pdf"
   end
 
   def embed_js
@@ -64,29 +52,16 @@ class RecipesController < ApplicationController
   end
 
   def remove_image
-    @recipe = Recipe.find(params[:recipe_id])
-
-    if me_owns_recipe?
-      @recipe.img = nil
-      @recipe.save
-      redirect_to edit_recipe_path(@recipe)
-    else
-      flash[:danger] = "That's not your recipe!"
-      redirect_to root_url
-    end
+    @recipe.img = nil
+    @recipe.save
+    redirect_to edit_recipe_path(@recipe)
   end
 
   def share_this_recipe
-    @recipe = Recipe.find(params[:recipe_id])
 
-    if me_owns_recipe?
-      @recipe.shared = true
-      @recipe.save
-      redirect_to shared_url(@recipe.shared_id)
-    else
-      flash[:danger] = "No, you can\'t share someone else\'s recipes..."
-      redirect_to recipes_path
-    end
+    @recipe.shared = true
+    @recipe.save
+    redirect_to shared_url(@recipe.shared_id)
   end
 
   def share
@@ -96,14 +71,10 @@ class RecipesController < ApplicationController
   end
 
   def un_share
-    @recipe = Recipe.find(params[:recipe_id])
-
-    if me_owns_recipe?
-      @recipe.shared = false
-      @recipe.save
-      flash[:success] = "Okay, the padlock is back on this recipe."
-      redirect_to @recipe
-    end
+    @recipe.shared = false
+    @recipe.save
+    flash[:success] = "Okay, the padlock is back on this recipe."
+    redirect_to @recipe
   end
 
   def save_to_noodles
@@ -144,12 +115,6 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1/edit
   def edit
-    if me_owns_recipe?
-      render :edit
-    else
-      flash[:view] = "Dude, that's not yours."
-      redirect_to root_url
-    end
   end
 
   # POST /recipes
@@ -219,14 +184,26 @@ class RecipesController < ApplicationController
       @recipe = Recipe.find(params[:id])
     end
 
+    def locate_recipe
+      @recipe = Recipe.find(params[:recipe_id])
+    end
+
     # Only allow trusted parameters
     def recipe_params
       params.require(:recipe).permit(:title, :description, :img, :ingredients, :instructions, :favorite, :source, :serves, :notes, :shared_id, { collections: [] })
     end
 
+    def please_sign_in
+      unless user_signed_in?
+        flash[:danger] = "Please log in to an account first!"
+        redirect_to root_url
       end
     end
 
+    def not_the_owner
+      unless me_owns_recipe?
+        flash[:danger] = "That's not yours."
+        redirect_to root_url
       end
     end
 end
