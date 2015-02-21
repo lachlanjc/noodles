@@ -126,7 +126,7 @@ class RecipesController < ApplicationController
     if @recipe.save
       @recipe.shared_id = generate_shared_id(@recipe.id)
       @recipe.save
-      flash[:success] = "Your recipe has been created."
+      flash[:success] = "Nice! Check out your new recipe:"
       redirect_to @recipe
     else
       render :edit
@@ -137,7 +137,7 @@ class RecipesController < ApplicationController
   def update
     if @recipe.update(recipe_params)
       @recipe.save
-      flash[:success] = "Awesome: changes saved!"
+      flash[:success] = "Great, your changes were saved."
       redirect_to @recipe
     else
       render :edit
@@ -147,7 +147,7 @@ class RecipesController < ApplicationController
   # DELETE /recipes/1
   def destroy
     @recipe.destroy
-    flash[:danger] = "Okay, we've tossed that recipe into the recycling bin."
+    flash[:danger] = "Okay, we've got that recipe in the recycling bin now."
     redirect_to recipes_url
   end
 

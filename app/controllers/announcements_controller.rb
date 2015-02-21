@@ -52,7 +52,7 @@ class AnnouncementsController < ApplicationController
   # DELETE /announcements/1
   def destroy
     @announcement.destroy
-    flash[:danger] = "Announcement deleted."
+    flash[:danger] = "Farewell, accidental announcement."
     redirect_to announcements_url
   end
 
