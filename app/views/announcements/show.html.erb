@@ -16,7 +16,7 @@
 
 <%= render "shared/nav" %>
 
-<article class="document col-7">
+<article class="document">
   <%= react_component("AnnouncementBody", data: @announcement.as_json) %>
   <hr>
   <%= react_component("BioLachlan") %>

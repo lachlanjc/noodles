@@ -18,7 +18,7 @@ var AnnouncementBody = React.createClass({
 var AnnouncementList = React.createClass({
   render: function() {
     return (
-      <article className="container col-7">
+      <article className="sm-col-11 md-col-7 mx-auto">
         <h1>Noodles keeps getting better.</h1>
         <h2 className="grey-3 mt0 mb3">Check back here for the latest updates.</h2>
         {this.props.announcements.map(function(announcement) {

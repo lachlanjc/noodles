@@ -11,13 +11,15 @@
 .document {
   @extend %box;
   @extend .mx-auto;
-  padding: $space-3;
+  box-sizing: border-box;
+  padding: $space-2;
+  width: 95%;
 }
 
-@media #{$breakpoint-sm} {
+@media #{$breakpoint-md} {
   .document {
-    padding: $space-2;
-    width: 95%;
+    padding: $space-3;
+    width: (7/12 * 100%);
   }
 }
 

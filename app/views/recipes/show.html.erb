@@ -3,7 +3,7 @@
 
 <%= render "shared/nav" %>
 
-<article class="col-7 recipe-print document">
+<article class="document recipe-print">
 
   <%= form_for(@recipe, remote: true, html: { id: "recipeFavoriteForm" }) do |f| %>
     <label class="control header-indicator">
@@ -64,11 +64,11 @@
           <% end %>
         </li>
         <% end %>
-        <li>
-          <p><a href="/collections" class="orange">Create a New Collection...</a></p>
+        <li class="border-top border-bottom p1 grey-1">
+          <%= link_to "Add a New Collection...", collections_path(:new_collection => true), class: "link-reset" %>
         </li>
       </ul>
-      <%= f.submit "Save", class: "btn-blue float-right" %>
+      <%= f.submit "Save", class: "btn-blue right" %>
     <% end %>
   <% else %>
     <div class="well text center bg-grey-6 border rounded py3 px2">
