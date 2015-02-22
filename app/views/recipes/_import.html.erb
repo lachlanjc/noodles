@@ -3,7 +3,7 @@
   <h2>Import a Recipe from the Web</h2>
   <hr>
   <p>Paste the URL of a recipe below to save it to Noodles.</p>
-  <small class="block grey-3 mb1">Websites supported: <a href="http://www.epicurious.com/">Epicurious</a>, <a href="www.bonappetit.com/">Bon Appetit</a>, <a href="http://cooking.nytimes.com">NYTimes Cooking</a>, <a href="http://foodandwine.com/">Food and Wine</a>, <a href="http://food52.com/">Food52</a>, and <a href="http://allrecipes.com/">Allrecipes</a>.</small>
+  <small class="block grey-3 mb1">Websites supported: <a href="http://www.epicurious.com/">Epicurious</a>, <a href="www.bonappetit.com/">Bon Appetit</a>, <a href="http://cooking.nytimes.com">NYTimes Cooking</a>, <a href="http://foodandwine.com/">Food and Wine</a>, <a href="http://food52.com/">Food52</a>, <a href="http://www.marthastewart.com/">Martha Stewart</a>, and <a href="http://allrecipes.com/">Allrecipes</a>.</small>
   <%= form_tag("/import", method: "get") do %>
     <%= url_field_tag :url, nil, class: "text-input col-9", placeholder: "Paste the URL here" %>
     <%= submit_tag("Import", name: nil, class: "right btn-blue") %>

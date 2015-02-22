@@ -27,6 +27,9 @@ module ScrapingHelper
     when "allrecipes.com"
       load "scrapers/allrecipes.rb"
       return AllRecipesScraper.new.scrape(path)
+    when "marthastewart.com"
+      load "scrapers/marthastewart.rb"
+      return MarthaStewartScraper.new.scrape(path)
     when "food52.com"
       load "scrapers/food52.rb"
       return Food52Scraper.new.scrape(path)
