@@ -26,16 +26,19 @@
 
 <%= render "shared/nav" %>
 
-<article class="col-7 recipe-print document">
+<article class="document recipe-print">
 
-  <h1 class="m0"><%= @recipe.title %></h1>
+  <div itemscope itemtype="http://schema.org/Recipe">
+    <meta itemprop="url" content="<%= @shared_url %>" />
+    <meta itemprop="dateCreated" content="<%= @recipe.created_at %>" />
+    <meta itemprop="dateModified" content="<%= @recipe.updated_at %>" />
 
-  <p class="grey-3 mb1">Shared by <%= @owner %></p>
-  <%= markdown(@recipe.description) %>
-
-  <%= render "shared/social" if me_owns_recipe? %>
-
-  <%= render "recipe_body", cache: true %>
+    <h1 class="m0" itemprop="name"><%= @recipe.title %></h1>
+    <p class="grey-3 mb1">Shared by <%= @owner %></p>
+    <div itemprop="description"><%= markdown(@recipe.description) %></div>
+    <%= render "shared/social" if me_owns_recipe? %>
+    <%= render "recipe_body", cache: true %>
+  </div>
 
   <%# If it's your recipe, hint about saving %>
   <% if me_owns_recipe? %>

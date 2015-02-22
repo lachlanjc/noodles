@@ -1,13 +1,17 @@
 <h2 class="mt2">Ingredients</h1>
-<%= simple_format(@recipe.ingredients, class: "text") %>
+<ul class="text text-normalized list-reset">
+<% @recipe.ingredients.each_line do |content| %>
+  <%= simple_format(content, {:itemprop => "ingredients"}, wrapper_tag: "li") %>
+<% end %>
+</ul>
 
 <h2 class="mt2">Instructions</h2>
-<div class="text text-normalized">
+<div class="text text-normalized" itemprop="recipeInstructions">
   <%= sanitize markdown(@recipe.instructions) %>
 </div>
 
 <% unless @recipe.img.url.blank? %>
-<%= image_tag @recipe.img, class: "recipe-photo block mt2 mb2 mx-auto rounded" %>
+<%= image_tag @recipe.img, alt: "Photo of " + @recipe.title, class: "recipe-photo block mt2 mb2 mx-auto rounded", itemprop: "image" %>
 <% end %>
 
 <h2 class="mt2">Details</h2>
@@ -15,44 +19,41 @@
 <p class="grey-2">You don't yet have any details for this recipe. Details describe where the recipe came from and the recipe's yield.</p>
 <% else %>
 <p>Source: <%= auto_link(@recipe.source, :html => {:rel => "nofollow"}) %>
-<p>Yield: <%= @recipe.serves %>
+<p itemprop="recipeYield">Yield: <%= @recipe.serves %>
 <% end %>
 
 <h2 class="mt2">Notes</h2>
-
 <% if me_owns_recipe? %>
-  <div class="tab-container">
+<div class="tab-container">
+  <input type="radio" name="tabs" class="tab-1" id="tab-1" checked>
+  <label for="tab-1">View</label>
 
-    <input type="radio" name="tabs" class="tab-1" id="tab-1" checked>
-    <label for="tab-1">View</label>
+  <input type="radio" name="tabs" class="tab-2" id="tab-2">
+  <label for="tab-2">Edit Notes</label>
+  <br>
 
-    <input type="radio" name="tabs" class="tab-2" id="tab-2">
-    <label for="tab-2">Edit Notes</label>
-
-    <br>
-
-    <div class="content content-1 notes text text-normalized">
-      <% if @recipe.notes.blank? %>
-        <p class="grey-3">No notes for this recipe &mdash; yet!</p>
-      <% else %>
-      <%= sanitize markdown(@recipe.notes) %>
-      <% end %>
-    </div>
-
-    <div class="content content-2">
-      <%= form_for(@recipe) do |f| %>
-        <%= f.text_area :notes, class: "text-input full-width m0 notes", placeholder: "Click here to add Notes to your recipe.", rows: "4" %>
-        <%= f.submit t("general.save"), class: "btn-blue btn-sm block" %>
-      <% end %>
-    </div>
-
-  </div>
-<% else %>
-  <div class="rounded shadow p2 notes text text-normalized">
+  <div class="content content-1 notes text text-normalized">
     <% if @recipe.notes.blank? %>
-    <p class="grey-3 mb0">No notes for this recipe &mdash; yet!</p>
+      <p class="grey-4 mb2">No notes for this recipe &mdash; yet!</p>
     <% else %>
     <%= sanitize markdown(@recipe.notes) %>
     <% end %>
   </div>
+
+  <div class="content content-2">
+    <%= form_for(@recipe) do |f| %>
+      <%= f.text_area :notes, class: "text-input full-width m0 notes", placeholder: "Click here to add Notes to your recipe.", rows: "4" %>
+      <%= f.submit t("general.save"), class: "btn-blue btn-sm block" %>
+    <% end %>
+  </div>
+
+</div>
+<% else %>
+<div class="rounded shadow p2 notes text text-normalized">
+  <% if @recipe.notes.blank? %>
+  <p class="grey-4 mb0">No notes for this recipe &mdash; yet!</p>
+  <% else %>
+  <%= sanitize markdown(@recipe.notes) %>
+  <% end %>
+</div>
 <% end %>

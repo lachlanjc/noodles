@@ -17,11 +17,16 @@
     </label>
   <% end %>
 
-  <h1 class="m0 inline"><%= @recipe.title %></h1>
+  <div itemscope itemtype="http://schema.org/Recipe">
+    <meta itemprop="url" content="<%= @shared_url %>" />
+    <meta itemprop="dateCreated" content="<%= @recipe.created_at %>" />
+    <meta itemprop="dateModified" content="<%= @recipe.updated_at %>" />
 
-  <div class="text mt2"><%= markdown(@recipe.description.to_s) %></div>
+    <h1 class="m0 inline" itemprop="name"><%= @recipe.title %></h1>
+    <div class="text mt2" itemprop="description"><%= markdown(@recipe.description.to_s) %></div>
 
-  <%= render "recipe_body", cache: true %>
+    <%= render "recipe_body", cache: true %>
+  </div>
 
   <%= render "shared/social" if @recipe.shared? %>
 
