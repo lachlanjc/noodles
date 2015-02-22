@@ -5,7 +5,7 @@ class RecipesController < ApplicationController
 
   before_filter :please_sign_in, only: [:index, :favorites, :random, :create]
   before_filter :set_recipe, only: [:show, :edit, :update, :destroy]
-  before_filter :locate_recie, only: [:export_pdf, :remove_image, :un_share]
+  before_filter :locate_recipe, only: [:export_pdf, :remove_image, :share_this_recipe, :un_share]
   before_filter :not_the_owner, only: [:update, :export_pdf, :remove_image, :share_this_recipe, :un_share, :destroy]
   protect_from_forgery except: :embed_js
 
@@ -58,7 +58,6 @@ class RecipesController < ApplicationController
   end
 
   def share_this_recipe
-
     @recipe.shared = true
     @recipe.save
     redirect_to shared_url(@recipe.shared_id)

@@ -40,7 +40,7 @@ module ScrapingHelper
     ingredients_list = ""
     ingredients.each do |ingredient|
       # Add ingredient to the next line of ingredients_list
-      ingredients_list << ingredient.to_s + "\n"
+      ingredients_list << ingredient.to_s.squish + "\n"
     end
     return ingredients_list
   end
