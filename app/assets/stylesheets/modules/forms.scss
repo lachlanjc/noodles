@@ -21,8 +21,8 @@ input[type="submit"] {
   border: $border;
   border-radius: $border-radius;
   display: block;
+  min-width: 16em;
   padding: .4em .6em;
-  width: 16em;
 
   &:focus {
     @include elegance;
