@@ -4,7 +4,7 @@ class AllRecipesScraper
   include Wombat::Crawler
 
   def scrape(url_path)
-    recipe = Wombat.crawl do
+    return Wombat.crawl do
       base_url "http://allrecipes.com"
       path url_path
 
@@ -14,6 +14,5 @@ class AllRecipesScraper
       instructions({ css: ".directions ol li" }, :list)
       serves css: ".servings #lblYield"
     end
-    return recipe
   end
 end
