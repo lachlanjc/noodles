@@ -20,7 +20,6 @@ h6 {
 }
 
 p,
-dl,
 ol,
 ul {
   font-size: $h4;
@@ -69,11 +68,6 @@ h6,
   font-size: $h6;
 }
 
-.list-reset {
-  list-style: none;
-  padding-left: 0;
-}
-
 small {
   font-size: 90%;
 }
@@ -94,7 +88,6 @@ a {
   text-decoration: none;
 
   &:hover {
-    outline: 0;
     text-decoration: underline;
   }
 }
@@ -102,11 +95,14 @@ a {
 .text {
   color: $grey-2;
   font-size: $h4;
-  word-wrap: break-word;
 }
 
-.text-normalized h1 {
-  color: $grey-1;
-  font-size: $h3;
-  margin-top: $space-1;
+.text-normalized {
+  word-wrap: break-word;
+
+  h1 {
+    color: $grey-1;
+    font-size: $h3;
+    margin-top: $space-1;
+  }
 }

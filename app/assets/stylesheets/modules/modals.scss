@@ -11,16 +11,12 @@
   background: #fff;
   border-radius: $border-radius;
   display: none;
-  padding: 15px;
+  padding: 1rem;
   width: 560px;
 
   h2 {
     margin-top: 0;
   }
-}
-
-.modal-close svg {
-  fill: $grey-4;
 }
 
 @media (max-width: $screen-phone) {

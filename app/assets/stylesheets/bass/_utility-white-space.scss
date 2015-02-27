@@ -178,3 +178,20 @@
   padding-left: $space-4;
   padding-right: $space-4;
 }
+
+// Added by @lachlanjc
+
+.up-6 {
+  @extend .relative;
+  top: -6px;
+}
+
+.up-8 {
+  @extend .relative;
+  top: -8px;
+}
+
+.up-10 {
+  @extend .relative;
+  top: -10px;
+}

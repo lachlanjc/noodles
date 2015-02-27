@@ -1,7 +1,5 @@
 <% activate_nav!(:edit_recipe) %>
-
 <%= stylesheet_link_tag "editor" %>
-<%= javascript_include_tag "editor" %>
 
 <%= link_to recipes_path, class: "logo-nav fixed" do %>
   <%= inline_svg("home.svg") %>
@@ -34,14 +32,14 @@
 
   <%= f.text_area :description, class: "text-input invisible-input full-width js-auto-size", placeholder: "Optionally, write a description for the recipe right here.", rows: "1", autocomplete: "off" %>
 
-  <%= f.text_area :ingredients, class: "text-input invisible-input full-width m0 js-auto-size", placeholder: "Click here to add your recipe\'s ingredients. Put one on each line.", rows: "3", autocomplete: "off" %>
+  <%= f.text_area :ingredients, class: "text-input invisible-input full-width m0 js-auto-size", placeholder: "Click here to add your recipe's ingredients. Put one on each line.", rows: "3", autocomplete: "off" %>
 
-  <%= f.text_area :instructions, class: "text-input invisible-input full-width m0 js-auto-size", placeholder: "Type the recipe\'s instructions here. Number each step.", rows: "4", autocomplete: "off" %>
+  <%= f.text_area :instructions, class: "text-input invisible-input full-width m0 js-auto-size", placeholder: "Type the recipe's instructions here. Number each step.", rows: "4", autocomplete: "off" %>
 
-  <p class="grey-4 block mb2 details-btn">
-    <%= inline_svg("info_outline.svg") %>
-    Show Details
-  </p>
+  <div class="grey-4 block mb2 details-btn pointer fill-grey-3">
+    <%= react_component("IconInfo", size: "28px", classes: "fill-grey-3") %>
+    <span class="up-8">Show Details</span>
+  </div>
 
   <div class="hide bg-white rounded shadow mb2 p2 details-panel">
     <h2 class="m0">Details</h2>
@@ -55,7 +53,7 @@
     <%= f.label :notes, class: "inline-block" %><small class="ml1 grey-4">Add some more information about the recipe.</small>
     <%= f.text_area :notes, class: "text-input notes block mb1 js-auto-size" %>
 
-    <label class="control mb1 block">
+    <label class="control mb1 block pointer">
       <%= f.check_box :favorite, class: "control-checkbox" %>
       <%= react_component("IconFavoriteOutline", classes: "control-indicator fill-orange") %>
       <%= react_component("IconFavorite", classes: "control-indicator-checked fill-orange") %>
@@ -69,3 +67,5 @@
 
   <% end %>
 </article>
+
+<%= javascript_include_tag "editor" %>

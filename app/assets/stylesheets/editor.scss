@@ -20,42 +20,12 @@ body {
 
     svg {
       display: block;
-      margin: 1em auto 0;
+      margin: 1rem auto 0;
     }
   }
 }
 
-.upload-button {
-  cursor: pointer;
-
-  svg {
-    @include svg-large($grey-4);
-  }
-
-  span {
-    @include up(-10px);
-    color: $grey-3;
-    padding-left: 4px;
-  }
-}
-
-#file {
-  visibility: hidden;
-}
-
-.details-btn svg {
-  @include size(28px);
-  @include up(8px);
-  cursor: pointer;
-  fill: $grey-3;
-  margin-right: 3px;
-}
-
-.control span {
-  @include up(-6px);
-}
-
 .btn-save {
-  background-color: $grey-4;
-  color: $grey-6;
+  // Unfortuantely .btn overrides .bg-grey-4
+  background: $grey-4;
 }

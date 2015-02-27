@@ -13,13 +13,7 @@
   @include up(-6px);
 }
 
-.checklist {
-  display: inline-block;
-  margin-right: 4px;
-}
-
-.checklist:checked + span,
-.instructions-checklist:checked ~ span {
+.ingredients-checklist .checked {
   color: $grey-4;
   text-decoration: line-through;
 }

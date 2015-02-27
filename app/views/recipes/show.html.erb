@@ -55,7 +55,7 @@
       <ul class="list-reset sm-col-10 md-col-5 mx-auto">
         <%= collection_check_boxes(:recipe, :collections, @collections, :id, :name) do |b| %>
         <li class="border-top">
-          <%= b.label(class: "collection-list-item m0 p1") do %>
+          <%= b.label(class: "collection-list-item m0 p1 pointer") do %>
             <% if @recipe.collections.include?(b.value.to_s) %>
             <%= b.check_box(checked: "checked", class: "hide") %>
             <% else %>

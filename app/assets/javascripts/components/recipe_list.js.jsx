@@ -75,6 +75,7 @@ var RecipeList = React.createClass({
         <input
           type="text"
           id="searchBox"
+          role="search"
           className="mb0 text-input invisible-input col-8"
           value={this.state.searchString}
           onChange={this.handleChange}

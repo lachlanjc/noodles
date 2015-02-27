@@ -2,8 +2,9 @@
   border-radius: 18px;
 
   .invisible-input {
+    display: inline-block;
     height: 35px;
-    width: 80%;
+    min-width: 80%;
   }
 
   svg {

@@ -1,5 +1,6 @@
 .collection-header {
-  @include up(-20px);
+  // override nav's mb2
+  @include up(-1rem);
 
   &.has-img {
     box-shadow: inset 0 -5rem 6rem rgba(0,0,0,.4);
@@ -11,8 +12,6 @@
 }
 
 .has-img {
-  background-repeat: no-repeat;
-
   .collection-name,
   div {
     color: #fff;
@@ -34,17 +33,13 @@
   opacity: .8;
 }
 
-.collection-list-item {
-  cursor: pointer;
+.collection-list-item input:checked {
+  + span {
+    color: $orange;
+  }
 
-  input:checked {
-    + span {
-      color: $orange;
-    }
-
-    ~ .checkmark {
-      display: inline-block !important; // overrides .hide !important
-      fill: $orange;
-    }
+  ~ .checkmark {
+    // overrides .hide !important
+    display: inline-block !important;
   }
 }
