@@ -17,7 +17,6 @@
 
     <hr class="col-10">
 
-    <h2 class="mb0">Ingredients</h2>
     <%= react_component("IngredientsChecklist", ingredients: @recipe.ingredients.split("\n")) %>
 
     <% unless @recipe.notes.blank? %>
