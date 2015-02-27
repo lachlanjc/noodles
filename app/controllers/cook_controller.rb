@@ -7,6 +7,11 @@ class CookController < ApplicationController
 
     if me_owns_recipe? || @recipe.shared?
       @recipe_step_count = @recipe.instructions.lines.count
+      if me_owns_recipe?
+        @exit_link = recipe_path(@recipe.id)
+      else
+        @exit_link = share_path(@recipe.shared_id)
+      end
       render :index
     else
       flash[:view] = "You can't cook with recipes that aren't yours!"
