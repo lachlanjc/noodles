@@ -3,36 +3,36 @@
   <% if user_signed_in? %>
 
     <div>
-      <%= link_to t("general.home"), root_url, class: "orange px1" %>
-      <%= link_to t("general.recipes"), recipes_path, class: "orange px1" + nav_active_class(:recipes) %>
-      <%= link_to t("general.favorites"), favorites_path, class: "orange px1" + nav_active_class(:favorites) %>
-      <%= link_to t("general.collections"), collections_path, class: "orange px1" + nav_active_class(:collections) %>
+      <%= link_to t("general.home"), root_url, class: "px1" %>
+      <%= link_to t("general.recipes"), recipes_path, class: "px1" + nav_active_class(:recipes) %>
+      <%= link_to t("general.favorites"), favorites_path, class: "px1" + nav_active_class(:favorites) %>
+      <%= link_to t("general.collections"), collections_path, class: "px1" + nav_active_class(:collections) %>
     </div>
 
     <div class="flex-auto"></div>
 
     <div>
       <% unless nav_active?(:shared_recipe) || nav_active?(:onboarding) %>
-      <%= link_to "Blog", announcements_path, class: "orange px1" + nav_active_class(:announcements) %>
+      <%= link_to "Blog", announcements_path, class: "px1" + nav_active_class(:announcements) %>
       <% end %>
-      <%= link_to t("general.settings"), :settings, class:  "orange px1" + nav_active_class(:settings) %>
-      <%= link_to t("general.help"), :help, class: "orange px1" + nav_active_class(:help) %>
-      <%= link_to t("general.sign_out"), :sign_out, class: "orange px1" %>
+      <%= link_to t("general.settings"), :settings, class:  "px1" + nav_active_class(:settings) %>
+      <%= link_to t("general.help"), :help, class: "px1" + nav_active_class(:help) %>
+      <%= link_to t("general.sign_out"), :sign_out, class: "px1" %>
     </div>
 
   <% else %>
 
     <div>
-      <%= link_to t("general.home"), root_url, class: "orange px1" %>
-      <%= link_to t("general.features"), "http://noodles.withdraft.com/", class: "orange px1" %>
-      <%= link_to t("general.about"), :help, class: "orange px1" + nav_active_class(:help) %>
+      <%= link_to t("general.home"), root_url, class: "px1" %>
+      <%= link_to t("general.features"), "http://noodles.withdraft.com/", class: "px1" %>
+      <%= link_to t("general.about"), :help, class: "px1" + nav_active_class(:help) %>
     </div>
 
     <div class="flex-auto"></div>
 
     <div>
-      <%= link_to t("general.sign_in"), :sign_in, class: "orange px1" + nav_active_class(:sign_in) %>
-      <%= link_to t("general.sign_up"), :sign_up, class: "orange px1" + nav_active_class(:sign_up) %>
+      <%= link_to t("general.sign_in"), :sign_in, class: "px1" + nav_active_class(:sign_in) %>
+      <%= link_to t("general.sign_up"), :sign_up, class: "px1" + nav_active_class(:sign_up) %>
     </div>
 
   <% end %>
