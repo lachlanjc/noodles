@@ -10,21 +10,17 @@
 <article class="col-7 container">
   <%= form_for(@recipe) do |f| %>
 
+  <%= f.file_field :img, id: "file", class: "hide" %>
+  <div class="upload-button inline-block" id="file-button">
+    <%= react_component("IconPhoto", size: "32px", classes: "fill-grey-4") %>
+    <span id="file-name" class="grey-4 up-10">
   <% if @recipe.img.url.blank? %>
-  <%= f.file_field :img, id: "file", class: "hide" %>
-  <div class="upload-button" id="file-button">
-    <%= inline_svg("photo-upload.svg") %>
-    <span id="file-name">Click to upload a photo</span>
-  </div>
-  <% else %>
-  <%= f.file_field :img, id: "file", class: "hide" %>
-  <div class="upload-button">
-    <div id="file-button" class="inline-block">
-      <%= inline_svg("photo-upload.svg") %>
-      <span id="file-name">Pick a different photo?</span>
+      Click to upload a photo</span>
     </div>
-    <span>or <%= link_to "remove current photo", recipe_remove_image_path(:recipe_id => @recipe.id) %></span>
-  </div>
+  <% else %>
+      Upload a new photo</span>
+    </div>
+    <span class="grey-4 up-10">or <%= link_to "remove current photo", recipe_remove_image_path(:recipe_id => @recipe.id), class: "link-reset" %></span>
   <% end %>
 
   <% if @recipe.errors.any? %>
