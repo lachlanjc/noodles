@@ -8,12 +8,8 @@
   <%= form_for(@recipe, remote: true, html: { id: "recipeFavoriteForm" }) do |f| %>
     <label class="control header-indicator m0">
       <%= f.check_box :favorite, class: "control-checkbox", id: "recipeFavoriteTrigger" %>
-      <div class="control-indicator">
-        <%= inline_svg("favorite_outline.svg") %>
-      </div>
-      <div class="control-indicator-checked">
-        <%= inline_svg("favorite.svg") %>
-      </div>
+      <%= react_component("IconFavoriteOutline", classes: "control-indicator") %>
+      <%= react_component("IconFavorite", classes: "control-indicator-checked") %>
     </label>
   <% end %>
 

@@ -57,13 +57,9 @@
 
     <label class="control mb1 block">
       <%= f.check_box :favorite, class: "control-checkbox" %>
-      <div class="control-indicator fill-orange">
-        <%= inline_svg("favorite_outline.svg") %>
-      </div>
-      <div class="control-indicator-checked fill-orange">
-        <%= inline_svg("favorite.svg") %>
-      </div>
-      <span class="orange"><%= t("general.favorite") %></span>
+      <%= react_component("IconFavoriteOutline", classes: "control-indicator fill-orange") %>
+      <%= react_component("IconFavorite", classes: "control-indicator-checked fill-orange") %>
+      <span class="orange up-6"><%= t("general.favorite") %></span>
     </label>
 
     <%= link_to t("general.delete"), @recipe, method: :delete, data: { confirm: t("general.delete_forever") }, class: "btn-red btn-sm mt2" %>
