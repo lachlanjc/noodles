@@ -3,10 +3,10 @@
 
 <%= render "shared/nav" %>
 
-<article class="document sm-col-11 md-col-4">
+<article class="document p2 sm-col-11 md-col-4">
   <h2 class="m0">Hey <%= current_user.first_name %>! Let's get cooking.</h2>
   <hr>
-  <p>First, add a recipe. Click the big "+" button in the corner, or add a recipe from the web using the "link" button.</p>
+  <p class="mb0">First, let's add a recipe. Click the big <span class="ml0 badge px1 bg-orange circle shadow pointer">+</span> button in the corner to write one, or import a recipe from the web using the "link" button.</p>
 </article>
 
 <%= render "recipes/import" %>
@@ -15,6 +15,6 @@
   <%= inline_svg("import.svg") %>
 </a>
 
-<%= link_to :new_recipe, class: "has-tooltip btn-paper", data: { tooltip: "Add a new recipe"} do %>
+<%= link_to new_recipe_path, class: "has-tooltip btn-paper", data: { tooltip: "Add a new recipe"} do %>
 <%= inline_svg("add.svg") %>
 <% end %>
