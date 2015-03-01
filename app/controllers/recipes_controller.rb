@@ -157,23 +157,7 @@ class RecipesController < ApplicationController
       flash[:danger] = "Sorry, we don't support that site yet."
       redirect_to recipes_path
     else
-      @create_recipe = Recipe.new do |r|
-        r.user_id = current_user.id
-        r.title = recipe_data["title"]
-        r.description = recipe_data["description"].to_s
-        r.ingredients = write_ingredients_to_list(recipe_data["ingredients"])
-        r.instructions = form_markdown_for_instructions(recipe_data["instructions"])
-        r.source = params[:url]
-        r.serves = recipe_data["serves"].to_s
-        r.notes = recipe_data["notes"].to_s
-        r.favorite = false
-        r.shared = false
-        r.save
-      end
-      @create_recipe.shared_id = generate_shared_id(@create_recipe.id)
-      @create_recipe.save
-      flash[:success] = "Recipe imported!"
-      redirect_to @create_recipe
+      create_recipe(recipe_data, params[:url], "Recipe imported!")
     end
   end
 

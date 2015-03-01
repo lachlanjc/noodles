@@ -1,6 +1,8 @@
 module ScrapingHelper
+  include RecipesHelper
+
   def find_host(url)
-    return URI(url).host.to_s.match(/[^\.]+\.\w+$/).to_s
+    return URI(url).host.to_s
   end
 
   def find_path(url)
@@ -38,15 +40,35 @@ module ScrapingHelper
     end
   end
 
+  def create_recipe(recipe_data, url_source, flash_text)
+    recipe = Recipe.new do |r|
+      r.user_id = current_user.id
+      r.title = recipe_data["title"]
+      r.description = recipe_data["description"].to_s.squish
+      r.ingredients = write_ingredients_to_list(recipe_data["ingredients"])
+      r.instructions = form_markdown_for_instructions(recipe_data["instructions"])
+      r.source = url_source
+      r.serves = recipe_data["serves"].to_s
+      r.notes = recipe_data["notes"].to_s
+      r.favorite = false
+      r.shared = false
+      r.save
+    end
+    recipe.shared_id = generate_shared_id(recipe.id)
+    recipe.save
+    flash[:success] = flash_text
+    redirect_to recipe
+  end
+
   # Wombat returns arrays for ingredients and instructions.
   # These methods convert the arrays of strings into usable text.
-  # The second method writes Markdown for the instructions.
+  # Specifically, the second method writes Markdown out of an array of instructions.
 
   def write_ingredients_to_list(ingredients)
     ingredients_list = ""
     ingredients.each do |ingredient|
-      # Add ingredient to the next line of ingredients_list
-      ingredients_list << ingredient.to_s.squish + "\n"
+      # Add ingredient (minus extra whitespace) to the next line of ingredients_list
+      ingredients_list += ingredient.to_s.squish + "\n"
     end
     return ingredients_list
   end
@@ -55,8 +77,8 @@ module ScrapingHelper
     instructions_md = ""
     # each_with_index produces the step number
     steps.each_with_index do |step, id|
-      # Arrays start at 0
-      instructions_md << (id + 1).to_s + ". " + step + "\n"
+                        # Arrays start at 0
+      instructions_md += (id + 1).to_s + ". " + step.to_s.squish + "\n"
     end
     return instructions_md
   end
