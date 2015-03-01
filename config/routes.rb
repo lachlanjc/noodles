@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get "/import" => "recipes#scrape", as: :import
   get "/embed/:shared_id" => "recipes#embed_js", as: :embed
 
+  get "/save" => "save#save"
+
   # Shared recipes
   scope "/s" do
     get "/:shared_id" => "recipes#share", as: :share
