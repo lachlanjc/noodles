@@ -1,0 +1,53 @@
+@import "variables";
+@import "mixins";
+
+$embed-shadow: 0 1px 2px rgba(100,100,100,.4);
+
+.noodles-embed {
+  background-color: #fff;
+  border-radius: $border-radius;
+  box-shadow: $embed-shadow;
+  display: block;
+  font-family: $font-family;
+  margin: $space-3 $space-2;
+  padding-top: $space-1;
+  overflow: hidden;
+  text-align: center;
+  width: 300px;
+}
+
+.noodles-header,
+.noodles-author,
+.noodles-description,
+.noodles-info {
+  color: $grey-1;
+  font-weight: 400;
+  margin: $space-1 0 0;
+}
+
+.noodles-bar {
+  padding: $space-1;
+  background: $grey-6;
+  margin-top: $space-2;
+
+  p {
+    font-size: $h6;
+    margin: 0;
+  }
+
+  a {
+    color: darken($blue, 8%);
+  }
+}
+
+.noodles-embed.has-bg-img {
+  box-shadow: $embed-shadow, inset 0 -48px 24px 24px rgba(0,0,0,.2);
+  background-size: cover;
+
+  .noodles-header,
+  .noodles-author,
+  .noodles-description {
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .16);
+  }
+}
