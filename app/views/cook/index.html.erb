@@ -1,19 +1,14 @@
 <%- title "Cooking " + @recipe.title %>
 <%= stylesheet_link_tag "cook" %>
 
-<main class="flex mx-auto">
+<main class="md-flex">
 
-  <aside class="cook-info m3">
-    <h1 class="m0 black"><%= @recipe.title %></h2>
+  <aside class="sm-col-11 md-col-4 m2">
+    <h1 class="m0 grey-1"><%= @recipe.title %></h2>
     <p class="grey-3 m0">
       <%= "Published by #{User.find(@recipe.user_id).first_name} · " unless me_owns_recipe? %>
       <%= @recipe.instructions.lines.count %> steps
     </p>
-
-    <%= link_to @exit_link, class: "exit block mt2 link-reset" do %>
-      <%= inline_svg("exit.svg") %>
-      <span class="grey-3 text">Exit Cook Mode</span>
-    <% end %>
 
     <hr class="col-10">
 
@@ -31,7 +26,7 @@
     <% end %>
   </aside>
 
-  <article class="cook-list mt3 ml0 p0">
+  <article class="sm-col-11 md-col-6 mx-auto mt2 p0">
     <%= react_component("CookInstructions", instructions: @recipe.instructions.split("\n")) %>
     <div class="bg-white rounded shadow p2 block h2 center mb2 grey-2">
       Finished! Enjoy your meal.
@@ -40,3 +35,7 @@
   </article>
 
 </main>
+
+<%= link_to @exit_link, class: "btn-paper bg-orange fill-white circle fixed p2 shadow" do %>
+  <%= inline_svg("exit.svg") %>
+<% end %>

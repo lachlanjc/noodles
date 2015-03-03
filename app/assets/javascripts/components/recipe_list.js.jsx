@@ -19,19 +19,6 @@ var RecipeItem = React.createClass({
   }
 });
 
-var RandomRecipe = React.createClass({
-  render: function() {
-    if (this.props.showRandom === true) {
-      return (<a href="/random" className="inline-block">
-        <IconRandom classes="inline-block ml1 fill-grey-4 random" />
-      </a>);
-    } else {
-      return null;
-    }
-  }
-});
-
-
 var RecipeList = React.createClass({
   getInitialState: function(){
     return { searchString: '' };
@@ -63,8 +50,12 @@ var RecipeList = React.createClass({
       <header className="center m0">
         <h1 className="inline-block">
           {headerText}
-          {searchString.length > 0 ? <mark>{searchString}</mark> : null }
-          <RandomRecipe showRandom={this.props.showRandom} />
+          {searchString.length > 0 ? <mark className="rounded grey-2 px1 bg-yellow">{searchString}</mark> : null }
+          {this.props.showRandom === true ?
+            <a href="/random" className="inline-block">
+              <IconRandom classes="inline-block ml1 fill-grey-4 random" />
+            </a>
+          : null}
         </h1>
       </header>
       : null}

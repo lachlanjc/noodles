@@ -6,10 +6,10 @@
 <article class="document recipe-print">
 
   <%= form_for(@recipe, remote: true, html: { id: "recipeFavoriteForm" }) do |f| %>
-    <label class="control header-indicator m0">
+    <label class="control right inline-block m0">
       <%= f.check_box :favorite, class: "control-checkbox", id: "recipeFavoriteTrigger" %>
-      <%= react_component("IconFavoriteOutline", classes: "control-indicator") %>
-      <%= react_component("IconFavorite", classes: "control-indicator-checked") %>
+      <%= react_component("IconFavoriteOutline", classes: "control-indicator fill-orange", size: "32") %>
+      <%= react_component("IconFavorite", classes: "control-indicator-checked fill-orange", size: "32") %>
     </label>
   <% end %>
 
@@ -26,11 +26,11 @@
 
   <%= render "shared/social" if @recipe.shared? %>
 
-  <div class="print-hide mt2 mb1">
-    <%= link_to t("general.edit"), :edit_recipe, class: "btn-blue mobile-button mr1" %>
-    <a id="collectModalTrigger" href="#collectModal" class="btn mobile-button mr1">Add to Collection</a>
-    <a id="shareModalTrigger" href="#shareModal" class="btn-green mobile-button mr1">Share</a>
-    <a id="printRecipe" class="btn-blue mobile-button mr1">Print</a>
+  <div class="print-hide py1">
+    <%= link_to t("general.edit"), :edit_recipe, class: "btn-blue mr1 mt1" %>
+    <a href="#collectModal" class="btn mr1 mt1 modalTrigger">Add to Collection</a>
+    <a href="#shareModal" class="btn-green mr1 mt1 modalTrigger">Share</a>
+    <a id="printRecipe" class="btn-blue mr1 mt1">Print</a>
   </div>
 
   <%= render "shared/printer" %>
@@ -90,17 +90,17 @@
   <div class="tab-container">
 
     <input type="radio" name="tab-set-2" class="tab-1" id="tab-2-1" checked>
-    <label for="tab-2-1">Share a link</label>
+    <label for="tab-2-1" class="rounded-top inline-block border bg-grey-5">Share a link</label>
 
     <input type="radio" name="tab-set-2" class="tab-2" id="tab-2-2">
-    <label for="tab-2-2">Download a PDF</label>
+    <label for="tab-2-2" class="rounded-top inline-block border bg-grey-5">Download a PDF</label>
 
     <input type="radio" name="tab-set-2" class="tab-3" id="tab-2-3">
-    <label for="tab-2-3">Embed on the Web</label>
+    <label for="tab-2-3" class="rounded-top inline-block border bg-grey-5">Embed on the Web</label>
 
     <br>
 
-    <div class="content content-1">
+    <div class="content content-1 p1 border rounded-bottom">
       <% if @recipe.shared? %>
       <p>Your recipe is already shared!</p>
       <p><%= link_to "Check it out", @shared_url, class: "btn-blue" %></p>
@@ -110,12 +110,12 @@
       <% end %>
     </div>
 
-    <div class="content content-2">
+    <div class="content content-2 p1 border rounded-bottom">
       <p>Click the button below to download a PDF of your recipe.</p>
       <p><%= link_to "Download PDF", recipe_export_pdf_path(@recipe), class: "btn-blue" %></p>
     </div>
 
-    <div class="content content-3">
+    <div class="content content-3 p1 border rounded-bottom">
       <p>Copy and paste the code below onto your website or blog to embed this recipe.</p>
       <pre class="m0 p1 border rounded bg-grey-6 text"><%= @embed_code %></pre>
       <p class="mt1"><%= link_to "Need help?", help_path %></p>
@@ -125,6 +125,6 @@
 
 </div>
 
-<%= link_to recipe_cook_path(:recipe_id => @recipe.id), class: "btn-paper has-tooltip", data: { tooltip: "Open Cook Mode" } do %>
+<%= link_to recipe_cook_path(:recipe_id => @recipe.id), class: "btn-paper bg-orange fill-white circle fixed p2 shadow has-tooltip", data: { tooltip: "Open Cook Mode" } do %>
   <%= inline_svg("cook.svg") %>
 <% end %>

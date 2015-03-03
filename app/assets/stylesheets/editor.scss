@@ -5,6 +5,11 @@ body {
   padding-top: 1rem;
 }
 
+textarea.text-input {
+  line-height: 1.75;
+  min-width: 32em;
+}
+
 .logo-nav {
   left: 15px;
   top: 15px;
@@ -27,5 +32,6 @@ body {
 
 .btn-save {
   // Unfortuantely .btn overrides .bg-grey-4
+  // so this crap is necessary
   background: $grey-4;
 }

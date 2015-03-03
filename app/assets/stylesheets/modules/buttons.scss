@@ -1,6 +1,6 @@
 .btn {
   @include elegance;
-  background: $orange;
+  background-color: $orange;
   border: 0;
   border-radius: $border-radius;
   box-shadow: inset 0 0 0 1px rgba(0,0,0,.1);
@@ -20,20 +20,9 @@
 }
 
 .btn[disabled] {
-  box-shadow: none;
   cursor: not-allowed;
-  opacity: .65;
+  opacity: .5;
   pointer-events: none;
-}
-
-@media print {
-  .btn {
-    border: 1px solid #ccc;
-  }
-
-  .btn-paper {
-    display: none;
-  }
 }
 
 .btn-blue {
@@ -53,59 +42,18 @@
   padding: .1rem .5rem;
 }
 
-%fab {
-  @include elegance;
-  @include shadow-2;
-  @include linear-gradient(transparent, rgba(0, 0, 0, 0.05));
-  background-color: $orange;
-  border-radius: 50%;
-  position: fixed;
-
-  &:active,
-  &:focus {
-    @include shadow-3;
-  }
-
-  svg {
-    @include size(30px);
-    fill: #fff;
-    position: absolute;
-  }
-}
-
 .btn-paper {
-  @extend %fab;
-  @include size(46px);
-  bottom: 1rem;
-  padding: 8px;
-  right: 1rem;
+  bottom: $space-2;
+  line-height: .9; // fixes extra bottom "padding"
+  right: $space-2;
 
   svg {
-    left: 16px;
-    top: 16px;
+    @include size($space-3);
   }
 }
 
-.btn-paper-mini,
-.btn-paper-mini-inline {
-  @extend %fab;
-  @include size(30px);
+.btn-paper-mini {
   bottom: 90px;
-  padding: 6px;
+  line-height: .9;
   right: 27px;
-
-  svg {
-    @include size(30px);
-    left: 6px;
-    top: 5px;
-  }
-}
-
-@media (max-width: $screen-phone) {
-  .mobile-button {
-    display: block;
-    margin: 0.5rem auto;
-    text-align: center;
-    width: 70%;
-  }
 }

@@ -2,10 +2,10 @@
 <% activate_nav!(:favorites) %>
 
 <%= render "shared/nav" %>
-<article class="col-7 container">
+<article class="sm-col-11 md-col-7 mx-auto">
   <%= react_component("RecipeList", showHeader: true, headerText: "Favorites", recipes: @recipes.as_json) %>
 </article>
 
-<%= link_to :new_recipe, class: "btn-paper" do %>
+<%= link_to new_recipe_path, class: "btn-paper bg-orange fill-white circle fixed p2 shadow" do %>
   <%= inline_svg("add.svg") %>
 <% end %>

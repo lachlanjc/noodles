@@ -18,7 +18,7 @@
 <% if @recipe.source.blank? && @recipe.serves.blank? %>
 <p class="grey-2">You don't yet have any details for this recipe. Details describe where the recipe came from and the recipe's yield.</p>
 <% else %>
-<p>Source: <%= auto_link(@recipe.source, :html => {:rel => "nofollow"}) %>
+<p class="grey-2 text-normalized">Source: <%= auto_link(@recipe.source, :html => {:rel => "nofollow"}) %>
 <p itemprop="recipeYield">Yield: <%= @recipe.serves %>
 <% end %>
 
@@ -26,13 +26,13 @@
 <% if me_owns_recipe? %>
 <div class="tab-container">
   <input type="radio" name="tabs" class="tab-1" id="tab-1" checked>
-  <label for="tab-1">View</label>
+  <label for="tab-1" class="rounded-top inline-block border bg-grey-5">View</label>
 
   <input type="radio" name="tabs" class="tab-2" id="tab-2">
-  <label for="tab-2">Edit Notes</label>
+  <label for="tab-2" class="rounded-top inline-block border bg-grey-5">Edit Notes</label>
   <br>
 
-  <div class="content content-1 notes text text-normalized">
+  <div class="content content-1 border p1 rounded-bottom notes text text-normalized">
     <% if @recipe.notes.blank? %>
       <p class="grey-4 mb2">No notes for this recipe &mdash; yet!</p>
     <% else %>
@@ -40,7 +40,7 @@
     <% end %>
   </div>
 
-  <div class="content content-2">
+  <div class="content content-2 border p1 rounded-bottom">
     <%= form_for(@recipe) do |f| %>
       <%= f.text_area :notes, class: "text-input full-width m0 notes", placeholder: "Click here to add Notes to your recipe.", rows: "4" %>
       <%= f.submit t("general.save"), class: "btn-blue btn-sm block" %>

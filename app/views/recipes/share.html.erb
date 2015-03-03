@@ -44,13 +44,13 @@
   <% if me_owns_recipe? %>
   <div class="mt2 print-hide">
     <a class="btn mr1" title="Others can click this button to save a copy of your recipe to their Noodles account." disabled>Save</a>
-    <%= link_to "Un-share", recipe_un_share_path(@recipe), class: "btn-red mobile-button mr1" %>
+    <%= link_to "Un-share", recipe_un_share_path(@recipe), class: "btn-red mr1 mt1" %>
     <a class="btn-blue" id="printRecipe"><%= t("general.print") %></a>
 
   <%# If you're logged in, show Save button %>
   <% elsif user_signed_in? %>
   <div class="mt2 print-hide">
-    <%= link_to "Save", :save_to_noodles, title: "Save a copy of this recipe to your own account", class: "btn mobile-button mr1" %>
+    <%= link_to "Save", :save_to_noodles, title: "Save a copy of this recipe to your own account", class: "btn mr1 mt1" %>
     <a class="btn-blue" id="printRecipe"><%= t("general.print") %></a>
 
   <%# Everyone else should sign up for Noodles %>
@@ -59,7 +59,7 @@
     <h2 class="mt0">Wondering about Noodles?</h2>
     <p><%= link_to "Noodles", root_url, class: "orange" %> is a simple app for you to collect, cook, and share your favorite recipes.
     <p><%= link_to "Sign up", :sign_up, class: "orange" %> to save this recipe &mdash; it's fast and completely free.</p>
-    <p class="center mb0"><%= link_to "Try Noodles", :sign_up, class: "btn mobile-button" %></p>
+    <p class="center mb0"><%= link_to "Try Noodles", :sign_up, class: "btn sm-col-8" %></p>
   </div>
   <% end %>
 

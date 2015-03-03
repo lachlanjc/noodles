@@ -10,19 +10,14 @@
 .modal {
   background: #fff;
   border-radius: $border-radius;
+  box-sizing: border-box;
   display: none;
+  max-width: 95%;
   padding: 1rem;
-  width: 560px;
+  top: $space-3;
+  width: 36em;
 
   h2 {
-    margin-top: 0;
-  }
-}
-
-@media (max-width: $screen-phone) {
-  .modal {
-    box-sizing: border-box;
-    max-width: 95% !important;
-    top: 2rem !important;
+    @extend .mt0;
   }
 }

@@ -1,5 +1,5 @@
 .collection-header {
-  // override nav's mb2
+  // override nav's .mb2
   @include up(-1rem);
 
   &.has-img {

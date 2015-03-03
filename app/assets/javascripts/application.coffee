@@ -15,9 +15,6 @@ $(document).ready ->
     $("#recipeFavoriteTrigger").click ->
       $("#recipeFavoriteForm").submit()
   $(".modalTrigger").leanModal()
-  $("#importModalTrigger").leanModal()
-  $("#collectModalTrigger").leanModal()
-  $("#shareModalTrigger").leanModal()
   if $("#printRecipe").length > 0
     document.getElementById("printRecipe").addEventListener "click", printRecipe, false
   return

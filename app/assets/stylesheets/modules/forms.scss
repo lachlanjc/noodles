@@ -31,13 +31,8 @@ input[type="submit"] {
   }
 
   &.notes:focus {
-    border-color: $grey-5;
+    border-color: $grey-4;
   }
-}
-
-textarea.text-input {
-  line-height: 1.75;
-  min-width: 32em;
 }
 
 .js-auto-size {

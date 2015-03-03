@@ -40,15 +40,12 @@ var IngredientsChecklist = React.createClass({
         <h2 className="mb0">Ingredients</h2>
         <p className="grey-4 h5">Click on ingredients to cross them off.</p>
 
-        <div className="search-form col-8 mx-auto bg-white shadow mt1 mb1 px1">
-          <label htmlFor="searchBox" className="mt0 inline-block">
-            <IconSearch />
-          </label>
+        <div className="search-form col-8 mx-auto rounded bg-white shadow px2">
           <input
             type="text"
             id="searchBox"
             role="search"
-            className="text-input invisible-input col-8 m0 inline-block"
+            className="text-input invisible-input full-width"
             value={this.state.searchString}
             onChange={this.handleChange}
             placeholder="Filter ingredients" />
@@ -67,11 +64,8 @@ var CookInstructions = React.createClass({
   render: function() {
     return <div>
       {this.props.instructions.map(function(step) {
-        return <div className="bg-white rounded shadow p2 block mb2 control">
-          <label className="h2">
-            <input type="checkbox" className="hide instructions-checklist" />
-            {step}
-          </label>
+        return <div className="lead bg-white rounded shadow p2 block mb2">
+          {step}
         </div>;
       })}
     </div>;

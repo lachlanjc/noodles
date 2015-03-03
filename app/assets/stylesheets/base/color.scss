@@ -12,12 +12,22 @@
   fill: $orange;
 }
 
+.bg-yellow {
+  background-color: $yellow;
+}
+
 .green {
   color: $green;
+}
+.bg-green {
+  background-color: $green;
 }
 
 .blue {
   color: $blue;
+}
+.bg-blue {
+  background-color: $blue;
 }
 
 .white {
@@ -71,13 +81,10 @@
 }
 
 
-// Colors just for text, no bg classes needed
+// Colors just for text, no .bg- classes needed
 .grey-2 {
   color: $grey-2;
 }
 .grey-1 {
   color: $grey-1;
-}
-.black {
-  color: $black;
 }

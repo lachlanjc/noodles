@@ -7,7 +7,6 @@ blockquote {
 
 button,
 input,
-select,
 textarea {
   font-family: inherit;
   font-size: 100%;
@@ -21,8 +20,8 @@ svg {
   max-height: 100%;
 }
 
-// Hack for worthless div's React adds
-// otherwise they change the layout
+// Hack for worthless div's React adds.
+// Otherwise they change the layout
 div[data-react-class^="Icon"] {
   display: inline-block;
 }

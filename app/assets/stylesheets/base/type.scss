@@ -27,11 +27,6 @@ ul {
   margin-bottom: $space-2;
 }
 
-.text ol,
-.text ul {
-  padding-left: $space-3;
-}
-
 h1,
 .h1 {
   color: $orange;
@@ -105,4 +100,9 @@ a {
     font-size: $h3;
     margin-top: $space-1;
   }
+}
+
+.checked {
+  color: $grey-4;
+  text-decoration: line-through;
 }
