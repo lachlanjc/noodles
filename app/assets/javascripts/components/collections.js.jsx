@@ -65,11 +65,8 @@ var CollectionHeader = React.createClass({
         </div>
         <h1 className={"inline-block collection-name m0 " + nameClass}>{this.props.collection.name}</h1>
         <div className="lead">{this.props.collection.description}</div>
-        {photo_url.length > 0 ?
-          <hr className="mt4" />
-        : null}
         {this.props.showPublisher === true ?
-          <div className="mt1 mb0 h4 grey-3">Published by {this.props.collection.publisher}</div>
+          <div className="mt1 mb4 h4 grey-3 inline-block">Published by {this.props.collection.publisher}</div>
         : null}
       </header>
     )
