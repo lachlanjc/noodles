@@ -5,12 +5,16 @@ module ScrapingHelper
     return URI(url).host.to_s
   end
 
+  def find_domain(url)
+    find_host(url).match(/[^\.]+\.\w+$/).to_s
+  end
+
   def find_path(url)
     return URI(url).path.to_s
   end
 
   def master_scrape(url)
-    host = find_host(url)
+    host = find_domain(url)
     path = find_path(url)
 
     case host
