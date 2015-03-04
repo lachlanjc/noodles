@@ -1,18 +1,11 @@
-.search-form {
-  .invisible-input {
-    display: inline-block;
-    height: 35px;
-    min-width: 80%;
-  }
-
-  svg {
-    @include up(6px);
-  }
-}
-
 .invisible-input {
   background: transparent;
   border: 0;
   resize: none;
   padding: 0;
+}
+
+.search-form .invisible-input {
+  height: 36px;
+  min-width: 80%;
 }

@@ -59,15 +59,15 @@ var RecipeList = React.createClass({
         </h1>
       </header>
       : null}
-      <div className="search-form col-8 mx-auto flex bg-white border mb2 px1">
+      <div className="search-form col-8 mx-auto flex bg-white rounded shadow mb2 px1">
         <label htmlFor="searchBox" className="mt0">
-          <IconSearch classes="fill-grey-4" />
+          <IconSearch classes="fill-grey-4 mt1" />
         </label>
         <input
           type="text"
           id="searchBox"
           role="search"
-          className="mb0 text-input invisible-input col-8"
+          className="mb0 text-input invisible-input inline-block col-8"
           value={this.state.searchString}
           onChange={this.handleChange}
           placeholder="Search recipes..." />
