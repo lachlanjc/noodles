@@ -13,7 +13,7 @@ var RecipeItem = React.createClass({
       <div className="bg-white rounded shadow mb2 p2">
         {favoriteData}
         <h3 className="m0">{this.props.data.title}</h3>
-        <div className="text">{this.props.data.description_preview ? this.props.data.description_preview : null}</div>
+        <div className="text">{this.props.data.description_preview}</div>
       </div>
     </a>
   }
