@@ -40,9 +40,9 @@
     <% end %>
   </div>
 
-  <div class="content content-2 border p1 rounded-bottom">
+  <div class="content content-2 border p2 rounded-bottom notes">
     <%= form_for(@recipe) do |f| %>
-      <%= f.text_area :notes, class: "text-input full-width m0 notes", placeholder: "Click here to add Notes to your recipe.", rows: "4" %>
+      <%= f.text_area :notes, class: "text-input invisible-input full-width m0", placeholder: "Type your notes for the recipe here.", rows: "4" %>
       <%= f.submit t("general.save"), class: "btn-blue btn-sm block" %>
     <% end %>
   </div>
