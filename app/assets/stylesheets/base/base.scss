@@ -2,6 +2,10 @@
   @include shadow-compact;
 }
 
+.elegance {
+  @include elegance;
+}
+
 .document {
   @include shadow-compact;
   @extend .mx-auto;
