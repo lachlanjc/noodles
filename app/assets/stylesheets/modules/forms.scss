@@ -9,11 +9,6 @@ input[type="checkbox"] + label {
   display: inline-block;
 }
 
-input[type="submit"] {
-  display: block;
-  margin-top: $space-2;
-}
-
 .text-input {
   -webkit-appearance: none;
   color: $grey-3;
