@@ -3,7 +3,6 @@
   <% if user_signed_in? %>
 
     <div>
-      <%= link_to t("general.home"), root_url, class: "px1" %>
       <%= link_to t("general.recipes"), recipes_path, class: "px1" + nav_active_class(:recipes) %>
       <%= link_to t("general.favorites"), favorites_path, class: "px1" + nav_active_class(:favorites) %>
       <%= link_to t("general.collections"), collections_path, class: "px1" + nav_active_class(:collections) %>

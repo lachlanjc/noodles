@@ -1,14 +1,16 @@
 var CollectionIndex = React.createClass({
   render: function() {
-    return (<article className="sm-col-11 md-col-7 mx-auto">
-      <h1 className="center">Collections</h1>
-      <div className="collection-list">
-        {this.props.collections.map(function(collection) {
-          return <CollectionItem key={collection.id} data={collection} />;
-        })}
-        {(this.props.collections.length === 0) ? <div className="col-6 well text center bg-grey-6 border rounded p2 mx-auto">You don't have any collections yet. <a href="#newCollection" className="modalTrigger">Create your first!</a></div> : null}
-      </div>
-    </article>);
+    return (
+      <article className="sm-col-11 md-col-7 mx-auto">
+        <h1 className="center">Collections</h1>
+        <div className="collection-list">
+          {this.props.collections.map(function(collection) {
+            return <CollectionItem key={collection.id} data={collection} />;
+          })}
+          {(this.props.collections.length === 0) ? <div className="col-6 well text center bg-grey-6 border rounded p2 mx-auto">You don't have any collections yet. <a href="#newCollection" className="modalTrigger">Create your first!</a></div> : null}
+        </div>
+      </article>
+    );
   }
 });
 
@@ -25,14 +27,16 @@ var CollectionItem = React.createClass({
       }
     }
 
-    return <a href={this.props.data.url} className="link-reset">
-      <div className={"collection-preview rounded shadow mb2 py3" + imgClass} style={imgStyle}>
-        <div className="collection-preview-container center">
-          <h2 className="collection-name m0 h1">{this.props.data.name}</h2>
-          <div className="lead">{this.props.data.description ? this.props.data.description : null}</div>
+    return (
+      <a href={this.props.data.url} className="link-reset">
+        <div className={"collection-preview rounded shadow mb2 py3" + imgClass} style={imgStyle}>
+          <div className="collection-preview-container center">
+            <h2 className="collection-name m0 h1">{this.props.data.name}</h2>
+            <div className="lead">{this.props.data.description ? this.props.data.description : null}</div>
+          </div>
         </div>
-      </div>
-    </a>
+      </a>
+    )
   }
 });
 
@@ -51,21 +55,23 @@ var CollectionHeader = React.createClass({
       }
     }
 
-    return <header className={"collection-header full-width center " + headerClass} style={headerStyle}>
-      <div className={"caps h4 " + actionClass}>
-        {this.props.showEdit === true ?
-          <a href="#editCollection" className="modalTrigger link-reset">Edit · </a>
+    return (
+      <header className={"collection-header full-width center " + headerClass} style={headerStyle}>
+        <div className={"caps h4 " + actionClass}>
+          {this.props.showEdit === true ?
+            <a href="#editCollection" className="modalTrigger link-reset">Edit · </a>
+          : null}
+          <a href="#shareCollection" className="modalTrigger link-reset">Share</a>
+        </div>
+        <h1 className={"inline-block collection-name m0 " + nameClass}>{this.props.collection.name}</h1>
+        <div className="lead">{this.props.collection.description}</div>
+        {photo_url.length > 0 ?
+          <hr className="mt4" />
         : null}
-        <a href="#shareCollection" className="modalTrigger link-reset">Share</a>
-      </div>
-      <h1 className={"inline-block collection-name m0 " + nameClass}>{this.props.collection.name}</h1>
-      <div className="lead">{this.props.collection.description}</div>
-      {photo_url.length > 0 ?
-        <hr className="mt4" />
-      : null}
-      {this.props.showPublisher === true ?
-        <div className="mt1 mb0 h4 grey-3">Published by {this.props.collection.publisher}</div>
-      : null}
-    </header>
+        {this.props.showPublisher === true ?
+          <div className="mt1 mb0 h4 grey-3">Published by {this.props.collection.publisher}</div>
+        : null}
+      </header>
+    )
   }
 });
