@@ -76,7 +76,11 @@ var RecipeList = React.createClass({
         {recipes.map(function(recipe) {
            return <RecipeItem key={recipe.id} linkType={linkType} data={recipe} />;
         })}
-        {(searchString.length > 0) && (recipeCount === 0) ? <div className="col-6 bg-white rounded shadow mb2 p2 mx-auto">Sorry, no recipes matched your search.</div> : null}
+        {(searchString.length > 0) && (recipeCount === 0) ?
+          <div className="col-6 bg-white rounded shadow mb2 p2 mx-auto">
+            Sorry, no recipes matched your search.
+          </div>
+        : null}
       </div>
     </div>);
   }
