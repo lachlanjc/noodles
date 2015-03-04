@@ -9,7 +9,7 @@
     <%= react_component("RecipeList", showHeader: false, linkType: "public", recipes: @recipes.as_json) %>
   <% else %>
   <div class="bg-white rounded shadow p2 col-6 mx-auto">
-    There aren't any recipes in this collection. If you're the ownder, add recipes by clicking "Add to Collection" at the bottom of any of your <%= link_to "recipes", recipes_path %>.
+    There aren't any recipes in this collection. If you're the owner, add recipes by clicking "Add to Collection" at the bottom of any of your <%= link_to "recipes", recipes_path %>.
   </div>
   <% end %>
 </article>
