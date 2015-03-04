@@ -7,7 +7,12 @@ var CollectionIndex = React.createClass({
           {this.props.collections.map(function(collection) {
             return <CollectionItem key={collection.id} data={collection} />;
           })}
-          {(this.props.collections.length === 0) ? <div className="col-6 well text center bg-grey-6 border rounded p2 mx-auto">You don't have any collections yet. <a href="#newCollection" className="modalTrigger">Create your first!</a></div> : null}
+          {this.props.collections.length === 0 ?
+            <div className="col-6 well text center bg-grey-6 border rounded p2 mx-auto">
+              You don't have any collections yet.
+              <a href="#newCollection" className="modalTrigger">Create your first!</a>
+            </div>
+          : null}
         </div>
       </article>
     );
