@@ -37,7 +37,7 @@ var CollectionItem = React.createClass({
         <div className={"collection-preview rounded shadow mb2 py3" + imgClass} style={imgStyle}>
           <div className="collection-preview-container center">
             <h2 className="collection-name m0 h1">{this.props.data.name}</h2>
-            <div className="lead">{this.props.data.description ? this.props.data.description : null}</div>
+            <div className="lead">{this.props.data.description}</div>
           </div>
         </div>
       </a>
