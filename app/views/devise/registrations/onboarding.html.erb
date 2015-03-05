@@ -6,7 +6,11 @@
 <article class="document p2 sm-col-11 md-col-4">
   <h2 class="m0">Hey <%= current_user.first_name %>! Let's get cooking.</h2>
   <hr>
-  <p class="mb0">First, let's add a recipe. Click the big <span class="ml0 badge px1 bg-orange circle shadow pointer">+</span> button in the corner to write one, or import a recipe from the web using the "link" button.</p>
+  <p class="mb0">
+    First, let's add a recipe. Click the orange
+    <span class="ml0 inline-block px1 white bg-orange circle shadow">+</span>
+    button in the corner to write one, or import a recipe from the web using the "link" button.
+  </p>
 </article>
 
 <%= render "recipes/import" %>
