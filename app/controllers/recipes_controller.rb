@@ -85,7 +85,7 @@ class RecipesController < ApplicationController
       r.img = @recipe.img
       r.ingredients = @recipe.ingredients
       r.instructions = @recipe.instructions
-      r.source = shared_url(@recipe.id)
+      r.source = shared_url(@recipe.shared_id)
       r.serves = @recipe.serves
       r.notes = @recipe.notes
       r.favorite = false
