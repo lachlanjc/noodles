@@ -48,20 +48,20 @@ var CollectionItem = React.createClass({
 var CollectionHeader = React.createClass({
   render: function() {
     var photo_url = this.props.collection.photo_url;
-    var headerStyle, headerClass;
-    var actionClass = "grey-4 py2"
+    var rootStyle, actionClass;
+    var rootClass = "grey-4 py2"
     var nameClass = "h1";
     if (photo_url.length > 0) {
+      rootClass = "has-img bg-center bg-no-repeat bg-cover mb1";
       nameClass = "h0";
-      headerClass = "has-img bg-center bg-no-repeat bg-cover mb2";
       actionClass = "right-align p1 block white p2 mb2 ";
-      var headerStyle = {
+      var rootStyle = {
         backgroundImage: "url(" + photo_url + ")"
       }
     }
 
     return (
-      <header className={"collection-header full-width center " + headerClass} style={headerStyle}>
+      <header className={"collection-header full-width center " + rootClass} style={rootStyle}>
         <div className={"caps h4 " + actionClass}>
           {this.props.showEdit === true ?
             <a href="#editCollection" className="modalTrigger link-reset">Edit · </a>
@@ -69,9 +69,9 @@ var CollectionHeader = React.createClass({
           <a href="#shareCollection" className="modalTrigger link-reset">Share</a>
         </div>
         <h1 className={"inline-block collection-name m0 " + nameClass}>{this.props.collection.name}</h1>
-        <div className="lead">{this.props.collection.description}</div>
+        <div className="h3 mt1 mb0">{this.props.collection.description}</div>
         {this.props.showPublisher === true ?
-          <div className="mt1 mb4 h4 grey-3 inline-block">Published by {this.props.collection.publisher}</div>
+          <div className="mt1 mb1 h4 grey-3">Published by {this.props.collection.publisher}</div>
         : null}
       </header>
     )
