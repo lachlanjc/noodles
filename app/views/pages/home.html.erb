@@ -41,7 +41,7 @@
       <div class="flex-auto">
         <% unless flash.empty? %>
         <% flash.each do |key, value| %>
-        <p class="mb0 center bold <%= flash_color_class(key) %>"><%= value unless value.blank? %></p>
+        <p class="mb0 center <%= flash_color_class(key) %>"><%= value unless value.blank? %></p>
         <% end %>
         <% end %>
       </div>
@@ -54,10 +54,10 @@
     <header class="hero bg-cover bg-center bg-no-repeat" style="background-image:url(<%= asset_path 'home/background.jpg' %>)">
       <div class="md-col-8 sm-col-11 mx-auto">
         <h1 class="white h0 regular">Keep, cook, and share all your recipes with Noodles.</h1>
-        <a class="btn btn-lg mt2" onclick="_gs('event', 'Clicked hero button'); window.location='http://www.getnoodl.es/signup'">Sign Up</a>
+        <a class="btn btn-lg mt2" onclick="_gs('event', 'Clicked hero button'); window.location='<%= sign_up_path %>'">Sign Up</a>
       </div>
     </header>
-    <p class="lead sm-col-10 md-col-8 mx-auto px2 left-align mt3 mb2">Noodles is a simple library of all your recipes. It takes just a few clicks to add a recipe, and you you'll never worry about finding one. And Noodles is designed for the kitchen — cooking is hard enough as it is. No more folders of print-outs and scribbled notecards.</p>
+    <p class="lead sm-col-10 md-col-8 mx-auto px2 left-align mt3 mb2">Noodles is a simple library of all your recipes. It takes just a few clicks to add a recipe, and you'll never worry about finding one later. And Noodles is designed for the kitchen — cooking is hard enough as it is. No more folders of print-outs and scribbled notecards.</p>
     <article class="sm-col-11 md-col-10 mx-auto mt3 md-flex flex-between">
       <section class="sm-col-11 sm-block m1 md-col-3 bg-white rounded shadow py2 px3">
         <div class="circle bg-orange shadow inline-block mx-auto" style="line-height: .9">
@@ -88,13 +88,13 @@
       <blockquote class="lead sm-col-9 mx-auto mt2">
         &ldquo;Whether you want to keep your own recipes or you need to jot a recipe you find online or on TV, this website is handy.&rdquo;
       </blockquote>
-      <h1 class="regular mt2">Noodles is free. Try it out!</h1>
-      <a class="btn btn-lg inline-block mt1" onclick="_gs('event', 'Clicked hero button'); window.location='http://www.getnoodl.es/signup'">Sign Up</a>
+      <h1 class="regular mt2">Noodles is totally free. Try it out!</h1>
+      <a class="btn btn-lg inline-block mt1" onclick="_gs('event', 'Clicked hero button'); window.location='<%= sign_up_path %>'">Sign Up</a>
     </section>
     <footer class="block mt1 py2 grey-4">
       <a href="http://noodles.withdraft.com/pages/558276" class="px2 link-reset">Terms</a>
       <a href="http://noodles.withdraft.com/pages/558280" class="px2 link-reset">Privacy</a>
-      <%= link_to "Announcements", announcements_path, class: "px2 link-reset" %>
+      <%= link_to "Blog", announcements_path, class: "px2 link-reset" %>
       <a href="https://www.facebook.com/pages/Noodles/698221030285633" class="px2 link-reset">Facebook</a>
       <a href="https://twitter.com/noodlesapp" class="px2 link-reset">Twitter</a>
     </footer>
