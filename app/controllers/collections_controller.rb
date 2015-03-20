@@ -1,9 +1,10 @@
 class CollectionsController < ApplicationController
   include CollectionsHelper
-
   before_action :set_collection, only: [:show, :edit, :update, :destroy]
+  before_filter :only_mine, only: [:show, :update, :destroy]
 
   def index
+    authenticate_user!
     @collections = Collection.where(:user_id => current_user)
     @collection = Collection.new
   end
@@ -55,5 +56,9 @@ class CollectionsController < ApplicationController
       Recipe.where(:user_id => @collection.user.id).each do |recipe|
         @recipes.push(recipe) if recipe.collections.include?(@collection.id.to_s)
       end
+    end
+
+    def only_mine
+      redirect_to recipes_path unless me_owns_collection?
     end
 end
