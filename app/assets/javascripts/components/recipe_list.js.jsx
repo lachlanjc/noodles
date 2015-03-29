@@ -1,6 +1,6 @@
 var RecipeItem = React.createClass({
   render: function() {
-    var favoriteData = null;
+    var webData, favoriteData;
     var recipeLink = this.props.data.url;
     if (this.props.linkType === "public") {
       recipeLink = this.props.data.shared_url;
@@ -8,10 +8,14 @@ var RecipeItem = React.createClass({
     if (this.props.data.favorite === true) {
       favoriteData = <IconFavorite classes="right fill-orange" />;
     }
+    if (this.props.data.web === true) {
+      webData = <IconWeb classes="right mr1 fill-grey-5" />
+    }
 
     return <a href={recipeLink} className="link-reset">
       <li className="bg-white rounded shadow mb2 p2">
         {favoriteData}
+        {webData}
         <h3 className="m0">{this.props.data.title}</h3>
         <div className="text">{this.props.data.description_preview}</div>
       </li>
