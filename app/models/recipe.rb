@@ -1,4 +1,6 @@
 class Recipe < ActiveRecord::Base
+  include RecipesHelper
+
   belongs_to :user
 
   validates :title, presence: true, length: { minimum: 4 }
@@ -18,6 +20,7 @@ class Recipe < ActiveRecord::Base
       title: title,
       description_preview: description.truncate(165),
       favorite: favorite,
+      web: is_from_web(source),
       url: "/recipes/" + id.to_s,
       shared_url: "/s/" + shared_id.to_s
     }
