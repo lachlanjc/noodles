@@ -20,6 +20,7 @@ class Recipe < ActiveRecord::Base
       title: title,
       description_preview: description.truncate(165),
       favorite: favorite,
+      notes: notes.present?,
       web: is_from_web(source),
       url: "/recipes/" + id.to_s,
       shared_url: "/s/" + shared_id.to_s

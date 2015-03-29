@@ -119,6 +119,17 @@ var IconShare = React.createClass({
   }
 });
 
+var IconNotes = React.createClass({
+  render: function() {
+    var size = this.props.size ? this.props.size : 24;
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" className={this.props.classes}>
+        <path d="M21 0H3C1.35 0 0 1.35 0 3v18c0 1.65 1.35 3 3 3h18c1.65 0 3-1.35 3-3V3c0-1.65-1.35-3-3-3zm-1 13H4v-3h16v3zm-6 6H4v-3h10v3zm6-12H4V4h16v3z"/>
+      </svg>
+    )
+  }
+});
+
 var IconWeb = React.createClass({
   render: function() {
     var size = this.props.size ? this.props.size : 24;

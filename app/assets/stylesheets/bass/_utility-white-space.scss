@@ -181,6 +181,11 @@
 
 // Added by @lachlanjc
 
+.up-3 {
+  @extend .relative;
+  top: -3px;
+}
+
 .up-6 {
   @extend .relative;
   top: -6px;
