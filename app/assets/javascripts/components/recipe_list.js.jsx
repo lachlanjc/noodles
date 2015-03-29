@@ -10,11 +10,11 @@ var RecipeItem = React.createClass({
     }
 
     return <a href={recipeLink} className="link-reset">
-      <div className="bg-white rounded shadow mb2 p2">
+      <li className="bg-white rounded shadow mb2 p2">
         {favoriteData}
         <h3 className="m0">{this.props.data.title}</h3>
         <div className="text">{this.props.data.description_preview}</div>
-      </div>
+      </li>
     </a>
   }
 });
@@ -72,16 +72,16 @@ var RecipeList = React.createClass({
           onChange={this.handleChange}
           placeholder="Search recipes..." />
       </div>
-      <div className="recipe-list">
+      <ul className="recipe-list list-reset">
         {recipes.map(function(recipe) {
            return <RecipeItem key={recipe.id} linkType={linkType} data={recipe} />;
         })}
         {(searchString.length > 0) && (recipeCount === 0) ?
-          <div className="col-6 bg-white rounded shadow mb2 p2 mx-auto">
+          <li className="col-6 bg-white rounded shadow mb2 p2 mx-auto">
             Sorry, no recipes matched your search.
-          </div>
+          </li>
         : null}
-      </div>
+      </ul>
     </div>);
   }
 });
