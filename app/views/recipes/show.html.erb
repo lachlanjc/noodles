@@ -3,7 +3,6 @@
 
 <%= render "shared/nav" %>
 
-<article class="document recipe-print">
 
   <%= form_for(@recipe, remote: true, html: { id: "recipeFavoriteForm" }) do |f| %>
     <label class="control right inline-block m0">
@@ -12,6 +11,7 @@
       <%= react_component("IconFavorite", classes: "control-indicator-checked fill-orange", size: "32") %>
     </label>
   <% end %>
+<article class="document">
 
   <div itemscope itemtype="http://schema.org/Recipe">
     <meta itemprop="url" content="<%= @shared_url %>" />

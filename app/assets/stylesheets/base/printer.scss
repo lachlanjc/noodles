@@ -1,13 +1,9 @@
-.printer-copy {
-  display: none;
-  margin-top: 2rem;
-}
-
 @media print {
-  .printer-copy {
-    display: block;
+  .printer-show {
+    display: block !important;
   }
 
+  .header-indicator,
   .print-hide {
     display: none !important;
   }

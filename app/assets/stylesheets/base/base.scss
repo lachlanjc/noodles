@@ -19,7 +19,14 @@
 @media #{$breakpoint-md} {
   .document {
     padding: $space-3;
-    width: (7/12 * 100%);
+    width: (8/12 * 100%);
+  }
+}
+
+@media print {
+  .document {
+    padding: $space-3;
+    width: 100%;
   }
 }
 

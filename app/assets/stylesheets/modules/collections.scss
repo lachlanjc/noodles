@@ -1,6 +1,6 @@
 .collection-header {
   // override nav's .mb2
-  @include up(-1rem);
+  @include up($space-2 * -1);
 
   &.has-img {
     box-shadow: inset 0 -5rem 6rem rgba(0,0,0,.4);

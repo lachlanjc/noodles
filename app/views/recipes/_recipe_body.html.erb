@@ -22,9 +22,16 @@
 <p itemprop="recipeYield">Yield: <%= @recipe.serves %>
 <% end %>
 
-<h2 class="mt2">Notes</h2>
+<h2 class="mt2 print-hide">Notes</h2>
+<div class="hide print-show">
+  <% unless @recipe.notes.blank? %>
+    <h2>Notes</h2>
+    <%= sanitize markdown(@recipe.notes) %>
+  <% end %>
+</div>
+
 <% if me_owns_recipe? %>
-<div class="tab-container">
+<div class="tab-container print-hide">
   <input type="radio" name="tabs" class="tab-1" id="tab-1" checked>
   <label for="tab-1" class="rounded-top inline-block border bg-grey-5">View</label>
 

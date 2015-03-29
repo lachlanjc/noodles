@@ -24,10 +24,6 @@ input[type="checkbox"] + label {
     color: $black;
     outline: 0;
   }
-
-  &.notes:focus {
-    border-color: $grey-4;
-  }
 }
 
 .js-auto-size {
