@@ -47,7 +47,7 @@ class RecipesController < ApplicationController
 
   def random
     recipe = Recipe.where(:user_id => current_user.id).order("RANDOM()").first
-    flash[:default] = "Here's your random recipe."
+    flash[:grey] = "Here's your random recipe."
     redirect_to recipe_url(recipe)
   end
 
@@ -72,7 +72,7 @@ class RecipesController < ApplicationController
   def un_share
     @recipe.shared = false
     @recipe.save
-    flash[:success] = "Okay, the padlock is back on this recipe."
+    flash[:green] = "That recipe is locked up again."
     redirect_to @recipe
   end
 
@@ -97,7 +97,7 @@ class RecipesController < ApplicationController
     @save_recipe.shared_id = generate_shared_id(@save_recipe.id)
     @save_recipe.save
 
-    flash[:success] = "#{@save_recipe.title} (published by #{User.find(@recipe.user_id).first_name}) has been saved to your Noodles account."
+    flash[:green] = "#{@save_recipe.title} is saved!"
     redirect_to @save_recipe
   end
 
@@ -107,7 +107,7 @@ class RecipesController < ApplicationController
       @recipe = Recipe.new
       render :edit
     else
-      flash[:info] = "You must have an account to create new recipes."
+      flash[:blue] = "You must have an account to create new recipes."
       redirect_to sign_up_path
     end
   end
@@ -125,7 +125,7 @@ class RecipesController < ApplicationController
     if @recipe.save
       @recipe.shared_id = generate_shared_id(@recipe.id)
       @recipe.save
-      flash[:success] = "Nice! Check out your new recipe:"
+      flash[:green] = "Nice! Check out your new recipe:"
       redirect_to @recipe
     else
       render :edit
@@ -136,7 +136,7 @@ class RecipesController < ApplicationController
   def update
     if @recipe.update(recipe_params)
       @recipe.save
-      flash[:success] = "Great, your changes were saved."
+      flash[:green] = "Great, your changes were saved."
       redirect_to @recipe
     else
       render :edit
@@ -146,7 +146,7 @@ class RecipesController < ApplicationController
   # DELETE /recipes/1
   def destroy
     @recipe.destroy
-    flash[:danger] = "Okay, we've got that recipe in the recycling bin now."
+    flash[:red] = "Okay, we've got that recipe in the recycling bin now."
     redirect_to recipes_url
   end
 
@@ -154,7 +154,7 @@ class RecipesController < ApplicationController
     recipe_data = master_scrape(params[:url])
 
     if recipe_data == "unsupported"
-      flash[:danger] = "Sorry, we don't support that site yet."
+      flash[:red] = "Sorry, we don't support that site yet."
       redirect_to recipes_path
     else
       create_recipe(recipe_data, params[:url], "Recipe imported!")
@@ -178,14 +178,14 @@ class RecipesController < ApplicationController
 
     def please_sign_in
       unless user_signed_in?
-        flash[:danger] = "Please log in to an account first!"
+        flash[:red] = "Please log in to an account first!"
         redirect_to root_url
       end
     end
 
     def not_the_owner
       unless me_owns_recipe?
-        flash[:danger] = "That's not yours."
+        flash[:red] = "That's not yours."
         redirect_to root_url
       end
     end

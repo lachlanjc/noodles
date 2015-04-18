@@ -1,7 +1,0 @@
-<% unless flash.empty? %>
-<% flash.each do |key, value| %>
-  <div class="sm-col-9 md-col-4 mx-auto mb2 p2 bg-white rounded shadow print-hide <%= flash_color_class(key) %>" role="alertdialog">
-    <%= value unless value.blank? %>
-  </div>
-<% end %>
-<% end %>

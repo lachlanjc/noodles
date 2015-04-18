@@ -14,7 +14,7 @@ class CookController < ApplicationController
       end
       render :index
     else
-      flash[:view] = "You can't cook with recipes that aren't yours!"
+      flash[:red] = "You can't cook with recipes that aren't yours!"
       redirect_to root_url
     end
   end
