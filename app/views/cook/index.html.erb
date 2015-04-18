@@ -7,7 +7,7 @@
     <h1 class="m0 grey-1"><%= @recipe.title %></h2>
     <p class="grey-3 m0">
       <%= "Published by #{User.find(@recipe.user_id).first_name} · " unless me_owns_recipe? %>
-      <%= @recipe.instructions.lines.count %> steps
+      <%= pluralize(@recipe.instructions.lines.count, "steps") %>
     </p>
 
     <hr class="col-10">
