@@ -16,8 +16,6 @@ class AnalyticsController < ApplicationController
       @users_with_one.push(user)  if @user_recipe_count == 1
       @users_with_many.push(user) if @user_recipe_count > 1
     end
-
-    render :dashboard
   end
 
   def all_users

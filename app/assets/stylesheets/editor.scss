@@ -5,14 +5,14 @@ body {
   padding-top: 1rem;
 }
 
-textarea.text-input {
+textarea {
   line-height: 1.75;
   min-width: 32em;
 }
 
 .logo-nav {
-  left: 15px;
-  top: 15px;
+  left: 1rem;
+  top: 1rem;
 
   svg {
     @include svg-large($grey-3);
@@ -31,7 +31,6 @@ textarea.text-input {
 }
 
 .btn-save {
-  // Unfortuantely .btn overrides .bg-grey-4
-  // so this crap is necessary
+  // .btn overrides .bg-grey-4, so we need this
   background: $grey-4;
 }

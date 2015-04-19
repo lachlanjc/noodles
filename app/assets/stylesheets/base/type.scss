@@ -1,5 +1,5 @@
 body {
-  color: $black;
+  color: $grey-1;
   font-family: $font-family;
   font-size: 100%;
   line-height: $line-height;
@@ -29,7 +29,6 @@ ul {
 
 h1,
 .h1 {
-  color: $orange;
   font-size: $h1;
   margin-top: 0;
 }
@@ -41,13 +40,13 @@ h2,
 
 h3,
 .h3,
-.text-normalized h2 {
+.text-normalized h2,
+.text-normalized h3 {
   font-size: $h3;
 }
 
 h4,
-.h4,
-.text-normalized h3 {
+.h4 {
   font-size: $h4;
 }
 
@@ -83,7 +82,7 @@ a {
   text-decoration: none;
 
   &:hover {
-    text-decoration: underline;
+    color: darken($orange, 8%);
   }
 }
 

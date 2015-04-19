@@ -3,6 +3,7 @@
 
 <%= render "shared/nav" %>
 
+<article class="document">
 
   <%= form_for(@recipe, remote: true, html: { id: "recipeFavoriteForm" }) do |f| %>
     <label class="control right inline-block m0">
@@ -11,7 +12,6 @@
       <%= react_component("IconFavorite", classes: "control-indicator-checked fill-orange", size: "32") %>
     </label>
   <% end %>
-<article class="document">
 
   <div itemscope itemtype="http://schema.org/Recipe">
     <meta itemprop="url" content="<%= @shared_url %>" />
@@ -28,8 +28,8 @@
 
   <div class="print-hide py1">
     <%= link_to t("general.edit"), :edit_recipe, class: "btn-blue mr1 mt1" %>
-    <a href="#collectModal" class="btn mr1 mt1 modalTrigger">Add to Collection</a>
-    <a href="#shareModal" class="btn-green mr1 mt1 modalTrigger">Share</a>
+    <a href="#collectModal" class="btn mr1 mt1 js-modal-trigger">Add to Collection</a>
+    <a href="#shareModal" class="btn-green mr1 mt1 js-modal-trigger">Share</a>
     <a id="printRecipe" class="btn-blue mr1 mt1">Print</a>
   </div>
 

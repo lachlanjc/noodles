@@ -1,10 +1,10 @@
-.recipe-list div:hover h3 {
+.recipe-list li:hover h3 {
   @include elegance;
   color: $orange;
 }
 
 @media print {
-  .recipe-list div {
-    padding: 8px 0 !important;
+  .recipe-list li {
+    padding: .5rem 0 !important;
   }
 }

@@ -1,7 +1,5 @@
 var ModalClose = React.createClass({
   render: function() {
-    return <a className="right" href="#">
-      <IconClose classes="fill-grey-4" />
-    </a>
+    return <IconClose classes="fill-grey-4 right modal-close" />;
   }
 });

@@ -21,7 +21,7 @@ var RecipeItem = React.createClass({
           {notesData} {webData} {favoriteData}
         </div>
         <h3 className="m0">{this.props.data.title}</h3>
-        <div className="text">{this.props.data.description_preview}</div>
+        <div className="block text">{this.props.data.description_preview}</div>
       </li>
     </a>
   }
@@ -44,7 +44,6 @@ var RecipeList = React.createClass({
     var searchString = this.state.searchString.trim().toLowerCase();
 
     if(searchString.length > 0){
-      // Searching! Filter the results.
       recipes = recipes.filter(function(l){
         return l.title.toLowerCase().match(searchString);
       });
@@ -68,14 +67,14 @@ var RecipeList = React.createClass({
       </header>
       : null}
       <div className="search-form col-8 mx-auto flex bg-white rounded shadow mb2 px1">
-        <label htmlFor="searchBox" className="mt0">
+        <label htmlFor="search-box" className="mt0">
           <IconSearch classes="fill-grey-4 mt1" />
         </label>
         <input
           type="text"
-          id="searchBox"
+          id="search-box"
           role="search"
-          className="mb0 text-input invisible-input inline-block col-8"
+          className="mt0 mb0 text-input invisible-input inline-block"
           value={this.state.searchString}
           onChange={this.handleChange}
           placeholder="Search recipes..." />

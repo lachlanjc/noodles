@@ -44,9 +44,3 @@
 .social-email path {
   fill: $blue;
 }
-
-@media print {
-  .header-indicator {
-    display: none !important;
-  }
-}

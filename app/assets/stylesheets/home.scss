@@ -1,9 +1,9 @@
 @import "variables";
 @import "mixins";
 
+@import "base/reset";
 @import "base/base";
 @import "base/color";
-@import "base/reset";
 @import "base/type";
 @import "bass/*";
 
@@ -18,6 +18,13 @@
   }
 }
 
+@media (max-width: $screen-phone) {
+  .hero {
+    padding: 4rem 1rem;
+  }
+}
+
+
 .btn-lg {
   border-radius: 6px;
   font-size: $h2;
@@ -26,23 +33,4 @@
 
 .bs-bb {
   box-sizing: border-box;
-}
-
-.btn-paper-mini-inline {
-  bottom: 0;
-  position: initial;
-  right: 0;
-
-  svg {
-    height: 24px;
-    left: 0;
-    position: relative;
-    top: 3px;
-  }
-}
-
-@media (max-width: $screen-phone) {
-  .hero {
-    padding: 4rem 1rem;
-  }
 }
