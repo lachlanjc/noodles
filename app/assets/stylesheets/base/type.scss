@@ -27,10 +27,14 @@ ul {
   margin-bottom: $space-2;
 }
 
-h1,
 .h1 {
   font-size: $h1;
   margin-top: 0;
+}
+
+h1 {
+  @extend .h1;
+  color: orange;
 }
 
 h2,
