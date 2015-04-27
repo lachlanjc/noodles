@@ -40,7 +40,7 @@ var IngredientsChecklist = React.createClass({
         <h2 className="mb0">Ingredients</h2>
         <p className="grey-4 h5">Click on ingredients to cross them off.</p>
 
-        <div className="search-form col-8 mx-auto mb2 rounded bg-white shadow px2">
+        <div className="search-form col-8 mx-auto mb1 rounded bg-white shadow px2 py1">
           <input
             type="text"
             id="searchBox"
