@@ -30,7 +30,13 @@
     <%= react_component("CookInstructions", instructions: @recipe.instructions.split("\n")) %>
     <div class="bg-white rounded shadow p2 block h2 center mb2 grey-2">
       Finished! Enjoy your meal.
-      <%= render "notes" if me_owns_recipe? %>
+      <% if me_owns_recipe? %>
+        <%= form_for(@recipe, html: { class: "col-11 mx-auto center" }) do |f| %>
+          <%= f.label :notes, "What should you remember for next time? Keep some Notes:", class: "mt2" %>
+          <%= f.text_area :notes, class: "text-input mx-auto h4 full-width notes", placeholder: "Jot down your experience cooking this recipe.", rows: 3 %>
+          <%= f.submit t("general.save"), class: "btn-green h4 mt0 mb1 mx-auto" %>
+        <% end %>
+      <% end %>
     </div>
   </article>
 
