@@ -8,7 +8,7 @@
 <%= render "shared/nav" %>
 
 <article class="sm-col-11 md-col-7 mx-auto">
-  <%= react_component("RecipeList", showHeader: true, linkType: "normal", headerText: "Recipes", showRandom: true, recipes: @recipes.as_json) %>
+  <%= react_component("RecipeList", recipes_path: "/recipes.json", show_header: true, show_random: true) %>
 </article>
 
 <%= render "import" %>

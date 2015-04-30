@@ -1,6 +1,7 @@
 class CollectionsController < ApplicationController
+  include ApplicationHelper
   include CollectionsHelper
-  before_action :set_collection, only: [:show, :edit, :update, :destroy]
+  before_action :set_collection, except: [:index, :share, :create]
   before_filter :only_mine, only: [:show, :update, :destroy]
 
   def index
@@ -19,6 +20,7 @@ class CollectionsController < ApplicationController
   end
 
   def create
+    # Super messy!
     @collection = Collection.new do |c|
       c.name = params[:collection][:name]
       c.description = params[:collection][:description]
@@ -59,6 +61,6 @@ class CollectionsController < ApplicationController
     end
 
     def only_mine
-      redirect_to recipes_path unless me_owns_collection?
+      not_found unless me_owns_collection?
     end
 end

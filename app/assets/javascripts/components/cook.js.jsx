@@ -18,20 +18,20 @@ var CookIngredient = React.createClass({
 
 var IngredientsChecklist = React.createClass({
   getInitialState: function(){
-    return { searchString: '' };
+    return { search_text: '' };
   },
 
   handleChange: function(e){
-    this.setState({searchString: e.target.value});
+    this.setState({search_text: e.target.value});
   },
 
   render: function() {
     var ingredients = this.props.ingredients;
-    var searchString = this.state.searchString.trim().toLowerCase();
+    var search_text = this.state.search_text.trim().toLowerCase();
 
-    if(searchString.length > 0){
+    if(search_text.length > 0){
       ingredients = ingredients.filter(function(l){
-        return l.toLowerCase().match(searchString);
+        return l.toLowerCase().match(search_text);
       });
     }
 
@@ -46,7 +46,7 @@ var IngredientsChecklist = React.createClass({
             id="searchBox"
             role="search"
             className="text-input invisible-input full-width"
-            value={this.state.searchString}
+            value={this.state.search_text}
             onChange={this.handleChange}
             placeholder="Filter ingredients" />
         </div>

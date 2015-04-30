@@ -2,8 +2,9 @@
 <% activate_nav!(:favorites) %>
 
 <%= render "shared/nav" %>
+
 <article class="sm-col-11 md-col-7 mx-auto">
-  <%= react_component("RecipeList", showHeader: true, headerText: "Favorites", recipes: @recipes.as_json) %>
+  <%= react_component("RecipeList", recipes_path: "/favorites.json", show_header: true, header_text: "Favorites") %>
 </article>
 
 <%= link_to new_recipe_path, class: "btn-paper bg-orange fill-white circle fixed p2 shadow" do %>

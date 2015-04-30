@@ -13,4 +13,8 @@ module ApplicationHelper
   def title(page_title)
     content_for(:title) { page_title }
   end
+
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
 end
