@@ -16,6 +16,12 @@ img {
   max-width: 100%;
 }
 
+// Hack for worthless div's React adds.		
+// Otherwise they change the layout		
+div[data-react-class^="Icon"] {		
+  display: inline-block;		
+}
+
 svg {
   max-height: 100%;
 }
