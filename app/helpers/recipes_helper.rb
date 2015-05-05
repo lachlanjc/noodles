@@ -9,8 +9,8 @@ module RecipesHelper
     end
   end
 
-  def shared_url(shared_id)
-    return "http://www.getnoodl.es/s/#{shared_id}"
+  def shared_url(recipe)
+    return root_url + "s/" + recipe.shared_id
   end
 
   def generate_shared_id(id)

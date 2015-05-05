@@ -1,7 +1,7 @@
 <div class="flex mt2">
   <div class="center p1 border rounded inline-block mx-auto print-hide">
-    <h2 class="mt1">You've shared this recipe.</h2>
-    <p class="mb1 text-normalized">Give this link to whomever: <%= link_to @shared_url %></p>
+    <h2 class="mt1">This recipe is public.</h2>
+    <p class="mb1 text-normalized">Share this link: <%= link_to @shared_url, @shared_url %></p>
 
     <div class="social py1">
       <a rel="nofollow" href="http://twitter.com/share?text=Check out <%= @recipe.title %>, published on @noodlesapp:&amp;url=<%= @shared_url %>" class="mr1 social-twitter" target="_blank">

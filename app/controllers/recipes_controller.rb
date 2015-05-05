@@ -28,7 +28,7 @@ class RecipesController < ApplicationController
   # GET /recipes/1
   def show
     if me_owns_recipe?
-      @shared_url = shared_url(@recipe.shared_id)
+      @shared_url = shared_url(@recipe)
       @embed_code = '<script src="http://www.getnoodl.es/embed/' + @recipe.shared_id.to_s + '"></script>'
     else
       render :locked, status: 403
@@ -60,13 +60,13 @@ class RecipesController < ApplicationController
   def share_this_recipe
     @recipe.shared = true
     @recipe.save
-    redirect_to shared_url(@recipe.shared_id)
+    redirect_to shared_url(@recipe)
   end
 
   def share
     @recipe = Recipe.find_by_shared_id(params[:shared_id])
     @owner = User.find(@recipe.user_id).first_name
-    @shared_url = shared_url(@recipe.shared_id)
+    @shared_url = shared_url(@recipe)
   end
 
   def un_share
@@ -85,7 +85,7 @@ class RecipesController < ApplicationController
       r.img = @recipe.img
       r.ingredients = @recipe.ingredients
       r.instructions = @recipe.instructions
-      r.source = shared_url(@recipe.shared_id)
+      r.source = shared_url(@recipe)
       r.serves = @recipe.serves
       r.notes = @recipe.notes
       r.favorite = false
