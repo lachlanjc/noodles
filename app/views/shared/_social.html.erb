@@ -1,5 +1,5 @@
 <div class="flex mt2">
-  <div class="center p1 border rounded inline-block mx-auto print-hide">
+  <div class="center py1 px2 border rounded inline-block mx-auto print-hide">
     <h2 class="mt1">This recipe is public.</h2>
     <p class="mb1 text-normalized">Share this link: <%= link_to @shared_url, @shared_url %></p>
 
@@ -10,7 +10,7 @@
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=<%= @shared_url %>" class="mr1 social-facebook" target="_blank">
         <%= inline_svg("social-facebook.svg") %>
       </a>
-      <a rel="nofollow" href="http://www.pinterest.com/pin/create/button/?url=ttp%3A%2F%2Fwww.getnoodl.es%2Fs%2F<%= @recipe.shared_id %><% unless @recipe.img.url.blank? %>&media=<%= @recipe.img.url %><% end %>&description=<%= @recipe.title %>+on+Noodles+(<%= @recipe.description %>)" class="mr1 social-pinterest" target="_blank">
+      <a rel="nofollow" href="http://www.pinterest.com/pin/create/button/?url=ttp%3A%2F%2Fwww.getnoodl.es%2Fs%2F<%= @recipe.shared_id %><% '&media=' + @recipe.img.url unless @recipe.img.url.blank? %>&description=<%= @recipe.title %>+on+Noodles+(<%= @recipe.description %>)" class="mr1 social-pinterest" target="_blank">
         <%= inline_svg("social-pinterest.svg") %>
       </a>
       <a rel="nofollow" href="https://bufferapp.com/add?url=http%3A%2F%2Fwww.getnoodl.es%2Fs%2F<%= @recipe.shared_id %>&text=Check out <%= @recipe.title %>, published on Noodles:" class="mr1 social-buffer" target="_blank">
@@ -33,7 +33,7 @@
     <% end %>
 
     <% if me_owns_recipe? %>
-    <p class="grey-2">Or you could <%= link_to "un-share this recipe", recipe_un_share_path(@recipe) %>.</p>
+    <p class="grey-3 h5">Or you could <%= link_to "un-share this recipe", recipe_un_share_path(@recipe), class: "link-reset border-bottom" %>.</p>
     <% end %>
   </div>
 </div>

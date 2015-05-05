@@ -8,19 +8,16 @@
   <meta property="og:url" content="<%= @shared_url %>">
   <meta property="og:title" content="<%= @recipe.title %>">
   <meta name="twitter:title" content="<%= @recipe.title %>">
-  <% if @recipe.img.url.blank? %>
-    <meta property="og:image" content="<%= image_url('apple-touch-icon.png') %>"/>
-    <meta name="twitter:image:src" content="<%= image_url('apple-touch-icon.png') %>">
-  <% else %>
+  <% unless @recipe.img.url.blank? %>
     <meta property="og:image" content="<%= @recipe.img.url %>"/>
     <meta name="twitter:image:src" content="<%= @recipe.img.url %>">
   <% end %>
   <% if @recipe.description.blank? %>
-    <meta property="og:description" content="<%= @recipe.title %> is a recipe published on Noodles, an app to help you cook better.">
-    <meta property="twitter:description" content="<%= @recipe.title %> is a recipe published on Noodles, an app to help you cook better.">
+    <meta property="og:description" content="<%= @recipe.title %> is on Noodles, an app to help you keep, cook, and share all your recipes.">
+    <meta property="twitter:description" content="<%= @recipe.title %> is on Noodles, an app to help you keep, cook, and share all your recipes.">
   <% else %>
-    <meta property="og:description" content="<%= @recipe.description %>">
-    <meta name="twitter:description" content="<%= @recipe.description %>">
+    <meta property="og:description" content="<%= @recipe.description %> (Published on Noodles)">
+    <meta name="twitter:description" content="<%= @recipe.description %> (Published on Noodles)">
   <% end %>
 <% end -%>
 
@@ -44,8 +41,8 @@
   <% if me_owns_recipe? %>
   <div class="mt2 print-hide">
     <a class="btn mr1" title="Others can click this button to save a copy of your recipe to their Noodles account." disabled>Save</a>
-    <%= link_to "Un-share", recipe_un_share_path(@recipe), class: "btn-red mr1 mt1" %>
-    <a class="btn-blue" id="printRecipe"><%= t("general.print") %></a>
+    <%= link_to "Un-share", recipe_un_share_path(@recipe), class: "btn-red mr1" %>
+    <a class="btn-blue"><%= t("general.print") %></a>
 
   <%# If you're logged in, show Save button %>
   <% elsif user_signed_in? %>
@@ -55,7 +52,7 @@
 
   <%# Everyone else should sign up for Noodles %>
   <% else %>
-  <div class="bg-grey-6 rounded well p2 mt2 print-hide mx-auto col-8">
+  <div class="sm-col-10 md-col-8 bg-grey-6 rounded well p2 mt2 print-hide mx-auto">
     <h2 class="mt0">Wondering about Noodles?</h2>
     <p><%= link_to "Noodles", root_url, class: "orange" %> is a simple app for you to collect, cook, and share your favorite recipes.
     <p><%= link_to "Sign up", :sign_up, class: "orange" %> to save this recipe &mdash; it's fast and completely free.</p>
