@@ -5,7 +5,7 @@
     <p class="mb1">Share this link:</p>
     <%= react_component("CopyLink", url: @shared_url) %>
 
-    <div class="social py1">
+    <div class="social py1 mt1">
       <a rel="nofollow" href="http://twitter.com/share?text=Check out <%= @recipe.title %>, published on @noodlesapp:&amp;url=<%= @shared_url %>" class="mr1 social-twitter" target="_blank">
         <%= inline_svg("social-twitter.svg") %>
       </a>

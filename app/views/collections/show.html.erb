@@ -14,29 +14,31 @@
   <% end %>
 </article>
 
-<div class="modal" id="shareCollection">
+<div class="modal center" id="shareCollection">
   <%= react_component("ModalClose") %>
-  <h2>Share Collection</h2>
+  <h2 class="left-align">Share Collection</h2>
   <hr>
 
-  <% @shared_url = "http://www.getnoodl.es/c/" + @collection.hash_id.to_s %>
+  <% @shared_url = root_url + "c/" + @collection.hash_id.to_s %>
   <p class="mb1">Share this link:</p>
-  <%= react_component("CopyLink", url: @shared_url) %>
+  <div class="mx-auto">
+    <%= react_component("CopyLink", url: @shared_url) %>
+  </div>
 
-  <div class="social py1">
+  <div class="ml1 social py1">
     <a rel="nofollow" href="http://twitter.com/share?text=Check out the collection <%= @collection.name %> on @noodlesapp:&amp;url=<%= @shared_url %>" class="social-twitter" target="_blank">
       <%= inline_svg("social-twitter.svg") %>
     </a>
-    <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=<%= @shared_url %>" class="social-facebook" target="_blank">
+    <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=<%= @shared_url %>" class="ml1 social-facebook" target="_blank">
       <%= inline_svg("social-facebook.svg") %>
     </a>
-    <a rel="nofollow" href="https://bufferapp.com/add?url=<%= @shared_url %>&text=Check out the collection<%= @collection.name %>, published on Noodles. " class="social-buffer" target="_blank">
+    <a rel="nofollow" href="https://bufferapp.com/add?url=<%= @shared_url %>&text=Check out the collection<%= @collection.name %>, published on Noodles. " class="ml1 social-buffer" target="_blank">
       <%= inline_svg("social-buffer.svg") %>
     </a>
-    <a rel="nofollow" href="https://plus.google.com/share?url=<%= @shared_url %>" class="social-plus" target="_blank">
+    <a rel="nofollow" href="https://plus.google.com/share?url=<%= @shared_url %>" class="ml1 social-plus" target="_blank">
       <%= inline_svg("social-googleplus.svg") %>
     </a>
-    <a href="mailto:?subject=Check out <%= @collection.name %> on Noodles&body=Hey there! I published a new collection on Noodles (http://www.getnoodl.es), <%= @collection.name %>. Check it out: <%= @shared_url %>" class="social-email">
+    <a href="mailto:?subject=Check out <%= @collection.name %> on Noodles&body=I published a new collection on Noodles (http://www.getnoodl.es), <%= @collection.name %>. Check it out: <%= @shared_url %>" class="ml1 social-email">
       <%= inline_svg("mail.svg") %>
     </a>
   </div>

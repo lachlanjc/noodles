@@ -5,15 +5,16 @@ var CopyLink = React.createClass({
 
   render: function() {
     return (
-      <div className="flex h5">
+      <div className="h5">
         <input ref="text"
             type="text"
-            className="text-input inline-block"
+            className="text-input"
+            style={{display: "inline-block"}}
             value={this.props.url}
             onChange={function() {}} />
-          <button ref="copy" className="btn btn-blue ml2" type="button">{this.state.label}</button>
+          <button ref="copy" className="btn btn-green ml2" type="button">{this.state.label}</button>
       </div>
-    )
+    );
   },
 
   componentDidMount: function() {
