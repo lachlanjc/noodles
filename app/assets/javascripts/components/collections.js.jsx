@@ -63,14 +63,14 @@ var CollectionHeader = React.createClass({
     return (
       <header className={"collection-header full-width center " + rootClass} style={rootStyle}>
         <div className={"caps h4 " + actionClass}>
-          {this.props.showEdit === true ?
+          {this.props.show_edit === true ?
             <a href="#editCollection" className="js-modal-trigger link-reset">Edit · </a>
           : null}
           <a href="#shareCollection" className="js-modal-trigger link-reset">Share</a>
         </div>
         <h1 className={"inline-block collection-name m0 " + nameClass}>{this.props.collection.name}</h1>
         <div className="h3 mt1 mb0">{this.props.collection.description}</div>
-        {this.props.showPublisher === true ?
+        {this.props.show_pub === true ?
           <div className="mt1 mb1 h4 grey-3">Published by {this.props.collection.publisher}</div>
         : null}
       </header>
