@@ -18,8 +18,11 @@
   <%= react_component("ModalClose") %>
   <h2>Share Collection</h2>
   <hr>
+
   <% @shared_url = "http://www.getnoodl.es/c/" + @collection.hash_id.to_s %>
-  <p>Share this link with anyone to show them your collection: <%= link_to @shared_url, @shared_url %></p>
+  <p class="mb1">Share this link:</p>
+  <%= react_component("CopyLink", url: @shared_url) %>
+
   <div class="social py1">
     <a rel="nofollow" href="http://twitter.com/share?text=Check out the collection <%= @collection.name %> on @noodlesapp:&amp;url=<%= @shared_url %>" class="social-twitter" target="_blank">
       <%= inline_svg("social-twitter.svg") %>
