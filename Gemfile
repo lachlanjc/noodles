@@ -5,7 +5,7 @@ gem "dotenv-rails", groups: [:development, :test]
 
 gem "rails_autolink"
 gem "autoprefixer-rails"
-gem "aws-sdk"
+gem "aws-sdk", "< 2.0"
 gem "bcrypt", "~> 3.1.7"
 gem "bourbon"
 gem "devise"
