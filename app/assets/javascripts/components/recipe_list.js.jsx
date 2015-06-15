@@ -101,7 +101,7 @@ var RecipeList = React.createClass({
 
 var RecipeItem = React.createClass({
   render: function() {
-    var notesData, webData, favoriteData;
+    var notesData, photoData, webData, favoriteData;
     var recipeLink = this.props.recipe.url;
     if (this.props.link_type === "public") {
       recipeLink = this.props.recipe.shared_url;
@@ -112,15 +112,18 @@ var RecipeItem = React.createClass({
     if (this.props.recipe.web === true) {
       webData = <IconWeb classes="ml1 fill-grey-5" />
     }
+    if (this.props.recipe.photo === true) {
+      photoData = <IconPhoto classes="ml1 fill-grey-5" />
+    }
     if (this.props.recipe.notes === true) {
-      notesData = <IconNotes classes="ml1 up-3 fill-grey-5" size="18" />
+      notesData = <IconNotes classes="ml1 up-3 fill-grey-5" size="18px" />
     }
 
     return (
       <a href={recipeLink} className="link-reset">
         <li className="bg-white rounded shadow mb2 p2">
           <div className="right">
-            {notesData} {webData} {favoriteData}
+            {notesData} {photoData} {webData} {favoriteData}
           </div>
           <h3 className="m0">{this.props.recipe.title}</h3>
           <div className="block text">{this.props.recipe.description_preview}</div>

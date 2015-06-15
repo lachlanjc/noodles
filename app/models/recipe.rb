@@ -22,6 +22,7 @@ class Recipe < ActiveRecord::Base
       favorite: favorite,
       notes: notes.present?,
       web: is_from_web(source),
+      photo: img.url.present?,
       url: "/recipes/" + id.to_s,
       shared_url: "/s/" + shared_id.to_s
     }
