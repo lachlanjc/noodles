@@ -52,11 +52,13 @@
 
   <%# Everyone else should sign up for Noodles %>
   <% else %>
-  <div class="sm-col-10 md-col-8 bg-grey-6 rounded well p2 mt2 print-hide mx-auto">
+  <div class="sm-col-10 md-col-8 border rounded p3 mt2 print-hide mx-auto">
     <h2 class="mt0">Wondering about Noodles?</h2>
     <p><%= link_to "Noodles", root_url, class: "orange" %> is a simple app for you to collect, cook, and share your favorite recipes.
     <p><%= link_to "Sign up", :sign_up, class: "orange" %> to save this recipe &mdash; it's fast and completely free.</p>
-    <p class="center mb0"><%= link_to "Try Noodles", :sign_up, class: "btn sm-col-8" %></p>
+    <p class="center mb0">
+      <%= link_to "Try Noodles", sign_up_path, class: "btn sm-col-8 md-col-5" %>
+    </p>
   </div>
   <% end %>
 

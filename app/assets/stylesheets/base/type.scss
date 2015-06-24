@@ -59,8 +59,11 @@ h5,
   font-size: $h5;
 }
 
-h6,
 .h6 {
+  font-size: $h6;
+}
+
+h6 {
   @extend .caps;
   color: $grey-3;
   font-size: $h6;
@@ -95,14 +98,9 @@ a {
   font-size: $h4;
 }
 
-.text-normalized {
-  word-wrap: break-word;
-
-  h1 {
-    color: $grey-1;
-    font-size: $h3;
-    margin-top: $space-1;
-  }
+.text-normalized h1 {
+  color: $grey-2;
+  font-size: $h3;
 }
 
 .checked {

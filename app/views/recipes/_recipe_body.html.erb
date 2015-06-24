@@ -16,7 +16,7 @@
 
 <h2 class="mt2">Details</h2>
 <% if @recipe.source.blank? && @recipe.serves.blank? %>
-<p class="grey-2">You don't yet have any details for this recipe. Details describe where the recipe came from and the recipe's yield.</p>
+<p class="grey-2">No details for this recipe. Details describe where the recipe came from and the recipe's yield.</p>
 <% else %>
 <p class="grey-2 text-normalized">Source: <%= auto_link(@recipe.source, :html => {:rel => "nofollow"}) %>
 <p itemprop="recipeYield">Yield: <%= @recipe.serves %>
@@ -33,7 +33,7 @@
 <% if me_owns_recipe? %>
 <div class="tab-container print-hide">
   <input type="radio" name="tabs" class="tab-1" id="tab-1" checked>
-  <label for="tab-1" class="rounded-top inline-block border bg-grey-5">View</label>
+  <label for="tab-1" class="rounded-top inline-block border bg-grey-5">View Notes</label>
 
   <input type="radio" name="tabs" class="tab-2" id="tab-2">
   <label for="tab-2" class="rounded-top inline-block border bg-grey-5">Edit Notes</label>
@@ -56,7 +56,7 @@
 
 </div>
 <% else %>
-<div class="rounded shadow p2 notes text text-normalized">
+<div class="rounded border border-darken-1 p2 notes text text-normalized">
   <% if @recipe.notes.blank? %>
   <p class="grey-4 mb0">No notes for this recipe &mdash; yet!</p>
   <% else %>
