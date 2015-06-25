@@ -22,7 +22,6 @@
 <p itemprop="recipeYield">Yield: <%= @recipe.serves %>
 <% end %>
 
-<h2 class="mt2 print-hide">Notes</h2>
 <div class="hide print-show">
   <% unless @recipe.notes.blank? %>
     <h2>Notes</h2>
@@ -31,36 +30,13 @@
 </div>
 
 <% if me_owns_recipe? %>
-<div class="tab-container print-hide">
-  <input type="radio" name="tabs" class="tab-1" id="tab-1" checked>
-  <label for="tab-1" class="rounded-top inline-block border bg-grey-5">View Notes</label>
-
-  <input type="radio" name="tabs" class="tab-2" id="tab-2">
-  <label for="tab-2" class="rounded-top inline-block border bg-grey-5">Edit Notes</label>
-  <br>
-
-  <div class="content content-1 border p1 rounded-bottom notes text text-normalized">
+  <%= react_component("NoteEditor", recipe_id: @recipe.id) %>
+<% else %>
+  <div class="rounded border p2 notes text text-normalized">
     <% if @recipe.notes.blank? %>
-      <p class="grey-4 mb2">No notes for this recipe &mdash; yet!</p>
+    <p class="grey-4 mb0">No notes for this recipe &mdash; yet!</p>
     <% else %>
     <%= sanitize markdown(@recipe.notes) %>
     <% end %>
   </div>
-
-  <div class="content content-2 border p2 rounded-bottom notes">
-    <%= form_for(@recipe) do |f| %>
-      <%= f.text_area :notes, class: "text-input invisible-input full-width m0", placeholder: "Type your notes for the recipe here.", rows: "4" %>
-      <%= f.submit t("general.save"), class: "btn-blue btn-sm block" %>
-    <% end %>
-  </div>
-
-</div>
-<% else %>
-<div class="rounded border border-darken-1 p2 notes text text-normalized">
-  <% if @recipe.notes.blank? %>
-  <p class="grey-4 mb0">No notes for this recipe &mdash; yet!</p>
-  <% else %>
-  <%= sanitize markdown(@recipe.notes) %>
-  <% end %>
-</div>
 <% end %>

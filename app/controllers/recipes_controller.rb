@@ -1,12 +1,13 @@
 class RecipesController < ApplicationController
   include ApplicationHelper
+  include MarkdownHelper
   include RecipesHelper
   include ScrapingHelper
 
   before_filter :please_sign_in, only: [:index, :favorites, :random, :create]
-  before_filter :set_recipe, only: [:show, :edit, :update, :destroy]
-  before_filter :locate_recipe, only: [:export_pdf, :remove_image, :share_this_recipe, :un_share]
-  before_filter :not_the_owner, only: [:update, :export_pdf, :remove_image, :share_this_recipe, :un_share, :destroy]
+  before_filter :set_recipe, only: [:show, :edit, :update, :update_notes, :destroy]
+  before_filter :locate_recipe, only: [:notes, :export_pdf, :remove_image, :share_this_recipe, :un_share]
+  before_filter :not_the_owner, only: [:update, :notes, :export_pdf, :remove_image, :share_this_recipe, :un_share, :destroy]
   protect_from_forgery except: :embed_js
 
   # GET /recipes
@@ -33,6 +34,9 @@ class RecipesController < ApplicationController
     else
       render :locked, status: 403
     end
+  end
+
+  def notes
   end
 
   def export_pdf
@@ -140,6 +144,13 @@ class RecipesController < ApplicationController
       redirect_to @recipe
     else
       render :edit
+    end
+  end
+
+  def update_notes
+    if @recipe.update(recipe_params)
+      @recipe.save
+      render :notes
     end
   end
 
