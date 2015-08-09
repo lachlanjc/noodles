@@ -1,28 +1,23 @@
 var BioLachlan = React.createClass({
   render: function() {
     return (
-      <div className="bio mt2">
-        <div className="bio-photo inline-block left">
-          <img src="http://d1fmxjrxw87eps.cloudfront.net/me.jpg" className="circle shadow" />
-        </div>
-        <div className="bio-info inline-block mt2 ml2">
-          <h2 className="inline-block m0">Lachlan Campbell</h2>
-          <a href="https://twitter.com/lachlanjc" className="h5 white bold inline-block px1 ml1 rounded bg-orange up-6">@lachlanjc</a>
-          <p>Design + hack + middle school. Founder of Noodles.</p>
-        </div>
+      <div className="py2">
+        <h3 className="m0">Lachlan Campbell</h3>
+        <p className="m0">Creator of Noodles, middle schooler, and intern at <a href="https://highrisehq.com/">Highrise</a>.</p>
+        <a href="https://twitter.com/lachlanjc" className="h5 white bold inline-block px1 rounded bg-orange">@lachlanjc</a>
       </div>
-    );
+    )
   }
 });
 
 var BioTaran = React.createClass({
   render: function() {
     return (
-      <div className="mt2">
-        <h2 className="inline-block m0">Taran Samarth</h2>
-        <a href="https://twitter.com/tarans22" className="h5 white bold inline-block px1 ml1 rounded bg-orange up-6">@tarans22</a>
-        <p>Co-founder of Noodles. Hacker, writer, and football geek.</p>
+      <div className="py2">
+        <h3 className="m0">Taran Samarth</h3>
+        <p className="m0">Co-founder of Noodles. Hacker, writer, and football geek.</p>
+        <a href="https://twitter.com/tarans22" className="h5 white bold inline-block px1 rounded bg-orange">@tarans22</a>
       </div>
-    );
+    )
   }
 });
