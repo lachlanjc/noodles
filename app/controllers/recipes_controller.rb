@@ -50,9 +50,14 @@ class RecipesController < ApplicationController
   end
 
   def random
-    recipe = Recipe.where(:user_id => current_user.id).order("RANDOM()").first
-    flash[:grey] = "Here's your random recipe."
-    redirect_to recipe_url(recipe)
+    if user_recipes.count == 0
+      flash[:blue] = "Hold it, you don't have any recipes yet!"
+      redirect_to onboarding_path
+    else
+      recipe = user_recipes.order("RANDOM()").first
+      flash[:grey] = "Here's your random recipe."
+      redirect_to recipe_path(recipe)
+    end
   end
 
   def remove_image
