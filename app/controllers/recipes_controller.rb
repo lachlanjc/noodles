@@ -97,10 +97,7 @@ class RecipesController < ApplicationController
       r.source = shared_url(@recipe)
       r.serves = @recipe.serves
       r.notes = @recipe.notes
-      r.favorite = false
-      r.shared = false
-      r.created_at = Time.now
-      r.updated_at = Time.now
+      r.favorite, r.shared = false
       r.save
     end
     @save_recipe.shared_id = generate_shared_id(@save_recipe.id)
