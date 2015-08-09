@@ -12,7 +12,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes
   def index
-    @recipes = Recipe.where(user_id: current_user.id).order(created_at: :desc)
+    @recipes = user_recipes.order(created_at: :desc)
     render :recipe_list
   end
 

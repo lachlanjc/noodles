@@ -1,6 +1,10 @@
 module RecipesHelper
   include MarkdownHelper
 
+  def user_recipes
+    Recipe.where(user_id: current_user.id)
+  end
+
   def me_owns_recipe?
     if current_user && @recipe.user_id == current_user.id
       return true
