@@ -47,7 +47,11 @@
       </div>
 
       <div>
-        <%= link_to t("general.sign_in"), sign_in_path, class: "px1 orange regular" %>
+        <% if user_signed_in? %>
+          <%= link_to t("general.your_recipes") + " >>", recipes_path, class: "px1 orange" %>
+        <% else %>
+          <%= link_to t("general.sign_in"), sign_in_path, class: "px1 orange regular" %>
+        <% end %>
       </div>
     </nav>
 
