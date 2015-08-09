@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>
-  <% if content_for?(:title) %>
-    <%= content_for(:title) + " · Noodles" %>
-  <% else %>
-    Noodles
-  <% end %>
-  </title>
+  <title><%= "#{content_for(:title)} ·" if content_for?(:title) %> Noodles</title>
   <% if content_for?(:meta) %>
   <%= yield(:meta) -%>
   <% else %>
