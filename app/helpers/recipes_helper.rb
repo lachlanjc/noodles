@@ -14,7 +14,7 @@ module RecipesHelper
   end
 
   def shared_url(recipe)
-    return root_url + "s/" + recipe.shared_id
+    "#{root_url}s/#{recipe.shared_id.to_s}"
   end
 
   def generate_shared_id(id)
