@@ -65,16 +65,16 @@ class AnnouncementsController < ApplicationController
   end
 
   private
+    def admin_decision
+      user_signed_in? && current_user.id == 1
+    end
+
     def set_admin
-      @admin = false unless current_user && (current_user.id == 1 || current_user.id == 23)
+      @admin = admin_decision
     end
 
     def is_admin?
-      if current_user && (current_user.id == 1 || current_user.id == 23)
-        return true
-      else
-        return false
-      end
+      admin_decision
     end
 
     def set_admin_and_redirect
