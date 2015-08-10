@@ -37,6 +37,7 @@ class RecipesController < ApplicationController
   end
 
   def notes
+    @notes_blankslate = "<p>No notes for this recipe yet.</p>".html_safe if @recipe.notes.blank?
   end
 
   def export_pdf

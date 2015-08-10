@@ -14,21 +14,12 @@ var NoteEditor = React.createClass({
   },
 
   fetchData: function() {
-    var blank = "No notes for this recipe, yet!";
-
     $.getJSON("/recipes/" + this.props.recipe_id + "/notes.json", function(response) {
       this.setState({
         notes_rendered: response.recipe.notes_rendered,
         notes_text: response.recipe.notes_text,
       });
     }.bind(this));
-
-    if (this.state.notes_text.length === 0) {
-      this.setState({
-        notes_rendered: blank,
-        notes_text: blank,
-      });
-    }
   },
 
   produceRenderedNotes: function() {
@@ -59,8 +50,8 @@ var NoteEditor = React.createClass({
         console.error(status, "on", this.props.action, "—", err.toString());
       }.bind(this)
     });
-    this.toggleEditing();
     this.fetchData();
+    this.toggleEditing();
   },
 
   renderEditing: function() {
