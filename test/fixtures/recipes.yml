@@ -1,0 +1,13 @@
+one:
+  title: "First Recipe"
+  description: "This is the description."
+  ingredients: "Cheese"
+  instructions: "1. Eat the cheese."
+  favorite: false
+  id: 1
+  user_id: 1
+  shared: true
+  shared_id: "thisismyshared"
+  source: "http://foodandwine.com"
+  serves: "Lots of folks"
+  notes: "Any cheese works. Just make sure it's not moldy."
