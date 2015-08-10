@@ -38,8 +38,8 @@
 
 </nav>
 
-<% unless flash.empty? %>
 <% flash.each do |key, value| %>
-  <%= react_component("Flash", message: value.to_s, color: key.to_s) %>
-<% end %>
+  <div class="md-col-4 mw6 p2 mb2 mx-auto rounded shadow bg-white <%= flash_color_class(key) %> print-hide js-flash" role="alertdialog" onclick="$(this).hide();">
+    <%= value %>
+  </div>
 <% end %>
