@@ -1,25 +1,26 @@
-<%- title @announcement.title %>
+<% @title = @announcement.title.to_s.html_safe %>
+<% title @title %>
 <% activate_nav!(:announcements) %>
 
 <% content_for :meta do -%>
   <meta name="twitter:card" content="summary">
   <meta property="og:site_name" content="Noodles" />
   <meta name="twitter:domain" content="getnoodl.es">
-  <meta property="og:url" content="http://www.getnoodl.es/announcements/<%= @announcement.id %>">
-  <meta property="og:title" content="<%= @announcement.title %>">
-  <meta name="twitter:title" content="<%= @announcement.title %>">
+  <meta property="og:url" content="http://www.getnoodl.es/announcements/<%= @announcement.id.to_s %>">
+  <meta property="og:title" content="<%= @title %>">
+  <meta name="twitter:title" content="<%= @title %>">
   <meta property="og:image" content="<%= image_url('apple-touch-icon.png') %>"/>
   <meta name="twitter:image:src" content="<%= image_url('apple-touch-icon.png') %>">
-  <meta property="og:description" content="Check out these updates to Noodles, a simple app to help you cook better.">
-  <meta name="twitter:description" content="Check out these updates to Noodles, a simple app to help you cook better.">
+  <meta property="og:description" content="Check out these updates to Noodles, a simple app to keep, cook, and share all your recipes.">
+  <meta name="twitter:description" content="Check out these updates to Noodles, a simple app to keep, cook, and share all your recipes.">
 <% end -%>
 
 <%= render "shared/nav" %>
 
 <article class="document">
   <%= react_component("AnnouncementBody", data: @announcement.as_json) %>
-  <%= link_to "Delete", @announcement, method: :delete, data: { confirm: "Are you sure?" } if @admin == true %>
   <hr class="mb0">
   <%= react_component("Bio") %>
   <hr class="mt0">
+  <%= link_to "Delete", @announcement, method: :delete, data: { confirm: "Are you sure?" } if @admin %>
 </article>
