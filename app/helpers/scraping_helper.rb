@@ -2,7 +2,7 @@ module ScrapingHelper
   include RecipesHelper
 
   def find_host(url)
-    return URI(url).host.to_s
+    URI(url).host.to_s
   end
 
   def find_domain(url)
@@ -10,7 +10,7 @@ module ScrapingHelper
   end
 
   def find_path(url)
-    return URI(url).path.to_s
+    URI(url).path.to_s
   end
 
   def master_scrape(url)
@@ -20,27 +20,27 @@ module ScrapingHelper
     case host
     when "epicurious.com"
       load "scrapers/epicurious.rb"
-      return EpicuriousScraper.new.scrape(path)
+      EpicuriousScraper.new.scrape(path)
     when "nytimes.com"
       load "scrapers/ny_cooking.rb"
-      return NYCookingScraper.new.scrape(path)
+      NYCookingScraper.new.scrape(path)
     when "foodandwine.com"
       load "scrapers/food_and_wine.rb"
-      return FoodWineScraper.new.scrape(path)
+      FoodWineScraper.new.scrape(path)
     when "bonappetit.com"
       load "scrapers/bon_appetit.rb"
-      return BonAppetitScraper.new.scrape(path)
+      BonAppetitScraper.new.scrape(path)
     when "allrecipes.com"
       load "scrapers/allrecipes.rb"
-      return AllRecipesScraper.new.scrape(path)
+      AllRecipesScraper.new.scrape(path)
     when "marthastewart.com"
       load "scrapers/marthastewart.rb"
-      return MarthaStewartScraper.new.scrape(path)
+      MarthaStewartScraper.new.scrape(path)
     when "food52.com"
       load "scrapers/food52.rb"
-      return Food52Scraper.new.scrape(path)
+      Food52Scraper.new.scrape(path)
     else
-      return "unsupported"
+      "unsupported"
     end
   end
 
