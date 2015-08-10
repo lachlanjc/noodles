@@ -1,14 +1,12 @@
 module RecipesHelper
   include MarkdownHelper
 
+  def me_owns_recipe?
+    user_signed_in? && @recipe.user_id == current_user.id
   end
 
-  def me_owns_recipe?
-    if current_user && @recipe.user_id == current_user.id
-      return true
-    else
-      return false
-    end
+  def not_my_recipe?
+    !me_owns_recipe?
   end
 
   def shared_url(recipe)
