@@ -110,7 +110,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes/new
   def new
-    if current_user
+    if user_signed_in?
       @recipe = Recipe.new
       render :edit
     else
@@ -198,7 +198,7 @@ class RecipesController < ApplicationController
     end
 
     def not_the_owner
-      unless me_owns_recipe?
+      if not_my_recipe?
         flash[:red] = "That's not yours."
         redirect_to root_url
       end
