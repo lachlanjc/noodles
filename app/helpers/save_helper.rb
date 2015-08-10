@@ -13,7 +13,7 @@ module SaveHelper
 
       title css: "*[itemprop='name']:first-child"
       description css: "*[itemprop='description']"
-      ingredients({ css: "*[itemprop='ingredients']" }, :list)
+      ingredients({ css: "*[itemprop='recipeIngredient']" }, :list)
       instructions({ css: "*[itemprop='recipeInstructions'] *" }, :list)
 
       serves css: "*[itemprop='recipeYield']"
