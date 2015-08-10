@@ -68,7 +68,7 @@ var NoteEditor = React.createClass({
       <div>
         <textarea htmlFor="recipe[notes]" className="text-input invisible-input full-width m0" placeholder="Type your notes for the recipe here." rows="4" defaultValue={this.state.notes_text} onChange={this.updateTextNotes} />
         <div className="mb2">
-          <button className="btn-blue mr1" onClick={this.submitNotes}>Save</button>
+          <button className="btn-blue mr1" onClick={this.submitNotes}>Save Notes</button>
           <button className="btn" style={{backgroundColor: "#8b909a"}} onClick={this.toggleEditing}>Cancel</button>
         </div>
       </div>
@@ -79,7 +79,7 @@ var NoteEditor = React.createClass({
     return (
       <div>
         <div dangerouslySetInnerHTML={this.produceRenderedNotes()} />
-        <button className="btn-blue mt1 mb2 print-hide" onClick={this.toggleEditing}>Edit</button>
+        <button className="btn-blue mt1 mb2 print-hide" onClick={this.toggleEditing}>Edit Notes</button>
       </div>
     );
   },
