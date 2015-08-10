@@ -1,15 +1,15 @@
 <%= stylesheet_link_tag "editor" %>
 
-<article class="col-7">
+<main class="container mt3">
 <%= form_for(@announcement) do |f| %>
 
-  <%= f.text_field :title, autofocus: true, required: true, class: "text-input invisble-input full-width header", placeholder: "Title the announcement", autocomplete: "off" %>
+  <%= f.text_field :title, autofocus: true, required: true, class: "text-input invisible-input full-width h1 mb2", placeholder: "Title the announcement", autocomplete: "off" %>
 
-  <%= f.text_field :author_id, class: "text-input invisble-input", placeholder: "Author (1/2)" %>
+  <%= f.hidden_field :author_id, value: "1" %>
 
-  <%= f.text_area :body, class: "text-input invisble-input full-width", placeholder: "What do you have to say? (Markdown supported)", rows: "10", autocomplete: "off" %>
+  <%= f.text_area :body, class: "text-input invisible-input full-width", placeholder: "What do you have to say? (Markdown supported)", rows: "10", autocomplete: "off" %>
 
   <%= f.submit t("general.save"), class: "btn btn-save mb2" %>
 
 <% end %>
-</article>
+</main>
