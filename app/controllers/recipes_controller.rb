@@ -12,7 +12,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes
   def index
-    @recipes = user_recipes.order(created_at: :desc)
+    @recipes = current_user.recipes.order(created_at: :desc)
     render :recipe_list
   end
 
@@ -51,11 +51,11 @@ class RecipesController < ApplicationController
   end
 
   def random
-    if user_recipes.count == 0
+    if current_user.recipes.count == 0
       flash[:blue] = "Hold it, you don't have any recipes yet!"
       redirect_to onboarding_path
     else
-      recipe = user_recipes.order("RANDOM()").first
+      recipe = current_user.recipes.order("RANDOM()").first
       flash[:grey] = "Here's your random recipe."
       redirect_to recipe_path(recipe)
     end
