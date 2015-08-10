@@ -1,16 +1,36 @@
-<%- title "Welcome" %>
+<%- title "Getting started" %>
 <% activate_nav!(:onboarding) %>
 
 <%= render "shared/nav" %>
 
-<article class="document p2 sm-col-11 md-col-4">
-  <h2 class="m0">Hey <%= current_user.first_name %>! Let's get cooking.</h2>
+<article class="document p3 sm-col-11 md-col-8">
+  <h2 class="m0">
+    <%= "Hey #{current_user.first_name}!" if user_signed_in? %>
+    Let's get cooking.
+  </h2>
   <hr>
-  <p class="mb0">
-    First, let's add a recipe. Click the orange
-    <span class="ml0 inline-block px1 white bg-orange circle shadow">+</span>
-    button in the corner to write one, or import a recipe from the web using the "link" button.
+  <p>
+    You can add recipes to Noodles with the buttons in the corners. There are two:
   </p>
+  <ol class="list-reset">
+    <li class="py1 mt1">
+      <div class="p1 circle shadow bg-orange white mr2 left inline-block">
+        <%= link_to "+", new_recipe_path, class: "inline-block link-reset center h3 bold", style: "line-height: 0.9; width: 24px;" %>
+      </div>
+      <div class="inline-block" style="padding-top: 5px;">
+        Type up a recipe or paste in the text yourself.
+      </div>
+    </li>
+    <li class="py1 mt1">
+      <span class="inline-block p1 fill-white bg-orange circle shadow mr2 left" style="line-height: 0.9;">
+        <%= inline_svg("import.svg") %>
+      </span>
+      <div class="inline-block" style="padding-top: 5px;">
+        Paste in a URL to a recipe to save it. Maybe try the URL for
+        <a href="http://www.epicurious.com/recipes/food/views/mint-chip-ice-cream-56389914" class="grey-3">mint chip ice cream</a>?
+      </div>
+    </li>
+  </ol>
 </article>
 
 <%= render "recipes/import" %>
@@ -20,5 +40,5 @@
 </a>
 
 <%= link_to new_recipe_path, class: "has-tooltip btn-paper bg-orange fill-white circle fixed p2 shadow", data: { tooltip: "Add a new recipe"} do %>
-<%= inline_svg("add.svg") %>
+  <%= inline_svg("add.svg") %>
 <% end %>
