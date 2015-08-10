@@ -18,8 +18,8 @@
 
 <article class="document">
   <%= react_component("AnnouncementBody", data: @announcement.as_json) %>
-  <hr>
-  <%= react_component("BioLachlan") %>
-  <hr>
   <%= link_to "Delete", @announcement, method: :delete, data: { confirm: "Are you sure?" } if @admin == true %>
+  <hr class="mb0">
+  <%= react_component("Bio") %>
+  <hr class="mt0">
 </article>
