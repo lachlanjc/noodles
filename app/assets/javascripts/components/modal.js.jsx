@@ -1,5 +1,5 @@
-var ModalClose = React.createClass({
-  render: function() {
-    return <IconClose classes="fill-grey-4 right modal-close" />;
+class ModalClose extends React.Component {
+  render() {
+    return <IconClose classes="fill-grey-4 right pointer js-modal-close" />;
   }
-});
+}
