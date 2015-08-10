@@ -23,9 +23,6 @@ module RecipesHelper
   end
 
   def is_from_web(source_data)
-    case /(http)/.match(source_data.to_s).to_s
-    when "http" then true
-    else false
-    end
+    /(http)/.match(source_data.to_s).to_s == "http"
   end
 end
