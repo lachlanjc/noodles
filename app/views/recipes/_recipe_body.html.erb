@@ -10,9 +10,7 @@
   <%= sanitize markdown(@recipe.instructions) %>
 </div>
 
-<% unless @recipe.img.url.blank? %>
-<%= image_tag @recipe.img, alt: "Photo of " + @recipe.title, class: "recipe-photo block mt2 mb2 mx-auto rounded", itemprop: "image" %>
-<% end %>
+<%= image_tag @recipe.img, alt: "Photo of " + @recipe.title, class: "mt2 mb2 mx-auto rounded", itemprop: "image" unless @recipe.img.url.blank? %>
 
 <h2 class="mt2">Details</h2>
 <% if @recipe.source.blank? && @recipe.serves.blank? %>
