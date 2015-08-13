@@ -9,7 +9,7 @@ class NYCookingScraper
       path url_path
 
       title css: ".recipe-title"
-      ingredients({ css: ".recipe-ingredients li" }, :list)
+      ingredients({ css: ".recipe-ingredients li[itemprop='ingredients']" }, :list)
       instructions({ css: ".recipe-steps li" }, :list)
 
       serves css: ".recipe-time-yield span[itemprop='recipeYield']"
