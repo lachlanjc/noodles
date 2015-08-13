@@ -15,8 +15,11 @@
 <h2 class="mt2">Details</h2>
 <% if @recipe.source.blank? && @recipe.serves.blank? %>
 <p class="grey-2">No details for this recipe. Details describe where the recipe came from and the recipe's yield.</p>
-<% else %>
+<% end %>
+<% if @recipe.serves.present? %>
 <p class="grey-2 text-normalized">Source: <%= auto_link(@recipe.source, :html => {:rel => "nofollow"}) %>
+<% end %>
+<% if @recipe.serves.present? %>
 <p itemprop="recipeYield">Yield: <%= @recipe.serves %>
 <% end %>
 
