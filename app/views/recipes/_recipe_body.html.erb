@@ -15,7 +15,7 @@
 <h2 class="mt2">Details</h2>
 <% if @recipe.source.present? || @recipe.serves.present? %>
   <% if @recipe.serves.present? %>
-    <p class="grey-2 text-normalized">Source: <%= auto_link(@recipe.source, :html => {:rel => "nofollow"}) %>
+    <p>Source: <%= auto_link(@recipe.source, :html => {:rel => "nofollow"}) %>
   <% end %>
   <% if @recipe.serves.present? %>
     <p itemprop="recipeYield">Yield: <%= @recipe.serves %>
