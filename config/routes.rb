@@ -37,7 +37,7 @@ Rails.application.routes.draw do
 
   get "/announcements/unsubscribe/EAY7pdX9/:user_id" => "announcements#unsubscribe"
 
-  devise_for :users, :controllers => { :registrations => "registrations" }
+  devise_for :users, :controllers => { :registrations => "registrations", :sessions => "sessions" }
 
   as :user do
     get    "login"  => "devise/sessions#new",           as: :sign_in
