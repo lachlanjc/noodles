@@ -13,14 +13,15 @@
 <%= image_tag @recipe.img, alt: "Photo of " + @recipe.title, class: "mt2 mb2 mx-auto rounded", itemprop: "image" unless @recipe.img.url.blank? %>
 
 <h2 class="mt2">Details</h2>
-<% if @recipe.source.blank? && @recipe.serves.blank? %>
-<p class="grey-2">No details for this recipe. Details describe where the recipe came from and the recipe's yield.</p>
-<% end %>
-<% if @recipe.serves.present? %>
-<p class="grey-2 text-normalized">Source: <%= auto_link(@recipe.source, :html => {:rel => "nofollow"}) %>
-<% end %>
-<% if @recipe.serves.present? %>
-<p itemprop="recipeYield">Yield: <%= @recipe.serves %>
+<% if @recipe.source.present? || @recipe.serves.present? %>
+  <% if @recipe.serves.present? %>
+    <p class="grey-2 text-normalized">Source: <%= auto_link(@recipe.source, :html => {:rel => "nofollow"}) %>
+  <% end %>
+  <% if @recipe.serves.present? %>
+    <p itemprop="recipeYield">Yield: <%= @recipe.serves %>
+  <% end %>
+<% else %>
+  <p class="grey-2">No details for this recipe. Details describe where the recipe came from and the recipe's yield.</p>
 <% end %>
 
 <div class="hide print-show">
