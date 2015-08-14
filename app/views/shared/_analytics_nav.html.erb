@@ -1,11 +1,11 @@
 <nav role="navigation" class="md-flex bg-white mb2 p2 border-bottom print-hide">
 
   <div>
-    <%= link_to "Dashboard", analytics_dash_path, class: "px1" + nav_active_class(:analytics_dash) %>
-    <%= link_to "Users", analytics_users_path, class: "px1" + nav_active_class(:analytics_users) %>
-    <%= link_to "Collections", analytics_collections_path, class: "px1" + nav_active_class(:analytics_collections) %>
-    <%= link_to "Performance", analytics_performance_path, class: "px1" + nav_active_class(:analytics_performance) %>
-    <%= link_to "Shared Recipes", analytics_recipes_path, class: "px1" + nav_active_class(:analytics_recipes) %>
+    <%= link_to "Dashboard", analytics_dash_path, class: nav_active_class(:analytics_dash) %>
+    <%= link_to "Users", analytics_users_path, class: nav_active_class(:analytics_users) %>
+    <%= link_to "Collections", analytics_collections_path, class: nav_active_class(:analytics_collections) %>
+    <%= link_to "Performance", analytics_performance_path, class: nav_active_class(:analytics_performance) %>
+    <%= link_to "Shared Recipes", analytics_recipes_path, class: nav_active_class(:analytics_recipes) %>
   </div>
 
   <div>
@@ -13,5 +13,3 @@
   </div>
 
 </nav>
-
-<%= render "layouts/flash" %>
