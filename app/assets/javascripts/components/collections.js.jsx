@@ -9,15 +9,15 @@ var CollectionIndex = React.createClass({
           })}
           {this.props.collections.length === 0 ?
             <div className="md-col-8 mx-auto mt3 text center border bg-white rounded p3">
-              <h3>You don't have any collections yet.</h3>
+              <h3 className="mt0">You don't have any collections yet.</h3>
               <p>Collections help you organize your recipes.</p>
               <p>You can use them for categories, such as salads or pastas, or recipes that might be good for a summer dinner party.</p>
-              <p><a href="#newCollection" className="js-modal-trigger btn btn-blue">Create your first collection</a></p>
+              <p><a href="#newCollection" className="js-modal-trigger btn btn-blue mt2">Create your first collection</a></p>
             </div>
           : null}
         </div>
       </article>
-    );
+    )
   }
 });
 
