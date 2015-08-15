@@ -1,5 +1,10 @@
 .recipe-ingredients ul {
   @extend .list-reset;
+  margin-bottom: 0;
+}
+
+.recipe-ingredients ul + h1 {
+  margin-top: $space-1;
 }
 
 .recipe-ingredients p {
