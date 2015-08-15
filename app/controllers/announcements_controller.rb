@@ -39,9 +39,9 @@ class AnnouncementsController < ApplicationController
 
   # PATCH/PUT /announcements/1
   def update
-    @announcement.body_rendered = markdown(@announcement.body)
-
     if @announcement.update(announcement_params)
+      @announcement.body_rendered = markdown(@announcement.body)
+      @announcement.save
       flash[:success] = "Announcement updated!"
       redirect_to @announcement
     else
