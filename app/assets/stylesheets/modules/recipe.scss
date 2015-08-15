@@ -1,3 +1,11 @@
+.recipe-ingredients ul {
+  @extend .list-reset;
+}
+
+.recipe-ingredients p {
+  margin-bottom: 0;
+}
+
 .notes {
   background-color: $light-yellow;
 }

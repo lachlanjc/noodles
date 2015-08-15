@@ -21,4 +21,11 @@ module RecipesHelper
   def is_from_web(source_data)
     /(http)/.match(source_data.to_s).to_s == "http"
   end
+
+  def ingredient_processed(text)
+    line = sanitize markdown(text)
+    line = Nokogiri::HTML::DocumentFragment.parse(line)
+    line.css('p').each { |item| item['itemprop'] = 'recipeIngredient' }
+    line.to_s.html_safe
+  end
 end

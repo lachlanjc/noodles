@@ -1,9 +1,9 @@
 <h2 class="mt2">Ingredients</h1>
-<ul class="text text-normalized list-reset">
-<% @recipe.ingredients.each_line do |content| %>
-  <%= simple_format(content, {:itemprop => "ingredients"}, wrapper_tag: "li") %>
-<% end %>
-</ul>
+<div class="text text-normalized recipe-ingredients" itemprop="ingredients">
+  <% @recipe.ingredients.lines.each do |line| %>
+    <%= ingredient_processed(line).html_safe %>
+  <% end %>
+</div>
 
 <h2 class="mt2">Instructions</h2>
 <div class="text text-normalized" itemprop="recipeInstructions">
