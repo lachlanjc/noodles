@@ -27,4 +27,18 @@ namespace :maintenance do
     puts "Finished!"
   end
 
+  task :hyphenate_ingredients => :environment do
+    Recipe.all.each do |recipe|
+      hyphenated_text = recipe.ingredients.lines.each do |line|
+        line.gsub!(/^(.+)/, "- \\1")
+      end
+      recipe.ingredients = hyphenated_text.join
+      recipe.save
+      puts "Recipe #{recipe.id.to_s} is hyphenated."
+    end
+
+    puts "_________"
+    puts "Finished!"
+  end
+
 end
