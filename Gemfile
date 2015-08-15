@@ -6,6 +6,7 @@ gem "dotenv-rails", groups: [:development, :test]
 gem "rails_autolink"
 gem "autoprefixer-rails"
 gem "aws-sdk", "< 2.0"
+gem "chronic"
 gem "devise"
 gem "devise_marketable"
 gem "coffee-rails"
@@ -31,6 +32,7 @@ gem "zeroclipboard-rails"
 
 group :development do
   gem "better_errors"
+  gem "binding_of_caller"
   gem "seed_dump"
   gem "tracer_bullets"
 end
