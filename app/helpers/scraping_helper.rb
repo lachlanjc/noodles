@@ -33,9 +33,6 @@ module ScrapingHelper
     when "allrecipes.com"
       load "scrapers/allrecipes.rb"
       AllRecipesScraper.new.scrape(path)
-    when "kingarthurflour.com"
-      load "scrapers/kingarthurflour.rb"
-      KingArthurFlourScraper.new.scrape(path)
     when "marthastewart.com"
       load "scrapers/marthastewart.rb"
       MarthaStewartScraper.new.scrape(path)
@@ -43,27 +40,22 @@ module ScrapingHelper
       load "scrapers/food52.rb"
       Food52Scraper.new.scrape(path)
     else
-      false
+      "unsupported"
     end
   end
 
   def create_recipe(recipe_data, url_source, flash_text)
-    # if !!recipe_data["has_ingredients_sets"]
-      # processed_ingredients = write_ingredients_with_sets(recipe_data["ingredient_sets"])
-    # else
-      processed_ingredients = write_ingredients_to_list(recipe_data["ingredients"])
-    # end
-
     recipe = Recipe.new do |r|
       r.user_id = current_user.id
       r.title = recipe_data["title"]
       r.description = recipe_data["description"].to_s.squish
-      r.ingredients = processed_ingredients.to_s
+      r.ingredients = write_ingredients_to_list(recipe_data["ingredients"])
       r.instructions = form_markdown_for_instructions(recipe_data["instructions"])
       r.source = url_source
       r.serves = recipe_data["serves"].to_s
       r.notes = recipe_data["notes"].to_s
-      r.favorite, r.shared = false
+      r.favorite = false
+      r.shared = false
       r.save
     end
     recipe.shared_id = generate_shared_id(recipe.id)
@@ -72,31 +64,24 @@ module ScrapingHelper
     redirect_to recipe
   end
 
-  def write_ingredients_with_sets(ingredient_sets)
-    processed_ingredients = ""
-    ingredient_sets.each do |set|
-      processed_ingredients << "# #{set['header'].squish} \n" if set["header"].length > 1
-      set["lines"].each do |line|
-        processed_ingredients << line + "\n"
-      end
-    end
-    processed_ingredients
-  end
+  # Wombat returns arrays for ingredients and instructions.
+  # These methods convert the arrays of strings into usable text.
+  # Specifically, the second method writes Markdown out of an array of instructions.
 
   def write_ingredients_to_list(ingredients)
     ingredients_list = ""
-    return if ingredients.blank?
     ingredients.each do |ingredient|
       # Add ingredient (minus extra whitespace) to the next line of ingredients_list
-      ingredients_list += "#{ingredient.to_s.squish} \n"
+      ingredients_list += ingredient.to_s.squish + "\n"
     end
-    ingredients_list
+    return ingredients_list
   end
 
   def form_markdown_for_instructions(steps)
     instructions_md = ""
     # each_with_index produces the step number
     steps.each_with_index do |step, id|
+                        # Arrays start at 0
       instructions_md += (id + 1).to_s + ". " + step.to_s.squish + "\n"
     end
     return instructions_md
