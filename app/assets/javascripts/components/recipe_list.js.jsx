@@ -101,32 +101,36 @@ var RecipeList = React.createClass({
 
 var RecipeItem = React.createClass({
   render: function() {
-    var notesData, photoData, webData, favoriteData;
-    var recipeLink = this.props.recipe.url;
+    var recipe = this.props.recipe;
+    var notesData, photoData, collectionsData, webData, favoriteData;
+    var recipeLink = recipe.url;
     if (this.props.link_type === "public") {
       recipeLink = this.props.recipe.shared_url;
     }
-    if (this.props.recipe.favorite === true) {
+    if (recipe.favorite === true) {
       favoriteData = <IconFavorite classes="ml1 fill-orange" />;
     }
-    if (this.props.recipe.web === true) {
+    if (recipe.web === true) {
       webData = <IconWeb classes="ml1 fill-grey-5" />
     }
-    if (this.props.recipe.photo === true) {
+    if (recipe.photo === true) {
       photoData = <IconPhoto classes="ml1 fill-grey-5" />
     }
-    if (this.props.recipe.notes === true) {
+    if (recipe.notes === true) {
       notesData = <IconNotes classes="ml1 up-3 fill-grey-5" size="18px" />
+    }
+    if (recipe.collections === true) {
+      collectionsData = <IconCollection classes="ml1 fill-grey-5" size="24px" />
     }
 
     return (
       <a href={recipeLink} className="link-reset">
         <li className="bg-white rounded shadow mb2 p2">
           <div className="right">
-            {notesData} {photoData} {webData} {favoriteData}
+            {notesData} {photoData} {collectionsData} {webData} {favoriteData}
           </div>
-          <h3 className="m0">{this.props.recipe.title}</h3>
-          <div className="block text">{this.props.recipe.description_preview}</div>
+          <h3 className="m0">{recipe.title}</h3>
+          <div className="block text">{recipe.description_preview}</div>
         </li>
       </a>
     );

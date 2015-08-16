@@ -20,6 +20,7 @@ class Recipe < ActiveRecord::Base
       title: title,
       description_preview: description.truncate(165),
       favorite: favorite,
+      collection: collections.present?,
       notes: notes.present?,
       web: is_from_web(source),
       photo: img.url.present?,
