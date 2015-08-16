@@ -48,11 +48,11 @@ module ScrapingHelper
   end
 
   def create_recipe(recipe_data, url_source, flash_text)
-    if !recipe_data["has_ingredients_sets"]
-      processed_ingredients = write_ingredients_with_sets(recipe_data["ingredient_sets"])
-    else
+    # if !!recipe_data["has_ingredients_sets"]
+      # processed_ingredients = write_ingredients_with_sets(recipe_data["ingredient_sets"])
+    # else
       processed_ingredients = write_ingredients_to_list(recipe_data["ingredients"])
-    end
+    # end
 
     recipe = Recipe.new do |r|
       r.user_id = current_user.id
