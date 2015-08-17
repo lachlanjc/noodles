@@ -21,7 +21,7 @@ class EpicuriousScraper
       # Removes their step numbers
       line.sub!(/(\d+)\.\s/, "")
     end
-    recipe["notes"].to_s.sub!(/Cooks\' Note\n/, "").strip!
+    recipe["notes"] = recipe["notes"].to_s.sub(/Cooks\' Note\n/, "").to_s.strip
     recipe
   end
 end
