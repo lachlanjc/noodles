@@ -17,7 +17,7 @@ class EpicuriousScraper
     end
     recipe["instructions"].each do |line|
       # Removes their step numbers
-      line.gsub(/(\d+)\.\s/, "")
+      line.sub!(/(\d+)\.\s/, "")
     end
     return recipe
   end
