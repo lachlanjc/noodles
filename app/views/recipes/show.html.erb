@@ -1,4 +1,4 @@
-<%- title @recipe.title %>
+<%- title @recipe.title.html_safe %>
 <% activate_nav!(:recipe) %>
 
 <%= render "shared/nav" %>
