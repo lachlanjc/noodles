@@ -6,6 +6,7 @@ var RecipeList = React.createClass({
       show_header: false,
       show_random: false,
       link_type: "normal",
+      createFromSearch: false
     };
   },
 
@@ -32,12 +33,12 @@ var RecipeList = React.createClass({
   },
 
   _updateSearch: function(e) {
-    this.setState({search_text: e.target.value.toLowerCase().trim()});
+    this.setState({search_text: e.target.value});
 
     // Filter recipes
     if (this.state.search_text.length > 0) {
       var recipes_matching_search = this.state.recipes.filter(function(l) {
-        return l.title.toLowerCase().match(this.state.search_text);
+        return l.title.toLowerCase().match(this.state.search_text.toLowerCase().trim());
       }.bind(this));
       this.setState({
         recipes_filtered: recipes_matching_search,
@@ -89,9 +90,16 @@ var RecipeList = React.createClass({
              return <RecipeItem recipe={recipe} link_type={this.props.link_type} key={recipe.id} />;
           }.bind(this))}
           {(this.state.search_text.length > 0) && (this.state.recipes_filtered.length === 0) ?
-            <li className="col-6 bg-white rounded shadow mb2 p2 mx-auto">
+            <li className="md-col-8 bg-white rounded shadow mt3 p3 center mx-auto">
               Sorry, no recipes matched your search.
             </li>
+          : null}
+          {(this.state.search_text.length > 0) && (this.props.createFromSearch === true) ?
+          <p className="mt2 mb0 center">
+            <a className="btn btn-blue" href={"/recipes/new?" + $.param({title: this.state.search_text})}>
+              New recipe with this title
+            </a>
+          </p>
           : null}
         </ul>
       </div>
