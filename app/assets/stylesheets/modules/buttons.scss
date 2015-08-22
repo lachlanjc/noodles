@@ -1,21 +1,26 @@
 .btn {
-  @include elegance;
-  background-color: $orange;
-  border: 0;
   border-radius: $border-radius;
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,.1);
+  border: 0;
+  color: #fff;
   cursor: pointer;
   display: inline-block;
-  color: #fff;
-  padding: .35em .75em;
+  line-height: 1.125rem;
   outline: 0;
-  vertical-align: middle;
+  padding: .5rem 1rem;
   -webkit-appearance: none;
   -webkit-tap-highlight-color: rgba(#000,.12);
 
   &:hover {
     color: #fff;
     text-decoration: none;
+    box-shadow: inset 0 0 0 20rem $darken-1;
+  }
+
+  &:focus,
+  &:active {
+    box-shadow: inset 0 0 0 20rem $darken-2,
+    inset 0 3px 4px 0 $darken-3,
+    0 0 1px $darken-2;
   }
 }
 
@@ -23,18 +28,6 @@
   cursor: not-allowed;
   opacity: .5;
   pointer-events: none;
-}
-
-.btn-blue {
-  @include button-standard($blue);
-}
-
-.btn-green {
-  @include button-standard($green);
-}
-
-.btn-red {
-  @include button-standard($red);
 }
 
 .btn-sm {

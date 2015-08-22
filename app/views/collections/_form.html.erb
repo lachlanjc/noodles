@@ -8,7 +8,7 @@
   <%= f.label :photo, class: "inline-block" %><small class="ml1">(optional)</small>
   <%= f.file_field :photo, class: "block" %>
 
-  <%= link_to t("general.delete"), @collection, method: :delete, data: { confirm: t("general.delete_collection_forever") }, class: "btn-red btn-sm mt2" if nav_active?(:collection) %>
+  <%= link_to t("general.delete"), @collection, method: :delete, data: { confirm: t("general.delete_collection_forever") }, class: "btn bg-red btn-sm mt2" if nav_active?(:collection) %>
 
-  <%= f.submit "Save", class: "btn-blue right" %>
+  <%= f.submit "Save", class: "btn bg-blue right" %>
 <% end %>

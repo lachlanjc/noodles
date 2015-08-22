@@ -12,7 +12,7 @@ var CopyLink = React.createClass({
             style={{display: "inline-block"}}
             value={this.props.url}
             onChange={function() {}} />
-          <button ref="copy" className="btn btn-green ml2" type="button">{this.state.label}</button>
+          <button ref="copy" className="btn bg-green ml2" type="button">{this.state.label}</button>
       </div>
     );
   },

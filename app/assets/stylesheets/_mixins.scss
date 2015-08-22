@@ -32,18 +32,3 @@
 @mixin shadow-3 {
   box-shadow: 0 3px 6px rgba(0, 0, 0, .23);
 }
-
-
-@mixin button-standard($bg-color) {
-  @extend .btn;
-  background-color: $bg-color;
-
-  &:hover {
-    background-color: darken($bg-color, 1%);
-  }
-
-  &:focus,
-  &:active {
-    background-color: darken($bg-color, 4%);
-  }
-}

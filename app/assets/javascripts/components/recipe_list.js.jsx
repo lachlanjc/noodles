@@ -96,7 +96,7 @@ var RecipeList = React.createClass({
           : null}
           {(this.state.search_text.length > 0) && (this.props.createFromSearch === true) ?
           <p className="mt2 mb0 center">
-            <a className="btn btn-blue" href={"/recipes/new?" + $.param({title: this.state.search_text})}>
+            <a className="btn bg-blue" href={"/recipes/new?" + $.param({title: this.state.search_text})}>
               New recipe with this title
             </a>
           </p>
