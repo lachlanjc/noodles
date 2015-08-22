@@ -24,6 +24,13 @@ input[type="checkbox"] + label {
   }
 }
 
+.invisible-input {
+  background: transparent;
+  border: 0;
+  resize: none;
+  padding: 0;
+}
+
 .js-auto-size {
   resize: none;
 }

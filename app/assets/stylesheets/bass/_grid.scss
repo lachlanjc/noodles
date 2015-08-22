@@ -123,15 +123,15 @@
 }
 
 @media #{$breakpoint-md} {
-  .md-col {
-    float: left;
-    box-sizing: border-box;
-  }
-
-  .md-col-right {
-    float: right;
-    box-sizing: border-box;
-  }
+  // .md-col {
+  //   float: left;
+  //   box-sizing: border-box;
+  // }
+  //
+  // .md-col-right {
+  //   float: right;
+  //   box-sizing: border-box;
+  // }
 
   .md-col-1 {
     width: (1/12 * 100%);
@@ -183,15 +183,15 @@
 }
 
 @media #{$breakpoint-lg} {
-  .lg-col {
-    float: left;
-    box-sizing: border-box;
-  }
-
-  .lg-col-right {
-    float: right;
-    box-sizing: border-box;
-  }
+  // .lg-col {
+  //   float: left;
+  //   box-sizing: border-box;
+  // }
+  //
+  // .lg-col-right {
+  //   float: right;
+  //   box-sizing: border-box;
+  // }
 
   .lg-col-1 {
     width: (1/12 * 100%);

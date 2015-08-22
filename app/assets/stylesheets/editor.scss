@@ -1,13 +1,9 @@
 @import "variables";
 @import "mixins";
 
-body {
-  padding-top: 1rem;
-}
-
 textarea {
   line-height: 1.75;
-  min-width: 32em;
+  min-width: 32rem;
 }
 
 .logo-nav {
@@ -28,9 +24,4 @@ textarea {
       margin: 1rem auto 0;
     }
   }
-}
-
-.btn-save {
-  // .btn overrides .bg-grey-4, so we need this
-  background: $grey-4;
 }

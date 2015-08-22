@@ -5,7 +5,7 @@
   <%= inline_svg("home.svg") %>
 <% end %>
 
-<article class="md-col-8 mx-auto px2">
+<main class="md-col-8 mx-auto py1 px2">
   <%= form_for(@recipe) do |f| %>
 
   <%= f.file_field :img, id: "file", class: "hide" %>
@@ -71,6 +71,6 @@
   <%= f.submit t("general.save"), class: "btn bg-grey-4 mb2", data: { disable_with: "Saving..." } %>
 
   <% end %>
-</article>
+</main>
 
 <%= javascript_include_tag "editor" %>
