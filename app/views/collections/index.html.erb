@@ -5,7 +5,7 @@
 <%= react_component("CollectionIndex", collections: @collections.as_json) %>
 
 <div class="modal" id="newCollection">
-  <%= react_component("ModalClose") %>
+  <%= modal_close %>
   <h2>Create a Collection</h2>
   <hr>
   <%= render "form" %>

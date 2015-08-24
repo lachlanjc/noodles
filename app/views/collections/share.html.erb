@@ -15,7 +15,7 @@
 </article>
 
 <div class="modal" id="shareCollection">
-  <%= react_component("ModalClose") %>
+  <%= modal_close %>
   <h2>Share Collection</h2>
   <hr>
   <% @shared_url = "http://www.getnoodl.es" + collection_share_path(:id => @collection.hash_id) %>

@@ -17,4 +17,8 @@ module ApplicationHelper
   def not_found
     raise ActionController::RoutingError.new('Not Found')
   end
+
+  def modal_close
+    "<div class='fill-grey-4 block right pointer js-modal-close'>#{inline_svg('close.svg')}</div>".html_safe
+  end
 end
