@@ -65,7 +65,6 @@
       <span class="orange up-6"><%= t("general.favorite") %></span>
     </label>
 
-    <%= link_to t("general.delete"), @recipe, method: :delete, data: { confirm: t("general.delete_forever") }, class: "btn bg-red btn-sm mt2" %>
   </div>
 
   <%= f.submit t("general.save"), class: "btn bg-grey-4 mb2", data: { disable_with: "Saving..." } %>
