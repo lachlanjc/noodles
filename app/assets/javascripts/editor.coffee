@@ -1,27 +1,20 @@
 #= require autosize
 
 numberRow = ->
-  recipeInstructs = document.getElementById("recipe_instructions")
-  recipeInstructs.value = "1. " if recipeInstructs.value.length == 0
-  return
+
 
 $(document).ready ->
-  document.getElementById("recipe_instructions").addEventListener("focus", numberRow, false)
-
-  $(".details-btn").click ->
-    $(".details-panel").toggleClass("hide block")
-    $(".details-btn").toggleClass("block hide")
+  $('[data-behavior~=editor_instructions]').on 'focus', ->
+    this.value = "1. " if this.value.length == 0
+    return
 
   # Autosize textareas
   $(".js-auto-size").autosize()
 
-  # When you click the nice file button
-  $("#file-button").click ->
-    # Click the actual file input. Shows dialog.
-    $("#file").click()
-  # When a file is picked
-  $("#file").change ->
-    # Find the name of the file
-    fileName = document.getElementById("file").value.match(/[^\/\\]+$/)
-    # Show the file"s name instead of "Pick something"
-    document.getElementById("file-name").innerHTML = fileName
+  $('[data-behavior~=photo_button]').on 'click', ->
+    $('[data-behavior~=photo_field]').click()
+    return
+  $('[data-behavior~=photo_field]').on 'change', ->
+    $('[data-behavior~=photo_name]').text(this.value.match(/[^\/\\]+$/)[0])
+    return
+  return

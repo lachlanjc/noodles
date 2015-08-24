@@ -6,12 +6,12 @@
 <% end %>
 
 <main class="md-col-8 mx-auto py1 px2">
-  <%= form_for(@recipe) do |f| %>
+<%= form_for(@recipe) do |f| %>
 
-  <%= f.file_field :img, id: "file", class: "hide" %>
-  <div class="upload-button inline-block" id="file-button">
+  <%= f.file_field :img, class: "hide", data: { behavior: "photo_field" } %>
+  <div class="upload-button inline-block" data-behavior="photo_button">
     <%= react_component("IconPhoto", size: "32px", classes: "fill-grey-4") %>
-    <span id="file-name" class="grey-4 up-10">
+    <span class="grey-4 up-10" data-behavior="photo_name">
   <% if @recipe.img.url.blank? %>
       Click to upload a photo</span>
     </div>
@@ -22,54 +22,53 @@
   <% end %>
 
   <% if @recipe.errors.any? %>
-  <div class="bg-white rounded shadow mb2 p2">
-    <h2>Oops! You need to title the recipe.</h2>
-    <p>Click below and type a name for your recipe.</p>
-  </div>
+    <div class="bg-white rounded shadow mb2 p2">
+      <h2>Oops! You need to title the recipe.</h2>
+      <p>Click below and type a name for your recipe.</p>
+    </div>
   <% end %>
 
   <%= f.text_field :title,
                    value: params[:title] || @recipe.title,
                    autofocus: true, required: true,
                    class: "text-input invisible-input full-width m0 bold h1",
-                   placeholder: "Click here and title your recipe...",
+                   placeholder: "Title your recipe...",
                    autocomplete: "off" %>
 
-  <%= f.text_area :description, class: "text-input invisible-input full-width js-auto-size", placeholder: "Optionally, write a description for the recipe right here.", rows: "1", autocomplete: "off" %>
+  <%= f.text_area :description,
+                  class: "text-input invisible-input full-width js-auto-size",
+                  placeholder: "Optionally, write a description for the recipe right here.",
+                  rows: "1",
+                  autocomplete: "off" %>
 
-  <%= f.text_area :ingredients, class: "text-input invisible-input full-width m0 js-auto-size", placeholder: "Click here to add your recipe's ingredients. Put one on each line.", rows: "3", autocomplete: "off" %>
+  <%= f.label :ingredients, class: "inline-block h3" %><small class="ml1 grey-4">Put one on each line.</small>
+  <%= f.text_area :ingredients,
+                  class: "text-input invisible-input full-width m0 js-auto-size",
+                  placeholder: "Click here to add your recipe's ingredients.",
+                  rows: "3",
+                  autocomplete: "off" %>
 
-  <%= f.text_area :instructions, class: "text-input invisible-input full-width m0 js-auto-size", placeholder: "Type the recipe's instructions here. Number each step.", rows: "4", autocomplete: "off" %>
+  <%= f.label :instructions, class: "inline-block h3" %><small class="ml1 grey-4">Fully Markdown supported.</small>
+  <%= f.text_area :instructions,
+                  class: "text-input invisible-input full-width m0 js-auto-size",
+                  placeholder: "Type the recipe's instructions here.",
+                  rows: "4",
+                  autocomplete: "off",
+                  data: { behavior: "editor_instructions" } %>
 
-  <div class="grey-4 block mb2 details-btn pointer fill-grey-3">
-    <%= react_component("IconInfo", size: "28px", classes: "fill-grey-3") %>
-    <span class="up-8">Show Details</span>
-  </div>
+  <section>
+    <h2 class="mt0">Details</h2>
 
-  <div class="hide bg-white rounded shadow mb2 p2 details-panel">
-    <h2 class="m0">Details</h2>
-
-    <%= f.label :source, class: "inline-block mt2" %><small class="ml1 grey-4">Where did this recipe come from?</small>
+    <%= f.label :source, class: "inline-block" %><small class="ml1 grey-4">Where did this recipe come from?</small>
     <%= f.text_field :source, class: "text-input" %>
 
     <%= f.label :serves, "Yield", class: "inline-block" %><small class="ml1 grey-4">How many servings does your recipe produce?</small>
     <%= f.text_field :serves, class: "text-input" %>
+  </section>
 
-    <%= f.label :notes, class: "inline-block" %><small class="ml1 grey-4">Add some more information about the recipe.</small>
-    <%= f.text_area :notes, class: "text-input notes block mb1 js-auto-size" %>
+  <%= f.submit t("general.save"), class: "btn bg-grey-4 mt3 mb3", data: { disable_with: "Saving..." } %>
 
-    <label class="control mb1 block pointer">
-      <%= f.check_box :favorite, class: "control-checkbox" %>
-      <%= react_component("IconFavoriteOutline", classes: "control-indicator fill-orange") %>
-      <%= react_component("IconFavorite", classes: "control-indicator-checked fill-orange") %>
-      <span class="orange up-6"><%= t("general.favorite") %></span>
-    </label>
-
-  </div>
-
-  <%= f.submit t("general.save"), class: "btn bg-grey-4 mb2", data: { disable_with: "Saving..." } %>
-
-  <% end %>
+<% end %>
 </main>
 
 <%= javascript_include_tag "editor" %>
