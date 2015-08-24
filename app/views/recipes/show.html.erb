@@ -30,7 +30,7 @@
     <%= link_to t("general.edit"), :edit_recipe, class: "btn bg-blue mr1 mt1" %>
     <a href="#collectModal" class="btn bg-orange mr1 mt1 js-modal-trigger">Add to Collection</a>
     <a href="#shareModal" class="btn bg-green mr1 mt1 js-modal-trigger">Share</a>
-    <a id="printRecipe" class="btn bg-blue mr1 mt1">Print</a>
+    <a class="btn bg-blue mr1 mt1" data-behavior="print">Print</a>
   </div>
 
   <%= render "shared/printer" %>

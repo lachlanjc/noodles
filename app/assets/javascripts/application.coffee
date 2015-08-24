@@ -11,3 +11,5 @@ $(document).ready ->
     $("#recipeFavoriteTrigger").click ->
       $("#recipeFavoriteForm").submit()
   $(".js-modal-trigger").leanModal()
+  $('[data-behavior~=print]').on 'click', ->
+    window.print()
