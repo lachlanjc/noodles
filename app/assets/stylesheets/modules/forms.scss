@@ -13,8 +13,8 @@ input[type="checkbox"] + label {
   border: $border;
   border-radius: $border-radius;
   display: block;
-  min-width: 16em;
-  padding: .4em .6em;
+  min-width: 16rem;
+  padding: $space-1;
 
   &:focus {
     @include elegance;
