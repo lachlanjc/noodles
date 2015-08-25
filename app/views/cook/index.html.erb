@@ -20,29 +20,25 @@
 
     <%= react_component("IngredientsChecklist", ingredients: @recipe.ingredients.split("\n")) %>
 
-    <% unless @recipe.notes.blank? %>
     <hr class="col-10">
-    <div class="bg-white rounded shadow p2">
-      <h2 class="mt0">Notes</h2>
-      <div class="text text-normalized">
-      <%= sanitize markdown(@recipe.notes) %>
+
+    <% if me_owns_recipe? %>
+      <%= react_component("NoteEditor", recipe_id: @recipe.id) %>
+    <% else %>
+      <div class="rounded border shadow p2 bg-white text text-normalized">
+        <% if @recipe.notes.blank? %>
+        <p class="grey-4 mb0">No notes for this recipe &mdash; yet!</p>
+        <% else %>
+        <%= sanitize markdown(@recipe.notes) %>
+        <% end %>
       </div>
-    </div>
-    <hr class="col-10">
     <% end %>
   </aside>
 
   <article class="sm-col-11 md-col-6 mx-auto mt2 p0">
     <%= react_component("CookInstructions", instructions: @recipe.instructions.split("\n")) %>
     <div class="bg-white rounded shadow p2 block h2 center mb2 grey-2">
-      Finished! Enjoy your meal.
-      <% if me_owns_recipe? %>
-        <%= form_for(@recipe, html: { class: "col-11 mx-auto center" }) do |f| %>
-          <%= f.label :notes, "What should you remember for next time? Keep some Notes:", class: "mt2" %>
-          <%= f.text_area :notes, class: "text-input mx-auto h4 full-width notes", placeholder: "Jot down your experience cooking this recipe.", rows: 3 %>
-          <%= f.submit t("general.save"), class: "btn bg-green h4 mt0 mb1 mx-auto" %>
-        <% end %>
-      <% end %>
+      And now you're finished! Enjoy the <%= @recipe.title %>.
     </div>
   </article>
 
