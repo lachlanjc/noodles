@@ -6,11 +6,14 @@
   <aside class="sm-col-11 md-col-4 m2">
     <h1 class="m0 grey-1"><%= @recipe.title %></h2>
     <p class="grey-3 m0">
-      <% if not_my_recipe? %>
-        <a class="grey-2" href="<%= shared_url(@recipe) %>">Published by <%= User.find(@recipe.user_id).first_name %></a>
-        <span> · </span>
-      <% end %>
       <%= pluralize(@recipe.instructions.lines.count, "steps") %>
+      <% if not_my_recipe? %>
+        <span> · </span>
+        <a class="grey-2" href="<%= shared_url(@recipe) %>">Published by <%= User.find(@recipe.user_id).first_name %></a>
+      <% else %>
+        <span> · </span>
+        <%= link_to "Edit recipe", edit_recipe_url(@recipe), class: "grey-2" %>
+      <% end %>
     </p>
 
     <hr class="col-10">
