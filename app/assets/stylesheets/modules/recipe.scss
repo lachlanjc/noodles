@@ -19,12 +19,12 @@
 .control-checkbox,
 .control-checkbox:checked ~ .control-indicator,
 .control-indicator-checked {
-  display: none;
+  display: none !important;
 }
 
 .control-indicator,
 .control-checkbox:checked ~ .control-indicator-checked {
-  @extend .inline-block;
+  display: inline-block !important;
 }
 
 .social svg {

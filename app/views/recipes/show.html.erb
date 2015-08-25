@@ -5,11 +5,11 @@
 
 <article class="document">
 
-  <%= form_for(@recipe, remote: true, html: { id: "recipeFavoriteForm" }) do |f| %>
+  <%= form_for(@recipe, data: { remote: true }) do |f| %>
     <label class="control right inline-block m0">
-      <%= f.check_box :favorite, class: "control-checkbox", id: "recipeFavoriteTrigger" %>
-      <%= react_component("IconFavoriteOutline", classes: "control-indicator fill-orange", size: "32") %>
-      <%= react_component("IconFavorite", classes: "control-indicator-checked fill-orange", size: "32") %>
+      <%= f.check_box :favorite, class: "control-checkbox", data: { behavior: "recipe_favorite_trigger" } %>
+      <%= react_component("IconFavoriteOutline", { classes: "fill-orange", size: "32" }, { class: "control-indicator" }) %>
+      <%= react_component("IconFavorite", { classes: "fill-orange", size: "32" }, { class: "control-indicator-checked" }) %>
     </label>
   <% end %>
 

@@ -7,9 +7,10 @@
 #= require modals
 
 $(document).ready ->
-  if $("#recipeFavoriteTrigger").length > 0
-    $("#recipeFavoriteTrigger").click ->
-      $("#recipeFavoriteForm").submit()
-  $(".js-modal-trigger").leanModal()
+  $('[data-behavior~=recipe_favorite_trigger]').on 'change', ->
+    $(this)[0].form.submit()
+    return
+  $('.js-modal-trigger').leanModal()
   $('[data-behavior~=print]').on 'click', ->
     window.print()
+    return
