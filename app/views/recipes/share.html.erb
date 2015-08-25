@@ -48,7 +48,7 @@
   <% elsif user_signed_in? %>
   <div class="mt2 print-hide">
     <%= link_to "Save", :save_to_noodles, title: "Save a copy of this recipe to your own account", class: "btn bg-orange mr1" %>
-    <a class="btn bg-blue"><%= t("general.print") %></a>
+    <a class="btn bg-blue" data-behavior="print"><%= t("general.print") %></a>
 
   <%# Everyone else should sign up for Noodles %>
   <% else %>
