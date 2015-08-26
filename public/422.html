@@ -51,10 +51,13 @@
     <p><a href="javascript:window.history.back()">Go back to the previous page</a></p>
     <small class="block muted"><strong>or</strong></small>
     <p>
-      <a href="mailto:lachlan@getnoodl.es?subject=I%20got%20a%20422%20error">Report the error</a> so that I can fix it
-      <span class="block mt1 muted" id="urlContainer"></span>
+      <a href="mailto:lachlan@getnoodl.es?subject=I%20got%20a%20422%20error" id="emailLink">Report the error</a> so I can fix it
       <script>
-      document.getElementById("urlContainer").innerHTML = "(please include this page's URL: <u>" + window.location + "</u>)"
+      var emailLink = document.getElementById("emailLink");
+      var time = new Date();
+      var body = window.location + " on " + time.toDateString() + " at " + time.toTimeString();
+      var link = emailLink.getAttribute("href") + "&body=" + encodeURIComponent(body);
+      emailLink.setAttribute("href", link);
       </script>
     </p>
   </main>
