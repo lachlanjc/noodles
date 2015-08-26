@@ -13,20 +13,17 @@
 <%= image_tag @recipe.img, alt: "Photo of " + @recipe.title, class: "mt2 mb2 mx-auto rounded", itemprop: "image" unless @recipe.img.url.blank? %>
 
 <h2 class="mt2">Details</h2>
-<% if @recipe.source.present? || @recipe.serves.present? %>
-  <% if @recipe.serves.present? %>
-    <p>Source: <%= auto_link(@recipe.source, :html => {:rel => "nofollow"}) %>
-  <% end %>
-  <%= content_tag :p, "Author: #{@recipe.author}" if @recipe.author.present? %>
-  <% if @recipe.serves.present? %>
-    <p itemprop="recipeYield">Yield: <%= @recipe.serves %>
-  <% end %>
-<% else %>
+<% if @recipe.source.present? %>
+<p>Source: <%= auto_link(@recipe.source, html: {rel: 'nofollow'}) %>
+<% end %>
+<%= content_tag :p, "Author: #{@recipe.author}" if @recipe.author.present? %>
+<%= content_tag :p, "Yield: #{@recipe.serves}" if @recipe.serves.present? %>
+<% if @recipe.source.blank? && @recipe.author.blank? && @recipe.serves.present? %>
   <p class="grey-2">No details for this recipe. Details describe where the recipe came from and the recipe's yield.</p>
 <% end %>
 
 <div class="hide print-show">
-  <% unless @recipe.notes.blank? %>
+  <% if @recipe.notes.present? %>
     <h2>Notes</h2>
     <%= sanitize markdown(@recipe.notes) %>
   <% end %>
