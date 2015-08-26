@@ -71,19 +71,16 @@ module ScrapingHelper
   def write_ingredients_to_list(ingredients)
     ingredients_list = ""
     ingredients.each do |ingredient|
-      # Add ingredient (minus extra whitespace) to the next line of ingredients_list
       ingredients_list += ingredient.to_s.squish + "\n"
     end
-    return ingredients_list
+    ingredients_list
   end
 
   def form_markdown_for_instructions(steps)
     instructions_md = ""
-    # each_with_index produces the step number
     steps.each_with_index do |step, id|
-                        # Arrays start at 0
       instructions_md += (id + 1).to_s + ". " + step.to_s.squish + "\n"
     end
-    return instructions_md
+    instructions_md
   end
 end

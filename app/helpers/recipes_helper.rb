@@ -15,7 +15,7 @@ module RecipesHelper
 
   def generate_shared_id(id)
     hashids = Hashids.new "113011262014"
-    return hashids.encode(id * 11262014)
+    hashids.encode(id.to_i * 11262014)
   end
 
   def is_from_web(source_data)
