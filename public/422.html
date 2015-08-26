@@ -1,54 +1,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>422 :(</title>
+  <title>422 error :(</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Lato:400">
-  <script async src="https://assets.helpful.io/assets/widget.js"></script>
+  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Source+Code+Pro:422,700">
   <style>
   body {
-    background-color: #fcfcfd;
-    color: #455a64;
+    color: #4f545c;
     text-align: center;
-    font-family: Lato, "Helvetica Neue", Helvetica, sans-serif;
+    font-family: "Source Code Pro", Menlo, Courier, monospace;
+    font-size: 16px;
   }
-  .document {
-    background-color: #fff;
-    border: 1px solid #e8e8e8;
-    border-radius: 6px;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, .02);
-    margin: 2em auto;
-    padding: 1rem;
-    display: inline-block;
-  }
-  @media (max-width: 480px) {
-    .document {
-      border-left: 0;
-      border-radius: 0;
-      border-right: 0;
-    }
+  main {
+    margin: 3rem 1rem;
   }
   h1, h2 {
-    font-weight: 400;
+    font-weight: 422;
     margin: 12px 0;
   }
   h1 {
     color: #ff0013;
-    font-size: 30px;
+    font-size: 2rem;
   }
   h2 {
-    font-size: 21px;
+    font-size: 1.5rem;
+  }
+  p {
+    font-size: 0.9rem;
+    margin: .5rem;
   }
   a {
     color: #0c7ee8;
+    font-weight: bold;
+  }
+  .mt1 {
+    margin-top: .5rem;
+  }
+  .block {
+    display: block;
+  }
+  .muted {
+    color: #666d78;
   }
   </style>
 </head>
 <body>
-  <article class="document">
-    <h1>422. The Noodles are in a bit of a tangle.</h1>
-    <h2>Something went wrong there!</h2>
-    <p><a href="javascript:window.history.back();">Go back to the previous page</a> or <a href="mailto:noodles@helpful.io" data-helpful="noodles-a737a789-bc32-4d41-afb7-b01d18044823">report the error</a> so that I can fix it.</p>
-  </article>
+  <main>
+    <h1><strong>422.</strong> The Noodles are in a bit of a tangle.</h1>
+    <h2>Something went wrong there! You could:</h2>
+    <p><a href="javascript:window.history.back()">Go back to the previous page</a></p>
+    <small class="block muted"><strong>or</strong></small>
+    <p>
+      <a href="mailto:lachlan@getnoodl.es?subject=I%20got%20a%20422%20error">Report the error</a> so that I can fix it
+      <span class="block mt1 muted" id="urlContainer"></span>
+      <script>
+      document.getElementById("urlContainer").innerHTML = "(please include this page's URL: <u>" + window.location + "</u>)"
+      </script>
+    </p>
+  </main>
 </body>
 </html>
