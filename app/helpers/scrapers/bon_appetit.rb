@@ -15,5 +15,6 @@ class BonAppetitScraper
       serves css: ".single-recipe .ingredient-sets .total-servings"
     end
     recipe["ingredients"].each { |item| item.gsub!(/\s+/, " ") }
+    recipe
   end
 end
