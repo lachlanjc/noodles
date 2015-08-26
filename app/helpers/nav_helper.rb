@@ -1,10 +1,6 @@
 module NavHelper
   def nav_active_class(nav)
-    if nav_active?(nav)
-      return "px1 bold"
-    else
-      return "px1"
-    end
+    nav_active?(nav) ? " bold" : "px1"
   end
 
   def nav_active?(nav)
