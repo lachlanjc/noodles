@@ -13,10 +13,10 @@
 
 <%= render "import" %>
 
-<a class="btn-paper-mini bg-orange fill-white circle fixed p1 shadow js-modal-trigger" name="importModal" href="#importModal" aria-label="Import from the web">
+<a class="btn-paper-mini bg-orange fill-white circle fixed p1 shadow" name="importModal" href="#importModal" data-behavior="modal_trigger">
   <%= inline_svg("import.svg") %>
 </a>
 
-<%= link_to new_recipe_path, class: "btn-paper bg-orange fill-white circle fixed p2 shadow", aria_label: "Add a new recipe" do %>
+<%= link_to new_recipe_path, class: "btn-paper bg-orange fill-white circle fixed p2 shadow" do %>
   <%= inline_svg("add.svg") %>
 <% end %>

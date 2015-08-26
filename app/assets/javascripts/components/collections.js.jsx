@@ -12,7 +12,7 @@ var CollectionIndex = React.createClass({
               <h3 className="mt0">You don't have any collections yet.</h3>
               <p>Collections help you organize your recipes.</p>
               <p>You can use them for categories, such as salads or pastas, or recipes that might be good for a summer dinner party.</p>
-              <p><a href="#newCollection" className="js-modal-trigger btn bg-blue mt2">Create your first collection</a></p>
+              <p><a href="#newCollection" className="btn bg-blue mt2" data-behavior="modal_trigger">Create your first collection</a></p>
             </div>
           : null}
         </div>
@@ -66,9 +66,9 @@ var CollectionHeader = React.createClass({
       <header className={"collection-header full-width center " + rootClass} style={rootStyle}>
         <div className={"caps h4 " + actionClass}>
           {this.props.show_edit === true ?
-            <a href="#editCollection" className="js-modal-trigger link-reset">Edit · </a>
+            <a href="#editCollection" className="link-reset" data-behavior="modal_trigger">Edit · </a>
           : null}
-          <a href="#shareCollection" className="js-modal-trigger link-reset">Share</a>
+          <a href="#shareCollection" className="link-reset" data-behavior="modal_trigger">Share</a>
         </div>
         <h1 className={"inline-block collection-name m0 " + nameClass}>{this.props.collection.name}</h1>
         <div className="h3 mt1 mb0">{this.props.collection.description}</div>

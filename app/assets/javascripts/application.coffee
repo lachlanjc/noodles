@@ -10,10 +10,9 @@ $(document).ready ->
   $('[data-behavior~=flash]').on 'click', ->
     $(this).toggleClass('bg-white shadow well border')
     $(this).slideUp('fast')
+  $('[data-behavior~=modal_trigger]').leanModal()
   $('[data-behavior~=recipe_favorite_trigger]').on 'change', ->
     $(this)[0].form.submit()
-    return
-  $('.js-modal-trigger').leanModal()
   $('[data-behavior~=print]').on 'click', ->
     window.print()
-    return
+  return
