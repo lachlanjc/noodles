@@ -69,14 +69,16 @@ module ScrapingHelper
   # Specifically, the second method writes Markdown out of an array of instructions.
 
   def write_ingredients_to_list(ingredients)
+    return if ingredients.blank?
     ingredients_list = ""
-    ingredients.each do |ingredient|
-      ingredients_list += ingredient.to_s.squish + "\n"
+    ingredients.each do |item|
+      ingredients_list += item.to_s.squish + "\n"
     end
     ingredients_list
   end
 
   def form_markdown_for_instructions(steps)
+    return if steps.blank?
     instructions_md = ""
     steps.each_with_index do |step, id|
       instructions_md += (id + 1).to_s + ". " + step.to_s.squish + "\n"
