@@ -12,9 +12,11 @@ class BonAppetitScraper
       description css: ".content-intro h2"
       ingredients({ css: ".ingredient-set .ingredients li" }, :list)
       instructions({ css: ".prep-steps-container .preparation ul li" }, :list)
+      author css: ".contributors li:first-child"
       serves css: ".single-recipe .ingredient-sets .total-servings"
     end
     recipe["ingredients"].each { |item| item.gsub!(/\s+/, " ") }
+    recipe["author"].sub!("Recipe by ", "")
     recipe
   end
 end

@@ -12,6 +12,7 @@ class EpicuriousScraper
       description css: "#recipe_summary #recipeIntroText p:not(#chefNotes)"
       ingredients({ css: ".ingredientsList .ingredient" }, :list)
       instructions({ css: ".instructions > p" }, :list)
+      author css: ".source-container #recipe_author"
       # source css: ".instructions #additional-info .recipe-source-info"
       serves css: "#recipe_summary .summary_data span"
 
