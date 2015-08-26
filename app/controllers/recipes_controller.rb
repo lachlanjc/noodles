@@ -187,7 +187,7 @@ class RecipesController < ApplicationController
 
     # Only allow trusted parameters
     def recipe_params
-      params.require(:recipe).permit(:title, :description, :img, :ingredients, :instructions, :favorite, :source, :serves, :notes, :shared_id, { collections: [] })
+      params.require(:recipe).permit(:title, :description, :img, :ingredients, :instructions, :favorite, :source, :author, :serves, :notes, :shared_id, { collections: [] })
     end
 
     def please_sign_in

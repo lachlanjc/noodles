@@ -12,6 +12,7 @@ class NYCookingScraper
       ingredients({ css: ".recipe-ingredients li[itemprop='ingredients']" }, :list)
       instructions({ css: ".recipe-steps li" }, :list)
 
+      author css: ".recipe-subhead span[itemprop='author']"
       serves css: ".recipe-time-yield span[itemprop='recipeYield']"
       notes css: ".recipe-note-description"
     end

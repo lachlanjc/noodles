@@ -12,6 +12,7 @@ class AllRecipesScraper
       description css: ".rec-detail-wrapper #divAuthorContainer #lblDescription"
       ingredients({ css: ".ingredient-wrap #liIngredient" }, :list)
       instructions({ css: ".directions ol li" }, :list)
+      author css: ".author-container #lblUser0"
       serves css: ".servings #lblYield"
     end
   end

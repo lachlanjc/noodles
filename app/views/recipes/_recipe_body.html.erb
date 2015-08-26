@@ -17,6 +17,7 @@
   <% if @recipe.serves.present? %>
     <p>Source: <%= auto_link(@recipe.source, :html => {:rel => "nofollow"}) %>
   <% end %>
+  <%= content_tag :p, "Author: #{@recipe.author}" if @recipe.author.present? %>
   <% if @recipe.serves.present? %>
     <p itemprop="recipeYield">Yield: <%= @recipe.serves %>
   <% end %>
