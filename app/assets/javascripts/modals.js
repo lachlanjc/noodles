@@ -7,7 +7,7 @@
       var defaults = {
         top: 33,
         overlay: 0.8,
-        closeButton: $(".js-modal-close")
+        closeButton: $('[data-behavior~=modal_close]')
       };
       var overlay = $("<div class='full-width bg-darken-4 modal-overlay'></div>");
       $("body").append(overlay);
