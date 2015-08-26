@@ -39,7 +39,7 @@
 </nav>
 
 <% flash.each do |key, value| %>
-  <div class="md-col-4 mw6 p2 mb2 mx-auto rounded shadow bg-white <%= flash_color_class(key) %> print-hide js-flash" role="alertdialog" onclick="$(this).hide();">
+  <div class="sm-col-11 md-col-5 mw6 p2 mb3 mx-auto rounded shadow bg-white <%= flash_color_class(key) %> print-hide" role="alertdialog" data-behavior="flash">
     <%= value %>
   </div>
 <% end %>
