@@ -4,7 +4,7 @@ class BonAppetitScraper
   include Wombat::Crawler
 
   def scrape(url_path)
-    return Wombat.crawl do
+    recipe = Wombat.crawl do
       base_url "http://www.bonappetit.com"
       path url_path
 
@@ -14,5 +14,6 @@ class BonAppetitScraper
       instructions({ css: ".prep-steps-container .preparation ul li" }, :list)
       serves css: ".single-recipe .ingredient-sets .total-servings"
     end
+    recipe["ingredients"].each { |item| item.gsub!(/\s+/, " ") }
   end
 end
