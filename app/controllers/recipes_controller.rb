@@ -64,7 +64,11 @@ class RecipesController < ApplicationController
   def remove_image
     @recipe.img = nil
     @recipe.save
-    redirect_to edit_recipe_path(@recipe)
+    if params[:cook]
+      redirect_to recipe_cook_path(@recipe)
+    else
+      redirect_to edit_recipe_path(@recipe)
+    end
   end
 
   def share_this_recipe
@@ -144,7 +148,11 @@ class RecipesController < ApplicationController
     if @recipe.update(recipe_params)
       @recipe.save
       flash[:green] = "Great, your changes were saved."
-      redirect_to @recipe
+      if params[:cook]
+        redirect_to recipe_cook_path(@recipe)
+      else
+        redirect_to @recipe
+      end
     else
       render :edit
     end

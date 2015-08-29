@@ -37,8 +37,25 @@
 
   <article class="sm-col-11 md-col-6 mx-auto mt2 p0">
     <%= react_component("CookInstructions", instructions: @recipe.instructions.split("\n")) %>
+
     <div class="bg-white rounded shadow p2 block h2 center mb2 grey-2">
-      And now you're finished! Enjoy the <%= @recipe.title %>.
+      <span>And now you're finished! Enjoy the <%= @recipe.title %>.</span>
+
+      <%= image_tag @recipe.img, alt: "Photo of " + @recipe.title, class: "mt2 mx-auto rounded" if @recipe.img.present? %>
+
+      <%= form_for(@recipe, url: recipe_path(@recipe, cook: true), html: { class: "mt2 pointer block h4"}) do |f| %>
+        <%= f.file_field :img, class: "hide", data: { behavior: "photo_field cook_photo_field" } %>
+        <div class="grey-4 inline-block" data-behavior="photo_button">
+          <%= react_component("IconPhoto", size: "32px", classes: "fill-grey-4") %>
+          <span class="up-10 underline" data-behavior="photo_name">
+            <%= @recipe.img.url.blank? ? "Add a photo to your recipe" : "Upload a new photo" %>
+          </span>
+          <% if @recipe.img.url.present? %>
+            <span class="up-10">or</span>
+            <%= link_to("remove this photo", recipe_remove_image_path(@recipe, cook: true), class: "link-reset up-10 underline") %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </article>
 

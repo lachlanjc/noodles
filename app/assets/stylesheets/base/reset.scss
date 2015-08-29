@@ -16,10 +16,10 @@ img {
   max-width: 100%;
 }
 
-// Hack for worthless div's React adds.		
-// Otherwise they change the layout		
-div[data-react-class^="Icon"] {		
-  display: inline-block;		
+// Hack for worthless div's React adds.
+// Otherwise they change the layout
+div[data-react-class^="Icon"] {
+  display: inline-block;
 }
 
 svg {
@@ -35,6 +35,7 @@ svg {
   color: inherit;
 
   &:hover {
+    color: inherit;
     text-decoration: none;
   }
 }
