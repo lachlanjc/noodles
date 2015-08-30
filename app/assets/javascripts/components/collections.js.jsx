@@ -1,5 +1,5 @@
-var CollectionIndex = React.createClass({
-  render: function() {
+class CollectionIndex extends React.Component {
+  render() {
     return (
       <article className="sm-col-11 md-col-7 mx-auto">
         <h1 className="center">Collections</h1>
@@ -19,17 +19,17 @@ var CollectionIndex = React.createClass({
       </article>
     )
   }
-});
+}
 
-var CollectionItem = React.createClass({
-  render: function() {
-    var photo_url = this.props.data.photo_url;
+class CollectionItem extends React.Component {
+  render() {
+    const photo_url = this.props.data.photo_url;
 
-    var imgClass = " bg-white rounded shadow p2";
-    var imgStyle;
+    let imgClass = " bg-white rounded shadow p2";
+    let imgStyle;
     if (photo_url.length > 0) {
       imgClass = " has-img bg-center bg-no-repeat bg-cover";
-      var imgStyle = {
+      imgStyle = {
         backgroundImage: "url(" + photo_url + ")"
       }
     }
@@ -45,19 +45,19 @@ var CollectionItem = React.createClass({
       </a>
     )
   }
-});
+}
 
-var CollectionHeader = React.createClass({
-  render: function() {
-    var photo_url = this.props.collection.photo_url;
-    var rootStyle, actionClass;
-    var rootClass = "grey-4 py2"
-    var nameClass = "h1";
+class CollectionHeader extends React.Component {
+  render() {
+    const photo_url = this.props.collection.photo_url;
+    let rootStyle, actionClass;
+    let rootClass = "grey-4 py2"
+    let nameClass = "h1";
     if (photo_url.length > 0) {
       rootClass = "has-img bg-center bg-no-repeat bg-cover mb1";
       nameClass = "h0";
       actionClass = "right-align p1 block white p2 mb2 ";
-      var rootStyle = {
+      rootStyle = {
         backgroundImage: "url(" + photo_url + ")"
       }
     }
@@ -78,4 +78,4 @@ var CollectionHeader = React.createClass({
       </header>
     )
   }
-});
+}
