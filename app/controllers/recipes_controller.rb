@@ -16,16 +16,6 @@ class RecipesController < ApplicationController
     render :recipe_list
   end
 
-  def favorites
-    @recipes = Recipe.where(:user_id => current_user.id, :favorite => true).order(created_at: :desc)
-
-    if @recipes.any?
-      render :favorites
-    else
-      redirect_to "http://noodles.withdraft.com/#favorites"
-    end
-  end
-
   # GET /recipes/1
   def show
     if me_owns_recipe?
@@ -48,17 +38,6 @@ class RecipesController < ApplicationController
   def embed_js
     @recipe = Recipe.find_by_shared_id(params[:shared_id])
     render "recipes/embed.js", layout: false
-  end
-
-  def random
-    if current_user.recipes.count == 0
-      flash[:blue] = "Hold it, you don't have any recipes yet!"
-      redirect_to onboarding_path
-    else
-      recipe = current_user.recipes.order("RANDOM()").first
-      flash[:grey] = "Here's your random recipe."
-      redirect_to recipe_path(recipe)
-    end
   end
 
   def remove_image

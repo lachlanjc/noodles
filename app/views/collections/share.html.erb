@@ -6,7 +6,7 @@
 
 <article class="sm-col-11 md-col-7 mx-auto">
   <% if @recipes.any? %>
-    <%= react_component("RecipeList", recipes_path: "/c/" + @collection.hash_id.to_s + ".json", link_type: "public") %>
+    <%= react_component("RecipeList", recipes_path: "/c/" + @collection.hash_id.to_s + ".json", linkType: "public") %>
   <% else %>
   <div class="bg-white rounded shadow p2 col-6 mx-auto">
     There aren't any recipes in this collection. If you're the owner, add recipes by clicking "Add to Collection" at the bottom of any of your <%= link_to "recipes", recipes_path %>.
