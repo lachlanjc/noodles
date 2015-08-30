@@ -80,10 +80,10 @@ var RecipeList = React.createClass({
           <input
             type="text"
             role="search"
-            className="mt0 mb0 text-input invisible-input full-width inline-block"
             value={this.state.search_text}
             onChange={this._updateSearch}
             placeholder="Search recipes..." />
+            className="text-input invisible-input"
         </div>
         <ul className="recipe-list list-reset">
           {this.state.recipes_filtered.map(function(recipe) {
