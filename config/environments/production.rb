@@ -9,7 +9,7 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
-  config.serve_static_assets = false
+  config.serve_static_files = false
 
   config.assets.js_compressor = :uglifier
   config.assets.css_compressor = :sass
