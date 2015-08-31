@@ -18,7 +18,20 @@
 
     <hr class="col-10">
 
-    <%= react_component("IngredientsChecklist", ingredients: @recipe.ingredients.split("\n")) %>
+    <h2 class="mb0">Ingredients</h2>
+    <p class="grey-4 h5">Tap on ingredients to cross them off.</p>
+
+    <ul class="list-reset recipe-ingredients">
+    <% @recipe.ingredients.lines.each do |item| %>
+      <% item_text = ingredient_processed(item) %>
+      <%= content_tag :li,
+                       item_text.html_safe,
+                       data: { behavior: 'checklist_item' },
+                       class: 'pointer' if strip_tags(item_text).length > 1 %>
+    <% end %>
+    </ul>
+
+    <%# react_component("IngredientsChecklist", ingredients: @recipe.ingredients.split("\n")) %>
 
     <hr class="col-10">
 
@@ -36,7 +49,12 @@
   </aside>
 
   <article class="sm-col-11 md-col-6 mx-auto mt2 p0">
-    <%= react_component("CookInstructions", instructions: @recipe.instructions.split("\n")) %>
+    <% @recipe.instructions.lines.each do |step| %>
+      <%= content_tag :div,
+                       sanitize(step.to_s).html_safe,
+                       data: { behavior: 'checklist_item' },
+                       class: 'h2 grey-2 bg-white rounded shadow pointer p2 block mb2' if strip_tags(step.to_s).length > 1 %>
+    <% end %>
 
     <div class="bg-white rounded shadow p2 block h2 center mb2 grey-2">
       <span>And now you're finished! Enjoy the <%= @recipe.title %>.</span>

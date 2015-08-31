@@ -26,6 +26,9 @@ $(document).ready ->
   $('[data-behavior~=cook_photo_field]').on 'change', ->
     $(this)[0].form.submit()
 
+  $('[data-behavior~=checklist_item]').on 'click', ->
+    $(this).toggleClass('checked')
+
   $('[data-behavior~=autosize]').autosize()
   $('[data-behavior~=editor_instructions]').on 'focus', ->
     this.value = "1. " if this.value.length == 0
