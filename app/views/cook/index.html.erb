@@ -15,7 +15,7 @@
     <h2 class="mb0">Ingredients</h2>
     <p class="grey-4 h5">Tap on ingredients to cross them off.</p>
 
-    <ul class="list-reset recipe-ingredients">
+    <ul class="list-reset text text-normalized recipe-ingredients">
     <% @recipe.ingredients.lines.each do |item| %>
       <% item_text = ingredient_processed(item) %>
       <%= content_tag :li,
