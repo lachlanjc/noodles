@@ -1,26 +1,29 @@
 <% activate_nav!(:analytics_users) %>
-
+<% title "User Analytics" %>
 <%= render "shared/analytics_nav" %>
 
-<article class="sm-col-11 md-col-7 mx-auto">
+<main class="sm-col-11 md-col-7 mx-auto">
 
-  <h1>Users <span class="badge"><%= @users.count %></span></h1>
+  <h1>Users (<%= @users.count %>)</h1>
 
-  <% @users.each do |user| %>
-  <div class="bg-white rounded shadow mb2 p2 text">
-    <h2 class="mt0 inline-block mr1">
-      <%= user.first_name %>
-      <small class="px1 grey-3 h4">#<%= user.id %></small>
-    </h2>
-    <ul class="px1">
-      <li>Recipes: <%= Recipe.where(:user_id => user.id).count %></li>
-      <li>Sessions: <%= user.sign_in_count %></li>
-      <li>Signed up: <%= user.created_at.strftime("%B %e, %Y") %></li>
-      <li>Referring URL: <%= link_to user.referring_url %></li>
-      <li>Landing URL: <%= user.landing_url %></li>
-      <li>Email: <%= link_to user.email, "mailto:" + user.email %></li>
-    </ul>
-  </div>
-  <% end %>
+  <ul class="list-reset">
+    <% @users.each do |user| %>
+      <li class="bg-white rounded shadow mb2 p2 text">
+        <h2 class="mt0 inline-block mr1">
+          <%= user.first_name %>
+          <small class="px1 grey-3 h4">#<%= user.id %></small>
+        </h2>
+        <ul class="text">
+          <li>Recipes: <%= Recipe.where(:user_id => user.id).count %></li>
+          <li>Sessions: <%= user.sign_in_count %></li>
+          <li>Last seen: <%= user.last_sign_in_at.strftime("%m-%e-%y %H:%M") %></li>
+          <li>Signed up: <%= user.created_at.strftime("%B %e, %Y") %></li>
+          <li>Referring URL: <%= link_to user.referring_url %></li>
+          <li>Landing URL: <%= user.landing_url %></li>
+          <li>Email: <%= link_to user.email, "mailto:" + user.email %></li>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
 
-</div>
+</main>
