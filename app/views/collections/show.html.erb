@@ -1,20 +1,11 @@
-<% activate_nav!(:collection) %>
+<% activate_nav!(:collections) %>
 <%- title @collection.name %>
 
 <%= render "shared/nav" %>
-<%= react_component("CollectionHeader", show_edit: true, show_pub: false, collection: @collection.as_json) %>
 
-<article class="sm-col-11 md-col-7 mx-auto mt0">
-  <% if @recipes.any? %>
-    <%= react_component("RecipeList", recipes_path: "/collections/" + @collection.id.to_s + ".json", show_header: false, linkType: "normal") %>
-  <% else %>
-  <div class="bg-white rounded shadow p2 col-6 mx-auto">
-    You don't have any recipes in this collection yet. Add some by clicking "Add to Collection" at the bottom of any of your <%= link_to "recipes", recipes_path %>.
-  </div>
-  <% end %>
-</article>
+<%= react_component("CollectionPage", id: @collection.id, edit: true, pub: false) %>
 
-<div class="modal center" id="shareCollection">
+<div class="modal center" role="dialog" id="shareCollection">
   <%= modal_close %>
   <h2 class="left-align">Share Collection</h2>
   <hr>
@@ -45,7 +36,7 @@
 
 </div>
 
-<div class="modal" id="editCollection">
+<div class="modal" role="dialog" id="editCollection">
   <%= modal_close %>
   <h2>Edit Collection</h2>
   <hr>

@@ -61,7 +61,7 @@ class RecipeList extends React.Component {
         }.bind(this))}
 
         {noSearchResults ?
-          <li className='md-col-8 border bg-darken-1 rounded mt3 p3 center mx-auto'>
+          <BlankSlate width='8'>
             <p className='mb0'>Sorry, no recipes matched your search.</p>
 
             {createFromSearch ?
@@ -69,7 +69,7 @@ class RecipeList extends React.Component {
                 New recipe with this title
               </a>
             : null}
-          </li>
+          </BlankSlate>
         : null}
       </ul>
     )
