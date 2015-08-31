@@ -82,11 +82,11 @@ class RecipeItem extends React.Component {
     const recipeLink = this.props.linkType === 'public' ? this.props.recipe.shared_url : recipe.url;
 
     let indicators = [];
-    recipe.favorite === true ? indicators.push(<IconFavorite classes='ml1 fill-orange' />) : null;
-    recipe.web === true ? indicators.push(<IconWeb classes='ml1 fill-grey-5' />) : null;
-    recipe.photo === true ? indicators.push(<IconPhoto classes='ml1 fill-grey-5' />) : null;
-    recipe.notes === true ? indicators.push(<IconNotes classes='ml1 up-3 fill-grey-5' size='18px' />) : null;
     recipe.collections === true ? indicators.push(<IconCollection classes='ml1 fill-grey-5' size='24px' />) : null;
+    recipe.notes === true ? indicators.push(<IconNotes classes='ml1 up-3 fill-grey-5' size='18px' />) : null;
+    recipe.photo === true ? indicators.push(<IconPhoto classes='ml1 fill-grey-5' />) : null;
+    recipe.web === true ? indicators.push(<IconWeb classes='ml1 fill-grey-5' />) : null;
+    recipe.favorite === true ? indicators.push(<IconFavorite classes='ml1 fill-orange' />) : null;
 
     return (
       <li className='bg-white rounded shadow mb2 p2'>
