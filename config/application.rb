@@ -8,6 +8,6 @@ Bundler.require(*Rails.groups)
 
 module Noodles
   class Application < Rails::Application
-
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
   end
 end

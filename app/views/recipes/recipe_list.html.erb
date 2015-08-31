@@ -1,15 +1,9 @@
-<% if params[:search] %>
-<%- title "Search" %>
-<% else %>
 <%- title "Recipes" %>
-<% end %>
 <% activate_nav!(:recipes) %>
 
 <%= render "shared/nav" %>
 
-<article class="sm-col-11 md-col-7 mx-auto">
-  <%= react_component("RecipeList", show_header: true, show_random: true, createFromSearch: true) %>
-</article>
+<%= react_component("RecipesHome") %>
 
 <%= render "import" %>
 

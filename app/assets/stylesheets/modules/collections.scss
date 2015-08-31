@@ -1,37 +1,20 @@
-.collection-header {
+.coll-header {
   // override nav's .mb2
   @include up($space-2 * -1);
 
-  &.has-img {
-    box-shadow: inset 0 -5rem 6rem rgba(0,0,0,.4);
-    padding-bottom: $space-3;
+  &.coll-w-img {
+    box-shadow: inset 0 -6rem 6rem rgba(0,0,0,.4);
   }
 }
 
-.collection-preview.has-img {
+.coll-preview.coll-w-img {
   box-shadow: inset 0 -2rem 6rem 1rem rgba(0,0,0,.4);
 }
 
-.has-img {
-  .collection-name,
-  div {
-    color: #fff;
-    text-shadow: 0 1px 3px rgba(0,0,0,.2);
-  }
-
-  .btn-action svg {
-    fill: #fff;
-  }
-}
-
-.btn-action svg {
-  @include size(28px);
-  @include up(6px);
-  fill: $grey-4;
-}
-
-.glass {
-  opacity: .8;
+.coll-w-img .coll-name,
+.coll-w-img .coll-desc {
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,.2);
 }
 
 .collection-list-item input:checked {
