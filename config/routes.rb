@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   # Shared recipes
   scope "/s" do
     get "/:shared_id" => "recipes#share", as: :share
+    get "/:shared_id/cook" => "cook#share", as: :public_cook
     get "/:shared_id/save" => "recipes#save_to_noodles", as: :save_to_noodles
   end
 
