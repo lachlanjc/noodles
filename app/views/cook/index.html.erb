@@ -43,16 +43,15 @@
 
       <%= image_tag @recipe.img, alt: "Photo of " + @recipe.title, class: "mt2 mx-auto rounded" if @recipe.img.present? %>
 
-      <%= form_for(@recipe, url: recipe_path(@recipe, cook: true), html: { class: "mt2 pointer block h4"}) do |f| %>
+      <%= form_for(@recipe, url: recipe_path(@recipe, cook: true), html: { class: "pointer h4 grey-1"}) do |f| %>
         <%= f.file_field :img, class: "hide", data: { behavior: "photo_field cook_photo_field" } %>
-        <div class="grey-4 inline-block" data-behavior="photo_button">
-          <%= react_component("IconPhoto", size: "32px", classes: "fill-grey-4") %>
-          <span class="up-10 underline" data-behavior="photo_name">
+        <div data-behavior="photo_button">
+          <span data-behavior="photo_name">
             <%= @recipe.img.url.blank? ? "Add a photo to your recipe" : "Upload a new photo" %>
           </span>
           <% if @recipe.img.url.present? %>
-            <span class="up-10">or</span>
-            <%= link_to("remove this photo", recipe_remove_image_path(@recipe, cook: true), class: "link-reset up-10 underline") %>
+            <span class="grey-4">or</span>
+            <%= link_to("remove this photo", recipe_remove_image_path(@recipe, cook: true), class: "link-reset") %>
           <% end %>
         </div>
       <% end %>
