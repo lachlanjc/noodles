@@ -13,7 +13,7 @@ text @recipe.ingredients
 move_down 15
 
 text "Instructions", :size => 21
-text @recipe.instructions
+text plain_text_from_markdown(@recipe.instructions)
 move_down 15
 
 unless @recipe.source.blank? && @recipe.serves.blank?

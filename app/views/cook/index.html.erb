@@ -43,7 +43,7 @@
   <article class="sm-col-11 md-col-6 mx-auto mt2 p0">
     <% @recipe.instructions.lines.each do |step| %>
       <%= content_tag :div,
-                       sanitize(step.to_s).html_safe,
+                       plain_text_from_markdown(step.to_s).html_safe,
                        data: { behavior: 'checklist_item' },
                        class: 'h2 grey-2 bg-white rounded shadow pointer p2 block mb2' if strip_tags(step.to_s).length > 1 %>
     <% end %>

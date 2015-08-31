@@ -28,4 +28,8 @@ module RecipesHelper
     line.css('p').each { |item| item['itemprop'] = 'recipeIngredient' }
     line.to_s.html_safe
   end
+
+  def plain_text_from_markdown(text)
+    sanitize(strip_tags(markdown(text.to_s)))
+  end
 end
