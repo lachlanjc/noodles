@@ -33,9 +33,13 @@ class CollectionPage extends React.Component {
   renderNoRecipes() {
     return (
       <BlankSlate>
-        <h3 className='mt0'>No recipes in this collection yet.</h3>
-        <p>Add recipes by clicking "Add to Collection" at the bottom of any of your recipes.</p>
-        <a href='/recipes' className='btn bg-blue'>Find some recipes</a>
+        <h3 className='m0'>No recipes in this collection yet.</h3>
+        {this.props.pub === false ?
+          <div className='mt2'>
+            <p>Add recipes by clicking "Add to Collection" at the bottom of any of your recipes.</p>
+            <a href='/recipes' className='btn bg-blue'>Find some recipes</a>
+          </div>
+        : null}
       </BlankSlate>
     )
   }
