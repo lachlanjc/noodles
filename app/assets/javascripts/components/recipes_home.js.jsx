@@ -37,7 +37,7 @@ class RecipesHome extends React.Component {
   }
 
   filterClasses(name) {
-    let classes = 'mr1 inline-block px2 pointer '
+    let classes = 'inline-block px2 pointer '
     this.state.view === name ? classes += 'bg-orange white white-hover bold' : classes += 'grey-1';
     return classes;
   }
