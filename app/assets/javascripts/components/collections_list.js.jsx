@@ -39,7 +39,7 @@ class CollectionItem extends React.Component {
         <div className={'coll-preview rounded shadow mb2 py3' + imgClass} style={imgStyle}>
           <div className='coll-preview-container center'>
             <h2 className='coll-name m0 h1'>{this.props.data.name}</h2>
-            <div className='lead'>{this.props.data.description}</div>
+            <div className='coll-desc lead'>{this.props.data.description}</div>
           </div>
         </div>
       </a>
