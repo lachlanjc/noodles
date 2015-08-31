@@ -2,17 +2,7 @@
 <%- title @collection.name %>
 
 <%= render "shared/nav" %>
-<%= react_component("CollectionHeader", show_edit: false, show_pub: true, collection: @collection.as_json) %>
-
-<article class="sm-col-11 md-col-7 mx-auto">
-  <% if @recipes.any? %>
-    <%= react_component("RecipeList", recipes_path: "/c/" + @collection.hash_id.to_s + ".json", linkType: "public") %>
-  <% else %>
-  <div class="bg-white rounded shadow p2 col-6 mx-auto">
-    There aren't any recipes in this collection. If you're the owner, add recipes by clicking "Add to Collection" at the bottom of any of your <%= link_to "recipes", recipes_path %>.
-  </div>
-  <% end %>
-</article>
+<%= react_component("CollectionPage", id: @collection.id, edit: false, pub: true) %>
 
 <div class="modal" id="shareCollection">
   <%= modal_close %>

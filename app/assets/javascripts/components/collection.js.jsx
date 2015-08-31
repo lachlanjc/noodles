@@ -11,7 +11,8 @@ class CollectionPage extends React.Component {
   }
 
   fetchData() {
-    $.getJSON(`/collections/${this.props.id}.json`, function(response) {
+    const dataPath = this.props.pub === true ? `/c/data/${this.props.id}.json` : `/collections/${this.props.id}.json`;
+    $.getJSON(dataPath, function(response) {
       this.setState({coll: response.collection});
     }.bind(this));
   }
@@ -19,7 +20,7 @@ class CollectionPage extends React.Component {
   renderPage() {
     return (
       <main>
-        <CollectionHeader edit={true} pub={false} coll={this.state.coll} />
+        <CollectionHeader edit={this.props.edit} pub={this.props.pub} coll={this.state.coll} />
         {this.state.coll.recipes.length > 0 ?
           <article className='sm-col-11 md-col-7 mx-auto mt0'>
             <RecipeList recipesCore={this.state.coll.recipes} />
@@ -80,7 +81,7 @@ class CollectionHeader extends React.Component {
         <h1 className='inline-block coll-name m0 h0'>{coll.name}</h1>
         {coll.description.length > 0 ? <p className='h3 mt1 mb0 coll-desc'>{coll.description}</p> : null}
         {this.props.pub === true ?
-          <div className='mt1 mb1 h4 grey-3'>Published by {coll.publisher}</div>
+          <p className='mt1 mb1 coll-desc h4'>Published by {coll.publisher}</p>
         : null}
       </header>
     )

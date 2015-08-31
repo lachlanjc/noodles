@@ -15,7 +15,11 @@ class CollectionsController < ApplicationController
   end
 
   def share
-    @collection = Collection.find_by_hash_id(params[:hash_id])
+    if params[:hash_id]
+      @collection = Collection.find_by_hash_id(params[:hash_id])
+    else
+      set_collection
+    end
     populate_collection
   end
 
