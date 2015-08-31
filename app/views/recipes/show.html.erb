@@ -21,7 +21,7 @@
     <h1 class="m0 inline" itemprop="name"><%= @recipe.title %></h1>
     <div class="text mt2" itemprop="description"><%= markdown(@recipe.description.to_s) %></div>
 
-    <%= render "recipe_body", cache: true %>
+    <%= render "recipe_body" %>
   </div>
 
   <%= render "shared/social" if @recipe.shared? %>

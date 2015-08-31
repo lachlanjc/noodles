@@ -34,7 +34,7 @@
     <p class="grey-3 mb1">Shared by <%= @owner %></p>
     <div itemprop="description"><%= markdown(@recipe.description) %></div>
     <%= render "shared/social" if me_owns_recipe? %>
-    <%= render "recipe_body", cache: true %>
+    <%= render "recipe_body" %>
   </div>
 
   <%# If it's your recipe, hint about saving %>
