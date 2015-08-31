@@ -6,7 +6,7 @@
 <article class="document">
 
   <%= form_for(@recipe, data: { remote: true }) do |f| %>
-    <label class="control right inline-block m0">
+    <label class="control right inline-block m0 print-hide">
       <%= f.check_box :favorite, class: "control-checkbox", data: { behavior: "recipe_favorite_trigger" } %>
       <%= react_component("IconFavoriteOutline", { classes: "fill-orange", size: "32" }, { class: "control-indicator" }) %>
       <%= react_component("IconFavorite", { classes: "fill-orange", size: "32" }, { class: "control-indicator-checked" }) %>
