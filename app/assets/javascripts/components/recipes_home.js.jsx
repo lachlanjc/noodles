@@ -35,7 +35,7 @@ class RecipesHome extends React.Component {
   }
 
   filterClasses(name) {
-    let classes = 'inline-block px2 pointer '
+    let classes = 'filterbar-item inline-block px2 pointer '
     this.state.view === name ? classes += 'bg-orange white white-hover bold' : classes += 'grey-1';
     return classes;
   }
@@ -59,9 +59,9 @@ class RecipesHome extends React.Component {
       <main className='sm-col-11 md-col-8 mx-auto'>
         <header className='center'>
           <h1 className='mb1'>Recipes</h1>
-          <section role='menubar' style={{lineHeight: 2}}>
-            <a role='menuitem' onClick={e => this.findAll(e)} className={this.filterClasses('all')} style={{borderRadius: 16}}>All</a>
-            <a role='menuitem' onClick={e => this.findFav(e)} className={this.filterClasses('fav')} style={{borderRadius: 16}}>Favorites</a>
+          <section role='menubar' className='filterbar'>
+            <a role='menuitem' onClick={e => this.findAll(e)} className={this.filterClasses('all')}>All</a>
+            <a role='menuitem' onClick={e => this.findFav(e)} className={this.filterClasses('fav')}>Favorites</a>
             {randomUrl ? <a role='menuitem' href={randomUrl} className={this.filterClasses('rdm')}>Random</a> : null}
           </section>
         </header>
