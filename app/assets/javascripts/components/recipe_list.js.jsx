@@ -92,7 +92,7 @@ class RecipeItem extends React.Component {
         <a href={recipeLink} className='link-reset'>
           <div className='right'>{indicators}</div>
           <h3 className='m0'>{recipe.title}</h3>
-          <div className='block text'>{recipe.description_preview}</div>
+          <p className='m0 text'>{recipe.description_preview}</p>
         </a>
       </li>
     )
