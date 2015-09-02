@@ -18,3 +18,15 @@
 @import "modules/recipe-list";
 @import "modules/tabs";
 // @import "modules/tooltips";
+
+.busy {
+  background: url(<%= asset_path 'loading.svg' %>) no-repeat;
+  background-size: 100%;
+  height: 32px;
+  width: 32px;
+}
+
+.busy-large {
+  width: 64px;
+  height: 64px;
+}
