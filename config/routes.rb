@@ -13,8 +13,6 @@ Rails.application.routes.draw do
     get "/remove_image" => "recipes#remove_image", as: :remove_image
   end
 
-  get "/favorites" => "recipes#favorites", as: :favorites
-  get "/random" => "recipes#random", as: :random_recipe
   get "/import" => "recipes#scrape", as: :import
   get "/embed/:shared_id" => "recipes#embed_js", as: :embed
 

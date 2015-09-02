@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
   include RecipesHelper
   include ScrapingHelper
 
-  before_filter :please_sign_in, only: [:index, :favorites, :random, :create]
+  before_filter :please_sign_in, only: [:index, :create]
   before_filter :set_recipe, only: [:show, :edit, :update, :update_notes, :destroy]
   before_filter :locate_recipe, only: [:notes, :export_pdf, :remove_image, :share_this_recipe, :un_share]
   before_filter :not_the_owner, only: [:update, :notes, :export_pdf, :remove_image, :share_this_recipe, :un_share, :destroy]
