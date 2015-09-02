@@ -2,10 +2,11 @@
 #= require jquery_ujs
 #= require react
 #= require react_ujs
-#= require_tree ./components
+#= require lodash/lodash
 #= require zeroclipboard
 #= require modals
 #= require autosize
+#= require_tree ./components
 
 $(document).ready ->
   $('[data-behavior~=flash]').on 'click', ->
