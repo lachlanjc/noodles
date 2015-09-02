@@ -177,13 +177,6 @@ class RecipesController < ApplicationController
       params.require(:recipe).permit(:title, :description, :img, :ingredients, :instructions, :favorite, :source, :author, :serves, :notes, :shared_id, { collections: [] })
     end
 
-    def please_sign_in
-      unless user_signed_in?
-        flash[:red] = "Please log in to an account first!"
-        redirect_to root_url
-      end
-    end
-
     def not_the_owner
       if not_my_recipe?
         flash[:red] = "That's not yours."
