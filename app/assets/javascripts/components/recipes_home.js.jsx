@@ -15,7 +15,8 @@ class RecipesHome extends React.Component {
 
   fetchData() {
     $.getJSON('/recipes.json', function(response) {
-      this.setState({recipesCore: response.recipes, recipesCurrent: response.recipes});
+      const recipes = _.compact(response.recipes);
+      this.setState({recipesCore: recipes, recipesCurrent: recipes});
     }.bind(this))
   }
 
@@ -27,11 +28,8 @@ class RecipesHome extends React.Component {
   }
 
   findFav(e) {
-    const favRecipes = this.state.recipesCore.filter(function(r) {
-      return r.favorite === true;
-    });
     this.setState({
-      recipesCurrent: favRecipes,
+      recipesCurrent: _.where(this.state.recipesCore, { 'favorite': true }),
       view: 'fav'
     });
   }
@@ -55,7 +53,7 @@ class RecipesHome extends React.Component {
 
   render() {
     const recipes = this.state.recipesCurrent;
-    const randomUrl = (recipes.length > 0) ? '/recipes/' + recipes[Math.floor(Math.random() * recipes.length)].id.toString() : null;
+    const randomUrl = (recipes.length > 0) ? '/recipes/' + _.sample(_.compact(recipes)).id.toString() : null;
 
     return (
       <main className='sm-col-11 md-col-8 mx-auto'>

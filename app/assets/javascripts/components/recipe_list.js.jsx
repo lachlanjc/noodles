@@ -22,16 +22,15 @@ class RecipeList extends React.Component {
   }
 
   _updateSearch(e) {
-    const searchText = e.target.value;
+    const searchText = _.trim(e.target.value.toLowerCase());
     this.setState({searchText: searchText});
 
     if (searchText.length > 0) {
-      const matchingRecipes = this.props.recipesCore.filter(function(l) {
-        return l.title.toLowerCase().match(searchText.toLowerCase().trim());
-      }.bind(this));
-      this.setState({recipes: matchingRecipes});
+      const recipes = _.filter(this.props.recipesCore, function(l) {
+        return _.trim(l.title.toLowerCase()).match(_.trim(searchText.toLowerCase()));
+      });
+      this.setState({recipes: recipes});
     } else {
-      this.focusSearch();
       this.setState({recipes: this.props.recipesCore});
     }
   }
