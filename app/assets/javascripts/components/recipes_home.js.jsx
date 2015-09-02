@@ -52,8 +52,8 @@ class RecipesHome extends React.Component {
   }
 
   render() {
-    const recipes = this.state.recipesCurrent;
-    const randomUrl = (recipes.length > 0) ? '/recipes/' + _.sample(_.compact(recipes)).id.toString() : null;
+    const recipes = _.compact(this.state.recipesCurrent);
+    const randomUrl = (recipes.length > 0) ? '/recipes/' + _.sample(recipes).id.toString() : null;
 
     return (
       <main className='sm-col-11 md-col-8 mx-auto'>
