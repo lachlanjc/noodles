@@ -23,11 +23,11 @@ class CollectionIndex extends React.Component {
 
 class CollectionItem extends React.Component {
   render() {
-    const photo_url = this.props.data.photo_url;
+    const data = this.props.data;
 
     let imgClass = ' bg-white rounded shadow p2';
     let imgStyle;
-    if (photo_url.length > 0) {
+    if (data.photo_url.length > 0) {
       imgClass = ' coll-w-img bg-center bg-no-repeat bg-cover';
       imgStyle = {
         backgroundImage: 'url(' + photo_url + ')'
@@ -35,11 +35,11 @@ class CollectionItem extends React.Component {
     }
 
     return (
-      <a href={this.props.data.url} className='link-reset'>
+      <a href={data.url} className='link-reset'>
         <div className={'coll-preview rounded shadow mb2 py3' + imgClass} style={imgStyle}>
           <div className='coll-preview-container center'>
-            <h2 className='coll-name m0 h1'>{this.props.data.name}</h2>
-            <div className='coll-desc lead'>{this.props.data.description}</div>
+            <h2 className='coll-name m0 h1'>{data.name}</h2>
+            <div className='coll-desc lead'>{data.description}</div>
           </div>
         </div>
       </a>
