@@ -115,7 +115,7 @@ class RecipesController < ApplicationController
     if @recipe.save
       @recipe.shared_id = generate_shared_id(@recipe.id)
       @recipe.save
-      flash[:green] = "Nice! Check out your new recipe:"
+      flash[:green] = "Awesome, you've saved your new recipe."
       redirect_to @recipe
     else
       render :edit
