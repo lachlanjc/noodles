@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class RecipesControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+
   setup do
     @recipe = recipes(:one)
   end
