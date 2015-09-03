@@ -20,7 +20,7 @@ class RecipesControllerTest < ActionController::TestCase
 
   test "should create recipe" do
     assert_difference('Recipe.count') do
-      post :create, recipe: { description: @recipe.description, ingredients: @recipe.ingredients, instructions: @recipe.instructions, title: @recipe.title }
+      post :create, recipe: { title: @recipe.title, id: 1, description: @recipe.description, ingredients: @recipe.ingredients, instructions: @recipe.instructions }
     end
 
     assert_redirected_to recipe_path(assigns(:recipe))
