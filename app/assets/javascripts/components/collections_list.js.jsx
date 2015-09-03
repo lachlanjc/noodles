@@ -30,7 +30,7 @@ class CollectionItem extends React.Component {
     if (data.photo_url.length > 0) {
       imgClass = ' coll-w-img bg-center bg-no-repeat bg-cover';
       imgStyle = {
-        backgroundImage: 'url(' + photo_url + ')'
+        backgroundImage: 'url(' + data.photo_url + ')'
       }
     }
 
