@@ -22,6 +22,7 @@ class RecipesControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to recipe_path(assigns(:recipe))
+    assert_equal 'Awesome, you\'ve saved your new recipe.', flash[:green]
   end
 
   test "should show recipe" do
