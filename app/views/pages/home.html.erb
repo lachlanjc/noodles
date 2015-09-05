@@ -36,6 +36,7 @@
         <%= link_to t("general.home"), root_url, class: "px1 orange regular active" %>
         <%= link_to t("general.features"), "http://noodles.withdraft.com/", class: "px1 orange regular" %>
         <%= link_to t("general.about"), help_path, class: "px1 orange regular" %>
+        <%= link_to t("general.sign_out"), sign_out_path, method: :delete, class: "px1 orange regular" %>
       </div>
 
       <div class="flex-auto">
@@ -48,8 +49,7 @@
 
       <div>
         <% if user_signed_in? %>
-          <%= link_to t("general.sign_out"), sign_out_path, method: :delete, class: "px1 orange regular" %>
-          <%= link_to t("general.your_recipes") + " >>", recipes_path, class: "px1 orange" %>
+          <%= link_to "Your recipes →", recipes_path, class: "px1 orange" %>
         <% else %>
           <%= link_to t("general.sign_in"), sign_in_path, class: "px1 orange regular" %>
         <% end %>
@@ -62,36 +62,45 @@
         <a class="btn bg-orange btn-lg mt2" onclick="_gs('event', 'Clicked hero button'); window.location='<%= sign_up_path %>'">Sign Up</a>
       </div>
     </header>
-    <p class="lead sm-col-10 md-col-8 mx-auto px2 left-align mt3 mb2">Noodles is a simple library of all your recipes. It takes just a few clicks to add a recipe, and you'll never worry about finding one later. And Noodles is designed for the kitchen — cooking is hard enough as it is. No more folders of print-outs and scribbled notecards.</p>
-    <article class="sm-col-11 md-col-10 mx-auto mt3 md-flex flex-between">
-      <section class="sm-col-11 sm-block m1 md-col-3 bg-white rounded shadow py2 px3 bs-bb">
+    <p class="lead px3 md-col-8 mx-auto left-align mt3 mb2">Noodles is a simple library of all your recipes. It takes just a few clicks to add a recipe, and you'll never worry about finding one later. And Noodles is designed for the kitchen — cooking is hard enough as it is. No more folders of print-outs and scribbled notecards, just an easy, organized list.</p>
+    <article class="px3 md-col-8 mx-auto mt3 md-flex flex-between">
+      <section class="left-align bs-bb mr3">
         <div class="circle bg-orange shadow inline-block mx-auto" style="line-height: .9">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="m1 fill-white"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
         </div>
-        <h3 class="regular mt1">Share Recipes</h3>
-        <p>Share favorites with friends with a quick link (they can save their own copies!), embed a recipe online, or even download a PDF.</p>
+        <h3 class="regular mt1">Sharing</h3>
+        <p>Noodles recipes are private, but you share a public link, embed one on the web, or even download a PDF.</p>
         <p><a href="http://www.getnoodl.es/s/2rAW0DA" class="btn bg-blue">Check out a recipe</a></p>
       </section>
-      <section class="sm-col-11 sm-block m1 md-col-4 bg-white rounded shadow p2 bs-bb">
+      <section class="left-align bs-bb">
         <div class="circle bg-orange shadow inline-block mx-auto" style="line-height: .9">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="m1 fill-white"><path d="M8.1 13.34l2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/></svg>
         </div>
         <h3 class="regular mt1">Cook Mode</h3>
-        <p>In the kitchen, Cook Mode helps you out. It features big text, a minimal, focused interface, ingredient checklists, notes, and more.</p>
+        <p>Easily follow a recipe while you're cooking &mdash; check off ingredients, add notes, save photos, and more.</p>
         <p><a href="http://www.getnoodl.es/recipes/45/cook" class="btn bg-blue">Try Cook Mode</a></p>
       </section>
-      <section class="sm-col-11 sm-block m1 md-col-3 bg-white rounded shadow py2 px3 bs-bb">
+    </article>
+    <article class="px3 md-col-8 mx-auto mt3 md-flex flex-between">
+      <section class="left-align bs-bb md-col-6 mr3">
         <div class="circle bg-orange shadow inline-block mx-auto" style="line-height: .9">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="m1 fill-white"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
         </div>
         <h3 class="regular mt1">Collections</h3>
-        <p>Organize your recipes into collections, which are groups of recipes. Then, share a collection with just a click.</p>
+        <p>Organize recipes into collections, or send a public link to the collection so friends can use the recipes.</p>
         <p><a href="http://www.getnoodl.es/c/2A1J3Q" class="btn bg-blue">See a collection</a></p>
       </section>
+      <section class="left-align bs-bb md-col-6">
+        <div class="circle bg-orange shadow inline-block mx-auto" style="line-height: .9">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="m1 fill-white"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
+        </div>
+        <h3 class="regular mt1">Import from the Web</h3>
+        <p>Find an awesome recipe on the web? Paste in the link and Noodles will save the recipe for you.</p>
+      </section>
     </article>
-    <section class="mx-auto sm-col-10 md-col-8">
-      <blockquote class="lead sm-col-9 mx-auto mt2">
-        &ldquo;Whether you want to keep your own recipes or you need to jot a recipe you find online or on TV, this website is handy.&rdquo;
+    <section class="mx-auto px3 md-col-6">
+      <blockquote class="h3 mx-auto mt2">
+        &ldquo;Whether you want to keep your own recipes or you need to jot a recipe you find online or on TV, Noodles is handy.&rdquo;
       </blockquote>
       <h1 class="regular mt2">Noodles is totally free. Try it out!</h1>
       <a class="btn bg-orange btn-lg inline-block mt1" onclick="_gs('event', 'Clicked hero button'); window.location='<%= sign_up_path %>'">Sign Up</a>
