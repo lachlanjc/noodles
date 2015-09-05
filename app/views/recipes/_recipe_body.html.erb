@@ -14,7 +14,10 @@
 
 <h2 class="mt2">Details</h2>
 <% if @recipe.source.present? %>
-<p>Source: <%= auto_link(@recipe.source, html: {rel: 'nofollow'}) %>
+<p>
+  Source:
+  <%= auto_link(@recipe.source, :html => { :target => '_blank' }) { |text| text.gsub(/http(s?):\/\//, '') } %>
+</p>
 <% end %>
 <%= content_tag :p, "Author: #{@recipe.author}" if @recipe.author.present? %>
 <%= content_tag :p, "Yield: #{@recipe.serves}" if @recipe.serves.present? %>
