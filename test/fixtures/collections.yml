@@ -1,0 +1,5 @@
+one:
+  name: "Desserts"
+  description: "The sweeter the better."
+  user_id: 1
+  id: 1
