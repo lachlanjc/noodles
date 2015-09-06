@@ -70,7 +70,7 @@ var NoteEditor = React.createClass({
     return (
       <div>
         <div dangerouslySetInnerHTML={this.produceRenderedNotes()} />
-        <button className="btn bg-blue mt1 mb2 print-hide" onClick={this.toggleEditing}>Edit Notes</button>
+        <button className="btn bg-blue mt1 mb2" onClick={this.toggleEditing}>Edit Notes</button>
       </div>
     );
   },
