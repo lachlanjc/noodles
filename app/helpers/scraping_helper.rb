@@ -67,8 +67,12 @@ module ScrapingHelper
     end
     recipe.shared_id = generate_shared_id(recipe.id)
     recipe.save
-    flash[:green] = flash_text
-    redirect_to recipe
+    if request.xhr?
+      render text: recipe.id
+    else
+      flash[:green] = flash_text
+      redirect_to recipe
+    end
   end
 
   # Wombat returns arrays for ingredients and instructions.

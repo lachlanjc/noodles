@@ -1,0 +1,18 @@
+<h3 class="mt0">Ingredients</h1>
+<div class="text text-normalized recipe-ingredients mb2">
+  <% @recipe.ingredients.lines.each do |line| %>
+    <%= ingredient_processed(line).html_safe %>
+  <% end %>
+</div>
+
+<h3 class="mt2">Instructions</h3>
+<div class="text text-normalized" itemprop="recipeInstructions">
+  <%= sanitize markdown(@recipe.instructions) %>
+</div>
+
+<h3 class="mt2">Details</h3>
+<%= content_tag :p, "Author: #{@recipe.author}" if @recipe.author.present? %>
+<%= content_tag :p, "Yield: #{@recipe.serves}" if @recipe.serves.present? %>
+<% if @recipe.author.blank? && @recipe.serves.present? %>
+  <p class="grey-2">We couldn't find an author or yield for this recipe.</p>
+<% end %>

@@ -31,6 +31,12 @@ Rails.application.routes.draw do
     get "/:hash_id" => "collections#share", as: :collection_share
   end
 
+  scope '/explore' do
+    get '/', to: 'explore#index', as: :explore
+    get '/results', to: 'explore#results'
+    get '/preview', to: 'explore#preview'
+  end
+
   get '/about', to: 'pages#about', as: :about
   get '/help', to: 'pages#about', as: :help
   get '/docs', to: 'pages#docs', as: :docs
