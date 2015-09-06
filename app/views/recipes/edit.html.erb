@@ -1,11 +1,28 @@
 <% activate_nav!(:edit_recipe) %>
-<%= stylesheet_link_tag "editor" %>
 
-<%= link_to recipes_path, class: "logo-nav fixed" do %>
-  <%= inline_svg("home.svg") %>
+<style>
+textarea {
+  line-height: 1.75;
+  min-width: 32rem;
+}
+
+@media (max-width: 48em) {
+  .home {
+    display: inline-block;
+
+    svg {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+</style>
+
+<%= link_to recipes_path, class: 'm2 home fixed' do %>
+  <%= inline_svg 'home.svg', class: 'fill-grey-4', style: 'width: 32px; height: 32px;' %>
 <% end %>
 
-<main class="md-col-8 mx-auto py1 px2">
+<main class="md-col-8 mx-auto p2">
 <%= form_for(@recipe) do |f| %>
 
   <%= f.file_field :img, class: "hide", data: { behavior: "photo_field" } %>
@@ -62,13 +79,13 @@
     <h2 class="mt0">Details</h2>
 
     <%= f.label :source, class: "inline-block" %><small class="ml1 grey-4">Where did this recipe come from?</small>
-    <%= f.text_field :source, class: "text-input" %>
+    <%= f.text_field :source, class: "text-input md-col-8" %>
 
     <%= f.label :author, class: "inline-block" %><small class="ml1 grey-4">Who originally wrote this recipe?</small>
-    <%= f.text_field :author, class: "text-input" %>
+    <%= f.text_field :author, class: "text-input md-col-8" %>
 
     <%= f.label :serves, "Yield", class: "inline-block" %><small class="ml1 grey-4">How many servings does your recipe produce?</small>
-    <%= f.text_field :serves, class: "text-input" %>
+    <%= f.text_field :serves, class: "text-input md-col-8" %>
   </section>
 
   <%= f.submit t("general.save"), class: "btn bg-grey-4 mt3 mb3", data: { disable_with: "Saving..." } %>

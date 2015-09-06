@@ -1,11 +1,17 @@
 @media print {
-  .print-show {
+  .hide.print-show {
     display: block !important;
   }
 
-  .header-indicator,
-  .print-hide {
+  .print-hide,
+  .btn-paper,
+  .btn-paper-mini,
+  .filterbar {
     display: none !important;
+  }
+
+  main {
+    width: 100% !important;
   }
 
   * {

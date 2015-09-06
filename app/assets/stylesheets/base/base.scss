@@ -1,13 +1,9 @@
 .shadow {
-  @include shadow-compact;
-}
-
-.elegance {
-  @include elegance;
+  box-shadow: $shadow;
 }
 
 .document {
-  @include shadow-compact;
+  box-shadow: $shadow;
   @extend .mx-auto;
   background: #fff;
   border-radius: $border-radius;

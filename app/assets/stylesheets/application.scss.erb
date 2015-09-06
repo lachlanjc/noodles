@@ -1,5 +1,4 @@
 @import "variables";
-@import "mixins";
 
 @import "base/base";
 @import "base/color";
@@ -8,16 +7,13 @@
 @import "base/type";
 @import "bass/*";
 
-@import "modules/bio";
 @import "modules/buttons";
 @import "modules/collections";
 @import "modules/filterbar";
 @import "modules/forms";
 @import "modules/modals";
 @import "modules/recipe";
-@import "modules/recipe-list";
 @import "modules/tabs";
-// @import "modules/tooltips";
 
 .busy {
   background: url(<%= asset_path 'loading.svg' %>) no-repeat;
@@ -29,4 +25,21 @@
 .busy-large {
   width: 64px;
   height: 64px;
+}
+
+.btn-paper {
+  bottom: $space-2;
+  line-height: .9; // fixes extra bottom "padding"
+  right: $space-2;
+
+  svg {
+    width: $space-2;
+    height: $space-2;
+  }
+}
+
+.btn-paper-mini {
+  bottom: 90px;
+  line-height: .9;
+  right: 27px;
 }

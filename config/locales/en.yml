@@ -6,7 +6,7 @@ en:
     delete_collection_forever: "Delete this collection forever? Forever is a long, long time."
     delete_forever: "Delete your recipe forever? Forever is a long, long time."
     delete: "Delete"
-    description: "Noodles is a simple online to keep, cook, and share all your recipes. Cook better with everything in Noodles."
+    description: "Noodles is a simple app to keep, cook, and share all your recipes. Cook better with everything in Noodles."
     edit: "Edit"
     favorite: "Favorite"
     favorites: "Favorites"
@@ -62,7 +62,7 @@ en:
       delete: "Delete this Recipe"
       delete_forever: "Delete your recipe forever? Forever is a long, long time."
     printing:
-      print_copy: "Keep, cook, and share your recipes for free with Noodles. Try it at http://www.getnoodl.es/"
+      print_copy: "Noodles is a simple app to keep, cook, and share your recipes. Get it free at www.getnoodl.es"
 
   help:
     help:

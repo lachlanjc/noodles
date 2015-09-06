@@ -1,6 +1,7 @@
 .coll-header {
   // override nav's .mb2
-  @include up($space-2 * -1);
+  position: relative;
+  top: $space-2 * -1;
 
   &.coll-w-img {
     box-shadow: inset 0 -6rem 6rem rgba(0,0,0,.4);

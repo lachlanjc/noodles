@@ -77,7 +77,7 @@ var NoteEditor = React.createClass({
 
   render: function() {
     return (
-      <div className="border px2 mt2 rounded notes text text-normalized">
+      <div className="border px2 mt2 rounded notes text text-normalized print-hide">
         <h3 className="mt1 mb1 py1 center grey-4 caps regular border-bottom border-darken-2" style={{borderBottomStyle: "dashed"}}>Notes</h3>
         {(this.state.editing === true) ? this.renderEditing() : this.renderNotes()}
       </div>

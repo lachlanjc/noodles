@@ -1,8 +1,6 @@
 @import "variables";
-@import "mixins";
 
 @import "base/reset";
-@import "base/base";
 @import "base/color";
 @import "base/type";
 @import "bass/*";
@@ -27,6 +25,10 @@
 .btn-lg {
   font-size: $h2;
   padding: $space-2 $space-3;
+}
+
+.shadow {
+  box-shadow: 0 1px 2px rgba(100,100,100,.2);
 }
 
 .bs-bb {

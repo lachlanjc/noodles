@@ -182,16 +182,17 @@
   }
 }
 
+/*
 @media #{$breakpoint-lg} {
-  // .lg-col {
-  //   float: left;
-  //   box-sizing: border-box;
-  // }
-  //
-  // .lg-col-right {
-  //   float: right;
-  //   box-sizing: border-box;
-  // }
+  .lg-col {
+    float: left;
+    box-sizing: border-box;
+  }
+
+  .lg-col-right {
+    float: right;
+    box-sizing: border-box;
+  }
 
   .lg-col-1 {
     width: (1/12 * 100%);
@@ -241,3 +242,4 @@
     width: 100%;
   }
 }
+*/
