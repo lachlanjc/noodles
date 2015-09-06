@@ -31,35 +31,36 @@
     </script>
   </head>
   <body class="center m0 bg-grey-6">
-    <nav role="navigation" class="md-flex bg-white p2 print-hide">
-      <div>
-        <%= link_to t("general.home"), root_url, class: "px1 orange regular active" %>
-        <%= link_to t("general.features"), "http://noodles.withdraft.com/", class: "px1 orange regular" %>
-        <%= link_to t("general.about"), help_path, class: "px1 orange regular" %>
-        <%= link_to t("general.sign_out"), sign_out_path, method: :delete, class: "px1 orange regular" %>
-      </div>
+    <header class="hero-container bg-cover bg-center bg-no-repeat" style="background-image:url(<%= asset_path 'home/background.jpg' %>)">
+      <nav role="navigation" class="md-flex p2 white print-hide">
+        <div>
+          <%= link_to t("general.home"), root_url, class: "px1 link-reset white regular" %>
+          <%= link_to t("general.features"), "http://noodles.withdraft.com/", class: "px1 link-reset white regular" %>
+          <%= link_to "Blog", announcements_path, class: "px1 link-reset white link-reset white" %>
+          <%= link_to t("general.about"), help_path, class: "px1 link-reset white regular" %>
+          <%= link_to t("general.sign_out"), sign_out_path, method: :delete, class: "px1 link-reset white regular" %>
+        </div>
 
-      <div class="flex-auto">
-        <% unless flash.empty? %>
-        <% flash.each do |key, value| %>
-        <p class="mb0 center <%= flash_color_class(key) %>"><%= value unless value.blank? %></p>
-        <% end %>
-        <% end %>
-      </div>
+        <div class="flex-auto">
+          <% flash.each do |key, value| %>
+            <p class="mb0 white"><%= value.to_s %></p>
+          <% end %>
+        </div>
 
-      <div>
-        <% if user_signed_in? %>
-          <%= link_to "Your recipes →", recipes_path, class: "px1 orange" %>
-        <% else %>
-          <%= link_to t("general.sign_in"), sign_in_path, class: "px1 orange regular" %>
-        <% end %>
-      </div>
-    </nav>
+        <div>
+          <% if user_signed_in? %>
+            <%= link_to "Your recipes →", recipes_path, class: "px1 link-reset white" %>
+          <% else %>
+            <%= link_to t("general.sign_in"), sign_in_path, class: "px1 link-reset white regular" %>
+          <% end %>
+        </div>
+      </nav>
 
-    <header class="hero bg-cover bg-center bg-no-repeat" style="background-image:url(<%= asset_path 'home/background.jpg' %>)">
-      <div class="md-col-8 sm-col-11 mx-auto">
+      <div class="hero-content md-col-8 sm-col-11 mx-auto">
         <h1 class="white h0 regular">Keep, cook, and share all your recipes with Noodles.</h1>
-        <a class="btn bg-orange btn-lg mt2" onclick="_gs('event', 'Clicked hero button'); window.location='<%= sign_up_path %>'">Sign Up</a>
+        <a class="btn bg-orange btn-lg mt2"
+           style="text-shadow: none;"
+           onclick="_gs('event', 'Clicked hero button'); window.location='<%= sign_up_path %>'">Sign Up</a>
       </div>
     </header>
     <p class="lead px3 md-col-8 mx-auto left-align mt3 mb2">Noodles is a simple library of all your recipes. It takes just a few clicks to add a recipe, and you'll never worry about finding one later. And Noodles is designed for the kitchen — cooking is hard enough as it is. No more folders of print-outs and scribbled notecards, just an easy, organized list.</p>
