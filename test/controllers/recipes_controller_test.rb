@@ -4,6 +4,7 @@ class RecipesControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
   setup do
+    sign_in users(:one)
     @recipe = recipes(:one)
   end
 
