@@ -24,3 +24,4 @@ two:
   source: "http://goodtoast.getnoodl.es/"
   serves: "Lots of hungry people after their tiring rest"
   notes: "Dry bread works too!"
+  collections: [1]
