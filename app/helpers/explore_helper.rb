@@ -10,6 +10,9 @@ module ExploreHelper
     when 'epicurious'
       load 'explore/epicurious.rb'
       results = EpicuriousSearchScraper.new.scrape(query)
+    when 'allrecipes'
+      load 'explore/allrecipes.rb'
+      results = AllrecipesSearchScraper.new.scrape(query)
     end
     results
   end
