@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root "pages#home"
   get "/home" => "pages#home_forced", as: :home
+  get "/styleguide" => "pages#styleguide", as: :styleguide
 
   resources :recipes do
     get "/cook" => "cook#index"

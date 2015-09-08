@@ -11,4 +11,7 @@ class PagesController < ApplicationController
 
   def about
   end
+
+  def styleguide
+  end
 end
