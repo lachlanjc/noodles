@@ -92,10 +92,14 @@ GEM
     execjs (2.6.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    hangry (0.0.2)
+      activesupport
+      nokogiri
     hashids (1.0.2)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     i18n (0.7.0)
+    ingreedy (0.0.4)
     intercom-rails (0.2.28)
       activesupport (> 3.0)
     jbuilder (2.3.1)
@@ -249,7 +253,9 @@ DEPENDENCIES
   devise
   devise_marketable
   dotenv-rails
+  hangry
   hashids
+  ingreedy
   intercom-rails
   jbuilder
   mandrill_dm
