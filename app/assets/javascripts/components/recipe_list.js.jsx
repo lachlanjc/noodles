@@ -22,12 +22,12 @@ class RecipeList extends React.Component {
   }
 
   _updateSearch(e) {
-    const searchText = _.trim(e.target.value.toLowerCase());
+    const searchText = _.trimLeft(e.target.value.toLowerCase());
     this.setState({searchText: searchText});
 
     if (searchText.length > 0) {
       const recipes = _.filter(this.props.recipesCore, function(l) {
-        return _.trim(l.title.toLowerCase()).match(_.trim(searchText.toLowerCase()));
+        return _.trim(l.title.toLowerCase()).match(searchText);
       });
       this.setState({recipes: recipes});
     } else {
@@ -37,8 +37,15 @@ class RecipeList extends React.Component {
 
   render() {
     const linkType = this.props.linkType || 'normal';
-    const noSearchResults = (this.state.searchText.length > 0) && (this.state.recipes.length === 0);
-    const createFromSearch = (this.state.searchText.length > 0) && ((this.props.createFromSearch || false) === true);
+
+    const searching = this.state.searchText.length > 0;
+    const recipeCount = this.props.recipesCore.length
+    const searchLabel = 'Search ' +
+                        (recipeCount != 1 ? 'these ' : 'this ') +
+                        recipeCount + (recipeCount != 1 ? ' recipes' : ' recipe') + '...';
+
+    const noSearchResults = searching && (this.state.recipes.length === 0);
+    const createFromSearch = searching && ((this.props.createFromSearch || false) === true);
 
     return (
       <ul className='list-reset py2'>
@@ -51,7 +58,7 @@ class RecipeList extends React.Component {
               value={this.state.searchText}
               onChange={e => this._updateSearch(e)}
               style={{height: 36}}
-              placeholder='Search these recipes...'
+              placeholder={searchLabel}
               autoFocus='true' />
         </div>
 
