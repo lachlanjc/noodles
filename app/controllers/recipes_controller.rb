@@ -15,12 +15,7 @@ class RecipesController < ApplicationController
   end
 
   def show
-    if me_owns_recipe?
-      @shared_url = shared_url(@recipe)
-      @embed_code = '<script src="http://www.getnoodl.es/embed/' + @recipe.shared_id.to_s + '"></script>'
-    else
-      render :locked, status: 403
-    end
+    render :locked, status: 403 unless me_owns_recipe?
   end
 
   def new

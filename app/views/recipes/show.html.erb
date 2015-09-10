@@ -1,5 +1,6 @@
 <%- title @recipe.title.html_safe %>
 <% activate_nav!(:recipes) %>
+<% @shared_url = shared_url(@recipe) %>
 
 <%= render "shared/nav" %>
 
@@ -117,7 +118,9 @@
 
     <div class="content content-3 p1 border rounded-bottom">
       <p>Copy and paste the code below onto your website or blog to embed this recipe.</p>
-      <pre class="m0 p1 border rounded bg-grey-6 text"><%= @embed_code %></pre>
+      <pre class="m0 p1 border rounded bg-grey-6 text">
+        <%= '<script src="http://www.getnoodl.es/embed/' + @recipe.shared_id.to_s + '"></script>' %>
+      </pre>
       <p class="mt1"><%= link_to "Need help?", help_path %></p>
     </div>
 
