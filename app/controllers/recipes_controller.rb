@@ -94,8 +94,11 @@ class RecipesController < ApplicationController
   end
 
   def share
-    @recipe = Recipe.find_by_shared_id(params[:shared_id])
-    @owner = User.find(@recipe.user_id).first_name
+    @recipe = Recipe.find(params[:shared_id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:red] = "We can't find that recipe."
+    redirect_to root_url
+    return
     @shared_url = shared_url(@recipe)
   end
 
@@ -107,7 +110,11 @@ class RecipesController < ApplicationController
   end
 
   def save_to_noodles
-    @recipe = Recipe.find_by_shared_id(params[:shared_id])
+    @recipe = Recipe.find(params[:shared_id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:red] = "We can't find that recipe."
+    redirect_to root_url
+    return
     @save_recipe = Recipe.new do |r|
       r.user_id = current_user.id
       r.title = @recipe.title
@@ -153,10 +160,16 @@ class RecipesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_recipe
       @recipe = Recipe.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      flash[:red] = "We can't find that recipe."
+      redirect_to recipes_path
     end
 
     def locate_recipe
       @recipe = Recipe.find(params[:recipe_id])
+    rescue ActiveRecord::RecordNotFound
+      flash[:red] = "We can't find that recipe."
+      redirect_to recipes_path
     end
 
     # Only allow trusted parameters

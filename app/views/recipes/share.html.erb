@@ -31,7 +31,7 @@
     <meta itemprop="dateModified" content="<%= @recipe.updated_at %>" />
 
     <h1 class="m0" itemprop="name"><%= @recipe.title %></h1>
-    <p class="grey-3 mb1">Shared by <%= @owner %></p>
+    <p class="grey-3 mb1">Shared by <%= @recipe.user.first_name %></p>
     <div itemprop="description"><%= markdown(@recipe.description) %></div>
     <%= render "shared/social" if me_owns_recipe? %>
     <%= render "recipe_body" %>
