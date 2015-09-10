@@ -21,7 +21,6 @@ class CollectionsController < ApplicationController
       rescue ActiveRecord::RecordNotFound
         flash[:red] = "We can't find that collection."
         redirect_to root_url
-      end
     else
       set_collection
     end
@@ -59,7 +58,6 @@ class CollectionsController < ApplicationController
       rescue ActiveRecord::RecordNotFound
         flash[:red] = "We can't find that collection."
         redirect_to root_url
-      end
     end
 
     def collection_params
