@@ -1,6 +1,4 @@
 module ApplicationHelper
-  include MarkdownHelper
-
   def flash_color_class(level)
     case level.to_sym
     when :grey then "grey-2"
