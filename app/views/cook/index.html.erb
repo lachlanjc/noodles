@@ -30,13 +30,16 @@
     <% if me_owns_recipe? %>
       <%= react_component("NoteEditor", recipe_id: @recipe.id) %>
     <% else %>
-      <div class="rounded shadow p2 bg-white text text-normalized">
+      <section class="rounded shadow px2 bg-white text text-normalized">
+        <h3 class="m0 py2 center grey-4 caps regular border-bottom" style="border-bottom-style: dashed;">Notes</h3>
+        <article class="py2">
         <% if @recipe.notes.blank? %>
-        <p class="grey-4 mb0">No notes for this recipe &mdash; yet!</p>
+        <p class="grey-4">No notes for this recipe &mdash; yet!</p>
         <% else %>
         <%= sanitize markdown(@recipe.notes) %>
         <% end %>
-      </div>
+        </article>
+      </section>
     <% end %>
   </aside>
 
