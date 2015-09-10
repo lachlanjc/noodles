@@ -32,8 +32,8 @@
   </head>
   <body class="center m0 bg-grey-6">
     <header class="hero-container bg-cover bg-center bg-no-repeat" style="background-image:url(<%= asset_path 'home/background.jpg' %>)">
-      <nav role="navigation" class="md-flex p2 white print-hide">
-        <div>
+      <nav role="navigation" class="md-flex px2 white print-hide">
+        <div class="py2">
           <%= link_to t("general.home"), root_url, class: "px1 link-reset white regular" %>
           <%= link_to t("general.features"), "http://noodles.withdraft.com/", class: "px1 link-reset white regular" %>
           <%= link_to "Blog", announcements_path, class: "px1 link-reset white link-reset white" %>
@@ -41,13 +41,15 @@
           <%= link_to t("general.sign_out"), sign_out_path, method: :delete, class: "px1 link-reset white regular" if user_signed_in? %>
         </div>
 
-        <div class="flex-auto">
+        <div class="flex-auto mt2">
           <% flash.each do |key, value| %>
-            <p class="mb0 white"><%= value.to_s %></p>
+            <span class="px3 py1 border border-white white inline-block" style="border-width: 2px; border-radius: 4px;">
+              <%= value.to_s %>
+            </span>
           <% end %>
         </div>
 
-        <div>
+        <div class="py2">
           <% if user_signed_in? %>
             <%= link_to "Your recipes →", recipes_path, class: "px1 link-reset white" %>
           <% else %>
