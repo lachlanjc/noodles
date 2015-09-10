@@ -10,12 +10,10 @@ class RecipesController < ApplicationController
   before_filter :not_the_owner, only: [:update, :notes, :export_pdf, :remove_image, :share_this_recipe, :un_share, :destroy]
   protect_from_forgery except: :embed_js
 
-  # GET /recipes
   def index
     @recipes = current_user.recipes.order(created_at: :desc)
   end
 
-  # GET /recipes/1
   def show
     if me_owns_recipe?
       @shared_url = shared_url(@recipe)
@@ -25,28 +23,73 @@ class RecipesController < ApplicationController
     end
   end
 
+  def new
+    if user_signed_in?
+      @recipe = Recipe.new
+      render :edit
+    else
+      flash[:blue] = "You must have an account to create new recipes."
+      redirect_to sign_up_path
+    end
+  end
+
+  def edit
+  end
+
+  def create
+    @recipe = Recipe.new(recipe_params)
+    @recipe.user_id = current_user.id
+    @recipe.shared = false
+
+    if @recipe.save
+      @recipe.shared_id = generate_shared_id(@recipe.id)
+      @recipe.save
+      flash[:green] = "Awesome, you've saved your new recipe."
+      redirect_to @recipe
+    else
+      render :edit
+    end
+  end
+
+  def update
+    if @recipe.update(recipe_params)
+      @recipe.save
+      flash[:green] = "Great, your changes were saved."
+      if params[:cook]
+        redirect_to recipe_cook_path(@recipe)
+      else
+        redirect_to @recipe
+      end
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @recipe.destroy
+    flash[:red] = "Okay, we've got that recipe in the recycling bin now."
+    redirect_to recipes_url
+  end
+
   def notes
     @notes_blankslate = "<p>No notes for this recipe yet.</p>".html_safe if @recipe.notes.blank?
   end
 
+  def update_notes
+    if @recipe.update(recipe_params)
+      @recipe.save
+      render :notes
+    end
+  end
+
   def export_pdf
-    prawnto filename: @recipe.title, :inline => true
+    prawnto filename: @recipe.title, inline: true
     render "recipes/show.pdf"
   end
 
   def embed_js
     @recipe = Recipe.find_by_shared_id(params[:shared_id])
     render "recipes/embed.js", layout: false
-  end
-
-  def remove_image
-    @recipe.img = nil
-    @recipe.save
-    if params[:cook]
-      redirect_to recipe_cook_path(@recipe)
-    else
-      redirect_to edit_recipe_path(@recipe)
-    end
   end
 
   def share_this_recipe
@@ -90,66 +133,6 @@ class RecipesController < ApplicationController
     redirect_to @save_recipe
   end
 
-  # GET /recipes/new
-  def new
-    if user_signed_in?
-      @recipe = Recipe.new
-      render :edit
-    else
-      flash[:blue] = "You must have an account to create new recipes."
-      redirect_to sign_up_path
-    end
-  end
-
-  # GET /recipes/1/edit
-  def edit
-  end
-
-  # POST /recipes
-  def create
-    @recipe = Recipe.new(recipe_params)
-    @recipe.user_id = current_user.id
-    @recipe.shared = false
-
-    if @recipe.save
-      @recipe.shared_id = generate_shared_id(@recipe.id)
-      @recipe.save
-      flash[:green] = "Awesome, you've saved your new recipe."
-      redirect_to @recipe
-    else
-      render :edit
-    end
-  end
-
-  # PATCH/PUT /recipes/1
-  def update
-    if @recipe.update(recipe_params)
-      @recipe.save
-      flash[:green] = "Great, your changes were saved."
-      if params[:cook]
-        redirect_to recipe_cook_path(@recipe)
-      else
-        redirect_to @recipe
-      end
-    else
-      render :edit
-    end
-  end
-
-  def update_notes
-    if @recipe.update(recipe_params)
-      @recipe.save
-      render :notes
-    end
-  end
-
-  # DELETE /recipes/1
-  def destroy
-    @recipe.destroy
-    flash[:red] = "Okay, we've got that recipe in the recycling bin now."
-    redirect_to recipes_url
-  end
-
   def scrape
     recipe_data = master_scrape(params[:url])
 
@@ -158,6 +141,16 @@ class RecipesController < ApplicationController
       redirect_to recipes_path
     else
       create_recipe(recipe_data, params[:url], "Recipe imported!")
+    end
+  end
+
+  def remove_image
+    @recipe.img = nil
+    @recipe.save
+    if params[:cook]
+      redirect_to recipe_cook_path(@recipe)
+    else
+      redirect_to edit_recipe_path(@recipe)
     end
   end
 
