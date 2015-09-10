@@ -6,3 +6,4 @@
 /bin/*
 .env
 db/seeds.rb
+*.swp
