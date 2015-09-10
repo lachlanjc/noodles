@@ -38,7 +38,7 @@
           <%= link_to t("general.features"), "http://noodles.withdraft.com/", class: "px1 link-reset white regular" %>
           <%= link_to "Blog", announcements_path, class: "px1 link-reset white link-reset white" %>
           <%= link_to t("general.about"), help_path, class: "px1 link-reset white regular" %>
-          <%= link_to t("general.sign_out"), sign_out_path, method: :delete, class: "px1 link-reset white regular" %>
+          <%= link_to t("general.sign_out"), sign_out_path, method: :delete, class: "px1 link-reset white regular" if user_signed_in? %>
         </div>
 
         <div class="flex-auto">
