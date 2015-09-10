@@ -3,11 +3,11 @@ class CollectionsController < ApplicationController
   include CollectionsHelper
 
   before_action :set_collection, except: [:index, :share, :create]
+  before_filter :authenticate_user!, except: [:share]
   before_filter :only_mine, only: [:show, :update, :destroy]
 
   def index
-    authenticate_user!
-    @collections = current_user.collections
+    @collections = Collection.where(user_id: current_user.id)
     @collection = Collection.new
   end
 
