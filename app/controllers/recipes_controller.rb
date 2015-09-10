@@ -98,7 +98,7 @@ class RecipesController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       flash[:red] = "We can't find that recipe."
       redirect_to root_url
-    end
+      return
     @shared_url = shared_url(@recipe)
   end
 
@@ -114,7 +114,7 @@ class RecipesController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       flash[:red] = "We can't find that recipe."
       redirect_to root_url
-    end
+      return
     @save_recipe = Recipe.new do |r|
       r.user_id = current_user.id
       r.title = @recipe.title
@@ -163,7 +163,6 @@ class RecipesController < ApplicationController
       rescue ActiveRecord::RecordNotFound
         flash[:red] = "We can't find that recipe."
         redirect_to recipes_path
-      end
     end
 
     def locate_recipe
@@ -171,7 +170,6 @@ class RecipesController < ApplicationController
       rescue ActiveRecord::RecordNotFound
         flash[:red] = "We can't find that recipe."
         redirect_to recipes_path
-      end
     end
 
     # Only allow trusted parameters

@@ -30,6 +30,7 @@ class RecipesControllerTest < ActionController::TestCase
 
   test "should show recipe" do
     get :show, id: @recipe
+    assert_template :show
     assert_response :success
   end
 
@@ -41,6 +42,7 @@ class RecipesControllerTest < ActionController::TestCase
   test "should update recipe" do
     patch :update, id: @recipe, recipe: { description: @recipe.description, ingredients: @recipe.ingredients, instructions: @recipe.instructions, title: @recipe.title }
     assert_redirected_to recipe_path(assigns(:recipe))
+    assert_equal 'Great, your changes were saved.', flash[:green]
   end
 
   test "should destroy recipe" do
