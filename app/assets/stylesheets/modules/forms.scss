@@ -31,6 +31,10 @@ input[type="checkbox"] + label {
   padding: 0;
 }
 
+textarea.invisible-input {
+  line-height: 1.8;
+}
+
 @media (max-width: $screen-phone) {
   .text-input {
     width: 95% !important;
