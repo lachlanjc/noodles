@@ -1,12 +1,13 @@
 class CollectionsController < ApplicationController
   include ApplicationHelper
   include CollectionsHelper
+
   before_action :set_collection, except: [:index, :share, :create]
   before_filter :only_mine, only: [:show, :update, :destroy]
 
   def index
     authenticate_user!
-    @collections = Collection.where(:user_id => current_user)
+    @collections = current_user.collections
     @collection = Collection.new
   end
 
@@ -17,6 +18,9 @@ class CollectionsController < ApplicationController
   def share
     if params[:hash_id]
       @collection = Collection.find_by_hash_id(params[:hash_id])
+    rescue ActiveRecord::RecordNotFound
+      flash[:red] = "We can't find that collection."
+      redirect_to root_url
     else
       set_collection
     end
@@ -51,6 +55,9 @@ class CollectionsController < ApplicationController
   private
     def set_collection
       @collection = Collection.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      flash[:red] = "We can't find that collection."
+      redirect_to root_url
     end
 
     def collection_params
@@ -59,7 +66,7 @@ class CollectionsController < ApplicationController
 
     def populate_collection
       @recipes = []
-      Recipe.where(:user_id => @collection.user.id).each do |recipe|
+      @collection.user.recipes.each do |recipe|
         @recipes.push(recipe) if recipe.collections.include?(@collection.id.to_s)
       end
     end
