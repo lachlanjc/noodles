@@ -104,10 +104,10 @@
     <div class="content content-1 p1 border rounded-bottom">
       <% if @recipe.shared? %>
       <p>Your recipe is already shared!</p>
-      <p><%= link_to "Check it out", @shared_url, class: "btn bg-blue" %></p>
+      <p><%= link_to "Check out the share page", @shared_url, class: "btn bg-blue" %></p>
       <% else %>
       <p>Anyone with this link can see your recipe and save a copy to their own Noodles account.</p>
-      <p><%= link_to "Share this recipe", recipe_share_it_path(@recipe), class: "btn bg-blue" %></p>
+      <p><%= link_to "Share a link to this recipe", recipe_share_it_path(@recipe), class: "btn bg-blue" %></p>
       <% end %>
     </div>
 
