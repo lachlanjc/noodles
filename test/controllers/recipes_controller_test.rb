@@ -34,8 +34,15 @@ class RecipesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test 'should show locked recipe page' do
+    sign_out users(:one)
+    get :show, id: @recipe.id
+    assert_template 'recipes/locked'
+    assert_response 403
+  end
+
   test 'should get edit' do
-    get :edit, id: @recipe
+    get :edit, id: @recipe.id
     assert_response :success
   end
 
@@ -51,5 +58,27 @@ class RecipesControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to recipes_path
+  end
+
+  test 'should get recipe pdf' do
+    get :export_pdf, recipe_id: @recipe.id
+    assert_response :success
+  end
+
+  test 'should share recipe' do
+    get :share_it, shared_id: @recipe.shared_id
+    assert_redirected_to :share, @recipe.id
+    assert_response :success
+  end
+
+  test 'should show shared recipe' do
+    get :share, recipe_id: @recipe.id
+    assert_response :success
+  end
+
+  test 'should unshare recipe' do
+    get :un_share, recipe_id: @recipe.id
+    assert_equal false, @recipe.shared
+    assert_redirected_to recipe_path(@recipe)
   end
 end

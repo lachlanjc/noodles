@@ -18,9 +18,6 @@ class CollectionsController < ApplicationController
   def share
     if params[:hash_id]
       @collection = Collection.find_by_hash_id(params[:hash_id])
-      rescue ActiveRecord::RecordNotFound
-        flash[:red] = "We can't find that collection."
-        redirect_to root_url
     else
       set_collection
     end
@@ -55,9 +52,11 @@ class CollectionsController < ApplicationController
   private
     def set_collection
       @collection = Collection.find(params[:id])
-      rescue ActiveRecord::RecordNotFound
-        flash[:red] = "We can't find that collection."
-        redirect_to root_url
+      raise_not_found
+    end
+
+    def raise_not_found
+      raise ActiveRecord::RecordNotFound if @collection.nil?
     end
 
     def collection_params
