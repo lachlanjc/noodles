@@ -11,19 +11,20 @@ class CollectionPage extends React.Component {
   }
 
   fetchData() {
-    const dataPath = this.props.pub === true ? `/c/data/${this.props.id}.json` : `/collections/${this.props.id}.json`;
+    const dataPath = this.props.pub ? `/c/data/${this.props.id}.json` : `/collections/${this.props.id}.json`;
     $.getJSON(dataPath, function(response) {
       this.setState({coll: response.collection});
     }.bind(this));
   }
 
   renderPage() {
+    const pub = this.props.pub;
     return (
       <main>
-        <CollectionHeader edit={this.props.edit} pub={this.props.pub} coll={this.state.coll} />
+        <CollectionHeader edit={this.props.edit} pub={pub} coll={this.state.coll} />
         {this.state.coll.recipes.length > 0 ?
           <article className='sm-col-11 md-col-7 mx-auto mt0'>
-            <RecipeList recipesCore={this.state.coll.recipes} />
+            <RecipeList recipesCore={this.state.coll.recipes} linkType={pub ? 'public' : 'private'} />
           </article>
         : this.renderNoRecipes()}
       </main>
