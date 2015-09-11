@@ -67,7 +67,7 @@ class CollectionHeader extends React.Component {
   render() {
     const coll = this.props.coll;
 
-    let rootClass = 'coll-header full-width center grey-4 py2'
+    let rootClass = 'coll-header full-width bs-bb center grey-4 py2'
     let actionsClass = 'caps h4 print-hide';
     if (coll.photo.length > 0) {
       rootClass += ' coll-w-img bg-center bg-no-repeat bg-cover p3 mb1';
