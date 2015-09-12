@@ -4,6 +4,7 @@ class CookController < ApplicationController
 
   def index
     @recipe = Recipe.find(params[:recipe_id])
+    raise_not_found
 
     if me_owns_recipe?
       render :index
@@ -15,6 +16,12 @@ class CookController < ApplicationController
 
   def share
     @recipe = Recipe.find_by_shared_id(params[:shared_id])
+    raise_not_found
     render :index
   end
+
+  private
+    def raise_not_found
+      raise ActiveRecord::RecordNotFound if @recipe.nil?
+    end
 end
