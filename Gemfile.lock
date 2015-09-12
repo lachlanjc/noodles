@@ -259,6 +259,7 @@ DEPENDENCIES
   intercom-rails
   jbuilder
   mandrill_dm
+  mechanize
   newrelic_rpm
   paperclip
   pg
