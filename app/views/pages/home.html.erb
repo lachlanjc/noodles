@@ -42,10 +42,14 @@
         </div>
 
         <div class="flex-auto mt2">
-          <% flash.each do |key, value| %>
-            <span class="px3 py1 border border-white white inline-block" style="border-width: 2px; border-radius: 4px;">
-              <%= value.to_s %>
-            </span>
+          <% if flash.any? %>
+            <% flash.each do |key, value| %>
+              <span class="px3 py1 border border-white white inline-block" style="border-width: 2px; border-radius: 4px;">
+                <%= value.to_s %>
+              </span>
+            <% end %>
+          <% else %>
+            <span class="white caps">Noodles</span>
           <% end %>
         </div>
 
@@ -59,7 +63,7 @@
       </nav>
 
       <div class="hero-content md-col-8 sm-col-11 mx-auto">
-        <h1 class="white h0 regular">Keep, cook, and share all your recipes with Noodles.</h1>
+        <h1 class="white h0 regular">Keep, cook, and share all your recipes in Noodles.</h1>
         <a class="btn bg-orange btn-lg mt2"
            style="text-shadow: none;"
            onclick="_gs('event', 'Clicked hero button'); window.location='<%= sign_up_path %>'">Sign Up</a>
