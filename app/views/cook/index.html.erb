@@ -76,14 +76,15 @@
 </main>
 
 <% if not_my_recipe? %>
-  <%= link_to share_path(@recipe.shared_id), class: 'btn-paper bg-orange fill-white circle fixed p2 shadow' do %>
-    <%= inline_svg("exit.svg") %>
+  <% exit_path = @recipe.shared_id == '6ww5W0L' ? root_url : share_path(@recipe.shared_id) %>
+  <%= link_to exit_path, class: 'btn-paper bg-orange fill-white circle fixed p2 shadow' do %>
+    <%= inline_svg 'exit.svg' %>
   <% end %>
 <% else %>
   <%= link_to recipe_path(@recipe), class: 'btn-paper-mini bg-orange fill-white circle fixed p1 shadow' do %>
-    <%= inline_svg("exit.svg") %>
+    <%= inline_svg 'exit.svg' %>
   <% end %>
   <%= link_to edit_recipe_path(@recipe), class: 'btn-paper bg-orange fill-white circle fixed p2 shadow' do %>
-    <%= inline_svg("edit.svg") %>
+    <%= inline_svg 'edit.svg' %>
   <% end %>
 <% end %>
