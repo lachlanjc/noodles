@@ -35,7 +35,7 @@
       <nav role="navigation" class="md-flex px2 white print-hide">
         <div class="py2">
           <%= link_to t("general.home"), root_url, class: "px1 link-reset white regular" %>
-          <%= link_to t("general.features"), "http://noodles.withdraft.com/", class: "px1 link-reset white regular" %>
+          <%= link_to t("general.features"), docs_path, class: "px1 link-reset white regular" %>
           <%= link_to "Blog", announcements_path, class: "px1 link-reset white link-reset white" %>
           <%= link_to t("general.about"), help_path, class: "px1 link-reset white regular" %>
           <%= link_to t("general.sign_out"), sign_out_path, method: :delete, class: "px1 link-reset white regular" if user_signed_in? %>
@@ -115,8 +115,8 @@
       <a class="btn bg-orange btn-lg inline-block mt1" onclick="_gs('event', 'Clicked hero button'); window.location='<%= sign_up_path %>'">Sign Up</a>
     </section>
     <footer class="block mt1 py2 grey-4">
-      <a href="http://noodles.withdraft.com/pages/558276" class="px1 link-reset">Terms</a>
-      <a href="http://noodles.withdraft.com/pages/558280" class="px1 link-reset">Privacy</a>
+      <%= link_to 'Terms', :terms, class: 'px1 link-reset' %>
+      <%= link_to 'Privacy', :privacy, class: 'px1 link-reset' %>
       <a href="https://twitter.com/noodlesapp" class="px1 link-reset">Twitter</a>
       <a href="https://www.facebook.com/pages/Noodles/698221030285633" class="px1 link-reset">Facebook</a>
     </footer>

@@ -1,0 +1,8 @@
+<% activate_nav!(@nav) %>
+<%= title @title %>
+
+<%= render "shared/nav" %>
+
+<main class="md-col-6 px2 mx-auto py2">
+  <%= @doc.html_safe %>
+</main>

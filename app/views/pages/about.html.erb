@@ -8,7 +8,7 @@
 
   <h1>Need help?</h1>
 
-  <%= markdown("First, check out [this guide](http://noodles.withdraft.com) for help with various features, such as Cook Mode, Sharing, Web Import, Favorites, and more.") %>
+  <%= markdown("First, check out [the features guide](#{docs_path}) for help with various features, such as Cook Mode, Sharing, Clipping, Favorites, PDF export, and more.") %>
 
   <p class="center mt2 mb0"><a href="mailto:lachlan@getnoodl.es?subject=I%20need%20some%20help"class="btn bg-blue">Ask a question</a></p>
 
@@ -24,7 +24,7 @@
 
   <h1>About Noodles</h1>
 
-  <%= markdown("Noodles is a cooking app — a simple and free place for all your recipes. Check out [the homepage](http://www.getnoodl.es/) or the [Features page](http://noodles.withdraft.com) for more information on the app.") %>
+  <%= markdown("Noodles is a cooking app — a simple and free place for all your recipes. Check out [the homepage](#{root_url}) or the [Features page](#{docs_path}) for more information on the how it works.") %>
 
   <%= react_component("Bio") %>
   <%= react_component("Bio", person: "tns") %>
@@ -33,9 +33,9 @@
 
   <h2>Have a question?</h2>
 
-  <p><a href="https://twitter.com/lachlanjc" class="blue">Reach out to Lachlan on Twitter @lachlanjc</a>, or click the button below.</p>
+  <p>Reach out to Lachlan <a href="https://twitter.com/lachlanjc">on Twitter (@lachlanjc)</a>, or send an email with the button below.</p>
 
-  <p class="center mt2 mb0"><a href="mailto:noodles@helpful.io" data-helpful="noodles-a737a789-bc32-4d41-afb7-b01d18044823" class="btn bg-blue">Ask a question</a></p>
+  <a href="mailto:lachlan@getnoodl.es?subject=I%20have%20a%20question" class="btn bg-blue">Ask a question</a>
 
   <% end %>
 

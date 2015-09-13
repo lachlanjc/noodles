@@ -32,8 +32,11 @@ Rails.application.routes.draw do
     get "/:hash_id" => "collections#share", as: :collection_share
   end
 
-  get "/about" => "pages#about", as: :about
-  get "/help" => "pages#about", as: :help
+  get '/about', to: 'pages#about', as: :about
+  get '/help', to: 'pages#about', as: :help
+  get '/docs', to: 'pages#docs', as: :docs
+  get '/privacy', to: 'pages#privacy', as: :privacy
+  get '/terms', to: 'pages#terms', as: :terms
 
   resources :announcements
   resources :collections, except: [:new, :edit]
