@@ -95,7 +95,7 @@ class RecipesController < ApplicationController
   end
 
   def share
-    @recipe = Recipe.find(params[:shared_id])
+    @recipe = Recipe.find_by_shared_id(params[:shared_id])
     raise_not_found
     @shared_url = shared_url(@recipe)
   end
