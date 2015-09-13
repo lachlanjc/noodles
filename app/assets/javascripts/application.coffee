@@ -20,7 +20,7 @@ $(document).ready ->
   $('[data-behavior~=print]').on 'click', ->
     window.print()
 
-  $('[data-behavior~=photo_button]').on 'click', ->
+  $('[data-behavior~=photo_name]').on 'click', ->
     $('[data-behavior~=photo_field]').click()
   $('[data-behavior~=photo_field]').on 'change', ->
     $('[data-behavior~=photo_name]').text(this.value.match(/[^\/\\]+$/)[0])
@@ -33,4 +33,3 @@ $(document).ready ->
   $('[data-behavior~=autosize]').autosize()
   $('[data-behavior~=editor_instructions]').on 'focus', ->
     this.value = "1. " if this.value.length == 0
-  return

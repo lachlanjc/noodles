@@ -63,15 +63,16 @@
       <%= image_tag @recipe.img, alt: "Photo of " + @recipe.title, class: "mt2 mx-auto rounded" if @recipe.img.present? %>
 
       <% if me_owns_recipe? %>
-        <%= form_for(@recipe, url: recipe_path(@recipe, cook: true), html: { class: "pointer h4 grey-1"}) do |f| %>
-          <%= f.file_field :img, class: "hide", data: { behavior: "photo_field cook_photo_field" } %>
+        <%= form_for(@recipe, url: recipe_path(@recipe, cook: true), html: { class: 'mt1 h4' }) do |f| %>
+          <%= f.file_field :img, class: 'hide', data: { behavior: 'photo_field cook_photo_field' } %>
           <div data-behavior="photo_button">
-            <span data-behavior="photo_name">
-              <%= @recipe.img.url.blank? ? "Add a photo to your recipe" : "Upload a new photo" %>
-            </span>
+            <a data-behavior="photo_name" class="btn bg-white">
+              <%= @recipe.img.url.blank? ? 'Add a photo' : 'Upload a new photo' %>
+            </a>
             <% if @recipe.img.url.present? %>
-              <span class="grey-4">or</span>
-              <%= link_to("remove this photo", recipe_remove_image_path(@recipe, cook: true), class: "link-reset") %>
+              <span class="grey-4 px1">or</span>
+              <%= link_to('remove this photo', recipe_remove_image_path(@recipe, cook: true),
+                           class: 'btn bg-white') %>
             <% end %>
           </div>
         <% end %>

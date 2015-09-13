@@ -22,6 +22,11 @@
     inset 0 3px 4px 0 $darken-3,
     0 0 1px $darken-2;
   }
+
+  &.bg-white {
+    border: 1px solid $grey-5;
+    color: $grey-2;
+  }
 }
 
 .btn[disabled] {
