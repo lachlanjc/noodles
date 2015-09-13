@@ -2,7 +2,7 @@ class Bio extends React.Component {
   render() {
     const lachlan = {
       name: "Lachlan Campbell",
-      description: "Creator of Noodles, middle schooler, and intern at Highrise HQ.",
+      description: "Creator of Noodles and high schooler. Previous intern at Highrise.",
       username: "lachlanjc"
     }
     const taran = {
