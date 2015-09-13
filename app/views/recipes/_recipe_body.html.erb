@@ -14,7 +14,7 @@
 
 <h2 class="mt2">Details</h2>
 <% if @recipe.source.present? %>
-<p>
+<p style="word-wrap: break-word;">
   Source:
   <%= auto_link(@recipe.source, :html => { :target => '_blank' }) { |text| text.gsub(/http(s?):\/\//, '') } %>
 </p>
