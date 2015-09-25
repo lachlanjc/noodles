@@ -4,6 +4,7 @@ class AnnouncementsController < ApplicationController
   before_filter :set_admin_and_redirect, only: [:new, :create, :edit, :update, :destroy]
 
   include ApplicationHelper
+  include MarkdownHelper
 
   # GET /announcements
   def index
