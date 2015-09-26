@@ -1,11 +1,12 @@
 $(document).ready ->
   $(document).on 'click', '[data-behavior~=explore_src_pick]', ->
-    bar = $('[data-behavior~=explore_src_pick_bar]')
-    src = $(this).data('src-name')
+    t = $(this)
+    b = $('[data-behavior~=explore_src_pick_bar]')
+    src = t.data 'src-name'
     activeClasses = 'bg-orange white white-hover bold'
-    bar.find('[data-src-name=' + bar.data('src-selected') + ']').toggleClass(activeClasses)
-    $(this).toggleClass(activeClasses) if bar.data('src-selected') isnt src
-    bar.data('src-selected', src)
+    b.find('[data-src-name=' + b.data('src-selected') + ']').toggleClass activeClasses
+    t.toggleClass(activeClasses) if b.data('src-selected') isnt src
+    b.data 'src-selected', src
     $('[data-behavior~=explore_search_field]').keyup()
 
   $('[data-behavior~=explore_src_pick][data-src-name=nyt]').click()
@@ -13,24 +14,24 @@ $(document).ready ->
   searchActions = ->
     if q = _.trim(this.value)
       r = $('[data-behavior~=explore_results_container]')
-      r.html(null)
-      r.addClass('busy busy-large mx-auto')
+      r.html null
+      r.addClass 'busy busy-large mx-auto'
       s = $('[data-behavior~=explore_src_pick_bar]').data('src-selected')
       u = '/explore/results?src=' + s + '&q=' + q
       $.get u, (t) ->
-        r.removeClass('busy busy-large mx-auto')
-        r.html(t)
+        r.removeClass 'busy busy-large mx-auto'
+        r.html t
         $('[data-behavior~=modal_trigger]').leanModal()
 
   $('[data-behavior~=explore_search_field]').on 'keyup', _.debounce(searchActions, 400)
 
   $(document).on 'click', '[data-behavior~=explore_clip_from_list]', ->
     t = $(this)
-    t.text(null)
-    t.toggleClass('bg-blue busy')
+    t.text null
+    t.toggleClass 'bg-blue busy'
     $.get '/clip?url=' + $(this).parent().data('url'), (s) ->
-      t.attr('class', 'grey-2 link-reset')
-      t.text('✔︎')
+      t.attr 'class', 'grey-2 link-reset'
+      t.text '✔︎'
 
   $(document).on 'click', '[data-behavior~=explore_preview]', ->
     t = $(this)
@@ -57,20 +58,20 @@ $(document).ready ->
     t.text(null)
 
     t.attr('class', 'btn busy block')
-    t.parent().toggleClass('py1')
+    t.parent().toggleClass 'py1'
 
     $.get '/clip?url=' + t.data('url'), (s) ->
-      t.toggleClass('btn busy green link-reset')
-      t.text('Clipped!')
+      t.toggleClass 'btn busy green link-reset'
+      t.text 'Clipped!'
 
       p = $('[data-behavior~=explore_result_item][data-url=\'' + t.data('url') + '\']').find('[data-behavior~=explore_clip_from_list]')
-      p.attr('class', 'grey-2 link-reset')
-      p.text('✔︎')
+      p.attr 'class', 'grey-2 link-reset'
+      p.text '✔︎'
 
       c = ->
-        $('.modal-overlay').fadeOut(200)
-        $('#previewRecipe').css({'display': 'none'})
-        t.text('Clip')
-        t.attr('class', 'btn bg-blue mt1')
-        t.parent().toggleClass('py1')
-      setTimeout(c, 525)
+        $('.modal-overlay').fadeOut 200
+        $('#previewRecipe').css {'display': 'none'}
+        t.text 'Clip'
+        t.attr 'class', 'btn bg-blue mt1'
+        t.parent().toggleClass 'py1'
+      setTimeout c, 525
