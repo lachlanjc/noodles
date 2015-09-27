@@ -6,7 +6,7 @@
   <small class="block grey-3">
     Clipping supports several hundred sites, but <%= link_to 'let me know', help_path %> if you run into any problems.
   </small>
-  <%= form_tag('/clip', method: 'get', class: 'flex mt2') do %>
+  <%= form_tag(import_path, method: 'get', class: 'flex mt2') do %>
     <%= url_field_tag 'url', nil, class: 'text-input flex-auto mr1', placeholder: 'Paste in the recipe\'s URL' %>
     <%= submit_tag 'Clip', name: nil, class: 'flex-right btn bg-blue' %>
   <% end %>
