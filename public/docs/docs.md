@@ -96,16 +96,16 @@ ___
 
 <h2 id="clip">Clip from the Web</h2>
 
-Web clipping is one of the best features of Noodles. Paste the URL of a recipe, and Noodles will pull in all the data for you and save your recipe automatically. Currently the feature supports Epicurious, NYTimes Cooking, Food & Wine, Bon Appetit, Food52, Martha Stewart, and Allrecipes, but many more are coming soon.
+Web clipping is one of the best features of Noodles. Paste the URL of a recipe, and Noodles will pull in all the data for you and save your recipe automatically. The feature supports several hundred sites, but [let me know](/help) if you run into any trouble.
 
 1. Copy the URL of any recipe on one of the sites above.
-2. Click the "link" button in the corner of your recipes page.
+2. Click the "link" button above the New Recipe button in the corner of your recipes page.
 
-![import-button.png](https://draftin.com:443/images/25818?token=wKTcZhKcm-hVfqGtGbDfKc9Zj-wkSLGEGtk3iF52nWd1qg2UNHiik8Xw_r7yqbtQcTLtLmM3R9RBi45Pu6Pwino)
+![Screenshot showing clipping button](http://f.cl.ly/items/3Z0u1i3c1I282y04022t/Screen%20Shot%202015-09-27%20at%202.08.03%20AM.png)
 
-3. Paste your link into the window.
+3. Paste your link into the clipping window.
 
-![Screen Shot 2015-09-10 at 9.05.32 PM.png](https://draftin.com:443/images/32200?token=XNDYBkFrUa_UyqBSzGvrIyy5PPJP1rycJmHpN2K5bK0d4Gcz0qth0bGAsEInU-vfA4CR3MCNkzSDP0mWsrraOBo)
+![Screenshot showing clipping window](http://f.cl.ly/items/0J2u3X41013L400B3E23/Screen%20Shot%202015-09-27%20at%202.10.32%20AM.png)
 
 4. Click the blue Clip button.
 

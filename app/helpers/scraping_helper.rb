@@ -18,15 +18,9 @@ module ScrapingHelper
     path = find_path(url)
 
     case host
-    when "epicurious.com"
-      load "scrapers/epicurious.rb"
-      EpicuriousScraper.new.scrape(path)
     when "nytimes.com"
       load "scrapers/ny_cooking.rb"
       NYCookingScraper.new.scrape(path)
-    when "foodandwine.com"
-      load "scrapers/food_and_wine.rb"
-      FoodWineScraper.new.scrape(path)
     when "bonappetit.com"
       load "scrapers/bon_appetit.rb"
       BonAppetitScraper.new.scrape(path)
@@ -40,7 +34,19 @@ module ScrapingHelper
       load "scrapers/food52.rb"
       Food52Scraper.new.scrape(path)
     else
-      "unsupported"
+      page = open(url).read
+      data = Hangry.parse page
+      if data.name.to_s.length > 2
+        # Crappy hack for Food & Wine b/c they use the name itemprop in the wong places
+        data.name = Nokogiri::HTML::DocumentFragment.parse(page).css('[itemprop=name]')[2].text.strip if host == 'foodandwine.com'
+        recipe = {}
+        recipe['title'], recipe['description'] = data.name, data.description
+        recipe['ingredients'], recipe['instructions'] = data.ingredients, data.instructions
+        recipe['serves'] = data.yield.to_s.squish.capitalize
+        recipe
+      else
+        'unsupported'
+      end
     end
   end
 
@@ -52,9 +58,9 @@ module ScrapingHelper
       r.ingredients = write_ingredients_to_list(recipe_data["ingredients"])
       r.instructions = form_markdown_for_instructions(recipe_data["instructions"])
       r.source = url_source
-      r.author = recipe_data["author"].to_s
-      r.serves = recipe_data["serves"].to_s
-      r.notes = recipe_data["notes"].to_s
+      r.author = recipe_data["author"].to_s.squish
+      r.serves = recipe_data["serves"].to_s.squish
+      r.notes = recipe_data["notes"].to_s.squish
       r.favorite = false
       r.shared = false
       r.save
@@ -78,11 +84,17 @@ module ScrapingHelper
     ingredients_list
   end
 
-  def form_markdown_for_instructions(steps)
-    return if steps.blank?
+  def form_markdown_for_instructions(instructions)
+    return if instructions.blank?
     instructions_md = ""
+    if instructions.is_a?(String)
+      steps = instructions.split(/\s\s+/)
+      steps.delete_if { |step| step.to_s.strip.length < 2 }
+    else
+      steps = instructions
+    end
     steps.each_with_index do |step, id|
-      instructions_md += (id + 1).to_s + ". " + step.to_s.squish + "\n"
+      instructions_md += "#{(id + 1).to_s}. #{step.to_s.squish}\n"
     end
     instructions_md
   end

@@ -131,13 +131,18 @@ class RecipesController < ApplicationController
   end
 
   def scrape
-    recipe_data = master_scrape(params[:url])
+    if params[:url] =~ /\A#{URI::regexp(['http', 'https'])}\z/
+      recipe_data = master_scrape(params[:url])
 
-    if recipe_data == "unsupported"
-      flash[:red] = "Sorry, we don't support that site yet."
-      redirect_to recipes_path
+      if recipe_data == 'unsupported'
+        flash[:red] = 'Sorry, we don\'t support that site right now.'
+        redirect_to recipes_path
+      else
+        create_recipe(recipe_data, params[:url], 'Recipe imported!')
+      end
     else
-      create_recipe(recipe_data, params[:url], "Recipe imported!")
+      flash[:red] = 'That\'s not a valid URL.'
+      redirect_to recipes_path
     end
   end
 
