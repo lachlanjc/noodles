@@ -1,23 +1,29 @@
 class SaveController < ApplicationController
-  include SaveHelper
+  include ScrapingHelper
+
+  before_filter :validate_url
 
   def save
-    if params[:url] && params[:url].length > 10
-      if user_signed_in?
-        recipe_data = scrape_for_schema_data(params[:url])
-        recipe_data["source"] = params[:url]
-        if recipe_data["title"].blank? && recipe_data["ingredients"].blank?
-          # If we're not getting anything, we need to say sorry
-          flash[:red] = "Sorry, that website hasn't implemented the schema.org tags correctly."
-          redirect_to recipes_path
-        end
-        create_recipe(recipe_data, params[:url], "We've saved #{recipe_data['title']} from #{find_host(params[:url])}.")
-      else
-        flash[:blue] = "Hey, you'll need an account on Noodles first :)"
+    if user_signed_in?
+      recipe_data = master_scrape(params[:url])
+      if recipe_data == 'unsupported'
+        flash[:red] = 'Hey! We\'re really sorry, but that website isn\'t working because it doesn\'t use the standard markup for recipes.'
         redirect_to root_url
+      else
+        create_recipe(recipe_data, params[:url], "Awesome! We've saved #{recipe_data['title']} from #{find_host(params[:url]).to_s.humanize}.")
       end
     else
-      render text: "Hmm, you didn't provide the recipe link."
+      flash[:blue] = 'Hey there! Sign up for Noodles below to save that awesome recipe.'
+      redirect_to root_url
     end
   end
+
+  protected
+    def validate_url
+      if params[:url] =~ /\A#{URI::regexp(['http', 'https'])}\z/
+        true
+      else
+        render text: 'You didn\'t provide a valid recipe link.', status: 422
+      end
+    end
 end

@@ -67,7 +67,7 @@ module ScrapingHelper
     end
     recipe.shared_id = generate_shared_id(recipe.id)
     recipe.save
-    flash[:success] = flash_text
+    flash[:green] = flash_text
     redirect_to recipe
   end
 
@@ -81,7 +81,7 @@ module ScrapingHelper
     ingredients.each do |item|
       ingredients_list += "#{item.to_s.squish}\n"
     end
-    ingredients_list
+    ingredients_list.to_s.strip
   end
 
   def form_markdown_for_instructions(instructions)
@@ -96,6 +96,6 @@ module ScrapingHelper
     steps.each_with_index do |step, id|
       instructions_md += "#{(id + 1).to_s}. #{step.to_s.squish}\n"
     end
-    instructions_md
+    instructions_md.to_s.strip
   end
 end

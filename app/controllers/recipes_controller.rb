@@ -130,22 +130,6 @@ class RecipesController < ApplicationController
     redirect_to @save_recipe
   end
 
-  def scrape
-    if params[:url] =~ /\A#{URI::regexp(['http', 'https'])}\z/
-      recipe_data = master_scrape(params[:url])
-
-      if recipe_data == 'unsupported'
-        flash[:red] = 'Sorry, we don\'t support that site right now.'
-        redirect_to recipes_path
-      else
-        create_recipe(recipe_data, params[:url], 'Recipe imported!')
-      end
-    else
-      flash[:red] = 'That\'s not a valid URL.'
-      redirect_to recipes_path
-    end
-  end
-
   def remove_image
     @recipe.img = nil
     @recipe.save

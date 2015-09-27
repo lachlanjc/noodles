@@ -14,10 +14,9 @@ Rails.application.routes.draw do
     get "/remove_image" => "recipes#remove_image", as: :remove_image
   end
 
-  get "/import" => "recipes#scrape", as: :import
   get "/embed/:shared_id" => "recipes#embed_js", as: :embed
 
-  get "/save" => "save#save"
+  get '/save', to: 'save#save', as: :save
 
   # Shared recipes
   scope "/s" do
