@@ -18,11 +18,11 @@ class EpicuriousScraper
 
       notes css: "#preparation #chefNotes"
     end
-    recipe["instructions"].each do |line|
+    recipe['instructions'].each do |line|
       # Removes their step numbers
       line.sub!(/(\d+)\.\s/, "")
     end
-    recipe["notes"] = recipe["notes"].to_s.sub(/Cooks\' Note\n/, "").to_s.strip
+    recipe['notes'] = recipe['notes'].to_s.sub(/Cooks\' Note\n/, "").to_s.strip
     recipe
   end
 end

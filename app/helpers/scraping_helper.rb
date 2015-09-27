@@ -18,20 +18,20 @@ module ScrapingHelper
     path = find_path(url)
 
     case host
-    when "nytimes.com"
-      load "scrapers/ny_cooking.rb"
+    when 'nytimes.com'
+      load 'scrapers/ny_cooking.rb'
       NYCookingScraper.new.scrape(path)
-    when "bonappetit.com"
-      load "scrapers/bon_appetit.rb"
+    when 'bonappetit.com'
+      load 'scrapers/bon_appetit.rb'
       BonAppetitScraper.new.scrape(path)
-    when "allrecipes.com"
-      load "scrapers/allrecipes.rb"
+    when 'allrecipes.com'
+      load 'scrapers/allrecipes.rb'
       AllRecipesScraper.new.scrape(path)
-    when "marthastewart.com"
-      load "scrapers/marthastewart.rb"
+    when 'marthastewart.com'
+      load 'scrapers/marthastewart.rb'
       MarthaStewartScraper.new.scrape(path)
-    when "food52.com"
-      load "scrapers/food52.rb"
+    when 'food52.com'
+      load 'scrapers/food52.rb'
       Food52Scraper.new.scrape(path)
     else
       page = open(url).read
@@ -53,14 +53,14 @@ module ScrapingHelper
   def create_recipe(recipe_data, url_source, flash_text)
     recipe = Recipe.new do |r|
       r.user_id = current_user.id
-      r.title = recipe_data["title"]
-      r.description = recipe_data["description"].to_s.squish
-      r.ingredients = write_ingredients_to_list(recipe_data["ingredients"])
-      r.instructions = form_markdown_for_instructions(recipe_data["instructions"])
+      r.title = recipe_data['title']
+      r.description = recipe_data['description'].to_s.squish
+      r.ingredients = write_ingredients_to_list(recipe_data['ingredients'])
+      r.instructions = form_markdown_for_instructions(recipe_data['instructions'])
       r.source = url_source
-      r.author = recipe_data["author"].to_s.squish
-      r.serves = recipe_data["serves"].to_s.squish
-      r.notes = recipe_data["notes"].to_s.squish
+      r.author = recipe_data['author'].to_s.squish
+      r.serves = recipe_data['serves'].to_s.squish
+      r.notes = recipe_data['notes'].to_s.squish
       r.favorite = false
       r.shared = false
       r.save
@@ -77,16 +77,16 @@ module ScrapingHelper
 
   def write_ingredients_to_list(ingredients)
     return if ingredients.blank?
-    ingredients_list = ""
+    ingredients_list = ''
     ingredients.each do |item|
-      ingredients_list += item.to_s.squish + "\n"
+      ingredients_list += "#{item.to_s.squish}\n"
     end
     ingredients_list
   end
 
   def form_markdown_for_instructions(instructions)
     return if instructions.blank?
-    instructions_md = ""
+    instructions_md = ''
     if instructions.is_a?(String)
       steps = instructions.split(/\s\s+/)
       steps.delete_if { |step| step.to_s.strip.length < 2 }
