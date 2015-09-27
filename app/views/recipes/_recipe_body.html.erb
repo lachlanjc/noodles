@@ -16,7 +16,7 @@
 <% if @recipe.source.present? %>
 <p style="word-wrap: break-word;">
   Source:
-  <%= auto_link(@recipe.source, :html => { :target => '_blank' }) { |text| text.gsub(/http(s?):\/\//, '') } %>
+  <%= auto_link(@recipe.source, html: { target: '_blank' }) { |text| text.gsub(/^http(s?):\/\/(w+\.)?/, '') } %>
 </p>
 <% end %>
 <% if @recipe.author.present? %>
