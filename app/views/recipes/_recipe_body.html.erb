@@ -7,7 +7,7 @@
 
 <h2 class="mt2">Instructions</h2>
 <div class="text text-normalized" itemprop="recipeInstructions">
-  <%= sanitize markdown(@recipe.instructions) %>
+  <%= instructions_processed.html_safe %>
 </div>
 
 <%= image_tag @recipe.img, alt: "Photo of " + @recipe.title, class: "mt2 mb2 mx-auto rounded", itemprop: "image" unless @recipe.img.url.blank? %>
@@ -19,8 +19,12 @@
   <%= auto_link(@recipe.source, :html => { :target => '_blank' }) { |text| text.gsub(/http(s?):\/\//, '') } %>
 </p>
 <% end %>
-<%= content_tag :p, "Author: #{@recipe.author}" if @recipe.author.present? %>
-<%= content_tag :p, "Yield: #{@recipe.serves}" if @recipe.serves.present? %>
+<% if @recipe.author.present? %>
+<p>Author: <span itemprop="author"><%= @recipe.author %></span></p>
+<% end %>
+<% if @recipe.serves.present? %>
+<p>Yield: <span itemprop="recipeYield"><%= @recipe.serves %></span></p>
+<% end %>
 <% if @recipe.source.blank? && @recipe.author.blank? && @recipe.serves.present? %>
   <p class="grey-2">No details for this recipe. Details describe where the recipe came from and the recipe's yield.</p>
 <% end %>

@@ -29,6 +29,13 @@ module RecipesHelper
     line.to_s.html_safe
   end
 
+  def instructions_processed(instructions = @recipe.instructions)
+    text = sanitize markdown(instructions)
+    text = Nokogiri::HTML::DocumentFragment.parse(text)
+    text.css('li').each { |item| item['itemprop'] = 'instruction' }
+    text.to_s.html_safe
+  end
+
   def plain_text_from_markdown(text)
     sanitize(strip_tags(markdown(text.to_s)))
   end
