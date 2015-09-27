@@ -4,8 +4,6 @@ one:
   ingredients: "Cheese"
   instructions: "1. Eat the cheese."
   favorite: false
-  id: 1
-  user_id: 1
   shared: false
   shared_id: "goodcheese"
   source: "http://goodcheese.getnoodl.es/"
@@ -17,8 +15,6 @@ two:
   ingredients: "Bread\nCream cheese\nJam"
   instructions: "1. Put the bread in your toaster.\n2. Remove it when lightly browned.\n3. Apply cream cheese and jam."
   favorite: true
-  id: 2
-  user_id: 1
   shared: true
   shared_id: "goodtoast"
   source: "http://goodtoast.getnoodl.es/"
