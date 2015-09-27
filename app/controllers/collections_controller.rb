@@ -45,7 +45,7 @@ class CollectionsController < ApplicationController
 
   def destroy
     @collection.destroy
-    flash[:red] = "Your collection is no more."
+    flash[:red] = 'Your collection is no more.'
     redirect_to collections_path
   end
 
@@ -71,6 +71,9 @@ class CollectionsController < ApplicationController
     end
 
     def only_mine
-      not_found unless me_owns_collection?
+      if !me_owns_collection?
+        flash[:red] = 'That\'s not yours.'
+        redirect_to root_url, status: 401
+      end
     end
 end

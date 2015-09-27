@@ -15,7 +15,7 @@ class RecipesController < ApplicationController
   end
 
   def show
-    render :locked, status: 403 unless me_owns_recipe?
+    render :locked, status: 403 if not_my_recipe?
   end
 
   def new
@@ -24,7 +24,7 @@ class RecipesController < ApplicationController
       render :edit
     else
       flash[:blue] = "You must have an account to create new recipes."
-      redirect_to sign_up_path
+      redirect_to root_url, status: 401
     end
   end
 
@@ -90,8 +90,7 @@ class RecipesController < ApplicationController
   def share_this_recipe
     @recipe.shared = true
     @recipe.save
-    @shared_url = shared_url(@recipe)
-    render :share
+    redirect_to shared_path
   end
 
   def share
@@ -103,7 +102,7 @@ class RecipesController < ApplicationController
   def un_share
     @recipe.shared = false
     @recipe.save
-    flash[:blue] = 'Your recipe is all locked up now. 🔐'
+    flash[:grey] = 'Your recipe is all locked up now. 🔐'
     redirect_to @recipe
   end
 
@@ -163,8 +162,8 @@ class RecipesController < ApplicationController
 
     def not_the_owner
       if not_my_recipe?
-        flash[:red] = "That's not yours."
-        redirect_to root_url
+        flash[:red] = 'That\'s not yours.'
+        redirect_to root_url, status: 401
       end
     end
 end
