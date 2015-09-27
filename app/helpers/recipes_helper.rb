@@ -1,4 +1,5 @@
 module RecipesHelper
+  include ApplicationHelper
   include MarkdownHelper
 
   def me_owns_recipe?
@@ -9,8 +10,12 @@ module RecipesHelper
     !me_owns_recipe?
   end
 
-  def shared_url(recipe)
-    "#{root_url}s/#{recipe.shared_id.to_s}"
+  def shared_path(recipe = @recipe)
+    "/s/#{recipe.shared_id.to_s}"
+  end
+
+  def shared_url(recipe = @recipe)
+    app_url + shared_path(recipe)
   end
 
   def generate_shared_id(id)

@@ -16,6 +16,10 @@ module ApplicationHelper
     raise ActionController::RoutingError.new('Not Found')
   end
 
+  def app_url
+    Rails.env.development? ? 'http://noodles.dev' : 'http://www.getnoodl.es'
+  end
+
   def modal_close
     "<div class='fill-grey-4 block right pointer' data-behavior='modal_close'>#{inline_svg('close.svg')}</div>".html_safe
   end
