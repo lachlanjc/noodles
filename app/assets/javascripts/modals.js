@@ -10,7 +10,9 @@
         closeButton: $('[data-behavior~=modal_close]')
       };
       var overlay = $("<div class='full-width bg-darken-4 modal-overlay'></div>");
-      $("body").append(overlay);
+      if ($(".modal-overlay").length == 0) {
+        $("body").append(overlay);
+      }
       options = $.extend(defaults, options);
       return this.each(function(){
         var o = options;
