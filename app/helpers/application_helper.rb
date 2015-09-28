@@ -1,10 +1,13 @@
 module ApplicationHelper
   def flash_color_class(level)
     case level.to_sym
-    when :grey then "grey-2"
-    when :green then "green"
-    when :red then "red"
-    else "grey-3"
+    when :grey then 'grey-3'
+    when :green then 'green'
+    when :red then 'red'
+    when :alert then 'red'
+    when :blue then 'blue'
+    when :notice then 'blue'
+    else 'grey-3'
     end
   end
 
