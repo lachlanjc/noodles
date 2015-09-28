@@ -3,17 +3,21 @@
 }
 
 .document {
-  box-shadow: $shadow;
   @extend .mx-auto;
   background: #fff;
-  border-radius: $border-radius;
+  border: 1px solid $grey-5;
+  border-left-width: 0;
+  border-right-width: 0;
   box-sizing: border-box;
+  margin-bottom: $space-2;
   padding: $space-2;
-  width: 100%;
 }
 
 @media #{$breakpoint-md} {
   .document {
+    border-radius: $border-radius;
+    border-left-width: 1px;
+    border-right-width: 1px;
     padding: $space-3;
     width: (8/12 * 100%);
   }
