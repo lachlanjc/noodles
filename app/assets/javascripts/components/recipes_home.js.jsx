@@ -55,6 +55,13 @@ class RecipesHome extends React.Component {
     const recipes = _.compact(this.state.recipesCurrent);
     const randomUrl = (recipes.length > 0) ? '/recipes/' + _.sample(recipes).id.toString() : null;
 
+    const protips = [
+      <span>See only your shared recipes by searching <strong>/shared</strong>.</span>,
+      <span>Create a new recipe super quickly by searching with its title.</span>,
+      <span>Not sure what to cook right now? Click the <strong>Random</strong> button at the top.</span>
+    ];
+    const protip = protips[_.random(0, 2)];
+
     return (
       <main className='sm-col-11 md-col-8 mx-auto'>
         <header className='center'>
@@ -67,6 +74,11 @@ class RecipesHome extends React.Component {
         </header>
         <RecipeList recipesCore={this.state.recipesCurrent} createFromSearch={true} />
         {this.state.view === 'fav' && this.state.recipesCurrent.length == 0 ? this.renderFavoritesBlankSlate() : null}
+        <div className='mb3 center'>
+          <IconProtip size='24' classes='inline-block fill-grey-4 mr1 relative' style={{top: 6}} />
+          <strong>ProTip! </strong>
+          {protip}
+        </div>
       </main>
     )
   }

@@ -6,6 +6,7 @@ json.recipes @recipes do |recipe|
   json.photo recipe.img.url.present?
   json.collections recipe.collections.present?
   json.web is_from_web(recipe.source)
-  json.url "/recipes/" + recipe.id.to_s
-  json.shared_url "/s/" + recipe.shared_id.to_s
+  json.url recipe_path(recipe)
+  json.extract! recipe, :shared
+  json.shared_url shared_path(recipe)
 end
