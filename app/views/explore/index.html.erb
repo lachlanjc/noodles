@@ -3,7 +3,8 @@
 
 <%= render 'shared/nav' %>
 
-<header class="center relative inline-with-nav image-header bg-center bg-no-repeat bg-cover py4 px2" style='background-image: url(<%= image_path "explore/#{@background.to_s}.jpg" %>);'>
+<header class="center relative inline-with-nav image-header bg-center bg-no-repeat bg-cover py4 px2"
+        style='background-image: url(<%= image_path "explore/#{rand(1..6).to_s}.jpg" %>);'>
   <h1 class="mt0 mb0 white">Explore</h1>
   <h2 class="white regular mt1 mb3">What do you want to make?</h2>
   <div class="md-col-8 lg-col-6 bg-white rounded shadow px1 mx-auto">
@@ -21,20 +22,62 @@
        data-behavior="explore_src_pick" data-src-name="allrecipes">Allrecipes</a>
   </section>
 </header>
-<main class='sm-col-11 md-col-8 mx-auto'>
-  <article class="mt2" data-behavior="explore_results_container">
-    <div class="md-col-9 bg-white grey-2 shadow rounded mt3 p3 center mx-auto">
-      <p><strong>Explore</strong> helps you find and save recipes for almost anything you want to cook.</p>
-      <p class="mb0">Search for anything to get started.</p>
-    </div>
+
+<main class="md-col-8 px2 mx-auto">
+  <article class="py2 center" data-behavior="explore_results_container">
+    <h2 class="mt0">
+      This is <strong>Explore</strong> by <%= link_to 'Noodles', root_url, class: 'bold' %>.
+      Find amazing new recipes.
+    </h2>
+    <% if user_signed_in? %>
+      <p>
+        Search for any dish to get started &mdash;
+        you can save them to your Noodles with just a click.
+      </p>
+    <% else %>
+      <p>
+        Search for any dish to get started. Sign up for Noodles to save the recipe.
+      </p>
+      <a href="#signup" name="signup" data-behavior="modal_trigger inline_signup_btn" class="btn bg-orange mt1">Sign up for Noodles</a>
+    <% end %>
   </article>
+  <section class="modal" role="dialog" id="signup">
+    <%= modal_close %>
+    <h2 class="orange mb0">Sign up for Noodles</h2>
+    <% @user = User.new %>
+    <%= form_for @user, url: user_registration_path(@user, explore: true), data: { remote: true, behavior: 'inline_signup_form' }, class: 'modal-scroll' do |f| %>
+      <p data-behavior="hide_on_inline_submit">Noodles is, and always will be, totally free. No spam, no ads.</p>
+
+      <%= devise_error_messages!(@user) %>
+
+      <%= f.label t('devise.registrations.new.first_name') %>
+      <%= f.text_field :first_name, class: 'text-input', id: 'fname', autofocus: true %>
+
+      <%= f.label t('devise.registrations.new.email_check') %>
+      <%= f.email_field :email, class: 'text-input', required: true, autocomplete: 'email' %>
+
+      <%= f.label :password, class: 'inline-block' %> <small><%= t('devise.registrations.new.eight_char') %></small>
+      <%= f.password_field :password, class: 'text-input', required: true, id: 'new-password', pattern: '.{8,}' %>
+
+      <%= f.hidden_field :want_newsletter, value: true %>
+
+      <%= f.submit t('general.sign_up'), class: 'btn bg-orange mt2' %>
+
+      <small class="block mt2 grey-3">By signing up for and using Noodles you are agreeing to our <%= link_to "Terms", :terms %> and <%= link_to "Privacy Policy", :privacy %>.</small>
+
+    <% end %>
+  </section>
   <section class="modal p3" role="dialog" id="previewRecipe" data-behavior="explore_preview_modal">
     <%= modal_close %>
     <h2 class="orange mb0" data-behavior="explore_preview_title"></h2>
     <p class="grey-3" data-behavior="explore_preview_description"></p>
     <article class="text modal-scroll" data-behavior="explore_preview_body"></article>
     <footer class="border-top center">
-      <a class="btn bg-blue mt1" data-behavior="explore_clip_from_preview">Clip</a>
+      <% if user_signed_in? %>
+        <a class="btn bg-blue mt2" data-behavior="explore_clip_from_preview">Clip</a>
+      <% else %>
+        <%= link_to 'Sign up for Noodles to Clip', sign_up_path, class: 'btn bg-orange mt2' %>
+      <% end %>
     </footer>
   </section>
 </main>

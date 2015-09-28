@@ -1,14 +1,9 @@
 class ExploreController < ApplicationController
-  include ApplicationHelper
   include ExploreHelper
-  include MarkdownHelper
   include RecipesHelper
   include ScrapingHelper
 
-  before_filter :please_sign_in, only: [:index]
-
   def index
-    @background = rand(1..6)
   end
 
   def results

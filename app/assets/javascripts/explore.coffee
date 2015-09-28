@@ -15,6 +15,7 @@ $(document).ready ->
     if q = _.trim(this.value)
       r = $('[data-behavior~=explore_results_container]')
       r.html null
+      r.removeClass 'center'
       r.addClass 'busy busy-large mx-auto'
       s = $('[data-behavior~=explore_src_pick_bar]').data('src-selected')
       u = '/explore/results?src=' + s + '&q=' + q

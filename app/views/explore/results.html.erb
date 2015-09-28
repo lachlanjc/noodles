@@ -9,14 +9,16 @@
          data-behavior="explore_result_item"
          data-title="<%= result['title'] %>" data-url="<%= result['url'] %>">
       <a name="previewRecipe" href="#previewRecipe"
-         class="btn bg-green mb1"
+         class="btn bg-green"
          data-behavior="explore_preview modal_trigger">
         Preview
       </a>
-      <a class="btn bg-blue"
+      <% if user_signed_in? %>
+      <a class="btn bg-blue mt1"
          data-behavior="explore_clip_from_list">
         Clip
       </a>
+      <% end %>
     </div>
   </li>
 <% end %>
