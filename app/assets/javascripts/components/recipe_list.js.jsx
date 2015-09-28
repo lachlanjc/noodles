@@ -26,9 +26,14 @@ class RecipeList extends React.Component {
     this.setState({searchText: searchText});
 
     if (searchText.length > 0) {
-      const recipes = _.filter(this.props.recipesCore, function(l) {
+      let recipes = _.filter(this.props.recipesCore, function(l) {
         return _.trim(l.title.toLowerCase()).match(searchText);
       });
+      if (searchText === '/shared' || searchText === '/share' || searchText === '/public') {
+        recipes = _.filter(this.props.recipesCore, function(l) {
+          return l.shared;
+        });
+      }
       this.setState({recipes: recipes});
     } else {
       this.setState({recipes: this.props.recipesCore});
@@ -85,7 +90,7 @@ class RecipeList extends React.Component {
 class RecipeItem extends React.Component {
   render() {
     const recipe = this.props.recipe;
-    const recipeLink = this.props.linkType === 'public' ? this.props.recipe.shared_url : recipe.url;
+    const recipeLink = this.props.linkType === 'public' ? recipe.shared_url : recipe.url;
 
     let indicators = [];
     recipe.collections === true ? indicators.push(<IconCollection classes='ml1 fill-grey-5' size='24px' />) : null;
