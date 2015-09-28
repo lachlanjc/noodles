@@ -39,23 +39,23 @@ $(document).ready ->
     t = $(this)
     p = t.parent()
 
-    $('[data-behavior~=explore_clip_from_preview]').attr('data-url', p.data('url'))
+    $('[data-behavior~=explore_clip_from_preview]').attr 'data-url', p.data 'url'
 
-    $('[data-behavior~=explore_preview_title]').text(n) if n = _.trim(p.data('title'))
+    $('[data-behavior~=explore_preview_title]').text(n) if n = _.trim p.data 'title'
 
-    $('[data-behavior~=explore_open_original]').attr 'href', p.data('url')
+    $('[data-behavior~=explore_open_original]').attr 'href', p.data 'url'
 
-    s = $('[data-behavior~=explore_src_pick_bar]').data('src-selected')
-    d = if s is 'nyt' then 'NYT Cooking' else _.capitalize(s)
-    $('[data-behavior~=explore_preview_description]').text('Recipe from ' + d)
+    s = $('[data-behavior~=explore_src_pick_bar]').data 'src-selected'
+    d = if s is 'nyt' then 'NYT Cooking' else _.capitalize s
+    $('[data-behavior~=explore_preview_description]').text 'Recipe from ' + d
 
     b = $('[data-behavior~=explore_preview_body]')
-    b.html(null)
-    b.addClass('busy busy-large mx-auto')
+    b.html null
+    b.addClass 'busy busy-large mx-auto'
 
     $.get '/explore/preview?url=' + p.data('url'), (p) ->
-      b.removeClass('busy busy-large mx-auto')
-      b.html(p)
+      b.removeClass 'busy busy-large mx-auto'
+      b.html p
 
   $(document).on 'click', '[data-behavior~=explore_clip_from_preview]', ->
     t = $(this)
@@ -68,8 +68,9 @@ $(document).ready ->
       t.toggleClass 'btn busy green link-reset'
       t.text 'Clipped!'
 
-      p = $('[data-behavior~=explore_result_item][data-url=\'' + t.data('url') + '\']').find('[data-behavior~=explore_clip_from_list]')
-      p.attr 'class', 'grey-2 link-reset'
+      p = $('[data-behavior~=explore_result_item][data-url=\'' + t.data('url') + '\']')
+      p = p.find('[data-behavior~=explore_clip_from_list]')
+      p.attr 'class', 'grey-2 link-reset mt1'
       p.text '✔︎'
 
       c = ->
