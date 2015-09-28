@@ -21,6 +21,7 @@ class NYTSearchScraper
     scraped_data['results'].each do |result|
       src = 'http://cooking.nytimes.com' + Nokogiri::HTML(result['url'].to_s).at_css('a')['href'].to_s
       result['url'] = src
+      result['description'] = result['description'].to_s.truncate(164)
     end
     scraped_data['results']
   end

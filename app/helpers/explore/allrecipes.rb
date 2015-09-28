@@ -15,7 +15,7 @@ class AllrecipesSearchScraper
       # result['url'] = 'http://allrecipes.com/recipe/'
       result['url'] = item.search('a').attr('href').to_s
       result['title'] = item.search('h3').text.strip
-      result['description'] = item.search('.rec-card__description').text.strip
+      result['description'] = item.search('.rec-card__description').text.strip.truncate(164)
       results.push(result)
     end
     results.delete_if do |item|
