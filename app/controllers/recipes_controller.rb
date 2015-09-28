@@ -11,7 +11,7 @@ class RecipesController < ApplicationController
   protect_from_forgery except: :embed_js
 
   def index
-    @recipes = current_user.recipes.order(created_at: :desc)
+    @recipes = current_user.recipes.order(:title)
   end
 
   def show
