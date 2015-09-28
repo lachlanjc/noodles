@@ -1,0 +1,14 @@
+{
+  "name": "rails-behaviors",
+  "version": "0.8.4",
+  "main": "./index.js",
+  "ignore": [
+    ".travis.yml",
+    "Gemfile",
+    "Gemfile.lock",
+    "Rakefile",
+    "script/",
+    "test/",
+    "vendor/"
+  ]
+}

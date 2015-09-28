@@ -1,0 +1,25 @@
+{
+  "name": "rails-behaviors",
+  "version": "0.8.4",
+  "main": "./index.js",
+  "ignore": [
+    ".travis.yml",
+    "Gemfile",
+    "Gemfile.lock",
+    "Rakefile",
+    "script/",
+    "test/",
+    "vendor/"
+  ],
+  "homepage": "https://github.com/josh/rails-behaviors",
+  "_release": "0.8.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.8.4",
+    "commit": "145477e5239fb6485349a40f09bfeda33e305cc8"
+  },
+  "_source": "git://github.com/josh/rails-behaviors.git",
+  "_target": "~0.8.4",
+  "_originalSource": "rails-behaviors",
+  "_direct": true
+}

@@ -1,5 +1,5 @@
 #= require jquery
-#= require jquery_ujs
+#= require rails-behaviors
 #= require react
 #= require react_ujs
 #= require lodash/lodash
