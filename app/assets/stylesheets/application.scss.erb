@@ -18,13 +18,22 @@
 .busy {
   background: url(<%= asset_path 'loading.svg' %>) no-repeat;
   background-size: 100%;
+}
+.busy-small {
   height: 32px;
   width: 32px;
 }
-
 .busy-large {
   width: 64px;
   height: 64px;
+}
+.busy.btn {
+  box-shadow: none !important;
+  width: 48px;
+  height: 24px;
+  margin: 0 auto;
+  padding: 0;
+  background-position-y: 50%;
 }
 
 .btn-paper {
@@ -42,4 +51,8 @@
   bottom: 90px;
   line-height: .9;
   right: 27px;
+}
+
+.inline-with-nav {
+  top: $space-2 * -1;
 }

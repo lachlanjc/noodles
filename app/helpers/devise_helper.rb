@@ -1,11 +1,12 @@
 module DeviseHelper
-  def devise_error_messages!
-    return "" if resource.errors.empty?
+  def devise_error_messages!(defined_resource = nil)
+    user = defined_resource || resource
+    return if user.errors.empty?
 
-    messages = resource.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
+    messages = user.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
     sentence = I18n.t("errors.messages.not_saved",
-                      :count => resource.errors.count,
-                      :resource => resource.class.model_name.human.downcase)
+                      :count => user.errors.count,
+                      :resource => user.class.model_name.human.downcase)
 
     html = <<-HTML
     <div class="border bg-darken-1 rounded mt3 p3 mx-auto">

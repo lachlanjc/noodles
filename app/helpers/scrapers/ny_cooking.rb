@@ -9,7 +9,7 @@ class NYCookingScraper
       path url_path
 
       title css: ".recipe-title"
-      ingredients({ css: ".recipe-ingredients li[itemprop='ingredients']" }, :list)
+      ingredients({ css: "li[itemprop=recipeIngredient]" }, :list)
       instructions({ css: ".recipe-steps li" }, :list)
 
       author css: ".recipe-subhead span[itemprop='author']"

@@ -1,0 +1,31 @@
+<ul class="list-reset">
+<% @results.each do |result| %>
+  <li class="bg-white rounded shadow mb2 p2 flex flex-center">
+    <div class="flex-auto">
+      <h3 class="m0"><%= result['title'] %></h3>
+      <p class="m0 text"><%= result['description'] %></p>
+    </div>
+    <div class="flex-last flex flex-column ml2 center grey-2" style="min-width: 6rem;"
+         data-behavior="explore_result_item"
+         data-title="<%= result['title'] %>" data-url="<%= result['url'] %>">
+      <a name="previewRecipe" href="#previewRecipe"
+         class="btn bg-green"
+         data-behavior="explore_preview modal_trigger">
+        Preview
+      </a>
+      <% if user_signed_in? %>
+      <a class="btn bg-blue mt1"
+         data-behavior="explore_clip_from_list">
+        Clip
+      </a>
+      <% end %>
+    </div>
+  </li>
+<% end %>
+<% if @results.blank? %>
+<li class="md-col-8 border bg-darken-1 rounded mt3 p3 center mx-auto">
+  <h3 class="mt0">Sorry, we couldn't find anything. 😰</h3>
+  <p class="mb0">Try with a different search, or check another source.</p>
+</li>
+<% end %>
+</ul>

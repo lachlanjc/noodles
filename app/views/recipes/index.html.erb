@@ -5,12 +5,12 @@
 
 <%= react_component("RecipesHome") %>
 
-<%= render "import" %>
+<%= render 'clipper' %>
 
-<a class="btn-paper-mini bg-orange fill-white circle fixed p1 shadow" name="importModal" href="#importModal" data-behavior="modal_trigger">
-  <%= inline_svg("import.svg") %>
+<a class="btn-paper-mini bg-orange fill-white circle fixed p1 shadow" name="clipModal" href="#clipper" data-behavior="modal_trigger">
+  <%= inline_svg 'clip.svg' %>
 </a>
 
 <%= link_to new_recipe_path, class: "btn-paper bg-orange fill-white circle fixed p2 shadow" do %>
-  <%= inline_svg("add.svg") %>
+  <%= inline_svg 'add.svg' %>
 <% end %>
