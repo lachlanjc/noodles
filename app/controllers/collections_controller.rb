@@ -45,7 +45,7 @@ class CollectionsController < ApplicationController
 
   def destroy
     @collection.destroy
-    flash[:red] = 'Your collection is no more.'
+    flash[:green] = 'Your collection is no more.'
     redirect_to collections_path
   end
 

@@ -62,7 +62,7 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe.destroy
-    flash[:red] = "Okay, we've got that recipe in the recycling bin now."
+    flash[:green] = "Okay, we've got that recipe in the recycling bin now."
     redirect_to recipes_url
   end
 
