@@ -29,7 +29,8 @@ $(document).ready ->
     t = $(this)
     t.text null
     t.toggleClass 'bg-blue busy'
-    $.get '/clip?url=' + $(this).parent().data('url'), (s) ->
+
+    $.get '/save?url=' + $(this).parent().data('url'), (s) ->
       t.attr 'class', 'grey-2 link-reset'
       t.text '✔︎'
 
@@ -60,7 +61,7 @@ $(document).ready ->
     t.attr('class', 'btn busy block')
     t.parent().toggleClass 'py1'
 
-    $.get '/clip?url=' + t.data('url'), (s) ->
+    $.get '/save?url=' + t.data('url'), (s) ->
       t.toggleClass 'btn busy green link-reset'
       t.text 'Clipped!'
 
