@@ -55,8 +55,8 @@ module ScrapingHelper
       r.user_id = current_user.id
       r.title = recipe_data['title']
       r.description = recipe_data['description'].to_s.squish
-      r.ingredients = write_ingredients_to_list(recipe_data['ingredients'])
-      r.instructions = form_markdown_for_instructions(recipe_data['instructions'])
+      r.ingredients = write_ingredients_to_list(recipe_data['ingredients']).to_s
+      r.instructions = form_markdown_for_instructions(recipe_data['instructions']).to_s
       r.source = url_source
       r.author = recipe_data['author'].to_s.squish
       r.serves = recipe_data['serves'].to_s.squish

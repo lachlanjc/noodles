@@ -3,25 +3,25 @@
 
 <%= render 'shared/nav' %>
 
+<header class="center relative inline-with-nav image-header bg-center bg-no-repeat bg-cover py4 px2" style='background-image: url(<%= image_path "explore/#{@background.to_s}.jpg" %>);'>
+  <h1 class="mt0 mb0 white">Explore</h1>
+  <h2 class="white regular mt1 mb3">What do you want to make?</h2>
+  <div class="md-col-8 lg-col-6 bg-white rounded shadow px1 mx-auto">
+    <input type="text" role="search"
+           class="text-input invisible-input full-width" style="height: 36px;"
+           placeholder="maybe pancakes?"
+           data-behavior="explore_search_field">
+  </div>
+  <section role="menubar" class="filterbar mt2" data-behavior="explore_src_pick_bar">
+    <a role="menuitem" class="filterbar-item inline-block px2 pointer white white-hover"
+       data-behavior="explore_src_pick" data-src-name="nyt">NYT Cooking</a>
+   <a role="menuitem" class="filterbar-item inline-block px2 pointer white white-hover"
+       data-behavior="explore_src_pick" data-src-name="epicurious">Epicurious</a>
+   <a role="menuitem" class="filterbar-item inline-block px2 pointer white white-hover"
+       data-behavior="explore_src_pick" data-src-name="allrecipes">Allrecipes</a>
+  </section>
+</header>
 <main class='sm-col-11 md-col-8 mx-auto'>
-  <header class="center">
-    <h1 class="mt3 mb0">Explore</h1>
-    <h2 class="lead regular mt1 mb2">What do you want to make?</h2>
-    <div class="md-col-8 lg-col-6 bg-white rounded shadow px1 mx-auto">
-      <input type="text" role="search"
-             class="text-input invisible-input full-width" style="height: 36px;"
-             placeholder="maybe pancakes?"
-             data-behavior="explore_search_field">
-    </div>
-    <section role="menubar" class="filterbar mt2" data-behavior="explore_src_pick_bar">
-      <a role="menuitem" class="filterbar-item inline-block px2 pointer"
-         data-behavior="explore_src_pick" data-src-name="nyt">NYT Cooking</a>
-     <a role="menuitem" class="filterbar-item inline-block px2 pointer"
-         data-behavior="explore_src_pick" data-src-name="epicurious">Epicurious</a>
-     <a role="menuitem" class="filterbar-item inline-block px2 pointer"
-         data-behavior="explore_src_pick" data-src-name="allrecipes">Allrecipes</a>
-    </section>
-  </header>
   <article class="mt2" data-behavior="explore_results_container">
     <div class="md-col-9 bg-white grey-2 shadow rounded mt3 p3 center mx-auto">
       <p><strong>Explore</strong> helps you find and save recipes for almost anything you want to cook.</p>

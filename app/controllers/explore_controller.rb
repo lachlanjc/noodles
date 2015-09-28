@@ -8,6 +8,7 @@ class ExploreController < ApplicationController
   before_filter :please_sign_in, only: [:index]
 
   def index
+    @background = rand(1..6)
   end
 
   def results

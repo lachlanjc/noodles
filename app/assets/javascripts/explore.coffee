@@ -3,7 +3,7 @@ $(document).ready ->
     t = $(this)
     b = $('[data-behavior~=explore_src_pick_bar]')
     src = t.data 'src-name'
-    activeClasses = 'bg-orange white white-hover bold'
+    activeClasses = 'bg-orange bold'
     b.find('[data-src-name=' + b.data('src-selected') + ']').toggleClass activeClasses
     t.toggleClass(activeClasses) if b.data('src-selected') isnt src
     b.data 'src-selected', src
@@ -75,4 +75,4 @@ $(document).ready ->
         t.text 'Clip'
         t.attr 'class', 'btn bg-blue mt1'
         t.parent().toggleClass 'py1'
-      setTimeout c, 525
+      setTimeout c, 600

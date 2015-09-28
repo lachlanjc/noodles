@@ -1,21 +1,12 @@
-.coll-header {
-  // override nav's .mb2
-  position: relative;
-  top: $space-2 * -1;
-
-  &.coll-w-img {
-    box-shadow: inset 0 -6rem 6rem rgba(0,0,0,.4);
-  }
-}
-
-.coll-preview.coll-w-img {
-  box-shadow: inset 0 -2rem 6rem 1rem rgba(0,0,0,.4);
-}
-
-.coll-w-img .coll-name,
-.coll-w-img .coll-desc {
+.image-header {
+  box-shadow: inset 0 -6rem 6rem rgba(0,0,0,.5);
   color: #fff;
-  text-shadow: 0 1px 3px rgba(0,0,0,.2);
+  text-shadow: 0 1px 3px rgba(0,0,0,.25);
+
+  .coll-name,
+  .coll-desc {
+    color: #fff;
+  }
 }
 
 .collection-list-item input:checked {

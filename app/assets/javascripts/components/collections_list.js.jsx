@@ -28,7 +28,7 @@ class CollectionItem extends React.Component {
     let imgClass = ' bg-white rounded shadow p2';
     let imgStyle;
     if (data.photo_url.length > 0) {
-      imgClass = ' coll-w-img bg-center bg-no-repeat bg-cover';
+      imgClass = ' coll-w-img image-header bg-center bg-no-repeat bg-cover';
       imgStyle = {
         backgroundImage: 'url(' + data.photo_url + ')'
       }
