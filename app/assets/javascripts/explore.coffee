@@ -5,7 +5,7 @@ $(document).ready ->
     src = t.data 'src-name'
     activeClasses = 'bg-orange bold'
     b.find('[data-src-name=' + b.data('src-selected') + ']').toggleClass activeClasses
-    t.toggleClass(activeClasses) if b.data('src-selected') isnt src
+    t.toggleClass(activeClasses) if b.data('src-selected') isnt src or !t.attr('class').match(activeClasses)
     b.data 'src-selected', src
     $('[data-behavior~=explore_search_field]').keyup()
 
