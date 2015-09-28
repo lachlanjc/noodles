@@ -6,7 +6,7 @@ class SaveController < ApplicationController
   def save
     if user_signed_in?
       recipe_data = master_scrape(params[:url])
-      if recipe_data == 'unsupported'
+      if recipe_data == 'unsupported' || recipe_data['title'].blank?
         flash[:red] = 'Hey! We\'re really sorry, but that website isn\'t working because it doesn\'t use the standard markup for recipes.'
         redirect_to root_url
       else
