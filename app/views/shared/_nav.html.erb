@@ -38,8 +38,12 @@
 
 </nav>
 
+<% if flash.any? %>
+<section class="md-col-5 mw6 px2 mx-auto print-hide">
 <% flash.each do |key, value| %>
-  <div class="sm-col-11 md-col-5 mw6 p2 mb3 mx-auto rounded shadow bg-white <%= flash_color_class(key) %> print-hide" role="alertdialog" data-behavior="flash">
+  <div class="p2 mb2 rounded shadow bg-<%= flash_color_class(key) %> white" role="alertdialog" data-behavior="flash">
     <%= value %>
   </div>
+<% end %>
+</section>
 <% end %>
