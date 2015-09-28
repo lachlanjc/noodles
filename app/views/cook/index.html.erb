@@ -44,9 +44,8 @@
 
   <article class="sm-col-11 md-col-6 mx-auto mt2 p0">
     <% flash.each do |key, value| %>
-      <div class="h2 p2 center mb2 rounded <%= flash_color_class(key) %> print-hide" role="alertdialog" data-behavior="flash">
-        <%= inline_svg 'notification.svg', class: 'mr1 fill-grey-3 table-cell', style: 'vertical-align: bottom; width: 36px; height: 36px;' %>
-        <span class="table-cell"><%= value %></span>
+      <div class="h2 p2 center mb2 rounded bg-<%= flash_color_class(key) %> white pointer print-hide" role="alertdialog" data-behavior="flash">
+        <%= value %>
       </div>
     <% end %>
 
