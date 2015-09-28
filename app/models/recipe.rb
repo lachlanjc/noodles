@@ -1,10 +1,9 @@
 class Recipe < ActiveRecord::Base
-  include RecipesHelper
-
   belongs_to :user
 
-  validates :title, presence: true, length: { minimum: 4 }
+  validates :title, presence: true
   validates :user_id, presence: true
+  validates :shared_id, presence: true
 
   has_attached_file :img,
     :path => 'recipes/:id/img/:style.:extension',
@@ -13,19 +12,5 @@ class Recipe < ActiveRecord::Base
 
   def to_param
     "#{id} #{title}".parameterize
-  end
-
-  def as_json
-    {
-      title: title,
-      description_preview: description.truncate(165),
-      favorite: favorite,
-      collection: collections.present?,
-      notes: notes.present?,
-      web: is_from_web(source),
-      photo: img.url.present?,
-      url: "/recipes/" + id.to_s,
-      shared_url: "/s/" + shared_id.to_s
-    }
   end
 end

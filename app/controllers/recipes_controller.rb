@@ -23,8 +23,8 @@ class RecipesController < ApplicationController
       @recipe = Recipe.new
       render :edit
     else
-      flash[:blue] = "You must have an account to create new recipes."
-      redirect_to root_url, status: 401
+      flash[:red] = 'You must have an account to create new recipes.'
+      redirect_to root_url
     end
   end
 
@@ -163,7 +163,9 @@ class RecipesController < ApplicationController
     def not_the_owner
       if not_my_recipe?
         flash[:red] = 'That\'s not yours.'
-        redirect_to root_url, status: 401
+        redirect_to root_url
+      else
+        true
       end
     end
 end

@@ -16,6 +16,13 @@ module ApplicationHelper
     raise ActionController::RoutingError.new('Not Found')
   end
 
+  def please_sign_in
+    if !user_signed_in?
+      flash[:red] = 'Please sign in to an account.'
+      redirect_to root_url
+    end
+  end
+
   def app_url
     Rails.env.development? ? 'http://noodles.dev' : 'http://www.getnoodl.es'
   end

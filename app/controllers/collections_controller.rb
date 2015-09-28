@@ -73,7 +73,7 @@ class CollectionsController < ApplicationController
     def only_mine
       if !me_owns_collection?
         flash[:red] = 'That\'s not yours.'
-        redirect_to root_url, status: 401
+        redirect_to root_url
       end
     end
 end
