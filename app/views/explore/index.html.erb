@@ -69,7 +69,10 @@
   </section>
   <section class="modal p3" role="dialog" id="previewRecipe" data-behavior="explore_preview_modal">
     <%= modal_close %>
-    <h2 class="orange mb0" data-behavior="explore_preview_title"></h2>
+    <h2 class="orange inline-block mb0" data-behavior="explore_preview_title"></h2>
+    <a data-behavior="explore_open_original" class="ml1 inline-block" target="_blank">
+      <%= inline_svg 'open-new-tab.svg', class: 'fill-orange', style: 'width: 16px; height: 16px;' %>
+    </a>
     <p class="grey-3" data-behavior="explore_preview_description"></p>
     <article class="text modal-scroll" data-behavior="explore_preview_body"></article>
     <footer class="border-top center">

@@ -43,6 +43,8 @@ $(document).ready ->
 
     $('[data-behavior~=explore_preview_title]').text(n) if n = _.trim(p.data('title'))
 
+    $('[data-behavior~=explore_open_original]').attr 'href', p.data('url')
+
     s = $('[data-behavior~=explore_src_pick_bar]').data('src-selected')
     d = if s is 'nyt' then 'NYT Cooking' else _.capitalize(s)
     $('[data-behavior~=explore_preview_description]').text('Recipe from ' + d)
