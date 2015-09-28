@@ -16,15 +16,4 @@ class ExploreController < ApplicationController
     @recipe = prepare_explore_preview(recipe_data)
     render :preview, layout: false
   end
-
-  def clip
-    recipe_data = master_scrape(params[:url])
-
-    if recipe_data == "unsupported"
-      flash[:red] = "Sorry, we don't support that site yet."
-      redirect_to recipes_path
-    else
-      create_recipe(recipe_data, params[:url], "Recipe imported!")
-    end
-  end
 end
