@@ -62,7 +62,7 @@ en:
       delete: "Delete this Recipe"
       delete_forever: "Delete your recipe forever? Forever is a long, long time."
     printing:
-      print_copy: "Noodles is a simple app to keep, cook, and share your recipes. Get it free at www.getnoodl.es"
+      print_copy: Printed from Noodles, a simple app to keep, cook, and share your recipes. Get it free at www.getnoodl.es
 
   help:
     help:
