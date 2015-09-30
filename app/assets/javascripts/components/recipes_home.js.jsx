@@ -58,7 +58,7 @@ class RecipesHome extends React.Component {
     const protips = [
       <span>See only your shared recipes by searching <strong>/shared</strong>.</span>,
       <span>Create a new recipe super quickly by searching with its title.</span>,
-      <span>Not sure what to cook right now? Click the <strong>Random</strong> button at the top.</span>
+      <span>Not sure what to cook right now? Click <a className='bold' href={randomUrl}>Random</a> button at the top.</span>
     ];
     const protip = protips[_.random(0, 2)];
 
