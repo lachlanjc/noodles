@@ -26,12 +26,14 @@ class RecipeList extends React.Component {
     this.setState({searchText: searchText});
 
     if (searchText.length > 0) {
-      let recipes = _.filter(this.props.recipesCore, function(l) {
-        return _.trim(l.title.toLowerCase()).match(searchText);
-      });
-      if (searchText === '/shared' || searchText === '/share' || searchText === '/public') {
-        recipes = _.filter(this.props.recipesCore, function(l) {
-          return l.shared;
+      let recipes = this.props.recipesCore;
+      if (this.props.searchCommands == true && _.startsWith(searchText, '/')) {
+        if (_.intersection(searchText, 'shared').join('') || _.intersection(searchText, 'public').join('')) {
+          recipes = _.filter(recipes, function(l) { return l.shared });
+        }
+      } else {
+        recipes = _.filter(recipes, function(l) {
+          return _.trim(l.title.toLowerCase()).match(searchText);
         });
       }
       this.setState({recipes: recipes});
@@ -43,13 +45,13 @@ class RecipeList extends React.Component {
   render() {
     const linkType = this.props.linkType || 'normal';
 
-    const searching = this.state.searchText.length > 0;
-    const recipeCount = this.props.recipesCore.length
+    const searching = !_.isEmpty(this.state.searchText);
+    const recipeCount = _.size(this.props.recipesCore);
     const searchLabel = 'Search ' +
                         (recipeCount != 1 ? 'these ' : 'this ') +
                         recipeCount + (recipeCount != 1 ? ' recipes' : ' recipe') + '...';
 
-    const noSearchResults = searching && (this.state.recipes.length === 0);
+    const noSearchResults = searching && _.isEmpty(this.state.recipes);
     const createFromSearch = searching && ((this.props.createFromSearch || false) === true);
 
     return (
@@ -68,7 +70,7 @@ class RecipeList extends React.Component {
         </div>
 
         {this.state.recipes.map(function(recipe) {
-           return <RecipeItem recipe={recipe} linkType={linkType} key={`recipe-${recipe.id}`} />;
+           return <RecipeItem recipe={recipe} linkType={linkType} key={recipe.id} />;
         }.bind(this))}
 
         {noSearchResults ?

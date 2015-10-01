@@ -72,7 +72,7 @@ class RecipesHome extends React.Component {
             {randomUrl ? <a role='menuitem' href={randomUrl} className={this.filterClasses('rdm')}>Random</a> : null}
           </section>
         </header>
-        <RecipeList recipesCore={this.state.recipesCurrent} createFromSearch={true} />
+        <RecipeList recipesCore={this.state.recipesCurrent} createFromSearch={true} searchCommands={true} />
         {this.state.view === 'fav' && this.state.recipesCurrent.length == 0 ? this.renderFavoritesBlankSlate() : null}
         <div className='mb3 center'>
           <IconProtip size='24' classes='inline-block fill-grey-4 mr1 relative' style={{top: 6}} />
