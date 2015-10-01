@@ -25,7 +25,7 @@
 <% if @recipe.serves.present? %>
 <p>Yield: <span itemprop="recipeYield"><%= @recipe.serves %></span></p>
 <% end %>
-<% if @recipe.source.blank? && @recipe.author.blank? && @recipe.serves.present? %>
+<% if @recipe.source.blank? && @recipe.author.blank? && @recipe.serves.blank? %>
   <p class="grey-2">No details for this recipe. Details describe where the recipe came from and the recipe's yield.</p>
 <% end %>
 
