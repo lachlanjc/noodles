@@ -81,6 +81,7 @@ GEM
       warden (~> 1.2.3)
     devise_marketable (0.0.4)
       devise
+    dimensions (1.3.0)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.0.2)
@@ -252,6 +253,7 @@ DEPENDENCIES
   cohort_me
   devise
   devise_marketable
+  dimensions
   dotenv-rails
   hangry
   hashids

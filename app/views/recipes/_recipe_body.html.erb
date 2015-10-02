@@ -10,7 +10,7 @@
   <%= instructions_processed.html_safe %>
 </div>
 
-<%= image_tag @recipe.img, alt: "Photo of " + @recipe.title, class: "mt2 mb2 mx-auto rounded", itemprop: "image" unless @recipe.img.url.blank? %>
+<%= image_tag @recipe.img, class: 'hide', itemprop: 'image' if @recipe.img.url.present? && !@image_layout %>
 
 <h2 class="mt2">Details</h2>
 <% if @recipe.source.present? %>

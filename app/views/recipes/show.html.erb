@@ -1,137 +1,72 @@
 <%- title @recipe.title.html_safe %>
 <% activate_nav!(:recipes) %>
-<% @shared_url = shared_url %>
 
 <%= render "shared/nav" %>
 
-<article class="document">
+<div itemscope itemtype="http://schema.org/Recipe">
+  <meta itemprop="url" content="<%= @shared_url %>" />
+  <meta itemprop="dateCreated" content="<%= @recipe.created_at %>" />
+  <meta itemprop="dateModified" content="<%= @recipe.updated_at %>" />
 
-  <%= form_for(@recipe, data: { remote: true }) do |f| %>
-    <label class="control right inline-block m0 print-hide">
-      <%= f.check_box :favorite, class: 'control-checkbox', data: { behavior: 'recipe_favorite_trigger' } %>
-      <%= react_component('IconFavoriteOutline', { classes: 'fill-orange', size: '32' }, { class: 'control-indicator' }) %>
-      <%= react_component('IconFavorite', { classes: 'fill-orange', size: '32' }, { class: 'control-indicator-checked' }) %>
-    </label>
-  <% end %>
+  <% if @image_layout %>
+    <header class="image-header inline-with-nav relative bg-cover bg-center md-flex flex-center p2"
+            style="background-image: url(<%= @recipe.img.url %>); min-height: 25vh;">
 
-  <div itemscope itemtype="http://schema.org/Recipe">
-    <meta itemprop="url" content="<%= @shared_url %>" />
-    <meta itemprop="dateCreated" content="<%= @recipe.created_at %>" />
-    <meta itemprop="dateModified" content="<%= @recipe.updated_at %>" />
-
-    <h1 class="m0 inline" itemprop="name"><%= @recipe.title %></h1>
-    <div class="text mt2" itemprop="description"><%= markdown(@recipe.description.to_s) %></div>
-
-    <%= render "recipe_body" %>
-  </div>
-
-  <%= render "shared/social" if @recipe.shared? %>
-
-  <div class="print-hide py1">
-    <%= link_to t("general.edit"), :edit_recipe, class: "btn bg-blue mr1 mt1" %>
-    <a href="#collectModal" class="btn bg-orange mr1 mt1" data-behavior="modal_trigger">Add to Collection</a>
-    <a href="#shareModal" class="btn bg-green mr1 mt1" data-behavior="modal_trigger">Share</a>
-    <%= link_to t("general.delete"), @recipe, method: :delete, data: { confirm: t("general.delete_forever") }, class: "btn bg-red mt1" %>
-  </div>
-
-  <%= render "shared/printer" %>
-
-</article>
-
-<div id="collectModal" class="modal">
-  <%= modal_close %>
-
-  <h2>Add to Collection</h2>
-  <hr>
-  <% @collections = Collection.where(:user_id => current_user) %>
-
-  <% if @collections.any? %>
-    <% if @recipe.collections.length <= 4 %>
-    <p>Add this recipe to your collections by clicking them from the list below.</p>
-    <% else %>
-    <p>"<%= @recipe.title %>" is already in <%= pluralize(@recipe.collections.reject!(&:blank?).length, "collection") %>. To add it to additional collections, click on them in the list below.</p>
-    <% end %>
-
-    <%= form_for(@recipe) do |f| %>
-      <ul class="list-reset sm-col-10 md-col-5 mx-auto">
-        <%= collection_check_boxes(:recipe, :collections, @collections, :id, :name) do |b| %>
-        <li class="border-top">
-          <%= b.label(class: "collection-list-item m0 p1 pointer") do %>
-            <% if @recipe.collections.include?(b.value.to_s) %>
-            <%= b.check_box(checked: "checked", class: "hide") %>
-            <% else %>
-            <%= b.check_box(class: "hide") %>
-            <% end %>
-            <%= content_tag(:span, b.text) %>
-            <div class="checkmark fill-orange right hide">
-              <%= inline_svg("check.svg") %>
-            </div>
-          <% end %>
-        </li>
+      <div class="md-col-8 mx-auto mw7">
+        <h1 class="white mb1 inline-block h0" itemprop="name"><%= @recipe.title %></h1>
+        <%= form_for(@recipe, data: { remote: true }, html: { class: 'inline-block print-hide ml1' }) do |f| %>
+          <label class="control m0">
+            <%= f.check_box :favorite, class: 'control-checkbox', data: { behavior: 'recipe_favorite_trigger' } %>
+            <%= inline_svg 'favorite_outline.svg', class: 'fill-white pointer control-indicator', size: 24 %>
+            <%= inline_svg 'favorite.svg', class: 'fill-white pointer control-indicator-checked', size: 24 %>
+          </label>
         <% end %>
-        <li class="border-top border-bottom p1 grey-1">
-          <%= link_to "Add a New Collection...", collections_path(:new_collection => true), class: "link-reset" %>
-        </li>
-      </ul>
-      <%= f.submit "Save", class: "btn bg-blue right" %>
-    <% end %>
-  <% else %>
-    <div class="text center border rounded p3">
-      You don't have any collections yet. Why don't you <%= link_to "create one", collections_path(:new_collection => true), class: "blue" %>?
-    </div>
+
+        <% if @recipe.description.present? %>
+        <div class="white" itemprop="description">
+          <%= whitened_markdown @recipe.description %>
+        </div>
+        <% end %>
+      </div>
+
+      <a href="#photo" name="photo mr1 flex-last pointer" data-behavior="modal_trigger">
+        <%= inline_svg 'fullscreen.svg', class: 'fill-white' %>
+      </a>
+    </header>
+
+    <section id="photo" role="dialog" class="modal">
+      <div class="pointer absolute p1" style="right: 1rem;" data-behavior="modal_close">
+        <%= inline_svg 'close.svg', class: 'fill-white' %>
+      </div>
+      <%= image_tag @recipe.img, class: 'full-width', itemprop: 'image' %>
+    </section>
+
+    <%= render 'shared/flash' if flash.any? %>
+
   <% end %>
-</div>
 
-<div id="shareModal" class="modal">
-  <%= modal_close %>
+  <main class="<%= @image_layout ? 'md-col-8 mx-auto px2 mb3' : 'document' %> mw7">
 
-  <h2>Share this recipe</h2>
-  <hr>
-
-  <div class="tab-container">
-
-    <input type="radio" name="tab-set-2" class="tab-1" id="tab-2-1" checked>
-    <label for="tab-2-1" class="rounded-top inline-block border bg-grey-5">Share a link</label>
-
-    <input type="radio" name="tab-set-2" class="tab-2" id="tab-2-2">
-    <label for="tab-2-2" class="rounded-top inline-block border bg-grey-5">Download a PDF</label>
-
-    <input type="radio" name="tab-set-2" class="tab-3" id="tab-2-3">
-    <label for="tab-2-3" class="rounded-top inline-block border bg-grey-5">Embed on the Web</label>
-
-    <br>
-
-    <div class="content content-1 p1 border rounded-bottom">
-      <% if @recipe.shared? %>
-      <p>Your recipe is already shared!</p>
-      <p><%= link_to "Check out the share page", @shared_url, class: "btn bg-blue" %></p>
-      <% else %>
-      <p>Anyone with this link can see your recipe and save a copy to their own Noodles account.</p>
-      <p><%= link_to "Share a link to this recipe", recipe_share_it_path(@recipe), class: "btn bg-blue" %></p>
+    <% if !@image_layout %>
+      <%= form_for(@recipe, data: { remote: true }) do |f| %>
+        <label class="control right inline-block m0 print-hide">
+          <%= f.check_box :favorite, class: 'control-checkbox', data: { behavior: 'recipe_favorite_trigger' } %>
+          <%= inline_svg 'favorite_outline.svg', class: 'fill-orange pointer control-indicator', size: 32 %>
+          <%= inline_svg 'favorite.svg', class: 'fill-orange pointer control-indicator-checked', size: 32 %>
+        </label>
       <% end %>
-    </div>
 
-    <div class="content content-2 p1 border rounded-bottom">
-      <p>Click the button below to download a PDF of your recipe.</p>
-      <p><%= link_to "Download PDF", recipe_export_pdf_path(@recipe), class: "btn bg-blue" %></p>
-    </div>
+      <h1 class="m0 inline" itemprop="name"><%= @recipe.title %></h1>
+      <div class="text mt2" itemprop="description"><%= markdown(@recipe.description.to_s) %></div>
 
-    <div class="content content-3 p1 border rounded-bottom">
-      <p>Copy and paste the code below onto your website or blog to embed this recipe.</p>
-      <pre class="m0 p1 border rounded bg-grey-6 text">
-        <%= '<script src="http://www.getnoodl.es/embed/' + @recipe.shared_id.to_s + '"></script>' %>
-      </pre>
-      <p class="mt1"><%= link_to "Need help?", help_path %></p>
-    </div>
+    <% end %>
 
-  </div>
+    <%= render 'recipe_body' %>
+
+    <%= render 'footer' %>
+
+  </main>
 
 </div>
 
-<a class="btn-paper-mini bg-orange fill-white circle fixed p1 pointer shadow" data-behavior="print">
-  <%= inline_svg 'print.svg' %>
-</a>
-
-<%= link_to recipe_cook_path(recipe_id: @recipe.id), class: "btn-paper bg-orange fill-white circle fixed p2 shadow" do %>
-  <%= inline_svg("cook.svg") %>
-<% end %>
+<%= render 'meta' %>

@@ -6,6 +6,7 @@ gem "dotenv-rails", groups: [:development, :test]
 gem "rails_autolink"
 gem "autoprefixer-rails"
 gem "aws-sdk", "< 2.0"
+gem "dimensions"
 gem "devise"
 gem "devise_marketable"
 gem "coffee-rails"

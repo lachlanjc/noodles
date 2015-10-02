@@ -1,4 +1,5 @@
 <%- title @recipe.title.html_safe %>
+<% activate_nav!(:recipes) %>
 <% activate_nav!(:shared_recipe) %>
 
 <% content_for :meta do -%>
@@ -23,57 +24,88 @@
   <% end %>
 <% end -%>
 
-<%= render "shared/nav" %>
+<%= render 'shared/nav' %>
 
-<article class="document">
+<div itemscope itemtype="http://schema.org/Recipe">
+  <meta itemprop="url" content="<%= @shared_url %>" />
+  <meta itemprop="dateCreated" content="<%= @recipe.created_at %>" />
+  <meta itemprop="dateModified" content="<%= @recipe.updated_at %>" />
 
-  <div itemscope itemtype="http://schema.org/Recipe">
-    <meta itemprop="url" content="<%= @shared_url %>" />
-    <meta itemprop="dateCreated" content="<%= @recipe.created_at %>" />
-    <meta itemprop="dateModified" content="<%= @recipe.updated_at %>" />
+  <% if @image_layout %>
+    <header class="image-header inline-with-nav relative bg-cover bg-center md-flex flex-center p2"
+            style="background-image: url(<%= @recipe.img.url %>); min-height: 25vh;">
 
-    <h1 class="m0" itemprop="name"><%= @recipe.title %></h1>
-    <p class="grey-3 mb1">
-      Shared by
-      <% if @recipe.author.present? %>
-        <span itemprop="author"><%= @recipe.user.first_name %></span>
-      <% else %>
-        <%= @recipe.user.first_name %>
-      <% end %>
-      </p>
-    <div itemprop="description"><%= markdown(@recipe.description) %></div>
-    <%= render "shared/social" if me_owns_recipe? %>
-    <%= render "recipe_body" %>
-  </div>
+      <div class="md-col-8 mx-auto mw7">
+        <h1 class="white mb1 h0" itemprop="name"><%= @recipe.title %></h1>
 
-  <%# If it's your recipe, hint about saving %>
-  <% if me_owns_recipe? %>
-  <div class="mt2 print-hide">
-    <a class="btn bg-orange mr1" title="Others can click this button to save a copy of your recipe to their Noodles account." disabled>Save</a>
-    <%= link_to "Un-share", recipe_un_share_path(@recipe), class: "btn bg-red mr1" %>
+        <% if @recipe.description.present? %>
+        <div class="white" itemprop="description">
+          <%= whitened_markdown @recipe.description %>
+        </div>
+        <% end %>
 
-  <%# If you're logged in, show Save button %>
-  <% elsif user_signed_in? %>
-  <div class="mt2 print-hide">
-    <%= link_to "Save", :save_to_noodles, title: "Save a copy of this recipe to your own account", class: "btn bg-orange mr1" %>
+        <% if @recipe.user.present? %>
+        <p class="white h5 mt2">Shared by <%= @recipe.user.first_name %></p>
+        <% end %>
+      </div>
 
-  <%# Everyone else should sign up for Noodles %>
-  <% else %>
-  <div class="sm-col-10 md-col-8 border rounded p3 mt2 print-hide mx-auto">
-    <h2 class="mt0">Wondering about Noodles?</h2>
-    <p><%= link_to "Noodles", root_url, class: "orange" %> is a simple app for you to collect, cook, and share your favorite recipes.
-    <p><%= link_to "Sign up", :sign_up, class: "orange" %> to save this recipe &mdash; it's fast and completely free.</p>
-    <p class="center mb0">
-      <%= link_to "Try Noodles", sign_up_path, class: "btn bg-orange sm-col-8 md-col-5" %>
-    </p>
-  </div>
+      <a href="#photo" name="photo mr1 flex-last pointer" data-behavior="modal_trigger">
+        <%= inline_svg 'fullscreen.svg', class: 'fill-white' %>
+      </a>
+    </header>
+
+    <section id="photo" role="dialog" class="modal">
+      <div class="pointer absolute p1" style="right: 1rem;" data-behavior="modal_close">
+        <%= inline_svg 'close.svg', class: 'fill-white',
+                       style: '-webkit-filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.25));
+                                       filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.25));' %>
+      </div>
+      <%= image_tag @recipe.img, class: 'full-width', itemprop: 'image' %>
+    </section>
+
+    <%= render 'shared/flash' if flash.any? %>
+
   <% end %>
 
-  </div>
+  <main class="<%= @image_layout ? 'md-col-8 mx-auto px2 mb3' : 'document' %> mw7">
 
-  <%= render "shared/printer" %>
+    <% if !@image_layout %>
+      <h1 class="m0" itemprop="name"><%= @recipe.title %></h1>
+      <% if @recipe.user.present? %>
+      <p class="grey-3">Shared by <%= @recipe.user.first_name %></p>
+      <% end %>
+      <div class="text" itemprop="description"><%= sanitize markdown(@recipe.description.to_s) %></div>
+    <% end %>
 
-</article>
+    <%= render 'recipe_body' %>
+
+    <%= render 'shared/social' if me_owns_recipe? %>
+
+    <%# If it's your recipe, hint about saving %>
+    <% if me_owns_recipe? %>
+    <div class="mt2 print-hide">
+      <a class="btn bg-orange mr1" title="Others can click this button to save a copy of your recipe to their Noodles account." disabled>Save</a>
+      <%= link_to 'Un-share', recipe_un_share_path(@recipe), class: 'btn bg-red mr1' %>
+
+    <%# If you're logged in, show Save button %>
+    <% elsif user_signed_in? %>
+    <div class="mt2 print-hide">
+      <%= link_to 'Save', :save_to_noodles, title: 'Save a copy of this recipe to your own account', class: 'btn bg-orange mr1' %>
+
+    <%# Everyone else should sign up for Noodles %>
+    <% else %>
+    <div class="md-col-9 border rounded p3 mt2 center print-hide mx-auto">
+      <h2 class="mt0">Hey, this is Noodles!</h2>
+      <p><%= link_to 'Noodles', root_url %> is a simple app for you to keep, cook, and share your recipes.</p>
+      <p><%= link_to 'Sign up', sign_up_path %> to save this recipe &mdash; it's fast and completely free.</p>
+      <p class='mb1'><%= link_to 'Sign Up for Noodles', sign_up_path, class: 'btn bg-orange sm-col-8 md-col-5' %></p>
+      <p class="mb0 grey-3 h5">It's totally free.</p>
+    </div>
+    <% end %>
+
+  </main>
+
+</div>
 
 <a class="btn-paper-mini bg-orange fill-white circle fixed p1 pointer shadow" data-behavior="print">
   <%= inline_svg 'print.svg' %>

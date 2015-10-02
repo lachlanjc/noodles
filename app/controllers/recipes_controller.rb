@@ -15,6 +15,8 @@ class RecipesController < ApplicationController
   end
 
   def show
+    setup_image_layout
+    @shared_url = shared_url
     render :locked, status: 403 if not_my_recipe?
   end
 
@@ -96,6 +98,7 @@ class RecipesController < ApplicationController
   def share
     @recipe = Recipe.find_by_shared_id(params[:shared_id])
     raise_not_found
+    setup_image_layout
     @shared_url = shared_url
   end
 
@@ -166,6 +169,18 @@ class RecipesController < ApplicationController
         redirect_to root_url
       else
         true
+      end
+    end
+
+    def setup_image_layout
+      if @recipe.img.url.present?
+        begin
+          fetched_photo = open @recipe.img.url
+        rescue OpenURI::HTTPError => error
+          @image_layout = false
+        end
+        @image_layout = !!(Dimensions.width(fetched_photo) > 800) unless @image_layout = false
+        @remove_grey_bg, @hide_flash = true
       end
     end
 end

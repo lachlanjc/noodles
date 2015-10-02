@@ -1,9 +1,9 @@
 <div class="flex mt2">
-  <div class="center py1 px2 border rounded inline-block mx-auto print-hide">
-    <h2 class="mt1">This recipe is public.</h2>
+  <div class="center px2 border rounded inline-block mx-auto print-hide">
+    <h2>This recipe is public.</h2>
 
-    <p class="mb1">Share this link:</p>
-    <%= react_component("CopyLink", url: @shared_url) %>
+    <p class="mb1">Share the link:</p>
+    <%= react_component 'CopyLink', url: @shared_url %>
 
     <div class="social py1 mt1">
       <a rel="nofollow" href="http://twitter.com/share?text=Check out <%= @recipe.title %>, published on @noodlesapp:&amp;url=<%= @shared_url %>" class="mr1" target="_blank">
@@ -35,12 +35,11 @@
       </a>
     </div>
 
-    <% if nav_active?(:recipe) %>
-    <p class="mt1"><%= link_to "Check it out.", @shared_url, class: "btn bg-blue" %></p>
-    <% end %>
-
-    <% if me_owns_recipe? %>
-    <p class="grey-3 h5">Or you could <%= link_to "un-share this recipe", recipe_un_share_path(@recipe), class: "link-reset border-bottom" %>.</p>
+    <% if !nav_active?(:shared_recipe) %>
+      <p class="mt1"><%= link_to 'See the public recipe »', @shared_url, class: 'btn btn-sm bg-blue' %></p>
+      <p class="grey-3 h5">Or you could <%= link_to 'un-share this recipe', recipe_un_share_path(@recipe), class: 'link-reset border-bottom' %>.</p>
+    <% elsif nav_active?(:shared_recipe) && me_owns_recipe? %>
+      <p class="mb2"><%= link_to '« Back to private recipe', recipe_path(@recipe), class: 'btn btn-sm bg-blue' %></p>
     <% end %>
   </div>
 </div>
