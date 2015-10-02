@@ -37,7 +37,6 @@ module RecipesHelper
   def instructions_processed(instructions = @recipe.instructions)
     text = sanitize markdown(instructions)
     text = Nokogiri::HTML::DocumentFragment.parse(text)
-    text.css('ol').each { |item| item['class'] = 'p0' } if !!@image_layout
     text.css('li').each { |item| item['itemprop'] = 'instruction' }
     text.to_s.html_safe
   end
