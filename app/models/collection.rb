@@ -12,7 +12,7 @@ class Collection < ActiveRecord::Base
       name: name,
       description: description,
       url: "/collections/" + id.to_s,
-      publisher: User.find(user.id).first_name,
+      publisher: user.first_name,
       photo_url: photo.url.to_s
     }
   end

@@ -3,8 +3,7 @@
 
   <h2>Add to Collection</h2>
   <hr>
-  <% @collections = Collection.where(:user_id => current_user) %>
-
+  <% @collections = current_user.collections %>
   <% if @collections.any? %>
     <% if @recipe.collections.length <= 4 %>
     <p>Add this recipe to your collections by clicking them from the list below.</p>
