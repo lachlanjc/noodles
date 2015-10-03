@@ -29,15 +29,28 @@ class RecipesHome extends React.Component {
 
   findFav(e) {
     this.setState({
-      recipesCurrent: _.where(this.state.recipesCore, { 'favorite': true }),
+      recipesCurrent: _.where(this.state.recipesCore, {'favorite': true}),
       view: 'fav'
     });
+  }
+
+  findRandom() {
+    return !_.isEmpty(this.state.recipesCurrent) ? _.sample(this.state.recipesCurrent).url : null;
   }
 
   filterClasses(name) {
     let classes = 'filterbar-item inline-block px2 pointer '
     this.state.view === name ? classes += 'bg-orange white white-hover bold' : classes += 'grey-1';
     return classes;
+  }
+
+  renderBlankSlate() {
+    return (
+      <BlankSlate>
+        <h3 className='m0'>No recipes here yet!</h3>
+        {/*<a href='/recipes/new' className='btn bg-blue'>Create your first</a>*/}
+      </BlankSlate>
+    )
   }
 
   renderFavoritesBlankSlate() {
@@ -51,16 +64,25 @@ class RecipesHome extends React.Component {
     )
   }
 
-  render() {
-    const recipes = _.compact(this.state.recipesCurrent);
-    const randomUrl = (recipes.length > 0) ? '/recipes/' + _.sample(recipes).id.toString() : null;
-
+  renderProTips() {
     const protips = [
       <span>See only your shared recipes by searching <strong>/shared</strong>.</span>,
       <span>Create a new recipe super quickly by searching with its title.</span>,
-      <span>Not sure what to cook right now? Click <a className='bold' href={randomUrl}>Random</a> button at the top.</span>
+      <span>Not sure which recipe to cook right now? Click <a className='bold' href={this.findRandom()}>Random</a> button at the top.</span>
     ];
     const protip = protips[_.random(0, 2)];
+    return (
+      <div className='mb3 center'>
+        <IconProtip size='24' classes='inline-block fill-grey-4 mr1 relative' style={{top: 6}} />
+        <strong>ProTip! </strong>
+        {protip}
+      </div>
+    )
+  }
+
+  render() {
+    const recipes = this.state.recipesCurrent;
+    const randomUrl = this.findRandom();
 
     return (
       <main className='sm-col-11 md-col-8 mx-auto'>
@@ -73,12 +95,8 @@ class RecipesHome extends React.Component {
           </section>
         </header>
         <RecipeList recipesCore={this.state.recipesCurrent} createFromSearch={true} searchCommands={true} />
-        {this.state.view === 'fav' && this.state.recipesCurrent.length == 0 ? this.renderFavoritesBlankSlate() : null}
-        <div className='mb3 center'>
-          <IconProtip size='24' classes='inline-block fill-grey-4 mr1 relative' style={{top: 6}} />
-          <strong>ProTip! </strong>
-          {protip}
-        </div>
+        {this.state.view === 'fav' && _.isEmpty(this.state.recipesCurrent) ? this.renderFavoritesBlankSlate() : null}
+        {_.isEmpty(this.state.recipesCurrent) ? this.renderBlankSlate() : this.renderProTips()}
       </main>
     )
   }
