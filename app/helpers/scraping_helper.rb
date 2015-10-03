@@ -39,6 +39,20 @@ module ScrapingHelper
       if data.name.to_s.length > 2
         # Crappy hack for Food & Wine b/c they use the name itemprop in the wong places
         data.name = Nokogiri::HTML::DocumentFragment.parse(page).css('[itemprop=name]')[2].text.strip if host == 'foodandwine.com'
+        # Crappy hacks for massaging Epicurious, a terribly-written site
+        if host == 'epicurious.com'
+          d = Nokogiri::HTML::DocumentFragment.parse(page).css('[itemprop=description] .truncatedTextModuleText')[0]
+          data.description = d.blank? ? '' : d.text.strip
+          data.instructions = Nokogiri::HTML::DocumentFragment.parse(page).css('[itemprop=recipeInstructions] > p:not(#chefNotes)').text.strip
+        end
+        page = open(url).read
+        data = Hangry.parse page
+        if data.instructions.match(/\n/).blank?
+          data.instructions = []
+          Nokogiri::HTML::DocumentFragment.parse(page).css('[itemprop=recipeInstructions]').each do |s|
+            data.instructions.push(s.text.to_s.strip)
+          end
+        end
         recipe = {}
         recipe['title'], recipe['description'] = data.name, data.description
         recipe['ingredients'], recipe['instructions'] = data.ingredients, data.instructions
@@ -83,20 +97,27 @@ module ScrapingHelper
     return if ingredients.blank?
     ingredients_list = ''
     ingredients.each do |item|
-      ingredients_list += "#{item.to_s.squish}\n"
+      ingredients_list += "#{item.to_s.squish.capitalize}\n"
     end
     ingredients_list.to_s.strip
   end
 
   def form_markdown_for_instructions(instructions)
     return if instructions.blank?
-    instructions_md = ''
-    if instructions.is_a?(String)
-      steps = instructions.split(/\s\s+/)
-      steps.delete_if { |step| step.to_s.strip.length < 2 }
+    steps = instructions
+    if instructions.is_a? String
+      # Remove newlines in the middle
+      steps = steps.to_s.match(/\r\n/) ? steps.gsub!(/\r\n/, ' ') : steps
+      # Split into array
+      steps = steps.to_s.match(/\s\s+/) ? steps.split(/\s\s+/) : [].push(steps)
     else
       steps = instructions
     end
+    # Remove crap "steps"
+    steps.delete_if { |step| step.to_s.strip.gsub(/\s\s/, ' ').length < 3 || step.match('Preparation') }
+    # Remove custom numbering
+    steps.each { |step| step.gsub! /^\w?\d\.?/, '' }
+    instructions_md = ''
     steps.each_with_index do |step, id|
       instructions_md += "#{(id + 1).to_s}. #{step.to_s.squish}\n"
     end
