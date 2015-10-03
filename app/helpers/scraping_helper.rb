@@ -59,7 +59,7 @@ module ScrapingHelper
         recipe['serves'] = data.yield.to_s.squish.capitalize
         recipe
       else
-        'unsupported'
+        false
       end
     end
   end

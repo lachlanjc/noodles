@@ -21,6 +21,12 @@ module ApplicationHelper
     raise ActionController::RoutingError.new('Not Found')
   end
 
+  def go_back
+    redirect_to :back
+    rescue ActionController::RedirectBackError
+      redirect_to root_path
+  end
+
   def please_sign_in
     if nobody_signed_in?
       flash[:red] = 'Please sign in to an account.'
