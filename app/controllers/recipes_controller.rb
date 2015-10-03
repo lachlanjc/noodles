@@ -180,7 +180,7 @@ class RecipesController < ApplicationController
           @image_layout = false
         end
         @image_layout = !!(Dimensions.width(fetched_photo) > 800) unless @image_layout = false
-        @remove_grey_bg, @hide_flash = true
+        @remove_grey_bg, @hide_flash = true if @image_layout
       end
     end
 end
