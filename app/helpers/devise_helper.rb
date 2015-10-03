@@ -9,9 +9,9 @@ module DeviseHelper
                       :resource => user.class.model_name.human.downcase)
 
     html = <<-HTML
-    <div class="border bg-darken-1 rounded mt3 p3 mx-auto">
-      <h2 class="red">The Noodles are in a bit of a tangle.</h2>
-      <ul class="p0 m0 text">#{messages}</ul>
+    <div class="rounded mt2 mb2 px2 mx-auto" style="border: 2px solid #ff0013; padding-bottom: 1.5rem;">
+      <h2 class="red mt3 center">Those Noodles are a bit tangled.</h2>
+      <ul class="list-reset p0 text center">#{messages}</ul>
     </div>
     HTML
 
@@ -22,4 +22,7 @@ module DeviseHelper
     resource.errors.empty? ? false : true
   end
 
+  def nobody_signed_in?
+    !user_signed_in?
+  end
 end
