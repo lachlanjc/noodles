@@ -1,3 +1,4 @@
+<% if flash.any? %>
 <section class="md-col-5 mw6 px2 mx-auto print-hide">
 <% flash.each do |key, value| %>
   <div class="p2 mb2 rounded shadow bg-<%= flash_color_class(key) %> white" role="alertdialog" data-behavior="flash">
@@ -5,3 +6,4 @@
   </div>
 <% end %>
 </section>
+<% end %>
