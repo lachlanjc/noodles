@@ -85,7 +85,7 @@ class RecipesHome extends React.Component {
     const randomUrl = this.findRandom();
 
     return (
-      <main className='sm-col-11 md-col-8 mx-auto'>
+      <main className='md-col-9 mx-auto px2'>
         <header className='center'>
           <h1 className='mb1'>Recipes</h1>
           <section role='menubar' className='filterbar'>
