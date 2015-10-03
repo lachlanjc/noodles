@@ -7,7 +7,7 @@ class CollectionsController < ApplicationController
   before_filter :only_mine, only: [:show, :update, :destroy]
 
   def index
-    @collections = Collection.where(user_id: current_user.id)
+    @collections = current_user.collections
     @collection = Collection.new
   end
 
