@@ -21,6 +21,7 @@
 }
 
 .modal-scroll {
-  max-height: 66vh;
+  max-height: 60vh;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
