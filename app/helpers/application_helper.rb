@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include DeviseHelper
+
   def flash_color_class(level)
     case level.to_sym
     when :grey then 'grey-3'
@@ -20,7 +22,7 @@ module ApplicationHelper
   end
 
   def please_sign_in
-    if !user_signed_in?
+    if nobody_signed_in?
       flash[:red] = 'Please sign in to an account.'
       redirect_to root_url
     end
