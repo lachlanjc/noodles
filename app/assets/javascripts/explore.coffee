@@ -17,8 +17,10 @@ $(document).ready ->
       r.html null
       r.removeClass 'center'
       r.addClass 'busy busy-large mx-auto'
-      s = $('[data-behavior~=explore_src_pick_bar]').data('src-selected')
+
+      s = $('[data-behavior~=explore_src_pick_bar]').data 'src-selected'
       u = '/explore/results?src=' + s + '&q=' + q
+
       $.get u, (t) ->
         r.removeClass 'busy busy-large mx-auto'
         r.html t
@@ -26,57 +28,64 @@ $(document).ready ->
 
   $('[data-behavior~=explore_search_field]').on 'keyup', _.debounce(searchActions, 400)
 
+  clippingFinished = (b, id) ->
+    b.attr 'data-behavior', null
+    b.attr 'href', '/recipes/' + id
+    b.removeClass 'bg-blue busy'
+    b.attr 'style', 'color: #0086eb; box-shadow: inset 0 0 0 2px #0092ff;'
+    b.text 'Clipped!'
+
   $(document).on 'click', '[data-behavior~=explore_clip_from_list]', ->
     t = $(this)
     t.text null
-    t.toggleClass 'bg-blue busy'
+    t.toggleClass 'bg-blue busy mx-auto'
 
-    $.get '/save?url=' + $(this).parent().data('url'), (s) ->
-      t.attr 'class', 'grey-2 link-reset'
-      t.text '✔︎'
+    $.get '/save?url=' + t.closest('[data-behavior~=explore_result_item]').data('url'), (s) ->
+      clippingFinished t, s
 
   $(document).on 'click', '[data-behavior~=explore_preview]', ->
     t = $(this)
     p = t.parent()
 
-    $('[data-behavior~=explore_clip_from_preview]').attr 'data-url', p.data 'url'
+    r = p.closest '[data-behavior~=explore_result_item]'
+    u = r.data 'url'
+    $('[data-behavior~=explore_clip_from_preview]').data 'url', u
+    $('[data-behavior~=explore_open_original]').attr 'href', u
 
-    $('[data-behavior~=explore_preview_title]').text(n) if n = _.trim p.data 'title'
+    if n = _.trim r.data 'title'
+      $('[data-behavior~=explore_preview_title]').text n
 
-    $('[data-behavior~=explore_open_original]').attr 'href', p.data 'url'
+    b = $('[data-behavior~=explore_src_pick_bar]').data 'src-selected'
+    s = if b is 'nyt' then 'NYT Cooking' else _.capitalize b
+    $('[data-behavior~=explore_preview_description]').text 'Recipe from ' + s
 
-    s = $('[data-behavior~=explore_src_pick_bar]').data 'src-selected'
-    d = if s is 'nyt' then 'NYT Cooking' else _.capitalize s
-    $('[data-behavior~=explore_preview_description]').text 'Recipe from ' + d
+    c = $('[data-behavior~=explore_preview_body]')
+    c.html null
+    c.addClass 'busy busy-large mx-auto'
 
-    b = $('[data-behavior~=explore_preview_body]')
-    b.html null
-    b.addClass 'busy busy-large mx-auto'
-
-    $.get '/explore/preview?url=' + p.data('url'), (p) ->
-      b.removeClass 'busy busy-large mx-auto'
-      b.html p
+    $.get '/explore/preview?url=' + u, (d) ->
+      c.removeClass 'busy busy-large mx-auto'
+      c.html d
 
   $(document).on 'click', '[data-behavior~=explore_clip_from_preview]', ->
     t = $(this)
-    t.text(null)
+    t.text null
 
-    t.attr('class', 'btn busy block')
-    t.parent().toggleClass 'py1'
+    t.attr 'class', 'btn busy block mt2 mx-auto'
 
-    $.get '/save?url=' + t.data('url'), (s) ->
-      t.toggleClass 'btn busy green link-reset'
+    u = t.data 'url'
+
+    $.get '/save?url=' + u, (s) ->
+      t.attr 'class', 'block bold mt2 link-reset'
       t.text 'Clipped!'
 
-      p = $('[data-behavior~=explore_result_item][data-url=\'' + t.data('url') + '\']')
-      p = p.find('[data-behavior~=explore_clip_from_list]')
-      p.attr 'class', 'grey-2 link-reset mt1'
-      p.text '✔︎'
+      p = $("[data-behavior~=explore_result_item][data-url='#{u}']")
+      p = p.find '[data-behavior~=explore_clip_from_list]'
+      clippingFinished p, s
 
       c = ->
         $('.modal-overlay').fadeOut 200
-        $('#previewRecipe').css {'display': 'none'}
+        $('#preview').css 'display': 'none'
         t.text 'Clip'
-        t.attr 'class', 'btn bg-blue mt1'
-        t.parent().toggleClass 'py1'
+        t.attr 'class', 'btn bg-blue mt2'
       setTimeout c, 600

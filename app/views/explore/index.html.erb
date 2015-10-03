@@ -50,16 +50,15 @@
                                              options: { class: 'modal-scroll', data: { remote: true, behavior: 'inline_signup_form' } } %>
     </section>
   <% end %>
+  <section class="modal p3" role="dialog" id="preview" data-behavior="explore_preview_modal">
     <%= modal_close %>
-  <section class="modal p3" role="dialog" id="previewRecipe" data-behavior="explore_preview_modal">
-    <%= modal_close %>
-    <h2 class="orange inline-block mb0" data-behavior="explore_preview_title"></h2>
+    <h2 class="orange inline mb0" data-behavior="explore_preview_title"></h2>
     <a data-behavior="explore_open_original" class="inline-block" target="_blank">
       <%= inline_svg 'open-new-tab.svg', class: 'fill-orange relative', style: 'width: 16px; height: 16px; top: -5px; left: 2px;' %>
     </a>
     <p class="grey-3" data-behavior="explore_preview_description"></p>
     <article class="text modal-scroll" data-behavior="explore_preview_body"></article>
-    <footer class="border-top center">
+    <footer class="border-top center blue">
       <% if user_signed_in? %>
         <a class="btn bg-blue mt2" data-behavior="explore_clip_from_preview">Clip</a>
       <% else %>
@@ -69,4 +68,4 @@
   </section>
 </main>
 
-<%= javascript_include_tag "explore" %>
+<%= javascript_include_tag 'explore' %>

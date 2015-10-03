@@ -1,14 +1,13 @@
 <ul class="list-reset">
 <% @results.each do |result| %>
-  <li class="bg-white rounded shadow mb2 p2 flex flex-center">
+  <li class="bg-white rounded shadow mb2 p2 flex flex-center" data-behavior="explore_result_item"
+      data-title="<%= result['title'] %>" data-url="<%= result['url'] %>">
     <div class="flex-auto">
       <h3 class="m0"><%= result['title'] %></h3>
       <p class="m0 text"><%= result['description'] %></p>
     </div>
-    <div class="flex-last flex flex-column ml2 center grey-2" style="min-width: 6rem;"
-         data-behavior="explore_result_item"
-         data-title="<%= result['title'] %>" data-url="<%= result['url'] %>">
-      <a name="previewRecipe" href="#previewRecipe"
+    <div class="flex-last flex flex-column ml2 center blue" style="min-width: 6rem;">
+      <a name="preview" href="#preview"
          class="btn bg-green"
          data-behavior="explore_preview modal_trigger">
         Preview
