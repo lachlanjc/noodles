@@ -45,8 +45,6 @@ module ScrapingHelper
           data.description = d.blank? ? '' : d.text.strip
           data.instructions = Nokogiri::HTML::DocumentFragment.parse(page).css('[itemprop=recipeInstructions] > p:not(#chefNotes)').text.strip
         end
-        page = open(url).read
-        data = Hangry.parse page
         if data.instructions.match(/\n/).blank?
           data.instructions = []
           Nokogiri::HTML::DocumentFragment.parse(page).css('[itemprop=recipeInstructions]').each do |s|
