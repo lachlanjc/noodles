@@ -39,12 +39,12 @@ module ScrapingHelper
       if data.name.to_s.length > 2
         # Crappy hack for Food & Wine b/c they use the name itemprop in the wong places
         data.name = Nokogiri::HTML::DocumentFragment.parse(page).css('[itemprop=name]')[2].text.strip if host == 'foodandwine.com'
-        # Crappy hacks for massaging Epicurious, a terribly-written site
         if host == 'epicurious.com'
           d = Nokogiri::HTML::DocumentFragment.parse(page).css('[itemprop=description] .truncatedTextModuleText')[0]
           data.description = d.blank? ? '' : d.text.strip
           data.instructions = Nokogiri::HTML::DocumentFragment.parse(page).css('[itemprop=recipeInstructions] > p:not(#chefNotes)').text.strip
         end
+        # Support sites (mainly blogs) that use recipeInstructions oddly
         if data.instructions.match(/\n/).blank?
           data.instructions = []
           Nokogiri::HTML::DocumentFragment.parse(page).css('[itemprop=recipeInstructions]').each do |s|
@@ -87,9 +87,10 @@ module ScrapingHelper
     end
   end
 
-  # Wombat returns arrays for ingredients and instructions.
-  # These methods convert the arrays of strings into usable text.
-  # Specifically, the second method writes Markdown out of an array of instructions.
+  # Wombat returns arrays for ingredients and instructions, but Hangry returns strings.
+  # These methods do a ton of cleanup on the text, normalizing it and removing weirdness.
+  # They also convert the arrays and strings into actual text.
+  # The instructions method then writes numbered list Markdown.
 
   def write_ingredients_to_list(ingredients)
     return if ingredients.blank?
