@@ -1,4 +1,12 @@
 $(document).ready ->
+  if q = urlParams.q
+    s = $('[data-behavior~=explore_search_field]')
+    s.val(q)
+    k = ->
+      s.keyup()
+    k
+    setTimeout k, 1
+
   $(document).on 'click', '[data-behavior~=explore_src_pick]', ->
     t = $(this)
     b = $('[data-behavior~=explore_src_pick_bar]')
@@ -19,6 +27,11 @@ $(document).ready ->
       r.addClass 'busy busy-large mx-auto'
 
       s = $('[data-behavior~=explore_src_pick_bar]').data 'src-selected'
+
+      if urlParams.q && window.history.replaceState
+        u = window.location.search.match(/([^&=]+)=?([^&]*)/g)[0].replace urlParams.q, q
+        window.history.replaceState null, null, u
+
       u = '/explore/results?src=' + s + '&q=' + q
 
       $.get u, (t) ->
