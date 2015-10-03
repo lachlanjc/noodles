@@ -55,7 +55,7 @@ class RecipeList extends React.Component {
     const createFromSearch = searching && ((this.props.createFromSearch || false) === true);
 
     return (
-      <ul className='list-reset py2 mb0'>
+      <ul className='list-reset py2 mb0 mw7'>
         <div className='md-col-8 mx-auto flex bg-white rounded shadow mb2 px1 print-hide' role='search' onClick={this.focusSearch}>
           <IconSearch classes='fill-grey-4 mt1' />
           <input

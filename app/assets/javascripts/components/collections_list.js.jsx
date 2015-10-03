@@ -1,18 +1,18 @@
 class CollectionIndex extends React.Component {
   render() {
     return (
-      <main className='sm-col-11 md-col-7 mx-auto'>
+      <main className='md-col-9 mx-auto px2'>
         <h1 className='center'>Collections</h1>
-        <article className='collection-list'>
+        <article>
           {this.props.collections.map(function(collection) {
-            return <CollectionItem key={collection.id} data={collection} />;
+            return <CollectionItem key={collection.id} coll={collection} />;
           })}
-          {this.props.collections.length === 0 ?
-            <div className='md-col-8 mx-auto mt3 text center border bg-white rounded p3'>
+          {_.isEmpty(this.props.collections) ?
+            <div className='md-col-8 mx-auto mt2 text center border bg-white rounded p3'>
               <h3 className='mt0'>You don't have any collections yet.</h3>
               <p>Collections help you organize your recipes.</p>
-              <p>You can use them for categories, such as salads or pastas, or recipes that might be good for a summer dinner party.</p>
-              <p><a href='#newCollection' className='btn bg-blue mt2' data-behavior='modal_trigger'>Create your first collection</a></p>
+              <p className='mb0'>You can use them for categories, such as salads or pastas, or recipes that might be good for a summer dinner party.</p>
+              <a href='#newCollection' className='btn bg-blue mt2' data-behavior='modal_trigger'>Create your first collection</a>
             </div>
           : null}
         </article>
@@ -23,25 +23,23 @@ class CollectionIndex extends React.Component {
 
 class CollectionItem extends React.Component {
   render() {
-    const data = this.props.data;
+    const coll = this.props.coll;
 
-    let imgClass = ' bg-white rounded shadow p2';
-    let imgStyle;
-    if (data.photo_url.length > 0) {
-      imgClass = ' coll-w-img image-header bg-center bg-no-repeat bg-cover';
-      imgStyle = {
-        backgroundImage: 'url(' + data.photo_url + ')'
-      }
+    let imgClass = 'flex flex-center center rounded shadow mb2 p3';
+    let imgStyle = { minHeight: '15vh' };
+    if (!_.isEmpty(coll.photo_url)) {
+      imgClass += ' image-header bg-center bg-no-repeat bg-cover';
+      imgStyle.backgroundImage = `url(${coll.photo_url})`;
+    } else {
+      imgClass += ' bg-white rounded shadow p2';
     }
 
     return (
-      <a href={data.url} className='link-reset'>
-        <div className={'coll-preview rounded shadow mb2 py3' + imgClass} style={imgStyle}>
-          <div className='coll-preview-container center'>
-            <h2 className='coll-name m0 h1'>{data.name}</h2>
-            <div className='coll-desc lead'>{data.description}</div>
-          </div>
-        </div>
+      <a href={coll.url} className={imgClass} style={imgStyle}>
+      	<div className='mw7 mx-auto'>
+          <h2 className='coll-name m0 h1'>{coll.name}</h2>
+          <div className='coll-desc lead'>{coll.description}</div>
+      	</div>
       </a>
     )
   }

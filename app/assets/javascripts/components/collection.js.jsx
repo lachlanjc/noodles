@@ -22,8 +22,8 @@ class CollectionPage extends React.Component {
     return (
       <main>
         <CollectionHeader edit={this.props.edit} pub={pub} coll={this.state.coll} />
-        {this.state.coll.recipes.length > 0 ?
-          <article className='sm-col-11 md-col-7 mx-auto mt0'>
+        {_.isEmpty(this.state.coll.recipes) ?
+          <article className='md-col-8 mx-auto mt0'>
             <RecipeList recipesCore={this.state.coll.recipes} linkType={pub ? 'public' : 'private'} />
           </article>
         : this.renderNoRecipes()}
@@ -68,26 +68,32 @@ class CollectionHeader extends React.Component {
   render() {
     const coll = this.props.coll;
 
-    let rootClass = 'coll-header full-width bs-bb center grey-4 py2'
-    let actionsClass = 'caps h4 print-hide';
-    if (coll.photo.length > 0) {
-      rootClass += ' relative inline-with-nav image-header coll-w-img p3 mb1';
+    let rootClass = 'col-12 bs-bb flex flex-center';
+    let rootStyle = {};
+    let actionsClass = 'caps h4 mt2 print-hide';
+    if (!_.isEmpty(coll.photo)) {
+      rootClass += ' image-header relative inline-with-nav p3 bg-cover bg-center bg-no-repeat';
+      rootStyle.backgroundImage = `url(${coll.photo_url})`;
       actionsClass += ' block white mb2';
+    } else {
+      rootClass += ' center grey-4 py2';
     }
 
     return (
       <header className={rootClass} style={{backgroundImage: `url(${coll.photo})`}}>
-        <div className={actionsClass}>
-          {this.props.edit === true ?
-            <a name='editCollection' href='#editCollection' className='link-reset' data-behavior='modal_trigger'>Edit · </a>
+        <div className='sm-col-12 md-col-8 mx-auto mw7'>
+          <h1 className='coll-name m0 h0'>{coll.name}</h1>
+          {!_.isEmpty(coll.description) ? <p className='h3 mt1 mb0 coll-desc'>{coll.description}</p> : null}
+          {this.props.pub ?
+            <p className='mt1 mb1 coll-desc h4'>Published by {coll.publisher}</p>
           : null}
-          <a name='shareCollection' href='#shareCollection' className='link-reset' data-behavior='modal_trigger'>Share</a>
+          <div className={actionsClass}>
+            {this.props.edit ?
+              <a name='editCollection' href='#editCollection' className='link-reset' data-behavior='modal_trigger'>Edit · </a>
+            : null}
+            <a name='shareCollection' href='#shareCollection' className='link-reset' data-behavior='modal_trigger'>Share</a>
+          </div>
         </div>
-        <h1 className='inline-block coll-name m0 h0'>{coll.name}</h1>
-        {coll.description.length > 0 ? <p className='h3 mt1 mb0 coll-desc'>{coll.description}</p> : null}
-        {this.props.pub === true ?
-          <p className='mt1 mb1 coll-desc h4'>Published by {coll.publisher}</p>
-        : null}
       </header>
     )
   }

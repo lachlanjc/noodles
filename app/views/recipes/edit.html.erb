@@ -25,7 +25,7 @@ textarea {
 <%= form_for(@recipe) do |f| %>
 
   <%= f.file_field :img, class: "hide", data: { behavior: "photo_field" } %>
-  <div class="upload-button inline-block pointer" data-behavior="photo_button">
+  <div class="inline-block pointer" data-behavior="photo_button">
     <%= react_component 'IconPhoto', size: 32, classes: 'fill-grey-4' %>
     <span class="grey-4 up-10" data-behavior="photo_name">
   <% if @recipe.img.url.blank? %>
