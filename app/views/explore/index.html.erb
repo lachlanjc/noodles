@@ -41,32 +41,16 @@
       <a href="#signup" name="signup" data-behavior="modal_trigger inline_signup_btn" class="btn bg-orange mt1">Sign up for Noodles</a>
     <% end %>
   </article>
-  <section class="modal" role="dialog" id="signup">
+  <% if nobody_signed_in? %>
+    <section class="modal" role="dialog" id="signup">
+      <%= modal_close %>
+      <h2 class="orange mb0">Sign up for Noodles</h2>
+      <%= render 'devise/registrations/new', user: User.new, text: 'Noodles is, and always will be, totally free.',
+                                             params: { explore: true },
+                                             options: { class: 'modal-scroll', data: { remote: true, behavior: 'inline_signup_form' } } %>
+    </section>
+  <% end %>
     <%= modal_close %>
-    <h2 class="orange mb0">Sign up for Noodles</h2>
-    <% @user = User.new %>
-    <%= form_for @user, url: user_registration_path(@user, explore: true), data: { remote: true, behavior: 'inline_signup_form' }, class: 'modal-scroll' do |f| %>
-      <p data-behavior="hide_on_inline_submit">Noodles is, and always will be, totally free. No spam, no ads.</p>
-
-      <%= devise_error_messages!(@user) %>
-
-      <%= f.label t('devise.registrations.new.first_name') %>
-      <%= f.text_field :first_name, class: 'text-input', id: 'fname', autofocus: true %>
-
-      <%= f.label t('devise.registrations.new.email_check') %>
-      <%= f.email_field :email, class: 'text-input', required: true, autocomplete: 'email' %>
-
-      <%= f.label :password, class: 'inline-block' %> <small><%= t('devise.registrations.new.eight_char') %></small>
-      <%= f.password_field :password, class: 'text-input', required: true, id: 'new-password', pattern: '.{8,}' %>
-
-      <%= f.hidden_field :want_newsletter, value: true %>
-
-      <%= f.submit t('general.sign_up'), class: 'btn bg-orange mt2' %>
-
-      <small class="block mt2 grey-3">By signing up for and using Noodles you are agreeing to our <%= link_to "Terms", :terms %> and <%= link_to "Privacy Policy", :privacy %>.</small>
-
-    <% end %>
-  </section>
   <section class="modal p3" role="dialog" id="previewRecipe" data-behavior="explore_preview_modal">
     <%= modal_close %>
     <h2 class="orange inline-block mb0" data-behavior="explore_preview_title"></h2>

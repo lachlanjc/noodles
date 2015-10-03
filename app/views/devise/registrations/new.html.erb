@@ -1,32 +1,15 @@
-<%- title "Sign Up" %>
+<%- title 'Sign Up' %>
 <% activate_nav!(:sign_up) %>
 
-<%= render "shared/nav" %>
+<% @form = render 'new', user: @user, text: t('.sign_up_and') %>
 
-<article class="document">
+<% if request.xhr? %>
+  <%= @form %>
+<% else %>
+  <%= render 'shared/nav' %>
 
-  <h1 class="orange"><%= t(".welcome") %></h1>
-  <p><%= t(".sign_up_and") %></p>
-
-  <%= form_for @user, url: registration_path(resource_name), html: { name: "reg" } do |f| %>
-
-    <%= devise_error_messages! %>
-
-    <%= f.label t(".first_name") %>
-    <%= f.text_field :first_name, class: "text-input", id: "fname", autofocus: true %>
-
-    <%= f.label t(".email_check") %>
-    <%= f.email_field :email, class: "text-input", required: true, autocomplete: "email" %>
-
-    <%= f.label :password, class: "inline-block" %> <small><%= t(".eight_char") %></small>
-    <%= f.password_field :password, class: "text-input", required: true, id: "new-password", pattern: ".{8,}" %>
-
-    <%= f.hidden_field :want_newsletter, value: true %>
-
-    <%= f.submit t("general.sign_up"), class: "btn bg-orange mt2" %>
-
-    <small class="block mt2 grey-3">By signing up for and using Noodles you are agreeing to our <%= link_to "Terms", :terms %> and <%= link_to "Privacy Policy", :privacy %>.</small>
-
-  <% end %>
-
-</article>
+  <main class="document">
+    <h1 class="mb1"><%= t('.welcome') %></h1>
+    <%= @form %>
+  </main>
+<% end %>

@@ -23,9 +23,10 @@ $(document).ready ->
   $(document).on 'ajaxSuccess', '[data-behavior~=inline_signup_form]', ->
     t = $(this)
     t.closest('.modal').find('[data-behavior~=modal_close]').click()
-    b = $('[data-behavior~=inline_signup_btn]')[0]
-    b.hide()
-    b.parent().append('<p class="blue bold">Signed up! Thanks.</p>')
+    if b = $('[data-behavior~=inline_signup_btn]')
+      debugger
+      b.hide()
+      b.parent().append('<p class="blue bold">Signed up! Thanks.</p>')
     r = location.reload()
     setTimeout r, 600
   $(document).on 'ajaxError', '[data-behavior~=inline_signup_form]', ->

@@ -32,11 +32,11 @@ en:
   devise:
     registrations:
       new:
-        welcome: "Welcome to Noodles!"
-        sign_up_and: "Sign up in under a minute and start cooking."
-        first_name: "What's your first name?"
-        email_check: "What's your email address?"
-        eight_char: "(at least 8 characters)"
+        welcome: Hey, welcome to Noodles!
+        sign_up_and: We can get cooking in just a second — but first, three quick questions.
+        first_name: What's your first name?
+        email_check: Your email address?
+        eight_char: (at least 8 characters)
       edit:
         account_settings: "Account Settings"
         fn: "First name"
