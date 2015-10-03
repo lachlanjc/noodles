@@ -25,8 +25,8 @@ textarea {
 <%= form_for(@recipe) do |f| %>
 
   <%= f.file_field :img, class: "hide", data: { behavior: "photo_field" } %>
-  <div class="upload-button inline-block" data-behavior="photo_button">
-    <%= react_component("IconPhoto", size: "32px", classes: "fill-grey-4") %>
+  <div class="upload-button inline-block pointer" data-behavior="photo_button">
+    <%= react_component 'IconPhoto', size: 32, classes: 'fill-grey-4' %>
     <span class="grey-4 up-10" data-behavior="photo_name">
   <% if @recipe.img.url.blank? %>
       Click to upload a photo</span>
@@ -34,7 +34,9 @@ textarea {
   <% else %>
       Upload a new photo</span>
     </div>
-    <span class="grey-4 up-10">or <%= link_to "remove current photo", recipe_remove_image_path(:recipe_id => @recipe.id), class: "link-reset" %></span>
+    <span class="grey-4 up-10">
+      or <%= link_to 'remove current photo', recipe_remove_image_path(recipe_id: @recipe.id), class: 'link-reset' %>
+    </span>
   <% end %>
 
   <% if @recipe.errors.any? %>
@@ -45,7 +47,7 @@ textarea {
   <% end %>
 
   <%= f.text_field :title,
-                   value: params[:title] || @recipe.title,
+                   value: params[:title].to_s.capitalize.strip || @recipe.title,
                    autofocus: true, required: true,
                    class: "text-input invisible-input full-width m0 bold h1",
                    placeholder: "Title your recipe...",
