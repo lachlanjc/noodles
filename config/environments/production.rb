@@ -1,6 +1,6 @@
 Rails.application.configure do
 
-  config.action_controller.asset_host = "assets.getnoodl.es"
+  config.action_controller.asset_host = 'assets.getnoodl.es'
 
   config.cache_classes = true
 
@@ -32,15 +32,15 @@ Rails.application.configure do
 
   # Paperclip Settings
   config.paperclip_defaults = {
-    :storage => :s3,
-    :bucket => 'noodles-assets',
-    :s3_credentials => {
-      :access_key_id     => ENV['S3_KEY'],
-      :secret_access_key => ENV['S3_SECRET']
+    storage: :s3,
+    bucket: 'noodles-assets',
+    s3_credentials: {
+      access_key_id:     ENV['S3_KEY'],
+      secret_access_key: ENV['S3_SECRET']
     }
   }
 
-  config.action_mailer.default_url_options = { :host => 'www.getnoodl.es' }
+  config.action_mailer.default_url_options = { host: 'www.getnoodl.es' }
   config.action_mailer.delivery_method = :mandrill
 
   config.react.variant = :production

@@ -20,13 +20,14 @@ class SaveController < ApplicationController
   end
 
   protected
-    def url_is_valid?(u = params[:url])
-      url = URI.parse(u) rescue false
-      url.kind_of?(URI::HTTP) || url.kind_of?(URI::HTTPS)
-    end
 
-    def validate_url
-      valid = url_is_valid?
-      render text: 'You didn\'t provide a valid recipe link.', status: 422 unless valid
-    end
+  def url_is_valid?(u = params[:url])
+    url = URI.parse(u) rescue false
+    url.kind_of?(URI::HTTP) || url.kind_of?(URI::HTTPS)
+  end
+
+  def validate_url
+    valid = url_is_valid?
+    render text: 'You didn\'t provide a valid recipe link.', status: 422 unless valid
+  end
 end

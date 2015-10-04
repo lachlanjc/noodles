@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class RecipesHelperTest < ActionView::TestCase
+  include MarkdownHelper
   include RecipesHelper
 
   test 'should generate shared id' do
@@ -12,14 +13,10 @@ class RecipesHelperTest < ActionView::TestCase
   end
 
   test 'should test recipe is from web' do
-    assert is_from_web('http://www.getnoodl.es/s/6ww5W0L')
+    assert from_web?('http://www.getnoodl.es/s/6ww5W0L')
   end
 
   test 'processed ingredients should work' do
     assert_not_empty ingredient_processed('hello')
-  end
-
-  test 'plain text should work' do
-    assert_not_empty plain_text_from_markdown('**hello**')
   end
 end

@@ -7,7 +7,7 @@ class Announcement < ActiveRecord::Base
     {
       title: title,
       id: id.to_s,
-      created_at: created_at.strftime("%B %e, %Y"),
+      created_at: created_at.strftime('%B %e, %Y'),
       body_rendered: body_rendered
     }
   end

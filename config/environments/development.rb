@@ -20,17 +20,17 @@ Rails.application.configure do
 
   # Paperclip Settings
   config.paperclip_defaults = {
-    :storage => :s3,
-    :bucket => "noodles-assets-dev",
-    :s3_credentials => {
-      :access_key_id     => ENV['S3_KEY'],
-      :secret_access_key => ENV['S3_SECRET']
+    storage: :s3,
+    bucket: 'noodles-assets-dev',
+    s3_credentials: {
+      access_key_id:     ENV['S3_KEY'],
+      secret_access_key: ENV['S3_SECRET']
     }
   }
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { :host => "noodles.dev" }
+  config.action_mailer.default_url_options = { host: 'noodles.dev' }
   config.action_mailer.delivery_method = :mandrill
 
   config.react.variant = :development

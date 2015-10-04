@@ -20,7 +20,7 @@ class EpicuriousSearchScraper
     end
     scraped_data['results'].each do |result|
       result['url'] = 'http://epicurious.com' + Nokogiri::HTML(result['url'].to_s).at_css('a')['href'].to_s
-      result['description'] = result['description'].gsub(/\s+/, " ").truncate(164)
+      result['description'] = result['description'].gsub(/\s+/, ' ').truncate(164)
     end
     scraped_data['results']
   end

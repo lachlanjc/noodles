@@ -19,12 +19,12 @@ module RecipesHelper
   end
 
   def generate_shared_id(id)
-    hashids = Hashids.new "113011262014"
+    hashids = Hashids.new '113011262014'
     hashids.encode(id.to_i * 11262014)
   end
 
-  def is_from_web(source_data)
-    /(http)/.match(source_data.to_s).to_s == "http"
+  def from_web?(source_data)
+    /(http)/.match(source_data.to_s).to_s == 'http'
   end
 
   def ingredient_processed(text)
@@ -39,9 +39,5 @@ module RecipesHelper
     text = Nokogiri::HTML::DocumentFragment.parse(text)
     text.css('li').each { |item| item['itemprop'] = 'instruction' }
     text.to_s.html_safe
-  end
-
-  def plain_text_from_markdown(text)
-    sanitize(strip_tags(markdown(text.to_s)))
   end
 end

@@ -15,12 +15,12 @@
   <meta name="twitter:description" content="Check out these updates to Noodles, a simple app to keep, cook, and share all your recipes.">
 <% end -%>
 
-<%= render "shared/nav" %>
+<%= render 'shared/nav' %>
 
 <article class="document">
-  <%= react_component("AnnouncementBody", data: @announcement.as_json) %>
+  <%= react_component 'AnnouncementBody', data: @announcement.as_json %>
   <hr class="mb0">
-  <%= react_component("Bio") %>
+  <%= react_component 'Bio' %>
   <hr class="mt0">
-  <%= link_to "Delete", @announcement, method: :delete, data: { confirm: "Are you sure?" } if @admin %>
+  <%= link_to 'Delete', @announcement, method: :delete, data: { confirm: 'Are you sure?' } if @admin %>
 </article>

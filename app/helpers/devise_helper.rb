@@ -5,8 +5,8 @@ module DeviseHelper
 
     messages = user.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
     sentence = I18n.t("errors.messages.not_saved",
-                      :count => user.errors.count,
-                      :resource => user.class.model_name.human.downcase)
+                      count: user.errors.count,
+                      resource: user.class.model_name.human.downcase)
 
     html = <<-HTML
     <div class="rounded mt2 mb2 px2 mx-auto" style="border: 2px solid #ff0013; padding-bottom: 1.5rem;">

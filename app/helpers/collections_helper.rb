@@ -1,6 +1,6 @@
 module CollectionsHelper
   def generate_hash_id(id)
-    Hashids.new("60001302015").encode(id * 1302015)
+    Hashids.new('60001302015').encode(id * 1_302_015)
   end
 
   def me_owns_collection?

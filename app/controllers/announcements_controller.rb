@@ -31,7 +31,7 @@ class AnnouncementsController < ApplicationController
     @announcement.body_rendered = markdown(@announcement.body)
 
     if @announcement.save
-      flash[:success] = "Posted!"
+      flash[:success] = 'Posted!'
       redirect_to @announcement
     else
       render :new
@@ -43,7 +43,7 @@ class AnnouncementsController < ApplicationController
     if @announcement.update(announcement_params)
       @announcement.body_rendered = markdown(@announcement.body)
       @announcement.save
-      flash[:success] = "Announcement updated!"
+      flash[:success] = 'Announcement updated!'
       redirect_to @announcement
     else
       render :edit
@@ -53,7 +53,7 @@ class AnnouncementsController < ApplicationController
   # DELETE /announcements/1
   def destroy
     @announcement.destroy
-    flash[:danger] = "Farewell, accidental announcement."
+    flash[:danger] = 'Farewell, accidental announcement.'
     redirect_to announcements_url
   end
 
@@ -61,34 +61,35 @@ class AnnouncementsController < ApplicationController
     user = User.find(params[:user_id])
     user.want_newsletter = false
     user.save
-    flash[:success] = "Okay, you've unsubscribed."
+    flash[:success] = 'Okay, you\'ve unsubscribed.'
     redirect_to root_url
   end
 
   private
-    def admin_decision
-      user_signed_in? && current_user.id == 1
-    end
 
-    def set_admin
-      @admin = admin_decision
-    end
+  def admin_decision
+    user_signed_in? && current_user.id == 1
+  end
 
-    def is_admin?
-      admin_decision
-    end
+  def set_admin
+    @admin = admin_decision
+  end
 
-    def set_admin_and_redirect
-      redirect_to root_url unless is_admin?
-    end
+  def admin?
+    admin_decision
+  end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_announcement
-      @announcement = Announcement.find(params[:id])
-    end
+  def set_admin_and_redirect
+    redirect_to root_url unless admin?
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def announcement_params
-      params.require(:announcement).permit(:title, :body, :body_rendered, :author_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_announcement
+    @announcement = Announcement.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def announcement_params
+    params.require(:announcement).permit(:title, :body, :body_rendered, :author_id)
+  end
 end

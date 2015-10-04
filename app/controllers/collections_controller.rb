@@ -50,30 +50,31 @@ class CollectionsController < ApplicationController
   end
 
   private
-    def set_collection
-      @collection = Collection.find(params[:id])
-      raise_not_found
-    end
 
-    def raise_not_found
-      raise ActiveRecord::RecordNotFound if @collection.nil?
-    end
+  def set_collection
+    @collection = Collection.find(params[:id])
+    raise_not_found
+  end
 
-    def collection_params
-      params.require(:collection).permit(:name, :description, :photo, :user_id)
-    end
+  def raise_not_found
+    raise ActiveRecord::RecordNotFound if @collection.nil?
+  end
 
-    def populate_collection
-      @recipes = []
-      @collection.user.recipes.each do |recipe|
-        @recipes.push(recipe) if recipe.collections.include?(@collection.id.to_s)
-      end
-    end
+  def collection_params
+    params.require(:collection).permit(:name, :description, :photo, :user_id)
+  end
 
-    def only_mine
-      if !me_owns_collection?
-        flash[:red] = 'That\'s not yours.'
-        redirect_to root_url
-      end
+  def populate_collection
+    @recipes = []
+    @collection.user.recipes.each do |recipe|
+      @recipes.push(recipe) if recipe.collections.include?(@collection.id.to_s)
     end
+  end
+
+  def only_mine
+    if !me_owns_collection?
+      flash[:red] = 'That\'s not yours.'
+      redirect_to root_url
+    end
+  end
 end

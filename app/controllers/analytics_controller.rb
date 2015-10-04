@@ -4,14 +4,12 @@ class AnalyticsController < ApplicationController
   def dashboard
     @users_count = User.all.count
     @recipes_count = Recipe.all.count
-    @recipes_shared_count = Recipe.where(:shared => true).count
+    @recipes_shared_count = Recipe.where(shared: true).count
 
-    @users_with_none = []
-    @users_with_one = []
-    @users_with_many = []
+    @users_with_none, @users_with_one, @users_with_many = []
 
     User.all.each do |user|
-      @user_recipe_count = Recipe.where(:user_id => user.id).count
+      @user_recipe_count = user.recipes.count
       @users_with_none.push(user) if @user_recipe_count == 0
       @users_with_one.push(user)  if @user_recipe_count == 1
       @users_with_many.push(user) if @user_recipe_count > 1
@@ -27,16 +25,16 @@ class AnalyticsController < ApplicationController
   end
 
   def performance
-    @cohorts = CohortMe.analyze(period: "weeks",
-    activation_class: Recipe)
+    @cohorts = CohortMe.analyze(period: 'weeks', activation_class: Recipe)
   end
 
   def shared_recipes
-    @recipes = Recipe.where(:shared => true).order(created_at: :desc)
+    @recipes = Recipe.where(shared: true).order(created_at: :desc)
   end
 
   private
-    def authenticate
-      redirect_to root_url unless current_user && (current_user.id == 1 || current_user.id == 23)
-    end
+
+  def authenticate
+    redirect_to root_url unless user_signed_in? && current_user.id == 1
+  end
 end

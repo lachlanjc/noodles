@@ -41,7 +41,7 @@ class RecipesController < ApplicationController
     if @recipe.save
       @recipe.shared_id = generate_shared_id(@recipe.id)
       @recipe.save
-      flash[:green] = "Awesome, you've saved your new recipe."
+      flash[:green] = 'Awesome, you\'ve saved your new recipe.'
       redirect_to @recipe
     else
       render :edit
@@ -51,7 +51,7 @@ class RecipesController < ApplicationController
   def update
     if @recipe.update(recipe_params)
       @recipe.save
-      flash[:green] = "Great, your changes were saved."
+      flash[:green] = 'Great, your changes were saved.'
       if params[:cook]
         redirect_to recipe_cook_path(@recipe)
       else
@@ -64,7 +64,7 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe.destroy
-    flash[:green] = "Okay, we've got that recipe in the recycling bin now."
+    flash[:green] = 'Okay, we\'ve got that recipe in the recycling bin now.'
     redirect_to recipes_url
   end
 
@@ -81,12 +81,12 @@ class RecipesController < ApplicationController
 
   def export_pdf
     prawnto filename: @recipe.title, inline: true
-    render "recipes/show.pdf"
+    render 'recipes/show.pdf'
   end
 
   def embed_js
     @recipe = Recipe.find_by_shared_id(params[:shared_id])
-    render "recipes/embed.js", layout: false
+    render 'recipes/embed.js', layout: false
   end
 
   def share_this_recipe
@@ -143,45 +143,46 @@ class RecipesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_recipe
-      @recipe = Recipe.find(params[:id])
-      raise_not_found
-    end
 
-    def locate_recipe
-      @recipe = Recipe.find(params[:recipe_id])
-      raise_not_found
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_recipe
+    @recipe = Recipe.find(params[:id])
+    raise_not_found
+  end
 
-    def raise_not_found
-      raise ActiveRecord::RecordNotFound if @recipe.nil?
-    end
+  def locate_recipe
+    @recipe = Recipe.find(params[:recipe_id])
+    raise_not_found
+  end
 
-    # Only allow trusted parameters
-    def recipe_params
-      params.require(:recipe).permit(:title, :description, :img, :ingredients, :instructions, :favorite, :source, :author, :serves, :notes, :shared_id, { collections: [] })
-    end
+  def raise_not_found
+    raise ActiveRecord::RecordNotFound if @recipe.nil?
+  end
 
-    def not_the_owner
-      if not_my_recipe?
-        flash[:red] = 'That\'s not yours.'
-        redirect_to root_url
-      else
-        true
+  # Only allow trusted parameters
+  def recipe_params
+    params.require(:recipe).permit(:title, :description, :img, :ingredients, :instructions, :favorite, :source, :author, :serves, :notes, :shared_id, { collections: [] })
+  end
+
+  def not_the_owner
+    if not_my_recipe?
+      flash[:red] = 'That\'s not yours.'
+      redirect_to root_url
+    else
+      true
+    end
+  end
+
+  def setup_image_layout
+    if @recipe.img.url.present?
+      begin
+        @image_layout = open @recipe.img.url
+      rescue OpenURI::HTTPError
+        @image_layout = false
       end
+      @image_layout = !!(Dimensions.width(@image_layout) > 800) unless @image_layout == false
+      @remove_grey_bg = true
+      @hide_flash = flash.any?
     end
-
-    def setup_image_layout
-      if @recipe.img.url.present?
-        begin
-          @image_layout = open @recipe.img.url
-        rescue OpenURI::HTTPError => error
-          @image_layout = false
-        end
-        @image_layout = !!(Dimensions.width(@image_layout) > 800) unless @image_layout == false
-        @remove_grey_bg = true
-        @hide_flash = flash.any?
-      end
-    end
+  end
 end

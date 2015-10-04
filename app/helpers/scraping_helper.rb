@@ -52,8 +52,10 @@ module ScrapingHelper
           end
         end
         recipe = {}
-        recipe['title'], recipe['description'] = data.name, data.description
-        recipe['ingredients'], recipe['instructions'] = data.ingredients, data.instructions
+        recipe['title'] = data.name
+        recipe['description'] = data.description
+        recipe['ingredients'] = data.ingredients
+        recipe['instructions'] = data.instructions
         recipe['serves'] = data.yield.to_s.squish.capitalize
         recipe
       else

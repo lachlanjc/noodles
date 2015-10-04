@@ -10,26 +10,26 @@ module SvgHelper
   end
 
   def twitter_icon
-    inline_svg("social-twitter.svg", { style: "fill: #00aced" })
+    inline_svg 'social-twitter.svg', style: 'fill: #00aced'
   end
 
   def facebook_icon
-    inline_svg("social-facebook.svg", { style: "fill: #3b5998" })
+    inline_svg 'social-facebook.svg', style: 'fill: #3b5998'
   end
 
   def pinterest_icon
-    inline_svg("social-pinterest.svg", { style: "fill: #cb2027" })
+    inline_svg 'social-pinterest.svg', style: 'fill: #cb2027'
   end
 
   def buffer_icon
-    inline_svg("social-buffer.svg", { style: "fill: #555" })
+    inline_svg 'social-buffer.svg', style: 'fill: #555'
   end
 
   def googleplus_icon
-    inline_svg("social-googleplus.svg", { style: "fill: #d14836" })
+    inline_svg 'social-googleplus.svg', style: 'fill: #d14836'
   end
 
   def email_icon
-    inline_svg("social-email.svg", { style: "fill: #00aced" })
+    inline_svg 'social-email.svg', style: 'fill: #00aced'
   end
 end

@@ -1,5 +1,5 @@
-<%- title "Announcements" %>
+<%- title 'Announcements' %>
 <% activate_nav!(:announcements) %>
 
-<%= render "shared/nav" %>
-<%= react_component("AnnouncementList", announcements: @announcements.as_json) %>
+<%= render 'shared/nav' %>
+<%= react_component 'AnnouncementList', announcements: @announcements.as_json %>
