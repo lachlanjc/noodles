@@ -1,6 +1,9 @@
 language: ruby
 rvm:
   - 2.2.3
+before_install:
+  - gem install bundler
+  - bundle install --without development
 script:
   - rake db:create db:migrate
 notifications:
