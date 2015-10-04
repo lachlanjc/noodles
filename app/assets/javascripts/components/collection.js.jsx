@@ -22,7 +22,7 @@ class CollectionPage extends React.Component {
     return (
       <main>
         <CollectionHeader edit={this.props.edit} pub={pub} coll={this.state.coll} />
-        {_.isEmpty(this.state.coll.recipes) ?
+        {!_.isEmpty(this.state.coll.recipes) ?
           <article className='md-col-8 mx-auto mt0'>
             <RecipeList recipesCore={this.state.coll.recipes} linkType={pub ? 'public' : 'private'} />
           </article>
@@ -54,7 +54,7 @@ class CollectionPage extends React.Component {
   render() {
     return (
       <div>
-        {Object.keys(this.state.coll).length != 0 ? this.renderPage() : this.renderLoading()}
+        {!_.isEmpty(this.state.coll) ? this.renderPage() : this.renderLoading()}
       </div>
     )
   }
