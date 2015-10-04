@@ -8,12 +8,12 @@ class RecipeList extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({recipes: this.props.recipesCore});
+    this.setState({recipes: _.sortBy(this.props.recipesCore, 'title')});
     this.focusSearch();
   }
 
   componentWillReceiveProps(newProps, newState) {
-    this.setState({recipes: newProps.recipesCore});
+    this.setState({recipes: _.sortBy(newProps.recipesCore, 'title')});
     return true;
   }
 
