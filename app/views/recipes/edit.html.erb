@@ -47,7 +47,7 @@ textarea {
   <% end %>
 
   <%= f.text_field :title,
-                   value: params[:title].to_s.capitalize.strip || @recipe.title,
+                   value: params[:title].present? ? params[:title].to_s.capitalize.strip : @recipe.title,
                    autofocus: true, required: true,
                    class: "text-input invisible-input full-width m0 bold h1",
                    placeholder: "Title your recipe...",
