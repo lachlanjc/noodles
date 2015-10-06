@@ -19,8 +19,18 @@ $(document).ready ->
 
   $('[data-behavior~=explore_src_pick][data-src-name=nyt]').click()
 
+  logSearchToIntercom = ->
+    u = $('[data-behavior~=nav]').data 'user'
+    if u isnt 'anon'
+      e =
+        user_id: u
+        query: $('[data-behavior~=explore_search_field]').val()
+        source: $('[data-behavior~=explore_src_pick_bar]').data 'src-selected'
+      Intercom 'trackEvent', 'searched-explore', e
+
   searchActions = ->
-    if q = _.trim(this.value)
+    t = $('[data-behavior~=explore_search_field]')
+    if q = _.trim t.val()
       r = $('[data-behavior~=explore_results_container]')
       r.html null
       r.removeClass 'center'
@@ -40,8 +50,11 @@ $(document).ready ->
         r.removeClass 'busy busy-large mx-auto'
         r.html t
         $('[data-behavior~=modal_trigger]').leanModal()
+        return
 
-  $('[data-behavior~=explore_search_field]').on 'keyup', _.debounce(searchActions, 400)
+  f = $('[data-behavior~=explore_search_field]')
+  f.on 'keyup', _.debounce searchActions, 400
+  f.on 'change', _.debounce logSearchToIntercom, 1000
 
   clippingFinished = (b, id) ->
     b.attr 'data-behavior', null

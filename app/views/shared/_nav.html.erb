@@ -1,4 +1,5 @@
-<nav role="navigation" class="md-flex bg-white mb2 p2 border-bottom print-hide">
+<nav role="navigation" class="md-flex bg-white mb2 p2 border-bottom print-hide"
+     data-behavior="nav" data-user="<%= user_signed_in? ? current_user.id : 'anon' %>">
 
   <% if user_signed_in? %>
 
