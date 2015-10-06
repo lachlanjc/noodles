@@ -105,7 +105,7 @@ class RecipeItem extends React.Component {
       <li className='bg-white rounded shadow mb2 p2'>
         <a href={recipeLink} className='link-reset'>
           <div className='right print-hide'>{indicators}</div>
-          <h3 className='m0'>{recipe.title}</h3>
+          <h3 className='m0 regular'>{recipe.title}</h3>
           <p className='m0 text'>{recipe.description_preview}</p>
         </a>
       </li>

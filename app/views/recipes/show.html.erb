@@ -45,7 +45,7 @@
 
   <% end %>
 
-  <main class="<%= @image_layout ? 'md-col-8 mx-auto px2 mb3' : 'document' %> mw7">
+  <main class="document mw7">
 
     <% if !@image_layout %>
       <%= form_for(@recipe, data: { remote: true }) do |f| %>

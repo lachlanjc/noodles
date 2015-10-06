@@ -181,7 +181,7 @@ class RecipesController < ApplicationController
         @image_layout = false
       end
       @image_layout = !!(Dimensions.width(@image_layout) > 800) unless @image_layout == false
-      @remove_grey_bg = true
+      @remove_grey_bg = false
       @hide_flash = flash.any?
     end
   end
