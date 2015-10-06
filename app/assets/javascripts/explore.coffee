@@ -1,19 +1,18 @@
 $(document).ready ->
   if q = urlParams.q
     s = $('[data-behavior~=explore_search_field]')
-    s.val(q)
-    k = ->
-      s.keyup()
+    s.val q
+    k = -> s.keyup()
     k
     setTimeout k, 1
 
   $(document).on 'click', '[data-behavior~=explore_src_pick]', ->
-    t = $(this)
+    t = $ this
     b = $('[data-behavior~=explore_src_pick_bar]')
     src = t.data 'src-name'
     activeClasses = 'bg-orange bold'
     b.find('[data-src-name=' + b.data('src-selected') + ']').toggleClass activeClasses
-    t.toggleClass(activeClasses) if b.data('src-selected') isnt src or !t.attr('class').match(activeClasses)
+    t.toggleClass(activeClasses) if b.data('src-selected') isnt src or !t.attr('class').match activeClasses
     b.data 'src-selected', src
     $('[data-behavior~=explore_search_field]').keyup()
 
@@ -24,7 +23,7 @@ $(document).ready ->
     if u isnt 'anon'
       e =
         user_id: u
-        query: $('[data-behavior~=explore_search_field]').val()
+        query: _.trim $('[data-behavior~=explore_search_field]').val()
         source: $('[data-behavior~=explore_src_pick_bar]').data 'src-selected'
       Intercom 'trackEvent', 'searched-explore', e
 
@@ -64,7 +63,7 @@ $(document).ready ->
     b.text 'Clipped!'
 
   $(document).on 'click', '[data-behavior~=explore_clip_from_list]', ->
-    t = $(this)
+    t = $ this
     t.text null
     t.toggleClass 'bg-blue busy mx-auto'
 
@@ -72,7 +71,7 @@ $(document).ready ->
       clippingFinished t, s
 
   $(document).on 'click', '[data-behavior~=explore_preview]', ->
-    t = $(this)
+    t = $ this
     p = t.parent()
 
     r = p.closest '[data-behavior~=explore_result_item]'
@@ -96,7 +95,7 @@ $(document).ready ->
       c.html d
 
   $(document).on 'click', '[data-behavior~=explore_clip_from_preview]', ->
-    t = $(this)
+    t = $ this
     t.text null
 
     t.attr 'class', 'btn busy block mt2 mx-auto'
