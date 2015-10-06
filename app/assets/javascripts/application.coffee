@@ -9,7 +9,7 @@
 #= require_tree ./components
 
 $(document).ready ->
-  $('[data-behavior~=flash]').on 'click', ->
+  $(document).on 'click', '[data-behavior~=flash]', ->
     $(this).toggleClass('bg-white shadow well border')
     $(this).slideUp('fast')
 
@@ -36,17 +36,17 @@ $(document).ready ->
 
   $('[data-behavior~=recipe_favorite_trigger]').on 'change', ->
     $(this)[0].form.submit()
-  $('[data-behavior~=print]').on 'click', ->
+  $(document).on 'click', '[data-behavior~=print]', ->
     window.print()
 
-  $('[data-behavior~=photo_name]').on 'click', ->
+  $(document).on 'click', '[data-behavior~=photo_name]', ->
     $('[data-behavior~=photo_field]').click()
   $('[data-behavior~=photo_field]').on 'change', ->
     $('[data-behavior~=photo_name]').text(this.value.match(/[^\/\\]+$/)[0])
   $('[data-behavior~=cook_photo_field]').on 'change', ->
     $(this)[0].form.submit()
 
-  $('[data-behavior~=checklist_item]').on 'click', ->
+  $(document).on 'click', '[data-behavior~=checklist_item]', ->
     $(this).toggleClass('checked')
 
   $('[data-behavior~=autosize]').autosize()
