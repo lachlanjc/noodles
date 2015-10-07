@@ -8,31 +8,31 @@
     <% if @recipe.collections.length <= 4 %>
     <p>Add this recipe to your collections by clicking them from the list below.</p>
     <% else %>
-    <p>"<%= @recipe.title %>" is already in <%= pluralize(@recipe.collections.reject!(&:blank?).length, "collection") %>. To add it to additional collections, click on them in the list below.</p>
+    <p>This recipe is already in <%= pluralize(@recipe.collections.reject!(&:blank?).length, 'collection') %>. To add it to additional collections, click on them in the list below.</p>
     <% end %>
 
     <%= form_for(@recipe) do |f| %>
       <ul class="list-reset sm-col-10 md-col-5 mx-auto">
         <%= collection_check_boxes(:recipe, :collections, @collections, :id, :name) do |b| %>
         <li class="border-top">
-          <%= b.label(class: "collection-list-item m0 p1 pointer") do %>
+          <%= b.label(class: 'collection-list-item m0 p1 pointer') do %>
             <% if @recipe.collections.include?(b.value.to_s) %>
-            <%= b.check_box(checked: "checked", class: "hide") %>
+            <%= b.check_box(checked: 'checked', class: 'hide') %>
             <% else %>
-            <%= b.check_box(class: "hide") %>
+            <%= b.check_box(class: 'hide') %>
             <% end %>
-            <%= content_tag(:span, b.text) %>
+            <%= content_tag :span, b.text %>
             <div class="checkmark fill-orange right hide">
-              <%= inline_svg("check.svg") %>
+              <%= inline_svg 'check.svg' %>
             </div>
           <% end %>
         </li>
         <% end %>
         <li class="border-top border-bottom p1 grey-1">
-          <%= link_to "Add a New Collection...", collections_path(:new_collection => true), class: "link-reset" %>
+          <%= link_to 'Create new Collection...', collections_path(new_collection: true), class: 'link-reset' %>
         </li>
       </ul>
-      <%= f.submit "Save", class: "btn bg-blue right" %>
+      <%= f.submit 'Save', class: 'btn bg-blue right' %>
     <% end %>
   <% else %>
     <div class="text center border rounded p3">
@@ -63,24 +63,24 @@
     <div class="content content-1 p1 border rounded-bottom">
       <% if @recipe.shared? %>
       <p>Your recipe is already shared!</p>
-      <p><%= link_to "Check out the share page", @shared_url, class: "btn bg-blue" %></p>
+      <p><%= link_to 'Check out the share page', @shared_url, class: 'btn bg-blue' %></p>
       <% else %>
       <p>Anyone with this link can see your recipe and save a copy to their own Noodles account.</p>
-      <p><%= link_to "Share a link to this recipe", recipe_share_it_path(@recipe), class: "btn bg-blue" %></p>
+      <p><%= link_to 'Share a link to this recipe', recipe_share_it_path(@recipe), class: 'btn bg-blue' %></p>
       <% end %>
     </div>
 
     <div class="content content-2 p1 border rounded-bottom">
       <p>Click the button below to download a PDF of your recipe.</p>
-      <p><%= link_to "Download PDF", recipe_export_pdf_path(@recipe), class: "btn bg-blue" %></p>
+      <p><%= link_to 'Download PDF', recipe_export_pdf_path(@recipe), class: 'btn bg-blue' %></p>
     </div>
 
     <div class="content content-3 p1 border rounded-bottom">
       <p>Copy and paste the code below onto your website or blog to embed this recipe.</p>
-      <pre class="m0 p1 border rounded bg-grey-6 text">
+      <pre class="m0 p1 border rounded bg-grey-6" style="white-space: inherit;">
         <%= '<script src="http://www.getnoodl.es/embed/' + @recipe.shared_id.to_s + '"></script>' %>
       </pre>
-      <p class="mt1"><%= link_to "Need help?", help_path %></p>
+      <p class="mt1"><%= link_to 'Need help?', help_path %></p>
     </div>
 
   </div>
