@@ -7,7 +7,7 @@ $(document).ready ->
     setTimeout k, 1
 
   $(document).on 'click', '[data-behavior~=explore_src_pick]', ->
-    t = $ this
+    t = $(this)
     b = $('[data-behavior~=explore_src_pick_bar]')
     src = t.data 'src-name'
     activeClasses = 'bg-orange bold'
@@ -63,7 +63,7 @@ $(document).ready ->
     b.text 'Clipped!'
 
   $(document).on 'click', '[data-behavior~=explore_clip_from_list]', ->
-    t = $ this
+    t = $(this)
     t.text null
     t.toggleClass 'bg-blue busy mx-auto'
 
@@ -71,7 +71,7 @@ $(document).ready ->
       clippingFinished t, s
 
   $(document).on 'click', '[data-behavior~=explore_preview]', ->
-    t = $ this
+    t = $(this)
     p = t.parent()
 
     r = p.closest '[data-behavior~=explore_result_item]'
@@ -95,7 +95,7 @@ $(document).ready ->
       c.html d
 
   $(document).on 'click', '[data-behavior~=explore_clip_from_preview]', ->
-    t = $ this
+    t = $(this)
     t.text null
 
     t.attr 'class', 'btn busy block mt2 mx-auto'
