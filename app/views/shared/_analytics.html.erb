@@ -1,0 +1,24 @@
+<% if user_signed_in? %>
+<%= intercom_script_tag({
+  app_id: ENV['INTERCOM_APP_ID'],
+  user_id: current_user.id,
+  email: current_user.email,
+  name: current_user.first_name,
+  custom_data: {
+    recipes_count: user_recipe_count,
+    shared_recipes_count: user_shared_recipe_count,
+    collections_count: user_collection_count,
+    want_newsletter: current_user.want_newsletter,
+    referring_url: current_user.referring_url,
+    landing_url: current_user.landing_url
+  }
+}) %>
+<% end %>
+<% if nobody_signed_in? || (nav_active?(:shared_recipe) && not_my_recipe?) %>
+<script>
+!function(g,s,q,r,d){r=g[r]=g[r]||function(){(r.q=r.q||[]).push(arguments)};
+d=s.createElement(q);q=s.getElementsByTagName(q)[0];
+d.src="http://d1l6p2sc9645hc.cloudfront.net/tracker.js";q.parentNode.insertBefore(d,q)}(window, document, "script", "_gs");
+_gs("GSN-107564-I");
+</script>
+<% end %>

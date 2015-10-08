@@ -23,12 +23,7 @@
   <script type="text/javascript">
   if("standalone"in window.navigator&&window.navigator.standalone){var noddy,remotes=false;document.addEventListener("click",function(e){noddy=e.target;while(noddy.nodeName!=="A"&&noddy.nodeName!=="HTML"){noddy=noddy.parentNode}if("href"in noddy&&noddy.href.indexOf("http")!==-1&&(noddy.href.indexOf(document.location.host)!==-1||remotes)){e.preventDefault();document.location.href=noddy.href}},false)}
   </script>
-  <script>
-  !function(g,s,q,r,d){r=g[r]=g[r]||function(){(r.q=r.q||[]).push(arguments)};
-  d=s.createElement(q);q=s.getElementsByTagName(q)[0];
-  d.src="http://d1l6p2sc9645hc.cloudfront.net/tracker.js";q.parentNode.insertBefore(d,q)}(window, document, "script", "_gs");
-  _gs("GSN-107564-I");
-  </script>
+  <%= render 'shared/analytics' %>
 </head>
 <body class="center m0 bg-grey-6">
   <header class="hero-container bg-cover bg-center bg-no-repeat" style="background-image:url(<%= asset_path 'home/background.jpg' %>)">
