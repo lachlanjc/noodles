@@ -5,11 +5,11 @@
 <% content_for :meta do -%>
   <meta name="twitter:card" content="summary">
   <meta property="og:site_name" content="Noodles" />
-  <meta name="twitter:domain" content="getnoodl.es">
+  <meta name="twitter:domain" content="http://www.getnoodl.es">
   <meta property="og:url" content="<%= @shared_url %>">
   <meta property="og:title" content="<%= @recipe.title %>">
   <meta name="twitter:title" content="<%= @recipe.title %>">
-  <% unless @recipe.img.url.blank? %>
+  <% if @recipe.img.url.present? %>
     <meta property="og:image" content="<%= @recipe.img.url %>"/>
     <meta name="twitter:image:src" content="<%= @recipe.img.url %>">
   <% end %>
@@ -18,9 +18,9 @@
     <meta property="og:description" content="<%= @description %>">
     <meta property="twitter:description" content="<%= @description %>">
   <% else %>
-    <meta property="og:description" content="<%= @recipe.description %> · Published on Noodles">
-    <meta name="twitter:description" content="<%= @recipe.description %> · Published on Noodles">
-    <meta name="description" content="<%= @recipe.description %> · Published on Noodles">
+    <meta property="og:description" content="<%= @recipe.description %> — Published on Noodles">
+    <meta name="twitter:description" content="<%= @recipe.description %> — Published on Noodles">
+    <meta name="description" content="<%= @recipe.description %> — Published on Noodles">
   <% end %>
 <% end -%>
 
