@@ -3,7 +3,7 @@ label {
   margin-top: $space-1;
 }
 
-input[type="checkbox"] + label {
+input[type='checkbox'] + label {
   display: inline-block;
 }
 
@@ -33,12 +33,6 @@ input[type="checkbox"] + label {
 
 textarea.invisible-input {
   line-height: 1.8;
-}
-
-@media (max-width: $screen-phone) {
-  .text-input {
-    width: 95% !important;
-  }
 }
 
 .field_with_errors .text-input {

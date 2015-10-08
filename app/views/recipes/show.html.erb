@@ -38,7 +38,7 @@
       <div class="pointer absolute p1" style="right: 1rem;" data-behavior="modal_close">
         <%= inline_svg 'close.svg', class: 'fill-white' %>
       </div>
-      <%= image_tag @recipe.img, class: 'full-width', itemprop: 'image' %>
+      <%= image_tag @recipe.img, class: 'col-12', itemprop: 'image' %>
     </section>
 
     <%= render 'shared/flash' if flash.any? %>

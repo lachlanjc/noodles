@@ -1,36 +1,36 @@
 .flex { display: flex }
 
 .flex-column  { flex-direction: column }
-.flex-wrap    { flex-wrap: wrap }
+// .flex-wrap    { flex-wrap: wrap }
 
 .flex-center   { align-items: center }
 .flex-baseline { align-items: baseline }
-.flex-stretch  { align-items: stretch }
+// .flex-stretch  { align-items: stretch }
 .flex-start    { align-items: flex-start }
-.flex-end      { align-items: flex-end }
+// .flex-end      { align-items: flex-end }
 
-.flex-justify  { justify-content: space-between }
+// .flex-justify  { justify-content: space-between }
 
 .flex-auto {
   flex: 1 1 auto;
   min-width: 0;
   min-height: 0;
 }
-.flex-grow { flex: 1 0 auto }
-.flex-none { flex: none }
+// .flex-grow { flex: 1 0 auto }
+// .flex-none { flex: none }
 
 .flex-first { order: -1 }
 .flex-last  { order: 99999 }
 
 .flex > div,
-.sm-flex > div,
+// .sm-flex > div,
 .md-flex > div {
   box-sizing: border-box;
 }
 
-@media #{$breakpoint-sm} {
-  .sm-flex { display: flex }
-}
+// @media #{$breakpoint-sm} {
+//   .sm-flex { display: flex }
+// }
 
 @media #{$breakpoint-md} {
   .md-flex { display: flex }

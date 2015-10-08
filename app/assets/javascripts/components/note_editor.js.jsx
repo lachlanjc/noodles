@@ -57,7 +57,7 @@ class NoteEditor extends React.Component {
   renderEditing() {
     return (
       <div>
-        <textarea htmlFor='recipe[notes]' className='text-input invisible-input full-width m0' placeholder='Type your notes for the recipe here.' rows='4' defaultValue={this.state.plainNotes} onChange={this.updateTextNotes} />
+        <textarea htmlFor='recipe[notes]' className='text-input invisible-input col-12 m0' placeholder='Type your notes for the recipe here.' rows='4' defaultValue={this.state.plainNotes} onChange={this.updateTextNotes} />
         <div className='mb2'>
           <button className='btn bg-blue btn-sm mr1' onClick={this.submitNotes}>Save Notes</button>
           <button className='btn bg-orange btn-sm' style={{backgroundColor: '#8b909a'}} onClick={this.toggleEditing}>Cancel</button>

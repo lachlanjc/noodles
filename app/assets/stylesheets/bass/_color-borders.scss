@@ -40,17 +40,17 @@
   border-radius: $border-radius $border-radius 0 0;
 }
 
-.rounded-right {
-  border-radius: 0 $border-radius $border-radius 0;
-}
+// .rounded-right {
+//   border-radius: 0 $border-radius $border-radius 0;
+// }
 
 .rounded-bottom {
   border-radius: 0 0 $border-radius $border-radius;
 }
 
-.rounded-left {
-  border-radius: $border-radius 0 0 $border-radius;
-}
+// .rounded-left {
+//   border-radius: $border-radius 0 0 $border-radius;
+// }
 
 // .not-rounded {
 //   border-radius: 0;

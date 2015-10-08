@@ -50,12 +50,12 @@ textarea {
   <%= f.text_field :title,
                    value: params[:title].present? ? params[:title].to_s.capitalize.strip : @recipe.title,
                    autofocus: true, required: true,
-                   class: 'text-input invisible-input full-width m0 bold h1',
+                   class: 'text-input invisible-input col-12 m0 bold h1',
                    placeholder: 'Title your recipe...',
                    autocomplete: 'off' %>
 
   <%= f.text_area :description,
-                  class: 'text-input invisible-input full-width',
+                  class: 'text-input invisible-input col-12',
                   placeholder: 'Optionally, write a description for the recipe right here.',
                   rows: '1',
                   autocomplete: 'off',
@@ -63,7 +63,7 @@ textarea {
 
   <%= f.label :ingredients, class: 'inline-block h3' %><small class="ml1 grey-4">Put one on each line.</small>
   <%= f.text_area :ingredients,
-                  class: 'text-input invisible-input full-width m0',
+                  class: 'text-input invisible-input col-12 m0',
                   placeholder: 'Click here to add your recipe\'s ingredients.',
                   rows: '3',
                   autocomplete: 'off',
@@ -71,7 +71,7 @@ textarea {
 
   <%= f.label :instructions, class: 'inline-block h3' %><small class="ml1 grey-4">Fully supports Markdown.</small>
   <%= f.text_area :instructions,
-                  class: 'text-input invisible-input full-width m0',
+                  class: 'text-input invisible-input col-12 m0',
                   placeholder: 'Type the recipe\'s instructions here.',
                   rows: '4',
                   autocomplete: 'off',
