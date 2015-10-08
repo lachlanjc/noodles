@@ -28,10 +28,10 @@ module SvgHelper
   end
 
   def googleplus_icon
-    inline_svg 'social-googleplus.svg', style: 'fill: #d14836'
+    inline_svg 'social-google-plus.svg', style: 'fill: #dc4e41'
   end
 
   def email_icon
-    inline_svg 'social-email.svg', style: 'fill: #00aced'
+    inline_svg 'social-email.svg', style: 'fill: #0092ff'
   end
 end
