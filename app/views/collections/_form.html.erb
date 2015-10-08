@@ -9,7 +9,7 @@
   <%= f.file_field :photo, class: 'hide', data: { behavior: 'photo_field' } %>
   <div class="pointer" data-behavior="photo_button">
     <%= react_component 'IconPhoto', size: 24, classes: 'fill-grey-4' %>
-    <span class="grey-4 up-6 h5" data-behavior="photo_name">
+    <span class="grey-4 relative h5" style="top: -6px;" data-behavior="photo_name">
     <% if @collection.photo.url.blank? %>
       Upload a photo background
     <% else %>

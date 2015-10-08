@@ -96,7 +96,7 @@ class RecipeItem extends React.Component {
 
     let indicators = [];
     recipe.collections === true ? indicators.push(<IconCollection classes='ml1 fill-grey-5' size='24px' />) : null;
-    recipe.notes === true ? indicators.push(<IconNotes classes='ml1 up-3 fill-grey-5' size='18px' />) : null;
+    recipe.notes === true ? indicators.push(<IconNotes classes='ml1 relative fill-grey-5' size='18px' style={{top: '-3px'}} />) : null;
     recipe.photo === true ? indicators.push(<IconPhoto classes='ml1 fill-grey-5' />) : null;
     recipe.web === true ? indicators.push(<IconWeb classes='ml1 fill-grey-5' />) : null;
     recipe.favorite === true ? indicators.push(<IconFavorite classes='ml1 fill-orange' />) : null;
