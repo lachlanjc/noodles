@@ -3,9 +3,11 @@ module SvgHelper
     file = File.read(Rails.root.join('app', 'assets', 'images', filename))
     doc = Nokogiri::HTML::DocumentFragment.parse file
     svg = doc.at_css 'svg'
-    svg['class'] = options[:class] if options[:class].present?
-    svg['style'] = options[:style] if options[:style].present?
-    svg['width'], svg['height'] = options[:size] if options[:size].present?
+    options.each { |key, value| svg["#{key}"] = value }
+    if options[:size]
+      svg['width'], svg['height'] = options[:size]
+      svg.delete 'size'
+    end
     doc.to_html.html_safe
   end
 
