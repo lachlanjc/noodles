@@ -25,19 +25,21 @@ textarea {
 <%= form_for(@recipe) do |f| %>
 
   <%= f.file_field :img, class: 'hide', data: { behavior: 'photo_field' } %>
-  <div class="inline-block pointer" data-behavior="photo_button">
-    <%= react_component 'IconPhoto', size: 32, classes: 'fill-grey-4' %>
-    <span class="grey-4 up-10" data-behavior="photo_name">
-  <% if @recipe.img.url.blank? %>
-      Click to upload a photo</span>
+  <div class="mb2 inline-block">
+    <div class="pointer" data-behavior="photo_button">
+      <%= inline_svg 'photo-upload.svg', size: 32, class: 'fill-grey-4 relative', style: 'top: 10px;' %>
+      <span class="grey-4" data-behavior="photo_name">
+        <%= @recipe.img.url.blank? ? 'Upload a photo' : 'Upload a new photo' %>
+      </span>
     </div>
-  <% else %>
-      Upload a new photo</span>
+    <% if @recipe.img.url.present? %>
+    <div class="grey-4 pointer mt1" data-behavior="remove_current_photo">
+      <%= inline_svg 'close.svg', width: 32, height: 24, class: 'fill-grey-3 relative', style: 'top: 6px;' %>
+      <%= link_to 'Remove current photo', recipe_remove_image_path(recipe_id: @recipe.id),
+                   class: 'link-reset', data: { remote: true, behavior: 'remove_current_photo_link' } %>
     </div>
-    <span class="grey-4 up-10">
-      or <%= link_to 'remove current photo', recipe_remove_image_path(recipe_id: @recipe.id), class: 'link-reset' %>
-    </span>
-  <% end %>
+    <% end %>
+  </div>
 
   <% if @recipe.errors.any? %>
     <div class="bg-white rounded shadow mb2 p2">
@@ -93,5 +95,3 @@ textarea {
 
 <% end %>
 </main>
-
-<%= javascript_include_tag "editor" %>
