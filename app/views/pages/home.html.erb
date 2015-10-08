@@ -36,7 +36,7 @@
         <%= link_to t("general.sign_out"), sign_out_path, method: :delete, class: "px1 link-reset white regular" if user_signed_in? %>
       </div>
 
-      <div class="flex-auto mt2">
+      <div class="flex-auto mt2 sm-hide">
         <% if flash.any? %>
           <% flash.each do |key, value| %>
             <span class="px3 py1 border border-white white inline-block" style="border-width: 2px; border-radius: 4px;">
