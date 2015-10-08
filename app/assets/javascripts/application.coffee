@@ -42,7 +42,17 @@ $(document).ready ->
   $(document).on 'click', '[data-behavior~=photo_name]', ->
     $('[data-behavior~=photo_field]').click()
   $('[data-behavior~=photo_field]').on 'change', ->
-    $('[data-behavior~=photo_name]').text(this.value.match(/[^\/\\]+$/)[0])
+    $('[data-behavior~=photo_name]').text this.value.match(/[^\/\\]+$/)[0]
+  $(document).on 'click', '[data-behavior~=remove_current_photo]', ->
+    l = $(this).find('[data-behavior~=remove_current_photo_link]')
+    l.click()
+    l.text 'Removing photo...'
+  $(document).on 'ajaxSuccess', '[data-behavior~=remove_current_photo_link]', ->
+    t = $(this)
+    t.text 'Removed!'
+    $('[data-behavior~=photo_name]').text 'Upload a new photo'
+    t.parent().hide 'slow'
+
   $('[data-behavior~=cook_photo_field]').on 'change', ->
     $(this)[0].form.submit()
 
