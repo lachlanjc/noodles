@@ -26,7 +26,8 @@
   <%= render 'shared/analytics' %>
 </head>
 <body class="center m0 bg-grey-6">
-  <header class="hero-container bg-cover bg-center bg-no-repeat" style="background-image:url(<%= asset_path 'home/background.jpg' %>)">
+  <header class="hero-container bg-cover bg-center bg-no-repeat"
+          style='background-image: url(<%= image_path "home/#{rand(1..6).to_s}.jpg" %>);'>
     <nav role="navigation" class="md-flex px2 white print-hide">
       <div class="py2">
         <%= link_to t("general.home"), root_url, class: "px1 link-reset white regular" %>
@@ -59,9 +60,8 @@
 
     <div class="hero-content md-col-8 sm-col-11 mx-auto">
       <h1 class="white h0 regular">Keep, cook, and share all your recipes in Noodles.</h1>
-      <a class="btn bg-orange btn-lg mt2"
-         style="text-shadow: none;"
-         onclick="_gs('event', 'Clicked hero button'); window.location='<%= sign_up_path %>'">Sign Up</a>
+      <a class="btn bg-orange btn-lg tsn mt2" href="<%= sign_up_path %>"
+         onclick="_gs('event', 'Clicked hero button');">Sign Up</a>
     </div>
   </header>
   <p class="lead px3 md-col-8 mx-auto left-align mt3 mb2">
@@ -107,7 +107,8 @@
     <blockquote class="h3 mx-auto py2">
       &ldquo;Whether you want to keep your own recipes or you need to jot a recipe you find online or on TV, Noodles is handy.&rdquo;
     </blockquote>
-    <a class="btn bg-orange btn-lg inline-block mt1" onclick="_gs('event', 'Clicked hero button'); window.location='<%= sign_up_path %>'">Sign Up</a>
+    <a class="btn bg-orange btn-lg inline-block mt1" href="<%= sign_up_path %>"
+       onclick="_gs('event', 'Clicked hero button');">Sign Up</a>
   </section>
   <footer class="block mt1 py2 grey-4">
     <%= link_to 'Terms', :terms, class: 'px1 link-reset' %>
