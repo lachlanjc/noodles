@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   get '/privacy', to: 'pages#privacy', as: :privacy
   get '/terms', to: 'pages#terms', as: :terms
 
+  get '/blog', to: 'announcements#index'
   resources :announcements
   resources :collections, except: [:new, :edit]
 

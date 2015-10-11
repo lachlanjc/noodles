@@ -2,4 +2,21 @@
 <% activate_nav!(:announcements) %>
 
 <%= render 'shared/nav' %>
-<%= react_component 'AnnouncementList', announcements: @announcements.as_json %>
+
+<main class="md-col-8 mw7 mx-auto p2">
+  <h1 class="mb1">Noodles keeps getting better.</h1>
+  <h2 class="grey-3 mt0 mb3 regular">Check back here for the latest updates.</h2>
+  <% @announcements.each do |post| %>
+    <article class="bg-white rounded shadow p3">
+      <h1 class="m0">
+        <%= link_to post.title, announcement_path(post) %>
+      </h1>
+      <p class="grey-3">
+        <%= post.created_at.strftime '%B %e, %Y' %>
+      </p>
+      <div class="text text-normalized">
+        <%= post.body_rendered.html_safe %>
+      </div>
+    </article>
+  <% end %>
+</main>

@@ -18,9 +18,14 @@
 <%= render 'shared/nav' %>
 
 <article class="document">
-  <%= react_component 'AnnouncementBody', data: @announcement.as_json %>
-  <hr class="mb0">
-  <%= react_component 'Bio' %>
-  <hr class="mt0">
-  <%= link_to 'Delete', @announcement, method: :delete, data: { confirm: 'Are you sure?' } if @admin %>
+  <h1 class="m0">
+    <%= @announcement.title %>
+  </h1>
+  <p class="grey-3">
+    <%= @announcement.created_at.strftime '%B %e, %Y' %>
+    <%= link_to 'Delete', @announcement, method: :delete, data: { confirm: 'Are you sure?' }, class: 'red bold' if @admin %>
+  </p>
+  <div class="text text-normalized">
+    <%= @announcement.body_rendered.html_safe %>
+  </div>
 </article>
