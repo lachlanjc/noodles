@@ -23,6 +23,7 @@ class RecipesController < ApplicationController
   def new
     if user_signed_in?
       @recipe = Recipe.new
+      title_setup
       render :edit
     else
       flash[:red] = 'You must have an account to create new recipes.'
@@ -31,6 +32,7 @@ class RecipesController < ApplicationController
   end
 
   def edit
+    title_setup
   end
 
   def create
@@ -171,6 +173,10 @@ class RecipesController < ApplicationController
     else
       true
     end
+  end
+
+  def title_setup
+    @title = @recipe.title || params[:title].to_s.capitalize.strip
   end
 
   def setup_image_layout
