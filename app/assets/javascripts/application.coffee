@@ -24,7 +24,6 @@ $(document).ready ->
     t = $(this)
     t.closest('.modal').find('[data-behavior~=modal_close]').click()
     if b = $('[data-behavior~=inline_signup_btn]')
-      debugger
       b.hide()
       b.parent().append('<p class="blue bold">Signed up! Thanks.</p>')
     r = location.reload()
