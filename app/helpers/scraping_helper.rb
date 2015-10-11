@@ -79,7 +79,6 @@ module ScrapingHelper
       r.shared = false
       r.save
     end
-    recipe.shared_id = generate_shared_id(recipe.id)
     recipe.save
     if request.xhr?
       render text: recipe.id

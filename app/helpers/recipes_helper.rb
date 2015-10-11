@@ -18,11 +18,6 @@ module RecipesHelper
     app_url + shared_path(recipe)
   end
 
-  def generate_shared_id(id)
-    hashids = Hashids.new '113011262014'
-    hashids.encode(id.to_i * 11262014)
-  end
-
   def from_web?(source_data)
     /(http)/.match(source_data.to_s).to_s == 'http'
   end

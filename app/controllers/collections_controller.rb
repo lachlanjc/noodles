@@ -33,7 +33,6 @@ class CollectionsController < ApplicationController
       c.user = current_user
       c.save!
     end
-    @collection.hash_id = generate_hash_id(@collection.id)
     @collection.save
     redirect_to @collection
   end

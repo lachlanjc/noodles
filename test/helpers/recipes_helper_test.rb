@@ -4,10 +4,6 @@ class RecipesHelperTest < ActionView::TestCase
   include MarkdownHelper
   include RecipesHelper
 
-  test 'should generate shared id' do
-    assert_equal 'w0aLgD', generate_shared_id(1)
-  end
-
   test 'should generate recipe share link' do
     assert_equal 'http://test.host/s/goodcheese', shared_url(recipes(:one))
   end

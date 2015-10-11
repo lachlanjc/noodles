@@ -26,7 +26,7 @@ class RecipesController < ApplicationController
       title_setup
       render :edit
     else
-      flash[:red] = 'You must have an account to create new recipes.'
+      flash[:red] = 'You need to be signed in to save recipes.'
       redirect_to root_url
     end
   end
@@ -41,8 +41,6 @@ class RecipesController < ApplicationController
     @recipe.shared = false
 
     if @recipe.save
-      @recipe.shared_id = generate_shared_id(@recipe.id)
-      @recipe.save
       flash[:green] = 'Awesome, you\'ve saved your new recipe.'
       redirect_to @recipe
     else
@@ -114,7 +112,7 @@ class RecipesController < ApplicationController
   def save_to_noodles
     @recipe = Recipe.find(params[:shared_id])
     raise_not_found
-    @save_recipe = Recipe.new do |r|
+    @new_recipe = Recipe.new do |r|
       r.user_id = current_user.id
       r.title = @recipe.title
       r.description = @recipe.description
@@ -127,11 +125,10 @@ class RecipesController < ApplicationController
       r.favorite, r.shared = false
       r.save
     end
-    @save_recipe.shared_id = generate_shared_id(@save_recipe.id)
-    @save_recipe.save
+    @new_recipe.save
 
-    flash[:green] = "#{@save_recipe.title} is saved!"
-    redirect_to @save_recipe
+    flash[:green] = "#{@recipe.title} has been saved!"
+    redirect_to @new_recipe
   end
 
   def remove_image

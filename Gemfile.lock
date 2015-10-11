@@ -96,7 +96,6 @@ GEM
     hangry (0.0.2)
       activesupport
       nokogiri
-    hashids (1.0.2)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     i18n (0.7.0)
@@ -256,7 +255,6 @@ DEPENDENCIES
   dimensions
   dotenv-rails
   hangry
-  hashids
   ingreedy
   intercom-rails
   jbuilder

@@ -3,7 +3,10 @@ class Recipe < ActiveRecord::Base
 
   validates :title, presence: true
   validates :user_id, presence: true
-  validates :shared_id, presence: true
+  validates :shared_id, presence: true, uniqueness: true
+
+  before_validation :generate_shared_id, on: :create
+  after_validation :generate_shared_id, on: :create, unless: Proc.new { |recipe| recipe.errors.empty? }
 
   has_attached_file :img,
     path: 'recipes/:id/img/:style.:extension',
@@ -13,4 +16,9 @@ class Recipe < ActiveRecord::Base
   def to_param
     "#{id} #{title}".parameterize
   end
+
+  protected
+    def generate_shared_id
+      self.shared_id = rand(32**8).to_s(32)
+    end
 end
