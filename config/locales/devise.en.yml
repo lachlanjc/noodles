@@ -3,7 +3,7 @@
 en:
   devise:
     failure:
-      already_authenticated: "You are already signed in."
+      already_authenticated: You're already signed in ;)
       inactive: "Your account is not activated yet."
       invalid: "Hmm, either your email or password is wrong."
       not_found_in_database: "Invalid email or password."
