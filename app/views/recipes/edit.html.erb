@@ -40,19 +40,19 @@ textarea {
     <% end %>
   </div>
 
-  <% if @recipe.errors.any? %>
-    <div class="bg-white rounded shadow mb2 p2">
-      <h2>Oops! You need to title the recipe.</h2>
-      <p>Click below and type a name for your recipe.</p>
-    </div>
-  <% end %>
-
   <%= f.text_field :title,
                    value: params[:title].present? ? params[:title].to_s.capitalize.strip : @recipe.title,
                    autofocus: true, required: true,
                    class: 'text-input invisible-input col-12 m0 bold h1',
                    placeholder: 'Title your recipe...',
                    autocomplete: 'off' %>
+
+   <% if @recipe.errors.any? %>
+     <section class="md-col-8 mx-auto bg-white rounded shadow center mt2 mb2 p3" role="alertdialog">
+       <h2 class="orange mt0">Your recipe doesn't have a title!</h2>
+       <p class="mb0">Add a name (above) and you'll be good to go.</p>
+     </section>
+   <% end %>
 
   <%= f.text_area :description,
                   class: 'text-input invisible-input col-12',
