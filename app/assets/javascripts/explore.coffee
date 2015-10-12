@@ -44,7 +44,7 @@ $(document).ready ->
         u = window.location.search.match(/([^&=]+)=?([^&]*)/g)[0].replace urlParams.q, q
         window.history.replaceState null, null, u
       else if window.history.replaceState
-        window.history.replaceState null, null, '?q=' + q + '&src=' s
+        window.history.replaceState null, null, '?q=' + q + '&src=' + s
 
       u = '/explore/results?src=' + s + '&q=' + q
 
