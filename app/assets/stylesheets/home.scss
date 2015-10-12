@@ -1,6 +1,7 @@
 @import "variables";
 
 @import "base/reset";
+@import "base/tachyons";
 @import "base/color";
 @import "base/type";
 @import "bass/*";
@@ -15,19 +16,10 @@
   padding: 8rem 0;
 }
 
-@media (max-width: $screen-phone) {
+@media screen and (max-width: 48em) {
   .hero-content {
-    padding: 4rem 1rem;
+    padding: 8vh 1rem 12vh;
   }
-
-  .sm-hide {
-    display: none;
-  }
-}
-
-.btn-lg {
-  font-size: $h2;
-  padding: $space-2 $space-3;
 }
 
 .shadow {

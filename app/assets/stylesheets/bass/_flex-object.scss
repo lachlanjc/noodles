@@ -9,7 +9,11 @@
 .flex-start    { align-items: flex-start }
 // .flex-end      { align-items: flex-end }
 
-// .flex-justify  { justify-content: space-between }
+.flex-justify  { justify-content: space-between }
+.flex-around  { justify-content: space-around }
+
+.fac           { align-items: center }
+.fjc           { justify-content: center }
 
 .flex-auto {
   flex: 1 1 auto;
