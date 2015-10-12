@@ -2,10 +2,6 @@
    BORDERS
  */
 
-.bs-none   { border-style: none; }
-.bs-dashed { border-style: dashed; }
-.bs-solid  { border-style: solid; }
-
 .bw0       { border-width: 0; }
 
 /*
@@ -64,8 +60,8 @@
 .mw2  {  max-width: 2rem; }
 .mw3  {  max-width: 4rem; }
 .mw4  {  max-width: 8rem; }
-.mw5  {  max-width: 16rem; }
 */
+.mw5  {  max-width: 16rem; }
 .mw6  {  max-width: 32rem; }
 .mw7  {  max-width: 48rem; }
 .mw8  {  max-width: 64rem; }

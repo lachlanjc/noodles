@@ -6,20 +6,20 @@
   <% @collections = current_user.collections %>
   <% if @collections.any? %>
     <% if @recipe.collections.length <= 4 %>
-    <p>Add this recipe to your collections by clicking them from the list below.</p>
+    <p>Tap on any of your collections below to add this recipe to them.</p>
     <% else %>
-    <p>This recipe is already in <%= pluralize(@recipe.collections.reject!(&:blank?).length, 'collection') %>. To add it to additional collections, click on them in the list below.</p>
+    <p>This recipe is already in <%= pluralize(@recipe.collections.reject!(&:blank?).count, 'collection') %>. To add it to additional collections, click on them in the list below.</p>
     <% end %>
 
     <%= form_for(@recipe) do |f| %>
-      <ul class="list-reset sm-col-10 md-col-5 mx-auto">
+      <ul class="list-reset sm-col-10 mw5 mx-auto">
         <%= collection_check_boxes(:recipe, :collections, @collections, :id, :name) do |b| %>
         <li class="border-top">
           <%= b.label(class: 'collection-list-item m0 pas pointer') do %>
             <% if @recipe.collections.include?(b.value.to_s) %>
-            <%= b.check_box(checked: 'checked', class: 'hide') %>
+            <%= b.check_box checked: 'checked', class: 'dn' %>
             <% else %>
-            <%= b.check_box(class: 'hide') %>
+            <%= b.check_box class: 'dn' %>
             <% end %>
             <%= content_tag :span, b.text %>
             <div class="checkmark fill-orange right hide">
