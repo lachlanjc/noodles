@@ -1,3 +1,17 @@
+/*
+   BORDERS
+ */
+
+.bs-none   { border-style: none; }
+.bs-dashed { border-style: dashed; }
+.bs-solid  { border-style: solid; }
+
+.bw0       { border-width: 0; }
+
+/*
+   DISPLAY
+*/
+
 .dn {     display: none; }
 .di {     display: inline; }
 .db {     display: block; }
@@ -81,7 +95,7 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
-.pvm {
+.pvl {
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
@@ -102,7 +116,7 @@
   padding-left: 1rem;
   padding-right: 1rem;
 }
-.phm {
+.phl {
   padding-left: 2rem;
   padding-right: 2rem;
 }
@@ -131,7 +145,7 @@
     padding-top: 1rem;
     padding-bottom: 1rem;
   }
-  .pvm-ns {
+  .pvl-ns {
     padding-top: 2rem;
     padding-bottom: 2rem;
   }
@@ -151,7 +165,7 @@
     padding-left: 1rem;
     padding-right: 1rem;
   }
-  .phm-ns {
+  .phl-ns {
     padding-left: 2rem;
     padding-right: 2rem;
   }

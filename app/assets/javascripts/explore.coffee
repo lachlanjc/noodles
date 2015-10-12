@@ -10,7 +10,7 @@ $(document).ready ->
     t = $(this)
     b = $('[data-behavior~=explore_src_pick_bar]')
     src = t.data 'src-name'
-    activeClasses = 'bg-orange bold'
+    activeClasses = 'bg-orange bold tsn'
     b.find('[data-src-name=' + b.data('src-selected') + ']').toggleClass activeClasses
     t.toggleClass(activeClasses) if b.data('src-selected') isnt src or !t.attr('class').match activeClasses
     b.data 'src-selected', src

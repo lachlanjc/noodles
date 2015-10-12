@@ -7,18 +7,18 @@
         style='background-image: url(<%= image_path "explore/#{rand(1..5).to_s}.jpg" %>);'>
   <h1 class="mt0 mb0 white">Explore</h1>
   <h2 class="white regular mt1 mb2">What do you want to make?</h2>
-  <div class="md-col-8 lg-col-6 phs mx-auto">
+  <div class="md-col-8 mw7 phs mx-auto">
     <input type="text" role="search"
-           class="text-input col-12 h2 shadow" style="border: 0; padding: .5rem 1rem;"
+           class="text-input col-12 f2 shadow pvs phm bw0 bs-bb"
            placeholder="maybe pancakes?"
            data-behavior="explore_search_field">
   </div>
   <section role="menubar" class="filterbar mt2" data-behavior="explore_src_pick_bar">
-    <a role="menuitem" class="filterbar-item inline-block phm pointer white white-hover tsn"
+    <a role="menuitem" class="filterbar-item inline-block phm pointer white white-hover"
        data-behavior="explore_src_pick" data-src-name="nyt">NYT Cooking</a>
    <a role="menuitem" class="filterbar-item inline-block phm pointer white white-hover"
        data-behavior="explore_src_pick" data-src-name="epicurious">Epicurious</a>
-   <a role="menuitem" class="filterbar-item inline-block phm pointer white white-hover tsn"
+   <a role="menuitem" class="filterbar-item inline-block phm pointer white white-hover"
        data-behavior="explore_src_pick" data-src-name="allrecipes">Allrecipes</a>
   </section>
 </header>
