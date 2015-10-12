@@ -3,7 +3,7 @@
 
 <%= render "shared/nav" %>
 
-<article class="document p3 sm-col-11 md-col-8">
+<article class="document pal sm-col-11 md-col-8">
   <h2 class="m0">
     <%= "Hey #{current_user.first_name}!" if user_signed_in? %>
     Let's get cooking.
@@ -11,16 +11,16 @@
   <hr>
   <p>Adding recipes to Noodles is super easy — use the buttons in the corner.</p>
   <ol class="list-reset">
-    <li class="py1 mt1">
-      <div class="p1 circle shadow bg-orange white mr2 left inline-block">
+    <li class="pvs mt1">
+      <div class="pas circle shadow bg-orange white mr2 left inline-block">
         <%= link_to "+", new_recipe_path, class: "inline-block link-reset center h3 lh0 bold", style: "width: 24px;" %>
       </div>
       <div class="inline-block" style="padding-top: 5px;">
         Type up a recipe or paste in the text yourself.
       </div>
     </li>
-    <li class="py1 mt1">
-      <span class="inline-block p1 fill-white bg-orange circle shadow mr2 lh0 left">
+    <li class="pvs mt1">
+      <span class="inline-block pas fill-white bg-orange circle shadow mr2 lh0 left">
         <%= inline_svg 'clip.svg' %>
       </span>
       <div class="inline-block" style="padding-top: 5px;">
@@ -32,10 +32,10 @@
 
 <%= render "recipes/clipper" %>
 
-<a class="btn-paper-mini bg-orange fill-white circle fixed p1 shadow" name="clipModal" href="#clipper" data-behavior="modal_trigger">
+<a class="btn-paper-mini bg-orange fill-white circle fixed pas shadow" name="clipModal" href="#clipper" data-behavior="modal_trigger">
   <%= inline_svg 'clip.svg' %>
 </a>
 
-<%= link_to new_recipe_path, class: "has-tooltip btn-paper bg-orange fill-white circle fixed p2 shadow", data: { tooltip: "Add a new recipe"} do %>
+<%= link_to new_recipe_path, class: "has-tooltip btn-paper bg-orange fill-white circle fixed pam shadow", data: { tooltip: "Add a new recipe"} do %>
   <%= inline_svg 'add.svg' %>
 <% end %>

@@ -29,9 +29,9 @@
     <% if me_owns_recipe? %>
       <%= react_component("NoteEditor", recipe_id: @recipe.id) %>
     <% else %>
-      <section class="rounded shadow px2 bg-white text text-normalized">
-        <h3 class="m0 py2 center grey-4 caps regular border-bottom" style="border-bottom-style: dashed;">Notes</h3>
-        <article class="py2">
+      <section class="rounded shadow phm bg-white text text-normalized">
+        <h3 class="m0 pvm center grey-4 caps regular border-bottom" style="border-bottom-style: dashed;">Notes</h3>
+        <article class="pvm">
         <% if @recipe.notes.blank? %>
         <p class="grey-4">No notes for this recipe &mdash; yet!</p>
         <% else %>
@@ -42,9 +42,9 @@
     <% end %>
   </aside>
 
-  <article class="sm-col-11 md-col-6 mx-auto mt2 p0">
+  <article class="sm-col-11 md-col-6 mx-auto mt2 pan">
     <% flash.each do |key, value| %>
-      <div class="h2 p2 center mb2 rounded bg-<%= flash_color_class(key) %> white pointer print-hide" role="alertdialog" data-behavior="flash">
+      <div class="h2 pam center mb2 rounded bg-<%= flash_color_class(key) %> white pointer print-hide" role="alertdialog" data-behavior="flash">
         <%= value %>
       </div>
     <% end %>
@@ -53,10 +53,10 @@
       <%= content_tag :div,
                        plain_text_from_markdown(step.to_s).html_safe,
                        data: { behavior: 'checklist_item' },
-                       class: 'h2 grey-2 bg-white rounded shadow pointer p2 block mb2' if strip_tags(step.to_s).length > 1 %>
+                       class: 'h2 grey-2 bg-white rounded shadow pointer pam block mb2' if strip_tags(step.to_s).length > 1 %>
     <% end %>
 
-    <div class="bg-white rounded shadow p2 block h2 center mb2 grey-2">
+    <div class="bg-white rounded shadow pam block h2 center mb2 grey-2">
       <span>And now you're finished! Enjoy the <%= @recipe.title %>.</span>
 
       <%= image_tag @recipe.img, alt: "Photo of " + @recipe.title, class: "mt2 mx-auto rounded" if @recipe.img.present? %>
@@ -69,7 +69,7 @@
               <%= @recipe.img.url.blank? ? 'Add a photo' : 'Upload a new photo' %>
             </a>
             <% if @recipe.img.url.present? %>
-              <span class="grey-4 px1">or</span>
+              <span class="grey-4 phs">or</span>
               <%= link_to('remove this photo', recipe_remove_image_path(@recipe, cook: true),
                            class: 'btn bg-white') %>
             <% end %>
@@ -83,14 +83,14 @@
 
 <% if not_my_recipe? %>
   <% exit_path = @recipe.shared_id == '6ww5W0L' ? root_url : share_path(@recipe.shared_id) %>
-  <%= link_to exit_path, class: 'btn-paper bg-orange fill-white circle fixed p2 shadow' do %>
+  <%= link_to exit_path, class: 'btn-paper bg-orange fill-white circle fixed pam shadow' do %>
     <%= inline_svg 'exit.svg' %>
   <% end %>
 <% else %>
-  <%= link_to recipe_path(@recipe), class: 'btn-paper-mini bg-orange fill-white circle fixed p1 shadow' do %>
+  <%= link_to recipe_path(@recipe), class: 'btn-paper-mini bg-orange fill-white circle fixed pas shadow' do %>
     <%= inline_svg 'exit.svg' %>
   <% end %>
-  <%= link_to edit_recipe_path(@recipe), class: 'btn-paper bg-orange fill-white circle fixed p2 shadow' do %>
+  <%= link_to edit_recipe_path(@recipe), class: 'btn-paper bg-orange fill-white circle fixed pam shadow' do %>
     <%= inline_svg 'edit.svg' %>
   <% end %>
 <% end %>

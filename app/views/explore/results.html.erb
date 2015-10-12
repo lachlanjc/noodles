@@ -1,6 +1,6 @@
 <ul class="list-reset">
 <% @results.each do |result| %>
-  <li class="bg-white rounded shadow mb2 p2 flex flex-center" data-behavior="explore_result_item"
+  <li class="bg-white rounded shadow mb2 pam flex flex-center" data-behavior="explore_result_item"
       data-title="<%= result['title'] %>" data-url="<%= result['url'] %>">
     <div class="flex-auto">
       <h3 class="m0"><%= result['title'] %></h3>
@@ -22,7 +22,7 @@
   </li>
 <% end %>
 <% if @results.blank? %>
-<li class="md-col-8 border bg-darken-1 rounded mt3 p3 center mx-auto">
+<li class="md-col-8 border bg-darken-1 rounded mt3 pal center mx-auto">
   <h3 class="mt0">Sorry, we couldn't find anything. 😰</h3>
   <p class="mb0">Try with a different search, or check another source.</p>
 </li>

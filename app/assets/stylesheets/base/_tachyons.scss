@@ -67,7 +67,49 @@
 .pas  {  padding: .5rem; }
 .pam  {  padding: 1rem; }
 .pal  {  padding: 2rem; }
-.paxl  {  padding: 4rem; }
+.paxl {  padding: 4rem; }
+
+.pvn {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.pvs {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+.pvm {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.pvm {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.pvxl {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+.phn {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.phs {
+  padding-left: .5rem;
+  padding-right: .5rem;
+}
+.phm {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.phm {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.phxl {
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
 
 @media screen and (min-width: 48em) {
   .pan-ns  {  padding: 0; }
@@ -76,6 +118,47 @@
   .pam-ns  {  padding: 1rem; }
   .pal-ns  {  padding: 2rem; }
   .paxl-ns  {  padding: 4rem; }
+
+  .pvn-ns {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .pvs-ns {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+  }
+  .pvm-ns {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  .pvm-ns {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  .pvxl-ns {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  .phn-ns {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .phs-ns {
+    padding-left: .5rem;
+    padding-right: .5rem;
+  }
+  .phm-ns {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .phm-ns {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .phxl-ns {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
 }
 
 /*

@@ -1,6 +1,6 @@
 <%= render 'shared/social' if @recipe.shared? %>
 
-<div class="print-hide py1">
+<div class="print-hide pvs">
   <%= link_to t('general.edit'), :edit_recipe, class: 'btn bg-blue mr1 mt1' %>
   <a href="#collectModal" class="btn bg-orange mr1 mt1" data-behavior="modal_trigger">Add to Collection</a>
   <a href="#shareModal" class="btn bg-green mr1 mt1" data-behavior="modal_trigger">Share</a>

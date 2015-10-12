@@ -7,7 +7,7 @@
   <h1>Shared Recipes (<%= @recipes.count %></span>)</h1>
 
   <% @recipes.each do |recipe| %>
-    <div class="bg-white rounded shadow p2 mb2">
+    <div class="bg-white rounded shadow pam mb2">
       <h2 class="mt0"><%= recipe.title %><span class="grey-3 h3 ml1">#<%= recipe.id %></span></h2>
       <% if User.exists?(recipe.user_id) %>
       <p class="mb2">Published by: <%= User.find(recipe.user_id).first_name.to_s %></p>

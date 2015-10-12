@@ -3,28 +3,28 @@
 
 <%= render 'shared/nav' %>
 
-<header class="center relative inline-with-nav image-header bg-center bg-no-repeat bg-cover py4 px2"
+<header class="center relative inline-with-nav image-header bg-center bg-no-repeat bg-cover pvxl phm"
         style='background-image: url(<%= image_path "explore/#{rand(1..5).to_s}.jpg" %>);'>
   <h1 class="mt0 mb0 white">Explore</h1>
   <h2 class="white regular mt1 mb2">What do you want to make?</h2>
-  <div class="md-col-8 lg-col-6 px1 mx-auto">
+  <div class="md-col-8 lg-col-6 phs mx-auto">
     <input type="text" role="search"
            class="text-input col-12 h2 shadow" style="border: 0; padding: .5rem 1rem;"
            placeholder="maybe pancakes?"
            data-behavior="explore_search_field">
   </div>
   <section role="menubar" class="filterbar mt2" data-behavior="explore_src_pick_bar">
-    <a role="menuitem" class="filterbar-item inline-block px2 pointer white white-hover tsn"
+    <a role="menuitem" class="filterbar-item inline-block phm pointer white white-hover tsn"
        data-behavior="explore_src_pick" data-src-name="nyt">NYT Cooking</a>
-   <a role="menuitem" class="filterbar-item inline-block px2 pointer white white-hover"
+   <a role="menuitem" class="filterbar-item inline-block phm pointer white white-hover"
        data-behavior="explore_src_pick" data-src-name="epicurious">Epicurious</a>
-   <a role="menuitem" class="filterbar-item inline-block px2 pointer white white-hover tsn"
+   <a role="menuitem" class="filterbar-item inline-block phm pointer white white-hover tsn"
        data-behavior="explore_src_pick" data-src-name="allrecipes">Allrecipes</a>
   </section>
 </header>
 
-<main class="md-col-8 px2 mx-auto">
-  <article class="py2 center" data-behavior="explore_results_container">
+<main class="md-col-8 phm mx-auto">
+  <article class="pvm center" data-behavior="explore_results_container">
     <h2 class="mt0">
       This is <strong>Explore</strong> by <%= link_to 'Noodles', root_url, class: 'bold' %>.
       Find amazing new recipes.
@@ -50,7 +50,7 @@
                                              options: { class: 'modal-scroll', data: { remote: true, behavior: 'inline_signup_form' } } %>
     </section>
   <% end %>
-  <section class="modal p3" role="dialog" id="preview" data-behavior="explore_preview_modal">
+  <section class="modal pal" role="dialog" id="preview" data-behavior="explore_preview_modal">
     <%= modal_close %>
     <h2 class="orange inline mb0" data-behavior="explore_preview_title"></h2>
     <a data-behavior="explore_open_original" class="inline-block" target="_blank">

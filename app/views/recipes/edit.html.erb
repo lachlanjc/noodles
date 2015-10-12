@@ -20,7 +20,7 @@ textarea {
   <%= inline_svg 'home.svg', class: 'fill-grey-4', style: 'width: 32px; height: 32px;' %>
 <% end %>
 
-<main class="md-col-8 mx-auto p2">
+<main class="md-col-8 mx-auto pam">
 <%= form_for(@recipe) do |f| %>
 
   <%= f.file_field :img, class: 'hide', data: { behavior: 'photo_field' } %>
@@ -48,7 +48,7 @@ textarea {
                    autocomplete: 'off' %>
 
    <% if @recipe.errors.any? %>
-     <section class="md-col-8 mx-auto bg-white rounded shadow center mt2 mb2 p3" role="alertdialog">
+     <section class="md-col-8 mx-auto bg-white rounded shadow center mt2 mb2 pal" role="alertdialog">
        <h2 class="orange mt0">Your recipe doesn't have a title!</h2>
        <p class="mb0">Add a name (above) and you'll be good to go.</p>
      </section>

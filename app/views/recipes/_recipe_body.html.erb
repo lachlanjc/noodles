@@ -39,7 +39,7 @@
 <% if me_owns_recipe? %>
   <%= react_component("NoteEditor", recipe_id: @recipe.id) %>
 <% else %>
-  <div class="rounded border p2 notes text text-normalized print-hide">
+  <div class="rounded border pam notes text text-normalized print-hide">
     <% if @recipe.notes.blank? %>
     <p class="grey-4 mb0">No notes for this recipe &mdash; yet!</p>
     <% else %>

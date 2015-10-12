@@ -32,7 +32,7 @@
   <meta itemprop="dateModified" content="<%= @recipe.updated_at %>" />
 
   <% if @image_layout %>
-    <header class="image-header inline-with-nav relative bg-cover bg-center md-flex flex-center p2"
+    <header class="image-header inline-with-nav relative bg-cover bg-center md-flex flex-center pam"
             style="background-image: url(<%= @recipe.img.url %>); min-height: 25vh;">
 
       <div class="md-col-8 mx-auto mw7">
@@ -55,7 +55,7 @@
     </header>
 
     <section id="photo" role="dialog" class="modal">
-      <div class="pointer absolute p1" style="right: 1rem;" data-behavior="modal_close">
+      <div class="pointer absolute pas" style="right: 1rem;" data-behavior="modal_close">
         <%= inline_svg 'close.svg', class: 'fill-white',
                        style: '-webkit-filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.25));
                                        filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.25));' %>
@@ -101,10 +101,10 @@
 
 </div>
 
-<a class="btn-paper-mini bg-orange fill-white circle fixed p1 pointer shadow" data-behavior="print">
+<a class="btn-paper-mini bg-orange fill-white circle fixed pas pointer shadow" data-behavior="print">
   <%= inline_svg 'print.svg' %>
 </a>
 
-<%= link_to public_cook_path(@recipe.shared_id), class: 'btn-paper bg-orange fill-white circle fixed p2 shadow', rel: 'nofollow' do %>
+<%= link_to public_cook_path(@recipe.shared_id), class: 'btn-paper bg-orange fill-white circle fixed pam shadow', rel: 'nofollow' do %>
   <%= inline_svg 'cook.svg' %>
 <% end %>

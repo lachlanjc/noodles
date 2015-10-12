@@ -1,14 +1,14 @@
 class CollectionIndex extends React.Component {
   render() {
     return (
-      <main className='md-col-9 mx-auto px2'>
+      <main className='md-col-9 mx-auto phm'>
         <h1 className='center'>Collections</h1>
         <article>
           {this.props.collections.map(function(collection) {
             return <CollectionItem key={collection.id} coll={collection} />;
           })}
           {_.isEmpty(this.props.collections) ?
-            <div className='md-col-8 mx-auto mt2 text center border bg-white rounded p3'>
+            <div className='md-col-8 mx-auto mt2 text center border bg-white rounded pal'>
               <h3 className='mt0'>You don't have any collections yet.</h3>
               <p>Collections help you organize your recipes.</p>
               <p className='mb0'>You can use them for categories, such as salads or pastas, or recipes that might be good for a summer dinner party.</p>
@@ -25,13 +25,13 @@ class CollectionItem extends React.Component {
   render() {
     const coll = this.props.coll;
 
-    let imgClass = 'flex flex-center center rounded shadow mb2 p3';
+    let imgClass = 'flex flex-center center rounded shadow mb2 pal';
     let imgStyle = { minHeight: '15vh' };
     if (!_.isEmpty(coll.photo_url)) {
       imgClass += ' image-header bg-center bg-no-repeat bg-cover';
       imgStyle.backgroundImage = `url(${coll.photo_url})`;
     } else {
-      imgClass += ' bg-white rounded shadow p2';
+      imgClass += ' bg-white rounded shadow pam';
     }
 
     return (

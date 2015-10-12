@@ -2,18 +2,18 @@
 <% title "User Analytics" %>
 <%= render "shared/analytics_nav" %>
 
-<main class="md-col-8 mx-auto px2">
+<main class="md-col-8 mx-auto phm">
 
   <h1>Users (<%= @users.count %>)</h1>
 
   <ul class="list-reset">
     <% @users.each do |user| %>
-      <li class="bg-white rounded shadow mb2 p2 text" id="<%= user.id %>">
+      <li class="bg-white rounded shadow mb2 pam text" id="<%= user.id %>">
         <h2 class="mt0 mb1">
           <%= user.first_name %>
-          <a href="#<%= user.id %>" class="px1 grey-3 h4">#<%= user.id %></a>
+          <a href="#<%= user.id %>" class="phs grey-3 h4">#<%= user.id %></a>
         </h2>
-        <ul class="text list-reset p0 m0">
+        <ul class="text list-reset pan m0">
           <li>Recipes: <%= user.recipes.count %></li>
           <li>Collections: <%= user.collections.count %></li> 
           <li>Sessions: <%= user.sign_in_count %></li>

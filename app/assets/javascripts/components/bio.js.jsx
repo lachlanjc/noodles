@@ -15,10 +15,10 @@ class Bio extends React.Component {
       user = taran;
     }
     return (
-      <div className="py2">
+      <div className="pvm">
         <h3 className="m0">{user.name}</h3>
         <p className="m0">{user.description}</p>
-        <a href={"https://twitter.com/" + user.username} className="h5 white bold inline-block px1 rounded bg-orange">
+        <a href={"https://twitter.com/" + user.username} className="h5 white bold inline-block phs rounded bg-orange">
           @{user.username}
         </a>
       </div>

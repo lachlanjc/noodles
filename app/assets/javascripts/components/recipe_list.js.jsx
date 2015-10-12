@@ -55,8 +55,8 @@ class RecipeList extends React.Component {
     const createFromSearch = searching && ((this.props.createFromSearch || false) === true);
 
     return (
-      <ul className={'list-reset py2 mx-auto mb0 mw7 ' + this.props.className}>
-        <div className='md-col-8 mx-auto flex bg-white rounded shadow mb2 px1 print-hide' role='search' onClick={this.focusSearch}>
+      <ul className={'list-reset pvm mx-auto mb0 mw7 ' + this.props.className}>
+        <div className='md-col-8 mx-auto flex bg-white rounded shadow mb2 phs print-hide' role='search' onClick={this.focusSearch}>
           <IconSearch classes='fill-grey-4 mt1' />
           <input
               type='text'
@@ -102,7 +102,7 @@ class RecipeItem extends React.Component {
     recipe.favorite === true ? indicators.push(<IconFavorite classes='ml1 fill-orange' />) : null;
 
     return (
-      <li className='bg-white rounded shadow mb2 p2'>
+      <li className='bg-white rounded shadow mb2 pam'>
         <a href={recipeLink} className='link-reset'>
           <div className='right print-hide'>{indicators}</div>
           <h3 className='m0 regular'>{recipe.title}</h3>

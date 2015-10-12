@@ -1,11 +1,11 @@
 <div class="flex mt2">
-  <div class="center px2 border rounded inline-block mx-auto print-hide">
+  <div class="center phm border rounded inline-block mx-auto print-hide">
     <h2>This recipe is public.</h2>
 
     <p class="mb1">Share the link:</p>
     <%= react_component 'CopyLink', url: @shared_url %>
 
-    <div class="social py1 mt1">
+    <div class="social pvs mt1">
       <a rel="nofollow" href="http://twitter.com/share?text=Check out <%= @recipe.title %>, published on @noodlesapp:&amp;url=<%= @shared_url %>" class="mr1" target="_blank">
         <%= twitter_icon %>
       </a>

@@ -1,4 +1,4 @@
-<nav role="navigation" class="md-flex bg-white mb2 p2 border-bottom print-hide"
+<nav role="navigation" class="md-flex bg-white mb2 pam border-bottom print-hide"
      data-behavior="nav" data-user="<%= user_signed_in? ? current_user.id : 'anon' %>">
 
   <% if user_signed_in? %>
@@ -17,13 +17,13 @@
       <% end %>
       <%= link_to t("general.settings"), :settings, class: nav_active_class(:settings) %>
       <%= link_to t("general.help"), :help, class: nav_active_class(:help) %>
-      <%= link_to t("general.sign_out"), :sign_out, class: "px1" %>
+      <%= link_to t("general.sign_out"), :sign_out, class: "phs" %>
     </div>
 
   <% else %>
 
     <div>
-      <%= link_to t("general.home"), root_url, class: "px1" %>
+      <%= link_to t("general.home"), root_url, class: "phs" %>
       <%= link_to t("general.features"), docs_path, class: nav_active_class(:docs) %>
       <%= link_to t("general.about"), :help, class: nav_active_class(:help) %>
     </div>

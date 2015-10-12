@@ -39,7 +39,7 @@ class RecipesHome extends React.Component {
   }
 
   filterClasses(name) {
-    let classes = 'filterbar-item inline-block px2 pointer '
+    let classes = 'filterbar-item inline-block phm pointer '
     this.state.view === name ? classes += 'bg-orange white white-hover bold' : classes += 'grey-1';
     return classes;
   }
@@ -85,7 +85,7 @@ class RecipesHome extends React.Component {
     const randomUrl = this.findRandom();
 
     return (
-      <main className='md-col-9 mx-auto px2'>
+      <main className='md-col-9 mx-auto phm'>
         <header className='center'>
           <h1 className='mb1'>Recipes</h1>
           <section role='menubar' className='filterbar'>

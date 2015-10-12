@@ -9,7 +9,7 @@
   <meta itemprop="dateModified" content="<%= @recipe.updated_at %>" />
 
   <% if @image_layout %>
-    <header class="image-header inline-with-nav relative bg-cover bg-center md-flex flex-center p2"
+    <header class="image-header inline-with-nav relative bg-cover bg-center md-flex flex-center pam"
             style="background-image: url(<%= @recipe.img.url %>);">
 
       <div class="md-col-8 mx-auto mw7">
@@ -35,7 +35,7 @@
     </header>
 
     <section id="photo" role="dialog" class="modal">
-      <div class="pointer absolute p1" style="right: 1rem;" data-behavior="modal_close">
+      <div class="pointer absolute pas" style="right: 1rem;" data-behavior="modal_close">
         <%= inline_svg 'close.svg', class: 'fill-white' %>
       </div>
       <%= image_tag @recipe.img, class: 'col-12', itemprop: 'image' %>

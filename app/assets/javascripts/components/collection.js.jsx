@@ -23,7 +23,7 @@ class CollectionPage extends React.Component {
       <main>
         <CollectionHeader edit={this.props.edit} pub={pub} coll={this.state.coll} />
         {!_.isEmpty(this.state.coll.recipes) ?
-          <RecipeList recipesCore={this.state.coll.recipes} linkType={pub ? 'public' : 'private'} className='md-col-8 px2' />
+          <RecipeList recipesCore={this.state.coll.recipes} linkType={pub ? 'public' : 'private'} className='md-col-8 phm' />
         : this.renderNoRecipes()}
       </main>
     )
@@ -45,7 +45,7 @@ class CollectionPage extends React.Component {
 
   renderLoading() {
     return (
-      <h3 className='center grey-3 py3'>Loading...</h3>
+      <h3 className='center grey-3 pvl'>Loading...</h3>
     )
   }
 
@@ -66,16 +66,16 @@ class CollectionHeader extends React.Component {
     let rootStyle = {};
     let actionsClass = 'caps h4 print-hide mt2';
     if (!_.isEmpty(coll.photo)) {
-      rootClass += ' image-header relative inline-with-nav py3 bg-cover bg-center bg-no-repeat';
+      rootClass += ' image-header relative inline-with-nav pvl bg-cover bg-center bg-no-repeat';
       rootStyle.backgroundImage = `url(${coll.photo_url})`;
       actionsClass += ' mb2 block white';
     } else {
-      rootClass += ' center grey-4 py2';
+      rootClass += ' center grey-4 pvm';
     }
 
     return (
       <header className={rootClass} style={{backgroundImage: `url(${coll.photo})`}}>
-        <div className='sm-col-12 md-col-8 mx-auto px2 mw7'>
+        <div className='sm-col-12 md-col-8 mx-auto phm mw7'>
           <h1 className='coll-name m0 h0'>{coll.name}</h1>
           {!_.isEmpty(coll.description) ? <p className='h3 mt1 mb0 coll-desc'>{coll.description}</p> : null}
           {this.props.pub ?

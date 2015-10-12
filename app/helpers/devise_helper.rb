@@ -9,9 +9,9 @@ module DeviseHelper
                       resource: user.class.model_name.human.downcase)
 
     html = <<-HTML
-    <div class="rounded mt2 mb2 px2 mx-auto" style="border: 2px solid #ff0013; padding-bottom: 1.5rem;">
+    <div class="rounded mt2 mb2 phm mx-auto" style="border: 2px solid #ff0013; padding-bottom: 1.5rem;">
       <h2 class="red mt3 center">Those Noodles are a bit tangled.</h2>
-      <ul class="list-reset p0 text center">#{messages}</ul>
+      <ul class="list-reset pan text center">#{messages}</ul>
     </div>
     HTML
 

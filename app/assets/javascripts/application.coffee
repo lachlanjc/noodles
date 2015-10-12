@@ -30,7 +30,7 @@ $(document).ready ->
     setTimeout r, 600
   $(document).on 'ajaxError', '[data-behavior~=inline_signup_form]', ->
     t = $(this)
-    t.toggleClass 'busy busy-large mx-auto bg-darken-1 border rounded py2 mt2 center'
+    t.toggleClass 'busy busy-large mx-auto bg-darken-1 border rounded pvm mt2 center'
     t.html '<p class="h3 red center">Something went wrong.</p><a href="/signup" class="btn bg-blue">Try Again</a>'
 
   $('[data-behavior~=recipe_favorite_trigger]').on 'change', ->
