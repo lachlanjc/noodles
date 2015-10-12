@@ -1,3 +1,6 @@
+#= require imagesloaded/imagesloaded.pkgd.min.js
+#= require masonry/dist/masonry.pkgd.min.js
+
 $(document).ready ->
   if q = urlParams.q
     s = $('[data-behavior~=explore_search_field]')
@@ -32,8 +35,8 @@ $(document).ready ->
     if q = _.trim t.val()
       r = $('[data-behavior~=explore_results_container]')
       r.html null
-      r.removeClass 'center'
-      r.addClass 'busy busy-large mx-auto'
+      r.removeClass 'center mw7'
+      r.addClass 'busy busy-large mx-auto mw8'
 
       s = $('[data-behavior~=explore_src_pick_bar]').data 'src-selected'
 
@@ -41,19 +44,29 @@ $(document).ready ->
         u = window.location.search.match(/([^&=]+)=?([^&]*)/g)[0].replace urlParams.q, q
         window.history.replaceState null, null, u
       else if window.history.replaceState
-        window.history.replaceState null, null, '?q=' + q
+        window.history.replaceState null, null, '?q=' + q + '&src=' s
 
       u = '/explore/results?src=' + s + '&q=' + q
 
       $.get u, (t) ->
-        r.removeClass 'busy busy-large mx-auto'
+        r.removeClass 'busy busy-large'
         r.html t
+        g = $('[data-behavior~=explore_masonry_grid]')
+        g.imagesLoaded().progress ->
+          g.masonry
+            itemSelector: '[data-behavior~=explore_result_item]'
+            # columnWidth: 300
+            gutter: 32
+            isFitWidth: true
         $('[data-behavior~=modal_trigger]').leanModal()
         return
 
   f = $('[data-behavior~=explore_search_field]')
   f.on 'keyup', _.debounce searchActions, 400
   f.on 'change', _.debounce logSearchToIntercom, 1000
+
+  $(document).on 'click', '[data-behavior~=explore_clear_search]', ->
+    $('[data-behavior~=explore_search_field]').val null
 
   clippingFinished = (b, id) ->
     b.attr 'data-behavior', null
@@ -72,9 +85,8 @@ $(document).ready ->
 
   $(document).on 'click', '[data-behavior~=explore_preview]', ->
     t = $(this)
-    p = t.parent()
+    r = t.closest '[data-behavior~=explore_result_item]'
 
-    r = p.closest '[data-behavior~=explore_result_item]'
     u = r.data 'url'
     $('[data-behavior~=explore_clip_from_preview]').data 'url', u
     $('[data-behavior~=explore_open_original]').attr 'href', u

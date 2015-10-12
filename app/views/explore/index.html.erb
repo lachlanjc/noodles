@@ -23,50 +23,50 @@
   </section>
 </header>
 
-<main class="md-col-8 phm mx-auto">
-  <article class="pvm center" data-behavior="explore_results_container">
-    <h2 class="mt0">
-      This is <strong>Explore</strong> by <%= link_to 'Noodles', root_url, class: 'bold' %>.
-      Find amazing new recipes.
-    </h2>
-    <% if user_signed_in? %>
-      <p>
-        Search for any dish to get started &mdash;
-        you can save them to your Noodles with just a click.
-      </p>
-    <% else %>
-      <p>
-        Search for any dish to get started. Sign up for Noodles to save the recipe.
-      </p>
-      <a href="#signup" name="signup" data-behavior="modal_trigger inline_signup_btn" class="btn bg-orange mt1">Sign up for Noodles</a>
-    <% end %>
-  </article>
-  <% if nobody_signed_in? %>
-    <section class="modal" role="dialog" id="signup">
-      <%= modal_close %>
-      <h2 class="orange mb0">Sign up for Noodles</h2>
-      <%= render 'devise/registrations/new', user: User.new, text: 'Noodles is, and always will be, totally free.',
-                                             params: { explore: true },
-                                             options: { class: 'modal-scroll', data: { remote: true, behavior: 'inline_signup_form' } } %>
-    </section>
+<main class="md-col-8 phm mx-auto pvm center mw7" data-behavior="explore_results_container">
+  <h2 class="mt0 normal">
+    This is <span class="bold">Explore</span> by <%= link_to 'Noodles', root_url, class: 'bold' %>.
+    Find amazing new recipes.
+  </h2>
+  <% if user_signed_in? %>
+    <p>
+      Search for anything you want to cook &mdash;
+      you can save them to your Noodles with just a click.
+    </p>
+  <% else %>
+    <p>
+      Search for anything you want to cook to get started. Sign up for Noodles to save the recipe.
+    </p>
+    <a href="#signup" name="signup" data-behavior="modal_trigger inline_signup_btn" class="btn bg-orange mt1">Sign up for Noodles</a>
   <% end %>
-  <section class="modal pal" role="dialog" id="preview" data-behavior="explore_preview_modal">
-    <%= modal_close %>
-    <h2 class="orange inline mb0" data-behavior="explore_preview_title"></h2>
-    <a data-behavior="explore_open_original" class="inline-block" target="_blank">
-      <%= inline_svg 'open-new-tab.svg', class: 'fill-orange relative', style: 'width: 16px; height: 16px; top: -5px; left: 2px;' %>
-    </a>
-    <p class="grey-3" data-behavior="explore_preview_description"></p>
-    <article class="text modal-scroll" data-behavior="explore_preview_body"></article>
-    <footer class="border-top center blue">
-      <% if user_signed_in? %>
-        <a class="btn bg-blue mt2" data-behavior="explore_clip_from_preview">Clip</a>
-      <% else %>
-        <%= link_to 'Sign up for Noodles to Clip', sign_up_path, class: 'btn bg-orange mt2' %>
-      <% end %>
-    </footer>
-  </section>
 </main>
+
+<% if nobody_signed_in? %>
+  <section class="modal" role="dialog" id="signup">
+    <%= modal_close %>
+    <h2 class="orange mb0">Sign up for Noodles</h2>
+    <%= render 'devise/registrations/new', user: User.new, text: 'Noodles is, and always will be, totally free.',
+                                           params: { explore: true },
+                                           options: { class: 'modal-scroll', data: { remote: true, behavior: 'inline_signup_form' } } %>
+  </section>
+<% end %>
+
+<section class="modal pam" role="dialog" id="preview" data-behavior="explore_preview_modal">
+  <%= modal_close %>
+  <h2 class="orange inline mb0" data-behavior="explore_preview_title"></h2>
+  <a data-behavior="explore_open_original" class="inline-block" target="_blank">
+    <%= inline_svg 'open-new-tab.svg', class: 'fill-orange relative', style: 'width: 16px; height: 16px; top: -5px; left: 2px;' %>
+  </a>
+  <p class="grey-3" data-behavior="explore_preview_description"></p>
+  <article class="text modal-scroll" data-behavior="explore_preview_body"></article>
+  <footer class="border-top center blue">
+    <% if user_signed_in? %>
+      <a class="btn bg-blue mt2" data-behavior="explore_clip_from_preview">Clip</a>
+    <% else %>
+      <%= link_to 'Sign up for Noodles to Clip', sign_up_path, class: 'btn bg-orange mt2' %>
+    <% end %>
+  </footer>
+</section>
 
 <script>
 var urlParams;
