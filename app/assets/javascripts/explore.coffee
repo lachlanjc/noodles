@@ -46,6 +46,9 @@ $(document).ready ->
       else if window.history.replaceState
         window.history.replaceState null, null, '?q=' + q + '&src=' + s
 
+      $('[data-behavior~=explore_clear_search]').show 'slow'
+      $('[data-behavior~=explore_suggestions]').css { 'display': 'none' }
+
       u = '/explore/results?src=' + s + '&q=' + q
 
       $.get u, (t) ->
@@ -65,8 +68,14 @@ $(document).ready ->
   f.on 'keyup', _.debounce searchActions, 400
   f.on 'change', _.debounce logSearchToIntercom, 1000
 
+  $('[data-behavior~=explore_clear_search], [data-behavior~=explore_suggestions]').css { 'display': 'none' }
   $(document).on 'click', '[data-behavior~=explore_clear_search]', ->
+    $(this).hide 'slow'
     $('[data-behavior~=explore_search_field]').val null
+    $('[data-behavior~=explore_masonry_grid]').remove()
+    $('[data-behavior~=explore_suggestions]').fadeIn()
+    if window.history.replaceState
+      window.history.replaceState null, null, '/explore'
 
   clippingFinished = (b, id) ->
     b.attr 'data-behavior', null

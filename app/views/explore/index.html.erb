@@ -7,11 +7,14 @@
         style='background-image: url(<%= image_path "explore/#{rand(1..5).to_s}.jpg" %>);'>
   <h1 class="mt0 mb0 white">Explore</h1>
   <h2 class="white regular mt1 mb2">What do you want to make?</h2>
-  <div class="md-col-8 mw7 phs mx-auto">
+  <div class="md-col-8 mw7 phs mx-auto flex fac">
     <input type="text" role="search"
-           class="text-input col-12 f2 shadow pvs phm bw0 bs-bb"
+           class="text-input col-12 dib f2 shadow pvs phm bw0 bs-bb"
            placeholder="maybe pancakes?"
            data-behavior="explore_search_field">
+    <a class="pointer" data-behavior="explore_clear_search">
+      <%= inline_svg 'close.svg', class: 'fill-white ml1 dib' %>
+    </a>
   </div>
   <section role="menubar" class="filterbar mt2" data-behavior="explore_src_pick_bar">
     <a role="menuitem" class="filterbar-item inline-block phm pointer white white-hover"
@@ -23,7 +26,7 @@
   </section>
 </header>
 
-<main class="md-col-8 phm mx-auto pvm center mw7" data-behavior="explore_results_container">
+<main class="md-col-8 mx-auto pam center mw7" data-behavior="explore_results_container">
   <h2 class="mt0 normal">
     This is <span class="bold">Explore</span> by <%= link_to 'Noodles', root_url, class: 'bold' %>.
     Find amazing new recipes.
@@ -40,6 +43,11 @@
     <a href="#signup" name="signup" data-behavior="modal_trigger inline_signup_btn" class="btn bg-orange mt1">Sign up for Noodles</a>
   <% end %>
 </main>
+
+<h2 class="phm mx-auto mw7 normal center m0" data-behavior="explore_suggestions">
+  Granola? Carrot cake? Sorbet? Risotto? Stir fry?
+  <br>😋
+</h2>
 
 <% if nobody_signed_in? %>
   <section class="modal" role="dialog" id="signup">
