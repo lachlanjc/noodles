@@ -12,7 +12,7 @@
     <div class="flex-auto"></div>
 
     <div>
-      <% unless nav_active?(:shared_recipe) || nav_active?(:onboarding) %>
+      <% unless nav_active?(:onboarding) %>
       <%= link_to "Blog", announcements_path, class: nav_active_class(:announcements) %>
       <% end %>
       <%= link_to t("general.settings"), :settings, class: nav_active_class(:settings) %>
