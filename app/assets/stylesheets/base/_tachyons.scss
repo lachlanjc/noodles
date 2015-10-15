@@ -40,8 +40,17 @@
 }
 */
 
-.normal { font-weight: normal; }
-.oh { overflow: hidden; }
+/*
+   FLOATS
+*/
+
+.fl { float: left; }
+.fr { float: right; }
+
+@media screen and (min-width: 48em) {
+  .fl-ns { float: left; }
+  .fr-ns { float: right; }
+}
 
 /*
    LINE HEIGHT / LEADING
@@ -227,3 +236,6 @@
 .v-mid      { vertical-align: middle; }
 .v-top      { vertical-align: top; }
 // .v-btm      { vertical-align: bottom; }
+
+.normal { font-weight: normal; }
+.oh { overflow: hidden; }
