@@ -1,7 +1,12 @@
-.block {
-  display: block;
+.left {
+  float: left;
 }
 
+.right {
+  float: right;
+}
+
+/*
 .clearfix:before,
 .clearfix:after {
   content: " ";
@@ -12,14 +17,7 @@
   clear: both;
 }
 
-.left {
-  float: left;
+.fit {
+  max-width: 100%;
 }
-
-.right {
-  float: right;
-}
-
-// .fit {
-//   max-width: 100%;
-// }
+*/

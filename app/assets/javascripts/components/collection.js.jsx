@@ -68,7 +68,7 @@ class CollectionHeader extends React.Component {
     if (!_.isEmpty(coll.photo)) {
       rootClass += ' image-header relative inline-with-nav pvl bg-cover bg-center bg-no-repeat';
       rootStyle.backgroundImage = `url(${coll.photo_url})`;
-      actionsClass += ' mb2 block white';
+      actionsClass += ' mb2 db white';
     } else {
       rootClass += ' center grey-4 pvm';
     }

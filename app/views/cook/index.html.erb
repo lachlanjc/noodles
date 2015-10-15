@@ -53,10 +53,10 @@
       <%= content_tag :div,
                        plain_text_from_markdown(step.to_s).html_safe,
                        data: { behavior: 'checklist_item' },
-                       class: 'h2 grey-2 bg-white rounded shadow pointer pam block mb2' if strip_tags(step.to_s).length > 1 %>
+                       class: 'h2 grey-2 bg-white rounded shadow pointer pam db mb2' if strip_tags(step.to_s).length > 1 %>
     <% end %>
 
-    <div class="bg-white rounded shadow pam block h2 center mb2 grey-2">
+    <div class="bg-white rounded shadow pam db h2 center mb2 grey-2">
       <span>And now you're finished! Enjoy the <%= @recipe.title %>.</span>
 
       <%= image_tag @recipe.img, alt: "Photo of " + @recipe.title, class: "mt2 mx-auto rounded" if @recipe.img.present? %>
