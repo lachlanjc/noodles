@@ -6,7 +6,7 @@
 <header class="tc relative inline-with-nav image-header bg-center bg-no-repeat bg-cover pvxl phm"
         style='background-image: url(<%= image_path "explore/#{rand(1..5).to_s}.jpg" %>);'>
   <h1 class="mt0 mb0 white">Explore</h1>
-  <h2 class="white regular mts mbm">What do you want to make?</h2>
+  <h2 class="white normal mts mbm">What do you want to make?</h2>
   <div class="md-col-8 mw7 phs mx-auto flex fac">
     <input type="text" role="search"
            class="text-input col-12 dib f2 shadow pvs phm bw0 bs-bb"
@@ -28,7 +28,7 @@
 
 <main class="md-col-8 mx-auto pam tc mw7" data-behavior="explore_results_container">
   <h2 class="mt0 normal">
-    This is <span class="bold">Explore</span> by <%= link_to 'Noodles', root_url, class: 'bold' %>.
+    This is <span class="b">Explore</span> by <%= link_to 'Noodles', root_url, class: 'b' %>.
     Find amazing new recipes.
   </h2>
   <% if user_signed_in? %>

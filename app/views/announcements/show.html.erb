@@ -23,7 +23,7 @@
   </h1>
   <p class="grey-3">
     <%= @announcement.created_at.strftime '%B %e, %Y' %>
-    <%= link_to 'Delete', @announcement, method: :delete, data: { confirm: 'Are you sure?' }, class: 'red bold' if @admin %>
+    <%= link_to 'Delete', @announcement, method: :delete, data: { confirm: 'Are you sure?' }, class: 'red b' if @admin %>
   </p>
   <div class="text text-normalized">
     <%= @announcement.body_rendered.html_safe %>

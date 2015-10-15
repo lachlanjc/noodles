@@ -1,12 +1,14 @@
-.bold {
-  font-weight: $bold-font-weight;
-}
-
-.regular {
-  font-weight: normal;
-}
-
 .caps {
   text-transform: uppercase;
   letter-spacing: $spacing;
+}
+
+.h0 {
+  font-size: $h1;
+}
+
+@media screen and (min-width: 64em) {
+  .h0 {
+    font-size: $h0;
+  }
 }

@@ -18,7 +18,7 @@ class Bio extends React.Component {
       <div className="pvm">
         <h3 className="man">{user.name}</h3>
         <p className="man">{user.description}</p>
-        <a href={"https://twitter.com/" + user.username} className="f5 white bold dib phs rounded bg-orange">
+        <a href={"https://twitter.com/" + user.username} className="f5 white b dib phs rounded bg-orange">
           @{user.username}
         </a>
       </div>

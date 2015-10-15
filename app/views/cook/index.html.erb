@@ -30,7 +30,7 @@
       <%= react_component("NoteEditor", recipe_id: @recipe.id) %>
     <% else %>
       <section class="rounded shadow phm bg-white text text-normalized">
-        <h3 class="man pvm tc grey-4 caps regular border-bottom" style="border-bottom-style: dashed;">Notes</h3>
+        <h3 class="man pvm tc grey-4 caps normal border-bottom" style="border-bottom-style: dashed;">Notes</h3>
         <article class="pvm">
         <% if @recipe.notes.blank? %>
         <p class="grey-4">No notes for this recipe &mdash; yet!</p>

@@ -40,7 +40,7 @@ class RecipesHome extends React.Component {
 
   filterClasses(name) {
     let classes = 'filterbar-item dib phm pointer '
-    this.state.view === name ? classes += 'bg-orange white white-hover bold' : classes += 'grey-1';
+    this.state.view === name ? classes += 'bg-orange white white-hover b' : classes += 'grey-1';
     return classes;
   }
 
@@ -68,7 +68,7 @@ class RecipesHome extends React.Component {
     const protips = [
       <span>See only your shared recipes by searching <strong>/shared</strong>.</span>,
       <span>Create a new recipe super quickly by searching with its title.</span>,
-      <span>Not sure which recipe to cook right now? Click <a className='bold' href={this.findRandom()}>Random</a> button at the top.</span>
+      <span>Not sure which recipe to cook right now? Click <a className='b' href={this.findRandom()}>Random</a> button at the top.</span>
     ];
     const protip = protips[_.random(0, 2)];
     return (
