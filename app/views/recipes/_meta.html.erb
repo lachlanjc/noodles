@@ -35,7 +35,7 @@
       <%= f.submit 'Save', class: 'btn bg-blue right' %>
     <% end %>
   <% else %>
-    <div class="text center border rounded pal">
+    <div class="text tc border rounded pal">
       You don't have any collections yet. Why don't you <%= link_to "create one", collections_path(:new_collection => true), class: "blue" %>?
     </div>
   <% end %>

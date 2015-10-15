@@ -35,7 +35,7 @@ $(document).ready ->
     if q = _.trim t.val()
       r = $('[data-behavior~=explore_results_container]')
       r.html null
-      r.removeClass 'center mw7'
+      r.removeClass 'tc mw7'
       r.addClass 'busy busy-large mx-auto mw8'
 
       s = $('[data-behavior~=explore_src_pick_bar]').data 'src-selected'

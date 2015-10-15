@@ -10,8 +10,8 @@ module DeviseHelper
 
     html = <<-HTML
     <div class="rounded mt2 mb2 phm mx-auto" style="border: 2px solid #ff0013; padding-bottom: 1.5rem;">
-      <h2 class="red mt3 center">Those Noodles are a bit tangled.</h2>
-      <ul class="list-reset pan text center">#{messages}</ul>
+      <h2 class="red mt3 tc">Those Noodles are a bit tangled.</h2>
+      <ul class="list-reset pan text tc">#{messages}</ul>
     </div>
     HTML
 

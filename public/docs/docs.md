@@ -1,7 +1,7 @@
 # Features Documentation
 
 <section class="md-col-6 bg-white pam rounded shadow mx-auto">
-<h2 class="h3 grey-4 mt0 mb2 caps center">Sections</h2>
+<h2 class="h3 grey-4 mt0 mb2 caps fc">Sections</h2>
 <ul>
   <li><a href="#cook-mode">Cook Mode</a></li>
   <li><a href="#collections">Collections</a></li>

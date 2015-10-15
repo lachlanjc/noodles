@@ -5,9 +5,9 @@
 
 <%= react_component("CollectionPage", id: @collection.id, edit: true, pub: false) %>
 
-<div class="modal center" role="dialog" id="shareCollection">
+<div class="modal tc" role="dialog" id="shareCollection">
   <%= modal_close %>
-  <h2 class="left-align">Share Collection</h2>
+  <h2 class="tl">Share Collection</h2>
   <hr>
 
   <% @shared_url = root_url + "c/" + @collection.hash_id.to_s %>

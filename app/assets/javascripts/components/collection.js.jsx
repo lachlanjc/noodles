@@ -45,7 +45,7 @@ class CollectionPage extends React.Component {
 
   renderLoading() {
     return (
-      <h3 className='center grey-3 pvl'>Loading...</h3>
+      <h3 className='tc grey-3 pvl'>Loading...</h3>
     )
   }
 
@@ -70,7 +70,7 @@ class CollectionHeader extends React.Component {
       rootStyle.backgroundImage = `url(${coll.photo_url})`;
       actionsClass += ' mb2 db white';
     } else {
-      rootClass += ' center grey-4 pvm';
+      rootClass += ' tc grey-4 pvm';
     }
 
     return (

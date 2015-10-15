@@ -1,4 +1,4 @@
-<ul class="list-reset mx-auto" data-behavior="explore_masonry_grid" style="justify-content: center; flex-flow: row wrap;">
+<ul class="list-reset mx-auto" data-behavior="explore_masonry_grid">
 <% @results.each do |result| %>
   <li class="rounded shadow mb3 dib oh" style="width: 290px;"
       data-behavior="explore_result_item"
@@ -13,7 +13,7 @@
       <h3 class="m0"><%= result['title'] %></h3>
       <p class="m0 text"><%= result['description'] %></p>
     </article>
-    <footer class="border-top border-darken-2 bg-white pas flex fjc center blue">
+    <footer class="border-top border-darken-2 bg-white pas flex fjc tc blue">
       <a name="preview" href="#preview"
          class="btn bg-green"
          data-behavior="explore_preview modal_trigger">
@@ -29,7 +29,7 @@
   </li>
 <% end %>
 <% if @results.blank? %>
-<li class="md-col-8 border bg-darken-1 rounded mt3 pal center mx-auto">
+<li class="md-col-8 border bg-darken-1 rounded mt3 pal tc mx-auto">
   <h3 class="mt0">Sorry, we couldn't find anything. 😰</h3>
   <p class="mb0">Try a different search, or maybe check another source.</p>
 </li>

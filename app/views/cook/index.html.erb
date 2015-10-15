@@ -30,7 +30,7 @@
       <%= react_component("NoteEditor", recipe_id: @recipe.id) %>
     <% else %>
       <section class="rounded shadow phm bg-white text text-normalized">
-        <h3 class="m0 pvm center grey-4 caps regular border-bottom" style="border-bottom-style: dashed;">Notes</h3>
+        <h3 class="m0 pvm tc grey-4 caps regular border-bottom" style="border-bottom-style: dashed;">Notes</h3>
         <article class="pvm">
         <% if @recipe.notes.blank? %>
         <p class="grey-4">No notes for this recipe &mdash; yet!</p>
@@ -44,7 +44,7 @@
 
   <article class="sm-col-11 md-col-6 mx-auto mt2 pan">
     <% flash.each do |key, value| %>
-      <div class="h2 pam center mb2 rounded bg-<%= flash_color_class(key) %> white pointer dn-p" role="alertdialog" data-behavior="flash">
+      <div class="h2 pam tc mb2 rounded bg-<%= flash_color_class(key) %> white pointer dn-p" role="alertdialog" data-behavior="flash">
         <%= value %>
       </div>
     <% end %>
@@ -56,7 +56,7 @@
                        class: 'h2 grey-2 bg-white rounded shadow pointer pam db mb2' if strip_tags(step.to_s).length > 1 %>
     <% end %>
 
-    <div class="bg-white rounded shadow pam db h2 center mb2 grey-2">
+    <div class="bg-white rounded shadow pam db h2 tc mb2 grey-2">
       <span>And now you're finished! Enjoy the <%= @recipe.title %>.</span>
 
       <%= image_tag @recipe.img, alt: "Photo of " + @recipe.title, class: "mt2 mx-auto rounded" if @recipe.img.present? %>

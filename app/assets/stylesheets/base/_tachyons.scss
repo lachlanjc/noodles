@@ -47,10 +47,12 @@
 .fl { float: left; }
 .fr { float: right; }
 
+/*
 @media screen and (min-width: 48em) {
   .fl-ns { float: left; }
   .fr-ns { float: right; }
 }
+*/
 
 /*
    LINE HEIGHT / LEADING
@@ -179,6 +181,20 @@
     padding-left: 4rem;
     padding-right: 4rem;
   }
+}
+
+/*
+  TEXT ALIGN
+*/
+
+.tl  { text-align: left; }
+.tr  { text-align: right; }
+.tc  { text-align: center; }
+
+@media screen and (min-width: 48em) {
+  .tl-ns  { text-align: left; }
+  .tr-ns  { text-align: right; }
+  .tc-ns  { text-align: center; }
 }
 
 /*

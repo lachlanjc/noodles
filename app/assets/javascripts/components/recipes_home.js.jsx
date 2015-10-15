@@ -72,7 +72,7 @@ class RecipesHome extends React.Component {
     ];
     const protip = protips[_.random(0, 2)];
     return (
-      <div className='mb3 center'>
+      <div className='mb3 tc'>
         <IconProtip size='24' classes='dib fill-grey-4 mr1 relative' style={{top: 6}} />
         <strong>ProTip! </strong>
         {protip}
@@ -86,7 +86,7 @@ class RecipesHome extends React.Component {
 
     return (
       <main className='md-col-9 mx-auto phm'>
-        <header className='center'>
+        <header className='tc'>
           <h1 className='mb1'>Recipes</h1>
           <section role='menubar' className='filterbar'>
             <a role='menuitem' onClick={e => this.findAll(e)} className={this.filterClasses('all')}>All</a>
