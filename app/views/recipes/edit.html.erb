@@ -7,7 +7,7 @@ textarea {
 
 @media (max-width: 48em) {
   .home {
-    display: inline-block;
+    display: dib;
   }
   .home svg {
     margin-left: auto;
@@ -24,7 +24,7 @@ textarea {
 <%= form_for(@recipe) do |f| %>
 
   <%= f.file_field :img, class: 'dn', data: { behavior: 'photo_field' } %>
-  <div class="mb2 inline-block">
+  <div class="mb2 dib">
     <div class="pointer" data-behavior="photo_button">
       <%= inline_svg 'photo-upload.svg', size: 32, class: 'fill-grey-4 relative', style: 'top: 10px;' %>
       <span class="grey-4" data-behavior="photo_name">
@@ -61,7 +61,7 @@ textarea {
                   autocomplete: 'off',
                   data: { behavior: 'autosize' } %>
 
-  <%= f.label :ingredients, class: 'inline-block h3' %><small class="ml1 grey-4">Put one on each line.</small>
+  <%= f.label :ingredients, class: 'dib h3' %><small class="ml1 grey-4">Put one on each line.</small>
   <%= f.text_area :ingredients,
                   class: 'text-input invisible-input col-12 m0',
                   placeholder: 'Click here to add your recipe\'s ingredients.',
@@ -69,7 +69,7 @@ textarea {
                   autocomplete: 'off',
                   data: { behavior: 'autosize' } %>
 
-  <%= f.label :instructions, class: 'inline-block h3' %><small class="ml1 grey-4">Fully supports Markdown.</small>
+  <%= f.label :instructions, class: 'dib h3' %><small class="ml1 grey-4">Fully supports Markdown.</small>
   <%= f.text_area :instructions,
                   class: 'text-input invisible-input col-12 m0',
                   placeholder: 'Type the recipe\'s instructions here.',
@@ -80,13 +80,13 @@ textarea {
   <section>
     <h2 class='mt0'>Details</h2>
 
-    <%= f.label :source, class: 'inline-block' %><small class="ml1 grey-4">Where did this recipe come from?</small>
+    <%= f.label :source, class: 'dib' %><small class="ml1 grey-4">Where did this recipe come from?</small>
     <%= f.text_field :source, class: 'text-input md-col-8' %>
 
-    <%= f.label :author, class: 'inline-block' %><small class="ml1 grey-4">Who originally wrote this recipe?</small>
+    <%= f.label :author, class: 'dib' %><small class="ml1 grey-4">Who originally wrote this recipe?</small>
     <%= f.text_field :author, class: 'text-input md-col-8' %>
 
-    <%= f.label :serves, 'Yield', class: 'inline-block' %><small class="ml1 grey-4">How many servings does your recipe produce?</small>
+    <%= f.label :serves, 'Yield', class: 'dib' %><small class="ml1 grey-4">How many servings does your recipe produce?</small>
     <%= f.text_field :serves, class: 'text-input md-col-8' %>
   </section>
 

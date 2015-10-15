@@ -39,7 +39,7 @@ class RecipesHome extends React.Component {
   }
 
   filterClasses(name) {
-    let classes = 'filterbar-item inline-block phm pointer '
+    let classes = 'filterbar-item dib phm pointer '
     this.state.view === name ? classes += 'bg-orange white white-hover bold' : classes += 'grey-1';
     return classes;
   }
@@ -73,7 +73,7 @@ class RecipesHome extends React.Component {
     const protip = protips[_.random(0, 2)];
     return (
       <div className='mb3 center'>
-        <IconProtip size='24' classes='inline-block fill-grey-4 mr1 relative' style={{top: 6}} />
+        <IconProtip size='24' classes='dib fill-grey-4 mr1 relative' style={{top: 6}} />
         <strong>ProTip! </strong>
         {protip}
       </div>
