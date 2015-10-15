@@ -2,17 +2,20 @@ class AnalyticsController < ApplicationController
   before_filter :authenticate
 
   def dashboard
-    @users_count = User.all.count
+    @users_count = 0
     @recipes_count = Recipe.all.count
     @recipes_shared_count = Recipe.where(shared: true).count
 
-    @users_with_none, @users_with_one, @users_with_many = []
+    @users_none = []
+    @users_one = []
+    @users_many = []
 
     User.all.each do |user|
-      @user_recipe_count = user.recipes.count
-      @users_with_none.push(user) if @user_recipe_count == 0
-      @users_with_one.push(user)  if @user_recipe_count == 1
-      @users_with_many.push(user) if @user_recipe_count > 1
+      @users_count += 1
+      @count = user.recipes.count
+      @users_none.push(user) if @count == 0
+      @users_one.push(user)  if @count == 1
+      @users_many.push(user) if @count > 1
     end
   end
 
