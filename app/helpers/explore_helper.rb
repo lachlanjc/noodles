@@ -2,7 +2,7 @@ module ExploreHelper
   include ScrapingHelper
 
   def find_explore_results(src, q)
-    query = q.to_s.squish
+    query = q.to_s.squish.downcase
     case src
     when 'nyt'
       load 'explore/nyt.rb'

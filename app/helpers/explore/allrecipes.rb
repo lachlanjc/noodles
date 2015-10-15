@@ -19,6 +19,10 @@ class AllrecipesSearchScraper
     results.delete_if do |item|
       item['url'].blank? || item['title'].blank?
     end
+    results.each do |item|
+      item['description'] = item['description'].to_s.truncate(164)
+      item['image'] = '' if item['image'].match('http://images.media-allrecipes.com/userphotos/250x250/0.jpg')
+    end
     results
   end
 end
