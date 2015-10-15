@@ -56,8 +56,8 @@ class RecipeList extends React.Component {
 
     return (
       <ul className={'list-reset pvm mx-auto mb0 mw7 ' + this.props.className}>
-        <div className='md-col-8 mx-auto flex bg-white rounded shadow mb2 phs dn-p' role='search' onClick={this.focusSearch}>
-          <IconSearch classes='fill-grey-4 mt1' />
+        <div className='md-col-8 mx-auto flex bg-white rounded shadow mbm phs dn-p' role='search' onClick={this.focusSearch}>
+          <IconSearch classes='fill-grey-4 mts' />
           <input
               type='text'
               ref='searchField'
@@ -78,7 +78,7 @@ class RecipeList extends React.Component {
             <p className='mb0'>Sorry, no recipes matched your search.</p>
 
             {createFromSearch ?
-              <a className='mt2 btn bg-blue' href={'/recipes/new?' + $.param({title: this.state.searchText})}>
+              <a className='mtm btn bg-blue' href={'/recipes/new?' + $.param({title: this.state.searchText})}>
                 New recipe with this title
               </a>
             : null}
@@ -95,18 +95,18 @@ class RecipeItem extends React.Component {
     const recipeLink = this.props.linkType === 'public' ? recipe.shared_url : recipe.url;
 
     let indicators = [];
-    recipe.collections === true ? indicators.push(<IconCollection classes='ml1 fill-grey-5' size='24px' />) : null;
-    recipe.notes === true ? indicators.push(<IconNotes classes='ml1 relative fill-grey-5' size='18px' style={{top: '-3px'}} />) : null;
-    recipe.photo === true ? indicators.push(<IconPhoto classes='ml1 fill-grey-5' />) : null;
-    recipe.web === true ? indicators.push(<IconWeb classes='ml1 fill-grey-5' />) : null;
-    recipe.favorite === true ? indicators.push(<IconFavorite classes='ml1 fill-orange' />) : null;
+    recipe.collections === true ? indicators.push(<IconCollection classes='mls fill-grey-5' size='24px' />) : null;
+    recipe.notes === true ? indicators.push(<IconNotes classes='mls relative fill-grey-5' size='18px' style={{top: '-3px'}} />) : null;
+    recipe.photo === true ? indicators.push(<IconPhoto classes='mls fill-grey-5' />) : null;
+    recipe.web === true ? indicators.push(<IconWeb classes='mls fill-grey-5' />) : null;
+    recipe.favorite === true ? indicators.push(<IconFavorite classes='mls fill-orange' />) : null;
 
     return (
-      <li className='bg-white rounded shadow mb2 pam'>
+      <li className='bg-white rounded shadow mbm pam'>
         <a href={recipeLink} className='link-reset'>
           <div className='right dn-p'>{indicators}</div>
-          <h3 className='m0 regular'>{recipe.title}</h3>
-          <p className='m0 text'>{recipe.description_preview}</p>
+          <h3 className='man regular'>{recipe.title}</h3>
+          <p className='man text'>{recipe.description_preview}</p>
         </a>
       </li>
     )

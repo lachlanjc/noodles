@@ -7,12 +7,12 @@
   <h1>Shared Recipes (<%= @recipes.count %></span>)</h1>
 
   <% @recipes.each do |recipe| %>
-    <div class="bg-white rounded shadow pam mb2">
-      <h2 class="mt0"><%= recipe.title %><span class="grey-3 h3 ml1">#<%= recipe.id %></span></h2>
+    <div class="bg-white rounded shadow pam mbm">
+      <h2 class="mt0"><%= recipe.title %><span class="grey-3 h3 mls">#<%= recipe.id %></span></h2>
       <% if User.exists?(recipe.user_id) %>
-      <p class="mb2">Published by: <%= User.find(recipe.user_id).first_name.to_s %></p>
+      <p class="mbm">Published by: <%= User.find(recipe.user_id).first_name.to_s %></p>
       <% end %>
-      <%= link_to "View", "/s/" + recipe.shared_id.to_s, class: "btn bg-blue btn-sm mr2" %>
+      <%= link_to "View", "/s/" + recipe.shared_id.to_s, class: "btn bg-blue btn-sm mrm" %>
       <%= link_to "Delete", recipe, method: :delete, data: { confirm: t("general.delete_forever") }, class: "btn bg-red btn-sm" %>
     </div>
   <% end %>

@@ -6,17 +6,17 @@
 <header class="tc relative inline-with-nav image-header bg-center bg-no-repeat bg-cover pvxl phm"
         style='background-image: url(<%= image_path "explore/#{rand(1..5).to_s}.jpg" %>);'>
   <h1 class="mt0 mb0 white">Explore</h1>
-  <h2 class="white regular mt1 mb2">What do you want to make?</h2>
+  <h2 class="white regular mts mbm">What do you want to make?</h2>
   <div class="md-col-8 mw7 phs mx-auto flex fac">
     <input type="text" role="search"
            class="text-input col-12 dib f2 shadow pvs phm bw0 bs-bb"
            placeholder="maybe pancakes?"
            data-behavior="explore_search_field" autofocus>
     <a class="pointer" data-behavior="explore_clear_search">
-      <%= inline_svg 'close.svg', class: 'fill-white ml1 dib' %>
+      <%= inline_svg 'close.svg', class: 'fill-white mls dib' %>
     </a>
   </div>
-  <section role="menubar" class="filterbar mt2" data-behavior="explore_src_pick_bar">
+  <section role="menubar" class="filterbar mtm" data-behavior="explore_src_pick_bar">
     <a role="menuitem" class="filterbar-item dib phm pointer white white-hover"
        data-behavior="explore_src_pick" data-src-name="nyt">NYT Cooking</a>
    <a role="menuitem" class="filterbar-item dib phm pointer white white-hover"
@@ -40,11 +40,11 @@
     <p>
       Search for anything you want to cook to get started. Sign up for Noodles to save the recipe.
     </p>
-    <a href="#signup" name="signup" data-behavior="modal_trigger inline_signup_btn" class="btn bg-orange mt1">Sign up for Noodles</a>
+    <a href="#signup" name="signup" data-behavior="modal_trigger inline_signup_btn" class="btn bg-orange mts">Sign up for Noodles</a>
   <% end %>
 </main>
 
-<h2 class="phm mx-auto mw7 normal tc m0" data-behavior="explore_suggestions">
+<h2 class="phm mx-auto mw7 normal tc man" data-behavior="explore_suggestions">
   Granola? Carrot cake? Sorbet? Risotto? Stir fry?
   <br>😋
 </h2>
@@ -69,9 +69,9 @@
   <article class="text modal-scroll" data-behavior="explore_preview_body"></article>
   <footer class="border-top tc blue">
     <% if user_signed_in? %>
-      <a class="btn bg-blue mt2" data-behavior="explore_clip_from_preview">Clip</a>
+      <a class="btn bg-blue mtm" data-behavior="explore_clip_from_preview">Clip</a>
     <% else %>
-      <%= link_to 'Sign up for Noodles to Clip', sign_up_path, class: 'btn bg-orange mt2' %>
+      <%= link_to 'Sign up for Noodles to Clip', sign_up_path, class: 'btn bg-orange mtm' %>
     <% end %>
   </footer>
 </section>

@@ -32,9 +32,9 @@ class CollectionPage extends React.Component {
   renderNoRecipes() {
     return (
       <BlankSlate>
-        <h3 className='m0'>No recipes in this collection yet.</h3>
+        <h3 className='man'>No recipes in this collection yet.</h3>
         {this.props.pub === false ?
-          <div className='mt2'>
+          <div className='mtm'>
             <p>Add recipes by clicking "Add to Collection" at the bottom of any of your recipes.</p>
             <a href='/recipes' className='btn bg-blue'>Find some recipes</a>
           </div>
@@ -64,11 +64,11 @@ class CollectionHeader extends React.Component {
 
     let rootClass = 'col-12 bs-bb flex fac';
     let rootStyle = {};
-    let actionsClass = 'caps h4 dn-p mt2';
+    let actionsClass = 'caps h4 dn-p mtm';
     if (!_.isEmpty(coll.photo)) {
       rootClass += ' image-header relative inline-with-nav pvl bg-cover bg-center bg-no-repeat';
       rootStyle.backgroundImage = `url(${coll.photo_url})`;
-      actionsClass += ' mb2 db white';
+      actionsClass += ' mbm db white';
     } else {
       rootClass += ' tc grey-4 pvm';
     }
@@ -76,10 +76,10 @@ class CollectionHeader extends React.Component {
     return (
       <header className={rootClass} style={{backgroundImage: `url(${coll.photo})`}}>
         <div className='sm-col-12 md-col-8 mx-auto phm mw7'>
-          <h1 className='coll-name m0 h0'>{coll.name}</h1>
-          {!_.isEmpty(coll.description) ? <p className='h3 mt1 mb0 coll-desc'>{coll.description}</p> : null}
+          <h1 className='coll-name man h0'>{coll.name}</h1>
+          {!_.isEmpty(coll.description) ? <p className='h3 mts mb0 coll-desc'>{coll.description}</p> : null}
           {this.props.pub ?
-            <p className='mt1 mb1 coll-desc h4'>Published by {coll.publisher}</p>
+            <p className='mts mbs coll-desc h4'>Published by {coll.publisher}</p>
           : null}
           <div className={actionsClass}>
             {this.props.edit ?

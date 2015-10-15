@@ -11,25 +11,25 @@
   <hr>
 
   <% @shared_url = root_url + "c/" + @collection.hash_id.to_s %>
-  <p class="mb1">Share this link:</p>
+  <p class="mbs">Share this link:</p>
   <div class="mx-auto">
     <%= react_component("CopyLink", url: @shared_url) %>
   </div>
 
-  <div class="ml1 social pvs">
+  <div class="mls social pvs">
     <a rel="nofollow" href="http://twitter.com/share?text=Check out the collection <%= @collection.name %> on @noodlesapp:&amp;url=<%= @shared_url %>" target="_blank">
       <%= twitter_icon %>
     </a>
-    <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=<%= @shared_url %>" class="ml1" target="_blank">
+    <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=<%= @shared_url %>" class="mls" target="_blank">
       <%= facebook_icon %>
     </a>
-    <a rel="nofollow" href="https://buffer.com/add?url=<%= @shared_url %>&text=Check out the collection<%= @collection.name %>, published on Noodles." class="ml1" target="_blank">
+    <a rel="nofollow" href="https://buffer.com/add?url=<%= @shared_url %>&text=Check out the collection<%= @collection.name %>, published on Noodles." class="mls" target="_blank">
       <%= buffer_icon %>
     </a>
-    <a rel="nofollow" href="https://plus.google.com/share?url=<%= @shared_url %>" class="ml1" target="_blank">
+    <a rel="nofollow" href="https://plus.google.com/share?url=<%= @shared_url %>" class="mls" target="_blank">
       <%= googleplus_icon %>
     </a>
-    <a href="mailto:?subject=Check out <%= @collection.name %> on Noodles&body=I published a new collection on Noodles (http://www.getnoodl.es), <%= @collection.name %>. Check it out: <%= @shared_url %>" class="ml1">
+    <a href="mailto:?subject=Check out <%= @collection.name %> on Noodles&body=I published a new collection on Noodles (http://www.getnoodl.es), <%= @collection.name %>. Check it out: <%= @shared_url %>" class="mls">
       <%= email_icon %>
     </a>
   </div>

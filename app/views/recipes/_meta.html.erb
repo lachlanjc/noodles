@@ -15,7 +15,7 @@
       <ul class="list-reset sm-col-10 mw5 mx-auto">
         <%= collection_check_boxes(:recipe, :collections, @collections, :id, :name) do |b| %>
         <li class="border-top">
-          <%= b.label(class: 'collection-list-item m0 pas pointer') do %>
+          <%= b.label(class: 'collection-list-item man pas pointer') do %>
             <% if @recipe.collections.include?(b.value.to_s) %>
             <%= b.check_box checked: 'checked', class: 'dn' %>
             <% else %>
@@ -77,10 +77,10 @@
 
     <div class="content content-3 pas border rounded-bottom">
       <p>Copy and paste the code below onto your website or blog to embed this recipe.</p>
-      <pre class="m0 pas border rounded bg-grey-6" style="white-space: inherit;">
+      <pre class="man pas border rounded bg-grey-6" style="white-space: inherit;">
         <%= '<script src="http://www.getnoodl.es/embed/' + @recipe.shared_id.to_s + '"></script>' %>
       </pre>
-      <p class="mt1"><%= link_to 'Need help?', help_path %></p>
+      <p class="mts"><%= link_to 'Need help?', help_path %></p>
     </div>
 
   </div>

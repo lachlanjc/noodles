@@ -8,12 +8,12 @@
 
   <ul class="list-reset">
     <% @users.each do |user| %>
-      <li class="bg-white rounded shadow mb2 pam text" id="<%= user.id %>">
-        <h2 class="mt0 mb1">
+      <li class="bg-white rounded shadow mbm pam text" id="<%= user.id %>">
+        <h2 class="mt0 mbs">
           <%= user.first_name %>
           <a href="#<%= user.id %>" class="phs grey-3 h4">#<%= user.id %></a>
         </h2>
-        <ul class="text list-reset pan m0">
+        <ul class="text list-reset pan man">
           <li>Recipes: <%= user.recipes.count %></li>
           <li>Collections: <%= user.collections.count %></li> 
           <li>Sessions: <%= user.sign_in_count %></li>
@@ -24,7 +24,7 @@
           <li>Referring URL: <%= link_to user.referring_url %></li>
           <li>Landing URL: <%= user.landing_url %></li>
           <li>Email: <%= link_to user.email, "mailto:" + user.email %></li>
-	  <li class="mt1"><a class="btn btn-sm bg-blue" href="https://app.intercom.io/apps/<%= ENV['INTERCOM_APP_ID'] %>/users/show?user_id=<%= user.id %>">Open in Intercom</a></li>
+	  <li class="mts"><a class="btn btn-sm bg-blue" href="https://app.intercom.io/apps/<%= ENV['INTERCOM_APP_ID'] %>/users/show?user_id=<%= user.id %>">Open in Intercom</a></li>
         </ul>
       </li>
     <% end %>

@@ -15,7 +15,7 @@ class CopyLink extends React.Component {
               className='text-input dib'
               value={this.props.url}
               onChange={function() {}} />
-          <button ref='copy' className='btn bg-green ml2' type='button'>{label}</button>
+          <button ref='copy' className='btn bg-green mlm' type='button'>{label}</button>
       </div>
     )
   }

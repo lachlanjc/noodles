@@ -47,7 +47,7 @@ class RecipesHome extends React.Component {
   renderBlankSlate() {
     return (
       <BlankSlate>
-        <h3 className='m0'>No recipes here yet!</h3>
+        <h3 className='man'>No recipes here yet!</h3>
         {/*<a href='/recipes/new' className='btn bg-blue'>Create your first</a>*/}
       </BlankSlate>
     )
@@ -72,7 +72,7 @@ class RecipesHome extends React.Component {
     ];
     const protip = protips[_.random(0, 2)];
     return (
-      <div className='mb3 tc'>
+      <div className='mbl tc'>
         <IconProtip size='24' classes='dib fill-grey-4 mr1 relative' style={{top: 6}} />
         <strong>ProTip! </strong>
         {protip}
@@ -87,7 +87,7 @@ class RecipesHome extends React.Component {
     return (
       <main className='md-col-9 mx-auto phm'>
         <header className='tc'>
-          <h1 className='mb1'>Recipes</h1>
+          <h1 className='mbs'>Recipes</h1>
           <section role='menubar' className='filterbar'>
             <a role='menuitem' onClick={e => this.findAll(e)} className={this.filterClasses('all')}>All</a>
             <a role='menuitem' onClick={e => this.findFav(e)} className={this.filterClasses('fav')}>Favorites</a>

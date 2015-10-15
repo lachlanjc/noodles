@@ -1,17 +1,17 @@
 <ul class="list-reset mx-auto" data-behavior="explore_masonry_grid">
 <% @results.each do |result| %>
-  <li class="rounded shadow mb3 dib oh" style="width: 290px;"
+  <li class="rounded shadow mbl dib oh" style="width: 290px;"
       data-behavior="explore_result_item"
       data-title="<%= result['title'] %>" data-url="<%= result['url'] %>">
     <% if result['image'].present? %>
       <a name="preview" href="#preview"
          data-behavior="explore_preview modal_trigger">
-        <%= image_tag result['image'], class: 'col-12 db m0 rounded-top' %>
+        <%= image_tag result['image'], class: 'col-12 db man rounded-top' %>
       </a>
     <% end %>
     <article class="bg-white pam">
-      <h3 class="m0"><%= result['title'] %></h3>
-      <p class="m0 text"><%= result['description'] %></p>
+      <h3 class="man"><%= result['title'] %></h3>
+      <p class="man text"><%= result['description'] %></p>
     </article>
     <footer class="border-top border-darken-2 bg-white pas flex fjc tc blue">
       <a name="preview" href="#preview"
@@ -20,7 +20,7 @@
         Preview
       </a>
       <% if user_signed_in? %>
-      <a class="btn bg-blue ml1"
+      <a class="btn bg-blue mls"
          data-behavior="explore_clip_from_list">
         Clip
       </a>
@@ -29,7 +29,7 @@
   </li>
 <% end %>
 <% if @results.blank? %>
-<li class="md-col-8 border bg-darken-1 rounded mt3 pal tc mx-auto">
+<li class="md-col-8 border bg-darken-1 rounded mtl pal tc mx-auto">
   <h3 class="mt0">Sorry, we couldn't find anything. 😰</h3>
   <p class="mb0">Try a different search, or maybe check another source.</p>
 </li>

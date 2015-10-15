@@ -1,0 +1,245 @@
+/*
+   SPACING
+*/
+
+.pan  {  padding: 0; }
+.pas  {  padding: .5rem; }
+.pam  {  padding: 1rem; }
+.pal  {  padding: 2rem; }
+.paxl {  padding: 4rem; }
+
+.pvn {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.pvs {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+.pvm {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.pvl {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.pvxl {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+.phn {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.phs {
+  padding-left: .5rem;
+  padding-right: .5rem;
+}
+.phm {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.phl {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.phxl {
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
+.man  {  margin: 0; }
+.mas  {  margin: .5rem; }
+.mam  {  margin: 1rem; }
+.mal  {  margin: 2rem; }
+.maxl  {  margin: 4rem; }
+
+.mln  {  margin-left: 0; }
+.mls  {  margin-left: .5rem; }
+.mlm  {  margin-left: 1rem; }
+.mll  {  margin-left: 2rem; }
+.mlxl  {  margin-left: 4rem; }
+
+.mrn  {  margin-right: 0; }
+.mrs  {  margin-right: .5rem; }
+.mrm  {  margin-right: 1rem; }
+.mrl  {  margin-right: 2rem; }
+.mrxl  {  margin-right: 4rem; }
+
+.mbn  {  margin-bottom: 0; }
+.mbs  {  margin-bottom: .5rem; }
+.mbm  {  margin-bottom: 1rem; }
+.mbl  {  margin-bottom: 2rem; }
+.mbxl  {  margin-bottom: 4rem; }
+
+.mtn  {  margin-top: 0; }
+.mts  {  margin-top: .5rem; }
+.mtm  {  margin-top: 1rem; }
+.mtl  {  margin-top: 2rem; }
+.mtxl  {  margin-top: 4rem; }
+
+.mvn   {
+  margin-top: 0;
+  margin-bottom: 0rem;
+}
+.mvs   {
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+.mvm   {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.mvl   {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.mvxl   {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.mhn   {
+  margin-left: 0;
+  margin-right: 0;
+}
+.mhs   {
+  margin-left: .5rem;
+  margin-right: .5rem;
+}
+.mhm   {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.mhl   {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+.mhxl   {
+  margin-left: 4rem;
+  margin-right: 4rem;
+}
+
+@media screen and (min-width: 48em) {
+  .pan-ns  {  padding: 0; }
+  .paxs-ns {  padding: .25rem; }
+  .pas-ns  {  padding: .5rem; }
+  .pam-ns  {  padding: 1rem; }
+  .pal-ns  {  padding: 2rem; }
+  .paxl-ns  {  padding: 4rem; }
+
+  .pvn-ns {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .pvs-ns {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+  }
+  .pvm-ns {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  .pvl-ns {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  .pvxl-ns {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  .phn-ns {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .phs-ns {
+    padding-left: .5rem;
+    padding-right: .5rem;
+  }
+  .phm-ns {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .phl-ns {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .phxl-ns {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  .man-ns  {  margin: 0; }
+  .mas-ns  {  margin: .5rem; }
+  .mam-ns  {  margin: 1rem; }
+  .mal-ns  {  margin: 2rem; }
+  .maxl-ns  {  margin: 4rem; }
+
+  .mln-ns  {  margin-left: 0; }
+  .mls-ns  {  margin-left: .5rem; }
+  .mlm-ns  {  margin-left: 1rem; }
+  .mll-ns  {  margin-left: 2rem; }
+  .mlxl-ns  {  margin-left: 4rem; }
+
+  .mrn-ns  {  margin-right: 0; }
+  .mrs-ns  {  margin-right: .5rem; }
+  .mrm-ns  {  margin-right: 1rem; }
+  .mrl-ns  {  margin-right: 2rem; }
+  .mrxl-ns  {  margin-right: 4rem; }
+
+  .mbn-ns  {  margin-bottom: 0; }
+  .mbs-ns  {  margin-bottom: .5rem; }
+  .mbm-ns  {  margin-bottom: 1rem; }
+  .mbl-ns  {  margin-bottom: 2rem; }
+  .mbxl-ns  {  margin-bottom: 4rem; }
+
+  .mtn-ns  {  margin-top: 0; }
+  .mts-ns  {  margin-top: .5rem; }
+  .mtm-ns  {  margin-top: 1rem; }
+  .mtl-ns  {  margin-top: 2rem; }
+  .mtxl-ns  {  margin-top: 4rem; }
+
+  .mvn-ns   {
+    margin-top: 0;
+    margin-bottom: 0rem;
+  }
+  .mvs-ns   {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+  }
+  .mvm-ns   {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .mvl-ns   {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  .mvxl-ns   {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  .mhn-ns {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .mhs-ns {
+    margin-left: .5rem;
+    margin-right: .5rem;
+  }
+  .mhm-ns {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  .mhl-ns {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+  .mhxl-ns {
+    margin-left: 4rem;
+    margin-right: 4rem;
+  }
+}

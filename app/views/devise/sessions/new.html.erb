@@ -16,16 +16,16 @@
     <%= f.email_field :email, class: "text-input", required: true, autofocus: true %>
 
     <%= f.label :password %>
-    <%= f.password_field :password, class: "text-input m0", required: true, pattern: ".{8,}", title: "Make sure you use at least 8 characters" %>
+    <%= f.password_field :password, class: "text-input man", required: true, pattern: ".{8,}", title: "Make sure you use at least 8 characters" %>
 
     <div>
       <%= f.check_box :remember_me %>
-      <%= f.label :remember_me, class: "mt2" %>
+      <%= f.label :remember_me, class: "mtm" %>
     </div>
 
-    <%= f.submit t(".sign_in"), class: "btn bg-orange mt2" %>
+    <%= f.submit t(".sign_in"), class: "btn bg-orange mtm" %>
 
-    <small class="mt2 db">or did you <%= link_to "forget your password?", :forgot_password %></small>
+    <small class="mtm db">or did you <%= link_to "forget your password?", :forgot_password %></small>
 
   <% end %>
 

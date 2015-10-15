@@ -5,14 +5,14 @@
   <% end %>
 </div>
 
-<h2 class="mt2">Instructions</h2>
+<h2 class="mtm">Instructions</h2>
 <div class="text text-normalized" itemprop="recipeInstructions">
   <%= instructions_processed.html_safe %>
 </div>
 
 <%= image_tag @recipe.img, class: 'dn', itemprop: 'image' if @recipe.img.url.present? && !@image_layout %>
 
-<h2 class="mt2">Details</h2>
+<h2 class="mtm">Details</h2>
 <% if @recipe.source.present? %>
 <p style="word-wrap: break-word;">
   Source:

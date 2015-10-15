@@ -13,9 +13,9 @@
             style="background-image: url(<%= @recipe.img.url %>);">
 
       <div class="md-col-8 mx-auto mw7">
-        <h1 class="white mb1 dib h0" itemprop="name"><%= @recipe.title %></h1>
-        <%= form_for(@recipe, data: { remote: true }, html: { class: 'dib dn-p ml1' }) do |f| %>
-          <label class="control m0">
+        <h1 class="white mbs dib h0" itemprop="name"><%= @recipe.title %></h1>
+        <%= form_for(@recipe, data: { remote: true }, html: { class: 'dib dn-p mls' }) do |f| %>
+          <label class="control man">
             <%= f.check_box :favorite, class: 'control-checkbox', data: { behavior: 'recipe_favorite_trigger' } %>
             <%= inline_svg 'favorite_outline.svg', class: 'fill-white pointer control-indicator', size: 24 %>
             <%= inline_svg 'favorite.svg', class: 'fill-white pointer control-indicator-checked', size: 24 %>
@@ -29,7 +29,7 @@
         <% end %>
       </div>
 
-      <a href="#photo" name="photo mr1 flex-last pointer" data-behavior="modal_trigger">
+      <a href="#photo" name="photo mrs flex-last pointer" data-behavior="modal_trigger">
         <%= inline_svg 'fullscreen.svg', class: 'fill-white' %>
       </a>
     </header>
@@ -49,15 +49,15 @@
 
     <% if !@image_layout %>
       <%= form_for(@recipe, data: { remote: true }) do |f| %>
-        <label class="control right dib m0 dn-p">
+        <label class="control right dib man dn-p">
           <%= f.check_box :favorite, class: 'control-checkbox', data: { behavior: 'recipe_favorite_trigger' } %>
           <%= inline_svg 'favorite_outline.svg', class: 'fill-orange pointer control-indicator', size: 32 %>
           <%= inline_svg 'favorite.svg', class: 'fill-orange pointer control-indicator-checked', size: 32 %>
         </label>
       <% end %>
 
-      <h1 class="m0 di" itemprop="name"><%= @recipe.title %></h1>
-      <div class="text mt2" itemprop="description"><%= markdown(@recipe.description.to_s) %></div>
+      <h1 class="man di" itemprop="name"><%= @recipe.title %></h1>
+      <div class="text mtm" itemprop="description"><%= markdown(@recipe.description.to_s) %></div>
 
     <% end %>
 
