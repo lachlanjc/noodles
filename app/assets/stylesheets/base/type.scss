@@ -58,16 +58,6 @@ h5,
   font-size: $h5;
 }
 
-.h6 {
-  font-size: $h6;
-}
-
-h6 {
-  @extend .caps;
-  color: $grey-3;
-  font-size: $h6;
-}
-
 small {
   font-size: 90%;
 }

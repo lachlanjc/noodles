@@ -1,4 +1,5 @@
-<nav role="navigation" class="md-flex bg-white mb2 pam border-bottom print-hide">
+<nav role="navigation" class="flex-ns bg-white mb2 pam border-bottom dn-p"
+     data-behavior="nav" data-user="<%= user_signed_in? ? current_user.id : 'anon' %>">
 
   <div>
     <%= link_to "Dashboard", analytics_dash_path, class: nav_active_class(:analytics_dash) %>
@@ -7,6 +8,8 @@
     <%= link_to "Performance", analytics_performance_path, class: nav_active_class(:analytics_performance) %>
     <%= link_to "Shared Recipes", analytics_recipes_path, class: nav_active_class(:analytics_recipes) %>
   </div>
+
+  <div class="flex-auto"></div>
 
   <div>
     <%= link_to "Back to Recipes", recipes_path, class: "phs" %>

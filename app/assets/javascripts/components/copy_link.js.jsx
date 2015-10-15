@@ -9,7 +9,7 @@ class CopyLink extends React.Component {
   render() {
     const label = this.state.copied ? 'Copied!' : 'Copy';
     return (
-      <div className='h5'>
+      <div className='f5'>
         <input ref='text'
               type='text'
               className='text-input'

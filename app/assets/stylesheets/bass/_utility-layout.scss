@@ -10,10 +10,6 @@
   display: inline-block;
 }
 
-.hide {
-  display: none !important;
-}
-
 .clearfix:before,
 .clearfix:after {
   content: " ";
@@ -32,6 +28,6 @@
   float: right;
 }
 
-.fit {
-  max-width: 100%;
-}
+// .fit {
+//   max-width: 100%;
+// }

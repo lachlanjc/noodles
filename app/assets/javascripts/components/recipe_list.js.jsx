@@ -56,7 +56,7 @@ class RecipeList extends React.Component {
 
     return (
       <ul className={'list-reset pvm mx-auto mb0 mw7 ' + this.props.className}>
-        <div className='md-col-8 mx-auto flex bg-white rounded shadow mb2 phs print-hide' role='search' onClick={this.focusSearch}>
+        <div className='md-col-8 mx-auto flex bg-white rounded shadow mb2 phs dn-p' role='search' onClick={this.focusSearch}>
           <IconSearch classes='fill-grey-4 mt1' />
           <input
               type='text'
@@ -104,7 +104,7 @@ class RecipeItem extends React.Component {
     return (
       <li className='bg-white rounded shadow mb2 pam'>
         <a href={recipeLink} className='link-reset'>
-          <div className='right print-hide'>{indicators}</div>
+          <div className='right dn-p'>{indicators}</div>
           <h3 className='m0 regular'>{recipe.title}</h3>
           <p className='m0 text'>{recipe.description_preview}</p>
         </a>

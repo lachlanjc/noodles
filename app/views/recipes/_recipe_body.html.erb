@@ -10,7 +10,7 @@
   <%= instructions_processed.html_safe %>
 </div>
 
-<%= image_tag @recipe.img, class: 'hide', itemprop: 'image' if @recipe.img.url.present? && !@image_layout %>
+<%= image_tag @recipe.img, class: 'dn', itemprop: 'image' if @recipe.img.url.present? && !@image_layout %>
 
 <h2 class="mt2">Details</h2>
 <% if @recipe.source.present? %>
@@ -30,7 +30,7 @@
 <% end %>
 
 <% if @recipe.notes.present? %>
-<div class="hide print-show">
+<div class="dn db-p">
   <h2>Notes</h2>
   <%= sanitize markdown(@recipe.notes) %>
 </div>
@@ -39,7 +39,7 @@
 <% if me_owns_recipe? %>
   <%= react_component("NoteEditor", recipe_id: @recipe.id) %>
 <% else %>
-  <div class="rounded border pam notes text text-normalized print-hide">
+  <div class="rounded border pam notes text text-normalized dn-p">
     <% if @recipe.notes.blank? %>
     <p class="grey-4 mb0">No notes for this recipe &mdash; yet!</p>
     <% else %>

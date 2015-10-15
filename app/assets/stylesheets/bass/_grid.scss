@@ -106,7 +106,7 @@
   }
 }
 
-@media #{$breakpoint-md} {
+@media screen and (min-width: 48em) {
   /*
   .md-col-1 {
     width: (1/12 * 100%);
@@ -160,7 +160,7 @@
   }
 }
 
-@media #{$breakpoint-lg} {
+@media screen and (min-width: 64em) {
   /*
   .lg-col-1 {
     width: (1/12 * 100%);

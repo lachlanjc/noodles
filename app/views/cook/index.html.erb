@@ -1,6 +1,6 @@
 <%- title "Cooking #{@recipe.title}".html_safe %>
 
-<main class="md-flex">
+<main class="flex-ns">
 
   <aside class="sm-col-11 md-col-4 m2">
     <h1 class="m0 grey-1"><%= @recipe.title %></h2>
@@ -12,7 +12,7 @@
     <hr class="col-10">
 
     <h2 class="mb0">Ingredients</h2>
-    <p class="grey-4 h5">Tap on ingredients to cross them off.</p>
+    <p class="grey-4 f5">Tap on ingredients to cross them off.</p>
 
     <ul class="list-reset text text-normalized recipe-ingredients">
     <% @recipe.ingredients.lines.each do |item| %>
@@ -44,7 +44,7 @@
 
   <article class="sm-col-11 md-col-6 mx-auto mt2 pan">
     <% flash.each do |key, value| %>
-      <div class="h2 pam center mb2 rounded bg-<%= flash_color_class(key) %> white pointer print-hide" role="alertdialog" data-behavior="flash">
+      <div class="h2 pam center mb2 rounded bg-<%= flash_color_class(key) %> white pointer dn-p" role="alertdialog" data-behavior="flash">
         <%= value %>
       </div>
     <% end %>
@@ -63,7 +63,7 @@
 
       <% if me_owns_recipe? %>
         <%= form_for(@recipe, url: recipe_path(@recipe, cook: true), html: { class: 'mt1 h4' }) do |f| %>
-          <%= f.file_field :img, class: 'hide', data: { behavior: 'photo_field cook_photo_field' } %>
+          <%= f.file_field :img, class: 'dn', data: { behavior: 'photo_field cook_photo_field' } %>
           <div data-behavior="photo_button">
             <a data-behavior="photo_name" class="btn bg-white">
               <%= @recipe.img.url.blank? ? 'Add a photo' : 'Upload a new photo' %>

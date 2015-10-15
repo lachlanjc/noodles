@@ -25,7 +25,7 @@ class CollectionItem extends React.Component {
   render() {
     const coll = this.props.coll;
 
-    let imgClass = 'flex flex-center center rounded shadow mb2 pal';
+    let imgClass = 'flex fac center rounded shadow mb2 pal';
     let imgStyle = { minHeight: '15vh' };
     if (!_.isEmpty(coll.photo_url)) {
       imgClass += ' image-header bg-center bg-no-repeat bg-cover';

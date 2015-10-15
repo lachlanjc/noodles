@@ -1,5 +1,5 @@
 <div class="flex mt2">
-  <div class="center phm border rounded inline-block mx-auto print-hide">
+  <div class="center phm border rounded inline-block mx-auto dn-p">
     <h2>This recipe is public.</h2>
 
     <p class="mb1">Share the link:</p>
@@ -37,7 +37,7 @@
 
     <% if !nav_active?(:shared_recipe) %>
       <p class="mt1"><%= link_to 'See the public recipe »', @shared_url, class: 'btn btn-sm bg-blue' %></p>
-      <p class="grey-3 h5">Or you could <%= link_to 'un-share this recipe', recipe_un_share_path(@recipe), class: 'link-reset border-bottom' %>.</p>
+      <p class="grey-3 f5">Or you could <%= link_to 'un-share this recipe', recipe_un_share_path(@recipe), class: 'link-reset border-bottom' %>.</p>
     <% elsif nav_active?(:shared_recipe) && me_owns_recipe? %>
       <p class="mb2"><%= link_to '« Back to private recipe', recipe_path(@recipe), class: 'btn btn-sm bg-blue' %></p>
     <% end %>

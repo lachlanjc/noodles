@@ -77,7 +77,7 @@ class NoteEditor extends React.Component {
 
   render() {
     return (
-      <section className='border phm mt2 rounded notes text text-normalized print-hide'>
+      <section className='border phm mt2 rounded notes text text-normalized dn-p'>
         <h3 className='mt1 mb1 pvs center grey-4 caps regular border-bottom border-darken-2' style={{borderBottomStyle: 'dashed'}}>Notes</h3>
         {(this.state.editing === true) ? this.renderEditing() : this.renderNotes()}
       </section>

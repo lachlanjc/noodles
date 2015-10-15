@@ -6,6 +6,8 @@
 @import "base/reset";
 @import "base/type";
 
+@import "base/flex";
+
 @import "modules/buttons";
 @import "modules/collections";
 @import "modules/filterbar";
@@ -40,7 +42,7 @@
 
 .btn-paper {
   bottom: $space-2;
-  line-height: .9; // fixes extra bottom "padding"
+  line-height: 0; // fixes extra bottom "padding"
   right: $space-2;
 
   svg {
@@ -51,7 +53,7 @@
 
 .btn-paper-mini {
   bottom: 90px;
-  line-height: .9;
+  line-height: 0;
   right: 27px;
 }
 

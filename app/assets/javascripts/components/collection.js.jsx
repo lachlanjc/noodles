@@ -62,9 +62,9 @@ class CollectionHeader extends React.Component {
   render() {
     const coll = this.props.coll;
 
-    let rootClass = 'col-12 bs-bb flex flex-center';
+    let rootClass = 'col-12 bs-bb flex fac';
     let rootStyle = {};
-    let actionsClass = 'caps h4 print-hide mt2';
+    let actionsClass = 'caps h4 dn-p mt2';
     if (!_.isEmpty(coll.photo)) {
       rootClass += ' image-header relative inline-with-nav pvl bg-cover bg-center bg-no-repeat';
       rootStyle.backgroundImage = `url(${coll.photo_url})`;

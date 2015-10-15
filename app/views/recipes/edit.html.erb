@@ -23,7 +23,7 @@ textarea {
 <main class="md-col-8 mx-auto pam">
 <%= form_for(@recipe) do |f| %>
 
-  <%= f.file_field :img, class: 'hide', data: { behavior: 'photo_field' } %>
+  <%= f.file_field :img, class: 'dn', data: { behavior: 'photo_field' } %>
   <div class="mb2 inline-block">
     <div class="pointer" data-behavior="photo_button">
       <%= inline_svg 'photo-upload.svg', size: 32, class: 'fill-grey-4 relative', style: 'top: 10px;' %>

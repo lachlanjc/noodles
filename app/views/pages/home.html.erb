@@ -28,7 +28,7 @@
 <body class="center m0 bg-grey-6">
   <header class="hero-container bg-cover bg-center bg-no-repeat"
           style='background-image: url(<%= image_path "home/#{rand(1..6).to_s}.jpg" %>);'>
-    <nav role="navigation" class="md-flex phm pvs white print-hide">
+    <nav role="navigation" class="flex-ns phm pvs white dn-p">
       <div class="pvs">
         <%= link_to t("general.home"), root_url, class: "phs link-reset white regular" %>
         <%= link_to t("general.features"), docs_path, class: "phs link-reset white regular" %>
@@ -69,7 +69,7 @@
   <p class="phl mw7 mx-auto f3 f2-ns left-align mt3 mb2">
     Noodles is a simple place for all your recipes. Add one in just a few clicks, find it later in seconds. Instead of copies and scribbled notecards, you'll have a beautifully accessible library.
   </p>
-  <article class="mx-auto flex" style="justify-content: center; flex-flow: row wrap; max-width: 85rem;">
+  <article class="mx-auto flex flex-rows fjc" style="max-width: 85rem;">
     <section class="m1 bg-white shadow pam pal-ns rounded" style="width: 26rem;">
       <header class="mb2 flex fac fjc">
         <div class="circle bg-orange shadow pas fill-white dn dtc-ns" style="line-height: .9">
