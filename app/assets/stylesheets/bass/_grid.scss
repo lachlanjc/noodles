@@ -54,7 +54,7 @@
   width: 100%;
 }
 
-@media #{$breakpoint-sm} {
+@media screen and (min-width: 12em) {
   /*
   .sm-col-1 {
     width: (1/12 * 100%);
