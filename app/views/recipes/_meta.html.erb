@@ -22,7 +22,7 @@
             <%= b.check_box class: 'dn' %>
             <% end %>
             <%= content_tag :span, b.text %>
-            <div class="checkmark fill-orange right dn">
+            <div class="checkmark fill-orange fr dn">
               <%= inline_svg 'check.svg' %>
             </div>
           <% end %>
@@ -32,7 +32,7 @@
           <%= link_to 'Create new Collection...', collections_path(new_collection: true), class: 'link-reset' %>
         </li>
       </ul>
-      <%= f.submit 'Save', class: 'btn bg-blue right' %>
+      <%= f.submit 'Save', class: 'btn bg-blue fr' %>
     <% end %>
   <% else %>
     <div class="text tc border rounded pal">

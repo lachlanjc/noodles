@@ -20,5 +20,5 @@
 
   <%= link_to t('general.delete'), @collection, method: :delete, data: { confirm: t('general.delete_collection_forever'), disable_with: 'Deleting...' }, class: 'btn bg-red btn-sm mtm' if @collection.name %>
 
-  <%= f.submit 'Save', class: 'btn bg-blue right' %>
+  <%= f.submit 'Save', class: 'btn bg-blue fr' %>
 <% end %>

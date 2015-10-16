@@ -49,7 +49,7 @@
 
     <% if !@image_layout %>
       <%= form_for(@recipe, data: { remote: true }) do |f| %>
-        <label class="control right dib man dn-p">
+        <label class="control fr dib man dn-p">
           <%= f.check_box :favorite, class: 'control-checkbox', data: { behavior: 'recipe_favorite_trigger' } %>
           <%= inline_svg 'favorite_outline.svg', class: 'fill-orange pointer control-indicator', size: 32 %>
           <%= inline_svg 'favorite.svg', class: 'fill-orange pointer control-indicator-checked', size: 32 %>

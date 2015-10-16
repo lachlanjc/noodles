@@ -71,7 +71,7 @@
     <% if user_signed_in? %>
       <a class="btn bg-blue mtm" data-behavior="explore_clip_from_preview">Clip</a>
     <% else %>
-      <%= link_to 'Sign up for Noodles to Clip', sign_up_path, class: 'btn bg-orange mtm' %>
+      <a href="#signup" name="signup" data-behavior="modal_trigger inline_signup_btn" class="btn bg-orange mtm">Sign up for Noodles to Clip</a>
     <% end %>
   </footer>
 </section>
