@@ -40,7 +40,6 @@
     <p>
       Search for anything you want to cook to get started. Sign up for Noodles to save the recipe.
     </p>
-    <a href="#signup" name="signup" data-behavior="modal_trigger inline_signup_btn" class="btn bg-orange mts">Sign up for Noodles</a>
   <% end %>
 </main>
 
@@ -50,6 +49,9 @@
 </h2>
 
 <% if nobody_signed_in? %>
+  <div class="tc" data-behavior="inline_signup_btn_container">
+    <a href="#signup" name="signup" data-behavior="modal_trigger inline_signup_btn" class="btn bg-orange">Sign up for Noodles</a>
+  </div>
   <section class="modal" role="dialog" id="signup">
     <%= modal_close %>
     <h2 class="orange mbn">Sign up for Noodles</h2>
@@ -71,7 +73,7 @@
     <% if user_signed_in? %>
       <a class="btn bg-blue mtm" data-behavior="explore_clip_from_preview">Clip</a>
     <% else %>
-      <a href="#signup" name="signup" data-behavior="modal_trigger inline_signup_btn" class="btn bg-orange mtm">Sign up for Noodles to Clip</a>
+      <a data-behavior="explore_trigger_inline_signup" class="btn bg-orange mtm">Sign up for Noodles to Clip</a>
     <% end %>
   </footer>
 </section>

@@ -52,7 +52,8 @@ $(document).ready ->
       window.history.replaceState null, null, "?q=#{q}&src=#{s}"
 
       $('[data-behavior~=explore_clear_search]').show 'slow'
-      $('[data-behavior~=explore_suggestions]').css { 'display': 'none' }
+      m = $('[data-behavior~=explore_suggestions], [data-behavior~=inline_signup_btn_container]')
+      m.css { 'display': 'none' }
 
       u = "/explore/results?q=#{q}&src=#{s}"
 
@@ -123,6 +124,10 @@ $(document).ready ->
     $.get '/explore/preview?url=' + u, (d) ->
       c.removeClass 'busy busy-large mx-auto'
       c.html d
+
+  $(document).on 'click', '[data-behavior~=explore_trigger_inline_signup]', ->
+    $(this).closest('.modal').hide()
+    $('[data-behavior~=inline_signup_btn]').click()
 
   $(document).on 'click', '[data-behavior~=explore_clip_from_preview]', ->
     t = $(this)
