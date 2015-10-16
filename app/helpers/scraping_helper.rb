@@ -37,17 +37,21 @@ module ScrapingHelper
       page = open(url).read
       data = Hangry.parse page
       if data.name.to_s.length > 2
+        document = Nokogiri::HTML::DocumentFragment.parse(page)
         # Crappy hack for Food & Wine b/c they use the name itemprop in the wong places
         data.name = Nokogiri::HTML::DocumentFragment.parse(page).css('[itemprop=name]')[2].text.strip if host == 'foodandwine.com'
+        inst = '[itemprop=recipeInstructions]'
         if host == 'epicurious.com'
-          d = Nokogiri::HTML::DocumentFragment.parse(page).css('[itemprop=description] .truncatedTextModuleText')[0]
+          d = document.css('[itemprop=description] .truncatedTextModuleText')[0]
           data.description = d.blank? ? '' : d.text.strip
-          data.instructions = Nokogiri::HTML::DocumentFragment.parse(page).css('[itemprop=recipeInstructions] > p:not(#chefNotes)').text.strip
+          insts = document.css("#{inst} > p:not(#chefNotes)")
+          insts = document.css("#{inst} li:not(#chefNotes)") if insts.empty?
+          data.instructions = insts.text.strip
         end
         # Support sites (mainly blogs) that use recipeInstructions oddly
         if data.instructions.match(/\n/).blank?
           data.instructions = []
-          Nokogiri::HTML::DocumentFragment.parse(page).css('[itemprop=recipeInstructions]').each do |s|
+          document.css(inst).each do |s|
             data.instructions.push(s.text.to_s.strip)
           end
         end

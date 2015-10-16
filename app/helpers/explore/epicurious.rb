@@ -23,7 +23,7 @@ class EpicuriousSearchScraper
       if result['image'].to_s.length > 2
         s = Nokogiri::HTML(result['image'].to_s).at_css('img').attributes['src'].value
         s.gsub!(/_116/, '')
-        s.gsub!(/_120/, '_360')
+        s.gsub!(/_120/, '_500')
         result['image'] =  s.match('assets') ? s : 'http://epicurious.com' + s
       end
     end
