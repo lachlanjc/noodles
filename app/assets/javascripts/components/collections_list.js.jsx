@@ -9,9 +9,9 @@ class CollectionIndex extends React.Component {
           })}
           {_.isEmpty(this.props.collections) ?
             <div className='md-col-8 mx-auto mtm text tc border bg-white rounded pal'>
-              <h3 className='mt0'>You don't have any collections yet.</h3>
+              <h3 className='mtn'>You don't have any collections yet.</h3>
               <p>Collections help you organize your recipes.</p>
-              <p className='mb0'>You can use them for categories, such as salads or pastas, or recipes that might be good for a summer dinner party.</p>
+              <p className='mbn'>You can use them for categories, such as salads or pastas, or recipes that might be good for a summer dinner party.</p>
               <a href='#newCollection' className='btn bg-blue mtm' data-behavior='modal_trigger'>Create your first collection</a>
             </div>
           : null}

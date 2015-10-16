@@ -55,7 +55,7 @@ class RecipeList extends React.Component {
     const createFromSearch = searching && ((this.props.createFromSearch || false) === true);
 
     return (
-      <ul className={'list-reset pvm mx-auto mb0 mw7 ' + this.props.className}>
+      <ul className={'list-reset pvm mx-auto mbn mw7 ' + this.props.className}>
         <div className='md-col-8 mx-auto flex bg-white rounded shadow mbm phs dn-p' role='search' onClick={this.focusSearch}>
           <IconSearch classes='fill-grey-4 mts' />
           <input
@@ -75,7 +75,7 @@ class RecipeList extends React.Component {
 
         {noSearchResults ?
           <BlankSlate width='8'>
-            <p className='mb0'>Sorry, no recipes matched your search.</p>
+            <p className='mbn'>Sorry, no recipes matched your search.</p>
 
             {createFromSearch ?
               <a className='mtm btn bg-blue' href={'/recipes/new?' + $.param({title: this.state.searchText})}>

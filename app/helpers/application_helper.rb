@@ -39,6 +39,6 @@ module ApplicationHelper
   end
 
   def modal_close
-    "<div class='fill-grey-4 block right pointer' data-behavior='modal_close'>#{inline_svg('close.svg')}</div>".html_safe
+    "<div class='fill-grey-4 db fr pointer' data-behavior='modal_close'>#{inline_svg('close.svg')}</div>".html_safe
   end
 end

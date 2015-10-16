@@ -5,7 +5,7 @@
 
 <header class="tc relative inline-with-nav image-header bg-center bg-no-repeat bg-cover pvxl phm"
         style='background-image: url(<%= image_path "explore/#{rand(1..5).to_s}.jpg" %>);'>
-  <h1 class="mt0 mb0 white">Explore</h1>
+  <h1 class="mtn mbn white">Explore</h1>
   <h2 class="white normal mts mbm">What do you want to make?</h2>
   <div class="md-col-8 mw7 phs mx-auto flex fac">
     <input type="text" role="search"
@@ -27,7 +27,7 @@
 </header>
 
 <main class="md-col-8 mx-auto pam tc mw7" data-behavior="explore_results_container">
-  <h2 class="mt0 normal">
+  <h2 class="mtn normal">
     This is <span class="b">Explore</span> by <%= link_to 'Noodles', root_url, class: 'b' %>.
     Find amazing new recipes.
   </h2>
@@ -52,7 +52,7 @@
 <% if nobody_signed_in? %>
   <section class="modal" role="dialog" id="signup">
     <%= modal_close %>
-    <h2 class="orange mb0">Sign up for Noodles</h2>
+    <h2 class="orange mbn">Sign up for Noodles</h2>
     <%= render 'devise/registrations/new', user: User.new, text: 'Noodles is, and always will be, totally free.',
                                            params: { explore: true },
                                            options: { class: 'modal-scroll', data: { remote: true, behavior: 'inline_signup_form' } } %>
@@ -61,7 +61,7 @@
 
 <section class="modal pam" role="dialog" id="preview" data-behavior="explore_preview_modal">
   <%= modal_close %>
-  <h2 class="orange di mb0" data-behavior="explore_preview_title"></h2>
+  <h2 class="orange di mbn" data-behavior="explore_preview_title"></h2>
   <a data-behavior="explore_open_original" class="dib" target="_blank" rel="nofollow">
     <%= inline_svg 'open-new-tab.svg', class: 'fill-orange relative', style: 'width: 16px; height: 16px; top: -5px; left: 2px;' %>
   </a>

@@ -8,7 +8,7 @@
 
   <% @collections.each do |collection| %>
     <div class="bg-white rounded shadow pam mbm">
-      <h2 class="mt0"><%= collection.name %><span class="grey-3 h3 mls">#<%= collection.id %></span></h2>
+      <h2 class="mtn"><%= collection.name %><span class="grey-3 h3 mls">#<%= collection.id %></span></h2>
       <% if User.exists?(collection.user) %>
       <p class="mbm">Published by <%= User.find(collection.user).first_name.to_s %></p>
       <% end %>

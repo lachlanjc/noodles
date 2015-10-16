@@ -77,7 +77,7 @@ class CollectionHeader extends React.Component {
       <header className={rootClass} style={{backgroundImage: `url(${coll.photo})`}}>
         <div className='sm-col-12 md-col-8 mx-auto phm mw7'>
           <h1 className='coll-name man h0'>{coll.name}</h1>
-          {!_.isEmpty(coll.description) ? <p className='h3 mts mb0 coll-desc'>{coll.description}</p> : null}
+          {!_.isEmpty(coll.description) ? <p className='h3 mts mbn coll-desc'>{coll.description}</p> : null}
           {this.props.pub ?
             <p className='mts mbs coll-desc h4'>Published by {coll.publisher}</p>
           : null}

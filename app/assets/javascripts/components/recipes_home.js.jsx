@@ -56,7 +56,7 @@ class RecipesHome extends React.Component {
   renderFavoritesBlankSlate() {
     return (
       <BlankSlate>
-        <h3 className='mt0'>No favorites yet.</h3>
+        <h3 className='mtn'>No favorites yet.</h3>
         <p>Favorites are an easy way to quickly bookmark recipes. They're marked with a star.</p>
         <p>To favorite a recipe, open the recipe and click the star to the right of the recipe's title.</p>
         <a onClick={e => this.findAll(e)} className='btn bg-blue'>Back to all recipes</a>

@@ -49,8 +49,8 @@ textarea {
 
    <% if @recipe.errors.any? %>
      <section class="md-col-8 mx-auto bg-white rounded shadow tc mtm mbm pal" role="alertdialog">
-       <h2 class="orange mt0">Your recipe doesn't have a title!</h2>
-       <p class="mb0">Add a name (above) and you'll be good to go.</p>
+       <h2 class="orange mtn">Your recipe doesn't have a title!</h2>
+       <p class="mbn">Add a name (above) and you'll be good to go.</p>
      </section>
    <% end %>
 
@@ -78,7 +78,7 @@ textarea {
                   data: { behavior: 'autosize editor_instructions' } %>
 
   <section>
-    <h2 class='mt0'>Details</h2>
+    <h2 class='mtn'>Details</h2>
 
     <%= f.label :source, class: 'dib' %><small class="mls grey-4">Where did this recipe come from?</small>
     <%= f.text_field :source, class: 'text-input md-col-8' %>

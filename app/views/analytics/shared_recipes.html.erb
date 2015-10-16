@@ -8,7 +8,7 @@
 
   <% @recipes.each do |recipe| %>
     <div class="bg-white rounded shadow pam mbm">
-      <h2 class="mt0"><%= recipe.title %><span class="grey-3 h3 mls">#<%= recipe.id %></span></h2>
+      <h2 class="mtn"><%= recipe.title %><span class="grey-3 h3 mls">#<%= recipe.id %></span></h2>
       <% if User.exists?(recipe.user_id) %>
       <p class="mbm">Published by: <%= User.find(recipe.user_id).first_name.to_s %></p>
       <% end %>
