@@ -50,7 +50,8 @@
 
 <% if nobody_signed_in? %>
   <div class="tc" data-behavior="inline_signup_btn_container">
-    <a href="#signup" name="signup" data-behavior="modal_trigger inline_signup_btn" class="btn bg-orange">Sign up for Noodles</a>
+    <a href="#signup" name="signup" data-behavior="modal_trigger inline_signup_btn" class="btn bg-orange b">Sign up for Noodles</a>
+    <%= link_to 'Sign back in', sign_in_path, class: 'mls btn bg-blue' %>
   </div>
   <section class="modal" role="dialog" id="signup">
     <%= modal_close %>
@@ -85,7 +86,7 @@ var urlParams;
 		pl = /\+/g, // Regex for replacing addition symbol with a space
 		search = /([^&=]+)=?([^&]*)/g,
 		decode = function(s) {
-			return decodeURIComponent(s.replace(pl, " "));
+			return decodeURIComponent(s.replace(pl, ' '));
 		},
 		query = window.location.search.substring(1);
 
