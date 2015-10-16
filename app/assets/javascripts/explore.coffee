@@ -60,12 +60,16 @@ $(document).ready ->
         r.removeClass 'busy busy-large'
         r.html t
         g = $('[data-behavior~=explore_masonry_grid]')
-        g.imagesLoaded().progress ->
+        masonry = ->
           g.masonry
             itemSelector: '[data-behavior~=explore_result_item]'
             gutter: 32
             isFitWidth: true
-        $('[data-behavior~=modal_trigger]').leanModal()
+          $('[data-behavior~=modal_trigger]').leanModal()
+        if _.isEmpty g.find('[data-behavior~=explore_result_item] img')
+          masonry()
+        else
+          g.imagesLoaded().progress -> masonry()
         return
 
   f = $('[data-behavior~=explore_search_field]')
