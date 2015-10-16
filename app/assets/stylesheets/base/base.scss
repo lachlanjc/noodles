@@ -1,11 +1,10 @@
 .document {
-  @extend .mx-auto;
   background: #fff;
   border-color: $grey-5;
   border-style: solid;
   border-width: 1px 0;
   box-sizing: border-box;
-  margin-bottom: $space-2;
+  margin: 0 auto $space-3;
   padding: $space-2;
 }
 

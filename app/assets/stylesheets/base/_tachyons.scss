@@ -60,7 +60,7 @@
 */
 
 .normal   { font-weight: normal; }
-.b        { font-weight: bold; }
+.b        { font-weight: $bold-font-weight; }
 
 /*
    LINE HEIGHT / LEADING

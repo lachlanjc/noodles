@@ -30,11 +30,6 @@
 .flex-first { order: -1 }
 .flex-last  { order: 99999 }
 
-.flex > div,
-.flex-ns > div {
-  @extend .bs-bb;
-}
-
 @media screen and (min-width: 48em) {
   .flex-ns { display: flex }
 }
