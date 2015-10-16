@@ -16,7 +16,6 @@ $(document).ready ->
     $('[data-behavior~=explore_search_field]').keyup()
     q = $('[data-behavior~=explore_search_field]').val()
     window.history.replaceState null, null, "?q=#{q}&src=#{src}"
-    debugger
 
   if !_.isEmpty urlParams
     f = $('[data-behavior~=explore_search_field]')
