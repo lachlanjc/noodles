@@ -2,24 +2,34 @@
 #= require masonry/dist/masonry.pkgd.min.js
 
 $(document).ready ->
-  if q = urlParams.q
-    s = $('[data-behavior~=explore_search_field]')
-    s.val q
-    k = -> s.keyup()
-    k
-    setTimeout k, 1
-
-  $(document).on 'click', '[data-behavior~=explore_src_pick]', ->
-    t = $(this)
+  activateSrc = (src) ->
     b = $('[data-behavior~=explore_src_pick_bar]')
-    src = t.data 'src-name'
+    c = b.find("[data-behavior~=explore_src_pick][data-src-name=#{src}]")
     activeClasses = 'bg-orange bold tsn'
     b.find('[data-src-name=' + b.data('src-selected') + ']').toggleClass activeClasses
-    t.toggleClass(activeClasses) if b.data('src-selected') isnt src or !t.attr('class').match activeClasses
+    c.toggleClass(activeClasses) if b.data('src-selected') isnt src or !c.attr('class').match activeClasses
     b.data 'src-selected', src
-    $('[data-behavior~=explore_search_field]').keyup()
 
-  $('[data-behavior~=explore_src_pick][data-src-name=nyt]').click()
+  $(document).on 'click', '[data-behavior~=explore_src_pick]', ->
+    src = $(this).data('src-name') || 'nyt'
+    activateSrc src
+    $('[data-behavior~=explore_search_field]').keyup()
+    q = $('[data-behavior~=explore_search_field]').val()
+    window.history.replaceState null, null, "?q=#{q}&src=#{src}"
+    debugger
+
+  if !_.isEmpty urlParams
+    f = $('[data-behavior~=explore_search_field]')
+    f.val urlParams.q
+    s = urlParams.src || 'nyt'
+    $('[data-behavior~=explore_src_pick_bar]').data 'src', s
+    activateSrc s
+    k = -> f.keyup()
+    k
+    setTimeout k, 1
+  else if _.isEmpty urlParams.src
+    $('[data-behavior~=explore_src_pick_bar]').data 'src-selected', 'nyt'
+    activateSrc 'nyt'
 
   logSearchToIntercom = ->
     u = $('[data-behavior~=nav]').data 'user'
@@ -40,16 +50,12 @@ $(document).ready ->
 
       s = $('[data-behavior~=explore_src_pick_bar]').data 'src-selected'
 
-      if urlParams.q && window.history.replaceState
-        u = window.location.search.match(/([^&=]+)=?([^&]*)/g)[0].replace urlParams.q, q
-        window.history.replaceState null, null, u
-      else if window.history.replaceState
-        window.history.replaceState null, null, '?q=' + q + '&src=' + s
+      window.history.replaceState null, null, "?q=#{q}&src=#{s}"
 
       $('[data-behavior~=explore_clear_search]').show 'slow'
       $('[data-behavior~=explore_suggestions]').css { 'display': 'none' }
 
-      u = '/explore/results?src=' + s + '&q=' + q
+      u = "/explore/results?q=#{q}&src=#{s}"
 
       $.get u, (t) ->
         r.removeClass 'busy busy-large'
@@ -58,7 +64,6 @@ $(document).ready ->
         g.imagesLoaded().progress ->
           g.masonry
             itemSelector: '[data-behavior~=explore_result_item]'
-            # columnWidth: 300
             gutter: 32
             isFitWidth: true
         $('[data-behavior~=modal_trigger]').leanModal()
@@ -72,10 +77,10 @@ $(document).ready ->
   $(document).on 'click', '[data-behavior~=explore_clear_search]', ->
     $(this).hide 'slow'
     $('[data-behavior~=explore_search_field]').val null
+    $('[data-behavior~=explore_results_container]').removeClass 'busy busy-large'
     $('[data-behavior~=explore_masonry_grid]').remove()
     $('[data-behavior~=explore_suggestions]').fadeIn()
-    if window.history.replaceState
-      window.history.replaceState null, null, '/explore'
+    window.history.replaceState null, null, '/explore'
 
   clippingFinished = (b, id) ->
     b.attr 'data-behavior', null
@@ -89,7 +94,8 @@ $(document).ready ->
     t.text null
     t.toggleClass 'bg-blue busy mx-auto'
 
-    $.get '/save?url=' + t.closest('[data-behavior~=explore_result_item]').data('url'), (s) ->
+    u = '/save?url=' + t.closest('[data-behavior~=explore_result_item]').data 'url'
+    $.get u, (s) ->
       clippingFinished t, s
 
   $(document).on 'click', '[data-behavior~=explore_preview]', ->
