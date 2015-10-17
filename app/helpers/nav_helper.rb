@@ -1,6 +1,6 @@
 module NavHelper
   def nav_active_class(nav)
-    nav_active?(nav) ? 'phs bold' : 'phs'
+    nav_active?(nav) ? 'phs b' : 'phs'
   end
 
   def nav_active?(nav)
