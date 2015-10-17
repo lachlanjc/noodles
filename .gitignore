@@ -7,3 +7,4 @@
 .env
 db/seeds.rb
 *.swp
+*.un~
