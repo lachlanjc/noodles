@@ -23,24 +23,6 @@
 }
 
 /*
-@media screen and (min-width: 48em) and (max-width: 64em) {
-  .dn-m {     display: none; }
-  .di-m {     display: inline; }
-  .db-m {     display: block; }
-  .dib-m {    display: inline-block; }
-  .dtc-m {    display: table-cell; }
-}
-
-@media screen and (min-width: 64em) {
-  .dn-l {     display: none; }
-  .di-l {     display: inline; }
-  .db-l {     display: block; }
-  .dib-l {    display: inline-block; }
-  .dtc-l {    display: table-cell; }
-}
-*/
-
-/*
    FLOATS
 */
 
@@ -155,9 +137,11 @@
 .v-sup      { vertical-align: super; }
 .v-txt-top  { vertical-align: text-top; }
 .v-txt-btm  { vertical-align: text-bottom; }
-*/
+.v-btm      { vertical-align: bottom; }
+ */
+
 .v-mid      { vertical-align: middle; }
 .v-top      { vertical-align: top; }
-// .v-btm      { vertical-align: bottom; }
 
-.oh { overflow: hidden; }
+.oh         { overflow: hidden; }
+
