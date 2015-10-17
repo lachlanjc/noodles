@@ -47,7 +47,7 @@ Rails.application.routes.draw do
   resources :announcements
   resources :collections, except: [:new, :edit]
 
-  get '/announcements/unsubscribe/EAY7pdX9/:user_id', to: 'announcements#unsubscribe'
+  get '/announcements/unsubscribe/:code/:user_id', to: 'announcements#unsubscribe', as: :unsubscribe
 
    devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }
 

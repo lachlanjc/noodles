@@ -1,0 +1,115 @@
+@import "variables";
+
+body {
+  margin: 0;
+}
+
+td, p {
+  font-size: 16px;
+  color: $grey-2;
+  font-family: Lato, 'Avenir Next', 'Helvetica', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+
+  strong {
+    color: $black;
+  }
+}
+ul {
+  margin: 0 0 10px 25px;
+  padding: 0;
+}
+li {
+  margin: 0 0 3px 0;
+
+  strong {
+    color: $black;
+  }
+}
+img {
+  max-width: 100%;
+}
+blockquote {
+  margin: 10px;
+  font-style: italic;
+}
+h1, h2 {
+  color: $black;
+}
+h1 {
+  font-size: 25px;
+  line-height: 1.4;
+}
+h2 {
+  font-size: 24px;
+}
+
+a {
+  color: #ff6d00;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.entire-page {
+  background: #f4f4f5;
+  width: 100%;
+  padding: 20px 0;
+  font-family: Lato, 'Avenir Next', 'Helvetica', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+  line-height: 1.5;
+}
+
+.email-body {
+  max-width: 768px;
+  width: 66%;
+  min-width: 320px;
+  margin: 0 auto;
+  background: white;
+  border-collapse: collapse;
+}
+
+.email-header {
+  border-bottom: 1px solid $grey-5;
+  padding: 30px;
+  text-align: center;
+
+  a {
+    font-size: 24px;
+    letter-spacing: 1px;
+    word-spacing: 3px;
+  }
+}
+
+.news-section {
+  padding: 10px 30px;
+  border-bottom: 1px solid $grey-5;
+}
+
+.img-wrap {
+  text-align: center;
+  background: $grey-6;
+  padding: 5px;
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+  &.white {
+    background: white;
+    padding: 20px;
+  }
+}
+
+pre {
+  white-space: pre-wrap;
+  background: $grey-1;
+  color: $grey-6;
+  padding: 15px;
+}
+code {
+  font-family: consolas, Menlo, Monaco, monospace;
+}
+
+.footer {
+  background: $grey-5;
+  color: $grey-2;
+  padding: 10px;
+  font-size: 10px;
+  text-align: center;
+}
