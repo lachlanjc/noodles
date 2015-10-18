@@ -3,27 +3,29 @@
 
 <%= render 'shared/nav' %>
 
-<header class="tc relative inline-with-nav image-header bg-center bg-no-repeat bg-cover pvxl phm"
+<header class="relative inline-with-nav image-header bg-center bg-no-repeat bg-cover pvxl phm flex fac"
         style='background-image: url(<%= image_path "explore/#{rand(1..5).to_s}.jpg" %>);'>
-  <h1 class="mtn mbn white">Explore</h1>
-  <h2 class="white normal mts mbm">What do you want to make?</h2>
-  <div class="md-col-8 mw7 phs mx-auto flex fac">
-    <input type="text" role="search"
-           class="text-input col-12 dib f2 shadow pvs phm bw0 bs-bb"
-           placeholder="maybe pancakes?"
-           data-behavior="explore_search_field" autofocus>
-    <a class="pointer" data-behavior="explore_clear_search">
-      <%= inline_svg 'close.svg', class: 'fill-white mls dib' %>
-    </a>
+  <div class="tc mx-auto col-12">
+    <h1 class="mtn mbn white">Explore</h1>
+    <h2 class="white normal mts mbm">What do you want to make?</h2>
+    <div class="md-col-8 mw7 phs mx-auto flex fac">
+      <input type="text" role="search"
+             class="text-input col-12 dib f2 shadow pvs phm bw0 bs-bb"
+             placeholder="maybe pancakes?"
+             data-behavior="explore_search_field" autofocus>
+      <a class="pointer" data-behavior="explore_clear_search">
+        <%= inline_svg 'close.svg', class: 'fill-white mls dib' %>
+      </a>
+    </div>
+    <section role="menubar" class="filterbar mtm" data-behavior="explore_src_pick_bar">
+      <a role="menuitem" class="filterbar-item dib phm pointer white white-hover"
+         data-behavior="explore_src_pick" data-src-name="nyt">NYT Cooking</a>
+      <a role="menuitem" class="filterbar-item dib phm pointer white white-hover"
+         data-behavior="explore_src_pick" data-src-name="epicurious">Epicurious</a>
+      <a role="menuitem" class="filterbar-item dib phm pointer white white-hover"
+         data-behavior="explore_src_pick" data-src-name="allrecipes">Allrecipes</a>
+    </section>
   </div>
-  <section role="menubar" class="filterbar mtm" data-behavior="explore_src_pick_bar">
-    <a role="menuitem" class="filterbar-item dib phm pointer white white-hover"
-       data-behavior="explore_src_pick" data-src-name="nyt">NYT Cooking</a>
-   <a role="menuitem" class="filterbar-item dib phm pointer white white-hover"
-       data-behavior="explore_src_pick" data-src-name="epicurious">Epicurious</a>
-   <a role="menuitem" class="filterbar-item dib phm pointer white white-hover"
-       data-behavior="explore_src_pick" data-src-name="allrecipes">Allrecipes</a>
-  </section>
 </header>
 
 <main class="md-col-10 mx-auto pam tc mw7" data-behavior="explore_results_container">
