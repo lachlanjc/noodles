@@ -5,7 +5,7 @@ $(document).ready ->
   activateSrc = (src) ->
     b = $('[data-behavior~=explore_src_pick_bar]')
     c = b.find("[data-behavior~=explore_src_pick][data-src-name=#{src}]")
-    activeClasses = 'bg-orange bold tsn'
+    activeClasses = 'bg-orange b tsn'
     b.find('[data-src-name=' + b.data('src-selected') + ']').toggleClass activeClasses
     c.toggleClass(activeClasses) if b.data('src-selected') isnt src or !c.attr('class').match activeClasses
     b.data 'src-selected', src
@@ -133,12 +133,12 @@ $(document).ready ->
     t = $(this)
     t.text null
 
-    t.attr 'class', 'btn busy block mt2 mx-auto'
+    t.attr 'class', 'btn busy db mtm mx-auto'
 
     u = t.data 'url'
 
     $.get '/save?url=' + u, (s) ->
-      t.attr 'class', 'block bold mt2 link-reset'
+      t.attr 'class', 'b mtm db link-reset'
       t.text 'Clipped!'
 
       p = $("[data-behavior~=explore_result_item][data-url='#{u}']")
@@ -149,5 +149,5 @@ $(document).ready ->
         $('.modal-overlay').fadeOut 200
         $('#preview').css 'display': 'none'
         t.text 'Clip'
-        t.attr 'class', 'btn bg-blue mt2'
+        t.attr 'class', 'btn bg-blue mtm'
       setTimeout c, 600
