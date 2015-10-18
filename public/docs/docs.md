@@ -1,26 +1,4 @@
-# Features Documentation
-
-<section class="md-col-6 bg-white pam rounded shadow mx-auto">
-<h2 class="h3 grey-4 mtn mb2 caps fc">Sections</h2>
-<ul>
-  <li><a href="#cook-mode">Cook Mode</a></li>
-  <li><a href="#collections">Collections</a></li>
-  <li><a href="#sharing">Sharing</a></li>
-  <li><a href="#save-to-noodles">Save to Noodles</a></li>
-  <li><a href="#favorites">Favorites</a></li>
-  <li><a href="#search">Search</a></li>
-  <li><a href="#clip">Clip from the Web</a></li>
-  <li><a href="#pdf-export">PDF Export</a></li>
-  <li><a href="#embed">Embed</a></li>
-</section>
-
-<style>
-img { margin-left: auto; margin-right: auto; border: 1px solid rgba(0,0,0,.125); border-radius: 3px; }
-</style>
-
-___
-
-<h2 id="cook-mode">Cook Mode</h2>
+<h2 class="mtn" id="cook-mode">Cook Mode</h2>
 
 Cooking with traditional cookbooks is often not the best experience: small text makes it easy to lose one's place. In Noodles, Cook Mode highlights steps and makes reading the recipe in the kitchen much easier.
 

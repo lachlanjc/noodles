@@ -1,8 +1,31 @@
 <% activate_nav!(@nav) %>
-<%= title @title %>
+<%- title @title %>
 
-<%= render "shared/nav" %>
+<%= render 'shared/nav' %>
 
-<main class="md-col-6 phm mx-auto pvm">
-  <%= @doc.html_safe %>
+<h1 class="tc mega mbm mx-auto"><%= @title %></h1>
+<main class="col-12 flex-ns mx-auto">
+  <% if @title == 'Docs' %>
+    <section class="md-col-4 mw5 bg-white pam pal-ns mx-auto rounded shadow flex-first">
+      <h2 class="f3 grey-4 mtn mbm caps tc">Sections</h2>
+      <ul class="list-reset border-bottom border-darken-2 col-12 mbn">
+        <li class="pas border-top border-darken-2"><a href="#cook-mode">Cook Mode</a></li>
+        <li class="pas border-top border-darken-2"><a href="#collections">Collections</a></li>
+        <li class="pas border-top border-darken-2"><a href="#sharing">Sharing</a></li>
+        <li class="pas border-top border-darken-2"><a href="#save-to-noodles">Save to Noodles</a></li>
+        <li class="pas border-top border-darken-2"><a href="#favorites">Favorites</a></li>
+        <li class="pas border-top border-darken-2"><a href="#search">Search</a></li>
+        <li class="pas border-top border-darken-2"><a href="#clip">Clip from the Web</a></li>
+        <li class="pas border-top border-darken-2"><a href="#pdf-export">PDF Export</a></li>
+        <li class="pas border-top border-darken-2"><a href="#embed">Embed</a></li>
+      </ul>
+    </section>
+
+    <style>
+    img { margin-left: auto; margin-right: auto; border: 1px solid rgba(0,0,0,.125); border-radius: 3px; }
+    </style>
+  <% end %>
+  <article class="md-col-6 flex-auto flex-last mw7 mx-auto phm">
+    <%= @doc.html_safe %>
+  </article>
 </main>

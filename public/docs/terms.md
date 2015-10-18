@@ -1,7 +1,4 @@
-# Terms of Service ("Terms")
-
-Last updated: November 16, 2014
-
+<p class="tc grey-2 f5">Last updated on November 16, 2014.</p>
 ___
 
 Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the http://www.getnoodl.es/ website (the "Service") operated by Noodles ("us", "we", or "our").
