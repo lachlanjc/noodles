@@ -5,10 +5,8 @@
   <%= f.label :description, class: 'dib' %><small class='mls'>(optional)</small>
   <%= f.text_area :description, class: 'text-input', placeholder: 'Quickly describe your collection.' %>
 
-  <%= f.label :photo, 'Photo background', class: 'dib' %><small class='mls'>(optional)</small>
-  <%= f.file_field :photo, class: 'dn', data: { behavior: 'photo_field' } %>
-  <div class="pointer" data-behavior="photo_button">
-    <%= react_component 'IconPhoto', size: 24, classes: 'fill-grey-4' %>
+  <div class="btn bg-white btn-sm mts lh" data-behavior="photo_button">
+    <%= inline_svg 'photo-upload.svg', size: 24, class: 'fill-grey-4' %>
     <span class="grey-4 relative f5" style="top: -6px;" data-behavior="photo_name">
     <% if @collection.photo.url.blank? %>
       Upload a photo background
@@ -18,7 +16,12 @@
     </span>
   </div>
 
-  <%= link_to t('general.delete'), @collection, method: :delete, data: { confirm: t('general.delete_collection_forever'), disable_with: 'Deleting...' }, class: 'btn bg-red btn-sm mtm' if @collection.name %>
-
-  <%= f.submit 'Save', class: 'btn bg-blue fr' %>
+  <% if @collection.name %>
+    <footer class="flex fae fjb mts">
+      <%= link_to t('general.delete'), @collection, method: :delete, data: { confirm: t('general.delete_collection_forever'), disable_with: 'Deleting...' }, class: 'btn bg-red btn-sm' %>
+      <%= f.submit 'Save', class: 'btn bg-blue' %>
+    </footer>
+  <% else %>
+    <%= f.submit 'Create', class: 'btn bg-green mtm db' %>
+  <% end %>
 <% end %>

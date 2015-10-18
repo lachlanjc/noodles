@@ -1,7 +1,10 @@
-.flex { display: flex }
+.flex          { display: flex }
 
 .fac           { align-items: center }
+.fab           { align-items: baseline }
+.fae           { align-items: flex-end }
 .fjc           { justify-content: center }
+.fjb           { justify-content: space-between }
 
 .flex-auto {
   flex: 1 1 auto;
@@ -15,12 +18,9 @@
 .flex-column  { flex-direction: column }
 .flex-wrap    { flex-wrap: wrap }
 
-.flex-baseline { align-items: baseline }
 .flex-stretch  { align-items: stretch }
 .flex-start    { align-items: flex-start }
-.flex-end      { align-items: flex-end }
 
-.flex-justify  { justify-content: space-between }
 .flex-around   { justify-content: space-around }
 
 .flex-grow { flex: 1 0 auto }
