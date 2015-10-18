@@ -20,7 +20,7 @@
       <%= content_tag :li,
                        item_text.html_safe,
                        data: { behavior: 'checklist_item' },
-                       class: 'pointer' if strip_tags(item_text).length > 1 %>
+                       class: 'pointer' if item.strip.present? %>
     <% end %>
     </ul>
 
@@ -53,13 +53,13 @@
       <%= content_tag :div,
                        plain_text_from_markdown(step.to_s).html_safe,
                        data: { behavior: 'checklist_item' },
-                       class: 'h2 grey-2 bg-white rounded shadow pointer pam db mbm' if strip_tags(step.to_s).length > 1 %>
+                       class: 'h2 grey-2 bg-white rounded shadow pointer pam db mbm' if step.strip.present? %>
     <% end %>
 
     <div class="bg-white rounded shadow pam db h2 tc mbm grey-2">
       <span>And now you're finished! Enjoy the <%= @recipe.title %>.</span>
 
-      <%= image_tag @recipe.img, alt: "Photo of " + @recipe.title, class: "mtm mx-auto rounded" if @recipe.img.present? %>
+      <%= image_tag @recipe.img, alt: 'Photo of ' + @recipe.title, class: 'mtm mx-auto rounded' if @recipe.img.present? %>
 
       <% if me_owns_recipe? %>
         <%= form_for(@recipe, url: recipe_path(@recipe, cook: true), html: { class: 'mts h4' }) do |f| %>
