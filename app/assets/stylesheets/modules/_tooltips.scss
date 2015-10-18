@@ -1,0 +1,29 @@
+.tooltipped:after {
+  position: absolute;
+  z-index: 1000000;
+  display: none;
+  pointer-events: none;
+  content: attr(aria-label);
+  padding: 4px 8px;
+  font-size: .875rem;
+  line-height: 1.5;
+  color: $grey-6;
+  background: $grey-3;
+  border-radius: $border-radius;
+  right: 100%;
+  bottom: 50%;
+  margin-right: .5rem;
+  transform: translateY(50%);
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.tooltipped:hover,
+.tooltipped:active,
+.tooltipped:focus {
+   &:after {
+     display: inline-block;
+   }
+}
+

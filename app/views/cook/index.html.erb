@@ -87,10 +87,14 @@
     <%= inline_svg 'exit.svg' %>
   <% end %>
 <% else %>
-  <%= link_to recipe_path(@recipe), class: 'btn-paper-mini bg-orange fill-white circle fixed pas shadow' do %>
-    <%= inline_svg 'exit.svg' %>
-  <% end %>
-  <%= link_to edit_recipe_path(@recipe), class: 'btn-paper bg-orange fill-white circle fixed pam shadow' do %>
+  <%= link_to edit_recipe_path(@recipe),
+              class: 'btn-paper-mini bg-orange fill-white circle fixed pas shadow tooltipped',
+              'aria-label': 'Edit this recipe' do %>
     <%= inline_svg 'edit.svg' %>
+  <% end %>
+  <%= link_to recipe_path(@recipe),
+              class: 'btn-paper bg-orange fill-white circle fixed pam shadow tooltipped',
+              'aria-label': 'Exit Cook Mode' do %>
+    <%= inline_svg 'exit.svg' %>
   <% end %>
 <% end %>
