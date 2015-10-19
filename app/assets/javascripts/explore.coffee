@@ -90,13 +90,13 @@ $(document).ready ->
     b.attr 'data-behavior', null
     b.attr 'href', '/recipes/' + id
     b.removeClass 'bg-blue busy'
-    b.attr 'style', 'color: #0086eb; box-shadow: inset 0 0 0 2px #0092ff;'
+    b.attr 'style', 'color: #0092ff; box-shadow: inset 0 0 0 2px #0092ff;'
     b.text 'Clipped!'
 
   $(document).on 'click', '[data-behavior~=explore_clip_from_list]', ->
     t = $(this)
     t.text null
-    t.toggleClass 'bg-blue busy mx-auto'
+    t.toggleClass 'bg-blue busy'
 
     u = '/save?url=' + t.closest('[data-behavior~=explore_result_item]').data 'url'
     $.get u, (s) ->
@@ -146,8 +146,8 @@ $(document).ready ->
       clippingFinished p, s
 
       c = ->
-        $('.modal-overlay').fadeOut 200
-        $('#preview').css 'display': 'none'
+        $('.modal-overlay').fadeOut 175
+        $('[data-behavior=explore_preview_modal]').css 'display': 'none'
         t.text 'Clip'
         t.attr 'class', 'btn bg-blue mtm'
       setTimeout c, 600
