@@ -18,7 +18,8 @@ class Recipe < ActiveRecord::Base
   end
 
   protected
-    def generate_shared_id
-      self.shared_id = rand(32**8).to_s(32)
-    end
+
+  def generate_shared_id
+    self.shared_id = rand(32**8).to_s(32)
+  end
 end

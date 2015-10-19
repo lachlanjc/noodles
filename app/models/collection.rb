@@ -26,7 +26,8 @@ class Collection < ActiveRecord::Base
   end
 
   protected
-    def generate_hash_id
-      self.hash_id = rand(32**8).to_s(32)
-    end
+
+  def generate_hash_id
+    self.hash_id = rand(32**8).to_s(32)
+  end
 end

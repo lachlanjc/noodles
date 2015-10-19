@@ -69,7 +69,7 @@ class RecipesController < ApplicationController
   end
 
   def notes
-    @notes_blankslate = "<p>No notes for this recipe yet.</p>".html_safe if @recipe.notes.blank?
+    @notes_blankslate = '<p>No notes for this recipe yet.</p>'.html_safe if @recipe.notes.blank?
   end
 
   def update_notes
@@ -126,7 +126,6 @@ class RecipesController < ApplicationController
       r.save
     end
     @new_recipe.save
-
     flash[:green] = "#{@recipe.title} has been saved!"
     redirect_to @new_recipe
   end
