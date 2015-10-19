@@ -6,6 +6,7 @@
   <%= f.text_area :description, class: 'text-input', placeholder: 'Quickly describe your collection.' %>
 
   <div class="btn bg-white btn-sm mts lh" data-behavior="photo_button">
+    <%= f.file_field :photo, class: 'dn', 'data-behavior': 'photo_field' %>
     <%= inline_svg 'photo-upload.svg', size: 24, class: 'fill-grey-4' %>
     <span class="grey-4 relative f5" style="top: -6px;" data-behavior="photo_name">
     <% if @collection.photo.url.blank? %>
@@ -16,12 +17,12 @@
     </span>
   </div>
 
-  <% if @collection.name %>
-    <footer class="flex fae fjb mts">
+  <footer class="flex fae fjb mts">
+    <% if @collection.name %>
       <%= link_to t('general.delete'), @collection, method: :delete, data: { confirm: t('general.delete_collection_forever'), disable_with: 'Deleting...' }, class: 'btn bg-red btn-sm' %>
       <%= f.submit 'Save', class: 'btn bg-blue' %>
-    </footer>
-  <% else %>
-    <%= f.submit 'Create', class: 'btn bg-green mtm db' %>
-  <% end %>
+    <% else %>
+      <%= f.submit 'Create', class: 'btn bg-green mtm db' %>
+    <% end %>
+  </footer>
 <% end %>
