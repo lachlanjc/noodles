@@ -73,7 +73,7 @@ class RecipesHome extends React.Component {
     const protip = protips[_.random(0, 2)];
     return (
       <div className='mbl tc'>
-        <IconProtip size='24' classes='dib fill-grey-4 mr1 relative' style={{top: 6}} />
+        <IconProtip size='24' classes='dib fill-grey-4 mrs relative' style={{top: 6}} />
         <strong>ProTip! </strong>
         {protip}
       </div>
