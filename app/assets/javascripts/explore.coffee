@@ -1,12 +1,12 @@
-#= require imagesloaded/imagesloaded.pkgd.min.js
 #= require masonry/dist/masonry.pkgd.min.js
+#= require imagesloaded/imagesloaded.pkgd.min.js
 
 $(document).ready ->
   activateSrc = (src) ->
     b = $('[data-behavior~=explore_src_pick_bar]')
     c = b.find("[data-behavior~=explore_src_pick][data-src-name=#{src}]")
     activeClasses = 'bg-orange b tsn'
-    b.find('[data-src-name=' + b.data('src-selected') + ']').toggleClass activeClasses
+    b.find("[data-src-name=#{b.data('src-selected')}]").toggleClass activeClasses
     c.toggleClass(activeClasses) if b.data('src-selected') isnt src or !c.attr('class').match activeClasses
     b.data 'src-selected', src
 
@@ -32,7 +32,8 @@ $(document).ready ->
 
   logSearchToIntercom = ->
     u = $('[data-behavior~=nav]').data 'user'
-    if u isnt 'anon'
+    q = _.trim $('[data-behavior~=explore_search_field]').val()
+    if u isnt 'anon' and !_.isEmpty q
       e =
         user_id: u
         query: _.trim $('[data-behavior~=explore_search_field]').val()
@@ -41,7 +42,8 @@ $(document).ready ->
 
   searchActions = ->
     t = $('[data-behavior~=explore_search_field]')
-    if q = _.trim t.val()
+    q = _.trim t.val()
+    unless _.isEmpty q
       r = $('[data-behavior~=explore_results_container]')
       r.html null
       r.removeClass 'tc mw7'
