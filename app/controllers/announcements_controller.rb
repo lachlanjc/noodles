@@ -13,6 +13,8 @@ class AnnouncementsController < ApplicationController
 
   # GET /announcements/1
   def show
+    @remove_grey_bg = true
+    @recents = Announcement.all.order(created_at: :desc).where(["id != #{@announcement.id}"]).limit(3)
   end
 
   # GET /announcements/new

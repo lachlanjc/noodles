@@ -11,21 +11,35 @@
   <meta name="twitter:title" content="<%= @title %>">
   <meta property="og:image" content="<%= image_url('apple-touch-icon.png') %>"/>
   <meta name="twitter:image:src" content="<%= image_url('apple-touch-icon.png') %>">
-  <meta property="og:description" content="Check out these updates to Noodles, a simple app to keep, cook, and share all your recipes.">
-  <meta name="twitter:description" content="Check out these updates to Noodles, a simple app to keep, cook, and share all your recipes.">
+  <meta property="og:description" content="Check out this update to Noodles, a simple app to keep, cook, and share all your recipes.">
+  <meta name="twitter:description" content="Check out this update to Noodles, a simple app to keep, cook, and share all your recipes.">
 <% end -%>
 
 <%= render 'shared/nav' %>
 
-<article class="document">
-  <h1 class="man">
+<article class="md-col-8 mw7 mx-auto pam pal-ns">
+  <h1 class="man f2 f1-ns tc">
     <%= @announcement.title %>
   </h1>
-  <p class="grey-3">
+  <p class="grey-3 tc mbl">
     <%= @announcement.created_at.strftime '%B %e, %Y' %>
-    <%= link_to 'Delete', @announcement, method: :delete, data: { confirm: 'Are you sure?' }, class: 'red b' if @admin %>
+    <%= link_to 'Delete', @announcement, method: :delete, data: { confirm: 'Are you sure?' }, class: 'red b dib mls' if @admin %>
   </p>
   <div class="text text-normalized">
     <%= @announcement.body_rendered.html_safe %>
   </div>
 </article>
+
+<hr class="col-12 mbn">
+
+<footer class="md-col-8 mw7 mx-auto phm pvl pvxl-ns">
+  <h3 class="caps regular grey-1 mtn mbm">Similar</h3>
+  <ul class="phn man list-reset">
+    <% @recents.each do |recent| %>
+      <li class="mbs grey-2">
+        <%= link_to "#{recent.title} ›", announcement_path(recent), class: 'link-reset', title: recent.title %>
+      </li>
+    <% end %>
+  </ul>
+</footer>
+
