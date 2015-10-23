@@ -1,7 +1,31 @@
 <% activate_nav!(:collections) %>
 <%- title @collection.name %>
 
-<%= render "shared/nav" %>
+<% content_for :meta do -%>
+  <% if @collection.img.url.present? %>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:image" content="<%= @collection.photo.url %>"/>
+    <meta name="twitter:image" content="<%= @collection.photo.url %>">
+  <% else %>
+    <meta name="twitter:card" content="summary">
+  <% end %>
+  <meta property="og:site_name" content="Noodles" />
+  <meta property="og:url" content="<%= @shared_url %>">
+  <meta property="og:title" content="<%= @collection.name %>">
+  <meta name="twitter:title" content="<%= @collection.name %>">
+  <% if @recipe.description.blank? %>
+    <% @description = "Check out this collection published on Noodles by #{@collection.user.first_name}." %>
+    <meta property="og:description" content="<%= @description %>">
+    <meta property="twitter:description" content="<%= @description %>">
+  <% else %>
+    <meta property="og:description" content="<%= @collection.description %> — Published on Noodles">
+    <meta name="twitter:description" content="<%= @collection.description %> — Published on Noodles">
+    <meta name="description" content="<%= @collection.description %> — Published on Noodles">
+  <% end %>
+<% end -%>
+
+<%= render 'shared/nav' %>
+
 <%= react_component("CollectionPage", id: @collection.id, edit: false, pub: true) %>
 
 <div class="modal" id="shareCollection">

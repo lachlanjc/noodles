@@ -1,6 +1,19 @@
 <% activate_nav!(:explore) %>
 <% title 'Explore' %>
 
+<% content_for :meta do -%>
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta property="og:site_name" content="Noodles">
+  <meta name="twitter:site" content="@noodlesapp">
+  <meta name="twitter:domain" content="www.getnoodl.es">
+  <meta property="og:url" content="<%= explore_path %>">
+  <meta property="og:title" content="Noodles Explore">
+  <meta name="twitter:title" content="Noodles Explore">
+  <meta property="og:description" content="Find the best recipes on the web with Noodles Explore.">
+  <meta name="twitter:description" content="Find the best recipes on the web with Noodles Explore.">
+<% end -%>
+
 <%= render 'shared/nav' %>
 
 <header class="relative inline-with-nav image-header bg-center bg-no-repeat bg-cover pvxl phm flex fac"
