@@ -32,19 +32,27 @@
 </header>
 
 <main class="md-col-10 mx-auto pam tc mw7" data-behavior="explore_results_container">
-  <h2 class="mtn normal">
-    Find the best recipes on the web with <span class="b">Explore</span>.
-  </h2>
-  <% if user_signed_in? %>
-    <p>
-      Search for anything you want to cook &mdash;
-      you can save the recipes to your Noodles with just a click.
-    </p>
-  <% else %>
-    <p>
-      Search for anything you want to cook to get started. Sign up for Noodles to save the recipe.
-    </p>
-  <% end %>
+  <article class="col-12 rounded bg-white shadow phm pvl mbl mx-auto bs-bb mw6">
+    <h2 class="mtn normal">
+      Find the best recipes on the web with <span class="b">Explore</span>.
+    </h2>
+    <% if user_signed_in? %>
+      <p class="mbn">
+        Search for anything you want to cook &mdash;
+        you can save the recipes to your Noodles with just a click.
+      </p>
+    <% else %>
+      <p>
+        Search for anything you want to cook.
+        <br class="dn db-ns">
+        Sign up to save the recipe.
+      </p>
+      <div class="tc mtm" data-behavior="inline_signup_btn_container">
+        <a href="#signup" name="signup" data-behavior="modal_trigger inline_signup_btn" class="btn bg-blue">Sign up for Noodles</a>
+        <%= link_to 'Sign back in', sign_in_path, class: 'mls-ns mtm btn bg-white' %>
+      </div>
+    <% end %>
+  </article>
 </main>
 
 <h2 class="phm mx-auto mw7 normal tc mtn mbm" data-behavior="explore_suggestions">
@@ -53,10 +61,6 @@
 </h2>
 
 <% if nobody_signed_in? %>
-  <div class="tc mbl" data-behavior="inline_signup_btn_container">
-    <a href="#signup" name="signup" data-behavior="modal_trigger inline_signup_btn" class="btn bg-orange b">Sign up for Noodles</a>
-    <%= link_to 'Sign back in', sign_in_path, class: 'mls btn bg-blue' %>
-  </div>
   <section class="modal" role="dialog" id="signup">
     <%= modal_close %>
     <h2 class="orange mbn">Sign up for Noodles</h2>
