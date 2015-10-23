@@ -32,9 +32,7 @@
       <div class="pvs">
         <%= link_to t("general.home"), root_url, class: "phs link-reset white normal" %>
         <%= link_to t("general.features"), docs_path, class: "phs link-reset white normal" %>
-        <%= link_to "Blog", announcements_path, class: "phs link-reset white link-reset white" %>
-        <%= link_to t("general.about"), help_path, class: "phs link-reset white normal" %>
-        <%= link_to t("general.sign_out"), sign_out_path, method: :delete, class: "phs link-reset white normal" if user_signed_in? %>
+        <%= link_to 'Explore', explore_path, class: 'phs link-reset white normal' %>
       </div>
 
       <div class="flex-auto mts dn dib-ns">
@@ -50,6 +48,9 @@
       </div>
 
       <div class="pvs">
+        <%= link_to "Blog", announcements_path, class: "phs link-reset white link-reset white" %>
+        <%= link_to t("general.about"), help_path, class: "phs link-reset white normal" %>
+        <%= link_to t("general.sign_out"), sign_out_path, method: :delete, class: "phs link-reset white normal" if user_signed_in? %>
         <% if user_signed_in? %>
           <%= link_to "Your recipes →", recipes_path, class: "phs link-reset white" %>
         <% else %>
