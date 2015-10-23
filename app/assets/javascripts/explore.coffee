@@ -127,6 +127,8 @@ $(document).ready ->
       c.removeClass 'busy busy-large mx-auto'
       c.html d
 
+    $(document).on 'click', '.modal-overlay', -> $(this).hide 200
+
   $(document).on 'click', '[data-behavior~=explore_trigger_inline_signup]', ->
     $(this).closest('.modal').hide()
     $('[data-behavior~=inline_signup_btn]').click()
@@ -148,7 +150,7 @@ $(document).ready ->
       clippingFinished p, s
 
       c = ->
-        $('.modal-overlay').fadeOut 175
+        $('.modal-overlay').fadeOut 200
         $('[data-behavior=explore_preview_modal]').css 'display': 'none'
         t.text 'Clip'
         t.attr 'class', 'btn bg-blue mtm'
