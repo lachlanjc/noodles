@@ -8,11 +8,11 @@ class CollectionIndex extends React.Component {
             return <CollectionItem key={collection.id} coll={collection} />;
           })}
           {_.isEmpty(this.props.collections) ?
-            <div className='md-col-8 mx-auto mtm text tc border bg-white rounded pal'>
-              <h3 className='mtn'>You don't have any collections yet.</h3>
+            <div className='md-col-8 mw6 mx-auto mtm text tc border bg-white rounded pal'>
+              <h3 className='mtn mbm'>You don't have any collections yet.</h3>
               <p>Collections help you organize your recipes.</p>
               <p className='mbn'>You can use them for categories, such as salads or pastas, or recipes that might be good for a summer dinner party.</p>
-              <a href='#newCollection' className='btn bg-blue mtm' data-behavior='modal_trigger'>Create your first collection</a>
+              <a href='#newCollection' className='btn bg-green mtm' data-behavior='modal_trigger'>Create your first collection</a>
             </div>
           : null}
         </article>
