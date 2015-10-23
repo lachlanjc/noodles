@@ -53,7 +53,7 @@
 </h2>
 
 <% if nobody_signed_in? %>
-  <div class="tc" data-behavior="inline_signup_btn_container">
+  <div class="tc mbl" data-behavior="inline_signup_btn_container">
     <a href="#signup" name="signup" data-behavior="modal_trigger inline_signup_btn" class="btn bg-orange b">Sign up for Noodles</a>
     <%= link_to 'Sign back in', sign_in_path, class: 'mls btn bg-blue' %>
   </div>
@@ -63,6 +63,10 @@
     <%= render 'devise/registrations/new', user: User.new, text: 'Noodles is, and always will be, totally free.',
                                            params: { explore: true },
                                            options: { class: 'modal-scroll', data: { remote: true, behavior: 'inline_signup_form' } } %>
+    <div class="dn tc" data-behavior="inline_signup_error">
+      <p class="f3 red norma">Something went wrong.</p>
+      <%= link_to 'Try Again', sign_up_path, class: 'btn bg-blue' %>
+    </div>
   </section>
 <% end %>
 
