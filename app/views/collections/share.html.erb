@@ -2,7 +2,7 @@
 <%- title @collection.name %>
 
 <% content_for :meta do -%>
-  <% if @collection.img.url.present? %>
+  <% if @collection.photo.url.present? %>
     <meta name="twitter:card" content="summary_large_image">
     <meta property="og:image" content="<%= @collection.photo.url %>"/>
     <meta name="twitter:image" content="<%= @collection.photo.url %>">
@@ -13,7 +13,7 @@
   <meta property="og:url" content="<%= @shared_url %>">
   <meta property="og:title" content="<%= @collection.name %>">
   <meta name="twitter:title" content="<%= @collection.name %>">
-  <% if @recipe.description.blank? %>
+  <% if @collection.description.blank? %>
     <% @description = "Check out this collection published on Noodles by #{@collection.user.first_name}." %>
     <meta property="og:description" content="<%= @description %>">
     <meta property="twitter:description" content="<%= @description %>">
