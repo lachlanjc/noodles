@@ -5,28 +5,30 @@ class EpicuriousSearchScraper
   include Wombat::Crawler
 
   def scrape(q)
-    scraped_data = Wombat.crawl do
-      base_url 'http://epicurious.com'
-      path '/tools/searchresults?search=' + q
+    scraper = Mechanize.new
+    scraper.history_added = Proc.new { sleep 0.4 }
 
-      results 'css=#searchresults #recipe_main .sr_rows', :iterator do
-        title 'css=.sr_title a'
-        description 'css=.sr_source'
-        image 'css=a:first-child', :html
-        url 'css=.sr_title', :html
-      end
+    results = []
+    raw_results = scraper.get( 'http://epicurious.com/tools/searchresults?search=' + q).search('#searchresults #recipe_main .sr_rows')
+    raw_results.each do |item|
+      result = {}
+      result['url'] = 'http://epicurious.com' + item.at_css('a').attr('href').to_s
+      result['title'] = item.search('.sr_title a').text.strip
+      result['description'] = item.search('.sr_source').text.strip.gsub(/\s+/, ' ').truncate(164)
+      result['image'] = item.at_css('img').attr('src')
+      results.push(result)
     end
-    scraped_data['results'].delete_if { |item| item['title'].blank? || item['url'].blank? }
-    scraped_data['results'].each do |result|
-      result['url'] = 'http://epicurious.com' + Nokogiri::HTML(result['url'].to_s).at_css('a')['href'].to_s
-      result['description'] = result['description'].gsub(/\s+/, ' ').truncate(164)
-      if result['image'].to_s.length > 2
-        s = Nokogiri::HTML(result['image'].to_s).at_css('img').attributes['src'].value
+    results.delete_if { |item| item['url'].blank? || item['title'].blank? }
+    results.each do |result|
+      if result['image'].match('/i/recipe-img-icon')
+        result['image'] = ''
+      else
+        s = result['image']
         s.gsub!(/_116/, '')
         s.gsub!(/_120/, '_500')
-        result['image'] =  s.match('assets') ? s : 'http://epicurious.com' + s
+        result['image'] = s.match('assets') ? s : 'http://epicurious.com' + s
       end
     end
-    scraped_data['results']
+    results
   end
 end
