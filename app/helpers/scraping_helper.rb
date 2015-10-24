@@ -1,17 +1,6 @@
+# Provide all services related to scraping the web for a recipe.
 module ScrapingHelper
   include RecipesHelper
-
-  def find_host(url)
-    URI(url).host.to_s
-  end
-
-  def find_domain(url)
-    find_host(url).match(/[^\.]+\.\w+$/).to_s
-  end
-
-  def find_path(url)
-    URI(url).path.to_s
-  end
 
   def master_scrape(url)
     host = find_domain(url)
@@ -19,62 +8,79 @@ module ScrapingHelper
 
     case host
     when 'nytimes.com'
-      load 'scrapers/ny_cooking.rb'
+      load 'scrapers/nyt.rb'
       NYCookingScraper.new.scrape(path)
     when 'bonappetit.com'
       load 'scrapers/bon_appetit.rb'
       BonAppetitScraper.new.scrape(path)
-    when 'allrecipes.com'
-      load 'scrapers/allrecipes.rb'
-      AllRecipesScraper.new.scrape(path)
-    when 'marthastewart.com'
-      load 'scrapers/marthastewart.rb'
-      MarthaStewartScraper.new.scrape(path)
-    when 'food52.com'
-      load 'scrapers/food52.rb'
-      Food52Scraper.new.scrape(path)
     else
-      page = open(url).read
+      page = safely { open(url).read }
       data = Hangry.parse page
-      if data.name.to_s.length > 2
-        document = Nokogiri::HTML::DocumentFragment.parse(page)
-        # Crappy hack for Food & Wine b/c they use the name itemprop in the wong places
-        data.name = Nokogiri::HTML::DocumentFragment.parse(page).css('[itemprop=name]')[2].text.strip if host == 'foodandwine.com'
-        inst = '[itemprop=recipeInstructions]'
-        if host == 'epicurious.com'
-          d = document.css('[itemprop=description] .truncatedTextModuleText')[0]
-          data.description = d.blank? ? '' : d.text.strip
-          insts = document.css("#{inst} > p:not(#chefNotes)")
-          insts = document.css("#{inst} li:not(#chefNotes)") if insts.empty?
-          data.instructions = insts.text.strip
-        end
-        # Support sites (mainly blogs) that use recipeInstructions oddly
-        if data.instructions.match(/\n/).blank?
-          data.instructions = []
-          document.css(inst).each do |s|
-            data.instructions.push(s.text.to_s.strip)
-          end
-        end
-        recipe = {}
-        recipe['title'] = data.name
-        recipe['description'] = data.description
-        recipe['ingredients'] = data.ingredients
-        recipe['instructions'] = data.instructions
-        recipe['serves'] = data.yield.to_s.squish.capitalize
-        recipe
+      # Allrecipes has trouble with names
+      if data.name.to_s.squish.length > 1 || host.match('allrecipes.com')
+        data = process_recipe_page(url, page, data)
       else
         false
       end
     end
   end
 
+  # Process recipe pages
+  def process_recipe_page(url, page, data)
+    host = find_domain(url).to_s
+    document = Nokogiri::HTML::DocumentFragment.parse(page)
+    if host.match('epicurious.com')
+      data = process_epicurious_page!(data, document)
+    # F&W/AR use the name itemprop in the wong places
+    elsif host.match('allrecipes.com')
+      data.name = document.css('[itemprop=name]')[1].children.to_s
+    elsif host.match('foodandwine.com')
+      data.name = document.css('[itemprop=name]')[2].text.strip
+    elsif host.match('marthastewart.com')
+      data.instructions = document.css('.directions-list .directions-item').text
+    elsif data.instructions.match(/\n/).blank?
+      data = process_blog_page!(data, document)
+    end
+    recipe = create_recipe_item(data)
+  end
+
+  def create_recipe_item(data)
+    recipe = {}
+    recipe['title'] = data.name.to_s.squish
+    recipe['description'] = data.description
+    recipe['ingredients'] = data.ingredients
+    recipe['instructions'] = data.instructions
+    recipe['serves'] = data.yield.to_s.squish.capitalize
+    recipe
+  end
+
+  # Clean up inconsistencies in Epicurious pages
+  def process_epicurious_page!(data, document)
+    d = document.css('[itemprop=description] .truncatedTextModuleText')[0]
+    data.description = d.blank? ? '' : d.text.strip
+    insts = document.css("#{inst} > p:not(#chefNotes)")
+    insts = document.css("#{inst} li:not(#chefNotes)") if insts.empty?
+    data.instructions = insts.text.strip
+    data
+  end
+
+  # Support sites (mainly blogs) that use recipeInstructions oddly
+  def process_blog_page!(data, document)
+    data.instructions = []
+    document.css(inst).each do |s|
+      data.instructions.push(s.text.to_s.strip)
+    end
+    data
+  end
+
+  # Create a Recipe with provided data, and respond appropriately
   def create_recipe(recipe_data, url_source, flash_text)
     recipe = Recipe.new do |r|
       r.user_id = current_user.id
-      r.title = recipe_data['title']
+      r.title = recipe_data['title'].to_s.squish
       r.description = recipe_data['description'].to_s.squish
-      r.ingredients = write_ingredients_to_list(recipe_data['ingredients']).to_s
-      r.instructions = form_markdown_for_instructions(recipe_data['instructions']).to_s
+      r.ingredients = process_recipe_ingredients(recipe_data['ingredients']).to_s
+      r.instructions = process_recipe_instructions(recipe_data['instructions']).to_s
       r.source = url_source
       r.author = recipe_data['author'].to_s.squish
       r.serves = recipe_data['serves'].to_s.squish
@@ -92,13 +98,30 @@ module ScrapingHelper
     end
   end
 
-  # Wombat returns arrays for ingredients and instructions, but Hangry returns strings.
-  # These methods do a ton of cleanup on the text, normalizing it and removing weirdness.
-  # They also convert the arrays and strings into actual text.
-  # The instructions method then writes numbered list Markdown.
+  # Fully process recipe ingredients
+  def process_recipe_ingredients(ingredients)
+    return if ingredients.blank?
+    ingredients = clean_ingredients(ingredients)
+    ingredients = write_ingredients_to_list(ingredients)
+    ingredients
+  end
 
+  # Remove inconsistencies in ingredient formatting
+  def clean_ingredients(ingredients)
+    if ingredients.is_a?(String) && ingredients.match(/\s\s+/)
+      ingredients = ingredients.split(/\s\s+/)
+    end
+    # Each of the steps is now in an array.
+    # Remove any custom lists
+    ingredients.each { |item| item.gsub! /^\-|\*\s?/, '' }
+    ingredients
+  end
+
+  # Write a list of ingredients
   def write_ingredients_to_list(ingredients)
     return if ingredients.blank?
+    ingredients.split(/\s\s+/) if ingredients.is_a?(String)
+
     ingredients_list = ''
     ingredients.each do |item|
       ingredients_list += "#{item.to_s.squish.capitalize}\n"
@@ -106,25 +129,55 @@ module ScrapingHelper
     ingredients_list.to_s.strip
   end
 
-  def form_markdown_for_instructions(instructions)
+  # Fully process recipe instructions
+  def process_recipe_instructions(instructions)
     return if instructions.blank?
-    steps = instructions
-    if instructions.is_a? String
-      # Remove newlines in the middle
-      steps = steps.to_s.match(/\r\n/) ? steps.gsub!(/\r\n/, ' ') : steps
-      # Split into array
-      steps = steps.to_s.match(/\s\s+/) ? steps.split(/\s\s+/) : [].push(steps)
-    else
-      steps = instructions
+    steps = clean_instructions(instructions)
+    steps = form_markdown_for_instructions(steps)
+    steps
+  end
+
+  # Remove inconsistencies in instruction formatting
+  def clean_instructions(steps)
+    if steps.is_a?(String) && steps.match(/\s\s+/)
+      steps = steps.split /\n/
+    # elsif steps.is_a? Array
+      # steps.each { |step| step.gsub! /\s\s+/, ' ' }
     end
-    # Remove crap "steps"
-    steps.delete_if { |step| step.to_s.strip.gsub(/\s\s/, ' ').length < 3 || step.match('Preparation') }
-    # Remove custom numbering
-    steps.each { |step| step.gsub! /^\w?\d\.?/, '' }
+    # Each of the steps is now in an array.
+    # Remove useless steps
+    steps.delete_if do |step|
+      step.to_s.strip.gsub(/\s\s/, ' ').length < 3 || step.to_s.match('Preparation')
+    end
+    steps.each do |step|
+      # Remove any custom numbering
+      step.gsub! /^\w?\d\.?/, ''
+      # Remove line breaks in the middle
+      step.gsub! /\s\s+/, ' '
+    end
+    steps
+  end
+
+  # Generate Markdown based on instructions
+  def form_markdown_for_instructions(instructions)
     instructions_md = ''
-    steps.each_with_index do |step, id|
+    instructions.each_with_index do |step, id|
       instructions_md += "#{(id + 1).to_s}. #{step.to_s.squish}\n"
     end
     instructions_md.to_s.strip
+  end
+
+  protected
+
+  def inst
+    '[itemprop=recipeInstructions]'
+  end
+
+  def find_domain(url)
+    URI(url).host.to_s.match(/[^\.]+\.\w+$/).to_s
+  end
+
+  def find_path(url)
+    URI(url).path.to_s
   end
 end

@@ -9,7 +9,8 @@ class EpicuriousSearchScraper
     scraper.history_added = Proc.new { sleep 0.4 }
 
     results = []
-    raw_results = scraper.get( 'http://epicurious.com/tools/searchresults?search=' + q).search('#searchresults #recipe_main .sr_rows')
+    page = scraper.get('http://epicurious.com/tools/searchresults?search=' + q)
+    raw_results = page.search('#searchresults #recipe_main .sr_rows')
     raw_results.each do |item|
       result = {}
       result['url'] = 'http://epicurious.com' + item.at_css('a').attr('href').to_s

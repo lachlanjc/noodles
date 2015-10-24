@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class CollectionsControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+
   setup do
     sign_in users(:one)
     @collection = collections(:one)
