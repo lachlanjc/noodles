@@ -6,18 +6,13 @@ module ScrapingHelper
     host = find_domain(url)
     path = find_path(url)
 
-    if host.match 'bonappetit.com'
-      load 'scrapers/bon_appetit.rb'
-      BonAppetitScraper.new.scrape(path)
+    page = safely { open(url).read }
+    data = Hangry.parse page
+    # Allrecipes has trouble with names
+    if data.name.to_s.squish.length > 1 || host.match('allrecipes.com')
+      data = process_recipe_page(url, page, data)
     else
-      page = safely { open(url).read }
-      data = Hangry.parse page
-      # Allrecipes has trouble with names
-      if data.name.to_s.squish.length > 1 || host.match('allrecipes.com')
-        data = process_recipe_page(url, page, data)
-      else
-        false
-      end
+      false
     end
   end
 
@@ -34,6 +29,9 @@ module ScrapingHelper
       data.name = document.css('[itemprop=name]')[0].text.to_s
     elsif host.match('foodandwine.com')
       data.name = document.css('[itemprop=name]')[2].text.to_s.squish
+    elsif host.match('bonappetit.com')
+      data.instructions = document.css('.prep-steps li.step').text
+      data.author = document.css('.contributors li')[0].text.strip
     elsif host.match('marthastewart.com')
       data.instructions = document.css('.directions-list .directions-item').text
     elsif host.match('driscolls.com')
@@ -50,7 +48,7 @@ module ScrapingHelper
     recipe['description'] = data.description
     recipe['ingredients'] = data.ingredients
     recipe['instructions'] = data.instructions
-    recipe['serves'] = data.yield.to_s.squish.capitalize
+    recipe['serves'] = data.yield.to_s.capitalize.gsub('Servings:', '').strip
     recipe
   end
 
@@ -59,7 +57,6 @@ module ScrapingHelper
     data.ingredients = document.search('.recipe-ingredients')[0].text.strip.gsub(/\n\n+\s+/, ' ')
     data.instructions = document.search('.recipe-steps').text
     data.author = document.search('.recipe-subhead span[itemprop=author]').text
-    #data.notes = document.search('.recipe-note-description').text
     data
   end
 
