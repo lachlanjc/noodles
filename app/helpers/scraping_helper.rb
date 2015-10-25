@@ -6,11 +6,7 @@ module ScrapingHelper
     host = find_domain(url)
     path = find_path(url)
 
-    case host
-    when 'nytimes.com'
-      load 'scrapers/nyt.rb'
-      NYCookingScraper.new.scrape(path)
-    when 'bonappetit.com'
+    if host.match 'bonappetit.com'
       load 'scrapers/bon_appetit.rb'
       BonAppetitScraper.new.scrape(path)
     else
@@ -29,7 +25,9 @@ module ScrapingHelper
   def process_recipe_page(url, page, data)
     host = find_domain(url).to_s
     document = Nokogiri::HTML::DocumentFragment.parse(page)
-    if host.match('epicurious.com')
+    if host.match('nytimes.com')
+      data = process_nyt_page!(data, document)
+    elsif host.match('epicurious.com')
       data = process_epicurious_page!(data, document)
     # F&W/AR use the name itemprop in the wong places
     elsif host.match('allrecipes.com')
@@ -54,6 +52,15 @@ module ScrapingHelper
     recipe['instructions'] = data.instructions
     recipe['serves'] = data.yield.to_s.squish.capitalize
     recipe
+  end
+
+  # Adjust for NYT Cooking pages
+  def process_nyt_page!(data, document)
+    data.ingredients = document.search('.recipe-ingredients')[0].text.strip.gsub(/\n\n+\s+/, ' ')
+    data.instructions = document.search('.recipe-steps').text
+    data.author = document.search('.recipe-subhead span[itemprop=author]').text
+    #data.notes = document.search('.recipe-note-description').text
+    data
   end
 
   # Clean up inconsistencies in Epicurious pages
@@ -113,9 +120,14 @@ module ScrapingHelper
     if ingredients.is_a? String
       ingredients = ingredients.split(/\s\s+/)
     end
+    ingredients.delete_if { |item| item.to_s.squish.gsub(/\s\s/, ' ').length < 3 }
     # Each of the steps is now in an array.
-    # Remove any custom lists
-    ingredients.each { |item| item.gsub! /^\-|\*\s?/, '' }
+    ingredients.each do |item|
+      # Remove any custom lists
+      item.gsub! /^\-|\*\s?/, ''
+      # Remove line breaks in the middle
+      item.gsub! /\s\s+/, ' '
+    end
     ingredients
   end
 
