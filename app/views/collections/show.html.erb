@@ -1,5 +1,5 @@
 <% activate_nav!(:collections) %>
-<%- title @collection.name %>
+<%- title @collection.name.html_safe %>
 
 <%= render "shared/nav" %>
 
