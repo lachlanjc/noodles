@@ -172,7 +172,7 @@ class RecipesController < ApplicationController
   end
 
   def title_setup
-    @title = @recipe.title || params[:title].to_s.capitalize.strip
+    @title = @recipe.title || params[:title].to_s.capitalize.squish
   end
 
   def setup_image_layout

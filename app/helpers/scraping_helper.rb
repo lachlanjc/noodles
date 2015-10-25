@@ -33,9 +33,9 @@ module ScrapingHelper
       data = process_epicurious_page!(data, document)
     # F&W/AR use the name itemprop in the wong places
     elsif host.match('allrecipes.com')
-      data.name = document.css('[itemprop=name]')[1].children.to_s
+      data.name = document.css('[itemprop=name]')[0].text.to_s
     elsif host.match('foodandwine.com')
-      data.name = document.css('[itemprop=name]')[2].text.strip
+      data.name = document.css('[itemprop=name]')[2].text.squish
     elsif host.match('marthastewart.com')
       data.instructions = document.css('.directions-list .directions-item').text
     elsif data.instructions.match(/\n/).blank?
@@ -57,10 +57,10 @@ module ScrapingHelper
   # Clean up inconsistencies in Epicurious pages
   def process_epicurious_page!(data, document)
     d = document.css('[itemprop=description] .truncatedTextModuleText')[0]
-    data.description = d.blank? ? '' : d.text.strip
+    data.description = d.blank? ? '' : d.text.squish
     insts = document.css("#{inst} > p:not(#chefNotes)")
     insts = document.css("#{inst} li:not(#chefNotes)") if insts.empty?
-    data.instructions = insts.text.strip
+    data.instructions = insts.text
     data
   end
 
@@ -68,7 +68,7 @@ module ScrapingHelper
   def process_blog_page!(data, document)
     data.instructions = []
     document.css(inst).each do |s|
-      data.instructions.push(s.text.to_s.strip)
+      data.instructions.push(s.text.to_s.squish)
     end
     data
   end
@@ -108,7 +108,7 @@ module ScrapingHelper
 
   # Remove inconsistencies in ingredient formatting
   def clean_ingredients(ingredients)
-    if ingredients.is_a?(String) && ingredients.match(/\s\s+/)
+    if ingredients.is_a? String
       ingredients = ingredients.split(/\s\s+/)
     end
     # Each of the steps is now in an array.
@@ -119,14 +119,11 @@ module ScrapingHelper
 
   # Write a list of ingredients
   def write_ingredients_to_list(ingredients)
-    return if ingredients.blank?
-    ingredients.split(/\s\s+/) if ingredients.is_a?(String)
-
     ingredients_list = ''
     ingredients.each do |item|
       ingredients_list += "#{item.to_s.squish.capitalize}\n"
     end
-    ingredients_list.to_s.strip
+    ingredients_list
   end
 
   # Fully process recipe instructions
@@ -139,21 +136,18 @@ module ScrapingHelper
 
   # Remove inconsistencies in instruction formatting
   def clean_instructions(steps)
-    if steps.is_a?(String) && steps.match(/\s\s+/)
-      steps = steps.split /\n/
-    # elsif steps.is_a? Array
-      # steps.each { |step| step.gsub! /\s\s+/, ' ' }
-    end
+    steps = steps.split(/[\n]/) if steps.is_a?(String)
     # Each of the steps is now in an array.
     # Remove useless steps
     steps.delete_if do |step|
-      step.to_s.strip.gsub(/\s\s/, ' ').length < 3 || step.to_s.match('Preparation')
+      step.to_s.squish.gsub(/\s\s/, ' ').length < 3 || step.to_s.match('Preparation')
     end
     steps.each do |step|
       # Remove any custom numbering
       step.gsub! /^\w?\d\.?/, ''
       # Remove line breaks in the middle
       step.gsub! /\s\s+/, ' '
+      step.squish!
     end
     steps
   end
@@ -164,7 +158,7 @@ module ScrapingHelper
     instructions.each_with_index do |step, id|
       instructions_md += "#{(id + 1).to_s}. #{step.to_s.squish}\n"
     end
-    instructions_md.to_s.strip
+    instructions_md
   end
 
   protected
