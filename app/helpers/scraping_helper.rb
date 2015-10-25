@@ -35,10 +35,12 @@ module ScrapingHelper
     elsif host.match('allrecipes.com')
       data.name = document.css('[itemprop=name]')[0].text.to_s
     elsif host.match('foodandwine.com')
-      data.name = document.css('[itemprop=name]')[2].text.squish
+      data.name = document.css('[itemprop=name]')[2].text.to_s.squish
     elsif host.match('marthastewart.com')
       data.instructions = document.css('.directions-list .directions-item').text
-    elsif data.instructions.match(/\n/).blank?
+    elsif host.match('driscolls.com')
+      data.instructions = document.css('#recipe-content #instructions').text
+    elsif data.instructions.to_s.match(/\n/).blank?
       data = process_blog_page!(data, document)
     end
     recipe = create_recipe_item(data)
