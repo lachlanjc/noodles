@@ -15,7 +15,8 @@ $(document).ready ->
     activateSrc src
     $('[data-behavior~=explore_search_field]').keyup()
     q = $('[data-behavior~=explore_search_field]').val()
-    window.history.replaceState null, null, "?q=#{q}&src=#{src}"
+    if !_.isEmpty q
+      window.history.replaceState null, null, "?q=#{encodeURIComponent(q)}&src=#{src}"
 
   if !_.isEmpty urlParams
     f = $('[data-behavior~=explore_search_field]')
