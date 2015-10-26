@@ -2,9 +2,12 @@
 module ScrapingHelper
   include RecipesHelper
 
-  def master_scrape(url)
-    host = find_domain(url)
-    path = find_path(url)
+  def master_scrape(link)
+    host = find_domain(link)
+    path = find_path(link)
+
+    url = link
+    url.gsub!(/\/print/, '') if host.match('allrecipes.com')
 
     page = safely { open(url).read }
     data = Hangry.parse page
