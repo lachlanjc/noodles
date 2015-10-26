@@ -102,7 +102,7 @@ class RecipeItem extends React.Component {
     recipe.favorite === true ? indicators.push(<IconFavorite classes='mls fill-orange' />) : null;
 
     return (
-      <li className='bg-white rounded shadow mbm pam'>
+      <li className='bg-white rounded shadow mbs pam'>
         <a href={recipeLink} className='link-reset'>
           <div className='fr dn-p'>{indicators}</div>
           <h3 className='man normal'>{recipe.title}</h3>
