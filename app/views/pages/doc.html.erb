@@ -3,12 +3,14 @@
 
 <%= render 'shared/nav' %>
 
-<h1 class="tc mega mbm mx-auto"><%= @title %></h1>
+<h1 class="f1 tc mbn phm dn-ns"><%= @title %></h1>
+
 <main class="col-12 flex-ns mx-auto">
   <% if @title == 'Docs' %>
-    <section class="md-col-4 mw5 bg-white pam pal-ns mx-auto rounded shadow flex-first">
+    <section class="md-col-4 mw5 bg-white pam pal-ns mtm mbl mx-auto rounded shadow flex-last"
+             style="height: intrinsic;">
       <h2 class="f3 grey-4 mtn mbm caps tc">Sections</h2>
-      <ul class="list-reset border-bottom border-darken-2 col-12 mbn">
+      <ul class="list-reset border-bottom border-darken-2 col-12 mbs">
         <li class="pas border-top border-darken-2"><a href="#cook-mode">Cook Mode</a></li>
         <li class="pas border-top border-darken-2"><a href="#collections">Collections</a></li>
         <li class="pas border-top border-darken-2"><a href="#sharing">Sharing</a></li>
@@ -23,9 +25,11 @@
 
     <style>
     img { margin-left: auto; margin-right: auto; border: 1px solid rgba(0,0,0,.125); border-radius: 3px; }
+    h2 { font-weight: normal; }
     </style>
   <% end %>
-  <article class="md-col-6 flex-auto flex-last mw7 mx-auto phm">
+  <article class="md-col-6 flex-auto flex-first mw7 mx-auto phm">
+    <h1 class="h0 mbm dn db-ns"><%= @title %></h1>
     <%= @doc.html_safe %>
   </article>
 </main>
