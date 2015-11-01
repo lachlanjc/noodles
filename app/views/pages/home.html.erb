@@ -48,8 +48,8 @@
       </div>
 
       <div class="pvs">
-        <%= link_to "Blog", announcements_path, class: "phs link-reset white link-reset white" %>
         <%= link_to t("general.about"), help_path, class: "phs link-reset white normal" %>
+        <%= link_to "Blog", announcements_path, class: "phs link-reset white link-reset white" %>
         <%= link_to t("general.sign_out"), sign_out_path, method: :delete, class: "phs link-reset white normal" if user_signed_in? %>
         <% if user_signed_in? %>
           <%= link_to "Your recipes →", recipes_path, class: "phs link-reset white" %>
@@ -60,10 +60,11 @@
     </nav>
 
     <div class="hero-content phm mx-auto">
-      <h1 class="white f1 mega-l mw8 mx-auto normal">Keep, cook, and share all your recipes in Noodles.</h1>
-      <a class="btn bg-orange tsn f2 f1-ns mtm pam phl-ns pvl-ns"
-         href="<%= sign_up_path %>" onclick="_gs('event', 'Clicked hero button');">
-        Sign Up
+      <h1 class="white f1 mega-l mw8 mx-auto normal">All your recipes in one place.</h1>
+      <h2 class="white mw8 mx-auto normal">Keep, cook, and share all your recipes with Noodles.</h2>
+      <a class="btn bg-orange tsn f2 mtl pam"
+         href="<%= explore_path %>" onclick="_gs('event', 'Clicked Explore button');">
+        Start Exploring
       </a>
     </div>
   </header>
