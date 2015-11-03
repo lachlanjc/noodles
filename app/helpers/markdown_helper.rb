@@ -13,4 +13,8 @@ module MarkdownHelper
     text.css('p').each { |item| item['class'] = 'white' }
     text.to_s.html_safe
   end
+
+  def remove_url_head(url)
+    url.gsub(/^http(s?):\/\/(w+\.)?/, '')
+  end
 end
