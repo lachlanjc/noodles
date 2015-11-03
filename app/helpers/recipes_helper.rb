@@ -35,4 +35,12 @@ module RecipesHelper
     text.css('li').each { |item| item['itemprop'] = 'instruction' }
     text.to_s.html_safe
   end
+
+  def no_details?(recipe = @recipe)
+    recipe.source.blank? && recipe.author.blank? && recipe.serves.blank?
+  end
+
+  def details?(recipe = @recipe)
+    !no_details?(recipe)
+  end
 end
