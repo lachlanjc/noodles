@@ -110,7 +110,7 @@ class RecipesController < ApplicationController
   end
 
   def save_to_noodles
-    @recipe = Recipe.find(params[:shared_id])
+    @recipe = Recipe.find_by_shared_id(params[:shared_id])
     raise_not_found
     @new_recipe = Recipe.new do |r|
       r.user_id = current_user.id
