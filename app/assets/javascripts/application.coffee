@@ -13,7 +13,7 @@ $(document).ready ->
     $(this).toggleClass 'bg-white shadow well border'
     $(this).slideUp 'fast'
 
-  $('[data-behavior~=modal_trigger]').leanModal()
+  activateModals()
 
   $('[data-behavior~=inline_signup_form]').on 'ajaxBeforeSend', ->
     t = $(this)

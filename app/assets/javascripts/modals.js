@@ -51,3 +51,7 @@
     }
   })
 })(jQuery);
+
+function activateModals() {
+  $('[data-behavior~=modal_trigger]').leanModal()
+}
