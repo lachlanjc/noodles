@@ -8,43 +8,7 @@
   <meta itemprop="dateCreated" content="<%= @recipe.created_at %>" />
   <meta itemprop="dateModified" content="<%= @recipe.updated_at %>" />
 
-  <% if @image_layout %>
-    <header class="image-header inline-with-nav relative bg-cover bg-center flex-ns fac pam"
-            style="background-image: url(<%= @recipe.img.url %>);">
-
-      <div class="md-col-8 mx-auto mw7">
-        <h1 class="white mbs dib h0" itemprop="name"><%= @recipe.title %></h1>
-        <%= form_for(@recipe, data: { remote: true }, html: { class: 'dib dn-p mls' }) do |f| %>
-          <label class="control man">
-            <%= f.check_box :favorite, class: 'control-checkbox', data: { behavior: 'recipe_favorite_trigger' } %>
-            <%= inline_svg 'favorite_outline.svg', class: 'fill-white pointer control-indicator', size: 24 %>
-            <%= inline_svg 'favorite.svg', class: 'fill-white pointer control-indicator-checked', size: 24 %>
-          </label>
-        <% end %>
-
-        <% if @recipe.description.present? %>
-        <div class="white" itemprop="description">
-          <%= whitened_markdown @recipe.description %>
-        </div>
-        <% end %>
-      </div>
-
-      <a href="#photo" name="photo" class="tooltipped mrs flex-last pointer"
-         aria-label="Open full photo" data-behavior="modal_trigger">
-        <%= inline_svg 'fullscreen.svg', class: 'fill-white' %>
-      </a>
-    </header>
-
-    <section id="photo" role="dialog" class="modal">
-      <div class="pointer absolute pas" style="right: 1rem;" data-behavior="modal_close">
-        <%= inline_svg 'close.svg', class: 'fill-white' %>
-      </div>
-      <%= image_tag @recipe.img, class: 'col-12', itemprop: 'image' %>
-    </section>
-
-    <%= render 'shared/flash' if flash.any? %>
-
-  <% end %>
+  <%= render 'image_header' if @image_layout %>
 
   <main class="document mw7">
 

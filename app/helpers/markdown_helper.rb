@@ -7,10 +7,11 @@ module MarkdownHelper
     sanitize(strip_tags(markdown(text.to_s)))
   end
 
-  def whitened_markdown(str = '')
-    text = sanitize markdown(str)
-    text = Nokogiri::HTML::DocumentFragment.parse(text)
-    text.css('p').each { |item| item['class'] = 'white' }
+  def whitened_markdown(str = '', options = [])
+    classes = 'white'
+    classes << ' f3' if options.include? :f3
+    text = Nokogiri::HTML::DocumentFragment.parse(sanitize(markdown(str)))
+    text.css('p').each { |item| item['class'] = classes }
     text.to_s.html_safe
   end
 
