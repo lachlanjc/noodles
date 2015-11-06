@@ -50,7 +50,7 @@ $(document).ready ->
     t = $(this)
     t.text 'Removed!'
     $('[data-behavior~=photo_name]').text 'Upload a new photo'
-    t.parent().hide 'slow'
+    t.parent().hide 400
 
   $('[data-behavior~=cook_photo_field]').on 'change', ->
     $(this)[0].form.submit()
