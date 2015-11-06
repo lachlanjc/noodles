@@ -10,19 +10,21 @@ class CopyLink extends React.Component {
     const label = this.state.copied ? 'Copied!' : 'Copy';
     return (
       <div className='f5'>
-        <input ref='text'
+        <input ref={(c) => this._input = c}
               type='text'
               className='text-input dib'
               value={this.props.url}
               onChange={function() {}} />
-          <button ref='copy' className='btn bg-green mlm' type='button'>{label}</button>
+          <button ref='copy' className='btn bg-green mlm' type='button'>
+            {label}
+          </button>
       </div>
     )
   }
 
   componentDidMount() {
     const self = this;
-    const client = new ZeroClipboard(this.refs.copy.getDOMNode());
+    const client = new ZeroClipboard(this._input);
     client.on('ready', function(e) {
       client.on('copy', function(e) {
         e.clipboardData.setData('text/plain', self.props.url)
