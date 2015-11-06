@@ -16,7 +16,7 @@ class NoteEditor extends React.Component {
   }
 
   fetchData() {
-    $.getJSON('/recipes/' + this.props.recipe_id + '/notes.json', function(response) {
+    $.getJSON(`/recipes/${this.props.recipe_id}/notes.json`, function(response) {
       this.setState({
         renderedNotes: response.recipe.notes_rendered,
         plainNotes: response.recipe.notes_text,
@@ -58,7 +58,7 @@ class NoteEditor extends React.Component {
     return (
       <div>
         <textarea htmlFor='recipe[notes]' className='text-input invisible-input col-12 man' placeholder='Type your notes for the recipe here.' rows='4' defaultValue={this.state.plainNotes} onChange={this.updateTextNotes} />
-        <div className='mbm'>
+        <div className='mbm dn-p'>
           <button className='btn bg-blue btn-sm mr1' onClick={this.submitNotes}>Save Notes</button>
           <button className='btn bg-orange btn-sm' style={{backgroundColor: '#8b909a'}} onClick={this.toggleEditing}>Cancel</button>
         </div>
@@ -68,7 +68,7 @@ class NoteEditor extends React.Component {
 
   renderNotes() {
     return (
-      <div>
+      <div className='text text-normalized'>
         <div dangerouslySetInnerHTML={this.produceRenderedNotes()} />
         <button className='btn bg-blue btn-sm mts mbm' onClick={this.toggleEditing}>Edit Notes</button>
       </div>
@@ -77,8 +77,8 @@ class NoteEditor extends React.Component {
 
   render() {
     return (
-      <section className='border phm mtm rounded notes text text-normalized dn-p'>
-        <h3 className='mts mbs pvs tc grey-4 caps normal border-bottom border-darken-2' style={{borderBottomStyle: 'dashed'}}>Notes</h3>
+      <section className='border phm mtm rounded bg-notes'>
+        <h3 className='mvs pvs tc grey-4 caps'>Notes</h3>
         {(this.state.editing === true) ? this.renderEditing() : this.renderNotes()}
       </section>
     )

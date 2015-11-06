@@ -29,17 +29,10 @@
   <p class="grey-2">No details for this recipe. Details describe where the recipe came from and the recipe's yield.</p>
 <% end %>
 
-<% if @recipe.notes.present? %>
-<div class="dn db-p">
-  <h2>Notes</h2>
-  <%= sanitize markdown(@recipe.notes) %>
-</div>
-<% end %>
-
 <% if me_owns_recipe? %>
   <%= react_component("NoteEditor", recipe_id: @recipe.id) %>
 <% else %>
-  <div class="rounded border pam notes text text-normalized dn-p">
+  <div class="rounded border pam bg-notes text text-normalized dn-p">
     <% if @recipe.notes.blank? %>
     <p class="grey-4 mbn">No notes for this recipe &mdash; yet!</p>
     <% else %>
