@@ -9,16 +9,11 @@ class RecipeList extends React.Component {
 
   componentDidMount() {
     this.setState({recipes: _.sortBy(this.props.recipesCore, 'title')});
-    this.focusSearch();
   }
 
   componentWillReceiveProps(newProps, newState) {
     this.setState({recipes: _.sortBy(newProps.recipesCore, 'title')});
     return true;
-  }
-
-  focusSearch(e) {
-    React.findDOMNode(this.refs.searchField).focus();
   }
 
   _updateSearch(e) {
@@ -60,7 +55,6 @@ class RecipeList extends React.Component {
           <IconSearch classes='fill-grey-4 mts' />
           <input
               type='text'
-              ref='searchField'
               className='text-input invisible-input'
               value={this.state.searchText}
               onChange={e => this._updateSearch(e)}
@@ -69,9 +63,9 @@ class RecipeList extends React.Component {
               autoFocus='true' />
         </div>
 
-        {this.state.recipes.map(function(recipe) {
-           return <RecipeItem recipe={recipe} linkType={linkType} key={recipe.id} />;
-        }.bind(this))}
+        {this.state.recipes.map(recipe =>
+          <RecipeItem key={`recipe-${recipe.id}`} recipe={recipe} linkType={linkType} />
+        )}
 
         {noSearchResults ?
           <BlankSlate width='8'>
