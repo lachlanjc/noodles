@@ -26,20 +26,7 @@
 
     <hr class="col-10">
 
-    <% if me_owns_recipe? %>
-      <%= react_component("NoteEditor", recipe_id: @recipe.id) %>
-    <% else %>
-      <section class="rounded shadow phm bg-notes text text-normalized">
-        <h3 class="man pvm tc grey-4 caps normal border-bottom" style="border-bottom-style: dashed;">Notes</h3>
-        <article class="pvm">
-        <% if @recipe.notes.blank? %>
-        <p class="grey-4">No notes for this recipe &mdash; yet!</p>
-        <% else %>
-        <%= sanitize markdown(@recipe.notes) %>
-        <% end %>
-        </article>
-      </section>
-    <% end %>
+    <%= react_component 'NoteEditor', id: @recipe.id, plain: @recipe.notes, rendered: notes_rendered, allowEditing: me_owns_recipe? %>
   </aside>
 
   <article class="sm-col-11 md-col-6 mx-auto mtm pan">

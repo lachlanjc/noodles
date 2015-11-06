@@ -2,8 +2,8 @@ class NoteEditor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      renderedNotes: '<p>Loading...</p>',
-      plainNotes: 'Loading...',
+      renderedNotes: this.props.rendered,
+      plainNotes: this.props.plain,
       editing: false
     };
     this.updateTextNotes = this.updateTextNotes.bind(this);
@@ -11,12 +11,8 @@ class NoteEditor extends React.Component {
     this.submitNotes = this.submitNotes.bind(this);
   }
 
-  componentWillMount() {
-    this.fetchData()
-  }
-
   fetchData() {
-    $.getJSON(`/recipes/${this.props.recipe_id}/notes.json`, function(response) {
+    $.getJSON(`/recipes/${this.props.id}/notes.json`, function(response) {
       this.setState({
         renderedNotes: response.recipe.notes_rendered,
         plainNotes: response.recipe.notes_text,
@@ -37,18 +33,18 @@ class NoteEditor extends React.Component {
   }
 
   submitNotes(e) {
-    const component = this;
+    const self = this;
     $.ajax({
-      url: '/recipes/' + this.props.recipe_id + '/update_notes',
+      url: `/recipes/${self.props.id}/update_notes`,
       dataType: 'json',
       type: 'patch',
       data: {
-        'id': this.props.recipe_id,
-        'recipe[notes]': this.state.plainNotes
+        'id': self.props.id,
+        'recipe[notes]': self.state.plainNotes
       },
       success() {
-        component.fetchData();
-        component.toggleEditing()
+        self.toggleEditing()
+        self.fetchData()
       },
       error(xhr, status, err) { console.error(status, '—', err) }
     });
@@ -57,10 +53,16 @@ class NoteEditor extends React.Component {
   renderEditing() {
     return (
       <div>
-        <textarea htmlFor='recipe[notes]' className='text-input invisible-input col-12 man' placeholder='Type your notes for the recipe here.' rows='4' defaultValue={this.state.plainNotes} onChange={this.updateTextNotes} />
+        <textarea htmlFor='recipe[notes]' rows='4'
+          className='text-input invisible-input col-12 man'
+          placeholder='Type your notes for the recipe here.'
+          defaultValue={this.state.plainNotes} onChange={this.updateTextNotes} />
         <div className='mbm dn-p'>
-          <button className='btn bg-blue btn-sm mr1' onClick={this.submitNotes}>Save Notes</button>
-          <button className='btn bg-orange btn-sm' style={{backgroundColor: '#8b909a'}} onClick={this.toggleEditing}>Cancel</button>
+          <button className='btn bg-blue btn-sm' onClick={this.submitNotes}>
+            Save Notes</button>
+          <button className='btn bg-grey-4 btn-sm mls' onClick={this.toggleEditing}>
+            Cancel
+          </button>
         </div>
       </div>
     )
@@ -70,16 +72,21 @@ class NoteEditor extends React.Component {
     return (
       <div className='text text-normalized'>
         <div dangerouslySetInnerHTML={this.produceRenderedNotes()} />
-        <button className='btn bg-blue btn-sm mts mbm' onClick={this.toggleEditing}>Edit Notes</button>
+        {this.props.allowEditing === true ?
+          <button className='btn bg-blue btn-sm mts mbm' onClick={this.toggleEditing}>
+            Edit Notes
+          </button>
+        : null}
       </div>
     )
   }
 
   render() {
+    const editing = (this.state.editing === true && this.props.allowEditing === true);
     return (
       <section className='border phm mtm rounded bg-notes'>
-        <h3 className='mvs pvs tc grey-4 caps'>Notes</h3>
-        {(this.state.editing === true) ? this.renderEditing() : this.renderNotes()}
+        <h3 className='mtm mbs tc grey-4 caps'>Notes</h3>
+        {editing ? this.renderEditing() : this.renderNotes()}
       </section>
     )
   }

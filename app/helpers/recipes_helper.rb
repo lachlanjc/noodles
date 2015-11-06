@@ -43,4 +43,12 @@ module RecipesHelper
   def details?(recipe = @recipe)
     !no_details?(recipe)
   end
+
+  def notes_blankslate
+    '<p>No notes for this recipe yet.</p>'
+  end
+
+  def notes_rendered(recipe = @recipe)
+    recipe.notes.blank? ? notes_blankslate : sanitize(markdown(recipe.notes))
+  end
 end
