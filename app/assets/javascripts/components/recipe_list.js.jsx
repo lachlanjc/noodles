@@ -20,7 +20,7 @@ class RecipeList extends React.Component {
     const searchText = _.trimLeft(e.target.value.toLowerCase());
     this.setState({searchText: searchText});
 
-    if (searchText.length > 0) {
+    if (!_.isEmpty(searchText)) {
       let recipes = this.props.recipesCore;
       if (this.props.searchCommands == true && _.startsWith(searchText, '/')) {
         if (_.intersection(searchText, 'shared').join('') || _.intersection(searchText, 'public').join('')) {
