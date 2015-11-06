@@ -18,7 +18,7 @@
       <a name="preview" href="#preview"
          class="btn bg-green"
          data-behavior="explore_preview modal_trigger">
-        Preview
+        <%= user_signed_in? ? 'Preview' : 'See this recipe' %>
       </a>
       <% if user_signed_in? %>
       <a class="btn bg-blue mls"
