@@ -10,7 +10,9 @@
   <%= instructions_processed.html_safe %>
 </div>
 
-<%= image_tag @recipe.img, class: 'dn', itemprop: 'image' if @recipe.img.url.present? && !@image_layout %>
+<% if @recipe.img.url.present? && @image_layout == false %>
+  <%= image_tag @recipe.img, alt: "Photo of #{@recipe.title}", itemprop: 'image', class: 'flex mx-auto' %>
+<% end %>
 
 <h2 class="mtm">Details</h2>
 <% if @recipe.source.present? %>
@@ -26,7 +28,9 @@
 <p>Yield: <span itemprop="recipeYield"><%= @recipe.serves %></span></p>
 <% end %>
 <% if no_details? %>
-  <p class="grey-2">No details for this recipe. Details describe where the recipe came from and the recipe's yield.</p>
+  <p class="grey-2">
+    No details for this recipe. Details describe where the recipe came from and the recipe's yield.
+  </p>
 <% end %>
 
 <%= react_component 'NoteEditor', id: @recipe.id, plain: @recipe.notes, rendered: notes_rendered, allowEditing: me_owns_recipe? %>
