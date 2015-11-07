@@ -31,6 +31,9 @@
 .rounded {
   border-radius: $border-radius;
 }
+.rounded-large {
+  border-radius: $border-radius-large;
+}
 
 .circle {
   border-radius: 50%;

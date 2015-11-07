@@ -2,7 +2,7 @@
   background: #fff;
   border-color: $grey-5;
   border-style: solid;
-  border-width: 1px 0;
+  border-width: $border-width 0;
   box-sizing: border-box;
   margin: 0 auto $space-3;
   padding: $space-2;
@@ -10,8 +10,8 @@
 
 @media screen and (min-width: 48em) {
   .document {
-    border-radius: $border-radius;
-    border-width: 1px;
+    border-radius: $border-radius-large;
+    border-width: $border-width;
     padding: $space-3;
     width: (8/12 * 100%);
   }
