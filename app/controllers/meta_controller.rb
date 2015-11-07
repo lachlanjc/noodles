@@ -1,4 +1,4 @@
-class PagesController < ApplicationController
+class MetaController < ApplicationController
   include PagesHelper
 
   def home
@@ -16,14 +16,14 @@ class PagesController < ApplicationController
   end
 
   def terms
-    render_doc('terms.md')
+    render_doc 'terms.md'
   end
 
   def privacy
-    render_doc('privacy.md')
+    render_doc 'privacy.md'
   end
 
   def docs
-    render_doc('docs.md')
+    render_doc 'docs.md'
   end
 end
