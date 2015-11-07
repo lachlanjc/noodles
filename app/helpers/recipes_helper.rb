@@ -19,7 +19,7 @@ module RecipesHelper
   end
 
   def from_web?(source_data)
-    /(http)/.match(source_data.to_s).to_s == 'http'
+    source_data.to_s.match(/https?/).present?
   end
 
   def ingredient_processed(text)
