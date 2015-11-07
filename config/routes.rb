@@ -14,22 +14,23 @@ Rails.application.routes.draw do
     get '/remove_image', to: 'recipes#remove_image', as: :remove_image
   end
 
-  get '/embed/:shared_id', to: 'recipes#embed_js', as: :embed
-
-  get '/save', to: 'save#save', as: :save
-
-  # Shared recipes
   scope '/s' do
     get '/:shared_id', to: 'recipes#share', as: :share
     get '/:shared_id/cook', to: 'cook#share', as: :public_cook
     get '/:shared_id/save', to: 'recipes#save_to_noodles', as: :save_to_noodles
   end
 
-  # Shared collections
+  get '/embed/:shared_id', to: 'recipes#embed_js', as: :embed
+
+  # Collections
+  resources :collections, except: [:new, :edit]
   scope '/c' do
     get '/data/:id', to: 'collections#share'
     get '/:shared_id', to: 'collections#share', as: :collection_share
   end
+
+
+  get '/save', to: 'save#save', as: :save
 
   scope '/explore' do
     get '/', to: 'explore#index', as: :explore
@@ -45,8 +46,6 @@ Rails.application.routes.draw do
 
   get '/blog', to: 'announcements#index'
   resources :announcements
-  resources :collections, except: [:new, :edit]
-
   get '/announcements/unsubscribe/:code/:user_id', to: 'announcements#unsubscribe', as: :unsubscribe
 
   devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }
