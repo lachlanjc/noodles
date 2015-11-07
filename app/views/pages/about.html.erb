@@ -1,41 +1,46 @@
 <% activate_nav!(:help) %>
-<% title "Help" %>
-<%= render "shared/nav" %>
+<% title 'Help' %>
+<%= render 'shared/nav' %>
 
-<article class="document">
+<article class="document mw7">
 
-  <% if user_signed_in? %>
+  <% if !user_signed_in? %>
 
   <h1>Need help?</h1>
 
-  <%= markdown("First, check out [the features guide](#{docs_path}) for help with various features, such as Cook Mode, Sharing, Clipping, Favorites, PDF export, and more.") %>
+  <p>That's totally fine! I'm Lachlan Campbell <a class="blue" href="https://twitter.com/lachlanjc">(@lachlanjc)</a>, the creator of Noodles. I'd be happy to help out.</p>
 
-  <p class="tc mtm mbn"><a href="mailto:lachlan@getnoodl.es?subject=I%20need%20some%20help"class="btn bg-blue">Ask a question</a></p>
+  <p>
+    <a href="mailto:lachlan@getnoodl.es?subject=I've%20got%20a%20question" class="btn bg-orange">
+      Email me
+    </a>
+    <a href="https://twitter.com/intent/tweet?screen_name=lachlanjc" class="btn bg-blue mls">
+      Tweet @lachlanjc
+    </a>
+  </p>
 
-  <small class="db pvs tc">Or, ask Lachlan on Twitter (<a href="https://twitter.com/lachlanjc" class="blue">@lachlanjc</a>).</small>
-
-  <hr>
-
-  <h2>About Noodles</h2>
-  <%= react_component("Bio") %>
-  <%= react_component("Bio", person: "tns") %>
+  <p>You can also check out <%= link_to 'the features guide', docs_path %> for help with various features, such as Cook Mode, Sharing, Clipping, Favorites, PDF export, and more.</p>
 
   <% else %>
 
   <h1>About Noodles</h1>
 
-  <%= markdown("Noodles is a simple and free cooking site — a place for all your recipes. Check out [the homepage](#{root_url}) or the [Features page](#{docs_path}) for more information on the how it works.") %>
-
-  <%= react_component("Bio") %>
-  <%= react_component("Bio", person: "tns") %>
+  <%= markdown "Noodles is a simple and free cooking site — a place for all your recipes. Check out [the homepage](#{root_url}) or the [Features page](#{docs_path}) for more info." %>
 
   <hr>
 
   <h2>Have a question?</h2>
 
-  <p>Reach out to Lachlan <a href="https://twitter.com/lachlanjc">on Twitter (@lachlanjc)</a>, or send an email with the button below.</p>
+  <p>Awesome. I'm Lachlan Campbell <a class="blue" href="https://twitter.com/lachlanjc">(@lachlanjc)</a>, the creator of Noodles. I'd be happy to help out.</p>
 
-  <a href="mailto:lachlan@getnoodl.es?subject=I%20have%20a%20question" class="btn bg-blue">Ask a question</a>
+  <p>
+    <a href="mailto:lachlan@getnoodl.es?subject=I've%20got%20a%20question" class="btn bg-orange">
+      Email me
+    </a>
+    <a href="https://twitter.com/intent/tweet?screen_name=lachlanjc" class="btn bg-blue mls">
+      Tweet @lachlanjc
+    </a>
+  </p>
 
   <% end %>
 
