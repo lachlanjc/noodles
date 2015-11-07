@@ -15,7 +15,7 @@ class RecipesController < ApplicationController
   end
 
   def show
-    setup_image_layout
+    setup_image_layout if @recipe.img.present?
     @shared_url = shared_url
     render :locked, status: 403 if not_my_recipe?
   end
@@ -97,7 +97,7 @@ class RecipesController < ApplicationController
   def share
     @recipe = Recipe.find_by_shared_id(params[:shared_id])
     raise_not_found
-    setup_image_layout
+    setup_image_layout if @recipe.img.present?
     @shared_url = shared_url
   end
 
@@ -175,12 +175,14 @@ class RecipesController < ApplicationController
   end
 
   def setup_image_layout
-    if @recipe.img.url.present?
-      @image_layout = FastImage.size(@recipe.img.url)[0] > 750
+    safely do
+      size = FastImage.size @recipe.img.url
+      @image_layout = size[0].to_i > 750
       if @image_layout
         @remove_grey_bg = false
         @hide_flash = flash.any?
       end
     end
+    @image_layout = defined? @image_layout
   end
 end
