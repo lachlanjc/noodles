@@ -10,7 +10,7 @@
   <h2 class="tl">Share Collection</h2>
   <hr>
 
-  <% @shared_url = root_url + "c/" + @collection.hash_id.to_s %>
+  <% @shared_url = root_url + "c/" + @collection.shared_id.to_s %>
   <p class="mbs">Share this link:</p>
   <div class="mx-auto">
     <%= react_component("CopyLink", url: @shared_url) %>

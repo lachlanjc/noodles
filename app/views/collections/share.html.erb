@@ -32,7 +32,7 @@
   <%= modal_close %>
   <h2>Share Collection</h2>
   <hr>
-  <% @shared_url = "http://www.getnoodl.es" + collection_share_path(:id => @collection.hash_id) %>
+  <% @shared_url = "http://www.getnoodl.es" + collection_share_path(:id => @collection.shared_id) %>
   <p>Love this collection? Share this URL: <%= link_to @shared_url %></p>
   <div class="social pvs">
     <a rel="nofollow" href="http://twitter.com/share?text=Check out the collection <%= @collection.name %> on @noodlesapp:&amp;url=<%= @shared_url %>" class="mrs" target="_blank">

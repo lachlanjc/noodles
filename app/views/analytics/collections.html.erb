@@ -12,7 +12,7 @@
       <% if User.exists?(collection.user) %>
       <p class="mbm">Published by <%= User.find(collection.user).first_name.to_s %></p>
       <% end %>
-      <%= link_to "View", "/c/" + collection.hash_id.to_s, class: "btn bg-blue btn-sm mrm" %>
+      <%= link_to "View", "/c/" + collection.shared_id.to_s, class: "btn bg-blue btn-sm mrm" %>
       <%= link_to "Delete", collection, method: :delete, data: { confirm: t("general.delete_forever") }, class: "btn bg-red btn-sm" %>
     </div>
   <% end %>
