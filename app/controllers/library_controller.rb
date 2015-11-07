@@ -15,6 +15,9 @@ class LibraryController < ApplicationController
 
   def new
     @page = Page.new
+    @page.user = current_user
+    @page.save
+    redirect_to @page
   end
 
   def create
