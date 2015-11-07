@@ -1,4 +1,4 @@
-<header class="image-header inline-with-nav relative bg-cover bg-center pam flex-ns fac"
+<header class="image-header inline-with-nav relative bg-cover bg-center pam pvl-ns flex-ns fac"
         style="background-image: url(<%= @recipe.img.url %>);">
 
   <div class="md-col-8 mx-auto mw7 flex-ns fac">
@@ -39,9 +39,11 @@
   <div class="pointer absolute pas" style="right: 1rem;" data-behavior="modal_close">
     <%= inline_svg 'close.svg', class: 'fill-white',
                    style: '-webkit-filter: drop-shadow(0 2px 2px rgba(0,0,0,.25));
+                              -moz-filter: drop-shadow(0 2px 2px rgba(0,0,0,.25));
                                    filter: drop-shadow(0 2px 2px rgba(0,0,0,.25));' %>
   </div>
-  <%= image_tag @recipe.img, class: 'col-12 fl', itemprop: 'image' %>
+  <%= image_tag @recipe.img.url, class: 'col-12 fl',
+                alt: "Photo of #{@recipe.title}", itemprop: 'image' %>
 </section>
 
 <%= render 'shared/flash' if flash.any? %>

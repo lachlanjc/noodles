@@ -176,14 +176,11 @@ class RecipesController < ApplicationController
 
   def setup_image_layout
     if @recipe.img.url.present?
-      begin
-        @image_layout = open @recipe.img.url
-      rescue OpenURI::HTTPError
-        @image_layout = false
+      @image_layout = FastImage.size(@recipe.img.url)[0] > 750
+      if @image_layout
+        @remove_grey_bg = false
+        @hide_flash = flash.any?
       end
-      @image_layout = !!(Dimensions.width(@image_layout) > 800) unless @image_layout == false
-      @remove_grey_bg = false
-      @hide_flash = flash.any?
     end
   end
 end
