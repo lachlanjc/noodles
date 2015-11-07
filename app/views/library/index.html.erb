@@ -1,0 +1,30 @@
+<% activate_nav!(:library) %>
+<% title 'Library' %>
+
+<%= render 'shared/nav' %>
+
+<main class="md-col-8 mw7 mx-auto">
+  <h1 class="tc">Library</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Content</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @pages.each do |page| %>
+        <tr>
+          <td><%= page.name %></td>
+          <td><%= page.content_raw %></td>
+          <td><%= link_to 'Show', page %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</main>
+
+<%= link_to 'New Page', new_page_path %>

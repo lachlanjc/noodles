@@ -1,28 +1,22 @@
-class PagesController < ApplicationController
-  before_action :set_page, only: [:show, :edit, :update, :destroy]
+class LibraryController < ApplicationController
+  include ApplicationHelper
+  include LibraryHelper
 
-  # GET /pages
-  # GET /pages.json
+  before_filter :please_sign_in, only: [:new, :create, :show, :update, :destroy]
+  before_action :set_page, only: [:show, :update, :destroy]
+  before_action :not_the_owner, only: [:show, :update, :destroy]
+
   def index
-    @pages = Page.all
+    @pages = current_user.pages
   end
 
-  # GET /pages/1
-  # GET /pages/1.json
   def show
   end
 
-  # GET /pages/new
   def new
     @page = Page.new
   end
 
-  # GET /pages/1/edit
-  def edit
-  end
-
-  # POST /pages
-  # POST /pages.json
   def create
     @page = Page.new(page_params)
 
@@ -37,8 +31,6 @@ class PagesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /pages/1
-  # PATCH/PUT /pages/1.json
   def update
     respond_to do |format|
       if @page.update(page_params)
@@ -51,8 +43,6 @@ class PagesController < ApplicationController
     end
   end
 
-  # DELETE /pages/1
-  # DELETE /pages/1.json
   def destroy
     @page.destroy
     respond_to do |format|
@@ -62,13 +52,24 @@ class PagesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_page
-      @page = Page.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def page_params
-      params.require(:page).permit(:name, :content, :content_raw, :shared_id, :user_id)
+  def set_page
+    @page = Page.find(params[:id])
+    raise_not_found
+  end
+
+  def page_params
+    params.require(:page).permit(:name, :content, :content_raw, :shared_id, :user_id)
+  end
+
+  def raise_not_found
+    raise ActiveRecord::RecordNotFound if @page.nil?
+  end
+
+  def not_the_owner
+    if not_my_page?
+      flash[:red] = 'That\'s not yours.'
+      redirect_to root_url
     end
+  end
 end

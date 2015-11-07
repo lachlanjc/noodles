@@ -29,7 +29,8 @@ Rails.application.routes.draw do
     get '/:shared_id', to: 'collections#share', as: :collection_share
   end
 
-  resources :pages
+  get '/library', to: 'library#index'
+  resources :pages, except: [:index, :edit], controller: 'library'
 
   get '/save', to: 'save#save', as: :save
 
