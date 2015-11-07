@@ -33,6 +33,10 @@ input[type='checkbox'] + label {
 
 textarea.invisible-input {
   line-height: 1.8;
+
+  &.f1 {
+    line-height: 1.2;
+  }
 }
 
 .field_with_errors .text-input {

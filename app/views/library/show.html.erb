@@ -1,32 +1,34 @@
 <% activate_nav!(:library) %>
 <%- title page_title %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @page.name %>
-</p>
 <%= stylesheet_link_tag 'library', media: 'all' %>
 <%= render 'shared/nav' %>
 
-<p>
-  <strong>Content:</strong>
-  <%= @page.content %>
-</p>
+<%= form_for(@page, data: { remote: 'true', behavior: 'page_editor' }) do |f| %>
+  <main class="document mw8 paxl">
+    <% if @page.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
+        <ul>
+        <% @page.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-<p>
-  <strong>Content raw:</strong>
-  <%= @page.content_raw %>
-</p>
+    <%= f.text_area :name, class: 'text-input invisible-input f1 b col-12 mbm',
+                    required: true, rows: 1, autocomplete: 'off',
+                    'data-behavior': '', placeholder: 'Type the name of this page...' %>
 
-<p>
-  <strong>Shared:</strong>
-  <%= @page.shared_id %>
-</p>
+    <%= f.hidden_field :content %>
 
-<p>
-  <strong>User:</strong>
-  <%= @page.user %>
-</p>
+    <trix-editor input="page_content" placeholder="Type the note here..."></trix-editor>
 
-<%= link_to 'Back', library_path %>
+    <footer class="tc mtm">
+      <%= f.submit 'Save', class: 'btn bg-green' %>
+    </footer>
+  </main>
+<% end %>
+
 <%= javascript_include_tag 'library' %>
