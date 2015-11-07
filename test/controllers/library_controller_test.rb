@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PagesControllerTest < ActionController::TestCase
+class LibraryControllerTest < ActionController::TestCase
   setup do
     @page = pages(:one)
   end
@@ -13,7 +13,8 @@ class PagesControllerTest < ActionController::TestCase
 
   test "should get new" do
     get :new
-    assert_response :success
+    assert_not_nil assigns(:page)
+    assert_redirected_to :show
   end
 
   test "should create page" do
@@ -26,11 +27,6 @@ class PagesControllerTest < ActionController::TestCase
 
   test "should show page" do
     get :show, id: @page
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get :edit, id: @page
     assert_response :success
   end
 
