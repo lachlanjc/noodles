@@ -13,6 +13,7 @@ class CollectionsController < ApplicationController
 
   def show
     populate_collection
+    setup_shared_url
   end
 
   def share
@@ -22,6 +23,7 @@ class CollectionsController < ApplicationController
       set_collection
     end
     populate_collection
+    setup_shared_url
   end
 
   def create
@@ -71,9 +73,13 @@ class CollectionsController < ApplicationController
   end
 
   def only_mine
-    if !me_owns_collection?
+    if not_my_collection?
       flash[:red] = 'That\'s not yours.'
       redirect_to root_url
     end
+  end
+
+  def setup_shared_url
+    @shared_url = shared_coll_url
   end
 end
