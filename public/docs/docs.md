@@ -10,6 +10,8 @@ To open Cook Mode, click the the knife and fork icon in the corner of any of you
 
 ![Screen Shot 2014-12-15 at 7.11.57 PM.png](https://draftin.com:443/images/25221?token=XpY-2wAZ2VE-eu38fKnW7p5J33LstnMwEwQO3bG7oG1TSQiNl2v_SlyM_qwX7bV7BQICe86KcGSIdzYiDS-zN6w)
 
+<a href="https://getnoodl.es/s/6ww5W0L/cook" class="btn bg-blue">Try Cook Mode</a>
+
 ___
 
 <h2 id="collection">Collections</h2>
@@ -76,16 +78,17 @@ ___
 
 Web clipping is one of the best features of Noodles. Paste the URL of a recipe, and Noodles will pull in all the data for you and save your recipe automatically. The feature supports several hundred sites, but [let me know](/help) if you run into any trouble.
 
-1. Copy the URL of any recipe on one of the sites above.
-2. Click the "link" button above the New Recipe button in the corner of your recipes page.
+First, **copy the URL** of any recipe on one of the sites above.
+
+Second, **click the "clip" button** in the corner of the [main recipes page](/recipes).
 
 ![Screenshot showing clipping button](http://f.cl.ly/items/3Z0u1i3c1I282y04022t/Screen%20Shot%202015-09-27%20at%202.08.03%20AM.png)
 
-3. Paste your link into the clipping window.
+Third, paste your link into the clipping window.
 
 ![Screenshot showing clipping window](http://f.cl.ly/items/0J2u3X41013L400B3E23/Screen%20Shot%202015-09-27%20at%202.10.32%20AM.png)
 
-4. Click the blue Clip button.
+Finally, click the Clip button.
 
 ___
 
@@ -93,15 +96,14 @@ ___
 
 You can export a PDF of any recipe in Noodles.
 
-1. Click the "Share" button at the bottom of one of your recipes:
+First, **click the "Share" button** at the bottom of one of your recipes:
 ![Screen Shot 2015-09-11 at 9.52.49
  AM.png](https://draftin.com:443/images/32217?token=NwsQCrKNvM4XFNfoz_hqLK0gzq4rxKR_jrGBqng4PIrHuQLgv6YQXa-1S4fcvMgdKpt-YZMTTmovwABZbjoFak0)
 
-2. Click the second tab, labeled "Download a PDF", and then the blue button.
+Then **click "Download a PDF"**, the second tab, then click the blue button.
 ![share-pdf.png](https://draftin.com:443/images/26254?token=XPu_IUCms2yUx8BmUYVc3eXhqT2WzuXpKAKRqdNM3FPY7iITk2mqyW19ZtLUpxiJYslyHhIRZtMgcl4me0kG4tY)
-3. Save your PDF.
 
-Here's a recipe for Pasta & Bean Soup, exported as a PDF: http://cl.ly/ZUTE
+Here's a recipe for Honey-Pecan Granola, exported as a PDF: http://cl.ly/1b433D3L0w1Z
 
 ___
 
@@ -109,15 +111,15 @@ ___
 
 If you have a website or food blog, a fantastic way to link to recipes is to embed a Noodles recipe.
 
-1. Click the Share button at the bottom of your recipe.
+First, **click the Share button** at the bottom of your recipe.
 
 ![Screen Shot 2015-09-11 at 9.52.49 AM.png](https://draftin.com:443/images/32217?token=NwsQCrKNvM4XFNfoz_hqLK0gzq4rxKR_jrGBqng4PIrHuQLgv6YQXa-1S4fcvMgdKpt-YZMTTmovwABZbjoFak0)
 
-2. Click the third tab, labeled "Embed on the Web".
+Second, **click "Embed on the Web"**, the third tab.
 
 ![share-embed.png](https://draftin.com:443/images/26255?token=dk6X51cQOLkrpGtZ5K5_SlbuczJs7wUsLc6EBmlZZ5B4UJ1p5m1KAS-ZBTOqnQVH9jipSD1NdfjDkDI55clC_F4)
 
-3. Copy the code, and paste it onto your website as HTML.
+Third, **copy the code**, and paste it onto your website as HTML.
 
 Here are some examples of what the embeds look like:
 
