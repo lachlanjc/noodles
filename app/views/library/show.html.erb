@@ -1,9 +1,12 @@
-<p id="notice"><%= notice %></p>
+<% activate_nav!(:library) %>
+<%- title page_title %>
 
 <p>
   <strong>Name:</strong>
   <%= @page.name %>
 </p>
+<%= stylesheet_link_tag 'library', media: 'all' %>
+<%= render 'shared/nav' %>
 
 <p>
   <strong>Content:</strong>
@@ -26,3 +29,4 @@
 </p>
 
 <%= link_to 'Back', library_path %>
+<%= javascript_include_tag 'library' %>
