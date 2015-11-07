@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   # Shared collections
   scope '/c' do
     get '/data/:id', to: 'collections#share'
-    get '/:hash_id', to: 'collections#share', as: :collection_share
+    get '/:shared_id', to: 'collections#share', as: :collection_share
   end
 
   scope '/explore' do
