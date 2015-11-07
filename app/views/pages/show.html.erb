@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @page.name %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @page.content %>
+</p>
+
+<p>
+  <strong>Content raw:</strong>
+  <%= @page.content_raw %>
+</p>
+
+<p>
+  <strong>Shared:</strong>
+  <%= @page.shared_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @page.user %>
+</p>
+
+<%= link_to 'Edit', edit_page_path(@page) %> |
+<%= link_to 'Back', pages_path %>
