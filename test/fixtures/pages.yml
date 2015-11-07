@@ -1,15 +1,13 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  name: MyString
-  content: MyText
-  content_raw: MyText
-  shared_id: MyString
-  user_id: 
+  name: Coffee journal
+  content: <div>My birthday this morning! I splurged and went for the top of the line.</div>
+  content_raw: My birthday this morning! I splurged and went for the top of the line.
+  shared_id: abc123
+  user_id: 1
 
 two:
-  name: MyString
-  content: MyText
-  content_raw: MyText
-  shared_id: MyString
-  user_id: 
+  name: Gelato ideas
+  content: <ul><li>Mango</li><li>Coconut</li><li>Espresso</li><li>Strawberry</li><li>Blackberry</li></ul>
+  content_raw: • Mango • Coconut • Espresso • Strawberry • Blackberry
+  shared_id: def456
+  user_id: 1
