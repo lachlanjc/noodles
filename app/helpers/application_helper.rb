@@ -35,7 +35,7 @@ module ApplicationHelper
   end
 
   def app_url
-    Rails.env.development? ? 'http://noodles.dev' : 'http://www.getnoodl.es'
+    Rails.env.development? ? 'http://noodles.dev' : 'https://getnoodl.es'
   end
 
   def modal_close

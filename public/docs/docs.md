@@ -36,7 +36,7 @@ Click the "Share" button at the bottom of one of your recipes:
 
 ![Screen Shot 2015-09-11 at 9.52.49 AM.png](https://draftin.com:443/images/32217?token=NwsQCrKNvM4XFNfoz_hqLK0gzq4rxKR_jrGBqng4PIrHuQLgv6YQXa-1S4fcvMgdKpt-YZMTTmovwABZbjoFak0)
 
-Then click the blue "Share a link to this recipe" button. You can send the link to that page to anyone. Here's an example: http://www.getnoodl.es/s/6ww5W0L
+Then click the blue "Share a link to this recipe" button. You can send the link to that page to anyone. Here's an example: https://getnoodl.es/s/6ww5W0L
 
 ___
 

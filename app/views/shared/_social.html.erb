@@ -27,9 +27,9 @@
         <%= googleplus_icon %>
       </a>
       <% if me_owns_recipe? %>
-        <a href="mailto:?subject=Check out <%= @recipe.title %> on Noodles&body=I published a new recipe on Noodles (http://www.getnoodl.es), <%= @recipe.title %>. Check it out: <%= @shared_url %>">
+        <a href="mailto:?subject=Check out <%= @recipe.title %> on Noodles&body=I published a new recipe on Noodles (https://getnoodl.es), <%= @recipe.title %>. Check it out: <%= @shared_url %>">
       <% else %>
-        <a href="mailto:?subject=Check out <%= @recipe.title %> on Noodles&body=Here's a recipe called <%= @recipe.title %> on Noodles (http://www.getnoodl.es): <%= @shared_url %>">
+        <a href="mailto:?subject=Check out <%= @recipe.title %> on Noodles&body=Here's a recipe called <%= @recipe.title %> on Noodles (https://getnoodl.es): <%= @shared_url %>">
       <% end %>
         <%= email_icon %>
       </a>

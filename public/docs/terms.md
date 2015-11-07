@@ -1,7 +1,7 @@
 <p class="tc grey-2 f5">Last updated on November 16, 2014.</p>
 ___
 
-Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the http://www.getnoodl.es/ website (the "Service") operated by Noodles ("us", "we", or "our").
+Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the https://getnoodl.es/ website (the "Service") operated by Noodles ("us", "we", or "our").
 
 Your access to and use of the Service is conditioned upon your acceptance of and compliance with these Terms. These Terms apply to all visitors, users and others who wish to access or use the Service.
 
@@ -91,6 +91,6 @@ ___
 
 **Noodles**
 
-[http://www.getnoodl.es/help](http://www.getnoodl.es/help)
+[https://getnoodl.es/help](https://getnoodl.es/help)
 
 [lachlan@getnoodl.es](mailto:lachlan@getnoodl.es?subject=Question about Terms of Service)

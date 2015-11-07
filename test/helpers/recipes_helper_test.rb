@@ -9,7 +9,7 @@ class RecipesHelperTest < ActionView::TestCase
   end
 
   test 'should test recipe is from web' do
-    assert from_web?('http://www.getnoodl.es/s/6ww5W0L')
+    assert from_web?('https://getnoodl.es/s/6ww5W0L')
   end
 
   test 'processed ingredients should work' do

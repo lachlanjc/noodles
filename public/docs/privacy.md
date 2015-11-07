@@ -57,6 +57,6 @@ ___
 
 **Noodles**
 
-[http://www.getnoodl.es/help](http://www.getnoodl.es/help)
+[https://getnoodl.es/help](https://getnoodl.es/help)
 
 [lachlan@getnoodl.es](mailto:lachlan@getnoodl.es?subject=Question about Privacy Policy)
