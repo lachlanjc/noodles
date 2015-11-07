@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151107041250) do
+ActiveRecord::Schema.define(version: 20151107162129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,19 @@ ActiveRecord::Schema.define(version: 20151107041250) do
   end
 
   add_index "collections", ["user_id"], name: "index_collections_on_user_id", using: :btree
+
+  create_table "pages", force: :cascade do |t|
+    t.string   "name"
+    t.text     "content"
+    t.text     "content_raw"
+    t.string   "shared_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "pages", ["shared_id"], name: "index_pages_on_shared_id", using: :btree
+  add_index "pages", ["user_id"], name: "index_pages_on_user_id", using: :btree
 
   create_table "recipes", force: :cascade do |t|
     t.string   "title",                 limit: 255
@@ -91,4 +104,5 @@ ActiveRecord::Schema.define(version: 20151107041250) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["uid"], name: "index_users_on_uid", using: :btree
 
+  add_foreign_key "pages", "users"
 end

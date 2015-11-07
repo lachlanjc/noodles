@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     get '/:shared_id', to: 'collections#share', as: :collection_share
   end
 
+  resources :pages
 
   get '/save', to: 'save#save', as: :save
 
