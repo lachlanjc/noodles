@@ -2,11 +2,9 @@ class Collection < ActiveRecord::Base
   belongs_to :user
   has_many :recipes
 
-  validates :user_id, presence: true
-  validates :hash_id, presence: true, uniqueness: true
+  include Shareable
 
-  before_validation :generate_hash_id, on: :create
-  after_validation :generate_hash_id, on: :create, unless: Proc.new { |coll| coll.errors.empty? }
+  validates :user_id, presence: true
 
   has_attached_file :photo, path: 'collections/:id/photo.:extension', default_url: ''
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
@@ -23,11 +21,5 @@ class Collection < ActiveRecord::Base
       publisher: user.first_name,
       photo_url: photo.url.to_s
     }
-  end
-
-  protected
-
-  def generate_hash_id
-    self.hash_id = rand(32**8).to_s(32)
   end
 end

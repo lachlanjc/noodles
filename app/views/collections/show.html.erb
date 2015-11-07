@@ -1,29 +1,35 @@
 <% activate_nav!(:collections) %>
 <%- title @collection.name.html_safe %>
 
-<%= render "shared/nav" %>
+<%= render 'shared/nav' %>
 
-<%= react_component("CollectionPage", id: @collection.id, edit: true, pub: false) %>
+<%= react_component 'CollectionPage', id: @collection.id, edit: true, pub: false %>
 
-<div class="modal tc" role="dialog" id="shareCollection">
+<section class="modal" role="dialog" id="editCollection">
+  <%= modal_close %>
+  <h2>Edit Collection</h2>
+  <hr>
+  <%= render 'form' %>
+</section>
+
+<section class="modal tc" role="dialog" id="shareCollection">
   <%= modal_close %>
   <h2 class="tl">Share Collection</h2>
   <hr>
 
-  <% @shared_url = root_url + "c/" + @collection.hash_id.to_s %>
   <p class="mbs">Share this link:</p>
   <div class="mx-auto">
-    <%= react_component("CopyLink", url: @shared_url) %>
+    <%= react_component 'CopyLink', url: @shared_url %>
   </div>
 
   <div class="mls social pvs">
-    <a rel="nofollow" href="http://twitter.com/share?text=Check out the collection <%= @collection.name %> on @noodlesapp:&amp;url=<%= @shared_url %>" target="_blank">
+    <a rel="nofollow" href="http://twitter.com/share?text=Check out <%= @collection.name %>, my collection on @noodlesapp:&amp;url=<%= @shared_url %>" target="_blank">
       <%= twitter_icon %>
     </a>
     <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=<%= @shared_url %>" class="mls" target="_blank">
       <%= facebook_icon %>
     </a>
-    <a rel="nofollow" href="https://buffer.com/add?url=<%= @shared_url %>&text=Check out the collection<%= @collection.name %>, published on Noodles." class="mls" target="_blank">
+    <a rel="nofollow" href="https://buffer.com/add?url=<%= @shared_url %>&text=Check out <%= @collection.name %>, my collection on Noodles." class="mls" target="_blank">
       <%= buffer_icon %>
     </a>
     <a rel="nofollow" href="https://plus.google.com/share?url=<%= @shared_url %>" class="mls" target="_blank">
@@ -34,11 +40,4 @@
     </a>
   </div>
 
-</div>
-
-<div class="modal" role="dialog" id="editCollection">
-  <%= modal_close %>
-  <h2>Edit Collection</h2>
-  <hr>
-  <%= render "form" %>
-</div>
+</section>
