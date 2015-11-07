@@ -11,7 +11,8 @@
 </div>
 
 <% if @recipe.img.url.present? && @image_layout == false %>
-  <%= image_tag @recipe.img, alt: "Photo of #{@recipe.title}", itemprop: 'image', class: 'flex mx-auto' %>
+  <%= image_tag @recipe.img.url, class: 'flex mx-auto rounded oh',
+                alt: "Photo of #{@recipe.title}", itemprop: 'image' %>
 <% end %>
 
 <h2 class="mtm">Details</h2>
