@@ -42,10 +42,12 @@ $(document).ready ->
     $('[data-behavior~=photo_field]').click()
   $('[data-behavior~=photo_field]').on 'change', ->
     $('[data-behavior~=photo_name]').text this.value.match(/[^\/\\]+$/)[0]
+    $('[data-behavior~=recipe_errors]').hide 400
   $(document).on 'click', '[data-behavior~=remove_current_photo]', ->
     l = $(this).find('[data-behavior~=remove_current_photo_link]')
-    l.click()
     l.text 'Removing photo...'
+    l.click()
+    $('[data-behavior~=recipe_errors]').hide 400
   $(document).on 'ajaxSuccess', '[data-behavior~=remove_current_photo_link]', ->
     t = $(this)
     t.text 'Removed!'
