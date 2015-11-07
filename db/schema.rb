@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20151107162129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
   create_table "announcements", force: :cascade do |t|
     t.string   "title",         limit: 255
@@ -41,7 +42,7 @@ ActiveRecord::Schema.define(version: 20151107162129) do
 
   add_index "collections", ["user_id"], name: "index_collections_on_user_id", using: :btree
 
-  create_table "pages", force: :cascade do |t|
+  create_table "pages", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "name"
     t.text     "content"
     t.text     "content_raw"

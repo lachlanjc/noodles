@@ -1,6 +1,7 @@
 class CreatePages < ActiveRecord::Migration
   def change
-    create_table :pages do |t|
+    enable_extension 'uuid-ossp'
+    create_table :pages, id: :uuid do |t|
       t.string :name
       t.text :content
       t.text :content_raw
