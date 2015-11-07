@@ -51,13 +51,13 @@
     <% if me_owns_recipe? %>
     <%# If it's your recipe, hint about saving %>
       <div class="mtm dn-p">
-        <a class="btn bg-orange mrs" title="Others can click this button to save a copy of your recipe to their Noodles account." disabled>Save</a>
+        <a class="btn bg-orange mrs" title="Others can click this button to save a copy of your recipe to their Noodles account." disabled>Save to my Noodles</a>
         <%= link_to 'Un-share', recipe_un_share_path(@recipe), class: 'btn bg-red mrs' %>
       </div>
     <% elsif user_signed_in? %>
     <%# If you're logged in, show Save button %>
       <div class="mtm dn-p">
-        <%= link_to 'Save', :save_to_noodles, title: 'Save a copy of this recipe to your own account', class: 'btn bg-orange mrs' %>
+        <%= link_to 'Save to my Noodles', :save_to_noodles, title: 'Save a copy of this recipe to your own account', class: 'btn bg-orange mrs' %>
       </div>
     <% else %>
     <%# Everyone else should sign up for Noodles %>

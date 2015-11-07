@@ -40,13 +40,13 @@ Then click the blue "Share a link to this recipe" button. You can send the link 
 
 ___
 
-<h2 id="save-to-noodles">Save to Noodles</h2>
+<h2 id="save-to-noodles">Save to my Noodles</h2>
 
 At the bottom of any shared recipe, anyone with a Noodles account will see a "Save" button.
 
-![Screen Shot 2014-12-15 at 7.24.56 PM.png](https://draftin.com:443/images/25223?token=O1G1GHY9RJJZ57rU0NfFxfRu-hpk3Os4alOFdlpTN8FQ3Ajx6n6I7YC5UZhgEf8iPGGWDRthpa_mo5wz8ocdlr4)
+![Screenshot of Save to my Noodles](http://f.cl.ly/items/2G072B053h1e3t1Y4515/Screen%20Shot%202015-11-07%20at%2012.48.04%20AM.png)
 
-It lets someone save their own copy of one of your recipes to their own account. They can edit it, they can share it, and someone else can save that. The original recipe owner's recipe cannot be changed by anyone else.
+It lets someone save their own copy of your recipe to their own account. They can edit it, they can share it, and someone else can save that. Your recipe can't ever be changed by others, though.
 
 ___
 
