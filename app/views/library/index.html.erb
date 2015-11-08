@@ -1,30 +1,25 @@
 <% activate_nav!(:library) %>
 <% title 'Library' %>
 
+<%= stylesheet_link_tag 'library', media: 'all' %>
 <%= render 'shared/nav' %>
 
-<main class="md-col-8 mw7 mx-auto">
-  <h1 class="tc">Library</h1>
+<main class="md-col-10 mw9 mx-auto">
+  <h1 class="tc mtl">Library</h1>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Content</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @pages.each do |page| %>
-        <tr>
-          <td><%= page.name %></td>
-          <td><%= page.content_raw %></td>
-          <td><%= link_to 'Show', page %></td>
-        </tr>
+  <article class="flex flex-rows fac fjc phm mbm">
+    <% @pages.each do |page| %>
+      <%= link_to page, class: 'link-reset' do %>
+        <section class="library--page__preview bg-white rounded shadow pam mam oh">
+          <h3 class="mtn"><%= page_title(page).truncate 140 %></h3>
+          <div class="formatted-content f5"><%= page.content_raw.to_s.truncate(320).html_safe %></div>
+        </section>
       <% end %>
-    </tbody>
-  </table>
+    <% end %>
+  </article>
 </main>
 
-<%= link_to 'New Page', new_page_path %>
+<%= link_to new_page_path, class: 'btn-paper bg-orange fill-white circle fixed pam shadow tooltipped',
+            'aria-label': 'Write a new Page' do %>
+  <%= inline_svg 'add.svg' %>
+<% end %>

@@ -1,0 +1,36 @@
+.formatted-content {
+  color: $grey-1;
+  word-wrap: break-word;
+
+  a {
+    color: $blue;
+  }
+
+  del {
+    color: $grey-3;
+  }
+
+  blockquote {
+    padding: .5rem 1rem;
+    border-left: 4px solid $grey-5;
+  }
+
+  pre {
+    background-color: $grey-6;
+    border-radius: $border-radius;
+    font-family: $monospace-font-family;
+    margin: 0;
+    padding: .5rem 1rem;
+    white-space: pre-wrap;
+  }
+
+  ul,
+  ol {
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin-left: 20px;
+    }
+  }
+}
