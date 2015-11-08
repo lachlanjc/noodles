@@ -7,9 +7,12 @@
 <%= form_for(@page, data: { remote: true, type: 'json', behavior: 'page_editor' }) do |f| %>
   <main class="document mw8 pan">
     <section class="<%= 'dn' unless @page.errors.any? %> bg-grey-6 border-bottom pam pal-ns tc rounded-top oh" data-behavior="page_editor_errors">
-      <% @page.errors.full_messages.each do |message| %>
-        <p class="red mbn">💀 <%= message.downcase %></li>
-      <% end %>
+      <p class="red mbn dn" data-behavior="page_editor_error_name">
+        💀 That name is a too long.
+      </p>
+      <p class="red mbn" data-behavior="page_editor_error_generic">
+        💀 Something went wrong. 😨
+      </p>
     </section>
 
     <%= link_to @page, method: :delete, data: { confirm: 'Are you sure you want this page to be gone forever?' }, class: 'fr pas fill-grey-4' do %>

@@ -21,9 +21,10 @@ $(document).ready ->
     t.attr 'value', 'Saving...'
   $(document).on 'ajaxError', '[data-behavior~=page_editor]', (event, xhr) ->
     t = $('[data-behavior~=page_editor_errors]')
-    loc = Object.keys(xhr.responseJSON)
-    if loc[0].match /name/
-      t.append "<p class='red mbn'>💀 That name is a too long.</p>"
+    if xhr.status is 422
+      if Object.keys(xhr.responseJSON).toString() is 'name'
+        $('[data-behavior~=page_editor_error_name]').removeClass 'dn'
+        $('[data-behavior~=page_editor_error_generic]').addClass 'dn'
     t.removeClass 'dn'
     $('[data-behavior~=page_editor_submit]').attr 'value', 'Save again'
   $(document).on 'ajaxSuccess', '[data-behavior~=page_editor]', ->
