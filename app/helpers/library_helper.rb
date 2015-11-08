@@ -1,4 +1,6 @@
 module LibraryHelper
+  include ApplicationHelper
+
   def me_owns_page?
     user_signed_in? && @page.user_id == current_user.id
   end
@@ -15,5 +17,13 @@ module LibraryHelper
     text = text.to_s.gsub('<li>', '• ').gsub('</li>', '<br>')
     text = Sanitize.fragment text, elements: %w(strong del br)
     text.html_safe
+  end
+
+  def shared_page_path(page = @page)
+    "/p/#{page.shared_id.to_s}"
+  end
+
+  def shared_page_url(page = @page)
+    app_url + shared_page_path(page)
   end
 end
