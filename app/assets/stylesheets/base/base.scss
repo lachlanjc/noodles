@@ -24,7 +24,7 @@ hr {
 }
 
 .shadow {
-  box-shadow: 0 1px 2px rgba(100,100,100,.2);
+  @include shadow;
 }
 .well {
   box-shadow: inset 0 0 10px rgba(0,0,0,.05);

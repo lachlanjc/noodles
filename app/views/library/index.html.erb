@@ -10,7 +10,7 @@
   <article class="flex flex-rows fac fjc phm mbm">
     <% @pages.each do |page| %>
       <%= link_to page, class: 'link-reset' do %>
-        <section class="library--page__preview bg-white rounded shadow pam mam oh">
+        <section class="library--page__preview">
           <h3 class="mtn"><%= page_title(page).truncate 140 %></h3>
           <div class="formatted-content f5"><%= page.content_raw.to_s.truncate(320).html_safe %></div>
         </section>

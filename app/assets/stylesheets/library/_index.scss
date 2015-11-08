@@ -1,4 +1,10 @@
 .library--page__preview {
-  width: 12rem;
+  @include shadow;
+  background-color: #fff;
+  border-radius: $border-radius;
   height: 16rem;
+  margin: .5rem;
+  overflow: hidden;
+  padding: 1rem;
+  width: 12rem;
 }
