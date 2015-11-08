@@ -49,3 +49,7 @@ $space-3: 2rem;
 $space-4: 4rem;
 
 $container-width: 64em;
+
+@mixin shadow {
+  box-shadow: 0 1px 2px rgba(100,100,100,.2);
+}
