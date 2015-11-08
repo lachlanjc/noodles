@@ -16,8 +16,8 @@ class LibraryController < ApplicationController
   def new
     @page = Page.new
     @page.user = current_user
-    @page.save
-    redirect_to @page
+    @page.save(validate: false)
+    redirect_to page_path(@page)
   end
 
   def create
@@ -40,7 +40,7 @@ class LibraryController < ApplicationController
         format.html { redirect_to @page, notice: 'Page was successfully updated.' }
         format.json { render :show, status: :ok, location: @page }
       else
-        format.html { render :edit }
+        format.html { render :show }
         format.json { render json: @page.errors, status: :unprocessable_entity }
       end
     end

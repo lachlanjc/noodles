@@ -1,32 +1,39 @@
 <% activate_nav!(:library) %>
-<%- title page_title %>
+<%- title page_title(@page, 'New page').html_safe %>
 
 <%= stylesheet_link_tag 'library', media: 'all' %>
 <%= render 'shared/nav' %>
 
-<%= form_for(@page, data: { remote: 'true', behavior: 'page_editor' }) do |f| %>
-  <main class="document mw8 paxl">
-    <% if @page.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
-        <ul>
-        <% @page.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
+<%= form_for(@page, data: { remote: true, type: 'json', behavior: 'page_editor' }) do |f| %>
+  <main class="document mw8 pan">
+    <section class="<%= 'dn' unless @page.errors.any? %> bg-grey-6 border-bottom pam pal-ns tc rounded-top oh" data-behavior="page_editor_errors">
+      <% @page.errors.full_messages.each do |message| %>
+        <p class="red mbn">💀 <%= message.downcase %></li>
+      <% end %>
+    </section>
+
+    <%= link_to @page, method: :delete, data: { confirm: 'Are you sure you want this page to be gone forever?' }, class: 'fr pas fill-grey-4' do %>
+      <%= inline_svg 'delete.svg' %>
     <% end %>
 
-    <%= f.text_area :name, class: 'text-input invisible-input f1 b col-12 mbm',
-                    required: true, rows: 1, autocomplete: 'off',
-                    'data-behavior': '', placeholder: 'Type the name of this page...' %>
+    <header class="mtm mtxl-ns mbm phm phxl-ns">
+      <section class="bc f5 grey-3">
+        <%= link_to 'Library', library_path, class: 'bc__link' %>
+        ›
+        <%= link_to page_title, page_path(@page), class: 'bc__link', 'data-behavior': 'page_editor_name_bc' %>
+      </section>
+
+      <%= f.text_area :name, class: 'text-input invisible-input f1 b col-12', 'data-behavior': 'page_editor_name',
+                      required: true, rows: 1, autofocus: true, autocomplete: 'off', placeholder: 'Type the name of this page...' %>
+    </header>
 
     <%= f.hidden_field :content %>
 
-    <trix-editor input="page_content" placeholder="Type the note here..."></trix-editor>
+    <trix-editor input="page_content" class="formatted-content phm phxl-ns"
+                 placeholder="Type the note here..."></trix-editor>
 
-    <footer class="tc mtm">
-      <%= f.submit 'Save', class: 'btn bg-green' %>
+    <footer class="tc mtm mbm mbl-ns">
+      <%= f.submit 'Save', class: 'btn btn--primary', 'data-behavior': 'page_editor_submit' %>
     </footer>
   </main>
 <% end %>
