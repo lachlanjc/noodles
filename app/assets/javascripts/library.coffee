@@ -15,6 +15,13 @@ $(document).ready ->
     b.addClass 'relative fr'
     b.css { 'top': '.25rem' }
 
+    $(window).bind 'beforeunload', ->
+      cv = document.querySelector('trix-editor').editor.getDocument().toString()
+      lsv = $('[data-behavior~=page_editor_last_saved]').val()
+      del = $('[data-behavior~=page_delete_btn]').attr('class').match(/deleting/)
+      if (cv isnt lsv) and !del
+        'You have NOT saved your work yet!'
+
   $('[data-behavior~=page_editor]').on 'ajaxBeforeSend', ->
     t = $('[data-behavior~=page_editor_submit]')
     t.attr 'disabled'
@@ -31,7 +38,12 @@ $(document).ready ->
     t = $('[data-behavior~=page_editor_submit]')
     $('[data-behavior~=page_editor_errors]').addClass 'dn'
     t.attr 'value', 'Saved!'
+    v = document.querySelector('trix-editor').editor.getDocument()
+    $('[data-behavior~=page_editor_last_saved]').val v
     c = -> t.attr 'value', 'Save'
     setTimeout c, 1500
+
+  $(document).on 'click', '[data-behavior~=page_delete_btn]', ->
+    $(this).addClass 'deleting'
 
   return

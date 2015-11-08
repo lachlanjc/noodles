@@ -15,7 +15,7 @@
       </p>
     </section>
 
-    <%= link_to @page, method: :delete, data: { confirm: 'Are you sure you want this page to be gone forever?' }, class: 'fr pas fill-grey-4' do %>
+    <%= link_to @page, class: 'fr pas fill-grey-4', method: :delete, data: { behavior: 'page_delete_btn', confirm: 'Are you sure you want this page to be gone forever?' } do %>
       <%= inline_svg 'delete.svg' %>
     <% end %>
 
@@ -36,6 +36,7 @@
                  placeholder="Type the note here..."></trix-editor>
 
     <footer class="tc mtm mbm mbl-ns">
+      <input type="hidden" data-behavior="page_editor_last_saved" value="">
       <%= f.submit 'Save', class: 'btn btn--primary', 'data-behavior': 'page_editor_submit' %>
     </footer>
   </main>

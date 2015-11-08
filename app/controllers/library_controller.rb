@@ -16,7 +16,8 @@ class LibraryController < ApplicationController
   def new
     @page = Page.new
     @page.user = current_user
-    @page.save(validate: false)
+    @page.generate_shared_id!
+    @page.save!(validate: false)
     redirect_to page_path(@page)
   end
 
@@ -25,8 +26,8 @@ class LibraryController < ApplicationController
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to @page, notice: 'Page was successfully created.' }
-        format.json { render :show, status: :created, location: @page }
+        format.html { redirect_to @page }
+        format.json { render json: @page, status: :created, location: @page }
       else
         format.html { render :new }
         format.json { render json: @page.errors, status: :unprocessable_entity }
@@ -37,7 +38,7 @@ class LibraryController < ApplicationController
   def update
     respond_to do |format|
       if @page.update(page_params)
-        format.html { redirect_to @page, notice: 'Page was successfully updated.' }
+        format.html { redirect_to @page, notice: 'Changes saved.' }
         format.json { render :show, status: :ok, location: @page }
       else
         format.html { render :show }
@@ -49,7 +50,7 @@ class LibraryController < ApplicationController
   def destroy
     @page.destroy
     respond_to do |format|
-      format.html { redirect_to pages_url, notice: 'Page was successfully destroyed.' }
+      format.html { redirect_to pages_url, notice: 'We\'ve tossed out that page. 🔥' }
       format.json { head :no_content }
     end
   end
