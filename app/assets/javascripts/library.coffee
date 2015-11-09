@@ -17,8 +17,7 @@ $(document).ready ->
     l.addClass 'bg-white border rounded shadow mx-auto mts mw6'
     l.find('input[type=url]').addClass 'text-input f5 lh'
     b = l.find '.button_group'
-    b.addClass 'relative fr'
-    b.css { 'top': '.25rem' }
+    b.addClass 'fr'
 
     @populateLastSaved()
     $(window).bind 'beforeunload', ->

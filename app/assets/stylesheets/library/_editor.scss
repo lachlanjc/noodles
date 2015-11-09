@@ -95,6 +95,7 @@ trix-editor {
 trix-toolbar {
   border-top: $border;
   border-bottom: $border;
+  height: 36px;
   margin-bottom: .5rem;
 
   * {
@@ -104,7 +105,7 @@ trix-toolbar {
   .button_group {
     display: inline-block;
     font-size: 0;
-    margin: 0 8px 6px 0;
+    margin: 4px 8px 6px 0;
     overflow: hidden;
 
     &:last-of-type {
