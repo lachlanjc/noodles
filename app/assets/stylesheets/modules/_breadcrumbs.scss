@@ -1,8 +1,12 @@
-.bc__link {
-  color: inherit;
-  text-decoration: underline;
+.bc {
+  position: relative;
 
-  &:hover {
+  @at-root #{&}__link {
     color: inherit;
+    text-decoration: underline;
+
+    &:hover {
+      color: inherit;
+    }
   }
 }
