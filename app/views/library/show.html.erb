@@ -4,8 +4,8 @@
 <%= stylesheet_link_tag 'library', media: 'all' %>
 <%= render 'shared/nav' %>
 
-<%= form_for(@page, data: { remote: true, type: 'json', behavior: 'page_editor' }) do |f| %>
-  <main class="document mw8 pan">
+<main class="flex-ns fas fjc mtl phm phl-ns">
+  <article class="document document--inline mw7 pan">
     <section class="<%= 'dn' unless @page.errors.any? %> bg-grey-6 border-bottom pam pal-ns tc rounded-top oh" data-behavior="page_editor_errors">
       <p class="red mbn dn" data-behavior="page_editor_error_name">
         💀 That name is a too long.
@@ -19,27 +19,39 @@
       <%= inline_svg 'delete.svg' %>
     <% end %>
 
-    <header class="mtm mtxl-ns mbm phm phxl-ns">
-      <section class="bc f5 grey-3">
-        <%= link_to 'Library', library_path, class: 'bc__link' %>
-        ›
-        <%= link_to page_title, page_path(@page), class: 'bc__link', 'data-behavior': 'page_editor_name_bc' %>
-      </section>
+    <%= form_for(@page, data: { remote: true, type: 'json', behavior: 'page_editor' }) do |f| %>
+      <header class="mtm mtxl-ns mbm phm phxl-ns">
+        <section class="bc f5 grey-3">
+          <%= link_to 'Library', library_path, class: 'bc__link' %> ›
+          <%= link_to page_title, page_path(@page), class: 'bc__link', 'data-behavior': 'page_editor_name_bc' %>
+        </section>
 
-      <%= f.text_area :name, class: 'text-input invisible-input f1 b col-12', 'data-behavior': 'page_editor_name',
-                      required: true, rows: 1, autofocus: true, autocomplete: 'off', placeholder: 'Type the name of this page...' %>
-    </header>
+        <%= f.text_area :name, class: 'text-input invisible-input f1 b col-12', 'data-behavior': 'page_editor_name',
+                        required: true, rows: 1, autofocus: true, autocomplete: 'off', placeholder: 'Type the name of this page...' %>
+      </header>
 
-    <%= f.hidden_field :content %>
+      <%= f.hidden_field :content %>
 
-    <trix-editor input="page_content" class="formatted-content phm phxl-ns"
-                 placeholder="Type the note here..."></trix-editor>
+      <trix-editor input="page_content" class="formatted-content phm phxl-ns"
+                   placeholder="Type the note here..."></trix-editor>
 
-    <footer class="tc mtm mbm mbl-ns">
-      <input type="hidden" data-behavior="page_editor_last_saved" value="">
-      <%= f.submit 'Save', class: 'btn btn--primary', 'data-behavior': 'page_editor_submit' %>
-    </footer>
-  </main>
-<% end %>
+      <footer class="tc mtm mbm mbl-ns">
+        <input type="hidden" data-behavior="page_editor_last_saved" value="">
+        <%= f.submit 'Save', class: 'btn btn--primary', 'data-behavior': 'page_editor_submit' %>
+      </footer>
+    <% end %>
+  </article>
+
+  <aside class="page--sidebar">
+    <section class="page--sidebar--component page--share">
+      <h2 class="mtn">Share this page</h2>
+      <%= text_field_tag 'url', shared_page_url, class: 'text-input' %>
+    </section>
+
+    <p class="page--sidebar--component mtl f5 grey-4">
+      Created
+      <span class="tooltipped relative" aria-label="<%= @page.created_at.strftime '%Y-%m-%-e %l:%M %p' %>"><%= time_ago_in_words @page.created_at %> ago</span>
+  </aside>
+</main>
 
 <%= javascript_include_tag 'library' %>

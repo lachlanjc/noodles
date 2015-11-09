@@ -3,6 +3,7 @@
 .fac           { align-items: center }
 .fab           { align-items: baseline }
 .fae           { align-items: flex-end }
+.fas           { align-items: stretch }
 .fjc           { justify-content: center }
 .fjb           { justify-content: space-between }
 
@@ -18,7 +19,6 @@
 .flex-column  { flex-direction: column }
 .flex-wrap    { flex-wrap: wrap }
 
-.flex-stretch  { align-items: stretch }
 .flex-start    { align-items: flex-start }
 
 .flex-around   { justify-content: space-around }

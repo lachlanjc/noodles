@@ -1,4 +1,4 @@
-.library--page__preview {
+.page__preview {
   @include shadow;
   background-color: #fff;
   border-radius: $border-radius;
@@ -7,4 +7,17 @@
   overflow: hidden;
   padding: 1rem;
   width: 12rem;
+}
+
+.page--sidebar {
+  width: 100%;
+
+  @media screen and (min-width: 48em) {
+    margin-left: 2rem;
+    width: 16rem;
+  }
+}
+
+.page--sidebar--component {
+  width: 100%;
 }
