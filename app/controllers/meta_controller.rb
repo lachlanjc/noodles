@@ -1,5 +1,5 @@
 class MetaController < ApplicationController
-  include PagesHelper
+  include MetaHelper
 
   def home
     render :home, layout: false
