@@ -5,6 +5,11 @@ $(document).ready ->
     n = _.trunc _.trim($(this).val()), 100
     $('[data-behavior~=page_editor_name_bc]').text n || 'Untitled'
 
+  @populateLastSaved = () ->
+    v = document.querySelector('trix-editor').editor.getDocument()
+    $('[data-behavior~=page_editor_last_saved]').val v
+    v
+
   document.addEventListener 'trix-initialize', (e) ->
     t = $('trix-toolbar')
     t.find('.button_groups').addClass 'phs phxl-ns'
@@ -15,12 +20,14 @@ $(document).ready ->
     b.addClass 'relative fr'
     b.css { 'top': '.25rem' }
 
+    @populateLastSaved()
     $(window).bind 'beforeunload', ->
       cv = document.querySelector('trix-editor').editor.getDocument().toString()
       lsv = $('[data-behavior~=page_editor_last_saved]').val()
       del = $('[data-behavior~=page_delete_btn]').attr('class').match(/deleting/)
       if (cv isnt lsv) and !del
         'You have NOT saved your work yet!'
+    return
 
   $('[data-behavior~=page_editor]').on 'ajaxBeforeSend', ->
     t = $('[data-behavior~=page_editor_submit]')
@@ -38,8 +45,7 @@ $(document).ready ->
     t = $('[data-behavior~=page_editor_submit]')
     $('[data-behavior~=page_editor_errors]').addClass 'dn'
     t.attr 'value', 'Saved!'
-    v = document.querySelector('trix-editor').editor.getDocument()
-    $('[data-behavior~=page_editor_last_saved]').val v
+    @populateLastSaved()
     c = -> t.attr 'value', 'Save'
     setTimeout c, 1500
 
