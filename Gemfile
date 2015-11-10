@@ -4,6 +4,7 @@ ruby '2.2.3'
 gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'rails_autolink'
+gem 'ahoy_matey'
 gem 'autoprefixer-rails'
 gem 'aws-sdk', '< 2.0'
 gem 'devise'

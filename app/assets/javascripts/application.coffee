@@ -3,6 +3,7 @@
 #= require react
 #= require react_ujs
 #= require lodash/lodash
+#= require ahoy
 #= require zeroclipboard
 #= require modals
 #= require autosize
