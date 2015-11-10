@@ -13,6 +13,7 @@ $(document).ready ->
   document.addEventListener 'trix-initialize', (e) ->
     t = $('trix-toolbar')
     t.find('.button_groups').addClass 'phs phxl-ns'
+    t.find('.button_group.history_tools').addClass 'fr-ns'
     l = t.find '.link_dialog'
     l.addClass 'bg-white border rounded shadow mx-auto mts mw6'
     l.find('input[type=url]').addClass 'text-input f5 lh'
