@@ -11,7 +11,7 @@
     <% @pages.each do |page| %>
       <%= link_to page, class: 'link-reset' do %>
         <section class="page__preview">
-          <h3 class="mtn"><%= page_title(page).truncate 140 %></h3>
+          <h3 class="mtn tc"><%= page_title(page).truncate 140 %></h3>
           <div class="formatted-content f5"><%= page.content_raw.to_s.truncate(320).html_safe %></div>
         </section>
       <% end %>
