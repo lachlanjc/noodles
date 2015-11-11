@@ -1,0 +1,2 @@
+namespace :analytics do
+end
