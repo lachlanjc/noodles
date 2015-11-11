@@ -70,6 +70,7 @@ Rails.application.routes.draw do
   scope '/admin' do
     get '/dashboard', to: 'analytics#dashboard', as: :analytics_dash
     get '/all_users', to: 'analytics#all_users', as: :analytics_users
+    get '/data', to: 'analytics#data', as: :analytics_data
     get '/collections', to: 'analytics#collections', as: :analytics_collections
     get '/performance', to: 'analytics#performance', as: :analytics_performance
     get '/shared_recipes', to: 'analytics#shared_recipes', as: :analytics_recipes

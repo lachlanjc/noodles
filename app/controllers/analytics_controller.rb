@@ -23,6 +23,10 @@ class AnalyticsController < ApplicationController
     @users = User.all.order(created_at: :desc)
   end
 
+  def data
+    @users = User.all.order(created_at: :desc)
+  end
+
   def collections
     @collections = Collection.all.order(created_at: :desc)
   end

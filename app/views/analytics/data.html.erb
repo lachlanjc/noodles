@@ -1,0 +1,9 @@
+<% activate_nav!(:analytics_dash) %>
+<% title 'Data' %>
+
+<%= render 'shared/analytics_nav' %>
+
+<main class="mx-auto pam mw8">
+  <h2>Visits</h2>
+  <%= line_chart Visit.group_by_day(:started_at).count %>
+</main>

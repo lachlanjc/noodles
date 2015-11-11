@@ -15,7 +15,7 @@
         </h2>
         <ul class="text list-reset pan man">
           <li>Recipes: <%= user.recipes.count %></li>
-          <li>Collections: <%= user.collections.count %></li> 
+          <li>Collections: <%= user.collections.count %></li>
           <li>Sessions: <%= user.sign_in_count %></li>
 	  <% if user.last_sign_in_at.present? %>
           <li>Last seen: <%= user.last_sign_in_at.strftime("%m-%e-%y %H:%M") %></li>

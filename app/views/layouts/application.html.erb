@@ -20,7 +20,7 @@
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <% if controller_name == 'analytics' %>
-    <script src="//code.highcharts.com/highcharts.js">
+    <%= javascript_include_tag "//code.highcharts.com/highcharts.js", "chartkick" %>
   <% end %>
   <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Lato:400,600">
   <%= csrf_meta_tags %>
