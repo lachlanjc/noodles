@@ -13,7 +13,7 @@ $(document).ready ->
   $(document).on 'click', '[data-behavior~=explore_src_pick]', ->
     src = $(this).data('src-name') || 'nyt'
     activateSrc src
-    $('[data-behavior~=explore_search_field]').keyup()
+    $('[data-behavior~=explore_search_field]').keypress()
     q = $('[data-behavior~=explore_search_field]').val()
     if !_.isEmpty q
       window.history.replaceState null, null, "?q=#{encodeURIComponent(q)}&src=#{src}"
@@ -24,7 +24,7 @@ $(document).ready ->
     s = urlParams.src || 'nyt'
     $('[data-behavior~=explore_src_pick_bar]').data 'src', s
     activateSrc s
-    k = -> f.keyup()
+    k = -> f.keypress()
     k
     setTimeout k, 1
   else if _.isEmpty urlParams.src
@@ -42,6 +42,7 @@ $(document).ready ->
       Intercom 'trackEvent', 'searched-explore', e
 
   searchActions = ->
+    console.log 'fired'
     t = $('[data-behavior~=explore_search_field]')
     q = _.trim t.val()
     unless _.isEmpty q
@@ -77,7 +78,7 @@ $(document).ready ->
         return
 
   f = $('[data-behavior~=explore_search_field]')
-  f.on 'keyup', _.debounce searchActions, 400
+  f.on 'keypress', _.debounce searchActions, 400
   f.on 'change', _.debounce logSearchToIntercom, 1000
 
   $('[data-behavior~=explore_clear_search], [data-behavior~=explore_suggestions]').css { 'display': 'none' }
