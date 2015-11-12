@@ -22,7 +22,7 @@
       <% end %>
 
       <h1 class="man di" itemprop="name"><%= @recipe.title %></h1>
-      <div class="text mtm" itemprop="description"><%= markdown(@recipe.description.to_s) %></div>
+      <div class="text mtm" itemprop="description"><%= sanitize markdown @recipe.description.to_s %></div>
 
     <% end %>
 
