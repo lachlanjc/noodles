@@ -7,7 +7,7 @@
         <%= @recipe.title %>
 
         <% if me_owns_recipe? %>
-          <%= form_for(@recipe, data: { remote: true }, html: { class: 'dib dn-p' }) do |f| %>
+          <%= form_for(@recipe, data: { remote: true }, html: { class: 'dib dn-p relative tooltipped tooltipped-e', 'aria-label': 'Favorite' }) do |f| %>
             <label class="control man">
               <%= f.check_box :favorite, class: 'control-checkbox', data: { behavior: 'recipe_favorite_trigger' } %>
               <%= inline_svg 'favorite_outline.svg', class: 'fill-white pointer control-indicator', size: 24 %>

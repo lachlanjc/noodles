@@ -19,6 +19,15 @@
   width: max-content;
 }
 
+.tooltipped-e:after {
+  bottom: 50%;
+  left: 100%;
+  margin-left: .5rem;
+  margin-right: 0;
+  right: 0;
+  transform: translateY(50%);
+}
+
 .tooltipped:hover,
 .tooltipped:active,
 .tooltipped:focus {
