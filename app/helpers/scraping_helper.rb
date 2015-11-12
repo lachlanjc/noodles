@@ -47,7 +47,7 @@ module ScrapingHelper
 
   def create_recipe_item(data)
     recipe = {}
-    recipe['title'] = data.name.to_s.squish
+    recipe['title'] = data.name.to_s.squish.truncate(255)
     recipe['description'] = data.description
     recipe['ingredients'] = data.ingredients
     recipe['instructions'] = data.instructions
