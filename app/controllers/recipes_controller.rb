@@ -177,10 +177,12 @@ class RecipesController < ApplicationController
   def setup_image_layout
     safely do
       size = FastImage.size @recipe.img.url
-      @image_layout = size[0].to_i > 750
-      if @image_layout
-        @remove_grey_bg = false
-        @hide_flash = flash.any?
+      if size.present?
+        if size[0].to_i > 750
+          @image_layout = true
+          @remove_grey_bg = false
+          @hide_flash = flash.any?
+        end
       end
     end
     @image_layout = defined? @image_layout
