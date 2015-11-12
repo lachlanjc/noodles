@@ -1,4 +1,4 @@
-<div id="collectModal" class="modal">
+<section id="collectModal" class="modal">
   <%= modal_close %>
 
   <h2>Add to Collection</h2>
@@ -39,15 +39,15 @@
       You don't have any collections yet. Why don't you <%= link_to "create one", collections_path(:new_collection => true), class: "blue" %>?
     </div>
   <% end %>
-</div>
+</section>
 
-<div id="shareModal" class="modal">
+<section id="shareModal" class="modal">
   <%= modal_close %>
 
   <h2>Share this recipe</h2>
   <hr>
 
-  <div class="tab-container">
+  <article class="tab-container">
 
     <input type="radio" name="tab-set-2" class="tab-1" id="tab-2-1" checked>
     <label for="tab-2-1" class="rounded-top dib border bg-grey-5">Share a link</label>
@@ -83,9 +83,9 @@
       <p class="mts"><%= link_to 'Need help?', help_path %></p>
     </div>
 
-  </div>
+  </article>
 
-</div>
+</section>
 
 <a class="btn-paper-mini bg-orange fill-white circle fixed pas pointer shadow tooltipped"
    aria-label="Print this recipe" data-behavior="print">
