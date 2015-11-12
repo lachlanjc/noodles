@@ -30,6 +30,10 @@ GEM
       activemodel (= 4.2.4)
       activesupport (= 4.2.4)
       arel (~> 6.0)
+    activeresource (4.0.0)
+      activemodel (~> 4.0)
+      activesupport (~> 4.0)
+      rails-observers (~> 0.1.1)
     activesupport (4.2.4)
       i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
@@ -117,6 +121,8 @@ GEM
     hangry (0.0.2)
       activesupport
       nokogiri
+    highrise (3.2.1)
+      activeresource (>= 3.2.13)
     hightop (0.1.3)
       activerecord
     htmlentities (4.3.4)
@@ -217,6 +223,8 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
+    rails-observers (0.1.2)
+      activemodel (~> 4.0)
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
@@ -313,6 +321,7 @@ DEPENDENCIES
   fastimage
   groupdate
   hangry
+  highrise
   hightop
   ingreedy
   intercom-rails
