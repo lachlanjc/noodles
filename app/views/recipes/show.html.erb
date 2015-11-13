@@ -13,11 +13,11 @@
   <main class="document mw7">
 
     <% if !@image_layout %>
-      <%= form_for(@recipe, data: { remote: true }) do |f| %>
-        <label class="control fr dib man dn-p relative tooltipped" aria-label="Favorite">
-          <%= f.check_box :favorite, class: 'control-checkbox', data: { behavior: 'recipe_favorite_trigger' } %>
-          <%= inline_svg 'favorite_outline.svg', class: 'fill-orange pointer control-indicator', size: 32 %>
-          <%= inline_svg 'favorite.svg', class: 'fill-orange pointer control-indicator-checked', size: 32 %>
+      <%= form_for(@recipe, 'data-remote': true, html: { class: 'dib dn-p fr' }) do |f| %>
+        <label class="tooltipped man" aria-label="Favorite">
+          <%= f.check_box :favorite, class: 'recipe__favorite__checkbox', 'data-behavior': 'recipe_favorite_trigger' %>
+          <%= inline_svg 'favorite_outline.svg', class: 'fill-orange pointer recipe__favorite__indicator', size: 32 %>
+          <%= inline_svg 'favorite.svg', class: 'fill-orange pointer recipe__favorite__indicator--checked', size: 32 %>
         </label>
       <% end %>
 

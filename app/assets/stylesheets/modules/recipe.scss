@@ -5,25 +5,26 @@
       margin-top: $space-1;
     }
 
-.recipe-ingredients p {
-  margin-bottom: 0;
-}
-
-.control-checkbox,
-.control-checkbox:checked ~ .control-indicator,
-.control-indicator-checked {
-  display: none !important;
-}
     p,
     ul {
       margin-bottom: 0;
     }
 
-.control-indicator,
-.control-checkbox:checked ~ .control-indicator-checked {
-  display: inline-block !important;
     ul {
       @extend .list-reset;
+    }
+  }
+
+  &__favorite {
+    &__checkbox,
+    &__checkbox:checked ~ &__indicator,
+    &__indicator--checked {
+      display: none !important;
+    }
+
+    &__indicator,
+    &__checkbox:checked ~ &__indicator--checked {
+      display: inline-block !important;
     }
   }
 }
