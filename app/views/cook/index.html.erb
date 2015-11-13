@@ -19,7 +19,7 @@
       <% item_text = ingredient_processed(item) %>
       <%= content_tag :li,
                        item_text.html_safe,
-                       data: { behavior: 'checklist_item' },
+                       'data-behavior': 'checklist_item',
                        class: 'pointer' if item.strip.present? %>
     <% end %>
     </ul>
@@ -39,7 +39,7 @@
     <% @recipe.instructions.lines.each do |step| %>
       <%= content_tag :div,
                        plain_text_from_markdown(step.to_s).html_safe,
-                       data: { behavior: 'checklist_item' },
+                       'data-behavior': 'checklist_item',
                        class: 'h2 grey-2 bg-white rounded shadow pointer pam db mbm' if step.strip.present? %>
     <% end %>
 

@@ -23,7 +23,7 @@ textarea {
 <main class="md-col-8 mx-auto pam">
 <%= form_for(@recipe) do |f| %>
 
-  <%= f.file_field :img, class: 'dn', data: { behavior: 'photo_field' } %>
+  <%= f.file_field :img, class: 'dn', 'data-behavior': 'photo_field' %>
   <div class="mbm dib">
     <div class="pointer" data-behavior="photo_button">
       <%= inline_svg 'photo-upload.svg', size: 32, class: 'fill-grey-4 relative', style: 'top: 10px;' %>
@@ -78,7 +78,7 @@ textarea {
                   placeholder: 'Optionally, write a description for the recipe right here.',
                   rows: '1',
                   autocomplete: 'off',
-                  data: { behavior: 'autosize' } %>
+                  'data-behavior': 'autosize' %>
 
   <%= f.label :ingredients, class: 'dib h3' %><small class="mls grey-4">Put one on each line.</small>
   <%= f.text_area :ingredients,
@@ -86,7 +86,7 @@ textarea {
                   placeholder: 'Click here to add your recipe\'s ingredients.',
                   rows: '3',
                   autocomplete: 'off',
-                  data: { behavior: 'autosize' } %>
+                  'data-behavior': 'autosize' %>
 
   <%= f.label :instructions, class: 'dib h3' %><small class="mls grey-4">Fully supports Markdown.</small>
   <%= f.text_area :instructions,
@@ -109,7 +109,7 @@ textarea {
     <%= f.text_field :serves, class: 'text-input md-col-8' %>
   </section>
 
-  <%= f.submit t('general.save'), class: 'btn bg-grey-4 mtl mbl', data: { disable_with: 'Saving...' } %>
+  <%= f.submit t('general.save'), class: 'btn bg-grey-4 mtl mbl', 'data-disable-with': 'Saving...' %>
 
 <% end %>
 </main>
