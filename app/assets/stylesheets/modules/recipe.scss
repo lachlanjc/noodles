@@ -1,12 +1,9 @@
-.recipe-ingredients ul {
-  @extend .list-reset;
-  margin-bottom: 0;
-}
-
-.recipe-ingredients p + h1,
-.recipe-ingredients h1 {
-  margin-top: $space-1;
-}
+.recipe {
+  &__ingredients {
+    h1,
+    p + h1 {
+      margin-top: $space-1;
+    }
 
 .recipe-ingredients p {
   margin-bottom: 0;
@@ -17,10 +14,18 @@
 .control-indicator-checked {
   display: none !important;
 }
+    p,
+    ul {
+      margin-bottom: 0;
+    }
 
 .control-indicator,
 .control-checkbox:checked ~ .control-indicator-checked {
   display: inline-block !important;
+    ul {
+      @extend .list-reset;
+    }
+  }
 }
 
 .social svg {
