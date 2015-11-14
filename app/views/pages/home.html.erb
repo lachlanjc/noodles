@@ -30,8 +30,8 @@
           style="background-image: url(<%= image_path "home/#{rand(1..6).to_s}.jpg" %>);">
     <nav role="navigation" class="flex-ns phm pvs white dn-p">
       <div class="pvs">
-        <%= link_to t("general.home"), root_url, class: "phs link-reset white normal" %>
-        <%= link_to t("general.features"), docs_path, class: "phs link-reset white normal" %>
+        <%= link_to 'Home', root_url, class: 'phs link-reset white normal' %>
+        <%= link_to 'Features', docs_path, class: 'phs link-reset white normal' %>
         <%= link_to 'Explore', explore_path, class: 'phs link-reset white normal' %>
       </div>
 
@@ -48,13 +48,12 @@
       </div>
 
       <div class="pvs">
-        <%= link_to t("general.about"), help_path, class: "phs link-reset white normal" %>
-        <%= link_to "Blog", announcements_path, class: "phs link-reset white link-reset white" %>
-        <%= link_to t("general.sign_out"), sign_out_path, method: :delete, class: "phs link-reset white normal" if user_signed_in? %>
+        <%= link_to 'About', help_path, class: 'phs link-reset white normal' %>
+        <%= link_to 'Blog', announcements_path, class: 'phs link-reset white link-reset white' %>
         <% if user_signed_in? %>
-          <%= link_to "Your recipes →", recipes_path, class: "phs link-reset white" %>
+          <%= link_to 'Sign Out', sign_out_path, method: :delete, class: 'phs link-reset white normal' %>
         <% else %>
-          <%= link_to t("general.sign_in"), sign_in_path, class: "phs link-reset white normal" %>
+          <%= link_to 'Sign In', sign_in_path, class: 'phs link-reset white normal' %>
         <% end %>
       </div>
     </nav>
@@ -62,11 +61,8 @@
     <article class="hero-content phm mx-auto">
       <h1 class="white f1 mega-l mw8 mx-auto normal">All your recipes in one place.</h1>
       <h2 class="white mw8 mx-auto normal">Keep, cook, and share all your recipes with Noodles.</h2>
-      <a class="btn bg-orange tsn f2 mtl pam"
-         href="<%= explore_path %>" onclick="_gs('event', 'Clicked Explore button');">
-        Start Exploring
-      </a>
-    </div>
+      <%= link_to @primary_text, @primary_link, class: 'btn bg-orange tsn f2 mtl pam' %>
+    </article>
   </header>
   <p class="phl mw7 mx-auto f3 f2-ns tl mtl mbm">
     Noodles is a simple place for all your recipes. Add one in just a few clicks, find it later in seconds. Instead of copies and scribbled notecards, you'll have a beautifully accessible library.
