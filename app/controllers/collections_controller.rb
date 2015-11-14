@@ -27,14 +27,8 @@ class CollectionsController < ApplicationController
   end
 
   def create
-    # Super messy!
-    @collection = Collection.new do |c|
-      c.name = params[:collection][:name]
-      c.description = params[:collection][:description]
-      c.photo = params[:collection][:photo]
-      c.user = current_user
-      c.save!
-    end
+    @collection = Collection.new(collection_params)
+    @collection.user = current_user
     @collection.save
     redirect_to @collection
   end
