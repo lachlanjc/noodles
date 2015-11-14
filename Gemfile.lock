@@ -102,9 +102,14 @@ GEM
     hangry (0.0.2)
       activesupport
       nokogiri
+    heap (0.3.0)
+      httparty (~> 0.13)
     htmlentities (4.3.4)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
+    httparty (0.13.7)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     ingreedy (0.0.8)
       parslet (~> 1.7.0, >= 1.7.0)
@@ -142,6 +147,7 @@ GEM
     mini_portile (0.6.2)
     minitest (5.8.1)
     multi_json (1.11.2)
+    multi_xml (0.5.5)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9.4)
     netrc (0.10.3)
@@ -289,6 +295,7 @@ DEPENDENCIES
   dotenv-rails
   fastimage
   hangry
+  heap
   ingreedy
   intercom-rails
   jbuilder
