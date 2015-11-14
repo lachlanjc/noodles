@@ -10,7 +10,7 @@
         closeButton: $('[data-behavior~=modal_close]')
       };
       var overlay = $("<div class='col-12 bg-darken-4 modal-overlay'></div>");
-      if ($(".modal-overlay").length == 0) {
+      if ($(".modal-overlay").length === 0) {
         $("body").append(overlay);
       }
       options = $.extend(defaults, options);
