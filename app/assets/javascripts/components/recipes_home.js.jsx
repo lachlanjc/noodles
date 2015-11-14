@@ -39,7 +39,7 @@ class RecipesHome extends React.Component {
   }
 
   filterClasses(name) {
-    let classes = 'filterbar-item dib phm pointer '
+    let classes = 'filterbar__item dib phm pointer '
     this.state.view === name ? classes += 'bg-orange white white-hover b' : classes += 'grey-1';
     return classes;
   }

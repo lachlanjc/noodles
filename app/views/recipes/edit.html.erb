@@ -1,33 +1,18 @@
 <% activate_nav!(:edit_recipe) %>
+<%- title @page_title.html_safe %>
 
-<style>
-textarea {
-  min-width: 32rem;
-}
-
-@media (max-width: 48em) {
-  .home {
-    display: dib;
-  }
-  .home svg {
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-</style>
-
-<%= link_to recipes_path, class: 'mam home fixed' do %>
-  <%= inline_svg 'home.svg', class: 'fill-grey-4', style: 'width: 32px; height: 32px;' %>
+<%= link_to recipes_path, class: 'mam mbn flex fjc dib-ns fl-ns' do %>
+  <%= inline_svg 'home.svg', class: 'fill-grey-4', size: 32 %>
 <% end %>
 
-<main class="md-col-8 mx-auto pam">
-<%= form_for(@recipe) do |f| %>
+<main class="md-col-8 mx-auto mw7 phm pvm-ns">
+<%= form_for(@recipe, html: { 'data-title': @form_class }) do |f| %>
 
-  <%= f.file_field :img, class: 'dn', 'data-behavior': 'photo_field' %>
-  <div class="mbm dib">
-    <div class="pointer" data-behavior="photo_button">
+  <section class="mbm dib">
+    <%= f.file_field :img, class: 'dn', 'data-behavior': 'photo_field' %>
+    <div class="grey-4 pointer" data-behavior="photo_button">
       <%= inline_svg 'photo-upload.svg', size: 32, class: 'fill-grey-4 relative', style: 'top: 10px;' %>
-      <span class="grey-4" data-behavior="photo_name">
+      <span data-behavior="photo_name">
         <%= @recipe.img.url.blank? ? 'Upload a photo' : 'Upload a new photo' %>
       </span>
     </div>
@@ -38,7 +23,7 @@ textarea {
                    class: 'link-reset', data: { remote: true, behavior: 'remove_current_photo_link' } %>
     </div>
     <% end %>
-  </div>
+  </section>
 
   <% if @recipe.errors.any? %>
     <section class="md-col-8 mx-auto bg-white rounded shadow tc mtm mbm pal"
@@ -66,38 +51,31 @@ textarea {
     </section>
   <% end %>
 
-  <%= f.text_field :title,
-                   value: @title,
-                   autofocus: true, required: true,
+  <%= f.text_field :title, value: @title,
+                   autofocus: true, required: true, autocomplete: 'off',
                    class: 'text-input invisible-input col-12 man b h1',
-                   placeholder: 'Title your recipe...',
-                   autocomplete: 'off' %>
+                   placeholder: 'Title your recipe...' %>
 
   <%= f.text_area :description,
                   class: 'text-input invisible-input col-12',
-                  placeholder: 'Optionally, write a description for the recipe right here.',
-                  rows: '1',
-                  autocomplete: 'off',
-                  'data-behavior': 'autosize' %>
+                  placeholder: 'If you\'d like, write a description for the recipe here.',
+                  rows: '1', autocomplete: 'off', 'data-behavior': 'autosize' %>
 
   <%= f.label :ingredients, class: 'dib h3' %><small class="mls grey-4">Put one on each line.</small>
   <%= f.text_area :ingredients,
                   class: 'text-input invisible-input col-12 man',
-                  placeholder: 'Click here to add your recipe\'s ingredients.',
-                  rows: '3',
-                  autocomplete: 'off',
-                  'data-behavior': 'autosize' %>
+                  placeholder: 'Click here and type your recipe\'s ingredients.',
+                  rows: '3', autocomplete: 'off', 'data-behavior': 'autosize' %>
 
   <%= f.label :instructions, class: 'dib h3' %><small class="mls grey-4">Fully supports Markdown.</small>
   <%= f.text_area :instructions,
                   class: 'text-input invisible-input col-12 man',
-                  placeholder: 'Type the recipe\'s instructions here.',
-                  rows: '4',
-                  autocomplete: 'off',
-                  data: { behavior: 'autosize editor_instructions' } %>
+                  placeholder: 'Add the instructions here.',
+                  rows: '4', autocomplete: 'off',
+                  'data-behavior': 'autosize editor_instructions' %>
 
   <section>
-    <h2 class='mtn'>Details</h2>
+    <h2 class="mtn">Details</h2>
 
     <%= f.label :source, class: 'dib' %><small class="mls grey-4">Where did this recipe come from?</small>
     <%= f.text_field :source, class: 'text-input md-col-8' %>
@@ -109,7 +87,7 @@ textarea {
     <%= f.text_field :serves, class: 'text-input md-col-8' %>
   </section>
 
-  <%= f.submit t('general.save'), class: 'btn bg-grey-4 mtl mbl', 'data-disable-with': 'Saving...' %>
+  <%= f.submit 'Save', class: 'btn bg-blue b mtl mbl', 'data-disable-with': 'Saving...' %>
 
 <% end %>
 </main>

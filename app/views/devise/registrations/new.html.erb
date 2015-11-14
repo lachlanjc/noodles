@@ -1,5 +1,5 @@
-<%- title 'Sign Up' %>
 <% activate_nav!(:sign_up) %>
+<%- title 'Sign Up' %>
 
 <% @form = render 'new', user: @user, text: t('.sign_up_and') %>
 
@@ -8,7 +8,7 @@
 <% else %>
   <%= render 'shared/nav' %>
 
-  <main class="document">
+  <main class="document mw7 tc">
     <h1 class="mbs"><%= t('.welcome') %></h1>
     <%= @form %>
   </main>

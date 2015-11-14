@@ -24,15 +24,18 @@ class RecipesController < ApplicationController
     if user_signed_in?
       @recipe = Recipe.new
       title_setup
+      @form_class = 'new_recipe'
+      @page_title = @form_class.humanize
       render :edit
     else
-      flash[:red] = 'You need to be signed in to save recipes.'
+      flash[:red] = 'You need to sign in to add recipes.'
       redirect_to root_url
     end
   end
 
   def edit
     title_setup
+    @page_title = "Editing #{@recipe.title}"
   end
 
   def create

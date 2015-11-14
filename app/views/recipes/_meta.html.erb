@@ -11,20 +11,14 @@
     <p>This recipe is already in <%= pluralize(@recipe.collections.reject!(&:blank?).count, 'collection') %>. To add it to additional collections, click on them in the list below.</p>
     <% end %>
 
-    <%= form_for(@recipe) do |f| %>
-      <ul class="list-reset sm-col-10 mw5 mx-auto">
+    <%= form_for(@recipe, html: { class: 'phm' }) do |f| %>
+      <ul class="list-reset mw5 mx-auto">
         <%= collection_check_boxes(:recipe, :collections, @collections, :id, :name) do |b| %>
         <li class="border-top">
-          <%= b.label(class: 'collection-list-item man pas pointer') do %>
-            <% if @recipe.collections.include?(b.value.to_s) %>
-            <%= b.check_box checked: 'checked', class: 'dn' %>
-            <% else %>
-            <%= b.check_box class: 'dn' %>
-            <% end %>
-            <%= content_tag :span, b.text %>
-            <div class="checkmark fill-orange fr dn">
-              <%= inline_svg 'check.svg' %>
-            </div>
+          <%= b.label class: 'colladd__item man pas pointer' do %>
+            <%= b.check_box checked: @recipe.collections.include?(b.value.to_s), class: 'colladd__item__check dn' %>
+            <span class="colladd__item__label"><%= b.text %></span>
+            <%= inline_svg 'check.svg', class: 'colladd__item__mark fill-orange fr dn' %>
           <% end %>
         </li>
         <% end %>

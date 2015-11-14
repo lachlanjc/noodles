@@ -27,7 +27,7 @@
 </head>
 <body class="tc man bg-grey-6">
   <header class="hero-container bg-cover bg-center bg-no-repeat"
-          style='background-image: url(<%= image_path "home/#{rand(1..6).to_s}.jpg" %>);'>
+          style="background-image: url(<%= image_path "home/#{rand(1..6).to_s}.jpg" %>);">
     <nav role="navigation" class="flex-ns phm pvs white dn-p">
       <div class="pvs">
         <%= link_to t("general.home"), root_url, class: "phs link-reset white normal" %>
@@ -59,7 +59,7 @@
       </div>
     </nav>
 
-    <div class="hero-content phm mx-auto">
+    <article class="hero-content phm mx-auto">
       <h1 class="white f1 mega-l mw8 mx-auto normal">All your recipes in one place.</h1>
       <h2 class="white mw8 mx-auto normal">Keep, cook, and share all your recipes with Noodles.</h2>
       <a class="btn bg-orange tsn f2 mtl pam"

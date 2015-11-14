@@ -34,11 +34,11 @@
       </a>
     </div>
     <section role="menubar" class="filterbar mtm" data-behavior="explore_src_pick_bar">
-      <a role="menuitem" class="filterbar-item dib phm pointer white white-hover"
+      <a role="menuitem" class="filterbar__item dib phm pointer white white-hover"
          data-behavior="explore_src_pick" data-src-name="nyt">NYT Cooking</a>
-      <a role="menuitem" class="filterbar-item dib phm pointer white white-hover"
+      <a role="menuitem" class="filterbar__item dib phm pointer white white-hover"
          data-behavior="explore_src_pick" data-src-name="epicurious">Epicurious</a>
-      <a role="menuitem" class="filterbar-item dib phm pointer white white-hover"
+      <a role="menuitem" class="filterbar__item dib phm pointer white white-hover"
          data-behavior="explore_src_pick" data-src-name="allrecipes">Allrecipes</a>
     </section>
   </div>
@@ -77,11 +77,10 @@
   <section class="modal" role="dialog" id="signup">
     <%= modal_close %>
     <h2 class="orange mbn">Sign up for Noodles</h2>
-    <%= render 'devise/registrations/new', user: User.new, text: 'Noodles is, and always will be, totally free.',
-                                           params: { explore: true },
-                                           options: { class: 'modal-scroll', data: { remote: true, behavior: 'inline_signup_form' } } %>
+    <%= render 'devise/registrations/new', user: User.new, text: 'Noodles is (and always will be) completely free.',
+               options: { class: 'modal--scroll', data: { remote: true, behavior: 'inline_signup_form' } } %>
     <div class="dn tc" data-behavior="inline_signup_error">
-      <p class="f3 red norma">Something went wrong.</p>
+      <p class="f3 red normal">Something went wrong.</p>
       <%= link_to 'Try Again', sign_up_path, class: 'btn bg-blue' %>
     </div>
   </section>
@@ -91,10 +90,10 @@
   <%= modal_close %>
   <h2 class="orange di mbn" data-behavior="explore_preview_title"></h2>
   <a data-behavior="explore_open_original" class="dib" target="_blank" rel="nofollow">
-    <%= inline_svg 'open-new-tab.svg', class: 'fill-orange relative', style: 'width: 16px; height: 16px; top: -5px; left: 2px;' %>
+    <%= inline_svg 'open-new-tab.svg', class: 'fill-orange relative', size: 16, style: 'top: -5px; left: 2px;' %>
   </a>
   <p class="grey-3" data-behavior="explore_preview_description"></p>
-  <article class="text modal-scroll" data-behavior="explore_preview_body"></article>
+  <article class="text modal--scroll" data-behavior="explore_preview_body"></article>
   <footer class="border-top tc blue">
     <% if user_signed_in? %>
       <a class="btn bg-blue mtm" data-behavior="explore_clip_from_preview">Clip</a>
