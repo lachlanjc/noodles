@@ -1,37 +1,33 @@
 <section id="collect" class="modal tc" role="dialog">
   <%= modal_close %>
+  <h2 class="mtn mbs">Add to Collection</h2>
 
-  <h2>Add to Collection</h2>
-  <hr>
   <% @collections = current_user.collections %>
   <% if @collections.any? %>
-    <% if @recipe.collections.length <= 4 %>
-    <p>Tap on any of your collections below to add this recipe to them.</p>
-    <% else %>
-    <p>This recipe is already in <%= pluralize(@recipe.collections.reject!(&:blank?).count, 'collection') %>. To add it to additional collections, click on them in the list below.</p>
-    <% end %>
-
-    <%= form_for(@recipe, html: { class: 'phm' }) do |f| %>
-      <ul class="list-reset mw5 mx-auto">
+    <p>Move this recipe to any of your collections by selecting them below.</p>
+    <%= form_for(@recipe, html: { class: 'phm mtm' }) do |f| %>
+      <ul class="list-reset mw5 mx-auto tl">
         <%= collection_check_boxes(:recipe, :collections, @collections, :id, :name) do |b| %>
-        <li class="border-top">
-          <%= b.label class: 'colladd__item man pas pointer' do %>
-            <%= b.check_box checked: @recipe.collections.include?(b.value.to_s), class: 'colladd__item__check dn' %>
-            <span class="colladd__item__label"><%= b.text %></span>
-            <%= inline_svg 'check.svg', class: 'colladd__item__mark fill-orange fr dn' %>
-          <% end %>
-        </li>
+          <li class="border-top">
+            <%= b.label class: 'colladd__item man pas pointer' do %>
+              <%= b.check_box checked: @recipe.collections.include?(b.value.to_s), class: 'colladd__item__check dn' %>
+              <span class="colladd__item__label"><%= b.text.truncate 30 %></span>
+              <%= inline_svg 'check.svg', class: 'colladd__item__mark fill-orange fr dn' %>
+            <% end %>
+          </li>
         <% end %>
         <li class="border-top border-bottom pas grey-1">
           <%= link_to 'Create New Collection...', collections_path(new_collection: true), class: 'link-reset' %>
         </li>
       </ul>
-      <%= f.submit 'Save', class: 'btn bg-blue fr' %>
+      <%= f.submit 'Save', class: 'btn bg-blue' %>
     <% end %>
   <% else %>
-    <div class="text tc border rounded pal">
-      You don't have any collections yet. Why don't you <%= link_to "create one", collections_path(:new_collection => true), class: "blue" %>?
-    </div>
+    <article class="text tc border bg-grey-6 rounded pal">
+      <h3 class="mtn">You don't have any collections yet!</h3>
+      <p>Collections help you organize your recipes.</p>
+      <%= link_to 'Create a Collection', collections_path(new_collection: true), class: 'btn bg-green mts' %>
+    </article>
   <% end %>
 </section>
 
