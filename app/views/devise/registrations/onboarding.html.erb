@@ -30,14 +30,4 @@
   </ol>
 </article>
 
-<%= render 'recipes/clipper' %>
-
-<a href="#clipper" data-behavior="modal_trigger"
-   class="btn-paper-mini bg-orange fill-white circle fixed pas shadow tooltipped"
-   aria-label="Clip from the Web">
-  <%= inline_svg 'clip.svg' %>
-</a>
-
-<%= link_to new_recipe_path, class: 'btn-paper bg-orange fill-white circle fixed pam shadow tooltipped',
-  <%= inline_svg 'add.svg' %>
-<% end %>
+<%= render 'recipes/new' %>

@@ -1,4 +1,4 @@
-<div id="clipper" role="dialog" class="modal">
+<section id="clipper" role="dialog" class="modal">
   <%= modal_close %>
   <h2>Clip a Recipe from the Web</h2>
   <hr>
@@ -12,4 +12,15 @@
                        placeholder: 'Paste in the recipe\'s URL' %>
     <%= submit_tag 'Clip', name: nil, class: 'flex-last btn bg-blue' %>
   <% end %>
-</div>
+</section>
+
+<a href="#clipper" data-behavior="modal_trigger"
+   class="btn-paper-mini bg-orange fill-white circle fixed pas shadow tooltipped"
+   aria-label="Clip from the Web">
+  <%= inline_svg 'clip.svg' %>
+</a>
+
+<%= link_to new_recipe_path, class: 'btn-paper bg-orange fill-white circle fixed pam shadow tooltipped',
+            'aria-label': 'Write a new recipe' do %>
+  <%= inline_svg 'add.svg' %>
+<% end %>
