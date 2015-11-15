@@ -7,23 +7,8 @@
   <meta name="description" content="<%= t('general.description') %>">
   <%= stylesheet_link_tag 'home' %>
   <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Lato:400">
-  <%= csrf_meta_tags %>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="og:site_name" content="Noodles">
-  <meta property="og:title" content="Noodles">
-  <meta property="og:url" content="https://getnoodl.es/">
-  <meta property="og:image" content="<%= image_path('apple-touch-icon.png') %>">
-  <meta property="og:description" content="<%= t('general.description') %>">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:site" content="@noodlesapp">
-  <meta name="twitter:title" content="Noodles">
-  <meta name="twitter:description" content="<%= t('general.description') %>">
-  <meta name="twitter:image:src" content="<%= image_path('apple-touch-icon.png') %>">
-  <meta name="twitter:domain" content="www.getnoodl.es">
-  <script type="text/javascript">
-  if("standalone"in window.navigator&&window.navigator.standalone){var noddy,remotes=false;document.addEventListener("click",function(e){noddy=e.target;while(noddy.nodeName!=="A"&&noddy.nodeName!=="HTML"){noddy=noddy.parentNode}if("href"in noddy&&noddy.href.indexOf("http")!==-1&&(noddy.href.indexOf(document.location.host)!==-1||remotes)){e.preventDefault();document.location.href=noddy.href}},false)}
-  </script>
-  <%= render 'shared/analytics' %>
+  <%= render 'layouts/media' %>
+  <%= render 'layouts/head' %>
 </head>
 <body class="tc man bg-grey-6">
   <header class="hero-container bg-cover bg-center bg-no-repeat"
