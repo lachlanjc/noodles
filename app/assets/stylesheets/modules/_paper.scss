@@ -1,0 +1,21 @@
+.icon {
+  width: 36px;
+  height: 36px;
+}
+
+.btn-paper {
+  bottom: $space-2;
+  line-height: 0; // fixes extra bottom "padding"
+  right: $space-2;
+
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.btn-paper-mini {
+  bottom: 90px;
+  line-height: 0;
+  right: 27px;
+}

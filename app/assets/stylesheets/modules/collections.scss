@@ -10,6 +10,10 @@
   }
 }
 
+.inline-with-nav {
+  top: $space-2 * -1;
+}
+
 .colladd__item__check:checked {
   + .colladd__item__label {
     @extend .orange;
