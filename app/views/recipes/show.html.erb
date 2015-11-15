@@ -28,7 +28,16 @@
 
     <%= render 'recipe_body' %>
 
-    <%= render 'footer' %>
+    <%= render 'shared/social' if @recipe.shared? %>
+
+    <div class="dn-p mts">
+      <%= link_to t('general.edit'), :edit_recipe, class: 'btn bg-blue mrs mts' %>
+      <a href="#collectModal" class="btn bg-orange mrs mts" data-behavior="modal_trigger">Add to Collection</a>
+      <a href="#shareModal" class="btn bg-green mrs mts" data-behavior="modal_trigger">Share</a>
+      <%= link_to t('general.delete'), @recipe, method: :delete, data: { confirm: t('general.delete_forever') }, class: 'btn bg-red mts' %>
+    </div>
+
+    <%= render 'shared/printer' %>
 
   </main>
 
