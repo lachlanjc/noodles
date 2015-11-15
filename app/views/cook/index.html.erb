@@ -1,35 +1,32 @@
 <%- title "Cooking #{@recipe.title}".html_safe %>
 
 <main class="flex-ns">
-
-  <aside class="sm-col-11 md-col-4 mam">
+  <aside class="md-col-4 pam mw6">
     <h1 class="man grey-1"><%= @recipe.title %></h2>
     <p class="grey-3 man">
       <%= pluralize(@recipe.instructions.lines.count, "steps") %>
       <%= content_tag :span, " · Published by #{@recipe.user.first_name}" if not_my_recipe? %>
     </p>
 
-    <hr class="col-10">
+    <hr>
 
     <h2 class="mbn">Ingredients</h2>
     <p class="grey-4 f5">Tap on ingredients to cross them off.</p>
 
     <ul class="list-reset text text-normalized recipe__ingredients">
     <% @recipe.ingredients.lines.each do |item| %>
-      <% item_text = ingredient_processed(item) %>
-      <%= content_tag :li,
-                       item_text.html_safe,
-                       'data-behavior': 'checklist_item',
-                       class: 'pointer' if item.strip.present? %>
+      <%= content_tag :li, ingredient_processed(item).html_safe,
+                      'data-behavior': 'checklist_item',
+                      class: 'pointer' if item.strip.present? %>
     <% end %>
     </ul>
 
-    <hr class="col-10">
+    <hr>
 
     <%= react_component 'NoteEditor', id: @recipe.id, plain: @recipe.notes, rendered: notes_rendered, allowEditing: me_owns_recipe? %>
   </aside>
 
-  <article class="sm-col-11 md-col-6 mx-auto mtm pan">
+  <article class="mw7 mx-auto mtm phm">
     <% flash.each do |key, value| %>
       <div class="h2 pam tc mbm rounded bg-<%= flash_color_class(key) %> white pointer dn-p" role="alertdialog" data-behavior="flash">
         <%= value %>
@@ -65,7 +62,6 @@
       <% end %>
     </div>
   </article>
-
 </main>
 
 <% if not_my_recipe? %>
