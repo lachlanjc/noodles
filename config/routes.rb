@@ -6,8 +6,6 @@ Rails.application.routes.draw do
 
   resources :recipes do
     get '/cook', to: 'cook#index'
-    get '/notes', to: 'recipes#notes'
-    patch '/update_notes', to: 'recipes#update_notes'
     get '/pdf', to: 'recipes#export_pdf', as: :export_pdf
     get '/share', to: 'recipes#share_this_recipe', as: :share_it
     get '/un_share', to: 'recipes#un_share', as: :un_share

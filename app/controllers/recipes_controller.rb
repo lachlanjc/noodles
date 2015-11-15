@@ -55,7 +55,9 @@ class RecipesController < ApplicationController
     if @recipe.update(recipe_params)
       collection_cleanup
       flash[:green] = 'Great, your changes were saved.'
-      if params[:cook]
+      if request.xhr?
+        render :show
+      elsif params[:cook]
         redirect_to recipe_cook_path(@recipe)
       else
         redirect_to @recipe
@@ -69,16 +71,6 @@ class RecipesController < ApplicationController
     @recipe.destroy
     flash[:green] = 'Okay, we\'ve got that recipe in the recycling bin now.'
     redirect_to recipes_url
-  end
-
-  def notes
-  end
-
-  def update_notes
-    if @recipe.update(recipe_params)
-      @recipe.save
-      render :notes
-    end
   end
 
   def export_pdf

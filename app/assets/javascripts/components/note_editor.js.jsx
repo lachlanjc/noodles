@@ -7,17 +7,7 @@ class NoteEditor extends React.Component {
       editing: false
     };
     this.updateTextNotes = this.updateTextNotes.bind(this);
-    this.toggleEditing = this.toggleEditing.bind(this);
     this.submitNotes = this.submitNotes.bind(this);
-  }
-
-  fetchData() {
-    $.getJSON(`/recipes/${this.props.id}/notes.json`, function(response) {
-      this.setState({
-        renderedNotes: response.recipe.notes_rendered,
-        plainNotes: response.recipe.notes_text,
-      })
-    }.bind(this))
   }
 
   produceRenderedNotes() {
@@ -35,16 +25,18 @@ class NoteEditor extends React.Component {
   submitNotes(e) {
     const self = this;
     $.ajax({
-      url: `/recipes/${self.props.id}/update_notes`,
+      url: `/recipes/${self.props.id}`,
       dataType: 'json',
       type: 'patch',
       data: {
-        'id': self.props.id,
         'recipe[notes]': self.state.plainNotes
       },
-      success() {
+      success(response) {
         self.toggleEditing()
-        self.fetchData()
+        this.setState({
+          renderedNotes: response.recipe.notes_rendered,
+          plainNotes: response.recipe.notes_text,
+        })
       },
       error(xhr, status, err) { console.error(status, '—', err) }
     });
@@ -72,7 +64,7 @@ class NoteEditor extends React.Component {
     return (
       <div className='text text-normalized'>
         <div dangerouslySetInnerHTML={this.produceRenderedNotes()} />
-        {this.props.allowEditing === true ?
+        {this.props.allowEditing ?
           <button className='btn bg-blue btn-sm mts mbm' onClick={this.toggleEditing}>
             Edit Notes
           </button>
