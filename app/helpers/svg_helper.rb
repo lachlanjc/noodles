@@ -3,6 +3,7 @@ module SvgHelper
     file = File.read(Rails.root.join('app', 'assets', 'images', filename))
     doc = Nokogiri::HTML::DocumentFragment.parse file
     svg = doc.at_css 'svg'
+    options[:style] = options[:style] || ''
     if options[:size]
       options[:width] = options[:size]
       options[:height] = options[:size]
