@@ -1,4 +1,4 @@
-<section id="collectModal" class="modal">
+<section id="collect" class="modal tc" role="dialog">
   <%= modal_close %>
 
   <h2>Add to Collection</h2>
@@ -35,14 +35,10 @@
   <% end %>
 </section>
 
-<section id="shareModal" class="modal">
-  <%= modal_close %>
-
-  <h2>Share this recipe</h2>
-  <hr>
+<section id="share" class="modal" role="dialog">
+  <%= modal_header 'Share this recipe' %>
 
   <article class="tab-container">
-
     <input type="radio" name="tab-set-2" class="tab-1" id="tab-2-1" checked>
     <label for="tab-2-1" class="rounded-top dib border bg-grey-5">Share a link</label>
 
@@ -54,7 +50,7 @@
 
     <br>
 
-    <div class="content content-1 pas border rounded-bottom">
+    <section class="content content-1 pas border rounded-bottom">
       <% if @recipe.shared? %>
       <p>Your recipe is already shared!</p>
       <p><%= link_to 'Check out the share page', @shared_url, class: 'btn bg-blue' %></p>
@@ -62,23 +58,21 @@
       <p>Anyone with this link can see your recipe and save a copy to their own Noodles account.</p>
       <p><%= link_to 'Share a link to this recipe', recipe_share_it_path(@recipe), class: 'btn bg-blue' %></p>
       <% end %>
-    </div>
+    </section>
 
-    <div class="content content-2 pas border rounded-bottom">
+    <section class="content content-2 pas border rounded-bottom">
       <p>Click the button below to download a PDF of your recipe.</p>
       <p><%= link_to 'Download PDF', recipe_export_pdf_path(@recipe), class: 'btn bg-blue' %></p>
-    </div>
+    </section>
 
-    <div class="content content-3 pas border rounded-bottom">
+    <section class="content content-3 pas border rounded-bottom">
       <p>Copy and paste the code below onto your website or blog to embed this recipe.</p>
       <pre class="man pas border rounded bg-grey-6" style="white-space: inherit;">
         <%= '<script src="https://getnoodl.es/embed/' + @recipe.shared_id.to_s + '"></script>' %>
       </pre>
       <p class="mts"><%= link_to 'Need help?', help_path %></p>
-    </div>
-
+    </section>
   </article>
-
 </section>
 
 <a class="btn-paper-mini bg-orange fill-white circle fixed pas pointer shadow tooltipped"

@@ -18,4 +18,8 @@ module TextHelper
   def remove_url_head(url)
     url.gsub(/^http(s?):\/\/(w+\.)?/, '')
   end
+
+  def clean_autolink(text)
+    auto_link(text, html: { target: '_blank' }) { |text| remove_url_head(text) }
+  end
 end
