@@ -4,9 +4,12 @@
 <%= render 'shared/nav' %>
 
 <article class="document mw7">
-  <h2 class="man">
-    <%= "Hey #{current_user.first_name}!" if user_signed_in? %>
-    Let's start cooking.
+  <h2 class="normal mtn mbm">
+    <% if user_signed_in? %>
+      Hey <strong class="b"><%= current_user.first_name %></strong>, thanks for signing up 😊
+    <% else %>
+      Let's get cooking!
+    <% end %>
   </h2>
   <hr>
   <p>Adding recipes to Noodles is super easy &mdash; here are three ways.</p>
