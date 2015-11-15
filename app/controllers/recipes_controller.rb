@@ -114,19 +114,10 @@ class RecipesController < ApplicationController
   def save_to_noodles
     @recipe = Recipe.find_by_shared_id(params[:shared_id])
     raise_not_found
-    @new_recipe = Recipe.new do |r|
-      r.user_id = current_user.id
-      r.title = @recipe.title
-      r.description = @recipe.description
-      r.img = @recipe.img
-      r.ingredients = @recipe.ingredients
-      r.instructions = @recipe.instructions
-      r.source = shared_url
-      r.serves = @recipe.serves
-      r.notes = @recipe.notes
-      r.favorite, r.shared = false
-      r.save
-    end
+    @new_recipe = @recipe.dup
+    @new_recipe.user_id = current_user.id
+    @new_recipe.source = shared_url
+    @new_recipe.favorite, @new_recipe.shared = false
     @new_recipe.save
     flash[:green] = "#{@recipe.title} has been saved!"
     redirect_to @new_recipe
