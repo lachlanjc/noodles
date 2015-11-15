@@ -27,15 +27,14 @@
 
 <%= render 'shared/nav' %>
 
-<div itemscope itemtype="http://schema.org/Recipe">
+<main itemscope itemtype="http://schema.org/Recipe">
   <meta itemprop="url" content="<%= @shared_url %>" />
   <meta itemprop="dateCreated" content="<%= @recipe.created_at %>" />
   <meta itemprop="dateModified" content="<%= @recipe.updated_at %>" />
 
   <%= render 'image_header' if @image_layout %>
 
-  <main class="document mw7">
-
+  <article class="document mw7">
     <% if !@image_layout %>
       <h1 class="man" itemprop="name"><%= @recipe.title %></h1>
       <% if @recipe.user.present? %>
@@ -49,24 +48,16 @@
     <%= render 'shared/social' if me_owns_recipe? %>
 
     <% if me_owns_recipe? %>
-    <%# If it's your recipe, hint about saving %>
-      <div class="mtm dn-p">
-        <a class="btn bg-orange mrs" title="Others can click this button to save a copy of your recipe to their Noodles account." disabled>Save to my Noodles</a>
-        <%= link_to 'Un-share', recipe_un_share_path(@recipe), class: 'btn bg-red mrs' %>
-      </div>
+      <%= link_to 'Un-share', recipe_un_share_path(@recipe), class: 'btn bg-red mtm dn-p' %>
+    <%# If you're signed in, show Save button %>
     <% elsif user_signed_in? %>
-    <%# If you're logged in, show Save button %>
-      <div class="mtm dn-p">
-        <%= link_to 'Save to my Noodles', :save_to_noodles, title: 'Save a copy of this recipe to your own account', class: 'btn bg-orange mrs' %>
-      </div>
-    <% else %>
+      <%= link_to 'Save to my Noodles', :save_to_noodles, 'aria-label': 'Save your own copy of this recipe', class: 'btn bg-orange tooltipped tooltipped--e mtm dn-p' %>
     <%# Everyone else should sign up for Noodles %>
+    <% else %>
       <%= render 'shared/interested_in_noodles' %>
     <% end %>
-
-  </main>
-
-</div>
+  </article>
+</main>
 
 <a class="btn-paper-mini bg-orange fill-white circle fixed pas pointer shadow" data-behavior="print">
   <%= inline_svg 'print.svg' %>
