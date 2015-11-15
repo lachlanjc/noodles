@@ -123,11 +123,7 @@
       <%= modal_close %>
       <h2 class="orange mbn">Sign up for Noodles</h2>
       <%= render 'devise/registrations/new', user: User.new, text: 'Noodles is (and always will be) completely free.',
-                 options: { class: 'modal--scroll', 'data-behavior': 'inline_signup_form' } %>
-      <div class="pvl" data-behavior="inline_signup_error">
-        <p class="f3 red normal">Something went wrong.</p>
-        <%= link_to 'Try Again', sign_up_path, class: 'btn bg-blue' %>
-      </div>
+                 options: { class: 'modal--scroll' } %>
     </section>
   <% end %>
   <footer class="db pvm grey-4">

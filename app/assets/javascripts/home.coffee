@@ -1,3 +1,5 @@
 #= require jquery
 #= require modals
-#= require signup
+
+$(document).ready ->
+  activateModals()
