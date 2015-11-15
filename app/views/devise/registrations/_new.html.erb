@@ -1,26 +1,27 @@
-<% options = options || {} %>
-<% opts = { url: user_registration_path(user), autocomplete: 'on', html: { name: 'reg' } } %>
-<%= form_for(user, {}.merge(options).merge(opts)) do |f| %>
-  <% if text %>
+<% opts = defined?(options) ? options : {} %>
+<% opts.merge!({ url: user_registration_path(user), autocomplete: 'on', html: { name: 'reg' } }) %>
+
+<%= form_for(user, opts) do |f| %>
+  <% if text.present? %>
     <p data-behavior="hide_on_inline_submit"><%= text %></p>
   <% end %>
 
   <%= devise_error_messages!(user) %>
 
   <%= f.label :first_name, t('devise.registrations.new.first_name') %>
-  <%= f.text_field :first_name, class: 'text-input', id: 'fname', autofocus: true %>
+  <%= f.text_field :first_name, id: 'fname', autofocus: true, class: 'text-input mx-auto' %>
 
   <%= f.label :email, t('devise.registrations.new.email_check') %>
-  <%= f.email_field :email, class: 'text-input', required: true, autocomplete: 'email' %>
+  <%= f.email_field :email, required: true, autocomplete: 'email', class: 'text-input mx-auto' %>
 
-  <%= f.label :password, class: 'dib' %> <small><%= t('devise.registrations.new.eight_char') %></small>
-  <%= f.password_field :password, class: 'text-input', required: true, id: 'new-password', pattern: '.{8,}' %>
+  <%= f.label :password, 'Now, pick a password:' %>
+  <%= f.password_field :password, required: true, id: 'new-password', pattern: '.{8,}', class: 'text-input mx-auto' %>
 
   <%= f.hidden_field :want_newsletter, value: true %>
 
-  <%= f.submit t('general.sign_up'), class: 'btn bg-orange mtm' %>
+  <%= f.submit t('general.sign_up'), class: 'btn bg-orange mtm b' %>
 
-  <small class="db mtm grey-3">
-    By signing up for and using Noodles you are agreeing to our <%= link_to 'Terms', :terms %> and <%= link_to 'Privacy Policy', :privacy %>.
-  </small>
+  <p class="f5 mtm mbn grey-3">
+    By signing up for and using Noodles you are agreeing to the <%= link_to 'Terms', :terms %> and <%= link_to 'Privacy Policy', :privacy %>.
+  </p>
 <% end %>

@@ -108,21 +108,34 @@
       <p class="mbn">Find an awesome recipe on the web? Noodles will save the recipe for you.</p>
     </section>
   </article>
-  <section class="mx-auto mw7 phl pvm border-top mtl md-col-6">
-    <h1 class="normal f2 f1-ns mtm mbn">Noodles is totally free.</h1>
-    <blockquote class="mx-auto mw6 f4 f3-ns mtm">
+  <section class="md-col-6 mw7 mx-auto pal border-top mtl">
+    <h1 class="normal f2 f1-ns mvm">Noodles is totally free.</h1>
+    <blockquote class="mx-auto mw6 f4 f3-ns mbm">
       &ldquo;Noodles lets me enjoy cooking instead of frantically trying to find recipes.&rdquo;
     </blockquote>
-    <a href="<%= sign_up_path %>" onclick="_gs('event', 'Clicked hero button');"
-       style="padding: 1rem 1.5rem;" class="btn bg-orange f3 f2-ns mtm">
+    <a href="#signup" name="signup" data-behavior="modal_trigger inline_signup_btn"
+       style="padding: 1rem 1.5rem;" class="btn bg-orange f3 f2-ns">
        Sign Up
     </a>
   </section>
-  <footer class="db mts pvm grey-4">
+  <% if nobody_signed_in? %>
+    <section class="modal" role="dialog" id="signup">
+      <%= modal_close %>
+      <h2 class="orange mbn">Sign up for Noodles</h2>
+      <%= render 'devise/registrations/new', user: User.new, text: 'Noodles is (and always will be) completely free.',
+                 options: { class: 'modal--scroll', 'data-behavior': 'inline_signup_form' } %>
+      <div class="pvl" data-behavior="inline_signup_error">
+        <p class="f3 red normal">Something went wrong.</p>
+        <%= link_to 'Try Again', sign_up_path, class: 'btn bg-blue' %>
+      </div>
+    </section>
+  <% end %>
+  <footer class="db pvm grey-4">
     <%= link_to 'Terms', :terms, class: 'phs link-reset' %>
     <%= link_to 'Privacy', :privacy, class: 'phs link-reset' %>
     <a href="https://twitter.com/noodlesapp" class="phs link-reset">Twitter</a>
     <a href="https://www.facebook.com/pages/Noodles/698221030285633" class="phs link-reset">Facebook</a>
   </footer>
+  <%= javascript_include_tag 'home' %>
 </body>
 </html>

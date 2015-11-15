@@ -1,4 +1,2 @@
-Rails.application.config.assets.precompile += %w(email.css)
-Rails.application.config.assets.precompile += %w(embed.css)
-Rails.application.config.assets.precompile += %w(home.css)
-Rails.application.config.assets.precompile += %w(explore.js)
+precompiled = %w(home.css email.css embed.css home.js explore.js)
+Rails.application.config.assets.precompile += precompiled

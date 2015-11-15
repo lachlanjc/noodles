@@ -1,32 +1,29 @@
-<%- title "Sign In" %>
 <% activate_nav!(:sign_in) %>
+<%- title 'Sign in' %>
 
 <%= render 'shared/nav' %>
 
-<article class="document">
-
-  <h1 class="orange"><%= t(".sign_in_to_n") %></h1>
-  <p><%= t(".enter_info") %></p>
-
+<main class="document mw7 tc">
+  <h1 class="mbs"><%= t '.sign_in_to_n' %></h1>
+  <p class="mbm"><%= t '.enter_info' %></p>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
     <%= devise_error_messages! %>
 
     <%= f.label :email %>
-    <%= f.email_field :email, class: "text-input", required: true, autofocus: true %>
+    <%= f.email_field :email, class: 'text-input mx-auto', required: true, autofocus: true %>
 
     <%= f.label :password %>
-    <%= f.password_field :password, class: "text-input man", required: true, pattern: ".{8,}", title: "Make sure you use at least 8 characters" %>
+    <%= f.password_field :password, class: 'text-input mx-auto', required: true, pattern: ".{8,}", title: "Make sure you use at least 8 characters" %>
 
     <div>
       <%= f.check_box :remember_me %>
-      <%= f.label :remember_me, class: "mtm" %>
+      <%= f.label :remember_me, class: 'mtm' %>
     </div>
 
-    <%= f.submit t(".sign_in"), class: "btn bg-orange mtm" %>
+    <%= f.submit t('.sign_in'), class: 'btn bg-orange mtm' %>
 
-    <small class="mtm db">or did you <%= link_to "forget your password?", :forgot_password %></small>
+    <%= link_to 'Forgot your password?', :forgot_password, class: 'mtm db f5 grey-2' %>
 
   <% end %>
-
-</article>
+</main>

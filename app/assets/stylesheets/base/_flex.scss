@@ -1,10 +1,11 @@
-.flex          { display: flex }
+.flex { display: flex }
 
-.fac           { align-items: center }
-.fab           { align-items: baseline }
-.fae           { align-items: flex-end }
-.fjc           { justify-content: center }
-.fjb           { justify-content: space-between }
+.fac  { align-items: center }
+.fab  { align-items: baseline }
+.fae  { align-items: flex-end }
+.fjc  { justify-content: center }
+.fjb  { justify-content: space-between }
+.fsn  { flex-shrink: 0 }
 
 .flex-auto {
   flex: 1 1 auto;
@@ -12,7 +13,7 @@
   min-height: 0;
 }
 
-.flex-rows     { flex-flow: row wrap }
+.flex-rows { flex-flow: row wrap }
 
 /*
 .flex-column  { flex-direction: column }
