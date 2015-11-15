@@ -7,6 +7,7 @@ class NoteEditor extends React.Component {
       editing: false
     };
     this.updateTextNotes = this.updateTextNotes.bind(this);
+    this.toggleEditing = this.toggleEditing.bind(this);
     this.submitNotes = this.submitNotes.bind(this);
   }
 
@@ -33,7 +34,7 @@ class NoteEditor extends React.Component {
       },
       success(response) {
         self.toggleEditing()
-        this.setState({
+        self.setState({
           renderedNotes: response.recipe.notes_rendered,
           plainNotes: response.recipe.notes_text,
         })
