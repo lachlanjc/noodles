@@ -53,7 +53,7 @@ class RecipesController < ApplicationController
 
   def update
     if @recipe.update(recipe_params)
-      @recipe.save
+      collection_cleanup
       flash[:green] = 'Great, your changes were saved.'
       if params[:cook]
         redirect_to recipe_cook_path(@recipe)
@@ -180,5 +180,10 @@ class RecipesController < ApplicationController
       end
     end
     @image_layout = defined? @image_layout
+  end
+
+  def collection_cleanup
+    @recipe.collections.reject!(&:blank?)
+    @recipe.save
   end
 end
