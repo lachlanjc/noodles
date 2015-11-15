@@ -1,6 +1,6 @@
 module RecipesHelper
   include ApplicationHelper
-  include MarkdownHelper
+  include TextHelper
 
   def me_owns_recipe?
     user_signed_in? && @recipe.user_id == current_user.id

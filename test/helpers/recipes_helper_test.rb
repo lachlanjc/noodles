@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class RecipesHelperTest < ActionView::TestCase
-  include MarkdownHelper
+  include TextHelper
   include RecipesHelper
 
   test 'should generate recipe share link' do

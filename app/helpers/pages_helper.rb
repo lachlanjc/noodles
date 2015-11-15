@@ -1,5 +1,5 @@
 module PagesHelper
-  include MarkdownHelper
+  include TextHelper
 
   def render_doc(filename)
     @title = filename.chomp('.md').humanize

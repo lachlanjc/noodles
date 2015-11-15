@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   include ApplicationHelper
-  include MarkdownHelper
+  include TextHelper
   include RecipesHelper
   include ScrapingHelper
 
