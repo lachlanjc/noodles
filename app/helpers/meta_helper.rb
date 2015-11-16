@@ -1,4 +1,4 @@
-module PagesHelper
+module MetaHelper
   include TextHelper
 
   def render_doc(filename)

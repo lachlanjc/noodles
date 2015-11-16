@@ -1,5 +1,5 @@
-class PagesController < ApplicationController
-  include PagesHelper
+class MetaController < ApplicationController
+  include MetaHelper
 
   before_filter :home_setup, only: [:home, :home_forced]
 
@@ -18,15 +18,15 @@ class PagesController < ApplicationController
   end
 
   def terms
-    render_doc('terms.md')
+    render_doc 'terms.md'
   end
 
   def privacy
-    render_doc('privacy.md')
+    render_doc 'privacy.md'
   end
 
   def docs
-    render_doc('docs.md')
+    render_doc 'docs.md'
   end
 
   private

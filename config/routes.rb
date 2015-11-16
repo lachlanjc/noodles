@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  root 'pages#home'
-  get '/home', to: 'pages#home_forced', as: :home
-  get '/styleguide', to: 'pages#styleguide', as: :styleguide
+  root 'meta#home'
+  get '/home', to: 'meta#home_forced', as: :home
+  get '/styleguide', to: 'meta#styleguide', as: :styleguide
 
   resources :recipes do
     get '/cook', to: 'cook#index'
@@ -36,11 +36,11 @@ Rails.application.routes.draw do
     get '/preview', to: 'explore#preview'
   end
 
-  get '/about', to: 'pages#about', as: :about
-  get '/help', to: 'pages#about', as: :help
-  get '/docs', to: 'pages#docs', as: :docs
-  get '/privacy', to: 'pages#privacy', as: :privacy
-  get '/terms', to: 'pages#terms', as: :terms
+  get '/about', to: 'meta#about', as: :about
+  get '/help', to: 'meta#about', as: :help
+  get '/docs', to: 'meta#docs', as: :docs
+  get '/privacy', to: 'meta#privacy', as: :privacy
+  get '/terms', to: 'meta#terms', as: :terms
 
   get '/blog', to: 'announcements#index'
   resources :announcements
