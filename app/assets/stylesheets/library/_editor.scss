@@ -45,14 +45,14 @@ trix-editor {
       text-align: center;
       text-decoration: none;
       background-color: #fff;
-      border: 1px solid #bbb;
+      border: 1px solid $grey-5;
       box-shadow: 1px 1px 10px rgba(0,0,0,.1);
 
       &:after {
         content: '×';
         font-size: 18px;
         font-weight: bold;
-        opacity: 0.6;
+        opacity: .6;
       }
 
       &:hover:after {
@@ -85,8 +85,8 @@ trix-editor {
     &.attachment-file {
       color: #333;
       line-height: 30px;
-      padding: 0 16px;
-      border: 1px solid #bbb;
+      padding: 0 1rem;
+      border: 1px solid $grey-5;
       border-radius: $border-radius-large;
     }
   }
