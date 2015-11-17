@@ -5,7 +5,7 @@ $(document).ready ->
     n = _.trunc _.trim($(this).val()), 100
     $('[data-behavior~=page_editor_name_bc]').text n || 'Untitled'
 
-  @populateLastSaved = () ->
+  populateLastSaved = () ->
     v = document.querySelector('trix-editor').editor.getDocument()
     $('[data-behavior~=page_editor_last_saved]').val v
     v
@@ -20,12 +20,12 @@ $(document).ready ->
     b = l.find '.button_group'
     b.addClass 'fr'
 
-    @populateLastSaved()
+    populateLastSaved()
     $(window).bind 'beforeunload', ->
-      cv = document.querySelector('trix-editor').editor.getDocument().toString()
-      lsv = $('[data-behavior~=page_editor_last_saved]').val()
-      del = $('[data-behavior~=page_delete_btn]').attr('class').match(/deleting/)
-      if (cv isnt lsv) and !del
+      current = document.querySelector('trix-editor').editor.getDocument().toString()
+      saved = $('[data-behavior~=page_editor_last_saved]').val()
+      del = $('[data-behavior~=page_delete_btn]').attr('class').match /deleting/
+      if (current isnt saved) and !del
         'You have NOT saved your work yet!'
     return
 
@@ -33,10 +33,10 @@ $(document).ready ->
     t = $('[data-behavior~=page_editor_submit]')
     t.attr 'disabled'
     t.attr 'value', 'Saving...'
-  $(document).on 'ajaxError', '[data-behavior~=page_editor]', (event, xhr) ->
+  $(document).on 'ajaxError', '[data-behavior~=page_editor]', (e, x) ->
     t = $('[data-behavior~=page_editor_errors]')
-    if xhr.status is 422
-      if Object.keys(xhr.responseJSON).toString() is 'name'
+    if x.status is 422
+      if Object.keys(x.responseJSON).toString() is 'name'
         $('[data-behavior~=page_editor_error_name]').removeClass 'dn'
         $('[data-behavior~=page_editor_error_generic]').addClass 'dn'
     t.removeClass 'dn'
@@ -45,7 +45,7 @@ $(document).ready ->
     t = $('[data-behavior~=page_editor_submit]')
     $('[data-behavior~=page_editor_errors]').addClass 'dn'
     t.attr 'value', 'Saved!'
-    @populateLastSaved()
+    populateLastSaved()
     c = -> t.attr 'value', 'Save'
     setTimeout c, 1500
 
