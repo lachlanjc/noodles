@@ -2,8 +2,9 @@
 
 $(document).ready ->
   $('[data-behavior~=page_editor_name]').on 'keyup', ->
-    n = _.trunc _.trim($(this).val()), 100
-    $('[data-behavior~=page_editor_name_bc]').text n || 'Untitled'
+    n = _.trunc _.trim($(this).val()), 100 || 'Untitled'
+    $('[data-behavior~=page_editor_name_bc]').text n
+    $('title').text "#{n} – Noodles"
 
   populateLastSaved = () ->
     v = document.querySelector('trix-editor').editor.getDocument()

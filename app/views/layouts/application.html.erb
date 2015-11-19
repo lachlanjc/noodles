@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= "#{content_for(:title)} ·" if content_for?(:title) %> Noodles</title>
+  <title><%= "#{content_for(:title)} –" if content_for?(:title) %> Noodles</title>
   <%= content_for?(:meta) ? yield(:meta) : render('layouts/media') %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
