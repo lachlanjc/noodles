@@ -5,9 +5,10 @@ class CreatePages < ActiveRecord::Migration
       t.string :name
       t.text :content
       t.text :content_raw
+      t.string :color
       t.string :shared_id, index: true
+      t.datetime :archived_at
       t.references :user, index: true, foreign_key: true
-
       t.timestamps null: false
     end
   end
