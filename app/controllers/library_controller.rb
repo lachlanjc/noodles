@@ -14,8 +14,10 @@ class LibraryController < ApplicationController
   end
 
   def new
-    @page = Page.new
-    @page.user = current_user
+    @page = Page.new do |page|
+      page.user = current_user
+      page.color = 'white'
+    end
     @page.generate_shared_id!
     @page.save!(validate: false)
     redirect_to page_path(@page)
