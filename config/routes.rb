@@ -48,21 +48,22 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }
   as :user do
-    get  'login' , to: 'devise/sessions#new',           as: :sign_in
-    post 'login' , to: 'devise/sessions#create',        as: :update_user_session
-    get  'logout' , to: 'devise/sessions#destroy',      as: :sign_out
+    get  'login' , to: 'devise/sessions#new',            as: :sign_in
+    get  'signin' , to: 'devise/sessions#new'
+    post 'login' , to: 'devise/sessions#create',         as: :update_user_session
+    get  'logout' , to: 'devise/sessions#destroy',       as: :sign_out
 
-    get    'signup', to: 'devise/registrations#new',      as: :sign_up
-    post   'signup', to: 'devise/registrations#create',   as: :add_user
-    put    'signup', to: 'devise/registrations#update',   as: :update_user_registration
+    get    'signup', to: 'devise/registrations#new',     as: :sign_up
+    post   'signup', to: 'devise/registrations#create',  as: :add_user
+    put    'signup', to: 'devise/registrations#update',  as: :update_user_registration
     delete 'signup', to: 'devise/registrations#destroy', as: :destroy_user
 
     get 'onboarding', to: 'devise/registrations#onboarding', as: :onboarding
 
-    get 'settings', to: 'devise/registrations#edit',    as: :settings
+    get 'settings', to: 'devise/registrations#edit',     as: :settings
 
-    get 'forgot_password', to: 'devise/passwords#new', as: :forgot_password
-    get 'change_password', to: 'devise/passwords#edit', as: :change_password
+    get 'forgot_password', to: 'devise/passwords#new',   as: :forgot_password
+    get 'change_password', to: 'devise/passwords#edit',  as: :change_password
   end
 
   scope '/admin' do
