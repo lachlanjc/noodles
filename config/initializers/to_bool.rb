@@ -24,6 +24,11 @@ class FalseClass
   def to_bool; self; end
 end
 
+class Time
+  def to_i; 0; end
+  def to_bool; self; end
+end
+
 class NilClass
   def to_bool; false; end
 end
