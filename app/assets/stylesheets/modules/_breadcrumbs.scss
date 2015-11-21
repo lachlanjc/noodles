@@ -1,7 +1,7 @@
 .bc {
   position: relative;
 
-  @at-root #{&}__link {
+  &__link {
     color: inherit;
     text-decoration: underline;
 

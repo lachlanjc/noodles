@@ -7,7 +7,7 @@
   margin: 0 auto $space-3;
   padding: $space-2;
 
-  @at-root #{&}--inline {
+  &--inline {
     margin: 0 0 $space-3;
   }
 }

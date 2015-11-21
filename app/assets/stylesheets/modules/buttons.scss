@@ -28,10 +28,10 @@
     color: $grey-2;
   }
 
-  @at-root #{&}--primary {
-    background: $green; /*#00b36a;*/
+  &--primary {
+    background: $green;
     padding: 1rem 1.5rem;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+    border-bottom: 2px solid rgba(0,0,0,.15);
     font-size: 1.25rem;
     font-weight: bold;
   }
