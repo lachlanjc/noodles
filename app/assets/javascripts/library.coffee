@@ -9,25 +9,22 @@ $(document).ready ->
   populateLastSaved = () ->
     v = document.querySelector('trix-editor').editor.getDocument()
     $('[data-behavior~=page_editor_last_saved]').val v
-    v
 
   document.addEventListener 'trix-initialize', (e) ->
     t = $('trix-toolbar')
     t.find('.button_groups').addClass 'phs phxl-ns'
-    t.find('.button_group.history_tools').addClass 'fr-ns'
     l = t.find '.link_dialog'
     l.addClass 'bg-white border rounded shadow mx-auto mts mw6'
     l.find('input[type=url]').addClass 'text-input f5 lh'
-    b = l.find '.button_group'
-    b.addClass 'fr'
+    fr = _.merge l.find('.button_group'), t.find('.button_group.history_tools')
+    fr.addClass 'fr-ns'
 
     populateLastSaved()
     $(window).bind 'beforeunload', ->
       current = document.querySelector('trix-editor').editor.getDocument().toString()
       saved = $('[data-behavior~=page_editor_last_saved]').val()
       del = $('[data-behavior~=page_delete_btn]').attr('class').match /deleting/
-      if (current isnt saved) and !del
-        'You have NOT saved your work yet!'
+      'You haven\'t saved your work yet!' if (current isnt saved) and !del
     return
 
   $('[data-behavior~=page_editor]').on 'ajaxBeforeSend', ->
@@ -35,12 +32,11 @@ $(document).ready ->
     t.attr 'disabled'
     t.attr 'value', 'Saving...'
   $(document).on 'ajaxError', '[data-behavior~=page_editor]', (e, x) ->
-    t = $('[data-behavior~=page_editor_errors]')
     if x.status is 422
       if Object.keys(x.responseJSON).toString() is 'name'
         $('[data-behavior~=page_editor_error_name]').removeClass 'dn'
         $('[data-behavior~=page_editor_error_generic]').addClass 'dn'
-    t.removeClass 'dn'
+    $('[data-behavior~=page_editor_errors]').removeClass 'dn'
     $('[data-behavior~=page_editor_submit]').attr 'value', 'Save again'
   $(document).on 'ajaxSuccess', '[data-behavior~=page_editor]', ->
     t = $('[data-behavior~=page_editor_submit]')
