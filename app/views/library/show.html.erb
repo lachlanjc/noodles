@@ -5,7 +5,11 @@
 <%= render 'shared/nav' %>
 
 <main class="flex-ns fas fjc mtl phm phl-ns">
-  <article class="document document--inline mw7 pan">
+  <article class="document document--inline mw7 pan" data-behavior="page" data-id="<%= @page.id %>">
+    <div data-behavior="page_archived_banner">
+      <%= render 'archived' if @page.archived? %>
+    </div>
+
     <section class="<%= 'dn' unless @page.errors.any? %> bg-grey-6 border-bottom pam pal-ns tc rounded-top oh" data-behavior="page_editor_errors">
       <p class="red mbn dn" data-behavior="page_editor_error_name">
         💀 That name is a too long.
@@ -15,9 +19,9 @@
       </p>
     </section>
 
-    <%= link_to @page, class: 'fr pas fill-grey-4', method: :delete, data: { behavior: 'page_delete_btn', confirm: 'Are you sure you want this page to be gone forever?' } do %>
-      <%= inline_svg 'delete.svg' %>
-    <% end %>
+    <action class="fr pas tooltipped <%= 'dn' if @page.archived? %>" data-behavior="page_archive_btn" aria-label="Archive this page">
+      <%= inline_svg 'archive.svg', class: 'fill-blue' %>
+    </action>
 
     <%= form_for(@page, data: { remote: true, type: 'json', behavior: 'page_editor' }) do |f| %>
       <header class="mtm mtxl-ns mbm phm phxl-ns">
@@ -45,12 +49,13 @@
   <aside class="page--sidebar">
     <section class="page--sidebar--component page--share">
       <h2 class="mtn">Share this page</h2>
-      <%= text_field_tag 'url', shared_page_url, class: 'text-input' %>
+      <%= text_field_tag 'url', shared_page_url, class: 'text-input bs-bb' %>
     </section>
 
     <p class="page--sidebar--component mtl f5 grey-4">
       Created
-      <span class="tooltipped relative" aria-label="<%= @page.created_at.strftime '%Y-%m-%-e %l:%M %p' %>"><%= time_ago_in_words @page.created_at %> ago</span>
+      <span class="tooltipped relative" aria-label="<%= format_date @page.created_at %>"><%= time_ago_in_words @page.created_at %> ago</span>
+      <%= link_to 'Delete', @page, class: 'fr red border-bottom', method: :delete, 'data-confirm': 'Are you sure you want this page to be gone forever?' if @page.active? %>
   </aside>
 </main>
 

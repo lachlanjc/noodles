@@ -11,6 +11,14 @@ class Page < ActiveRecord::Base
   before_save :clean_page_name!
   before_save :generate_page_preview_text!
 
+  def archived?
+    archived_at.to_bool
+  end
+
+  def active?
+    !archived?
+  end
+
   protected
 
   def clean_page_name!

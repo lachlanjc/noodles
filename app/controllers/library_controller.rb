@@ -3,7 +3,7 @@ class LibraryController < ApplicationController
   include LibraryHelper
 
   before_filter :please_sign_in, only: [:new, :create, :show, :update, :destroy]
-  before_action :set_page, only: [:show, :update, :destroy]
+  before_action :set_page, only: [:show, :update, :destroy, :archive, :unarchive]
   before_action :not_the_owner, only: [:show, :update, :destroy]
 
   def index
@@ -57,10 +57,22 @@ class LibraryController < ApplicationController
     end
   end
 
+  def archive
+    @page.archived_at = Time.now
+    @page.save
+    render :archived
+  end
+
+  def unarchive
+    @page.archived_at = nil
+    @page.save
+    render nothing: true
+  end
+
   private
 
   def set_page
-    @page = Page.find(params[:id])
+    @page = Page.find(params[:id] || params[:page_id])
     raise_not_found
   end
 

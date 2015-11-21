@@ -29,7 +29,10 @@ Rails.application.routes.draw do
 
   scope '/library' do
     get '/', to: 'library#index', as: :library
-    resources :pages, except: [:edit], controller: 'library'
+    resources :pages, except: [:edit], controller: 'library' do
+      get '/archive', to: 'library#archive', as: :archive
+      get '/unarchive', to: 'library#unarchive', as: :unarchive
+    end
   end
 
   get '/save', to: 'save#save', as: :save

@@ -50,6 +50,27 @@ $(document).ready ->
     c = -> t.attr 'value', 'Save'
     setTimeout c, 1500
 
+  toggleArchiveStatus = (process) ->
+    toggleArchivingClass = -> p.toggleClass "tog--#{process}"
+    p = $('[data-behavior~=page]')
+    b = $('[data-behavior~=page_archived_banner]')
+    toggleArchivingClass()
+    id = p.data 'id'
+    $.get "/library/pages/#{id}/#{process}", (d) ->
+      if process is 'unarchive'
+        b.html null
+      else
+        b.html d
+      $('[data-behavior~=page_editor]').submit()
+      toggleArchivingClass()
+      $('[data-behavior~=page_archive_btn]').toggleClass 'dn'
+  togglingStatus = ->
+    $('[data-behavior~=page]').attr('class').match /tog/
+  $(document).on 'click', '[data-behavior~=page_archive_btn]', ->
+    toggleArchiveStatus 'archive'
+  $(document).on 'click', '[data-behavior~=page_unarchive_btn]', ->
+    toggleArchiveStatus 'unarchive'
+
   $(document).on 'click', '[data-behavior~=page_delete_btn]', ->
     $(this).addClass 'deleting'
 

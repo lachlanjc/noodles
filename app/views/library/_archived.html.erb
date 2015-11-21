@@ -1,0 +1,9 @@
+<section class="db bg-grey-3 pam pal-ns tc rounded-top oh" data-behavior="page_editor_archived">
+  <p class="white mbn">
+    You <strong class="b">archived</strong> this page <%= time_ago_in_words @page.archived_at %> ago.
+    <button class="btn btn-sm bg-blue mls" data-behavior="page_unarchive_btn">
+      Unarchive it
+    </button>
+    <%= link_to 'Delete', @page, class: 'btn btn-sm bg-red mls', method: :delete, 'data-confirm': 'Are you sure you want this page to be gone forever?' %>
+  </p>
+</section>
