@@ -12,4 +12,10 @@ module NavHelper
     @navs ||= []
     @navs.push(nav.to_sym)
   end
+
+  def filterbar_class(conditions)
+    className = 'filterbar__item dib phm '
+    className += conditions ? 'bg-orange white white-hover b' : 'grey-1'
+    className
+  end
 end

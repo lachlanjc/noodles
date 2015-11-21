@@ -48,4 +48,8 @@ module ApplicationHelper
     html << tag(:hr)
     html
   end
+
+  def render_params
+    params.delete_if { |key| key == 'controller' || key == 'action' }
+  end
 end

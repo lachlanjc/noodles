@@ -7,7 +7,7 @@ class LibraryController < ApplicationController
   before_action :not_the_owner, only: [:show, :update, :destroy]
 
   def index
-    @pages = current_user.pages
+    @pages = current_user.pages.where(["archived_at IS#{' NOT' if params[:archive]} NULL"])
   end
 
   def show
