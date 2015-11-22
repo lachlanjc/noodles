@@ -2,9 +2,9 @@ class LibraryController < ApplicationController
   include ApplicationHelper
   include LibraryHelper
 
-  before_filter :please_sign_in, only: [:new, :create, :show, :update, :destroy]
+  before_filter :please_sign_in
   before_action :set_page, only: [:show, :update, :destroy, :archive, :unarchive]
-  before_action :not_the_owner, only: [:show, :update, :destroy]
+  before_action :not_the_owner, only: [:show, :update, :destroy, :archive, :unarchive]
 
   def index
     @pages = current_user.pages.where(["archived_at IS#{' NOT' if params[:archive]} NULL"])
