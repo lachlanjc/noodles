@@ -1,5 +1,6 @@
 class MetaController < ApplicationController
-  include MetaHelper
+  include NavHelper
+  include TextHelper
 
   def home
     @primary_link = user_signed_in? ? recipes_path : explore_path
@@ -23,5 +24,14 @@ class MetaController < ApplicationController
 
   def docs
     render_doc 'docs.md'
+  end
+
+  protected
+
+  def render_doc(filename)
+    @title = filename.chomp('.md').humanize
+    activate_nav! filename.chomp('.md')
+    @doc = markdown(File.read(Rails.root.join('public', 'docs', filename))).html_safe
+    render :doc
   end
 end

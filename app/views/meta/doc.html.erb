@@ -1,4 +1,3 @@
-<% activate_nav!(@nav) %>
 <%- title @title %>
 
 <%= render 'shared/nav' %>
@@ -29,7 +28,7 @@
     </style>
   <% end %>
   <article class="md-col-6 flex-auto flex-first mw7 mx-auto phm">
-    <h1 class="h0 mbm dn db-ns"><%= @title %></h1>
+    <h1 class="h0 tc mtm mbn dn db-ns"><%= @title %></h1>
     <%= @doc.html_safe %>
   </article>
 </main>
