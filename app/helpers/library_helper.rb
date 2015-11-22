@@ -20,7 +20,7 @@ module LibraryHelper
   end
 
   def shared_page_path(page = @page)
-    "/p/#{page.shared_id.to_s}"
+    "/p/#{page.shared_id}"
   end
 
   def shared_page_url(page = @page)

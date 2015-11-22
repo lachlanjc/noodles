@@ -18,20 +18,23 @@ module ApplicationHelper
   end
 
   def not_found
-    raise ActionController::RoutingError.new('Not Found')
+    fail ActionController::RoutingError.new('Not Found')
   end
 
   def go_back
     redirect_to :back
-    rescue ActionController::RedirectBackError
-      redirect_to root_path
+  rescue ActionController::RedirectBackError
+    redirect_to root_path
+  end
+
+  def nobody_signed_in?
+    !user_signed_in?
   end
 
   def please_sign_in
-    if nobody_signed_in?
-      flash[:red] = 'Please sign in to an account.'
-      redirect_to root_url
-    end
+    return false if user_signed_in?
+    flash[:red] = 'Please sign in to an account.'
+    redirect_to root_url
   end
 
   def app_url
