@@ -2,14 +2,26 @@
 .container {
   width: 100%;
   font-family: "proxima-nova", "Proxima Nova", sans-serif;
+  padding: 2em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
 }
 .collection {
   width: 250px;
   height: 250px;
-  margin: 2em 1em;
+  margin: 1rem;
   box-sizing: border-box;
   display: inline-block;
-  border-radius: 4em;
+  border-radius: 35px;
   overflow: hidden;
   -webkit-box-shadow: 0 5px 33px rgba(0,0,0,0.1) !important;
           box-shadow: 0 5px 33px rgba(0,0,0,0.1);
@@ -22,11 +34,10 @@
   border: 3px solid #fa6713;
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
-  border-radius: 5em;
+  border-radius: 25px;
 }
 .collection img {
   height: 100%;
-  margin-left: -50px;
 }
 .label-container {
   height: 3em;
