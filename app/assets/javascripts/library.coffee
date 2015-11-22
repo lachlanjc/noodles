@@ -27,8 +27,8 @@ $(document).ready ->
       'You haven\'t saved your work yet!' if (current isnt saved) and !del
     return
 
-  $('[data-behavior~=page_editor]').on 'ajaxBeforeSend', ->
-    t = $('[data-behavior~=page_editor_submit]')
+  $(document).on 'click', '[data-behavior~=page_editor_submit]', ->
+    t = $(this)
     t.attr 'disabled'
     t.attr 'value', 'Saving...'
   $(document).on 'ajaxError', '[data-behavior~=page_editor]', (e, x) ->
@@ -41,16 +41,15 @@ $(document).ready ->
   $(document).on 'ajaxSuccess', '[data-behavior~=page_editor]', ->
     t = $('[data-behavior~=page_editor_submit]')
     $('[data-behavior~=page_editor_errors]').addClass 'dn'
-    t.attr 'value', 'Saved!'
     populateLastSaved()
-    c = -> t.attr 'value', 'Save'
-    setTimeout c, 1500
+    if t.attr('value') is 'Saving...'
+      t.attr 'value', 'Saved!'
+      c = -> t.attr 'value', 'Save'
+      setTimeout c, 1500
 
   toggleArchiveStatus = (process) ->
-    toggleArchivingClass = -> p.toggleClass "tog--#{process}"
     p = $('[data-behavior~=page]')
     b = $('[data-behavior~=page_archived_banner]')
-    toggleArchivingClass()
     id = p.data 'id'
     $.get "/library/pages/#{id}/#{process}", (d) ->
       if process is 'unarchive'
@@ -58,10 +57,7 @@ $(document).ready ->
       else
         b.html d
       $('[data-behavior~=page_editor]').submit()
-      toggleArchivingClass()
       $('[data-behavior~=page_archive_btn]').toggleClass 'dn'
-  togglingStatus = ->
-    $('[data-behavior~=page]').attr('class').match /tog/
   $(document).on 'click', '[data-behavior~=page_archive_btn]', ->
     toggleArchiveStatus 'archive'
   $(document).on 'click', '[data-behavior~=page_unarchive_btn]', ->
