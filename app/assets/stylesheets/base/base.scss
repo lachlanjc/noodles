@@ -10,6 +10,10 @@
   &--inline {
     margin: 0 0 $space-3;
   }
+
+  &__banner {
+    box-shadow: 0 -1px 0 1px currentcolor;
+  }
 }
 
 @media screen and (min-width: 48em) {

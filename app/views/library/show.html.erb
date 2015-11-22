@@ -6,7 +6,7 @@
 
 <main class="flex-ns fas fjc mtl phm phl-ns">
   <article class="document document--inline mw7 pan" data-behavior="page" data-id="<%= @page.id %>">
-    <div data-behavior="page_archived_banner">
+    <div class="grey-3" data-behavior="page_archived_banner">
       <%= render 'archived' if @page.archived? %>
     </div>
 
@@ -46,7 +46,7 @@
     <% end %>
   </article>
 
-  <aside class="page--sidebar">
+  <aside class="page--sidebar phm phn-ns bs-bb">
     <section class="page--sidebar--component page--share">
       <h2 class="mtn">Share this page</h2>
       <%= text_field_tag 'url', shared_page_url, class: 'text-input bs-bb' %>
