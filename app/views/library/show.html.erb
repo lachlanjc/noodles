@@ -55,7 +55,7 @@
     <p class="page--sidebar--component mtl f5 grey-4">
       Created
       <span class="tooltipped relative" aria-label="<%= format_date @page.created_at %>"><%= time_ago_in_words @page.created_at %> ago</span>
-      <%= link_to 'Delete', @page, class: 'fr red border-bottom', method: :delete, 'data-confirm': 'Are you sure you want this page to be gone forever?' if @page.active? %>
+      <%= link_to 'Delete', @page, class: 'fr red b', method: :delete, data: { behavior: 'page_delete_btn', confirm: 'Are you sure you want this page to be gone forever?' } if @page.active? %>
   </aside>
 </main>
 
