@@ -106,7 +106,7 @@
   <% if nobody_signed_in? %>
     <section class="modal" role="dialog" id="signup">
       <%= modal_close %>
-      <h2 class="orange mbn">Sign up for Noodles</h2>
+      <h2 class="orange man">Sign up for Noodles</h2>
       <%= render 'devise/registrations/new', user: User.new, text: 'Noodles is (and always will be) completely free.',
                  options: { class: 'modal--scroll' } %>
     </section>

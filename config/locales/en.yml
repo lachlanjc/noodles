@@ -27,7 +27,6 @@ en:
     sign_up: "Sign Up"
     update: "Update"
     welcome_to_noodles: "Welcome to Noodles"
-    your_recipes: "Your recipes"
 
   devise:
     registrations:
@@ -55,25 +54,14 @@ en:
         sign_in: "Sign in"
 
   recipes:
-    new:
-      new_recipe: "New Recipe"
     edit:
-      editing: "Editing"
-      delete: "Delete this Recipe"
       delete_forever: "Delete your recipe forever? Forever is a long, long time."
-    printing:
-      print_copy: Printed from Noodles, a simple app to keep, cook, and share your recipes. Get it free at https://getnoodl.es/
 
   help:
     help:
       need_help: "Need help with Noodles?"
       help_details: "I'm always happy to help you out if you're having any issues with Noodles. Just click the button below, and I'll respond as soon as possible!"
       contact_us_details: "If you have any questions about Noodles, ask me with the button below. I'll respond to you as soon as possible!"
-    favorites:
-      no_favorites_yet: "You don't have any Favorites yet."
-      favorites_are: "Favorites are an easy way to quickly bookmark recipes you love. They're marked with a star."
-      to_add_favorites: "To add a favorite, click the Favorites star at the bottom of the page while you're editing a recipe. Your Favorites will then show up here."
-      back_to_r: "Back to All Your Recipes"
 
   shared:
     error_messages:

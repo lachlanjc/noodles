@@ -76,7 +76,7 @@
 <% if nobody_signed_in? %>
   <section class="modal tc" role="dialog" id="signup">
     <%= modal_close %>
-    <h2 class="orange mbn">Sign up for Noodles</h2>
+    <h2 class="orange man">Sign up for Noodles</h2>
     <%= render 'devise/registrations/new', user: User.new, text: 'Noodles is (and always will be) completely free.',
                options: { class: 'modal--scroll', data: { remote: true, behavior: 'inline_signup_form' } } %>
     <div class="dn tc" data-behavior="inline_signup_error">
@@ -88,7 +88,7 @@
 
 <section class="modal pam" role="dialog" id="preview" data-behavior="explore_preview_modal">
   <%= modal_close %>
-  <h2 class="orange di mbn" data-behavior="explore_preview_title"></h2>
+  <h2 class="orange di man" data-behavior="explore_preview_title"></h2>
   <a data-behavior="explore_open_original" class="dib" target="_blank" rel="nofollow">
     <%= inline_svg 'open-new-tab.svg', class: 'fill-orange relative', size: 16, style: 'top: -5px; left: 2px;' %>
   </a>
