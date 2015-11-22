@@ -92,11 +92,52 @@
   fill: $grey-3 ;
 }
 
-
-// Colors just for text, no .bg- classes needed
 .grey-2 {
   color: $grey-2;
 }
 .grey-1 {
   color: $grey-1;
+}
+
+.darken-1 {
+  color: $darken-1;
+}
+.bg-darken-1 {
+  background-color: $darken-1;
+}
+.border-darken-1 {
+  border-color: $darken-1;
+}
+
+.darken-2 {
+  color: $darken-2;
+}
+.bg-darken-2 {
+  background-color: $darken-2;
+}
+.border-darken-2 {
+  border-color: $darken-2;
+}
+
+/*
+.darken-3 {
+  color: $darken-3;
+}
+.bg-darken-3 {
+  background-color: $darken-3;
+}
+
+.darken-4 {
+  color: $darken-4;
+}
+*/
+.bg-darken-4 {
+  background-color: $darken-4;
+}
+
+.shadow {
+  @include shadow;
+}
+.well {
+  box-shadow: inset 0 0 10px rgba(0,0,0,.05);
 }

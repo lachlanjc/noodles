@@ -35,6 +35,12 @@
     font-size: 1.25rem;
     font-weight: bold;
   }
+
+  &--bordered {
+    background: #fff;
+    color: currentcolor;
+    box-shadow: inset 0 0 0 2px currentcolor;
+  }
 }
 
 .btn[disabled] {

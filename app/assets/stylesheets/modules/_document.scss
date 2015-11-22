@@ -14,35 +14,11 @@
   &__banner {
     box-shadow: 0 -1px 0 1px currentcolor;
   }
-}
 
-@media screen and (min-width: 48em) {
-  .document {
+  @media screen and (min-width: 48em) {
     border-radius: $border-radius-large;
     border-width: $border-width;
     padding: $space-3;
     width: (8/12 * 100%);
   }
-}
-
-hr {
-  border: 0;
-  border-bottom: $border;
-  margin: $space-2 auto;
-}
-
-.shadow {
-  @include shadow;
-}
-.well {
-  box-shadow: inset 0 0 10px rgba(0,0,0,.05);
-}
-
-action,
-.pointer {
-  cursor: pointer;
-}
-
-.bs-bb {
-  box-sizing: border-box;
 }
