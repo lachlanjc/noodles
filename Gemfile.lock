@@ -105,6 +105,8 @@ GEM
       nokogiri
     heap (0.3.0)
       httparty (~> 0.13)
+    html_truncator (0.4.1)
+      nokogiri (~> 1.5)
     htmlentities (4.3.4)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -303,6 +305,7 @@ DEPENDENCIES
   fastimage
   hangry
   heap
+  html_truncator
   ingreedy
   intercom-rails
   jbuilder
