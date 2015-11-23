@@ -38,8 +38,8 @@
    FONT WEIGHT
 */
 
-.normal   { font-weight: normal; }
-.b        { font-weight: $bold-font-weight; }
+.normal    { font-weight: normal; }
+strong, .b { font-weight: $bold-font-weight; }
 
 /*
    LINE HEIGHT / LEADING
