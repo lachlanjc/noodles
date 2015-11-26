@@ -2,18 +2,17 @@
 
 @import "variables";
 
-.page__preview {
-  @include shadow;
-  background-color: #fff;
-  border-radius: $border-radius;
-  height: 16rem;
-  margin: .5rem;
-  overflow: hidden;
-  padding: 1rem;
-  width: 12rem;
+.page--preview {
+  height: 6rem;
+  width: 100%;
+
+  @media screen and (min-width: 48em) {
+    height: 18rem;
+    width: 14rem;
+  }
 }
 
-.page--sidebar {
+.page__sidebar {
   width: 100%;
 
   @media screen and (min-width: 48em) {
@@ -22,7 +21,7 @@
   }
 }
 
-.page--sidebar--component {
+.page__sidebar__component {
   width: 100%;
 }
 

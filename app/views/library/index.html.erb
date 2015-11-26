@@ -11,12 +11,14 @@
     <%= link_to 'Archive', library_path(archive: true), class: filterbar_class(params[:archive]) %>
   </section>
 
-  <article class="flex flex-rows fac fjc phm mbm">
+  <article class="flex-ns flex-rows fac fjc phm mbm">
     <% @pages.each do |page| %>
       <%= link_to page, class: 'link-reset' do %>
-        <section class="page__preview">
-          <h3 class="mtn tc"><%= page_title(page).truncate 140 %></h3>
-          <div class="formatted-content f5"><%= HTML_Truncator.truncate(page.content_raw.to_s, 320).html_safe %></div>
+        <section class="page--preview bg-white rounded oh mbs mas-ns shadow">
+          <h3 class="mtm mbs phm">
+            <%= page_title(page).truncate 140 %>
+          </h3>
+          <div class="formatted-content f5 phm"><%= HTML_Truncator.truncate(page.content_raw.to_s, 320).html_safe %></div>
         </section>
       <% end %>
     <% end %>

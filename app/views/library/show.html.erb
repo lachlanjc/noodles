@@ -4,8 +4,8 @@
 <%= stylesheet_link_tag 'library', media: 'all' %>
 <%= render 'shared/nav' %>
 
-<main class="flex-ns fas fjc mtl phm phl-ns">
-  <article class="document document--inline mw7 pan" data-behavior="page" data-id="<%= @page.id %>">
+<main class="flex-ns fas fjc mtm mtl-ns phl-ns">
+  <article class="document document--inline mw7 pan oh" data-behavior="page" data-id="<%= @page.id %>">
     <div class="grey-3" data-behavior="page_archived_banner">
       <%= render 'archived' if @page.archived? %>
     </div>
@@ -20,7 +20,7 @@
     </section>
 
     <action class="fr pas tooltipped <%= 'dn' if @page.archived? %>" data-behavior="page_archive_btn" aria-label="Archive this page">
-      <%= inline_svg 'archive.svg', class: 'fill-blue' %>
+      <%= inline_svg 'archive.svg', class: 'fill-grey-4' %>
     </action>
 
     <%= form_for(@page, data: { remote: true, type: 'json', behavior: 'page_editor' }) do |f| %>
@@ -46,16 +46,17 @@
     <% end %>
   </article>
 
-  <aside class="page--sidebar phm phn-ns bs-bb">
-    <section class="page--sidebar--component page--share">
+  <aside class="page__sidebar phm phn-ns bs-bb">
+    <section class="page__sidebar__component">
       <h2 class="mtn">Share this page</h2>
       <%= text_field_tag 'url', shared_page_url, class: 'text-input bs-bb' %>
     </section>
 
-    <p class="page--sidebar--component mtl f5 grey-4">
+    <p class="page__sidebar__component mtl f5 grey-4">
       Created
       <span class="tooltipped relative" aria-label="<%= format_date @page.created_at %>"><%= time_ago_in_words @page.created_at %> ago</span>
       <%= link_to 'Delete', @page, class: 'fr red b', method: :delete, data: { behavior: 'page_delete_btn', confirm: 'Are you sure you want this page to be gone forever?' } if @page.active? %>
+    </p>
   </aside>
 </main>
 
