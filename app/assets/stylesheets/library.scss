@@ -12,6 +12,12 @@
   }
 }
 
+.page__color-banner {
+  background-color: currentcolor;
+  height: 4px;
+  width: 100%;
+}
+
 .page__sidebar {
   width: 100%;
 
@@ -26,4 +32,5 @@
 }
 
 @import "modules/content";
+@import "modules/swatches";
 @import "modules/trix";

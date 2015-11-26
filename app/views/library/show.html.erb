@@ -19,6 +19,8 @@
       </p>
     </section>
 
+    <section class="page__color-banner swatch--<%= @page.color %>" data-behavior="page_color_banner"></section>
+
     <action class="fr pas tooltipped <%= 'dn' if @page.archived? %>" data-behavior="page_archive_btn" aria-label="Archive this page">
       <%= inline_svg 'archive.svg', class: 'fill-grey-4' %>
     </action>
@@ -41,12 +43,20 @@
 
       <footer class="tc mtm mbm mbl-ns">
         <input type="hidden" data-behavior="page_editor_last_saved" value="">
+        <%= f.hidden_field :color, 'data-behavior': 'page_color_val' %>
         <%= f.submit 'Save', class: 'btn btn--primary', 'data-behavior': 'page_editor_submit' %>
       </footer>
     <% end %>
   </article>
 
   <aside class="page__sidebar phm phn-ns bs-bb">
+    <section class="page__sidebar__component">
+      <h2 class="mtn mbs">Color</h2>
+      <swatchpicker class="flex flex-rows fac fjc mbm mx-auto">
+        <%= swatches %>
+      </swatchpicker>
+    </section>
+
     <section class="page__sidebar__component">
       <h2 class="mtn">Share this page</h2>
       <%= text_field_tag 'url', shared_page_url, class: 'text-input bs-bb' %>

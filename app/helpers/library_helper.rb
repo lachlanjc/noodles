@@ -1,6 +1,8 @@
 module LibraryHelper
   include ApplicationHelper
 
+  COLORS = %w(red yellow green blue purple white)
+
   def me_owns_page?
     user_signed_in? && @page.user_id == current_user.id
   end
@@ -25,5 +27,14 @@ module LibraryHelper
 
   def shared_page_url(page = @page)
     app_url + shared_page_path(page)
+  end
+
+  def swatches(page = @page)
+    html = ''
+    COLORS.each do |color|
+      selected = page.color == color
+      html << content_tag(:swatch, nil, class: "swatch--#{color}", data: { behavior: 'swatch', color: color }, selected: selected)
+    end
+    html.html_safe
   end
 end

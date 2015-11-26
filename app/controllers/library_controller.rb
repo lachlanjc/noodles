@@ -77,7 +77,7 @@ class LibraryController < ApplicationController
   end
 
   def page_params
-    params.require(:page).permit(:name, :content, :content_raw, :shared_id, :user_id)
+    params.require(:page).permit(:name, :content, :content_raw, :shared_id, :user_id, :color)
   end
 
   def raise_not_found

@@ -63,6 +63,15 @@ $(document).ready ->
   $(document).on 'click', '[data-behavior~=page_unarchive_btn]', ->
     toggleArchiveStatus 'unarchive'
 
+  $(document).on 'click', '[data-behavior~=swatch]', ->
+    p = $('[data-behavior~=swatch][selected]').data 'color'
+    n = $(this).data 'color'
+    $('[data-behavior~=swatch]').removeAttr 'selected'
+    $(this).attr 'selected', true
+    $('[data-behavior~=page_color_banner]').toggleClass "swatch--#{p} swatch--#{n}"
+    $('[data-behavior~=page_color_val]').val n
+    $('[data-behavior~=page_editor]').submit()
+
   $(document).on 'click', '[data-behavior~=page_delete_btn]', ->
     $(this).addClass 'deleting'
 
