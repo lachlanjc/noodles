@@ -2,7 +2,11 @@
 
 $(document).ready ->
   $('[data-behavior~=page_editor_name]').on 'keyup', ->
-    n = _.trunc _.trim($(this).val()), 100 || 'Untitled'
+    name = _.trunc _.trim($(this).val()), 100
+    if name.length > 0
+      n = name
+    else
+      n = 'Untitled'
     $('[data-behavior~=page_editor_name_bc]').text n
     $('title').text "#{n} – Noodles"
 
