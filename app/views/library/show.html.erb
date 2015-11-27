@@ -10,11 +10,11 @@
       <%= render 'archived' if @page.archived? %>
     </div>
 
-    <section class="<%= 'dn' unless @page.errors.any? %> bg-grey-6 border-bottom pam pal-ns tc rounded-top oh" data-behavior="page_editor_errors">
-      <p class="red mbn dn" data-behavior="page_editor_error_name">
-        💀 That name is a too long.
+    <section class="<%= 'dn' unless @page.errors.any? %> bg-grey-6 border-bottom pam pal-ns tc rounded-top oh" data-behavior="page_errors">
+      <p class="red mbn dn" data-behavior="page_error_spec">
+        💀 The <span data-behavior="page_error_spec_field"></span> <span data-behavior="page_error_spec_message"></span>.
       </p>
-      <p class="red mbn" data-behavior="page_editor_error_generic">
+      <p class="red mbn" data-behavior="page_error_generic">
         💀 Something went wrong. 😨
       </p>
     </section>

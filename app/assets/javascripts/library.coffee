@@ -37,14 +37,18 @@ $(document).ready ->
     t.attr 'value', 'Saving...'
   $(document).on 'ajaxError', '[data-behavior~=page_editor]', (e, x) ->
     if x.status is 422
-      if Object.keys(x.responseJSON).toString() is 'name'
-        $('[data-behavior~=page_editor_error_name]').removeClass 'dn'
-        $('[data-behavior~=page_editor_error_generic]').addClass 'dn'
-    $('[data-behavior~=page_editor_errors]').removeClass 'dn'
+      s = $('[data-behavior~=page_error_spec]')
+      f = _.keys(x.responseJSON)[0]
+      m = _.values(x.responseJSON).toString()
+      s.find('[data-behavior~=page_error_spec_field]').text f
+      s.find('[data-behavior~=page_error_spec_message]').text m
+      $('[data-behavior~=page_error_generic]').addClass 'dn'
+      s.removeClass 'dn'
+    $('[data-behavior~=page_errors]').removeClass 'dn'
     $('[data-behavior~=page_editor_submit]').attr 'value', 'Save again'
   $(document).on 'ajaxSuccess', '[data-behavior~=page_editor]', ->
     t = $('[data-behavior~=page_editor_submit]')
-    $('[data-behavior~=page_editor_errors]').addClass 'dn'
+    $('[data-behavior~=page_errors]').addClass 'dn'
     populateLastSaved()
     if t.attr('value') is 'Saving...'
       t.attr 'value', 'Saved!'
