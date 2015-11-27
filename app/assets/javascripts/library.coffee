@@ -74,7 +74,8 @@ $(document).ready ->
     $(this).attr 'selected', true
     $('[data-behavior~=page_color_banner]').toggleClass "swatch--#{p} swatch--#{n}"
     $('[data-behavior~=page_color_val]').val n
-    $('[data-behavior~=page_editor]').submit()
+    if _.trim($('[data-behavior~=page_editor_name]').val()).length > 0
+      $('[data-behavior~=page_editor]').submit()
 
   $(document).on 'click', '[data-behavior~=page_delete_btn]', ->
     $(this).addClass 'deleting'
