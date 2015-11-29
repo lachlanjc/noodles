@@ -29,7 +29,7 @@
       <header class="mtm mtxl-ns mbm phm phxl-ns">
         <section class="bc f5 grey-3">
           <%= link_to 'Library', library_path, class: 'bc__link' %> ›
-          <span <%= hidden_if @page.archived? %> data-behavior="page_archive_bc">
+          <span <%= hidden_if @page.active? %> data-behavior="page_archive_bc">
             <%= link_to 'Archive', library_path(archive: true), class: 'bc__link' %> ›
           </span>
           <%= link_to page_title, page_path(@page), class: 'bc__link', 'data-behavior': 'page_editor_name_bc' %>
@@ -68,7 +68,7 @@
     <p class="page__sidebar__component mtl f5 grey-4">
       Created
       <span class="tooltipped relative" aria-label="<%= format_date @page.created_at %>"><%= time_ago_in_words @page.created_at %> ago</span>
-      <%= link_to 'Delete', @page, class: 'fr red b', method: :delete, data: { behavior: 'page_delete_btn', confirm: 'Are you sure you want this page to be gone forever?' } if @page.active? %>
+      <%= link_to 'Delete', @page, class: 'fr red b', method: :delete, data: { behavior: 'page_delete_btn', confirm: 'Are you sure you want this page to be gone forever?' } %>
     </p>
   </aside>
 </main>
