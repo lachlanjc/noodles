@@ -42,13 +42,13 @@ $(document).ready ->
       m = _.values(x.responseJSON).toString()
       s.find('[data-behavior~=page_error_spec_field]').text f
       s.find('[data-behavior~=page_error_spec_message]').text m
-      $('[data-behavior~=page_error_generic]').addClass 'dn'
-      s.removeClass 'dn'
-    $('[data-behavior~=page_errors]').removeClass 'dn'
+      $('[data-behavior~=page_error_generic]').hide 'fast'
+      s.show 'fast'
+    $('[data-behavior~=page_errors]').show 'fast'
     $('[data-behavior~=page_editor_submit]').attr 'value', 'Save again'
   $(document).on 'ajaxSuccess', '[data-behavior~=page_editor]', ->
     t = $('[data-behavior~=page_editor_submit]')
-    $('[data-behavior~=page_errors]').addClass 'dn'
+    $('[data-behavior~=page_errors]').hide 'fast'
     populateLastSaved()
     if t.attr('value') is 'Saving...'
       t.attr 'value', 'Saved!'
@@ -65,7 +65,7 @@ $(document).ready ->
       else
         b.html d
       $('[data-behavior~=page_editor]').submit()
-      $('[data-behavior~=page_archive_btn]').toggleClass 'dn'
+      $('[data-behavior~=page_archive_btn], [data-behavior~=page_archive_bc], [data-behavior~=page_sidebar], [data-behavior~=page_color_banner]').toggle 'fast'
   $(document).on 'click', '[data-behavior~=page_archive_btn]', ->
     toggleArchiveStatus 'archive'
   $(document).on 'click', '[data-behavior~=page_unarchive_btn]', ->

@@ -10,7 +10,7 @@
       <%= render 'archived' if @page.archived? %>
     </div>
 
-    <section class="<%= 'dn' unless @page.errors.any? %> bg-grey-6 border-bottom pam pal-ns tc rounded-top oh" data-behavior="page_errors">
+    <section class="bg-grey-6 border-bottom pam pal-ns tc rounded-top oh" data-behavior="page_errors" <%= hidden_if @page.errors.blank? %>>
       <p class="red mbn dn" data-behavior="page_error_spec">
         💀 The <span data-behavior="page_error_spec_field"></span> <span data-behavior="page_error_spec_message"></span>.
       </p>
@@ -19,9 +19,9 @@
       </p>
     </section>
 
-    <section class="page__color-banner swatch--<%= @page.color %>" data-behavior="page_color_banner"></section>
+    <section class="page__color-banner swatch--<%= @page.color %>" data-behavior="page_color_banner" <%= hidden_if @page.archived? %>></section>
 
-    <action class="fr pas tooltipped <%= 'dn' if @page.archived? %>" data-behavior="page_archive_btn" aria-label="Archive this page">
+    <action class="fr pas tooltipped" data-behavior="page_archive_btn" aria-label="Archive this page" <%= hidden_if @page.archived? %>>
       <%= inline_svg 'archive.svg', class: 'fill-grey-4' %>
     </action>
 
@@ -29,6 +29,9 @@
       <header class="mtm mtxl-ns mbm phm phxl-ns">
         <section class="bc f5 grey-3">
           <%= link_to 'Library', library_path, class: 'bc__link' %> ›
+          <span <%= hidden_if @page.archived? %> data-behavior="page_archive_bc">
+            <%= link_to 'Archive', library_path(archive: true), class: 'bc__link' %> ›
+          </span>
           <%= link_to page_title, page_path(@page), class: 'bc__link', 'data-behavior': 'page_editor_name_bc' %>
         </section>
 
@@ -49,7 +52,7 @@
     <% end %>
   </article>
 
-  <aside class="page__sidebar phm phn-ns bs-bb">
+  <aside class="page__sidebar phm phn-ns bs-bb" data-behavior="page_sidebar" <%= hidden_if @page.archived? %>>
     <section class="page__sidebar__component">
       <h2 class="mtn mbs">Color</h2>
       <swatchpicker class="flex flex-rows fac fjc mbm mx-auto">

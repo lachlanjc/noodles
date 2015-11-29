@@ -52,6 +52,10 @@ module ApplicationHelper
     html
   end
 
+  def hidden_if(conditions)
+    'style="display: none;"'.html_safe if conditions
+  end
+
   def render_params
     params.delete_if { |key| key == 'controller' || key == 'action' }
   end

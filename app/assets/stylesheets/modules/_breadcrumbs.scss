@@ -1,12 +1,6 @@
-.bc {
-  position: relative;
-
-  &__link {
+.bc__link {
+  &,
+  &:hover {
     color: inherit;
-    text-decoration: underline;
-
-    &:hover {
-      color: inherit;
-    }
   }
 }
