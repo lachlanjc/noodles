@@ -14,17 +14,19 @@ class Fixnum
   end
 end
 
+class Time
+  def to_bool
+    return self.to_i == 1
+    raise ArgumentError.new("invalid value for Boolean: \"#{self}\"")
+  end
+end
+
 class TrueClass
   def to_i; 1; end
   def to_bool; self; end
 end
 
 class FalseClass
-  def to_i; 0; end
-  def to_bool; self; end
-end
-
-class Time
   def to_i; 0; end
   def to_bool; self; end
 end
