@@ -17,7 +17,7 @@ module LibraryHelper
 
   def page_preview_text(text)
     text = text.to_s.gsub('<li>', '• ').gsub('</li>', '<br>')
-    text = Sanitize.fragment text, elements: %w(strong del br blockquote pre)
+    text = Sanitize.fragment text, elements: %w(strong del br blockquote pre ul ol)
     text.html_safe
   end
 
