@@ -1,0 +1,25 @@
+.palette {
+  max-width: 12rem;
+
+  &__swatch {
+    background-color: currentcolor;
+    border-radius: 50%;
+    border: 3px solid $grey-6;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.1);
+    cursor: pointer;
+    height: 36px;
+    margin: 1px;
+    width: 36px;
+
+    &[selected] {
+      border-color: #fff;
+    }
+
+    &--red { color: $swatch-red; }
+    &--yellow { color: $swatch-yellow; }
+    &--green { color: $swatch-green; }
+    &--blue { color: $swatch-blue; }
+    &--purple { color: $swatch-purple; }
+    &--white { color: #fff; }
+  }
+}

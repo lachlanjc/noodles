@@ -29,11 +29,11 @@ module LibraryHelper
     app_url + shared_page_path(page)
   end
 
-  def swatches(page = @page)
+  def palette(page = @page)
     html = ''
     COLORS.each do |color|
       selected = page.color == color
-      html << content_tag(:swatch, nil, class: "swatch--#{color}", data: { behavior: 'swatch', color: color }, selected: selected)
+      html << content_tag(:swatch, nil, class: "palette__swatch palette__swatch--#{color}", data: { behavior: 'swatch', color: color }, selected: selected)
     end
     html.html_safe
   end
