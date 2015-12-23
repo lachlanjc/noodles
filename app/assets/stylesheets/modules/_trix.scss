@@ -32,6 +32,7 @@ trix-editor {
     font-size: 13px;
 
     .remove {
+      @include shadow;
       display: block;
       position: absolute;
       top: -12px;
@@ -46,7 +47,6 @@ trix-editor {
       text-decoration: none;
       background-color: #fff;
       border: 1px solid $grey-5;
-      box-shadow: 1px 1px 10px rgba(0,0,0,.1);
 
       &:after {
         content: '×';
@@ -195,38 +195,15 @@ trix-toolbar {
   }
 
   .dialog {
+    min-width: 16rem;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    padding: 12px 8px;
     z-index: 5;
 
-    input[type=button] {
-      font-size: 12px;
-      padding: 1px 8px 0;
-      width: auto;
-    }
-
-    input[type=text],
-    input[type=url] {
-      &.validate:invalid {
-        box-shadow: $red 0 0 1.5px 1px;
-      }
-    }
-  }
-
-  .link_dialog {
-    min-width: 16rem;
-
-    input[type=button][value="Link"] {
-      color: $blue;
-      font-weight: $bold-font-weight;
-    }
-
-    input[type=url] {
-      float: left;
-      width: calc(100% - 6rem);
+    input[type=url].validate:invalid {
+      border-color: $red;
     }
   }
 }

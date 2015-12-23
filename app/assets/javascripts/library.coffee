@@ -18,8 +18,13 @@ $(document).ready ->
     t = $('trix-toolbar')
     t.find('.button_groups').addClass 'phs phxl-ns'
     l = t.find '.link_dialog'
-    l.addClass 'bg-white border rounded shadow mx-auto mts mw6'
-    l.find('input[type=url]').addClass 'text-input f5 lh'
+    l.addClass 'bg-white border rounded shadow mx-auto mts pas mw6'
+    u = l.find('.link_url_fields')
+    u.toggleClass 'flex fac fjb f5'
+    u.find('.button_group').removeClass 'button_group'
+    u.find('input[type=url]').addClass 'text-input f5 lh flex-auto mrs'
+    u.find('input[value=Link]').attr 'class', 'btn btn-sm bg-blue b'
+    u.find('input[value=Unlink]').attr 'class', 'btn btn-sm bg-white'
     fr = _.merge l.find('.button_group'), t.find('.button_group.history_tools')
     fr.addClass 'fr-ns'
 
