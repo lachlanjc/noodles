@@ -42,7 +42,6 @@ $(document).ready ->
       Intercom 'trackEvent', 'searched-explore', e
 
   searchActions = ->
-    console.log 'fired'
     t = $('[data-behavior~=explore_search_field]')
     q = _.trim t.val()
     unless _.isEmpty q
@@ -99,7 +98,7 @@ $(document).ready ->
 
   $(document).on 'click', '[data-behavior~=explore_clip_from_list]', ->
     t = $(this)
-    t.text null
+    t.text ''
     t.toggleClass 'bg-blue busy'
 
     u = '/save?url=' + t.closest('[data-behavior~=explore_result_item]').data 'url'
