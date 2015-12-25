@@ -81,7 +81,7 @@ $(document).ready ->
     n = $(this).data 'color'
     $('[data-behavior~=swatch]').removeAttr 'selected'
     $(this).attr 'selected', true
-    $('[data-behavior~=page_color_banner]').toggleClass "swatch--#{p} swatch--#{n}"
+    $('[data-behavior~=page_color_banner]').toggleClass "palette__swatch--#{p} palette__swatch--#{n}"
     $('[data-behavior~=page_color_val]').val n
     if _.trim($('[data-behavior~=page_editor_name]').val()).length > 0
       $('[data-behavior~=page_editor]').submit()

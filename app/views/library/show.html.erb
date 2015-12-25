@@ -19,7 +19,7 @@
       </p>
     </section>
 
-    <section class="page__color-banner swatch--<%= @page.color %>" data-behavior="page_color_banner" <%= hidden_if @page.archived? %>></section>
+    <section class="page__color-banner palette__swatch--<%= @page.color %>" data-behavior="page_color_banner" <%= hidden_if @page.archived? %>></section>
 
     <action class="fr pas tooltipped" data-behavior="page_archive_btn" aria-label="Archive this page" <%= hidden_if @page.archived? %>>
       <%= inline_svg 'archive.svg', class: 'fill-grey-4' %>

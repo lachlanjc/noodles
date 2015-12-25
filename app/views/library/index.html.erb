@@ -15,7 +15,7 @@
     <% @pages.each do |page| %>
       <%= link_to page, class: 'link-reset' do %>
         <section class="page--preview bg-white rounded oh mbs mas-ns shadow">
-          <section class="page__color-banner <%= page.archived? ? 'grey-4' : "swatch--#{page.color}" %>"></section>
+          <section class="page__color-banner <%= page.archived? ? 'grey-4' : "palette__swatch--#{page.color}" %>"></section>
           <h3 class="mtm mbs phm">
             <%= page_title(page).truncate 140 %>
             <%= inline_svg 'archive.svg', class: 'fill-grey-3 fr mls', size: 20 if page.archived? %>
