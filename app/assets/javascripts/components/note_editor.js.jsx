@@ -52,7 +52,8 @@ class NoteEditor extends React.Component {
           defaultValue={this.state.plainNotes} onChange={this.updateTextNotes} />
         <div className='mbm dn-p'>
           <button className='btn bg-blue btn-sm' onClick={this.submitNotes}>
-            Save Notes</button>
+            Save Notes
+          </button>
           <button className='btn bg-grey-4 btn-sm mls' onClick={this.toggleEditing}>
             Cancel
           </button>
