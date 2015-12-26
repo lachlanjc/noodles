@@ -2,8 +2,8 @@ class LibraryController < ApplicationController
   include ApplicationHelper
   include LibraryHelper
 
-  before_filter :please_sign_in
-  before_action :set_page, only: [:show, :update, :destroy, :archive, :unarchive]
+  before_filter :please_sign_in, except: [:share]
+  before_action :set_page, except: [:index, :new, :create, :share]
   before_action :not_the_owner, only: [:show, :update, :destroy, :archive, :unarchive]
 
   def index
@@ -67,6 +67,12 @@ class LibraryController < ApplicationController
     @page.archived_at = nil
     @page.save
     render nothing: true
+  end
+
+  def share
+    @page = Page.find_by_shared_id(params[:shared_id])
+    raise_not_found
+    @shared_url = shared_page_url
   end
 
   private

@@ -1,0 +1,18 @@
+<% activate_nav!(:library) %>
+<%- title page_title(@page, 'Untitled page').html_safe %>
+
+<%= stylesheet_link_tag 'library', media: 'all' %>
+<%= render 'shared/nav' %>
+
+<main class="phm mx-auto">
+  <article class="document mw7 pam paxl-ns oh" data-behavior="page" data-id="<%= @page.id %>">
+    <h1 class="b grey-1 mtn mbm"><%= @page.name %></h1>
+    <content class="formatted-content">
+      <%= @page.content.html_safe %>
+    </content>
+  </article>
+
+  <footer class="phm phn-ns bs-bb">`
+    <%= text_field_tag 'url', shared_page_url, class: 'text-input mx-auto' %>
+  </footer>
+</main>

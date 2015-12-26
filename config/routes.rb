@@ -34,6 +34,7 @@ Rails.application.routes.draw do
       get '/unarchive', to: 'library#unarchive', as: :unarchive
     end
   end
+  get '/p/:shared_id', to: 'library#share', as: :page_share
 
   get '/save', to: 'save#save', as: :save
 
