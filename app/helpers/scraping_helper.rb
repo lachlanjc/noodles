@@ -58,7 +58,10 @@ module ScrapingHelper
   # Adjust for NYT Cooking pages
   def process_nyt_page!(data, document)
     data.ingredients = document.search('.recipe-ingredients')[0].text.strip.gsub(/\n\n+\s+/, ' ')
-    data.instructions = document.search('.recipe-steps').text
+    data.instructions = []
+    document.search('.recipe-steps li').each do |step|
+      data.instructions << step.text.strip.gsub(/\n/, '')
+    end
     data.author = document.search('.recipe-subhead span[itemprop=author]').text
     data
   end
