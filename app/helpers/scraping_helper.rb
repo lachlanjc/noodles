@@ -57,11 +57,17 @@ module ScrapingHelper
 
   # Adjust for NYT Cooking pages
   def process_nyt_page!(data, document)
-    data.ingredients = document.search('.recipe-ingredients')[0].text.strip.gsub(/\n\n+\s+/, ' ')
+    data.ingredients = []
+    document.search('.recipe-ingredients')[0].search('li').each do |item|
+      text = "#{'# ' if item.search('.quantity').text.blank? && item.text.match(/For/)}"
+      text += item.text.strip.gsub(/\n\n+\s+/, ' ').gsub(/:$/, '').capitalize
+      data.ingredients.push text
+    end
     data.instructions = []
     document.search('.recipe-steps li').each do |step|
-      data.instructions << step.text.strip.gsub(/\n/, '')
+      data.instructions.push step.text.strip.gsub(/\n/, '')
     end
+    data.instructions = document.search('.recipe-steps').text
     data.author = document.search('.recipe-subhead span[itemprop=author]').text
     data
   end
@@ -126,10 +132,8 @@ module ScrapingHelper
     ingredients.delete_if { |item| item.to_s.squish.gsub(/\s\s/, ' ').length < 3 }
     # Each of the steps is now in an array.
     ingredients.each do |item|
-      # Remove any custom lists
-      item.gsub! /^\-|\*\s?/, ''
-      # Remove line breaks in the middle
-      item.gsub! /\s\s+/, ' '
+      # Remove custom lists or line breaks
+      item.gsub!(/^\-|\*\s?/, '').to_s.gsub!(/\s\s+/, ' ').to_s.squish!.capitalize
     end
     ingredients
   end
@@ -137,9 +141,7 @@ module ScrapingHelper
   # Write a list of ingredients
   def write_ingredients_to_list(ingredients)
     ingredients_list = ''
-    ingredients.each do |item|
-      ingredients_list += "#{item.to_s.squish.capitalize}\n"
-    end
+    ingredients.each { |item| ingredients_list += "#{item}\n" }
     ingredients_list
   end
 
@@ -148,23 +150,20 @@ module ScrapingHelper
     return if instructions.blank?
     steps = clean_instructions(instructions)
     steps = form_markdown_for_instructions(steps)
-    steps
+    steps.gsub(/\n$/, '')
   end
 
   # Remove inconsistencies in instruction formatting
   def clean_instructions(steps)
-    steps = steps.split(/[\n]/) if steps.is_a?(String)
+    steps = steps.split(/[\n+]/) if steps.is_a?(String)
     # Each of the steps is now in an array.
     # Remove useless steps
     steps.delete_if do |step|
       step.to_s.squish.gsub(/\s\s/, ' ').length < 3 || step.to_s.match('Preparation')
     end
     steps.each do |step|
-      # Remove any custom numbering
-      step.gsub! /^\w?\d\.?/, ''
-      # Remove line breaks in the middle
-      step.gsub! /\s\s+/, ' '
-      step.squish!
+      # Remove custom numbering or line breaks
+      step.gsub!(/^\w?\d\.?/, '').to_s.gsub!(/\s\s+/, ' ')
     end
     steps
   end
@@ -173,9 +172,9 @@ module ScrapingHelper
   def form_markdown_for_instructions(instructions)
     instructions_md = ''
     instructions.each_with_index do |step, id|
-      instructions_md += "#{(id + 1).to_s}. #{step.to_s.squish}\n"
+      instructions_md += "#{(id + 1)}. #{step.squish}\n"
     end
-    instructions_md
+    instructions_md.gsub(/\n$/, '')
   end
 
   protected
