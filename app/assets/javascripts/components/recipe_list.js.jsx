@@ -17,7 +17,7 @@ class RecipeList extends React.Component {
   }
 
   _updateSearch(e) {
-    const searchText = _.trimLeft(e.target.value.toLowerCase());
+    const searchText = _.trimStart(_.lowerCase(e.target.value));
     this.setState({searchText: searchText});
 
     if (searchText.length > 0) {
@@ -28,7 +28,7 @@ class RecipeList extends React.Component {
         }
       } else {
         recipes = _.filter(recipes, function(l) {
-          return _.trim(l.title.toLowerCase()).match(searchText);
+          return _.trim(_.lowerCase(l.title)).match(searchText);
         });
       }
       this.setState({recipes: recipes});

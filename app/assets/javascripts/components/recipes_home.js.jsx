@@ -29,7 +29,7 @@ class RecipesHome extends React.Component {
 
   findFav(e) {
     this.setState({
-      recipesCurrent: _.where(this.state.recipesCore, {'favorite': true}),
+      recipesCurrent: _.find(this.state.recipesCore, { 'favorite': true }),
       view: 'fav'
     });
   }
@@ -45,9 +45,10 @@ class RecipesHome extends React.Component {
   }
 
   renderBlankSlate() {
+    const text = <h3 className='man'>No recipes here yet!</h3>;
     return (
-      <BlankSlate>
-        <h3 className='man'>No recipes here yet!</h3>
+      <BlankSlate margin='mtn mbm'>
+        {this.state.view === 'fav' ? this.renderFavoritesBlankSlate() : text}
         {/*<a href='/recipes/new' className='btn bg-blue'>Create your first</a>*/}
       </BlankSlate>
     )
@@ -55,12 +56,12 @@ class RecipesHome extends React.Component {
 
   renderFavoritesBlankSlate() {
     return (
-      <BlankSlate>
+      <div>
         <h3 className='mtn'>No favorites yet.</h3>
         <p>Favorites are an easy way to quickly bookmark recipes. They're marked with a star.</p>
         <p>To favorite a recipe, open the recipe and click the star to the right of the recipe's title.</p>
         <a onClick={e => this.findAll(e)} className='btn bg-blue'>Back to all recipes</a>
-      </BlankSlate>
+      </div>
     )
   }
 
@@ -95,7 +96,6 @@ class RecipesHome extends React.Component {
           </section>
         </header>
         <RecipeList recipesCore={this.state.recipesCurrent} createFromSearch={true} searchCommands={true} />
-        {this.state.view === 'fav' && _.isEmpty(this.state.recipesCurrent) ? this.renderFavoritesBlankSlate() : null}
         {_.isEmpty(this.state.recipesCurrent) ? this.renderBlankSlate() : this.renderProTips()}
       </main>
     )
