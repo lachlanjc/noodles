@@ -2,7 +2,7 @@
 #= require rails-behaviors
 #= require react
 #= require react_ujs
-#= require lodash/lodash
+#= require lodash
 #= require zeroclipboard
 #= require modals
 #= require autosize
