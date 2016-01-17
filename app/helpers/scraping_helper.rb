@@ -33,8 +33,7 @@ module ScrapingHelper
     elsif host.match('foodandwine.com')
       data.name = document.css('[itemprop=name]')[2].text.to_s.squish
     elsif host.match('bonappetit.com')
-      data.instructions = document.css('.prep-steps li.step').text
-      data.author = document.css('.contributors li')[0].text.strip
+      data = process_ba_page!(data, document)
     elsif host.match('marthastewart.com')
       data.instructions = document.css('.directions-list .directions-item').text
     elsif host.match('driscolls.com')
@@ -79,6 +78,17 @@ module ScrapingHelper
     insts = document.css("#{inst} > p:not(#chefNotes)")
     insts = document.css("#{inst} li:not(#chefNotes)") if insts.empty?
     data.instructions = insts.text
+    data
+  end
+
+  def process_ba_page!(data, document)
+    data.name = document.css('h1[itemprop=name]').text
+    data.ingredients = []
+    document.search('.ingredients li').each do |step|
+      data.ingredients.push step.text.strip.gsub(/\n/, '').gsub(/\s\s+/, ' ')
+    end
+    data.instructions = document.css('.prep-steps li.step').text
+    data.author = document.css('.contributors li')[0].text.strip
     data
   end
 
