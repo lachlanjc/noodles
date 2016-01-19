@@ -41,6 +41,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry'
+  gem 'rails_real_favicon'
   gem 'seed_dump'
   gem 'tracer_bullets'
 end
