@@ -285,8 +285,6 @@ GEM
       activesupport
       mechanize
       rest-client
-    zeroclipboard-rails (0.1.1)
-      railties (>= 3.1)
 
 PLATFORMS
   ruby
@@ -332,7 +330,6 @@ DEPENDENCIES
   tracer_bullets
   uglifier
   wombat
-  zeroclipboard-rails
 
 BUNDLED WITH
    1.10.6

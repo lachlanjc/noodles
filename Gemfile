@@ -35,7 +35,6 @@ gem 'sass-rails'
 gem 'slowpoke'
 gem 'uglifier'
 gem 'wombat'
-gem 'zeroclipboard-rails'
 
 group :development do
   gem 'better_errors'
