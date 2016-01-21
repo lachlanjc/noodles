@@ -20,9 +20,10 @@ class RecipeList extends React.Component {
     const searchText = _.trimStart(_.lowerCase(e.target.value));
     this.setState({searchText: searchText});
 
-    if (searchText.length > 0) {
+    if (!_.isEmpty(searchText)) {
       let recipes = this.props.recipesCore;
       if (this.props.searchCommands == true && _.startsWith(searchText, '/')) {
+        // Search commands
         if (_.intersection(searchText, 'shared').join('') || _.intersection(searchText, 'public').join('')) {
           recipes = _.filter(recipes, function(l) { return l.shared });
         }
@@ -38,8 +39,7 @@ class RecipeList extends React.Component {
   }
 
   render() {
-    const linkType = this.props.linkType || 'normal';
-
+    const props = this.props;
     const searching = !_.isEmpty(this.state.searchText);
     const recipeCount = _.size(this.props.recipesCore);
     const searchLabel = 'Search ' +
@@ -51,8 +51,8 @@ class RecipeList extends React.Component {
 
     return (
       <ul className={'list-reset pvm mx-auto mbn mw7 ' + this.props.className}>
-        <div className='md-col-8 mx-auto flex bg-white rounded shadow mbm phs dn-p' role='search' onClick={this.focusSearch}>
-          <IconSearch classes='fill-grey-4 mts' />
+        <section className='md-col-8 mx-auto flex bg-white rounded shadow mbm phs dn-p' role='search' onClick={this.focusSearch}>
+          <Icon icon='search' className='fill-grey-4 mts' />
           <input
               type='text'
               className='text-input invisible-input'
@@ -61,14 +61,14 @@ class RecipeList extends React.Component {
               style={{height: 36}}
               placeholder={searchLabel}
               autoFocus='true' />
-        </div>
+        </section>
 
-        {this.state.recipes.map(recipe =>
-          <RecipeItem key={`recipe-${recipe.id}`} recipe={recipe} linkType={linkType} />
-        )}
+        {_.map(this.state.recipes, function (recipe) {
+          return <RecipeItem recipe={recipe} pub={props.pub || false} key={'recipe-' + recipe.id} />
+        })}
 
         {noSearchResults ?
-          <BlankSlate width='8'>
+          <BlankSlate width={8}>
             <p className='mbn'>Sorry, no recipes matched your search.</p>
 
             {createFromSearch ?
@@ -83,26 +83,37 @@ class RecipeList extends React.Component {
   }
 }
 
+RecipeList.propTypes = {
+  recipesCore: React.PropTypes.array.isRequired,
+  pub: React.PropTypes.bool
+}
+
 class RecipeItem extends React.Component {
   render() {
     const recipe = this.props.recipe;
-    const recipeLink = this.props.linkType === 'public' ? recipe.shared_url : recipe.url;
+    const recipeLink = this.props.pub === true ? recipe.shared_url : recipe.url;
 
-    let indicators = [];
-    recipe.collections === true ? indicators.push(<IconCollection classes='mls fill-grey-5' size='24px' />) : null;
-    recipe.notes === true ? indicators.push(<IconNotes classes='mls relative fill-grey-5' size='18px' style={{top: '-3px'}} />) : null;
-    recipe.photo === true ? indicators.push(<IconPhoto classes='mls fill-grey-5' />) : null;
-    recipe.web === true ? indicators.push(<IconWeb classes='mls fill-grey-5' />) : null;
-    recipe.favorite === true ? indicators.push(<IconFavorite classes='mls fill-orange' />) : null;
+    let icns = [];
+    _.forEach(['collections', 'notes', 'photo', 'web'], function (feature) {
+      if (recipe[feature] === true) {
+        icns.push(<Icon icon={feature} className='mls fill-grey-5' />);
+      }
+    });
+    recipe.favorite === true ? icns.push(<Icon icon='fav' className='mls fill-orange' />) : null;
 
     return (
       <li className='bg-white rounded shadow mbs pam'>
         <a href={recipeLink} className='link-reset'>
-          <div className='fr dn-p'>{indicators}</div>
+          <div className='fr dn-p'>{icns}</div>
           <h3 className='man normal'>{recipe.title}</h3>
           <p className='man text'>{recipe.description_preview}</p>
         </a>
       </li>
     )
   }
+}
+
+RecipeItem.propTypes = {
+  recipe: React.PropTypes.object.isRequired,
+  pub: React.PropTypes.bool
 }

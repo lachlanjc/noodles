@@ -5,6 +5,7 @@
 .fae  { align-items: flex-end }
 .fjc  { justify-content: center }
 .fjb  { justify-content: space-between }
+.fc  { flex-direction: column }
 .fsn  { flex-shrink: 0 }
 
 .flex-auto {
@@ -16,7 +17,6 @@
 .flex-rows { flex-flow: row wrap }
 
 /*
-.flex-column  { flex-direction: column }
 .flex-wrap    { flex-wrap: wrap }
 
 .flex-stretch  { align-items: stretch }

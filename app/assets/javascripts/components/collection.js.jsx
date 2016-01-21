@@ -17,15 +17,16 @@ class CollectionPage extends React.Component {
     }.bind(this));
   }
 
-  renderPage() {
-    const pub = this.props.pub;
+  render() {
     return (
-      <main>
-        <CollectionHeader edit={this.props.edit} pub={pub} coll={this.state.coll} />
-        {!_.isEmpty(this.state.coll.recipes) ?
-          <RecipeList recipesCore={this.state.coll.recipes} linkType={pub ? 'public' : 'private'} className='md-col-8 phm' />
-        : this.renderNoRecipes()}
-      </main>
+      !_.isEmpty(this.state.coll) ?
+        <main>
+          <CollectionHeader edit={this.props.edit} pub={this.props.pub} coll={this.state.coll} />
+          {!_.isEmpty(this.state.coll.recipes) ?
+            <RecipeList recipesCore={this.state.coll.recipes} pub={this.props.pub} className='md-col-8 phm' />
+          : this.renderNoRecipes()}
+        </main>
+      : <h3 className='tc grey-3 pvl'>Loading...</h3>
     )
   }
 
@@ -41,16 +42,6 @@ class CollectionPage extends React.Component {
         : null}
       </BlankSlate>
     )
-  }
-
-  renderLoading() {
-    return (
-      <h3 className='tc grey-3 pvl'>Loading...</h3>
-    )
-  }
-
-  render() {
-    return !_.isEmpty(this.state.coll) ? this.renderPage() : this.renderLoading();
   }
 }
 
@@ -76,10 +67,10 @@ class CollectionHeader extends React.Component {
     return (
       <header className={rootClass} style={{backgroundImage: `url(${coll.photo})`}}>
         <div className='sm-col-12 md-col-8 mx-auto phm mw7'>
-          <h1 className='coll-name man h0'>{coll.name}</h1>
-          {!_.isEmpty(coll.description) ? <p className='h3 mts mbn coll-desc'>{coll.description}</p> : null}
+          <h1 className='coll__name man h0'>{coll.name}</h1>
+          {!_.isEmpty(coll.description) ? <p className='h3 mts mbn coll__desc'>{coll.description}</p> : null}
           {this.props.pub ?
-            <p className='mts mbs coll-desc h4'>Published by {coll.publisher}</p>
+            <p className='mvs coll__desc h4'>Published by {coll.publisher}</p>
           : null}
           <div className={actionsClass}>
             {this.props.edit ?

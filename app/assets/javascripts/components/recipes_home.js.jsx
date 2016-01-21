@@ -15,8 +15,10 @@ class RecipesHome extends React.Component {
 
   fetchData() {
     $.getJSON('/recipes.json', function(response) {
-      const recipes = _.compact(response.recipes);
-      this.setState({recipesCore: recipes, recipesCurrent: recipes});
+      this.setState({
+        recipesCore: response.recipes,
+        recipesCurrent: response.recipes
+      });
     }.bind(this))
   }
 
@@ -29,19 +31,29 @@ class RecipesHome extends React.Component {
 
   findFav(e) {
     this.setState({
-      recipesCurrent: _.find(this.state.recipesCore, { 'favorite': true }),
+      recipesCurrent: _.filter(this.state.recipesCore, 'favorite'),
       view: 'fav'
     });
   }
 
-  findRandom() {
-    return !_.isEmpty(this.state.recipesCurrent) ? _.sample(this.state.recipesCurrent).url : null;
-  }
-
-  filterClasses(name) {
-    let classes = 'filterbar__item dib phm pointer '
-    this.state.view === name ? classes += 'bg-orange white white-hover b' : classes += 'grey-1';
-    return classes;
+  render() {
+    const recipes = this.state.recipesCurrent;
+    return (
+      <main className='md-col-9 mx-auto pam'>
+        <header>
+          <h1 className='mtn mbs tc'>Recipes</h1>
+          <FilterBar>
+            <FilterBarItem active={this.state.view} view='all' name='All' onClick={e => this.findAll(e)} />
+            <FilterBarItem active={this.state.view} view='fav' name='Favorites' onClick={e => this.findFav(e)} />
+            {!_.isEmpty(recipes) ?
+              <FilterBarItem active={this.state.view} view='rdm' name='Random' href={_.sample(recipes).url} />
+            : null}
+          </FilterBar>
+        </header>
+        <RecipeList recipesCore={recipes} pub={false} createFromSearch={true} searchCommands={true} />
+        {_.isEmpty(recipes) ? this.renderBlankSlate() : <ProTip />}
+      </main>
+    )
   }
 
   renderBlankSlate() {
@@ -49,7 +61,6 @@ class RecipesHome extends React.Component {
     return (
       <BlankSlate margin='mtn mbm'>
         {this.state.view === 'fav' ? this.renderFavoritesBlankSlate() : text}
-        {/*<a href='/recipes/new' className='btn bg-blue'>Create your first</a>*/}
       </BlankSlate>
     )
   }
@@ -62,42 +73,6 @@ class RecipesHome extends React.Component {
         <p>To favorite a recipe, open the recipe and click the star to the right of the recipe's title.</p>
         <a onClick={e => this.findAll(e)} className='btn bg-blue'>Back to all recipes</a>
       </div>
-    )
-  }
-
-  renderProTips() {
-    const protips = [
-      <span>See only your shared recipes by searching <strong>/shared</strong>.</span>,
-      <span>Create a new recipe super quickly by searching with its title.</span>,
-      <span>Not sure which recipe to cook right now? Click <a className='b' href={this.findRandom()}>Random</a> button at the top.</span>
-    ];
-    const protip = protips[_.random(0, 2)];
-    return (
-      <div className='mbl tc'>
-        <IconProtip size='24' classes='dib fill-grey-4 mrs relative' style={{top: 6}} />
-        <strong>ProTip! </strong>
-        {protip}
-      </div>
-    )
-  }
-
-  render() {
-    const recipes = this.state.recipesCurrent;
-    const randomUrl = this.findRandom();
-
-    return (
-      <main className='md-col-9 mx-auto phm'>
-        <header className='tc'>
-          <h1 className='mbs'>Recipes</h1>
-          <section role='menubar' className='filterbar'>
-            <a role='menuitem' onClick={e => this.findAll(e)} className={this.filterClasses('all')}>All</a>
-            <a role='menuitem' onClick={e => this.findFav(e)} className={this.filterClasses('fav')}>Favorites</a>
-            {randomUrl ? <a role='menuitem' href={randomUrl} className={this.filterClasses('rdm')}>Random</a> : null}
-          </section>
-        </header>
-        <RecipeList recipesCore={this.state.recipesCurrent} createFromSearch={true} searchCommands={true} />
-        {_.isEmpty(this.state.recipesCurrent) ? this.renderBlankSlate() : this.renderProTips()}
-      </main>
     )
   }
 }

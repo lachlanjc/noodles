@@ -5,12 +5,12 @@
 
 <%= react_component 'CollectionIndex', collections: @collections.as_json %>
 
-<div class="modal" id="newCollection">
+<section class="modal" id="newCollection">
   <%= modal_close %>
   <h2>Create a Collection</h2>
   <hr>
   <%= render 'form' %>
-</div>
+</section>
 
 <a href="#newCollection" data-behavior="modal_trigger"
    class="btn-paper bg-orange fill-white circle fixed pam shadow tooltipped"

@@ -18,6 +18,7 @@ class Collection < ActiveRecord::Base
       name: name,
       description: description,
       url: Rails.application.routes.url_helpers.collection_path(self),
+      id: id,
       publisher: user.first_name,
       photo_url: photo.url.to_s
     }
