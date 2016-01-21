@@ -50,8 +50,8 @@ class RecipeList extends React.Component {
     const createFromSearch = searching && ((this.props.createFromSearch || false) === true);
 
     return (
-      <ul className={'list-reset pvm mx-auto mbn mw7 ' + this.props.className}>
-        <section className='md-col-8 mx-auto flex bg-white rounded shadow mbm phs dn-p' role='search' onClick={this.focusSearch}>
+      <ul className={`list-reset pvm mx-auto mbn mw7 ${this.props.className}`}>
+        <section className='md-col-8 mx-auto flex bg-white rounded shadow mbm phs dn-p' role='search'>
           <Icon icon='search' className='fill-grey-4 mts' />
           <input
               type='text'
