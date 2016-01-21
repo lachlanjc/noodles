@@ -3,7 +3,7 @@
     <h2>This recipe is public.</h2>
 
     <p class="mbs">Share the link:</p>
-    <%= react_component 'CopyLink', url: @shared_url %>
+    <%= react_component 'CopyLink', value: @shared_url %>
 
     <div class="social pvs mts">
       <a rel="nofollow" href="http://twitter.com/share?text=Check out <%= @recipe.title %>, published on @noodlesapp:&amp;url=<%= @shared_url %>" class="mrs" target="_blank">

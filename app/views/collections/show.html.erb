@@ -13,14 +13,10 @@
 </section>
 
 <section class="modal tc" role="dialog" id="shareCollection">
-  <%= modal_close %>
-  <h2 class="tl">Share Collection</h2>
-  <hr>
+  <%= modal_header 'Share Collecction' %>
 
   <p class="mbs">Share this link:</p>
-  <div class="mx-auto">
-    <%= react_component 'CopyLink', url: @shared_url %>
-  </div>
+  <%= react_component 'CopyLink', value: @shared_url, className: 'mx-auto' %>
 
   <div class="mls social pvs">
     <a rel="nofollow" href="http://twitter.com/share?text=Check out <%= @collection.name %>, my collection on @noodlesapp:&amp;url=<%= @shared_url %>" target="_blank">
@@ -39,5 +35,4 @@
       <%= email_icon %>
     </a>
   </div>
-
 </section>

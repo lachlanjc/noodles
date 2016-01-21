@@ -1,12 +1,9 @@
 #= require jquery
 #= require rails-behaviors
-#= require react
-#= require react_ujs
 #= require lodash
-#= require zeroclipboard
 #= require modals
 #= require autosize
-#= require_tree ./components
+#= require components
 
 $(document).ready ->
   $(document).on 'click', '[data-behavior~=flash]', ->
