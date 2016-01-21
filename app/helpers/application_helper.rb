@@ -44,7 +44,7 @@ module ApplicationHelper
 
   def modal_header(text)
     html = modal_close
-    html << content_tag(:h2, text, class: 'mtn')
+    html << content_tag(:h2, text, class: 'mtn tl')
     html << tag(:hr)
     html
   end
