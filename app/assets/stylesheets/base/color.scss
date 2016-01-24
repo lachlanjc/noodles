@@ -7,9 +7,10 @@
 
 .orange {
   color: $orange;
-}
-.orange-hover:hover {
-  color: $orange;
+
+  &--hover:hover {
+    color: $orange;
+  }
 }
 .bg-orange {
   background-color: $orange;
@@ -89,10 +90,13 @@
   fill: $grey-3 ;
 }
 
-
 // Colors just for text, no .bg- classes needed
 .grey-2 {
   color: $grey-2;
+
+  &--hover:hover {
+    color: $grey-2;
+  }
 }
 .grey-1 {
   color: $grey-1;

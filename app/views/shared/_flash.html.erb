@@ -1,7 +1,7 @@
 <% if flash.any? %>
 <section class="md-col-6 mw6 phm mx-auto dn-p">
 <% flash.each do |key, value| %>
-  <div class="pam mbm rounded shadow bg-<%= flash_color_class(key) %> white" role="alertdialog" data-behavior="flash">
+  <div class="pam mbm rounded shadow bg-<%= flash_color_class(key) %> white pointer" role="alertdialog" data-behavior="flash">
     <%= value %>
   </div>
 <% end %>
