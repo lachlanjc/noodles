@@ -50,14 +50,12 @@ class NoteEditor extends React.Component {
           className='text-input invisible-input col-12 man'
           placeholder='Type your notes for the recipe here.'
           defaultValue={this.state.plainNotes} onChange={this.updateTextNotes} />
-        <div className='mbm dn-p'>
-          <button className='btn bg-blue btn-sm' onClick={this.submitNotes}>
-            Save Notes
-          </button>
-          <button className='btn bg-grey-4 btn-sm mls' onClick={this.toggleEditing}>
-            Cancel
-          </button>
-        </div>
+        <action className='dib dn-p blue blue-dark--hover pointer mrm' onClick={this.submitNotes}>
+          Save Notes
+        </action>
+        <action className='dib dn-p grey-2 grey-2--hover pointer' onClick={this.toggleEditing}>
+          Cancel
+        </action>
       </div>
     )
   }
@@ -67,9 +65,9 @@ class NoteEditor extends React.Component {
       <div className='text text-normalized'>
         <div dangerouslySetInnerHTML={this.produceRenderedNotes()} />
         {this.props.allowEditing ?
-          <button className='btn bg-blue btn-sm mts mbm' onClick={this.toggleEditing}>
+          <action className='dib blue blue-dark--hover pointer' onClick={this.toggleEditing}>
             Edit Notes
-          </button>
+          </action>
         : null}
       </div>
     )
@@ -78,8 +76,8 @@ class NoteEditor extends React.Component {
   render() {
     const editing = (this.state.editing === true && this.props.allowEditing === true);
     return (
-      <section className='border phm mtm rounded bg-notes'>
-        <h3 className='mtm mbs tc grey-4 caps'>Notes</h3>
+      <section className='mw6 mx-auto border pam mbm rounded bg-notes'>
+        <h3 className='mtn mbs tc grey-4 caps'>Notes</h3>
         {editing ? this.renderEditing() : this.renderNotes()}
       </section>
     )
