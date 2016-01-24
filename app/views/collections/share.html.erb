@@ -28,27 +28,4 @@
 
 <%= react_component 'CollectionPage', id: @collection.id, edit: false, pub: true %>
 
-<section class="modal" id="shareCollection">
-  <%= modal_close %>
-  <h2>Share Collection</h2>
-  <hr>
-  <% @shared_url = "https://getnoodl.es" + collection_share_path(:id => @collection.shared_id) %>
-  <p>Love this collection? Share this URL: <%= link_to @shared_url %></p>
-  <div class="social pvs">
-    <a rel="nofollow" href="http://twitter.com/share?text=Check out the collection <%= @collection.name %> on @noodlesapp:&amp;url=<%= @shared_url %>" class="mrs" target="_blank">
-      <%= twitter_icon %>
-    </a>
-    <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=<%= @shared_url %>" class="mrs" target="_blank">
-      <%= facebook_icon %>
-    </a>
-    <a rel="nofollow" href="https://buffer.com/add?url=<%= @shared_url %>&text=Check out the collection<%= @collection.name %>, published on Noodles. " class="mrs" target="_blank">
-      <%= buffer_icon %>
-    </a>
-    <a rel="nofollow" href="https://plus.google.com/share?url=<%= @shared_url %>" class="mrs" target="_blank">
-      <%= googleplus_icon %>
-    </a>
-    <a href="mailto:?subject=Check out <%= @collection.name %> on Noodles&body=Hey there! Check out <%= @collection.name %>, a collection of recipes on Noodles (https://getnoodl.es/). Here's the link: <%= @shared_url %>">
-      <%= email_icon %>
-    </a>
-  </div>
-</section>
+<%= render 'share' %>

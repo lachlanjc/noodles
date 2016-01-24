@@ -3,6 +3,7 @@
 #= require lodash
 #= require modals
 #= require autosize
+#= require clipboard/clipboard
 #= require components
 
 $(document).ready ->
@@ -39,6 +40,37 @@ $(document).ready ->
     $(this)[0].form.submit()
   $(document).on 'click', '[data-behavior~=print]', ->
     window.print()
+
+  if /iPhone|iPad/i.test(navigator.userAgent)
+    $('[data-behavior~=copy]').hide()
+  clipboard = new Clipboard('[data-behavior~=copy]', text: (trigger) ->
+    trigger.getAttribute 'data-clipboard-text'
+  )
+  clipboardTooltip = ($btn, text) ->
+    if text.length > 0
+      $btn.attr 'aria-label', text
+      $btn.addClass 'tooltipped tooltipped--n'
+    else
+      $btn.removeClass 'tooltipped tooltipped--n'
+    return true
+  clipboardSuccess = (e) ->
+    $btn = $(e.trigger)
+    clipboardTooltip $btn, 'Copied!'
+    setTimeout clipboardTooltip($btn, ''), 1200
+    e.clearSelection()
+  clipboard.on 'error', (e) ->
+    $btn = $(e.trigger)
+    if /Mac/i.test(navigator.userAgent)
+      clipboardTooltip $btn, 'Press ⌘-C'
+    else
+      clipboardTooltip $btn, 'Press Ctrl-C'
+    $btn.on 'mouseleave', (m) ->
+      clipboardTooltip($btn, '')
+      e.clearSelection()
+    return
+  clipboard.on 'success', (e) ->
+    clipboardSuccess(e)
+    return
 
   $(document).on 'click', '[data-behavior~=photo_name]', ->
     $('[data-behavior~=photo_field]').click()

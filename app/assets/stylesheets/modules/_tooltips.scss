@@ -7,13 +7,13 @@
     display: none;
     pointer-events: none;
     content: attr(aria-label);
-    padding: 4px 8px;
-    font-size: .875rem;
+    padding: 2px 10px;
+    font-size: .85rem;
     font-weight: normal;
     line-height: 1.5;
     color: $grey-6;
     background: $grey-3;
-    border-radius: $border-radius;
+    border-radius: 3px;
     right: 100%;
     bottom: 50%;
     margin-right: .5rem;
@@ -27,6 +27,12 @@
     margin-left: $space-1;
     margin-right: 0;
     transform: translateY(50%);
+  }
+
+  &--n:after {
+    left: 0;
+    bottom: 100%;
+    margin-bottom: 1rem;
   }
 
   &--vert:after {

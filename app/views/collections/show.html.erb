@@ -12,27 +12,4 @@
   <%= render 'form' %>
 </section>
 
-<section class="modal tc" role="dialog" id="shareCollection">
-  <%= modal_header 'Share Collecction' %>
-
-  <p class="mbs">Share this link:</p>
-  <%= react_component 'CopyLink', value: @shared_url, className: 'mx-auto' %>
-
-  <div class="mls social pvs">
-    <a rel="nofollow" href="http://twitter.com/share?text=Check out <%= @collection.name %>, my collection on @noodlesapp:&amp;url=<%= @shared_url %>" target="_blank">
-      <%= twitter_icon %>
-    </a>
-    <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=<%= @shared_url %>" class="mls" target="_blank">
-      <%= facebook_icon %>
-    </a>
-    <a rel="nofollow" href="https://buffer.com/add?url=<%= @shared_url %>&text=Check out <%= @collection.name %>, my collection on Noodles." class="mls" target="_blank">
-      <%= buffer_icon %>
-    </a>
-    <a rel="nofollow" href="https://plus.google.com/share?url=<%= @shared_url %>" class="mls" target="_blank">
-      <%= googleplus_icon %>
-    </a>
-    <a href="mailto:?subject=Check out <%= @collection.name %> on Noodles&body=I published a new collection on Noodles (https://getnoodl.es), <%= @collection.name %>. Check it out: <%= @shared_url %>" class="mls">
-      <%= email_icon %>
-    </a>
-  </div>
-</section>
+<%= render 'share' %>
