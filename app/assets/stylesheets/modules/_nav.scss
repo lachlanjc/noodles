@@ -1,0 +1,21 @@
+.nav {
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  background-color: rgba(252,252,252,.98);
+
+  @media screen and (min-width: 48em) {
+    position: sticky;
+    top: 0;
+  }
+
+  &__icon {
+    align-self: flex-start;
+  }
+
+  &__container {
+    line-height: 1.75;
+  }
+
+  &__link {
+    color: $black;
+  }
+}

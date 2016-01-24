@@ -1,42 +1,39 @@
-<nav role="navigation" class="flex-ns bg-white mbm pam border-bottom dn-p"
+<nav role="navigation" class="nav flex-ns mbm pvs phm dn-p"
      data-behavior="nav" data-user="<%= user_signed_in? ? current_user.id : 'anon' %>">
 
-  <% if user_signed_in? %>
-
-    <div>
-      <%= link_to t('general.recipes'), recipes_path, class: nav_active_class(:recipes) %>
-      <%= link_to t('general.collections'), collections_path, class: nav_active_class(:collections) %>
-      <%= link_to 'Explore', explore_path, class: nav_active_class(:explore) %>
-    </div>
-
-    <div class="flex-auto"></div>
-
-    <div>
-      <% unless nav_active?(:onboarding) %>
-      <%= link_to 'Blog', announcements_path, class: nav_active_class(:announcements) %>
-      <% end %>
-      <%= link_to t('general.settings'), :settings, class: nav_active_class(:settings) %>
-      <%= link_to t('general.help'), :help, class: nav_active_class(:help) %>
-      <%= link_to t('general.sign_out'), :sign_out, class: 'phs' %>
-    </div>
-
-  <% else %>
-
-    <div>
-      <%= link_to t('general.home'), root_url, class: 'phs' %>
-      <%= link_to t('general.features'), docs_path, class: nav_active_class(:docs) %>
-      <%= link_to t('general.about'), :help, class: nav_active_class(:help) %>
-    </div>
-
-    <div class="flex-auto"></div>
-
-    <div>
-      <%= link_to t('general.sign_in'), :sign_in, class: nav_active_class(:sign_in) %>
-      <%= link_to t('general.sign_up'), :sign_up, class: nav_active_class(:sign_up) %>
-    </div>
-
+  <%= link_to root_url, class: 'dn dib-ns nav__icon lh' do %>
+    <%= inline_svg 'cook.svg', class: 'fill-orange', size: 28 %>
   <% end %>
 
+  <article class="nav__container flex-ns flex-auto fjc">
+    <% if user_signed_in? %>
+      <div>
+        <%= link_to t('general.recipes'), recipes_path, class: nav_active_class(:recipes) %>
+        <%= link_to t('general.collections'), collections_path, class: nav_active_class(:collections) %>
+        <%= link_to 'Explore', explore_path, class: nav_active_class(:explore) %>
+      </div>
+
+      <div>
+        <% unless nav_active?(:onboarding) %>
+        <%= link_to 'Blog', announcements_path, class: nav_active_class(:announcements) %>
+        <% end %>
+        <%= link_to t('general.settings'), :settings, class: nav_active_class(:settings) %>
+        <%= link_to t('general.help'), :help, class: nav_active_class(:help) %>
+        <%= link_to t('general.sign_out'), :sign_out, class: nav_active_class(:sign_out) %>
+      </div>
+    <% else %>
+      <div>
+        <%= link_to t('general.home'), root_url, class: nav_active_class(:home) %>
+        <%= link_to t('general.features'), docs_path, class: nav_active_class(:docs) %>
+        <%= link_to t('general.about'), :help, class: nav_active_class(:help) %>
+      </div>
+
+      <div>
+        <%= link_to t('general.sign_in'), :sign_in, class: nav_active_class(:sign_in) %>
+        <%= link_to t('general.sign_up'), :sign_up, class: nav_active_class(:sign_up) %>
+      </div>
+    <% end %>
+  </article>
 </nav>
 
 <%= render 'shared/flash' if @hide_flash != true %>
