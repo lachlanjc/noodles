@@ -57,6 +57,8 @@
       <%= render 'shared/interested_in_noodles' %>
     <% end %>
   </article>
+
+  <%= react_component 'NoteEditor', id: @recipe.id, plain: @recipe.notes, rendered: notes_rendered, allowEditing: me_owns_recipe? %>
 </main>
 
 <a class="btn-paper-mini bg-orange fill-white circle fixed pas pointer shadow" data-behavior="print">

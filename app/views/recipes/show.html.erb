@@ -44,6 +44,8 @@
 
   </main>
 
+  <%= react_component 'NoteEditor', id: @recipe.id, plain: @recipe.notes, rendered: notes_rendered, allowEditing: me_owns_recipe? %>
+
 </div>
 
 <section id="collect" class="modal tc" role="dialog">

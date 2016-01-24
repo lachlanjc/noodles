@@ -30,5 +30,3 @@
     No details for this recipe. Details describe where the recipe came from and the recipe's yield.
   </p>
 <% end %>
-
-<%= react_component 'NoteEditor', id: @recipe.id, plain: @recipe.notes, rendered: notes_rendered, allowEditing: me_owns_recipe? %>
