@@ -15,10 +15,12 @@ $hover-background-color: $darken-1;
 $pink: #e91e63;
 $red: #ff0013;
 $orange: #ff6d00;
+  $orange-dark: darken($orange, 8%);
 $yellow: #ffeb3b;
   $light-yellow: #fffae5;
 $green: #00cd57;
 $blue: #0092ff;
+  $blue-dark: darken($blue, 8%);
 
 $border-width: 1px;
 $border-color: $grey-5;

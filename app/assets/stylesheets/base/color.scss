@@ -32,6 +32,10 @@
 
 .blue {
   color: $blue;
+
+  &-dark--hover:hover {
+    color: $blue-dark;
+  }
 }
 .bg-blue {
   background-color: $blue;
