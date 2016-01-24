@@ -3,7 +3,6 @@
 
   &:after {
     position: absolute;
-    z-index: 1000000;
     display: none;
     pointer-events: none;
     content: attr(aria-label);

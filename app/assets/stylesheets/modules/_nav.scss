@@ -1,6 +1,7 @@
 .nav {
   border-bottom: 1px solid rgba(0,0,0,.1);
   background-color: rgba(252,252,252,.98);
+  z-index: 6;
 
   @media screen and (min-width: 48em) {
     position: sticky;
