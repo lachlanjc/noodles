@@ -8,18 +8,18 @@
    DISPLAY
 */
 
-.dn {     display: none; }
-.di {     display: inline; }
-.db {     display: block; }
-.dib {    display: inline-block; }
-.dtc {    display: table-cell; }
+.dn {  display: none; }
+.di {  display: inline; }
+.db {  display: block; }
+.dib { display: inline-block; }
+.dtc { display: table-cell; }
 
 @media screen and (min-width: 48em) {
-  .dn-ns {     display: none; }
-  .di-ns {     display: inline; }
-  .db-ns {     display: block; }
-  .dib-ns {    display: inline-block; }
-  .dtc-ns {    display: table-cell; }
+  .dn-ns {  display: none; }
+  .di-ns {  display: inline; }
+  .db-ns {  display: block; }
+  .dib-ns { display: inline-block; }
+  .dtc-ns { display: table-cell; }
 }
 
 /*
@@ -84,6 +84,8 @@
   .tc-ns  { text-align: center; }
 }
 
+.underline { text-decoration: underline; }
+
 /*
    TYPE SCALE
 */
@@ -94,7 +96,7 @@
 .f3    { font-size: 1.25rem; }
 .f4    { font-size: 1rem; }
 .f5,
-.small { font-size: .85rem; }
+.small { font-size: .875rem; }
 
 @media screen and (min-width: 48em){
  .mega-ns { font-size: 4rem; }
@@ -102,7 +104,7 @@
  .f2-ns {   font-size: 1.5rem; }
  .f3-ns {   font-size: 1.25rem; }
  .f4-ns {   font-size: 1rem; }
- .f5-ns {   font-size: .85rem; }
+ .f5-ns {   font-size: .875rem; }
 }
 
 /*
@@ -112,7 +114,7 @@
  .f2-m {   font-size: 1.5rem; }
  .f3-m {   font-size: 1.25rem; }
  .f4-m {   font-size: 1rem; }
- .f5-m {   font-size: .85rem; }
+ .f5-m {   font-size: .875rem; }
 }
 */
 
@@ -122,7 +124,7 @@
  .f2-l   { font-size: 1.5rem; }
  .f3-l   { font-size: 1.25rem; }
  .f4-l   { font-size: 1rem; }
- .f5-l   { font-size: .85rem; }
+ .f5-l   { font-size: .875rem; }
 }
 
 /*
