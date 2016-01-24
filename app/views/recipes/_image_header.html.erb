@@ -30,12 +30,12 @@
 
     <a href="#photo" name="photo" class="fr dtc relative pointer tooltipped"
        aria-label="View photo full size" data-behavior="modal_trigger">
-      <%= inline_svg 'fullscreen.svg', class: 'fill-white' %>
+      <%= inline_svg 'fullscreen.svg', class: 'fill-white', size: 28 %>
     </a>
   </div>
 </header>
 
-<section id="photo" role="dialog" class="modal">
+<section id="photo" role="dialog" class="modal sm-col-8 mw8">
   <div class="pointer absolute pas" style="right: 1rem;" data-behavior="modal_close">
     <%= inline_svg 'close.svg', class: 'fill-white',
                    style: '-webkit-filter: drop-shadow(0 2px 2px rgba(0,0,0,.25));
