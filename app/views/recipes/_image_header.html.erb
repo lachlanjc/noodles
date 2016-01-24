@@ -2,18 +2,16 @@
         style="background-image: url(<%= @recipe.img.url %>);">
 
   <div class="md-col-8 mx-auto mw7 flex-ns fac">
-    <div class="dtc col-12">
+    <div class="dib flex-auto">
       <h1 class="white mbs h0" itemprop="name">
         <%= @recipe.title %>
 
-        <% if me_owns_recipe? %>
-          <%= form_for(@recipe, 'data-remote': true, html: { class: 'dib dn-p' }) do |f| %>
-            <label class="man tooltipped tooltipped--e tooltipped--vert" aria-label="Favorite">
-              <%= f.check_box :favorite, class: 'recipe__favorite__checkbox', 'data-behavior': 'recipe_favorite_trigger' %>
-              <%= inline_svg 'favorite_outline.svg', class: 'fill-white pointer recipe__favorite__indicator', size: 24 %>
-              <%= inline_svg 'favorite.svg', class: 'fill-white pointer recipe__favorite__indicator--checked', size: 24 %>
-            </label>
-          <% end %>
+        <%= form_for(@recipe, html: { class: 'lh0 dib dn-p' }) do |f| %>
+          <label class="man tooltipped tooltipped--n" aria-label="Favorite">
+            <%= f.check_box :favorite, class: 'recipe__favorite__checkbox', 'data-behavior': 'recipe_favorite_trigger' %>
+            <%= inline_svg 'favorite_outline.svg', class: 'fill-white pointer recipe__favorite__indicator', size: 24 %>
+            <%= inline_svg 'favorite.svg', class: 'fill-white pointer recipe__favorite__indicator--checked', size: 24 %>
+          </label>
         <% end %>
       </h1>
 
@@ -28,7 +26,7 @@
       <% end %>
     </div>
 
-    <a href="#photo" name="photo" class="fr dtc relative pointer tooltipped"
+    <a href="#photo" name="photo" class="dib mrm lh0 relative pointer tooltipped"
        aria-label="View photo full size" data-behavior="modal_trigger">
       <%= inline_svg 'fullscreen.svg', class: 'fill-white', size: 28 %>
     </a>
