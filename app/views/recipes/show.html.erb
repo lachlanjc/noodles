@@ -10,42 +10,28 @@
 
   <%= render 'image_header' if @image_layout %>
 
-  <main class="document mw7">
-
+  <main class="document pan mw7">
     <% if !@image_layout %>
-      <%= form_for(@recipe, 'data-remote': true, html: { class: 'dib dn-p fr' }) do |f| %>
-        <label class="tooltipped man" aria-label="Favorite">
-          <%= f.check_box :favorite, class: 'recipe__favorite__checkbox', 'data-behavior': 'recipe_favorite_trigger' %>
-          <%= inline_svg 'favorite_outline.svg', class: 'fill-orange pointer recipe__favorite__indicator', size: 32 %>
-          <%= inline_svg 'favorite.svg', class: 'fill-orange pointer recipe__favorite__indicator--checked', size: 32 %>
-        </label>
-      <% end %>
-
-      <h1 class="man di" itemprop="name"><%= @recipe.title %></h1>
-      <div class="text mtm" itemprop="description"><%= sanitize markdown @recipe.description.to_s %></div>
-
+      <header class="flex-ns fac phm phl-ns mtm mtl-ns">
+        <h1 class="lh-title mtn mbs" itemprop="name"><%= @recipe.title %></h1>
+        <div class="flex-auto"></div>
+        <%= form_for(@recipe, html: { class: 'lh0 dib dn-p fsn' }) do |f| %>
+          <label class="tooltipped man \" aria-label="Favorite">
+            <%= f.check_box :favorite, class: 'recipe__favorite__checkbox', 'data-behavior': 'recipe_favorite_trigger' %>
+            <%= inline_svg 'favorite_outline.svg', class: 'fill-orange pointer recipe__favorite__indicator', size: 28 %>
+            <%= inline_svg 'favorite.svg', class: 'fill-orange pointer recipe__favorite__indicator--checked', size: 28 %>
+          </label>
+        <% end %>
+        <%= render 'actions', color: 'orange', rootClass: 'fsn mlm', menuClass: '' %>
+      </header>
+      <div class="text phm phl-ns" itemprop="description"><%= sanitize markdown @recipe.description.to_s %></div>
     <% end %>
-
-    <%= render 'recipe_body' %>
-
-    <%= render 'shared/social' if @recipe.shared? %>
-
-    <div class="dn-p mts">
-      <%= link_to t('general.edit'), :edit_recipe, class: 'btn bg-blue mrs mts' %>
-      <a href="#collect" class="btn bg-orange mrs mts" data-behavior="modal_trigger">
-        Add to Collection
-        <%= "(#{@recipe.collections.count})" if @recipe.collections.any? %>
-      </a>
-      <a href="#share" class="btn bg-green mrs mts" data-behavior="modal_trigger">Share</a>
-      <%= link_to t('general.delete'), @recipe, method: :delete, data: { confirm: t('general.delete_forever') }, class: 'btn bg-red mts' %>
-    </div>
-
-    <%= render 'shared/printer' %>
-
+    <section class="phm phl-ns <%= @image_layout ? 'mvm mvl-ns' : 'mbm mbl-ns' %>">
+      <%= render 'recipe_body' %>
+    </section>
   </main>
 
   <%= react_component 'NoteEditor', id: @recipe.id, plain: @recipe.notes, rendered: notes_rendered, allowEditing: me_owns_recipe? %>
-
 </div>
 
 <section id="collect" class="modal tc" role="dialog">
@@ -81,50 +67,22 @@
   <% end %>
 </section>
 
-<section id="share" class="modal" role="dialog">
-  <%= modal_header 'Share this recipe' %>
+<%= render 'social' %>
 
-  <article class="tab-container">
-    <input type="radio" name="tab-set-2" class="tab-1" id="tab-2-1" checked>
-    <label for="tab-2-1" class="rounded-top dib border bg-grey-5">Share a link</label>
+<section id="embed" class="modal" role="dialog">
+  <%= modal_header 'Embed on the Web' %>
 
-    <input type="radio" name="tab-set-2" class="tab-2" id="tab-2-2">
-    <label for="tab-2-2" class="rounded-top dib border bg-grey-5">Download a PDF</label>
-
-    <input type="radio" name="tab-set-2" class="tab-3" id="tab-2-3">
-    <label for="tab-2-3" class="rounded-top dib border bg-grey-5">Embed on the Web</label>
-
-    <br>
-
-    <section class="content content-1 pas border rounded-bottom">
-      <% if @recipe.shared? %>
-      <p>Your recipe is already shared!</p>
-      <p><%= link_to 'Check out the share page', @shared_url, class: 'btn bg-blue' %></p>
-      <% else %>
-      <p>Anyone with this link can see your recipe and save a copy to their own Noodles account.</p>
-      <p><%= link_to 'Share a link to this recipe', recipe_share_it_path(@recipe), class: 'btn bg-blue' %></p>
-      <% end %>
-    </section>
-
-    <section class="content content-2 pas border rounded-bottom">
-      <p>Click the button below to download a PDF of your recipe.</p>
-      <p><%= link_to 'Download PDF', recipe_export_pdf_path(@recipe), class: 'btn bg-blue' %></p>
-    </section>
-
-    <section class="content content-3 pas border rounded-bottom">
-      <p>Copy and paste the code below onto your website or blog to embed this recipe.</p>
-      <pre class="man pas border rounded bg-grey-6" style="white-space: inherit;">
-        <%= '<script src="https://getnoodl.es/embed/' + @recipe.shared_id.to_s + '"></script>' %>
-      </pre>
-      <p class="mts"><%= link_to 'Need help?', help_path %></p>
-    </section>
-  </article>
+  <p>Copy and paste the code below onto your website or blog to embed this recipe.</p>
+  <pre class="man pas border rounded bg-grey-6" style="white-space: inherit;">
+    <%= "<script src=\"https://getnoodl.es/embed/#{@recipe.shared_id}\"></script>" %>
+  </pre>
+  <p class="mts"><%= link_to 'Need help?', help_path %></p>
 </section>
 
-<a class="btn-paper-mini bg-orange fill-white circle fixed pas pointer shadow tooltipped"
-   aria-label="Print this recipe" data-behavior="print">
-  <%= inline_svg 'print.svg' %>
-</a>
+<%= link_to edit_recipe_path(@recipe), 'aria-label': 'Edit this recipe',
+            class: 'btn-paper-mini bg-orange fill-white circle fixed pas shadow tooltipped' do %>
+  <%= inline_svg 'edit.svg' %>
+<% end %>
 
 <%= link_to recipe_cook_path(recipe_id: @recipe.id),
             class: 'btn-paper bg-orange fill-white circle fixed pam shadow tooltipped',

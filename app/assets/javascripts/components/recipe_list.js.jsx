@@ -22,16 +22,9 @@ class RecipeList extends React.Component {
 
     if (!_.isEmpty(searchText)) {
       let recipes = this.props.recipesCore;
-      if (this.props.searchCommands == true && _.startsWith(searchText, '/')) {
-        // Search commands
-        if (_.intersection(searchText, 'shared').join('') || _.intersection(searchText, 'public').join('')) {
-          recipes = _.filter(recipes, function(l) { return l.shared });
-        }
-      } else {
-        recipes = _.filter(recipes, function(l) {
-          return _.trim(_.lowerCase(l.title)).match(searchText);
-        });
-      }
+      recipes = _.filter(recipes, function(l) {
+        return _.trim(_.lowerCase(l.title)).match(searchText);
+      });
       this.setState({recipes: recipes});
     } else {
       this.setState({recipes: this.props.recipesCore});

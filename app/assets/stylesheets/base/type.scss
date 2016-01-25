@@ -62,10 +62,18 @@ small {
   font-size: 90%;
 }
 
+p,
+.text {
+  color: $grey-2;
+  font-size: $h4;
+}
 p {
-  @extend .text;
   margin: 0 0 12px;
 }
+.text p:last-child {
+  margin-bottom: 0;
+}
+
 
 .lead {
   color: $grey-3;
@@ -84,11 +92,6 @@ a {
   &.blue:hover {
     color: $blue-dark;
   }
-}
-
-.text {
-  color: $grey-2;
-  font-size: $h4;
 }
 
 .text-normalized h1 {

@@ -41,7 +41,6 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
-    @recipe.shared = false
 
     if @recipe.save
       flash[:green] = 'Awesome, you\'ve saved your new recipe.'
@@ -74,19 +73,13 @@ class RecipesController < ApplicationController
   end
 
   def export_pdf
-    prawnto filename: @recipe.title, inline: true
+    prawnto filename: @recipe.title, inline: !params[:download]
     render 'recipes/show.pdf'
   end
 
   def embed_js
     @recipe = Recipe.find_by_shared_id(params[:shared_id])
     render 'recipes/embed.js', layout: false
-  end
-
-  def share_this_recipe
-    @recipe.shared = true
-    @recipe.save
-    redirect_to shared_path
   end
 
   def share
@@ -96,20 +89,13 @@ class RecipesController < ApplicationController
     @shared_url = shared_url
   end
 
-  def un_share
-    @recipe.shared = false
-    @recipe.save
-    flash[:grey] = 'Your recipe is all locked up now. 🔐'
-    redirect_to @recipe
-  end
-
   def save_to_noodles
     @recipe = Recipe.find_by_shared_id(params[:shared_id])
     raise_not_found
     @new_recipe = @recipe.dup
     @new_recipe.user_id = current_user.id
     @new_recipe.source = shared_url
-    @new_recipe.favorite, @new_recipe.shared = false
+    @new_recipe.favorite = false
     @new_recipe.save
     flash[:green] = "#{@recipe.title} has been saved!"
     redirect_to @new_recipe

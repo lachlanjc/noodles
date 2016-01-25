@@ -7,6 +7,5 @@ json.recipes @recipes do |recipe|
   json.collections recipe.collections.present?
   json.web from_web?(recipe.source)
   json.url recipe_path(recipe)
-  json.extract! recipe, :shared
   json.shared_url shared_path(recipe)
 end

@@ -1,0 +1,33 @@
+<action type="button" class="dib lh0 menu__toggle <%= rootClass %>" data-behavior="menu_toggle collapse_on_clickoutside" aria-expanded="false">
+  <%= inline_svg 'menu.svg', class: "fill-#{color}", size: 28 %>
+  <popmenu class="menu__content <%= menuClass %>">
+    <%= link_to edit_recipe_path(@recipe), class: 'menu__action' do %>
+      <%= inline_svg 'edit.svg', class: 'menu__action__icon', size: 18 %>
+      Edit
+    <% end %>
+    <a href="#collect" class="menu__action" data-behavior="modal_trigger">
+      <%= inline_svg 'collection.svg', class: 'menu__action__icon', size: 18 %>
+      Add to Collection
+    </a>
+    <a href="#share" class="menu__action" data-behavior="modal_trigger">
+      <%= inline_svg 'link.svg', class: 'menu__action__icon', size: 18 %>
+      Share a public link
+    </a>
+    <a href="#embed" class="menu__action" data-behavior="modal_trigger">
+      <%= inline_svg 'embed.svg', class: 'menu__action__icon', size: 18 %>
+      Embed
+    </a>
+    <%= link_to recipe_export_pdf_path(@recipe, download: true), class: 'menu__action' do %>
+      <%= inline_svg 'download.svg', class: 'menu__action__icon', size: 18 %>
+      Download as PDF
+    <% end %>
+    <%= link_to recipe_export_pdf_path(@recipe), class: 'menu__action' do %>
+      <%= inline_svg 'print.svg', class: 'menu__action__icon', size: 18 %>
+      Print
+    <% end %>
+    <%= link_to @recipe, method: :delete, data: { confirm: t('general.delete_forever') }, class: 'menu__action' do %>
+      <%= inline_svg 'delete.svg', class: 'menu__action__icon', size: 18 %>
+      Delete
+    <% end %>
+  </popmenu>
+</action>

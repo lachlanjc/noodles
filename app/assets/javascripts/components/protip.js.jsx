@@ -5,7 +5,6 @@ class ProTip extends React.Component {
 
   render() {
     const protips = [
-      <span>See only your shared recipes by searching <strong>/shared</strong>.</span>,
       <span>Create a new recipe super quickly by searching with its title.</span>,
       <span>Not sure which recipe to cook right now? Click <strong>Random</strong> at the top.</span>
     ];

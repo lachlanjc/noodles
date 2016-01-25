@@ -7,6 +7,18 @@
 #= require components
 
 $(document).ready ->
+  $(document).on 'click', (e) ->
+    menu = '[data-behavior~=collapse_on_clickoutside][aria-expanded=true]'
+    if $(e.target).closest(menu).length is 0
+      $(menu).find('.menu__content').hide 'fast'
+      $(menu).attr 'aria-expanded', false
+
+  $(document).on 'click', '[data-behavior~=menu_toggle]', ->
+    if $(this).attr('aria-expanded') is 'true' then open = true else open = false
+    $(this).attr 'aria-expanded', !open
+    $(this).find('.menu__content').toggle 'fast'
+    return
+
   $(document).on 'click', '[data-behavior~=flash]', ->
     $(this).toggleClass 'bg-white shadow well border'
     $(this).slideUp 'fast'
