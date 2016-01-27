@@ -13,7 +13,7 @@
     <h2 class="mbn">Ingredients</h2>
     <p class="grey-4 f5">Tap on ingredients to cross them off.</p>
 
-    <ul class="list-reset text text-normalized recipe__ingredients">
+    <ul class="recipe__ingredients content content--normalized list-reset">
     <% @recipe.ingredients.lines.each do |item| %>
       <%= content_tag :li, ingredient_processed(item).html_safe,
                       'data-behavior': 'checklist_item',
@@ -28,7 +28,7 @@
 
   <article class="mw7 mx-auto mtm phm">
     <% flash.each do |key, value| %>
-      <div class="h2 pam tc mbm rounded bg-<%= flash_color_class(key) %> white pointer dn-p" role="alertdialog" data-behavior="flash">
+      <div class="f2 pam tc mbm rounded bg-<%= flash_color_class(key) %> white pointer dn-p" role="alertdialog" data-behavior="flash">
         <%= value %>
       </div>
     <% end %>
@@ -37,16 +37,16 @@
       <%= content_tag :div,
                        plain_text_from_markdown(step.to_s).html_safe,
                        'data-behavior': 'checklist_item',
-                       class: 'h2 grey-2 bg-white rounded shadow pointer pam db mbm' if step.strip.present? %>
+                       class: 'f2 grey-2 bg-white rounded shadow pointer pam db mbm' if step.strip.present? %>
     <% end %>
 
-    <div class="bg-white rounded shadow pam db h2 tc mbm grey-2">
+    <div class="bg-white rounded shadow pam db f2 tc mbm grey-2">
       <span>And now you're finished! Enjoy the <%= @recipe.title %>.</span>
 
       <%= image_tag @recipe.img, alt: 'Photo of ' + @recipe.title, class: 'mtm mx-auto rounded' if @recipe.img.present? %>
 
       <% if me_owns_recipe? %>
-        <%= form_for(@recipe, url: recipe_path(@recipe, cook: true), html: { class: 'mts h4' }) do |f| %>
+        <%= form_for(@recipe, url: recipe_path(@recipe, cook: true), html: { class: 'mts f4' }) do |f| %>
           <%= f.file_field :img, class: 'dn', data: { behavior: 'photo_field cook_photo_field' } %>
           <div data-behavior="photo_button">
             <a data-behavior="photo_name" class="btn bg-white">

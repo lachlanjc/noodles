@@ -5,31 +5,25 @@
 
 <h1 class="f1 tc mbn phm dn-ns"><%= @title %></h1>
 
-<main class="col-12 flex-ns mx-auto">
+<main class="col-12 flex-ns fas mx-auto">
   <% if @title == 'Docs' %>
-    <section class="md-col-4 mw5 bg-white pam pal-ns mtm mbl mx-auto rounded shadow flex-last"
-             style="height: intrinsic;">
-      <h2 class="f3 grey-4 mtn mbm caps tc">Sections</h2>
-      <ul class="list-reset border-bottom border-darken-2 col-12 mbs">
-        <li class="pas border-top border-darken-2"><a href="#cook-mode">Cook Mode</a></li>
-        <li class="pas border-top border-darken-2"><a href="#collections">Collections</a></li>
-        <li class="pas border-top border-darken-2"><a href="#sharing">Sharing</a></li>
-        <li class="pas border-top border-darken-2"><a href="#save-to-noodles">Save to Noodles</a></li>
-        <li class="pas border-top border-darken-2"><a href="#favorites">Favorites</a></li>
-        <li class="pas border-top border-darken-2"><a href="#search">Search</a></li>
-        <li class="pas border-top border-darken-2"><a href="#clip">Clip from the Web</a></li>
-        <li class="pas border-top border-darken-2"><a href="#pdf-export">PDF Export</a></li>
-        <li class="pas border-top border-darken-2"><a href="#embed">Embed</a></li>
-      </ul>
+    <section class="md-col-4 mw5 bg-white mtl mbm mx-auto rounded shadow flex-last flex-none">
+      <h2 class="f3 grey-4 mvm caps tc">Sections</h2>
+      <nav class="border-top">
+        <a class="menu__action f4" href="#cook-mode">Cook Mode</a>
+        <a class="menu__action f4" href="#collections">Collections</a>
+        <a class="menu__action f4" href="#sharing">Sharing</a>
+        <a class="menu__action f4" href="#save-to-noodles">Save to Noodles</a>
+        <a class="menu__action f4" href="#favorites">Favorites</a>
+        <a class="menu__action f4" href="#search">Search</a>
+        <a class="menu__action f4" href="#clip">Clip from the Web</a>
+        <a class="menu__action f4" href="#pdf-export">PDF Export</a>
+        <a class="menu__action f4" href="#embed">Embed</a>
+      </nav>
     </section>
-
-    <style>
-    img { margin-left: auto; margin-right: auto; border: 1px solid rgba(0,0,0,.125); border-radius: 3px; }
-    h2 { font-weight: normal; }
-    </style>
   <% end %>
-  <article class="md-col-6 flex-auto flex-first mw7 mx-auto phm">
-    <h1 class="h0 mbm dn db-ns"><%= @title %></h1>
+  <article class="md-col-6 flex-auto flex-first mw7 mx-auto phm content">
+    <h1 class="f0 meta-l mvm dn db-ns"><%= @title %></h1>
     <%= @doc.html_safe %>
   </article>
 </main>

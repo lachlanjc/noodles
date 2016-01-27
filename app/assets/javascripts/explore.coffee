@@ -48,7 +48,7 @@ $(document).ready ->
       r = $('[data-behavior~=explore_results_container]')
       r.html null
       r.removeClass 'tc mw7'
-      r.addClass 'busy busy-large mx-auto mw8'
+      r.addClass 'busy busy--large mx-auto mw8'
 
       s = $('[data-behavior~=explore_src_pick_bar]').data 'src-selected'
 
@@ -61,7 +61,7 @@ $(document).ready ->
       u = "/explore/results?q=#{encodeURIComponent(q)}&src=#{s}"
 
       $.get u, (t) ->
-        r.removeClass 'busy busy-large'
+        r.removeClass 'busy busy--large'
         r.html t
         g = $('[data-behavior~=explore_masonry_grid]')
         masonry = ->
@@ -84,7 +84,7 @@ $(document).ready ->
   $(document).on 'click', '[data-behavior~=explore_clear_search]', ->
     $(this).hide 'slow'
     $('[data-behavior~=explore_search_field]').val null
-    $('[data-behavior~=explore_results_container]').removeClass 'busy busy-large'
+    $('[data-behavior~=explore_results_container]').removeClass 'busy busy--large'
     $('[data-behavior~=explore_masonry_grid]').remove()
     $('[data-behavior~=explore_suggestions]').fadeIn()
     window.history.replaceState null, null, '/explore'
@@ -122,13 +122,13 @@ $(document).ready ->
 
     c = $('[data-behavior~=explore_preview_body]')
     c.html null
-    c.addClass 'busy busy-large mx-auto'
+    c.addClass 'busy busy--large mx-auto'
 
     $.get '/explore/preview?url=' + u, (d) ->
-      c.removeClass 'busy busy-large mx-auto'
+      c.removeClass 'busy busy--large mx-auto'
       c.html d
 
-    $(document).on 'click', '.modal-overlay', -> $(this).hide 200
+    $(document).on 'click', '.modal__overlay', -> $(this).hide 200
 
   $(document).on 'click', '[data-behavior~=explore_trigger_inline_signup]', ->
     $(this).closest('.modal').hide()
@@ -151,7 +151,7 @@ $(document).ready ->
       clippingFinished p, s
 
       c = ->
-        $('.modal-overlay').fadeOut 200
+        $('.modal__overlay').fadeOut 200
         $('[data-behavior=explore_preview_modal]').css 'display': 'none'
         t.text 'Clip'
         t.attr 'class', 'btn bg-blue mtm'

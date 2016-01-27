@@ -1,0 +1,61 @@
+body {
+  color: $grey-1;
+  font-family: $font-family;
+  font-size: 100%;
+  line-height: $line-height;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $grey-1;
+  font-weight: $heading-font-weight;
+  line-height: $heading-line-height;
+  margin-bottom: .5rem;
+  margin-top: 1rem;
+}
+
+p,
+ol,
+ul {
+  font-size: $f4;
+  margin-top: 0;
+  margin-bottom: $space-2;
+}
+
+h1 {
+  margin-top: 0;
+  color: $orange;
+}
+
+p {
+  margin: 0 0 12px;
+  font-size: $f4;
+}
+
+a {
+  color: $orange;
+  text-decoration: none;
+
+  &:hover {
+    color: $orange-dark;
+  }
+
+  &.blue:hover {
+    color: $blue-dark;
+  }
+}
+
+.text {
+  color: $grey-2;
+  font-size: $f4;
+}
+
+.lead {
+  color: $grey-3;
+  font-size: $f2;
+  line-height: 2;
+}

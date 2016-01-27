@@ -1,0 +1,57 @@
+.mega       { font-size: $mega; }
+.f0         { font-size: $f0; }
+h1, .f1     { font-size: $f1; }
+h2, .f2     { font-size: $f2; }
+h3, .f3     { font-size: $f3; }
+p, h4, .f4  { font-size: $f4; }
+.small, .f5 { font-size: $f5; }
+
+@media screen and (min-width: 48em) {
+ .mega-ns   { font-size: $mega; }
+ .f0-ns     { font-size: $f0; }
+ .f1-ns     { font-size: $f1; }
+ .f2-ns     { font-size: $f2; }
+ .f3-ns     { font-size: $f3; }
+ .f4-ns     { font-size: $f4; }
+ .f5-ns     { font-size: $f5; }
+}
+
+@media screen and (min-width: 64em) {
+ .mega-l    { font-size: $mega; }
+}
+
+/*
+@media screen and (min-width: 48em) and (max-width: 64em) {
+ .mega-m    { font-size: $mega; }
+ .f1-m      { font-size: $f1; }
+ .f2-m      { font-size: $f2; }
+ .f3-m      { font-size: $f3; }
+ .f4-m      { font-size: $f4; }
+ .f5-m      { font-size: $f5; }
+}
+
+@media screen and (min-width: 64em) {
+ .mega-l    { font-size: $mega; }
+ .f1-l      { font-size: $f1; }
+ .f2-l      { font-size: $f2; }
+ .f3-l      { font-size: $f3; }
+ .f4-l      { font-size: $f4; }
+ .f5-l      { font-size: $f5; }
+}
+*/
+
+.b          { font-weight: $bold-font-weight; }
+.fwn, .normal { font-weight: normal; }
+.tsn        { text-shadow: none; }
+.underline  { text-decoration: underline; }
+.wbw        { word-wrap: break-word; }
+
+.caps {
+  text-transform: uppercase;
+  letter-spacing: $spacing;
+}
+
+.checked {
+  color: $grey-4;
+  text-decoration: line-through;
+}

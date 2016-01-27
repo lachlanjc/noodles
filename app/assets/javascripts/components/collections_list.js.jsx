@@ -6,7 +6,7 @@ class CollectionIndex extends React.Component {
   render() {
     return (
       <main className='md-col-9 mx-auto pam tc'>
-        <h1 className='tc'>Collections</h1>
+        <h1 className='tc mtn mbm'>Collections</h1>
         {this.renderCollections()}
       </main>
     )
@@ -50,7 +50,7 @@ class CollectionItem extends React.Component {
     return (
       <a href={coll.url} style={{minHeight: '15vh', backgroundImage: img}}
          className={`flex fc fac fjc rounded shadow pal mbm bg-white rounded shadow ${imgClass}`}>
-        <h2 className='coll__name man h1 mw7'>{coll.name}</h2>
+        <h2 className='coll__name f1 mw7 mbm'>{coll.name}</h2>
         {!_.isEmpty(coll.description) ? <h3 className='coll__desc lead man normal mw7'>{coll.description}</h3> : null}
       </a>
     )

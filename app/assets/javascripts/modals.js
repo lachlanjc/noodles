@@ -9,8 +9,8 @@
         overlay: 0.8,
         closeButton: $('[data-behavior~=modal_close]')
       };
-      var overlay = $("<div class='col-12 bg-darken-4 modal-overlay'></div>");
-      if ($(".modal-overlay").length === 0) {
+      var overlay = $("<div class='col-12 bg-darken-4 modal__overlay'></div>");
+      if ($(".modal__overlay").length === 0) {
         $("body").append(overlay);
       }
       options = $.extend(defaults, options);
@@ -19,10 +19,10 @@
         $(this).click(function(e) {
           var modal_id=$(this).attr("href");
           function close_modal(modal_id) {
-            $(".modal-overlay").fadeOut(200);
+            $(".modal__overlay").fadeOut(200);
             $(modal_id).css({"display": "none"})
           }
-          $(".modal-overlay").click(function() {
+          $(".modal__overlay").click(function() {
             close_modal(modal_id)
           });
           $(o.closeButton).click(function() {
@@ -35,7 +35,7 @@
           });
           var modal_height = $(modal_id).outerHeight();
           var modal_width = $(modal_id).outerWidth();
-          $(".modal-overlay").fadeTo(200,o.overlay);
+          $(".modal__overlay").fadeTo(200,o.overlay);
           $(modal_id).css({
             "display": "block",
             "position": "fixed",

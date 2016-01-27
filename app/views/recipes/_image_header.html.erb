@@ -3,15 +3,15 @@
 
   <div class="md-col-8 mx-auto mw7 flex-ns fac">
     <div class="db flex-auto">
-      <h1 class="white mbs h0" itemprop="name">
+      <h1 class="f1 f0-ns white mbs" itemprop="name">
         <%= @recipe.title %>
 
         <% if me_owns_recipe? && !nav_active?(:shared_recipe) %>
           <%= form_for(@recipe, html: { class: 'lh0 dib dn-p' }) do |f| %>
             <label class="man tooltipped tooltipped--n" aria-label="Favorite">
-              <%= f.check_box :favorite, class: 'recipe__favorite__checkbox', 'data-behavior': 'recipe_favorite_trigger' %>
-              <%= inline_svg 'favorite_outline.svg', class: 'fill-white pointer recipe__favorite__indicator', size: 24 %>
-              <%= inline_svg 'favorite.svg', class: 'fill-white pointer recipe__favorite__indicator--checked', size: 24 %>
+              <%= f.check_box :favorite, class: 'fav__checkbox', 'data-behavior': 'recipe_favorite_trigger' %>
+              <%= inline_svg 'favorite_outline.svg', class: 'fill-white pointer fav__indicator', size: 24 %>
+              <%= inline_svg 'favorite.svg', class: 'fill-white pointer fav__indicator--checked', size: 24 %>
             </label>
           <% end %>
         <% end %>

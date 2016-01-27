@@ -16,7 +16,7 @@
 
 <%= render 'shared/nav' %>
 
-<article class="md-col-8 mw7 mx-auto pam pal-ns">
+<article class="document mw7 pal-ns">
   <h1 class="man f2 f1-ns tc">
     <%= @announcement.title %>
   </h1>
@@ -24,9 +24,9 @@
     <%= @announcement.created_at.strftime '%B %e, %Y' %>
     <%= link_to 'Delete', @announcement, method: :delete, data: { confirm: 'Are you sure?' }, class: 'red b dib mls' if @admin %>
   </p>
-  <div class="text text-normalized">
+  <section class="content">
     <%= @announcement.body_rendered.html_safe %>
-  </div>
+  </section>
 </article>
 
 <hr class="col-12 mbn">

@@ -1,20 +1,23 @@
 .busy {
   background: url(<%= asset_path 'loading.svg' %>) no-repeat;
   background-size: 100%;
+
+  &.btn {
+    box-shadow: none !important;
+    display: block;
+    width: 48px;
+    height: 34px;
+    padding: 0;
+    background-position-y: 50%;
+  }
 }
-.busy-small {
-  height: 32px;
-  width: 32px;
-}
-.busy-large {
+
+// .busy--small {
+//   height: 32px;
+//   width: 32px;
+// }
+
+.busy--large {
   width: 64px;
   height: 64px;
-}
-.busy.btn {
-  box-shadow: none !important;
-  display: block;
-  width: 48px;
-  height: 34px;
-  padding: 0;
-  background-position-y: 50%;
 }

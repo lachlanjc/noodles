@@ -55,7 +55,7 @@ class CollectionHeader extends React.Component {
 
     let rootClass = 'col-12 bs-bb flex fac';
     let rootStyle = {};
-    let actionsClass = 'caps h4 dn-p mtm';
+    let actionsClass = 'caps f4 dn-p mtm';
     if (!_.isEmpty(coll.photo)) {
       rootClass += ' image-header relative inline-with-nav pvl bg-cover bg-center bg-no-repeat';
       rootStyle.backgroundImage = `url(${coll.photo_url})`;
@@ -67,10 +67,10 @@ class CollectionHeader extends React.Component {
     return (
       <header className={rootClass} style={{backgroundImage: `url(${coll.photo})`}}>
         <div className='sm-col-12 md-col-8 mx-auto phm mw7'>
-          <h1 className='coll__name man h0'>{coll.name}</h1>
-          {!_.isEmpty(coll.description) ? <p className='h3 mts mbn coll__desc'>{coll.description}</p> : null}
+          <h1 className='coll__name man f0'>{coll.name}</h1>
+          {!_.isEmpty(coll.description) ? <p className='coll__desc f3 mts mbn'>{coll.description}</p> : null}
           {this.props.pub ?
-            <p className='mvs coll__desc h4'>Published by {coll.publisher}</p>
+            <p className='coll__desc mvs'>Published by {coll.publisher}</p>
           : null}
           <div className={actionsClass}>
             {this.props.edit ?

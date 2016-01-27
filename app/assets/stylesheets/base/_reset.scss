@@ -18,16 +18,19 @@ svg {
   max-height: 100%;
 }
 
+hr {
+  border: 0;
+  border-bottom: $border;
+  margin: $space-2 auto;
+}
+
 .list-reset {
   list-style: none;
   padding-left: 0;
 }
 
-.link-reset {
+.link-reset,
+.link-reset:hover {
   color: inherit;
-
-  &:hover {
-    color: inherit;
-    text-decoration: none;
-  }
+  text-decoration: none;
 }

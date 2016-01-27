@@ -1,0 +1,7 @@
+.fl { float: left; }
+.fr { float: right; }
+
+@media screen and (min-width: 48em) {
+  .fl-ns { float: left; }
+  .fr-ns { float: right; }
+}

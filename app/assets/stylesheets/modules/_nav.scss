@@ -7,16 +7,20 @@
     position: sticky;
     top: 0;
   }
+}
 
-  &__icon {
-    align-self: flex-start;
-  }
+.nav__icon {
+  align-self: flex-start;
+}
 
-  &__container {
-    line-height: 1.75;
-  }
+.nav__container {
+  line-height: 1.75;
+}
 
-  &__link {
-    color: $black;
+.nav__link {
+  color: $black;
+
+  &:hover {
+    color: $grey-3;
   }
 }

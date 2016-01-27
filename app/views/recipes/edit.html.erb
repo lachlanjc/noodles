@@ -53,7 +53,7 @@
 
   <%= f.text_field :title, value: @title,
                    autofocus: true, required: true, autocomplete: 'off',
-                   class: 'text-input invisible-input col-12 man b h1',
+                   class: 'text-input invisible-input col-12 man b f1',
                    placeholder: 'Title your recipe...' %>
 
   <%= f.text_area :description,
@@ -61,13 +61,13 @@
                   placeholder: 'If you\'d like, write a description for the recipe here.',
                   rows: '1', autocomplete: 'off', 'data-behavior': 'autosize' %>
 
-  <%= f.label :ingredients, class: 'dib h3' %><small class="mls grey-4">Put one on each line.</small>
+  <%= f.label :ingredients, class: 'dib f3' %><small class="f5 mls grey-4">Put one on each line.</small>
   <%= f.text_area :ingredients,
                   class: 'text-input invisible-input col-12 man',
                   placeholder: 'Click here and type your recipe\'s ingredients.',
                   rows: '3', autocomplete: 'off', 'data-behavior': 'autosize' %>
 
-  <%= f.label :instructions, class: 'dib h3' %><small class="mls grey-4">Fully supports Markdown.</small>
+  <%= f.label :instructions, class: 'dib f3' %><small class="f5 mls grey-4">Fully supports Markdown.</small>
   <%= f.text_area :instructions,
                   class: 'text-input invisible-input col-12 man',
                   placeholder: 'Add the instructions here.',
@@ -77,13 +77,13 @@
   <section>
     <h2 class="mtn">Details</h2>
 
-    <%= f.label :source, class: 'dib' %><small class="mls grey-4">Where did this recipe come from?</small>
+    <%= f.label :source, class: 'dib' %><small class="f5 mls grey-4">Where did this recipe come from?</small>
     <%= f.text_field :source, class: 'text-input md-col-8' %>
 
-    <%= f.label :author, class: 'dib' %><small class="mls grey-4">Who originally wrote this recipe?</small>
+    <%= f.label :author, class: 'dib' %><small class="f5 mls grey-4">Who originally wrote this recipe?</small>
     <%= f.text_field :author, class: 'text-input md-col-8' %>
 
-    <%= f.label :serves, 'Yield', class: 'dib' %><small class="mls grey-4">How many servings does your recipe produce?</small>
+    <%= f.label :serves, 'Yield', class: 'dib' %><small class="f5 mls grey-4">How many servings does your recipe produce?</small>
     <%= f.text_field :serves, class: 'text-input md-col-8' %>
   </section>
 

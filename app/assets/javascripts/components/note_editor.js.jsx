@@ -50,10 +50,10 @@ class NoteEditor extends React.Component {
           className='text-input invisible-input col-12 man'
           placeholder='Type your notes for the recipe here.'
           defaultValue={this.state.plainNotes} onChange={this.updateTextNotes} />
-        <action className='dib dn-p blue blue-dark--hover pointer mrm' onClick={this.submitNotes}>
+        <action className='dib dn-p blue blue-dark--hover pointer mtm mrm' onClick={this.submitNotes}>
           Save Notes
         </action>
-        <action className='dib dn-p grey-2 grey-2--hover pointer' onClick={this.toggleEditing}>
+        <action className='dib dn-p grey-2 grey-2--hover pointer mtm' onClick={this.toggleEditing}>
           Cancel
         </action>
       </div>
@@ -62,10 +62,10 @@ class NoteEditor extends React.Component {
 
   renderNotes() {
     return (
-      <div className='text text-normalized'>
+      <div className='content content--normalized'>
         <div dangerouslySetInnerHTML={this.produceRenderedNotes()} />
         {this.props.allowEditing ?
-          <action className='dib blue blue-dark--hover pointer' onClick={this.toggleEditing}>
+          <action className='dib blue blue-dark--hover pointer mtm' onClick={this.toggleEditing}>
             Edit Notes
           </action>
         : null}

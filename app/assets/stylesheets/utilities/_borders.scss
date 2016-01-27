@@ -10,27 +10,15 @@
   border-top-color: $border-color;
 }
 
-.border-right {
-  border-right-style: solid;
-  border-right-width: $border-width;
-  border-right-color: $border-color;
-}
-
 .border-bottom {
   border-bottom-style: solid;
   border-bottom-width: $border-width;
   border-bottom-color: $border-color;
 }
 
-.border-left {
-  border-left-style: solid;
-  border-left-width: $border-width;
-  border-left-color: $border-color;
-}
+.bw0     { border-width: 0; }
 
-.rounded {
-  border-radius: $border-radius;
-}
+.rounded { border-radius: $border-radius; }
 
 .circle {
   border-radius: 50%;
@@ -40,11 +28,22 @@
   border-radius: $border-radius $border-radius 0 0;
 }
 
+/*
+.border-left {
+  border-left-style: solid;
+  border-left-width: $border-width;
+  border-left-color: $border-color;
+}
+.border-right {
+  border-right-style: solid;
+  border-right-width: $border-width;
+  border-right-color: $border-color;
+}
+
 .rounded-bottom {
   border-radius: 0 0 $border-radius $border-radius;
 }
 
-/*
 .rounded-left {
   border-radius: $border-radius 0 0 $border-radius;
 }

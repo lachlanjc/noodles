@@ -1,12 +1,12 @@
 <h2 class="mtm">Ingredients</h1>
-<div class="text text-normalized recipe__ingredients" itemprop="ingredients">
+<div class="recipe__ingredients content content--normalized" itemprop="ingredients">
   <% @recipe.ingredients.lines.each do |line| %>
     <%= ingredient_processed(line).html_safe %>
   <% end %>
 </div>
 
 <h2 class="mtm">Instructions</h2>
-<div class="text text-normalized" itemprop="recipeInstructions">
+<div class="content content--normalized" itemprop="recipeInstructions">
   <%= instructions_processed.html_safe %>
 </div>
 

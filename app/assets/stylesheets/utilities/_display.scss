@@ -1,0 +1,13 @@
+.dn {  display: none; }
+.di {  display: inline; }
+.db {  display: block; }
+.dib { display: inline-block; }
+.dtc { display: table-cell; }
+
+@media screen and (min-width: 48em) {
+  .dn-ns {  display: none; }
+  .di-ns {  display: inline; }
+  .db-ns {  display: block; }
+  .dib-ns { display: inline-block; }
+  .dtc-ns { display: table-cell; }
+}

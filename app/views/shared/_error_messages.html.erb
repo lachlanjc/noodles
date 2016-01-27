@@ -1,10 +1,10 @@
 <% if target.errors.any? %>
-  <div class="bg-white rounded shadow pam">
-    <h2 class="mtn red"><%= t(".oops_went_wrong") %></h2>
+  <section class="bg-white rounded shadow pam">
+    <h2 class="mtn red"><%= t '.oops_went_wrong' %></h2>
     <ul>
       <% target.errors.full_messages.each do |message| %>
       <li><%= message %></li>
       <% end %>
     </ul>
-  </div>
+  </section>
 <% end %>

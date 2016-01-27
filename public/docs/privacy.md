@@ -1,4 +1,4 @@
-<p class="tc grey-2 f5">Last updated on November 16, 2014.</p>
+<p class="grey-2 f5">Last updated on November 16, 2014.</p>
 
 ___
 

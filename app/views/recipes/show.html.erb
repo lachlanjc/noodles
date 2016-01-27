@@ -17,9 +17,9 @@
         <div class="flex-auto"></div>
         <%= form_for(@recipe, html: { class: 'lh0 dib dn-p fsn' }) do |f| %>
           <label class="tooltipped man \" aria-label="Favorite">
-            <%= f.check_box :favorite, class: 'recipe__favorite__checkbox', 'data-behavior': 'recipe_favorite_trigger' %>
-            <%= inline_svg 'favorite_outline.svg', class: 'fill-orange pointer recipe__favorite__indicator', size: 28 %>
-            <%= inline_svg 'favorite.svg', class: 'fill-orange pointer recipe__favorite__indicator--checked', size: 28 %>
+            <%= f.check_box :favorite, class: 'fav__checkbox', 'data-behavior': 'recipe_favorite_trigger' %>
+            <%= inline_svg 'favorite_outline.svg', class: 'fill-orange pointer fav__indicator', size: 28 %>
+            <%= inline_svg 'favorite.svg', class: 'fill-orange pointer fav__indicator--checked', size: 28 %>
           </label>
         <% end %>
         <%= render 'actions', color: 'orange', rootClass: 'fsn mlm', menuClass: '' %>
@@ -71,7 +71,6 @@
 
 <section id="embed" class="modal" role="dialog">
   <%= modal_header 'Embed on the Web' %>
-
   <p>Copy and paste the code below onto your website or blog to embed this recipe.</p>
   <pre class="man pas border rounded bg-grey-6" style="white-space: inherit;">
     <%= "<script src=\"https://getnoodl.es/embed/#{@recipe.shared_id}\"></script>" %>

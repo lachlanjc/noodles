@@ -1,4 +1,4 @@
-<h2 class="mtn" id="cook-mode">Cook Mode</h2>
+<h2 class="fwn mtn" id="cook-mode">Cook Mode</h2>
 
 Cooking with traditional cookbooks is often not the best experience: small text makes it easy to lose one's place. In Noodles, Cook Mode highlights steps and makes reading the recipe in the kitchen much easier.
 
@@ -14,7 +14,7 @@ To open Cook Mode, click the the knife and fork icon in the corner of any of you
 
 ___
 
-<h2 id="collection">Collections</h2>
+<h2 class="fwn" id="collection">Collections</h2>
 
 If you've got a lot of soup recipes, salads, or anything else, you can create a collection for them in Noodles to keep them together.
 
@@ -30,7 +30,7 @@ To add a recipe to a collection, click the new "Add to Collection" button at the
 
 ___
 
-<h2 id="sharing">Sharing</h2>
+<h2 class="fwn" id="sharing">Sharing</h2>
 
 Noodles is not a social network; your recipes belong to you and are completely private. However, some recipes are too good to keep to yourself, so you can share a link :)
 
@@ -42,7 +42,7 @@ Then click the blue "Share a link to this recipe" button. You can send the link 
 
 ___
 
-<h2 id="save-to-noodles">Save to my Noodles</h2>
+<h2 class="fwn" id="save-to-noodles">Save to my Noodles</h2>
 
 At the bottom of any shared recipe, anyone with a Noodles account will see a "Save" button.
 
@@ -52,7 +52,7 @@ It lets someone save their own copy of your recipe to their own account. They ca
 
 ___
 
-<h2 id="favorites">Favorites</h2>
+<h2 class="fwn" id="favorites">Favorites</h2>
 
 Favorites are an easy way to quickly bookmark recipes you love. They're marked with a star.
 
@@ -66,7 +66,7 @@ All your Favorited recipes will show up in a list.
 
 ___
 
-<h2 id="search">Search</h2>
+<h2 class="fwn" id="search">Search</h2>
 
 When you need to quickly find a recipe, click the search bar above your list of recipes and start typing. As you type, your recipes are searched by name. You can search anywhere on Noodles there's a recipe list, such as in a collection.
 
@@ -74,7 +74,7 @@ When you need to quickly find a recipe, click the search bar above your list of 
 
 ___
 
-<h2 id="clip">Clip from the Web</h2>
+<h2 class="fwn" id="clip">Clip from the Web</h2>
 
 Web clipping is one of the best features of Noodles. Paste the URL of a recipe, and Noodles will pull in all the data for you and save your recipe automatically. The feature supports several hundred sites, but [let me know](/help) if you run into any trouble.
 
@@ -92,7 +92,7 @@ Finally, click the Clip button.
 
 ___
 
-<h2 id="pdf-export">PDF Export</h2>
+<h2 class="fwn" id="pdf-export">PDF Export</h2>
 
 You can export a PDF of any recipe in Noodles.
 
@@ -107,7 +107,7 @@ Here's a recipe for Honey-Pecan Granola, exported as a PDF: http://cl.ly/1b433D3
 
 ___
 
-<h2 id="embed">Embed</h2>
+<h2 class="fwn" id="embed">Embed</h2>
 
 If you have a website or food blog, a fantastic way to link to recipes is to embed a Noodles recipe.
 
