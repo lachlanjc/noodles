@@ -12,19 +12,19 @@
 
   <div class="mls social pvs">
     <a rel="nofollow" href="http://twitter.com/share?text=Check out <%= @collection.name %>, a collection on @noodlesapp:&url=<%= @shared_url %>" target="_blank">
-      <%= twitter_icon %>
+      <%= social_icon 'twitter' %>
     </a>
     <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=<%= @shared_url %>" class="mls" target="_blank">
-      <%= facebook_icon %>
+      <%= social_icon 'facebook' %>
     </a>
     <a rel="nofollow" href="https://buffer.com/add?url=<%= @shared_url %>&text=Check out <%= @collection.name %>, a collection on @noodlesapp." class="mls" target="_blank">
-      <%= buffer_icon %>
+      <%= social_icon 'buffer' %>
     </a>
     <a rel="nofollow" href="https://plus.google.com/share?url=<%= @shared_url %>" class="mls" target="_blank">
-      <%= googleplus_icon %>
+      <%= social_icon 'gplus' %>
     </a>
     <a href="mailto:?subject=Check out <%= @collection.name %> on Noodles&body=You should check out <%= @collection.name %>, a new collection on Noodles (https://getnoodl.es). Here's the link: <%= @shared_url %>" class="mls">
-      <%= email_icon %>
+      <%= social_icon 'email' %>
     </a>
   </div>
 </section>

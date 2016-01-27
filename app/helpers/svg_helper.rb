@@ -17,27 +17,15 @@ module SvgHelper
     doc.to_html.html_safe
   end
 
-  def twitter_icon
-    inline_svg 'social-twitter.svg', fill: '00aced'
-  end
-
-  def facebook_icon
-    inline_svg 'social-facebook.svg', fill: '3b5998'
-  end
-
-  def pinterest_icon
-    inline_svg 'social-pinterest.svg', fill: 'cb2027'
-  end
-
-  def buffer_icon
-    inline_svg 'social-buffer.svg', fill: '555'
-  end
-
-  def googleplus_icon
-    inline_svg 'social-google-plus.svg', fill: 'dc4e41'
-  end
-
-  def email_icon
-    inline_svg 'social-email.svg', fill: '0092ff'
+  def social_icon(service = 'email')
+    colors = {
+      twitter: '00aced',
+      facebook: '3b5998',
+      pinterest: 'cb2027',
+      buffer: '555',
+      gplus: 'dc4e41',
+      email: '0092ff'
+    }
+    inline_svg "social-#{service}.svg", fill: colors[service.to_sym]
   end
 end
