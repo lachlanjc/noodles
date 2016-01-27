@@ -18,6 +18,10 @@ module RecipesHelper
     app_url + shared_path(recipe)
   end
 
+  def sample_recipe
+    Recipe.find_by_shared_id 'sample'
+  end
+
   def from_web?(source_data)
     source_data.to_s.match(/https?/).present?
   end
