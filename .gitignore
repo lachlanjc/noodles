@@ -8,3 +8,5 @@
 db/seeds.rb
 *.swp
 *.un~
+node_modules/
+meta/results/
