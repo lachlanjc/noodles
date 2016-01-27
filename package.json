@@ -1,0 +1,30 @@
+{
+  "name": "noodles",
+  "version": "1.0.0",
+  "description": "Keep, cook, and share all your recipes.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "get-css": "^1.2.1",
+    "clean-css": "^3.4.9",
+    "lodash": "^4.0.1",
+    "parker": "^0.0.9"
+  },
+  "dependencies": {},
+  "scripts": {
+    "css": "node meta/css-stats.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lachlanjc/noodles.git"
+  },
+  "author": "Lachlan Campbell <atlachlanjc@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lachlanjc/noodles/issues"
+  },
+  "homepage": "https://getnoodl.es",
+  "private": true
+}
