@@ -8,7 +8,7 @@ class ProTip extends React.Component {
       <span>Create a new recipe super quickly by searching with its title.</span>,
       <span>Not sure which recipe to cook right now? Click <strong>Random</strong> at the top.</span>
     ];
-    const tip = protips[_.random(0,2)];
+    const tip = protips[_.random(0,1)];
 
     return (
       <footer className='tc'>
