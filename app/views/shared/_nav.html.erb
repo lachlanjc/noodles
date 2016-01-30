@@ -1,4 +1,4 @@
-<nav role="navigation" class="nav flex-ns mbm pas phm-ns dn-p"
+<nav role="navigation" class="nav flex-ns mbm pas phm-ns tc dn-p"
      data-behavior="nav" data-user="<%= user_signed_in? ? current_user.id : 'anon' %>">
 
   <%= link_to root_url, class: 'dn dib-ns nav__icon lh' do %>
@@ -7,31 +7,29 @@
 
   <article class="nav__container flex-ns flex-auto fjc">
     <% if user_signed_in? %>
-      <div>
+      <section>
         <%= link_to t('general.recipes'), recipes_path, class: nav_active_class(:recipes) %>
         <%= link_to t('general.collections'), collections_path, class: nav_active_class(:collections) %>
         <%= link_to 'Explore', explore_path, class: nav_active_class(:explore) %>
-      </div>
+      </section>
 
-      <div>
-        <% unless nav_active?(:onboarding) %>
-        <%= link_to 'Blog', announcements_path, class: nav_active_class(:announcements) %>
-        <% end %>
+      <section>
+        <%= link_to 'Blog', announcements_path, class: nav_active_class(:announcements) unless nav_active?(:onboarding) %>
         <%= link_to t('general.settings'), :settings, class: nav_active_class(:settings) %>
         <%= link_to t('general.help'), :help, class: nav_active_class(:help) %>
         <%= link_to t('general.sign_out'), :sign_out, class: nav_active_class(:sign_out) %>
-      </div>
+      </section>
     <% else %>
-      <div>
+      <section>
         <%= link_to t('general.home'), root_url, class: nav_active_class(:home) %>
         <%= link_to t('general.features'), docs_path, class: nav_active_class(:docs) %>
         <%= link_to t('general.about'), :help, class: nav_active_class(:help) %>
-      </div>
+      </section>
 
-      <div>
+      <section>
         <%= link_to t('general.sign_in'), :sign_in, class: nav_active_class(:sign_in) %>
         <%= link_to t('general.sign_up'), :sign_up, class: nav_active_class(:sign_up) %>
-      </div>
+      </section>
     <% end %>
   </article>
 </nav>
