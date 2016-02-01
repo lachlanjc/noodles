@@ -5,16 +5,6 @@
     <div class="db flex-auto">
       <h1 class="f1 f0-ns white mbs" itemprop="name">
         <%= @recipe.title %>
-
-        <% if me_owns_recipe? && !nav_active?(:shared_recipe) %>
-          <%= form_for(@recipe, html: { class: 'lh0 dib dn-p' }) do |f| %>
-            <label class="man tooltipped tooltipped--n" aria-label="Favorite">
-              <%= f.check_box :favorite, class: 'fav__checkbox', 'data-behavior': 'recipe_favorite_trigger' %>
-              <%= inline_svg 'favorite_outline.svg', class: 'fill-white pointer fav__indicator', size: 24 %>
-              <%= inline_svg 'favorite.svg', class: 'fill-white pointer fav__indicator--checked', size: 24 %>
-            </label>
-          <% end %>
-        <% end %>
       </h1>
 
       <% if @recipe.description.present? %>
@@ -28,11 +18,20 @@
       <% end %>
     </div>
 
-    <a href="#photo" name="photo" class="dib mrm lh0 relative pointer tooltipped"
+    <% if me_owns_recipe? && !nav_active?(:shared_recipe) %>
+      <%= form_for(@recipe, html: { class: 'lh0 fsn dib dn-p' }) do |f| %>
+        <label class="man mlm-ns tooltipped tooltipped--n" aria-label="Favorite">
+          <%= f.check_box :favorite, class: 'fav__checkbox', 'data-behavior': 'recipe_favorite_trigger' %>
+          <%= inline_svg 'favorite_outline.svg', class: 'fill-white pointer fav__indicator', size: 28 %>
+          <%= inline_svg 'favorite.svg', class: 'fill-white pointer fav__indicator--checked', size: 28 %>
+        </label>
+      <% end %>
+    <% end %>
+    <a href="#photo" name="photo" class="dib mhm lh0 fsn relative pointer tooltipped"
        aria-label="View photo full size" data-behavior="modal_trigger">
       <%= inline_svg 'fullscreen.svg', class: 'fill-white', size: 28 %>
     </a>
-    <%= render 'actions', color: 'white', rootClass: '', menuClass: 'tsn' if me_owns_recipe? && !nav_active?(:shared_recipe) %>
+    <%= render 'actions', color: 'white', rootClass: 'fsn dn-p', menuClass: 'tsn' if me_owns_recipe? && !nav_active?(:shared_recipe) %>
   </div>
 </header>
 
