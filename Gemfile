@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.3'
+ruby '2.3.0'
 
 gem 'dotenv-rails', groups: [:development, :test]
 
@@ -25,7 +25,7 @@ gem 'pg'
 gem 'prawnto_2', require: 'prawnto'
 gem 'premailer-rails'
 gem 'puma'
-gem 'rails', '4.2.4'
+gem 'rails', '4.2.5.1'
 gem 'rake'
 gem 'react-rails'
 gem 'redcarpet'
