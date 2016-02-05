@@ -4,7 +4,6 @@ one:
   ingredients: "Cheese"
   instructions: "1. Eat the cheese."
   favorite: false
-  shared: false
   shared_id: "goodcheese"
   source: "http://goodcheese.getnoodl.es/"
   serves: "As many people as possible."
@@ -15,9 +14,15 @@ two:
   ingredients: "Bread\nCream cheese\nJam"
   instructions: "1. Put the bread in your toaster.\n2. Remove it when lightly browned.\n3. Apply cream cheese and jam."
   favorite: true
-  shared: true
   shared_id: "goodtoast"
   source: "http://goodtoast.getnoodl.es/"
   serves: "Lots of hungry people after their tiring rest"
   notes: "Dry bread works too!"
   collections: [1]
+no_details:
+  title: 'No Details'
+  shared_id: 'nodetails'
+  source: ''
+  author: ''
+  serves: ''
+  notes: ''

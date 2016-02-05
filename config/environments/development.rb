@@ -12,6 +12,7 @@ Rails.application.configure do
   config.active_support.deprecation = :log
 
   config.active_record.migration_error = :page_load
+  config.active_record.raise_in_transactional_callbacks = true
 
   config.assets.debug = true
   config.assets.raise_runtime_errors = true

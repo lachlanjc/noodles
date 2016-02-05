@@ -34,8 +34,4 @@ class ScrapingHelperTest < ActionView::TestCase
   test 'random import 1' do
     assert_equal 'Bread Pudding with Vanilla Bean Sauce', master_scrape('http://www.motherthyme.com/2014/08/bread-pudding.html')['title']
   end
-
-  test 'random import 2' do
-    assert_equal 'Honey-Pecan Granola', master_scrape('http://www.tastebook.com/recipes/2993249-Honey-Pecan-Granola')['title']
-  end
 end

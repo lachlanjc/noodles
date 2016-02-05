@@ -39,7 +39,6 @@ class RecipesControllerTest < ActionController::TestCase
 
   test 'should show recipe' do
     get :show, id: @recipe.id.to_s
-    assert_template 'recipes/show'
     assert_response :success
   end
 
@@ -51,7 +50,7 @@ class RecipesControllerTest < ActionController::TestCase
   end
 
   test 'should get edit' do
-    get :edit, id: @recipe.id.to_s
+    get :edit, id: @recipe.id
     assert_response :success
   end
 
@@ -73,29 +72,14 @@ class RecipesControllerTest < ActionController::TestCase
   end
 
   test 'should get recipe pdf' do
-    get :export_pdf, recipe_id: @recipe.id.to_s
+    get :export_pdf, recipe_id: @recipe.id
     assert_not_nil assigns(:recipe)
     assert_response :success
-  end
-
-  test 'should share recipe' do
-    get :share_this_recipe, recipe_id: @recipe.id.to_s
-    assert_equal @recipe.user_id, users(:one).id
-    assert_not_nil assigns(:recipe)
-    assert_redirected_to share_path(assigns(:recipe).shared_id)
-    assert assigns(:recipe).shared
   end
 
   test 'should show shared recipe' do
-    get :share, shared_id: @recipe.shared_id.to_s
+    get :share, shared_id: @recipe.shared_id
     assert_not_nil assigns(:recipe)
     assert_response :success
-  end
-
-  test 'should unshare recipe' do
-    get :un_share, id: @recipe.id.to_s
-    assert_redirected_to recipe_path(assigns(:recipe))
-    assert_equal false, assigns(:recipe)
-    assert_not_nil flash[:grey]
   end
 end

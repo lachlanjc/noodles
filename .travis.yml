@@ -6,5 +6,6 @@ before_install:
   - bundle install --without development
 script:
   - rake db:create db:migrate
+  - rake test:helpers
 notifications:
   slack: getnoodles:EQiFyZq4M1Tv94DaXRN8f2Gy

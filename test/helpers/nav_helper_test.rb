@@ -5,8 +5,7 @@ class NavHelperTest < ActionView::TestCase
 
   test 'should activate nav' do
     activate_nav!(:hello)
-    nav_active?(:hello)
-    assert true
+    assert nav_active?(:hello)
   end
 
   test 'should return active class' do
