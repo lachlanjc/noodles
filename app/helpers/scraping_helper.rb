@@ -29,7 +29,7 @@ module ScrapingHelper
       data = process_epicurious_page!(data, document)
     # F&W/AR use the name itemprop in the wong places
     elsif host.match('allrecipes.com')
-      data.name = document.css('[itemprop=name]')[0].text.to_s
+      data.name = document.css('[itemprop=name]')[0].attr('content').to_s
     elsif host.match('foodandwine.com')
       data.name = document.css('[itemprop=name]')[2].text.to_s.squish
     elsif host.match('bonappetit.com')

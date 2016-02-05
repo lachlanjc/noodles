@@ -1,5 +1,5 @@
 <% activate_nav!(:edit_recipe) %>
-<%- title @page_title.html_safe %>
+<%- title @page_title.to_s.html_safe %>
 
 <%= link_to recipes_path, class: 'mam mbn flex fjc dib-ns fl-ns' do %>
   <%= inline_svg 'home.svg', class: 'fill-grey-4', size: 32 %>

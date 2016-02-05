@@ -49,7 +49,7 @@ module RecipesHelper
   end
 
   def notes_blankslate
-    '<p>No notes for this recipe yet.</p>'
+    content_tag(:p, 'No notes for this recipe yet.')
   end
 
   def notes_rendered(recipe = @recipe)

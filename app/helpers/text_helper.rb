@@ -4,7 +4,7 @@ module TextHelper
   end
 
   def plain_text_from_markdown(text = '')
-    sanitize(strip_tags(markdown(text.to_s)))
+    sanitize strip_tags(markdown(text.to_s))
   end
 
   def whitened_markdown(str = '', options = [])
@@ -16,7 +16,11 @@ module TextHelper
   end
 
   def remove_url_head(url)
-    url.gsub(/^http(s?):\/\/(w+\.)?/, '')
+    url.gsub /^http(s?):\/\/(w+\.)?/, ''
+  end
+
+  def strip_whitespace(str = '')
+    str.gsub(/\n|\s\s+/, '').strip
   end
 
   def clean_autolink(text)
