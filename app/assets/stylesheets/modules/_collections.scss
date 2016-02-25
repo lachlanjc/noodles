@@ -6,7 +6,7 @@
   &,
   .coll__name,
   .coll__desc {
-    @extend .white;
+    color: white;
   }
 }
 
@@ -16,10 +16,10 @@
 
 .colladd__item__check:checked {
   + .colladd__item__label {
-    @extend .orange;
+    color: $orange;
   }
 
   ~ .colladd__item__mark {
-    @extend .dib;
+    display: inline-block;;
   }
 }

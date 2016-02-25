@@ -24,13 +24,15 @@ hr {
   margin: $space-2 auto;
 }
 
-.list-reset {
+.list-reset,
+%list-reset {
   list-style: none;
   padding-left: 0;
 }
 
 .link-reset,
-.link-reset:hover {
+.link-reset:hover,
+%link-reset {
   color: inherit;
   text-decoration: none;
 }

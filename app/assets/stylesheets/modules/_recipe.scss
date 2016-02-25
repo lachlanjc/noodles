@@ -10,7 +10,7 @@
   }
 
   ul {
-    @extend .list-reset;
+    @extend %list-reset;
   }
 }
 
