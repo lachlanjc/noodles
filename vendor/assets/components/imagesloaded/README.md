@@ -6,8 +6,6 @@
 
 Detect when images have been loaded.
 
-<!-- demo -->
-
 ## Install
 
 ### Download
@@ -18,14 +16,14 @@ Detect when images have been loaded.
 ### CDN
 
 ``` html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>
+<script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
 <!-- or -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.js"></script>
+<script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.js"></script>
 ```
 
 ### Package managers
 
-Install via npm: `npm install imagesloaded`
+Install via [npm](https://www.npmjs.com/package/imagesloaded): `npm install imagesloaded`
 
 Install via [Bower](http://bower.io): `bower install imagesloaded --save`
 
@@ -128,6 +126,8 @@ imagesLoaded( '#container', { background: true }, function() {
 });
 ```
 
+[See jQuery demo](http://codepen.io/desandro/pen/pjVMPB) or [vanilla JS demo](http://codepen.io/desandro/pen/avKooW) on CodePen.
+
 Set to a selector string like `{ background: '.item' }` to detect when the background images of child elements have loaded.
 
 ``` js
@@ -141,6 +141,8 @@ imagesLoaded( '#container', { background: '.item' }, function() {
   console.log('all .item background images loaded');
 });
 ```
+
+[See jQuery demo](http://codepen.io/desandro/pen/avKoZL) or [vanilla JS demo](http://codepen.io/desandro/pen/vNrBGz) on CodePen.
 
 ## Events
 
@@ -264,29 +266,11 @@ $('#container').imagesLoaded( function() {...});
 
 ## Webpack
 
-Install imagesLoaded and [imports-loader](https://github.com/webpack/imports-loader) with npm.
+Install imagesLoaded with npm.
 
 ``` bash
-npm install imagesLoaded
-npm install imports-loader
+npm install imagesloaded
 ```
-
-In your config file, `webpack.config.js`, use the imports loader to disable `define` and set window for `imagesloaded`.
-
-``` js
-module.exports = {
-  module: {
-    loaders: [
-      {
-        test: /imagesloaded/,
-        loader: 'imports?define=>false&this=>window'
-      }
-    ]
-  }
-};
-```
-
-(This is hack is required because of an issue with how Webpack loads dependencies. [+1 this issue on GitHub](https://github.com/webpack/webpack/issues/883) to help get this issue addressed.)
 
 You can then `require('imagesloaded')`.
 
@@ -304,7 +288,7 @@ Use `.makeJQueryPlugin` to make `.imagesLoaded()` jQuery plugin.
 ``` js
 // main.js
 var imagesLoaded = require('imagesLoaded');
-var jQuery = require('jquery');
+var $ = require('jquery');
 
 // provide jQuery argument
 imagesLoaded.makeJQueryPlugin( $ );
@@ -366,14 +350,12 @@ requirejs( [
 
 ## Browser support
 
-+ IE8+
++ IE9+
 + Android 2.3+
 + iOS Safari 4+
 + All other modern browsers
 
-## Contributors
-
-This project has a [storied legacy](https://github.com/desandro/imagesloaded/graphs/contributors). Its current incarnation was developed by [Tomas Sardyha @Darsain](http://darsa.in/) and [David DeSandro @desandro](http://desandro.com).
+Use [imagesLoaded v3](http://imagesloaded.desandro.com/v3/) for IE8 support.
 
 ## MIT License
 
