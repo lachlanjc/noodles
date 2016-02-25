@@ -53,7 +53,7 @@ class NoteEditor extends React.Component {
         <action className='dib dn-p blue blue-dark--hover pointer mtm mrm' onClick={this.submitNotes}>
           Save Notes
         </action>
-        <action className='dib dn-p grey-2 grey-2--hover pointer mtm' onClick={this.toggleEditing}>
+        <action className='dib dn-p grey-2 grey-2--hover pointer mtm' onClick={this.toggleEditing} tabIndex={0}>
           Cancel
         </action>
       </div>
@@ -65,7 +65,7 @@ class NoteEditor extends React.Component {
       <div className='content content--normalized'>
         <div dangerouslySetInnerHTML={this.produceRenderedNotes()} />
         {this.props.allowEditing ?
-          <action className='dib blue blue-dark--hover pointer mtm' onClick={this.toggleEditing}>
+          <action className='dib blue blue-dark--hover pointer mtm' onClick={this.toggleEditing} tabIndex={0}>
             Edit Notes
           </action>
         : null}
