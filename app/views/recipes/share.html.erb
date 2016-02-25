@@ -3,7 +3,7 @@
 <% activate_nav!(:shared_recipe) %>
 
 <% content_for :meta do -%>
-  <% if @recipe.img.url.present? %>
+  <% if @recipe.imaged? %>
     <meta name="twitter:card" content="summary_large_image">
     <meta property="og:image" content="<%= @recipe.img.url %>"/>
     <meta name="twitter:image" content="<%= @recipe.img.url %>">

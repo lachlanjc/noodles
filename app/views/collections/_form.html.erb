@@ -9,7 +9,7 @@
     <%= f.file_field :photo, class: 'dn', 'data-behavior': 'photo_field' %>
     <%= inline_svg 'photo-upload.svg', size: 24, class: 'fill-grey-4' %>
     <span class="grey-4 relative f5" style="top: -6px;" data-behavior="photo_name">
-    <% if @collection.photo.url.blank? %>
+    <% if @collection.unimaged? %>
       Upload a photo background
     <% else %>
       Change the photo background

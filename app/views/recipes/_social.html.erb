@@ -19,7 +19,7 @@
     <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=<%= @shared_url %>" class="mrs" target="_blank">
       <%= social_icon 'facebook' %>
     </a>
-    <% if @recipe.img.url.blank? %>
+    <% if @recipe.unimaged? %>
       <% @media_url = image_url('apple-touch-icon.png').to_s %>
     <% else %>
       <% @media_url = @recipe.img.url.to_s %>

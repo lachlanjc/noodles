@@ -10,7 +10,7 @@
   <%= instructions_processed.html_safe %>
 </div>
 
-<% if @recipe.img.url.present? && @image_layout == false %>
+<% if @recipe.imaged? && @image_layout == false %>
   <%= image_tag @recipe.img.url, class: 'flex mx-auto rounded oh',
                 alt: "Photo of #{@recipe.title}", itemprop: 'image' %>
 <% end %>

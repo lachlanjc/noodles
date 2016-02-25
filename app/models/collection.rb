@@ -23,4 +23,12 @@ class Collection < ActiveRecord::Base
       photo_url: photo.url.to_s
     }
   end
+
+  def imaged?
+    self.imaged?
+  end
+
+  def unimaged?
+    !self.imaged?
+  end
 end

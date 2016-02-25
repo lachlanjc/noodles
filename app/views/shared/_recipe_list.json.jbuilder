@@ -3,7 +3,7 @@ json.recipes @recipes do |recipe|
   json.description_preview recipe.description_truncated
 
   json.notes recipe.notes.present?
-  json.photo recipe.img.url.present?
+  json.photo recipe.imaged?
   json.collections recipe.collections.present?
   json.web from_web?(recipe.source)
   json.url recipe_path(recipe)

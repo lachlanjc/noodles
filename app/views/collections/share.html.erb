@@ -2,7 +2,7 @@
 <%- title @collection.name.html_safe %>
 
 <% content_for :meta do -%>
-  <% if @collection.photo.url.present? %>
+  <% if @collection.imaged? %>
     <meta name="twitter:card" content="summary_large_image">
     <meta property="og:image" content="<%= @collection.photo.url %>"/>
     <meta name="twitter:image" content="<%= @collection.photo.url %>">

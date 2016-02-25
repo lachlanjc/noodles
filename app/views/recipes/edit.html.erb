@@ -13,15 +13,15 @@
     <div class="grey-4 pointer" data-behavior="photo_button">
       <%= inline_svg 'photo-upload.svg', size: 32, class: 'fill-grey-4 relative', style: 'top: 10px;' %>
       <span data-behavior="photo_name">
-        <%= @recipe.img.url.blank? ? 'Upload a photo' : 'Upload a new photo' %>
+        <%= @recipe.unimaged? ? 'Upload a photo' : 'Upload a new photo' %>
       </span>
     </div>
-    <% if @recipe.img.url.present? %>
-    <div class="grey-4 pointer mts" data-behavior="remove_current_photo">
-      <%= inline_svg 'close.svg', width: 32, height: 24, class: 'fill-grey-3 relative', style: 'top: 6px;' %>
-      <%= link_to 'Remove current photo', recipe_remove_image_path(recipe_id: @recipe.id),
-                   class: 'link-reset', data: { remote: true, behavior: 'remove_current_photo_link' } %>
-    </div>
+    <% if @recipe.imaged? %>
+      <div class="grey-4 pointer mts" data-behavior="remove_current_photo">
+        <%= inline_svg 'close.svg', width: 32, height: 24, class: 'fill-grey-3 relative', style: 'top: 6px;' %>
+        <%= link_to 'Remove current photo', recipe_remove_image_path(recipe_id: @recipe.id),
+                     class: 'link-reset', data: { remote: true, behavior: 'remove_current_photo_link' } %>
+      </div>
     <% end %>
   </section>
 
