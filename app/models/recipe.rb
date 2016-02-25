@@ -14,4 +14,8 @@ class Recipe < ActiveRecord::Base
   def to_param
     "#{id} #{title}".parameterize
   end
+
+  def description_truncated
+    self.description.to_s.truncate(164)
+  end
 end
