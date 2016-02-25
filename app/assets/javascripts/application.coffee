@@ -25,7 +25,7 @@ $(document).ready ->
 
   activateModals()
 
-  $(document).on 'keydown', 'action', (e) ->
+  $(document).on 'keydown', 'action, [data-behavior~=r_fav]', (e) ->
     $(this).click() if e.keyCode is 32 or e.keyCode is 13
 
   $('[data-behavior~=inline_signup_form]').on 'ajaxBeforeSend', ->
@@ -51,7 +51,7 @@ $(document).ready ->
     t.toggleClass 'busy busy--large mx-auto bg-darken-1 border rounded pvm mt2 tc'
     $('[data-behavior~=inline_signup_error]').toggleClass 'dn'
 
-  $('[data-behavior~=recipe_favorite_trigger]').on 'change', ->
+  $('[data-behavior~=r_fav_trigger]').on 'change', ->
     $(this)[0].form.submit()
   $(document).on 'click', '[data-behavior~=print]', ->
     window.print()

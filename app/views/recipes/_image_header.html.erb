@@ -20,11 +20,11 @@
 
     <% if me_owns_recipe? && !nav_active?(:shared_recipe) %>
       <%= form_for(@recipe, html: { class: 'lh0 fsn dib dn-p' }) do |f| %>
-        <label class="man mlm-ns tooltipped tooltipped--n" aria-label="Favorite">
-          <%= f.check_box :favorite, class: 'fav__checkbox', 'data-behavior': 'recipe_favorite_trigger' %>
-          <%= inline_svg 'favorite_outline.svg', class: 'fill-white pointer fav__indicator', size: 28 %>
+        <%= f.label :favorite, class: 'tooltipped tooltipped--n man mlm-ns', 'data-behavior': 'r_fav', 'aria-label': 'Favorite', tabindex: 0 do %>
+          <%= f.check_box :favorite, class: 'fav__checkbox', 'data-behavior': 'r_fav_trigger' %>
+          <%= inline_svg 'favorite_outline.svg', class: 'fill-white pointer fav__indicator--basic', size: 28 %>
           <%= inline_svg 'favorite.svg', class: 'fill-white pointer fav__indicator--checked', size: 28 %>
-        </label>
+        <% end %>
       <% end %>
     <% end %>
     <a href="#photo" name="photo" class="dib mhm lh0 fsn relative pointer tooltipped"

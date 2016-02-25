@@ -15,12 +15,12 @@
 }
 
 .fav__checkbox,
-.fav__checkbox:checked ~ .fav__indicator,
+.fav__checkbox:checked ~ .fav__indicator--basic,
 .fav__indicator--checked {
   display: none !important;
 }
 
-.fav__indicator,
+.fav__indicator--basic,
 .fav__checkbox:checked ~ .fav__indicator--checked {
   display: inline-block !important;
 }

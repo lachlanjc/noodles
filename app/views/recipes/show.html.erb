@@ -16,11 +16,11 @@
         <h1 class="lh-title mtn mbs" itemprop="name"><%= @recipe.title %></h1>
         <div class="flex-auto"></div>
         <%= form_for(@recipe, html: { class: 'lh0 dib dn-p fsn' }) do |f| %>
-          <label class="tooltipped man \" aria-label="Favorite">
-            <%= f.check_box :favorite, class: 'fav__checkbox', 'data-behavior': 'recipe_favorite_trigger' %>
-            <%= inline_svg 'favorite_outline.svg', class: 'fill-orange pointer fav__indicator', size: 28 %>
+          <%= f.label :favorite, class: 'tooltipped man', 'data-behavior': 'r_fav', 'aria-label': 'Favorite', tabindex: 0 do %>
+            <%= f.check_box :favorite, class: 'fav__checkbox', 'data-behavior': 'r_fav_trigger' %>
+            <%= inline_svg 'favorite_outline.svg', class: 'fill-orange pointer fav__indicator--basic', size: 28 %>
             <%= inline_svg 'favorite.svg', class: 'fill-orange pointer fav__indicator--checked', size: 28 %>
-          </label>
+          <% end %>
         <% end %>
         <%= render 'actions', color: 'orange', rootClass: 'fsn mlm', menuClass: '' %>
       </header>
