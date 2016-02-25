@@ -25,6 +25,9 @@ $(document).ready ->
 
   activateModals()
 
+  $(document).on 'keydown', 'action', (e) ->
+    $(this).click() if e.keyCode is 32 or e.keyCode is 13
+
   $('[data-behavior~=inline_signup_form]').on 'ajaxBeforeSend', ->
     t = $(this)
     t.html null
