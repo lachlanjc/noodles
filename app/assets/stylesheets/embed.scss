@@ -5,6 +5,7 @@
   cursor: pointer;
   display: block;
   font-family: $font-family;
+  font-size: 16px;
   margin: 16px 0;
   padding: 32px;
   overflow: hidden;
@@ -27,10 +28,8 @@
 }
 
 .noodles__header {
+  font-size: 24px;
   font-weight: 400;
-}
-
-.noodles__header {
   margin: 0;
 }
 
@@ -39,6 +38,6 @@
 }
 
 .noodles__footer {
-  font-size: $f5;
+  font-size: 14px;
   margin: 16px 0 0;
 }
