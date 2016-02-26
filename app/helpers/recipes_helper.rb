@@ -36,8 +36,8 @@ module RecipesHelper
   end
 
   def embed_html(recipe = @recipe)
-    @recipe = recipe
-    strip_whitespace(render_to_string('recipes/embed', layout: false))
+    html = ApplicationController.new.render_to_string('recipes/embed', locals: { r: recipe }, layout: false)
+    strip_whitespace(html)
   end
 
   def from_web?(source_data)

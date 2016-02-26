@@ -7,7 +7,7 @@ one:
   shared_id: "goodcheese"
   source: "http://goodcheese.getnoodl.es/"
   serves: "As many people as possible."
-  notes: "Any cheese works. Just make sure it's not moldy."
+  notes: "Any decent cheese works."
 two:
   title: "Good Toast"
   description: ""

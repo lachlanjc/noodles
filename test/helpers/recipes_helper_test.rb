@@ -19,6 +19,22 @@ class RecipesHelperTest < ActionView::TestCase
     assert_not_nil sample_recipe
   end
 
+  test 'recipe embed' do
+    assert_not_empty recipe_embed(recipes(:one))
+  end
+
+  test 'embed script' do
+    assert_not_empty embed_script(recipes(:one))
+  end
+
+  test 'embed code' do
+    assert_not_empty embed_code(recipes(:one))
+  end
+
+  test 'embed html' do
+    assert_not_empty embed_html(recipes(:one))
+  end
+
   test 'should test recipe is from web' do
     assert from_web?('https://getnoodl.es/s/6ww5W0L')
   end
