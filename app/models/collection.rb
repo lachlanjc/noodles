@@ -25,7 +25,7 @@ class Collection < ActiveRecord::Base
   end
 
   def imaged?
-    self.imaged?
+    self.photo.url.present?
   end
 
   def unimaged?
