@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Noodles Embed Demo</title>
+</head>
+<body>
+  <%= recipe_embed sample_recipe %>
+  <% @recipe_two = Recipe.find(1) %>
+  <%= recipe_embed @recipe_two if @recipe_two %>
+</body>
+</html>

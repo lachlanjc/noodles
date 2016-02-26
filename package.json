@@ -9,12 +9,15 @@
   "devDependencies": {
     "get-css": "^1.2.1",
     "clean-css": "^3.4.9",
+    "fs": "^0.0.2",
+    "pageres": "^4.0.0",
     "lodash": "^4.0.1",
     "parker": "^0.0.9"
   },
   "dependencies": {},
   "scripts": {
-    "css": "node meta/css-stats.js"
+    "css": "node meta/css-stats.js",
+    "embed": "node meta/embed.js"
   },
   "repository": {
     "type": "git",

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get '/:shared_id/save', to: 'recipes#save_to_noodles', as: :save_to_noodles
   end
 
+  get '/embed', to: 'pages#embed_demo', as: :embed_demo
   get '/embed/:shared_id', to: 'recipes#embed_js', as: :embed
 
   # Collections
@@ -26,7 +27,6 @@ Rails.application.routes.draw do
     get '/data/:id', to: 'collections#share'
     get '/:shared_id', to: 'collections#share', as: :collection_share
   end
-
 
   get '/save', to: 'save#save', as: :save
 

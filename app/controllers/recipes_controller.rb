@@ -79,7 +79,7 @@ class RecipesController < ApplicationController
 
   def embed_js
     @recipe = Recipe.find_by_shared_id(params[:shared_id])
-    render 'recipes/embed.js', layout: false
+    render js: embed_code(@recipe), layout: false
   end
 
   def share
@@ -143,7 +143,7 @@ class RecipesController < ApplicationController
   end
 
   def title_setup
-    @title = @recipe.title || params[:title].to_s.capitalize.squish
+    @title = @recipe.title.to_s || params[:title].to_s.capitalize.squish
   end
 
   def setup_image_layout

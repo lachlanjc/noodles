@@ -22,6 +22,24 @@ module RecipesHelper
     Recipe.find_by_shared_id 'sample'
   end
 
+  def recipe_embed(r = @recipe)
+    ph = content_tag(:a, "#{r.title} on Noodles", href: shared_url(r))
+    content_tag(:section, ph, id: "noodles-#{r.shared_id}") + embed_script(r)
+  end
+
+  def embed_script(recipe = @recipe)
+    content_tag(:script, '', src: "#{embed_url(recipe.shared_id)}.js").html_safe
+  end
+
+  def embed_code(recipe = @recipe)
+    "document.getElementById('noodles-#{recipe.shared_id}').innerHTML = '#{embed_html(recipe)}';"
+  end
+
+  def embed_html(recipe = @recipe)
+    @recipe = recipe
+    strip_whitespace(render_to_string('recipes/embed', layout: false))
+  end
+
   def from_web?(source_data)
     source_data.to_s.match(/https?/).present?
   end

@@ -29,6 +29,10 @@ class PagesController < ApplicationController
     render_doc('docs.md')
   end
 
+  def embed_demo
+    render 'embed_demo', layout: false
+  end
+
   private
 
   def home_setup
