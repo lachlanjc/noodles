@@ -62,7 +62,7 @@ class NoteEditor extends React.Component {
 
   renderNotes() {
     return (
-      <div className='content content--normalized'>
+      <div className='content'>
         <div dangerouslySetInnerHTML={this.produceRenderedNotes()} />
         {this.props.allowEditing ?
           <action className='dib blue blue-dark--hover pointer mtm' onClick={this.toggleEditing} tabIndex={0}>

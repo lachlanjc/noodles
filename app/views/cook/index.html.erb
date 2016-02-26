@@ -13,7 +13,7 @@
     <h2 class="mbn">Ingredients</h2>
     <p class="grey-4 f5">Tap on ingredients to cross them off.</p>
 
-    <ul class="recipe__ingredients content content--normalized list-reset">
+    <ul class="recipe__ingredients content list-reset">
     <% @recipe.ingredients.lines.each do |item| %>
       <%= content_tag :li, ingredient_processed(item).html_safe,
                       'data-behavior': 'checklist_item',
