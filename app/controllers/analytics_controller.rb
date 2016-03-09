@@ -2,16 +2,12 @@ class AnalyticsController < ApplicationController
   before_filter :authenticate
 
   def dashboard
-    @users_count = 0
-    @recipes_count = Recipe.all.count
-    @recipes_shared_count = Recipe.where(shared: true).count
-
+    @users_count = User.all.count
     @users_none = []
     @users_one = []
     @users_many = []
 
     User.all.each do |user|
-      @users_count += 1
       @count = user.recipes.count
       @users_none.push(user) if @count == 0
       @users_one.push(user)  if @count == 1
@@ -29,10 +25,6 @@ class AnalyticsController < ApplicationController
 
   def performance
     @cohorts = CohortMe.analyze(period: 'weeks', activation_class: Recipe)
-  end
-
-  def shared_recipes
-    @recipes = Recipe.where(shared: true).order(created_at: :desc)
   end
 
   private

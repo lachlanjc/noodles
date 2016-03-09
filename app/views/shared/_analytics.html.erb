@@ -13,13 +13,12 @@
       email: current_user.email,
       name: current_user.first_name,
       custom_data: {
-        recipes_count: user_recipe_count,
-        shared_recipes_count: user_shared_recipe_count,
-        collections_count: user_collection_count,
+        recipes_count: user_recipes_count,
+        collections_count: user_collections_count,
         referring_url: current_user.referring_url,
         landing_url: current_user.landing_url
       }
     }) %>
-    <%= heap_identify(current_user.email, name: current_user.first_name) %>
+    <%= heap_identify(current_user.email, name: current_user.first_name, recipes_count: user_recipes_count, collections_count: user_collections_count) %>
   <% end %>
 <% end %>

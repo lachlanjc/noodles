@@ -71,6 +71,5 @@ Rails.application.routes.draw do
     get '/all_users', to: 'analytics#all_users', as: :analytics_users
     get '/collections', to: 'analytics#collections', as: :analytics_collections
     get '/performance', to: 'analytics#performance', as: :analytics_performance
-    get '/shared_recipes', to: 'analytics#shared_recipes', as: :analytics_recipes
   end
 end

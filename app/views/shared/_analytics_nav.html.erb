@@ -1,18 +1,16 @@
-<nav role="navigation" class="flex-ns bg-white mbm pam border-bottom dn-p"
-     data-behavior="nav" data-user="<%= user_signed_in? ? current_user.id : 'anon' %>">
+<nav role="navigation" class="nav flex-ns sticky-ns tc-ns mbm pas phm-ns tc dn-p">
+  <%= link_to root_url, class: 'dn dib-ns nav__icon lh' do %>
+    <%= inline_svg 'cook.svg', class: 'fill-orange', size: 28 %>
+  <% end %>
 
-  <div>
-    <%= link_to "Dashboard", analytics_dash_path, class: nav_active_class(:analytics_dash) %>
-    <%= link_to "Users", analytics_users_path, class: nav_active_class(:analytics_users) %>
-    <%= link_to "Collections", analytics_collections_path, class: nav_active_class(:analytics_collections) %>
-    <%= link_to "Performance", analytics_performance_path, class: nav_active_class(:analytics_performance) %>
-    <%= link_to "Shared Recipes", analytics_recipes_path, class: nav_active_class(:analytics_recipes) %>
-  </div>
-
-  <div class="flex-auto"></div>
-
-  <div>
-    <%= link_to "Back to Recipes", recipes_path, class: "phs" %>
-  </div>
-
+  <article class="nav__container flex-ns flex-auto fjc">
+    <section>
+      <%= link_to "Dashboard", analytics_dash_path, class: nav_active_class(:analytics_dash) %>
+      <%= link_to "Users", analytics_users_path, class: nav_active_class(:analytics_users) %>
+    </section>
+    <section>
+      <%= link_to "Collections", analytics_collections_path, class: nav_active_class(:analytics_collections) %>
+      <%= link_to "Performance", analytics_performance_path, class: nav_active_class(:analytics_performance) %>
+    </section>
+  </article>
 </nav>
