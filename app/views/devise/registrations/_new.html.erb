@@ -9,13 +9,13 @@
   <%= devise_error_messages!(user) %>
 
   <%= f.label :first_name, t('devise.registrations.new.first_name') %>
-  <%= f.text_field :first_name, id: 'fname', autofocus: true, class: 'text-input mx-auto' %>
+  <%= f.text_field :first_name, id: 'fname', autofocus: true, placeholder: 'Ryan', class: 'text-input mx-auto' %>
 
   <%= f.label :email, t('devise.registrations.new.email_check') %>
-  <%= f.email_field :email, required: true, autocomplete: 'email', class: 'text-input mx-auto' %>
+  <%= f.email_field :email, required: true, autocomplete: 'email', placeholder: 'ryan@example.com', class: 'text-input mx-auto' %>
 
   <%= f.label :password, 'Now, pick a password:' %>
-  <%= f.password_field :password, required: true, id: 'new-password', pattern: '.{8,}', class: 'text-input mx-auto' %>
+  <%= f.password_field :password, required: true, id: 'new-password', pattern: '.{8,}', placeholder: '••••••••', class: 'text-input mx-auto' %>
 
   <%= f.hidden_field :want_newsletter, value: true %>
 
