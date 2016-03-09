@@ -73,7 +73,11 @@
   <%= modal_header 'Embed on the Web' %>
   <p>Copy and paste the code below onto your website or blog to embed this recipe.</p>
   <%= content_tag :pre, escape_once(recipe_embed), class: 'man pas border rounded bg-grey-6', style: 'white-space: inherit' %>
-  <p class="mts"><%= link_to 'Need help?', help_path %></p>
+  <button type="button" class="btn bg-green btn-sm mvm"
+          data-clipboard-text="<%= escape_once(recipe_embed) %>" data-behavior="copy">
+    Copy
+  </button>
+  <p><%= link_to 'Need help?', help_path %></p>
 </section>
 
 <%= link_to edit_recipe_path(@recipe), 'aria-label': 'Edit this recipe',
