@@ -27,7 +27,7 @@ module ScrapingHelper
       data = process_nyt_page!(data, document)
     elsif host.match('epicurious.com')
       data = process_epicurious_page!(data, document)
-    # F&W/AR use the name itemprop in the wong places
+    # F&W/AR use the name itemprop in the wrong places
     elsif host.match('allrecipes.com')
       data.name = document.css('[itemprop=name]')[0].attr('content').to_s
     elsif host.match('foodandwine.com')
@@ -139,7 +139,7 @@ module ScrapingHelper
     if ingredients.is_a? String
       ingredients = ingredients.split(/\s\s+/)
     end
-    ingredients.delete_if { |item| item.to_s.squish.gsub(/\s\s/, ' ').length < 3 }
+    ingredients.delete_if { |item| item.to_s.squish!.gsub(/\s\s+/, ' ').length < 3 }
     # Each of the steps is now in an array.
     ingredients.each do |item|
       # Remove custom lists or line breaks
@@ -152,7 +152,7 @@ module ScrapingHelper
   def write_ingredients_to_list(ingredients)
     ingredients_list = ''
     ingredients.each { |item| ingredients_list += "#{item}\n" }
-    ingredients_list
+    ingredients_list.strip
   end
 
   # Fully process recipe instructions
@@ -169,7 +169,7 @@ module ScrapingHelper
     # Each of the steps is now in an array.
     # Remove useless steps
     steps.delete_if do |step|
-      step.to_s.squish.gsub(/\s\s/, ' ').length < 3 || step.to_s.match('Preparation')
+      step.to_s.squish!.gsub(/\s\s+/, ' ').length < 3 || step.to_s.match('Preparation')
     end
     steps.each do |step|
       # Remove custom numbering or line breaks
@@ -184,7 +184,7 @@ module ScrapingHelper
     instructions.each_with_index do |step, id|
       instructions_md += "#{(id + 1)}. #{step.squish}\n"
     end
-    instructions_md.gsub(/\n$/, '')
+    instructions_md.strip
   end
 
   protected
