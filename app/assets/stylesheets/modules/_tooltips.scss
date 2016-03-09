@@ -20,9 +20,9 @@
     width: max-content;
   }
 
-  &:hover:active,
-  &:active:active,
-  &:focus:active {
+  &:hover:after,
+  &:active:after,
+  &:focus:after {
     display: inline-block;
   }
 }
