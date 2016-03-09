@@ -7,12 +7,12 @@ module ScrapingHelper
     path = find_path(link)
 
     url = link
-    url.gsub!(/\/print/, '') if host.match('allrecipes.com')
+    url.gsub!(/\/print/, '') if host =~ /allrecipes\.com/
 
     page = safely { open(url).read }
     data = Hangry.parse page
     # Allrecipes has trouble with names
-    if data.name.to_s.squish.length > 1 || host.match('allrecipes.com')
+    if data.name.to_s.squish.length > 1 || host =~ /allrecipes\.com/
       data = process_recipe_page(url, page, data)
     else
       false
@@ -23,20 +23,20 @@ module ScrapingHelper
   def process_recipe_page(url, page, data)
     host = find_domain(url).to_s
     document = Nokogiri::HTML::DocumentFragment.parse(page)
-    if host.match('nytimes.com')
+    if host =~ /nytimes\.com/
       data = process_nyt_page!(data, document)
-    elsif host.match('epicurious.com')
+    elsif host =~ /epicurious\.com/
       data = process_epicurious_page!(data, document)
     # F&W/AR use the name itemprop in the wrong places
-    elsif host.match('allrecipes.com')
+    elsif host =~ /allrecipes\.com/
       data.name = document.css('[itemprop=name]')[0].attr('content').to_s
-    elsif host.match('foodandwine.com')
+    elsif host =~ /foodandwine\.com/
       data.name = document.css('[itemprop=name]')[2].text.to_s.squish
-    elsif host.match('bonappetit.com')
+    elsif host =~ /bonappetit\.com/
       data = process_ba_page!(data, document)
-    elsif host.match('marthastewart.com')
+    elsif host =~ /marthastewart\.com/
       data.instructions = document.css('.directions-list .directions-item').text
-    elsif host.match('driscolls.com')
+    elsif host =~ /driscolls\.com/
       data.instructions = document.css('#recipe-content #instructions').text
     elsif data.instructions.to_s.match(/\n/).blank?
       data = process_blog_page!(data, document)
@@ -58,13 +58,13 @@ module ScrapingHelper
   def process_nyt_page!(data, document)
     data.ingredients = []
     document.search('.recipe-ingredients')[0].search('li').each do |item|
-      text = "#{'# ' if item.search('.quantity').text.blank? && item.text.match(/For/)}"
+      text = '# ' if item.search('.quantity').text.blank? && item.text =~ /For/
       text += item.text.strip.gsub(/\n\n+\s+/, ' ').gsub(/:$/, '').capitalize
       data.ingredients.push text
     end
     data.instructions = []
     document.search('.recipe-steps li').each do |step|
-      data.instructions.push step.text.strip.gsub(/\n/, '')
+      data.instructions.push step.text.strip.delete(/\n/)
     end
     data.instructions = document.search('.recipe-steps').text
     data.author = document.search('.recipe-subhead span[itemprop=author]').text
@@ -85,7 +85,7 @@ module ScrapingHelper
     data.name = document.css('h1[itemprop=name]').text
     data.ingredients = []
     document.search('.ingredients li').each do |step|
-      data.ingredients.push step.text.strip.gsub(/\n/, '').gsub(/\s\s+/, ' ')
+      data.ingredients.push step.text.strip.delete(/\n/).gsub(/\s\s+/, ' ')
     end
     data.instructions = document.css('.prep-steps li.step').text
     data.author = document.css('.contributors li')[0].text.strip
@@ -136,9 +136,7 @@ module ScrapingHelper
 
   # Remove inconsistencies in ingredient formatting
   def clean_ingredients(ingredients)
-    if ingredients.is_a? String
-      ingredients = ingredients.split(/\s\s+/)
-    end
+    ingredients = ingredients.split(/\s\s+/) if ingredients.is_a? String
     ingredients.delete_if { |item| item.to_s.squish!.gsub(/\s\s+/, ' ').length < 3 }
     # Each of the steps is now in an array.
     ingredients.each do |item|

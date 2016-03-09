@@ -16,7 +16,7 @@ class ExploreHelperTest < ActionView::TestCase
   end
 
   test 'explore preview' do
-    data = {'title'=>'Pancakes', 'description'=>'', 'ingredients'=>['2 cups flour', '2 eggs'], 'instructions'=>''}
+    data = {'title' => 'Pancakes', 'description' => '', 'ingredients' => ['2 cups flour', '2 eggs'], 'instructions' => ''}
     recipe = prepare_explore_preview(data)
     assert_not_nil recipe
     assert_equal recipe.title, 'Pancakes'

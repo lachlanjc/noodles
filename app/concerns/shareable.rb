@@ -1,10 +1,11 @@
+# Shareable provides unique shared_ids for generating public links
 module Shareable
   extend ActiveSupport::Concern
 
   included do
     validates :shared_id, presence: true, uniqueness: true
     before_validation :generate_shared_id, on: :create
-    after_validation :generate_shared_id, on: :create, unless: Proc.new { |recipe| recipe.errors.empty? }
+    after_validation :generate_shared_id, on: :create, unless: proc { |recipe| recipe.errors.empty? }
   end
 
   private

@@ -10,7 +10,7 @@ module SvgHelper
       options.delete :size
     end
     if options[:fill]
-      options[:style] += "fill: ##{options[:fill].to_s};"
+      options[:style] += "fill: ##{options[:fill]};"
       options.delete :fill
     end
     options.each { |key, value| svg["#{key}"] = value }

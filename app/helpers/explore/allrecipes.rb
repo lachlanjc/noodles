@@ -4,7 +4,7 @@ require 'nokogiri'
 class AllrecipesSearchScraper
   def scrape(q)
     scraper = Mechanize.new
-    scraper.history_added = Proc.new { sleep 0.4 }
+    scraper.history_added = proc { sleep 0.4 }
 
     results = []
     raw_results = scraper.get('http://allrecipes.com/search/results/?sort=re&wt=' + q).search('section.grid article.grid-col--fixed-tiles:not(#dfp_container)')
@@ -21,7 +21,8 @@ class AllrecipesSearchScraper
     end
     results.each do |item|
       item['description'] = item['description'].to_s.truncate(164)
-      item['image'] = '' if item['image'].match('http://images.media-allrecipes.com/userphotos/250x250/0.jpg')
+      placeholder = 'http://images.media-allrecipes.com/userphotos/250x250/0.jpg'
+      item['image'] = '' if item['image'] =~ /#{Regexp.quote(placeholder)}/
     end
     results
   end

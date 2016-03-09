@@ -4,7 +4,7 @@ require 'wombat'
 class EpicuriousSearchScraper
   def scrape(q)
     scraper = Mechanize.new
-    scraper.history_added = Proc.new { sleep 0.4 }
+    scraper.history_added = proc { sleep 0.4 }
 
     results = []
     search = URI.encode(q).gsub /\%20/, '+'
@@ -26,13 +26,13 @@ class EpicuriousSearchScraper
   protected
 
   def fix_image(result)
-    if result['image'].match '/i/recipe-img-icon'
+    if result['image'] =~ /\/i\/recipe\-img\-icon/
       result['image'] = ''
     else
       s = result['image']
-      s.gsub!(/_116/, '')
-      s.gsub!(/_120/, '_500')
-      result['image'] = s.match('assets') ? s : 'http://epicurious.com' + s
+      s.gsub! /_116/, ''
+      s.gsub! /_120/, '_500'
+      result['image'] = s =~ /assets/ ? s : 'http://epicurious.com' + s
     end
     result
   end

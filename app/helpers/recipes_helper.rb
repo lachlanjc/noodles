@@ -11,7 +11,7 @@ module RecipesHelper
   end
 
   def shared_path(recipe = @recipe)
-    "/s/#{recipe.shared_id.to_s}"
+    "/s/#{recipe.shared_id}"
   end
 
   def shared_url(recipe = @recipe)

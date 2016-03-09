@@ -21,6 +21,7 @@ class CookController < ApplicationController
   end
 
   private
+
   def raise_not_found
     raise ActiveRecord::RecordNotFound if @recipe.nil?
   end

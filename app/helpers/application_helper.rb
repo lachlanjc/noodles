@@ -5,10 +5,8 @@ module ApplicationHelper
     case level.to_sym
     when :grey then 'grey-3'
     when :green then 'green'
-    when :red then 'red'
-    when :alert then 'red'
-    when :blue then 'blue'
-    when :notice then 'blue'
+    when :red, :alert then 'red'
+    when :blue, :notice then 'blue'
     else 'grey-3'
     end
   end
@@ -22,7 +20,8 @@ module ApplicationHelper
   end
 
   def modal_close
-    content_tag(:div, inline_svg('close.svg', class: 'fill-grey-4'), 'data-behavior': 'modal_close', class: 'db fr pointer')
+    svg = inline_svg('close.svg', class: 'fill-grey-4')
+    content_tag :action, svg, class: 'db fr pointer', data: { behavior: 'modal_close' }
   end
 
   def modal_header(text)

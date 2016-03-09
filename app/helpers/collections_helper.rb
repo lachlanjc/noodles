@@ -10,7 +10,7 @@ module CollectionsHelper
   end
 
   def shared_coll_path(collection = @collection)
-    "/c/#{collection.shared_id.to_s}"
+    "/c/#{collection.shared_id}"
   end
 
   def shared_coll_url(collection = @collection)

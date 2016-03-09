@@ -4,10 +4,6 @@ module DeviseHelper
     return if user.errors.empty?
 
     messages = user.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
-    sentence = I18n.t("errors.messages.not_saved",
-                      count: user.errors.count,
-                      resource: user.class.model_name.human.downcase)
-
     html = <<-HTML
     <div class="rounded mt2 mb2 phm mx-auto" style="border: 2px solid #ff0013; padding-bottom: 1.5rem;">
       <h2 class="red mt3 tc">Those Noodles are a bit tangled.</h2>

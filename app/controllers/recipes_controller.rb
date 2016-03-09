@@ -52,7 +52,7 @@ class RecipesController < ApplicationController
 
   def update
     if @recipe.update(recipe_params)
-      collection_cleanup
+      collection_cleanup!
       flash[:green] = 'Great, your changes were saved.'
       if request.xhr?
         render :show
@@ -130,7 +130,7 @@ class RecipesController < ApplicationController
 
   # Only allow trusted parameters
   def recipe_params
-    params.require(:recipe).permit(:title, :description, :img, :ingredients, :instructions, :favorite, :source, :author, :serves, :notes, :shared_id, { collections: [] })
+    params.require(:recipe).permit(:title, :description, :img, :ingredients, :instructions, :favorite, :source, :author, :serves, :notes, :shared_id, collections: [])
   end
 
   def not_the_owner
@@ -159,7 +159,7 @@ class RecipesController < ApplicationController
     @image_layout = defined? @image_layout
   end
 
-  def collection_cleanup
+  def collection_cleanup!
     @recipe.collections.reject!(&:blank?)
     @recipe.save
   end
