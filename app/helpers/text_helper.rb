@@ -4,7 +4,10 @@ module TextHelper
   end
 
   def plain_text_from_markdown(text = '')
-    sanitize strip_tags(markdown(text.to_s))
+    text = markdown(text.to_s)
+    text = sanitize(text, tags: %w(ol ul li))
+    text = HtmlToPlainText.plain_text(text)
+    text
   end
 
   def whitened_markdown(str = '', options = [])
