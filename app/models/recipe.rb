@@ -16,14 +16,14 @@ class Recipe < ActiveRecord::Base
   end
 
   def description_truncated
-    self.description.to_s.truncate(164)
+    description.to_s.truncate(164)
   end
 
   def imaged?
-    self.img.url.present?
+    img.url.present?
   end
 
   def unimaged?
-    !self.imaged?
+    !imaged?
   end
 end
