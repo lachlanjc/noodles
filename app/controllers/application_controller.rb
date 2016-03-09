@@ -4,6 +4,23 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
+
+  def go_back
+    redirect_to :back
+    rescue ActionController::RedirectBackError
+      redirect_to root_path
+  end
+
+  def please_sign_in
+    if nobody_signed_in?
+      flash[:red] = 'Please sign in to an account.'
+      redirect_to root_url
+    end
+  end
+
   protected
 
   def configure_permitted_parameters
