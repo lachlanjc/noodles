@@ -61,30 +61,22 @@ $(document).ready ->
   clipboard = new Clipboard('[data-behavior~=copy]', text: (trigger) ->
     trigger.getAttribute 'data-clipboard-text'
   )
-  clipboardTooltip = ($btn, text) ->
-    if text.length > 0
-      $btn.attr 'aria-label', text
-      $btn.addClass 'tooltipped tooltipped--n'
-    else
-      $btn.removeClass 'tooltipped tooltipped--n'
-    return true
-  clipboardSuccess = (e) ->
-    $btn = $(e.trigger)
-    clipboardTooltip $btn, 'Copied!'
-    setTimeout clipboardTooltip($btn, ''), 1200
-    e.clearSelection()
   clipboard.on 'error', (e) ->
     $btn = $(e.trigger)
     if /Mac/i.test(navigator.userAgent)
-      clipboardTooltip $btn, 'Press ⌘-C'
+      $btn.text 'Press ⌘-C'
     else
-      clipboardTooltip $btn, 'Press Ctrl-C'
+      $btn.text 'Press Ctrl-C'
     $btn.on 'mouseleave', (m) ->
-      clipboardTooltip($btn, '')
+      $btn.text 'Copy'
       e.clearSelection()
     return
   clipboard.on 'success', (e) ->
-    clipboardSuccess(e)
+    $btn = $(e.trigger)
+    $btn.text 'Copied!'
+    reset = -> $btn.text('Copy')
+    setTimeout reset, 1500
+    e.clearSelection()
     return
 
   $(document).on 'click', '[data-behavior~=photo_name]', ->
