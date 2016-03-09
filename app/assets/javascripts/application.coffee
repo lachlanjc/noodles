@@ -5,19 +5,21 @@
 #= require autosize
 #= require clipboard/clipboard
 #= require components
+#= require global
 
 $(document).ready ->
+  # Popover menus
   $(document).on 'click', (e) ->
-    menu = '[data-behavior~=collapse_on_clickoutside][aria-expanded=true]'
-    if $(e.target).closest(menu).length is 0
-      $(menu).find('.menu__content').hide 'fast'
-      $(menu).attr 'aria-expanded', false
-
-  $(document).on 'click', '[data-behavior~=menu_toggle]', ->
-    if $(this).attr('aria-expanded') is 'true' then open = true else open = false
-    $(this).attr 'aria-expanded', !open
-    $(this).find('.menu__content').toggle 'fast'
+    o = $(N.openMenuSelector)
+    c = $(e.target).closest('[data-behavior~=menu_toggle]')
+    if o.length > 0 or c.length > 0
+      N.toggleMenu `o.length > 0 ? o : c`
+    e.stopImmediatePropagation()
     return
+  # Close popover menus on esc
+  $(document).keydown (e) ->
+    if e.keyCode is 27 and $(N.openMenuSelector).length > 0
+      N.toggleMenu $(N.openMenuSelector)
 
   $(document).on 'click', '[data-behavior~=flash]', ->
     $(this).toggleClass 'bg-white shadow well border'
