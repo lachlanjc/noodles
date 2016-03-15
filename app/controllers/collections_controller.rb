@@ -2,7 +2,7 @@ class CollectionsController < ApplicationController
   include ApplicationHelper
   include CollectionsHelper
 
-  before_action :set_collection, except: [:index, :share, :create]
+  before_action :set_collection, except: [:index, :create]
   before_filter :authenticate_user!, except: [:share]
   before_filter :only_mine, only: [:show, :update, :destroy]
 
@@ -17,11 +17,6 @@ class CollectionsController < ApplicationController
   end
 
   def share
-    if params[:shared_id]
-      @collection = Collection.find_by_shared_id(params[:shared_id])
-    else
-      set_collection
-    end
     populate_collection
     @shared_url = shared_coll_url
   end
@@ -48,6 +43,9 @@ class CollectionsController < ApplicationController
 
   def set_collection
     @collection = Collection.find(params[:id])
+    if @collection.nil? && params[:shared_id]
+      @collection = Collection.find_by_shared_id(params[:shared_id])
+    end
     raise_not_found
   end
 
