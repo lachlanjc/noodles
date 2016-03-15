@@ -12,33 +12,39 @@
     <% end %>
   </h2>
   <hr>
-  <p>Adding recipes to Noodles is super easy &mdash; here are three ways.</p>
+  <p>
+    First you'll need some recipes! Adding recipes to Noodles is super easy &mdash; here are three ways.
+  </p>
   <ol class="list-reset mtm mbn">
     <li class="mbm flex fac">
-      <%= link_to explore_path, class: 'flex fac fjc fg icon bg-orange circle shadow mrm lh0 link-reset' do %>
+      <%= link_to explore_path, class: 'flex fac fjc fsn icon bg-orange circle shadow mrm lh0 link-reset' do %>
         <%= inline_svg 'explore.svg', class: 'fill-white' %>
       <% end %>
       <description class="dib">
         <strong class="db lh">Explore</strong>
-        Find and clip great new recipes right from Noodles.
+        Find and clip great new recipes on the web straight from Noodles.
+        You'll find Explore in the menu bar, above.
+        <%= link_to '→ Start here!', explore_path, class: 'db b blue' %>
       </description>
     </li>
     <li class="mbm flex fac">
-      <a class="flex fac fjc fg icon bg-orange circle shadow mrm lh0 link-reset" href="#clipper" data-behavior="modal_trigger">
+      <a class="flex fac fjc fsn icon bg-orange circle shadow mrm lh0 link-reset" href="#clipper" data-behavior="modal_trigger">
         <%= inline_svg 'clip.svg', class: 'fill-white' %>
       </a>
       <description class="dib">
         <strong class="db lh">Clip</strong>
         Save a recipe just by pasting in the URL.
+        It's in the lower right corner.
       </description>
     </li>
     <li class="mbm flex fac">
-      <%= link_to new_recipe_path, class: 'flex fac fjc fg icon bg-orange circle shadow mrm lh0 link-reset' do %>
+      <%= link_to new_recipe_path, class: 'flex fac fjc fsn icon bg-orange circle shadow mrm lh0 link-reset' do %>
         <%= inline_svg 'add.svg', class: 'fill-white' %>
       <% end %>
       <description class="dib">
         <strong class="db lh">Write</strong>
         Type a recipe or paste in the text yourself.
+        Next to Clip, in the corner.
       </description>
     </li>
   </ol>

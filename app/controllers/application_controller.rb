@@ -21,6 +21,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def flash_or_text(flash_color, plain_text, flash_text = plain_text)
+    if request.xhr?
+      render text: plain_text
+    else
+      flash[flash_color] = flash_text
+    end
+  end
+
   protected
 
   def configure_permitted_parameters

@@ -44,27 +44,18 @@ module ScrapingHelper
     recipe = create_recipe_item(data)
   end
 
-  def create_recipe_item(data)
-    recipe = {}
-    recipe['title'] = data.name.to_s.squish.truncate(255)
-    recipe['description'] = data.description
-    recipe['ingredients'] = data.ingredients
-    recipe['instructions'] = data.instructions
-    recipe['serves'] = data.yield.to_s.capitalize.gsub('Servings:', '').strip
-    recipe
-  end
-
   # Adjust for NYT Cooking pages
   def process_nyt_page!(data, document)
+    data.description = document.search('[itemprop=description]')[0].search('p')[0].text
     data.ingredients = []
-    document.search('.recipe-ingredients')[0].search('li').each do |item|
-      text = '# ' if item.search('.quantity').text.blank? && item.text =~ /For/
-      text += item.text.strip.gsub(/\n\n+\s+/, ' ').gsub(/:$/, '').capitalize
-      data.ingredients.push text
+    document.search('.recipe-ingredients')[0].search('li').each do |it|
+      v = it.text.squish.gsub(/:$/, '').capitalize
+      v.prepend('# ') if it.search('.quantity').text.blank? && it.text =~ /For/
+      data.ingredients.push v
     end
     data.instructions = []
     document.search('.recipe-steps li').each do |step|
-      data.instructions.push step.text.strip.delete(/\n/)
+      data.instructions.push step.text.squish
     end
     data.instructions = document.search('.recipe-steps').text
     data.author = document.search('.recipe-subhead span[itemprop=author]').text
@@ -81,11 +72,12 @@ module ScrapingHelper
     data
   end
 
+  # Process Bon Appetit page
   def process_ba_page!(data, document)
     data.name = document.css('h1[itemprop=name]').text
     data.ingredients = []
     document.search('.ingredients li').each do |step|
-      data.ingredients.push step.text.strip.delete(/\n/).gsub(/\s\s+/, ' ')
+      data.ingredients.push step.text.squish
     end
     data.instructions = document.css('.prep-steps li.step').text
     data.author = document.css('.contributors li')[0].text.strip
@@ -101,29 +93,31 @@ module ScrapingHelper
     data
   end
 
+  # Basic scaffolding for recipe item
+  def create_recipe_item(data)
+    {
+      title: data.name.to_s.squish.truncate(255),
+      description: data.description.to_s.squish,
+      ingredients: data.ingredients,
+      instructions: data.instructions,
+      serves: data.yield.to_s.capitalize.gsub('Servings:', '').strip
+    }
+  end
+
   # Create a Recipe with provided data, and respond appropriately
-  def create_recipe(recipe_data, url_source, flash_text)
-    recipe = Recipe.new do |r|
-      r.user_id = current_user.id
-      r.title = recipe_data['title'].to_s.squish
-      r.description = recipe_data['description'].to_s.squish
-      r.ingredients = process_recipe_ingredients(recipe_data['ingredients']).to_s
-      r.instructions = process_recipe_instructions(recipe_data['instructions']).to_s
-      r.source = url_source
-      r.author = recipe_data['author'].to_s.squish
-      r.serves = recipe_data['serves'].to_s.squish
-      r.notes = recipe_data['notes'].to_s.squish
-      r.favorite = false
-      r.shared = false
-      r.save
-    end
-    recipe.save
-    if request.xhr?
-      render text: recipe.id
-    else
-      flash[:green] = flash_text
-      redirect_to recipe
-    end
+  def create_recipe(recipe_data, url_source)
+    Recipe.create(
+      user_id: current_user.id,
+      title: recipe_data[:title],
+      description: recipe_data[:description],
+      ingredients: process_recipe_ingredients(recipe_data[:ingredients]),
+      instructions: process_recipe_instructions(recipe_data[:instructions]),
+      source: url_source,
+      author: recipe_data[:author].to_s.squish,
+      serves: recipe_data[:serves].to_s.squish,
+      notes: recipe_data[:notes].to_s.squish,
+      favorite: false
+    )
   end
 
   # Fully process recipe ingredients
@@ -155,10 +149,10 @@ module ScrapingHelper
 
   # Fully process recipe instructions
   def process_recipe_instructions(instructions)
-    return if instructions.blank?
+    return '' if instructions.blank?
     steps = clean_instructions(instructions)
     steps = form_markdown_for_instructions(steps)
-    steps.gsub(/\n$/, '')
+    steps.chomp
   end
 
   # Remove inconsistencies in instruction formatting
@@ -167,11 +161,11 @@ module ScrapingHelper
     # Each of the steps is now in an array.
     # Remove useless steps
     steps.delete_if do |step|
-      step.to_s.squish!.gsub(/\s\s+/, ' ').length < 3 || step.to_s.match('Preparation')
+      step.to_s.squish.length < 3 || step.to_s.match('Preparation')
     end
     steps.each do |step|
       # Remove custom numbering or line breaks
-      step.gsub!(/^\w?\d\.?/, '').to_s.gsub!(/\s\s+/, ' ')
+      step.gsub!(/^\w?\d\.?/, '').to_s.squish!
     end
     steps
   end
@@ -193,6 +187,10 @@ module ScrapingHelper
 
   def find_domain(url)
     URI(url).host.to_s.match(/[^\.]+\.\w+$/).to_s
+  end
+
+  def find_domain_name(url)
+    find_domain(url).match(/(.+)\.\w+/)[1].to_s
   end
 
   def find_path(url)

@@ -5,9 +5,8 @@ class RecipesController < ApplicationController
   include ScrapingHelper
 
   before_filter :please_sign_in, only: [:index, :create]
-  before_filter :set_recipe, only: [:show, :edit, :update, :update_notes, :destroy]
-  before_filter :locate_recipe, only: [:notes, :export_pdf, :remove_image, :share_this_recipe, :un_share]
-  before_filter :not_the_owner, only: [:update, :notes, :export_pdf, :remove_image, :share_this_recipe, :un_share, :destroy]
+  before_filter :set_recipe, except: [:index, :new, :create]
+  before_filter :not_the_owner, only: [:update, :notes, :export_pdf, :remove_image, :destroy]
   protect_from_forgery except: :embed_js
 
   def index
@@ -116,11 +115,11 @@ class RecipesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_recipe
     @recipe = Recipe.find(params[:id])
-    raise_not_found
-  end
-
-  def locate_recipe
-    @recipe = Recipe.find(params[:recipe_id])
+    if @recipe.nil? && params[:recipe_id]
+      @recipe = Recipe.find(params[:recipe_id])
+    elsif @recipe.nil? && params[:shared_id]
+      @recipe = Recipe.find_by_shared_id(params[:shared_id])
+    end
     raise_not_found
   end
 

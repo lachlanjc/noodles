@@ -7,11 +7,10 @@ class SaveController < ApplicationController
 
   def save
     recipe_data = master_scrape(params[:url])
-    if recipe_data == false || recipe_data['title'].blank?
-      flash[:red] = 'Sorry — that site isn\'t working because it doesn\'t use standard markup for the recipe.'
-      go_back
+    if recipe_data == false || recipe_data[:title].blank?
+      action_unsupported!
     else
-      create_recipe(recipe_data, params[:url], "Awesome! We've saved #{recipe_data['title']} from #{find_domain(params[:url]).to_s.humanize}.")
+      action_save!(recipe_data)
     end
   end
 
@@ -33,5 +32,21 @@ class SaveController < ApplicationController
     return if user_signed_in?
     flash[:blue] = 'Hey there! Sign up for Noodles (below) to save that awesome recipe.'
     redirect_to root_url
+  end
+
+  private
+
+  def action_unsupported!
+    msg = "Sorry — that site isn't working because it doesn't use standard markup for the recipe."
+    flash_or_text(:red, msg)
+    go_back unless request.xhr?
+  end
+
+  def action_save!(recipe_data)
+    @recipe = create_recipe(recipe_data, params[:url])
+    dom = find_domain_name(params[:url]).humanize
+    msg = "Awesome! You've saved #{@recipe.title} from #{dom}."
+    flash_or_text(:green, @recipe.id, msg)
+    redirect_to @recipe unless request.xhr?
   end
 end
