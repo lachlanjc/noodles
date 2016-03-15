@@ -1,46 +1,46 @@
 class RecipeList extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       searchText: '',
       recipes: []
-    };
+    }
   }
 
   componentDidMount() {
-    this.setState({recipes: _.sortBy(this.props.recipesCore, 'title')});
+    this.setState({ recipes: _.sortBy(this.props.recipesCore, 'title') })
   }
 
   componentWillReceiveProps(newProps, newState) {
-    this.setState({recipes: _.sortBy(newProps.recipesCore, 'title')});
-    return true;
+    this.setState({ recipes: _.sortBy(newProps.recipesCore, 'title') })
+    return true
   }
 
   _updateSearch(e) {
-    const searchText = _.trimStart(_.lowerCase(e.target.value));
-    this.setState({searchText: searchText});
+    const searchText = _.trimStart(_.lowerCase(e.target.value))
+    this.setState({ searchText: searchText })
 
     if (!_.isEmpty(searchText)) {
-      let recipes = this.props.recipesCore;
+      let recipes = this.props.recipesCore
       recipes = _.filter(recipes, function(l) {
-        return _.trim(_.lowerCase(l.title)).match(searchText);
-      });
-      this.setState({recipes: recipes});
+        return _.lowerCase(l.title).match(searchText);
+      })
+      this.setState({ recipes: recipes })
     } else {
-      this.setState({recipes: this.props.recipesCore});
+      this.setState({ recipes: this.props.recipesCore })
     }
   }
 
   render() {
-    const props = this.props;
-    const searching = !_.isEmpty(this.state.searchText);
-    const recipeCount = _.size(this.props.recipesCore);
-    const searchLabel = 'Search ' +
-                        (recipeCount != 1 ? 'these ' : 'this ') +
-                        recipeCount + (recipeCount != 1 ? ' recipes' : ' recipe') + '...';
+    const props = this.props
+    const searching = !_.isEmpty(this.state.searchText)
+    const recipeCount = _.size(this.props.recipesCore)
+    const noSearchResults = searching && _.isEmpty(this.state.recipes)
+    const createFromSearch = searching && (this.props.createFromSearch || false)
 
-    const noSearchResults = searching && _.isEmpty(this.state.recipes);
-    const createFromSearch = searching && ((this.props.createFromSearch || false) === true);
+    let searchLabel = 'Search '
+    searchLabel += (recipeCount != 1 ? 'these ' : 'this ')
+    searchLabel += recipeCount + (recipeCount != 1 ? ' recipes' : ' recipe') + '...'
 
     return (
       <ul className={`list-reset pvm mx-auto mbn mw7 ${this.props.className}`}>
@@ -65,7 +65,8 @@ class RecipeList extends React.Component {
             <p className='mbn'>Sorry, no recipes matched your search.</p>
 
             {createFromSearch ?
-              <a className='mtm btn bg-blue' href={'/recipes/new?' + $.param({title: this.state.searchText})}>
+              <a className='mtm btn bg-blue'
+                 href={'/recipes/new?' + $.param({ title: this.state.searchText })}>
                 New recipe with this title
               </a>
             : null}
