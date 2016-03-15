@@ -1,14 +1,12 @@
 <section id="clipper" role="dialog" class="modal">
   <%= modal_header 'Clip a Recipe from the Web' %>
-  <%= link_to 'HELP', help_path, class: 'fr dib phs mls white white-hover bg-orange rounded b f5' %>
-  <p class="mbn">Paste the URL of a recipe below to save it to Noodles.</p>
-  <small class="f5 db grey-3">
-    Clipping supports several hundred sites.
-  </small>
-  <%= form_tag(save_path, method: 'get', class: 'flex mtm') do %>
-    <%= url_field_tag 'url', nil, class: 'text-input flex-auto mrs', style: 'min-width: initial;',
-                       placeholder: 'Paste in the recipe\'s URL' %>
-    <%= submit_tag 'Clip', name: nil, class: 'flex-last btn bg-blue' %>
+  <%= render 'clip' %>
+  <%= link_to explore_path, class: 'modal__feature link-reset bs-bb dn db-ns bg-grey-6 grey-3 f5 border-top pas' do %>
+    <%= inline_svg 'chev-right.svg', class: 'fr fill-grey-4' %>
+    <span class="mls dib">
+      Find and save new recipes right from Noodles with
+      <span class="orange b">Explore</span>
+    </span>
   <% end %>
 </section>
 

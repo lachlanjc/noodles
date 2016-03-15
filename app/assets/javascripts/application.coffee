@@ -103,6 +103,21 @@ $(document).ready ->
   $(document).on 'click', '[data-behavior~=checklist_item]', ->
     $(this).toggleClass 'checked'
 
+  # Switch .dn for inline style — prevents flash on load.
+  # Eventually (TODO), this should be reusable. Explore needs it as well.
+  editorClipContent = $('[data-behavior~=editor_clip_content]')
+  editorClipContent.hide().removeClass('dn')
+  $(document).on 'click', '[data-behavior~=editor_clip_trigger]', (e) ->
+    # Prevent clicking again
+    $('[data-behavior~=editor_clip_trigger]').data 'behavior', ''
+    $('[data-behavior~=editor_clip_r]').remove()
+    editorClipContent.show 'fast'
+    h = $('[data-behavior~=editor_clip_header]')
+    # Fix margins
+    h.toggleClass 'mtn man pointer'
+    # Be definitive.
+    h.text 'Clip from the Web'
+    return
   $('[data-behavior~=autosize]').autosize()
   $('[data-behavior~=editor_instructions]').on 'focus', ->
     this.value = "1. " if _.isEmpty this.value

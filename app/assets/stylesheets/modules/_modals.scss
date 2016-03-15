@@ -15,6 +15,14 @@
   -webkit-overflow-scrolling: touch;
 }
 
+.modal__feature {
+  border-radius: 0 0 6px 6px;
+  left: -1rem;
+  min-width: 36rem;
+  position: relative;
+  top: 1rem;
+}
+
 .modal__overlay {
   display: none;
   height: 100%;
