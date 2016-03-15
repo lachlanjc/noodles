@@ -114,7 +114,7 @@ $(document).ready ->
     editorClipContent.show 'fast'
     h = $('[data-behavior~=editor_clip_header]')
     # Fix margins
-    h.toggleClass 'mtn man pointer'
+    h.toggleClass 'mtn man fwn pointer'
     # Be definitive.
     h.text 'Clip from the Web'
     return

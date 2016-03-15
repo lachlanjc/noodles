@@ -4,17 +4,19 @@
 <%= render 'shared/nav' %>
 
 <main class="md-col-8 mx-auto mw7 phm pvm-ns">
-  <section class="mw6 mx-auto bg-white rounded pam shadow mbm flex" data-behavior="editor_clip">
-    <%= inline_svg 'chev-right.svg', size: 20, class: 'fill-grey-4 dib mrs pointer fsn', 'data-behavior': 'editor_clip_r editor_clip_trigger' %>
-    <article class="flex-auto dib">
-      <h4 class="man pointer" data-behavior="editor_clip_trigger editor_clip_header">
-        Saving a recipe from the web?
-      </h4>
-      <div class="dn" data-behavior="editor_clip_content">
-        <%= render 'clip' %>
-      </div>
-    </article>
-  </section>
+  <% if params[:action] == 'new' %>
+    <section class="mw6 mx-auto bg-white rounded pam shadow mbm flex" data-behavior="editor_clip">
+      <%= inline_svg 'chev-right.svg', size: 20, class: 'fill-grey-4 dib mrs pointer fsn', 'data-behavior': 'editor_clip_r editor_clip_trigger' %>
+      <article class="flex-auto dib">
+        <h4 class="man fwn pointer" data-behavior="editor_clip_trigger editor_clip_header">
+          Saving a recipe from the web?
+        </h4>
+        <div class="dn" data-behavior="editor_clip_content">
+          <%= render 'clip' %>
+        </div>
+      </article>
+    </section>
+  <% end %>
 
 <%= form_for(@recipe) do |f| %>
 
