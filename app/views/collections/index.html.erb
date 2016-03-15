@@ -3,7 +3,7 @@
 
 <%= render 'shared/nav' %>
 
-<%= react_component 'CollectionIndex', collections: @collections.as_json %>
+<%= react_component 'CollectionList', collections: @collections.as_json %>
 
 <section class="modal" id="newCollection" role="dialog">
   <%= modal_header 'New Collection' %>
