@@ -16,7 +16,7 @@
     </article>
   </section>
 
-<%= form_for(@recipe, html: { 'data-title': @form_class }) do |f| %>
+<%= form_for(@recipe) do |f| %>
 
   <section class="mbm dib">
     <%= f.file_field :img, class: 'dn', 'data-behavior': 'photo_field' %>
