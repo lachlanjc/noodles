@@ -44,17 +44,10 @@ class RecipeList extends React.Component {
 
     return (
       <ul className={`list-reset pvm mx-auto mbn mw7 ${this.props.className}`}>
-        <section className='md-col-8 mx-auto flex bg-white rounded shadow mbm phs dn-p' role='search'>
-          <Icon icon='search' className='fill-grey-4 mts' />
-          <input
-              type='text'
-              className='text-input invisible-input'
-              value={this.state.searchText}
-              onChange={e => this._updateSearch(e)}
-              style={{height: 36}}
-              placeholder={searchLabel}
-              autoFocus='true' />
-        </section>
+        <SearchBar className='md-col-8 mx-auto mbm'
+                   onChange={e => this._updateSearch(e)}
+                   placeholder={searchLabel}
+                   autoFocus={true} />
 
         {_.map(this.state.recipes, function (recipe) {
           return <RecipeItem recipe={recipe} pub={props.pub || false} key={'recipe-' + recipe.id} />
