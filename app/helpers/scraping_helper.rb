@@ -46,7 +46,6 @@ module ScrapingHelper
 
   # Adjust for NYT Cooking pages
   def process_nyt_page!(data, document)
-    data.description = document.search('[itemprop=description]')[0].search('p')[0].text
     data.ingredients = []
     document.search('.recipe-ingredients')[0].search('li').each do |it|
       v = it.text.squish.gsub(/:$/, '').capitalize
