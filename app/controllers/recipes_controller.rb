@@ -28,7 +28,7 @@ class RecipesController < ApplicationController
       @page_title = @form_class.humanize
       render :edit
     else
-      flash[:red] = 'You need to sign in to add recipes.'
+      flash[:red] = "You'll need to sign in to add recipes."
       redirect_to root_url
     end
   end
@@ -43,7 +43,7 @@ class RecipesController < ApplicationController
     @recipe.user_id = current_user.id
 
     if @recipe.save
-      flash[:green] = 'Awesome, you\'ve saved your new recipe.'
+      flash[:green] = "Awesome, you've saved your new recipe."
       redirect_to @recipe
     else
       render :edit
@@ -135,7 +135,7 @@ class RecipesController < ApplicationController
 
   def not_the_owner
     if not_my_recipe?
-      flash[:red] = 'That\'s not yours.'
+      flash[:red] = "That's not yours."
       redirect_to root_url
     else
       true
