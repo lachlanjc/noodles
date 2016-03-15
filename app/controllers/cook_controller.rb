@@ -1,7 +1,4 @@
 class CookController < ApplicationController
-  include ApplicationHelper
-  include RecipesHelper
-
   def index
     @recipe = Recipe.find(params[:recipe_id])
     raise_not_found

@@ -1,5 +1,4 @@
 class CollectionsController < ApplicationController
-  include ApplicationHelper
   include CollectionsHelper
 
   before_action :set_collection, except: [:index, :create]
