@@ -17,11 +17,11 @@
       <%= inline_svg 'embed.svg', class: 'menu__action__icon', size: 18 %>
       Embed
     </a>
-    <%= link_to recipe_export_pdf_path(@recipe, download: true), class: 'menu__action' do %>
+    <%= link_to export_pdf_recipe_path(@recipe, download: true), class: 'menu__action' do %>
       <%= inline_svg 'download.svg', class: 'menu__action__icon', size: 18 %>
       Download as PDF
     <% end %>
-    <%= link_to recipe_export_pdf_path(@recipe), class: 'menu__action' do %>
+    <%= link_to export_pdf_recipe_path(@recipe), class: 'menu__action' do %>
       <%= inline_svg 'print.svg', class: 'menu__action__icon', size: 18 %>
       Print
     <% end %>

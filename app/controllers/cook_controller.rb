@@ -2,7 +2,7 @@ class CookController < ApplicationController
   include RecipesHelper
 
   def index
-    @recipe = Recipe.find(params[:recipe_id])
+    @recipe = Recipe.find(params[:id])
     raise_not_found
 
     if me_owns_recipe?

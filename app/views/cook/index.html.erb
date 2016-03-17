@@ -54,7 +54,7 @@
             </a>
             <% if @recipe.imaged? %>
               <span class="grey-4 phs">or</span>
-              <%= link_to('remove this photo', recipe_remove_image_path(@recipe, cook: true),
+              <%= link_to('remove this photo', remove_image_recipe_path(@recipe, cook: true),
                            class: 'btn bg-white') %>
             <% end %>
           </div>

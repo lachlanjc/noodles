@@ -85,8 +85,7 @@
   <%= inline_svg 'edit.svg' %>
 <% end %>
 
-<%= link_to recipe_cook_path(recipe_id: @recipe.id),
-            class: 'btn-paper bg-orange fill-white circle fixed pam shadow tooltipped',
-            'aria-label': 'Open Cook Mode' do %>
+<%= link_to cook_recipe_path, 'aria-label': 'Open Cook Mode',
+            class: 'btn-paper bg-orange fill-white circle fixed pam shadow tooltipped' do %>
   <%= inline_svg 'cook.svg' %>
 <% end %>

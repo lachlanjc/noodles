@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   get '/styleguide', to: 'pages#styleguide', as: :styleguide
 
   resources :recipes do
-    get '/cook', to: 'cook#index'
-    get '/pdf', to: 'recipes#export_pdf', as: :export_pdf
-    get '/share', to: 'recipes#share_this_recipe', as: :share_it
-    get '/un_share', to: 'recipes#un_share', as: :un_share
-    get '/remove_image', to: 'recipes#remove_image', as: :remove_image
+    member do
+      get '/cook', to: 'cook#index'
+      get '/pdf', to: 'recipes#export_pdf', as: :export_pdf
+      get '/remove_image', to: 'recipes#remove_image', as: :remove_image
+    end
   end
 
   scope '/s' do

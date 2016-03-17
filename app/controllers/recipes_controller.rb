@@ -55,7 +55,7 @@ class RecipesController < ApplicationController
       if request.xhr?
         render :show
       elsif params[:cook]
-        redirect_to recipe_cook_path(@recipe)
+        redirect_to cook_recipe_path(@recipe)
       else
         redirect_to @recipe
       end
@@ -103,7 +103,7 @@ class RecipesController < ApplicationController
     @recipe.img = nil
     @recipe.save
     if params[:cook]
-      redirect_to recipe_cook_path(@recipe)
+      redirect_to cook_recipe_path(@recipe)
     else
       redirect_to edit_recipe_path(@recipe)
     end
@@ -111,15 +111,13 @@ class RecipesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_recipe
     @recipe = Recipe.find(params[:id])
-    if @recipe.nil? && params[:recipe_id]
-      @recipe = Recipe.find(params[:recipe_id])
-    elsif @recipe.nil? && params[:shared_id]
-      @recipe = Recipe.find_by_shared_id(params[:shared_id])
+    if @recipe.nil?
+      @recipe = Recipe.find(params[:recipe_id]) if params[:recipe_id]
+      @recipe = Recipe.find_by_shared_id(params[:shared_id]) if params[:shared_id]
+      raise_not_found
     end
-    raise_not_found
   end
 
   def raise_not_found
