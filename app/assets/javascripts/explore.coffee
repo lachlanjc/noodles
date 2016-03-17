@@ -55,8 +55,6 @@ $(document).ready ->
       window.history.replaceState null, null, "?q=#{encodeURIComponent(q)}&src=#{s}"
 
       $('[data-behavior~=explore_clear_search]').show 'slow'
-      m = $('[data-behavior~=explore_suggestions], [data-behavior~=inline_signup_btn_container]')
-      m.css { 'display': 'none' }
 
       u = "/explore/results?q=#{encodeURIComponent(q)}&src=#{s}"
 
@@ -80,7 +78,6 @@ $(document).ready ->
   f.on 'keypress', _.debounce searchActions, 400
   f.on 'change', _.debounce logSearchToIntercom, 1000
 
-  $('[data-behavior~=explore_clear_search], [data-behavior~=explore_suggestions]').css { 'display': 'none' }
   $(document).on 'click', '[data-behavior~=explore_clear_search]', ->
     $(this).hide 'slow'
     $('[data-behavior~=explore_search_field]').val null

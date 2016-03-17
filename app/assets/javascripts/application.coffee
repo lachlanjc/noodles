@@ -81,6 +81,8 @@ $(document).ready ->
     e.clearSelection()
     return
 
+  # Switch .dn for inline style — prevents flash on load.
+  $('[data-behavior~=rehide]').hide().removeClass('dn')
   $(document).on 'click', '[data-behavior~=photo_name]', ->
     $('[data-behavior~=photo_field]').click()
   $('[data-behavior~=photo_field]').on 'change', ->
