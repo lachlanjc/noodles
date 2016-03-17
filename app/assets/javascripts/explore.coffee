@@ -67,7 +67,7 @@ $(document).ready ->
             itemSelector: '[data-behavior~=explore_result_item]'
             gutter: 32
             isFitWidth: true
-          activateModals()
+          totalModalize()
         if _.isEmpty g.find('[data-behavior~=explore_result_item] img')
           masonry()
         else

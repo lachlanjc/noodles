@@ -16,8 +16,8 @@ $(document).ready ->
       N.toggleMenu `o.length > 0 ? o : c`
     e.stopImmediatePropagation()
     return
-  # Close popover menus on esc
   $(document).keydown (e) ->
+    # Close popover menus on esc
     if e.keyCode is 27 and $(N.openMenuSelector).length > 0
       N.toggleMenu $(N.openMenuSelector)
 
@@ -25,7 +25,7 @@ $(document).ready ->
     $(this).toggleClass 'bg-white shadow well border'
     $(this).slideUp 'fast'
 
-  activateModals()
+  totalModalize()
 
   $(document).on 'keydown', 'action, [data-behavior~=r_fav]', (e) ->
     $(this).click() if e.keyCode is 32 or e.keyCode is 13

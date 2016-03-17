@@ -2,4 +2,4 @@
 #= require modals
 
 $(document).ready ->
-  activateModals()
+  totalModalize()

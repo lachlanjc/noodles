@@ -47,7 +47,7 @@ class CollectionPage extends React.Component {
 
 class CollectionHeader extends React.Component {
   componentDidMount() {
-    $('[data-behavior~=modal_trigger]').leanModal()
+    totalModalize()
   }
 
   render() {
