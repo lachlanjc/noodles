@@ -75,20 +75,15 @@ class RecipesController < ApplicationController
   end
 
   def embed_js
-    @recipe = Recipe.find_by_shared_id(params[:shared_id])
     render js: embed_code(@recipe), layout: false
   end
 
   def share
-    @recipe = Recipe.find_by_shared_id(params[:shared_id])
-    raise_not_found
     setup_image_layout if @recipe.img.present?
     @shared_url = shared_url
   end
 
   def save_to_noodles
-    @recipe = Recipe.find_by_shared_id(params[:shared_id])
-    raise_not_found
     @new_recipe = @recipe.dup
     @new_recipe.user_id = current_user.id
     @new_recipe.source = shared_url
@@ -111,11 +106,9 @@ class RecipesController < ApplicationController
 
   def set_recipe
     @recipe = Recipe.find(params[:id])
-    if @recipe.nil?
-      @recipe = Recipe.find(params[:recipe_id]) if params[:recipe_id]
-      @recipe = Recipe.find_by_shared_id(params[:shared_id]) if params[:shared_id]
-      raise_not_found
-    end
+  rescue ActiveRecord::RecordNotFound
+    @recipe = Recipe.find_by(shared_id: params[:shared_id]) if params[:shared_id]
+    raise_not_found
   end
 
   def raise_not_found
