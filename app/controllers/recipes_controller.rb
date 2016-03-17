@@ -100,8 +100,7 @@ class RecipesController < ApplicationController
   end
 
   def remove_image
-    @recipe.img = nil
-    @recipe.save
+    @recipe.update_attribute(:img, nil)
     if params[:cook]
       redirect_to cook_recipe_path(@recipe)
     else
