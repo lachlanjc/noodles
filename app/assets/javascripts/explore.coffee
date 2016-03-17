@@ -34,7 +34,7 @@ $(document).ready ->
   logSearchToIntercom = ->
     u = $('[data-behavior~=nav]').data 'user'
     q = _.trim $('[data-behavior~=explore_search_field]').val()
-    if u isnt 'anon' and !_.isEmpty(q) and Intercom
+    if u isnt 'anon' and !_.isEmpty(q) and typeof Intercom isnt 'undefined'
       e =
         user_id: u
         query: _.trim $('[data-behavior~=explore_search_field]').val()
