@@ -50,7 +50,6 @@ class RecipesController < ApplicationController
 
   def update
     if @recipe.update(recipe_params)
-      collection_cleanup!
       flash[:green] = 'Great, your changes were saved.'
       if request.xhr?
         render :show
@@ -152,10 +151,5 @@ class RecipesController < ApplicationController
       end
     end
     @image_layout = defined? @image_layout
-  end
-
-  def collection_cleanup!
-    @recipe.collections.reject!(&:blank?)
-    @recipe.save
   end
 end
