@@ -37,7 +37,7 @@ class RecipesHome extends React.Component {
   }
 
   render() {
-    const recipes = this.state.recipesCurrent;
+    const recipes = this.state.recipesCurrent
     return (
       <main className='md-col-9 mx-auto pam'>
         <header>
@@ -57,7 +57,7 @@ class RecipesHome extends React.Component {
   }
 
   renderBlankSlate() {
-    const text = <h3 className='man'>No recipes here yet!</h3>;
+    const text = <h3 className='man'>No recipes here yet!</h3>
     return (
       <BlankSlate margin='mtn mbm'>
         {this.state.view === 'fav' ? this.renderFavoritesBlankSlate() : text}
