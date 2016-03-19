@@ -53,7 +53,7 @@ class CollectionHeader extends React.Component {
   render() {
     const coll = this.props.coll;
 
-    let rootClass = 'col-12 bs-bb flex fac';
+    let rootClass = 'col-12 bx flex fac';
     let rootStyle = {};
     let actionsClass = 'caps f4 dn-p mtm';
     if (!_.isEmpty(coll.photo)) {
