@@ -1,10 +1,15 @@
 .relative { position: relative; }
 .absolute { position: absolute; }
-.fixed { position: fixed; }
+.fixed    { position: fixed; }
 
 .bx { box-sizing: border-box; }
 
 @media screen and (min-width: 48em) {
-  .sticky-ns { position: sticky; }
+  .sticky-ns {
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: sticky;
+  }
   .tl-ns { top: 4rem; }
 }
