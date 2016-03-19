@@ -1,7 +1,7 @@
 class FilterBar extends React.Component {
   render() {
     return (
-      <section role='menubar' className='filterbar tc'>
+      <section role='menubar' className='filterbar tc' {...this.props}>
         {this.props.children}
       </section>
     )
@@ -10,7 +10,7 @@ class FilterBar extends React.Component {
 
 class FilterBarItem extends React.Component {
   render() {
-    let classes = 'filterbar__item dib phm pointer ';
+    let classes = `filterbar__item ${this.props.className} dib phm pointer `
     if (this.props.active === this.props.view) {
       classes += 'bg-orange white white-hover b'
     } else {
