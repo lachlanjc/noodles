@@ -8,6 +8,41 @@
 #= require global
 
 $(document).ready ->
+  N.toggleMenu = (m) ->
+    $(m).find('[data-behavior~=menu_content]').slideToggle 120
+    o = $(m).attr('aria-expanded') is 'true'
+    $(m).attr 'aria-expanded', !o
+    return
+
+  N.showEditorPhotoPreview = ->
+    t = $('[data-behavior~=editor_photo_preview]')
+    $('[data-behavior~=modal_overlay]').fadeTo 'fast', 1
+    t.css {
+      'position': 'absolute',
+      'z-index': 10,
+    }
+    if window.innerWidth > 768
+      t.animate {
+        'right': '20%',
+        'min-width': '16rem',
+        'width': '60%',
+      }, 300
+    else
+      t.animate {
+        'right': (window.innerWidth - 256) / 2, # 256 = 16px * 16rem
+        'width': '16rem',
+      }, 300
+  N.hideEditorPhotoPreview = ->
+    t = $('[data-behavior~=editor_photo_preview]')
+    t.css { position: 'initial' }
+    t.animate {
+      'min-width': t.attr('width'),
+      'width': t.attr('width'),
+    }, 300, ->
+      t.attr 'style', '' # Removes left, right, etc
+    $('[data-behavior~=modal_overlay]').fadeTo 'fast', 0, ->
+      $(this).css 'display', '' # Removes display: none and clears focus
+
   # Popover menus
   $(document).on 'click', (e) ->
     o = $(N.openMenuSelector)
@@ -20,6 +55,8 @@ $(document).ready ->
     # Close popover menus on esc
     if e.keyCode is 27 and $(N.openMenuSelector).length > 0
       N.toggleMenu $(N.openMenuSelector)
+    if e.keyCode is 27 and $('[data-behavior~=editor_photo_preview]').length > 0
+      N.hideEditorPhotoPreview()
 
   $(document).on 'click', '[data-behavior~=flash]', ->
     $(this).toggleClass 'bg-white shadow well border'
@@ -88,43 +125,63 @@ $(document).ready ->
 
   # Switch .dn for inline style — prevents flash on load.
   $('[data-behavior~=rehide]').hide().removeClass('dn')
-  $(document).on 'click', '[data-behavior~=photo_name]', ->
+
+  $(document).on 'click', '[data-behavior~=photo_button]', ->
     $('[data-behavior~=photo_field]').click()
   $('[data-behavior~=photo_field]').on 'change', ->
-    $('[data-behavior~=photo_name]').text this.value.match(/[^\/\\]+$/)[0]
+    d = $('[data-behavior~=photo_button]').find('[data-behavior~=description]')
+    d.text this.value.match(/[^\/\\]+$/)[0]
     $('[data-behavior~=recipe_errors]').hide 400
+    u = window.URL || window.webkitURL
+    if f = document.querySelector('[data-behavior~=photo_field]').files[0]
+      r = new FileReader
+      r.addEventListener 'load', (->
+        $('[data-behavior~=editor_photo]').animate { height: 64 }, 150, ->
+          $('[data-behavior~=editor_photo_preview]').attr 'src', r.result
+          $('[data-behavior~=editor_photo_cont]').show()
+      ), false
+      r.readAsDataURL f
   $(document).on 'click', '[data-behavior~=remove_current_photo]', ->
-    l = $(this).find('[data-behavior~=remove_current_photo_link]')
-    l.text 'Removing photo...'
-    l.click()
-    $('[data-behavior~=recipe_errors]').hide 400
-  $(document).on 'ajaxSuccess', '[data-behavior~=remove_current_photo_link]', ->
     t = $(this)
-    t.text 'Removed!'
-    $('[data-behavior~=photo_name]').text 'Upload a new photo'
-    t.parent().hide 400
+    d = t.find('[data-behavior~=description]')
+    p = $('[data-behavior~=editor_photo_preview]')
+    d.text 'Removing photo...'
+    v = 'blur(1px) grayscale(1)'
+    p.css { 'filter': v, '-webkit-filter': v }
+    $.get $(this).data('href'), (e) ->
+      d.text 'Removed!'
+      $('[data-behavior~=editor_photo_cont]').hide 300, ->
+        p.attr 'style', ''
+      t.hide 'slow'
+    $('[data-behavior~=recipe_errors]').hide 300
+  $(document).on 'click', '[data-behavior~=editor_clip_trigger]', (e) ->
+    # Prevent clicking again
+    $('[data-behavior~=editor_clip_trigger]').data 'behavior', ''
+    $('[data-behavior~=editor_clip_r]').remove()
+    $('[data-behavior~=editor_clip_content]').show 'fast'
+    h = $('[data-behavior~=editor_clip_header]')
+    h.toggleClass 'mtn man fwn pointer' # Fix margins
+    h.text 'Clip from the Web' # Be definitive.
+    return
+  # Editor – photo preview
+  $(document).on 'click', '[data-behavior~=editor_photo_preview]', ->
+    if $(this).attr('style').length > 2
+      N.hideEditorPhotoPreview()
+    else
+      N.showEditorPhotoPreview()
+    return
+  # Hide photo preview by clicking overlay
+  if $('[data-behavior~=editor_photo_preview]').length > 0
+    $(document).on 'click', '[data-behavior~=modal_overlay]', ->
+      N.hideEditorPhotoPreview()
+      $(this).hide 50
+
+  $('[data-behavior~=autosize]').autosize()
+  $('[data-behavior~=editor_instructions]').on 'focus', ->
+    this.value = '1. ' if _.isEmpty this.value
 
   $('[data-behavior~=cook_photo_field]').on 'change', ->
     $(this)[0].form.submit()
 
   $(document).on 'click', '[data-behavior~=checklist_item]', ->
     $(this).toggleClass 'checked'
-
-  # Switch .dn for inline style — prevents flash on load.
-  # Eventually (TODO), this should be reusable. Explore needs it as well.
-  editorClipContent = $('[data-behavior~=editor_clip_content]')
-  editorClipContent.hide().removeClass('dn')
-  $(document).on 'click', '[data-behavior~=editor_clip_trigger]', (e) ->
-    # Prevent clicking again
-    $('[data-behavior~=editor_clip_trigger]').data 'behavior', ''
-    $('[data-behavior~=editor_clip_r]').remove()
-    editorClipContent.show 'fast'
-    h = $('[data-behavior~=editor_clip_header]')
-    # Fix margins
-    h.toggleClass 'mtn man fwn pointer'
-    # Be definitive.
-    h.text 'Clip from the Web'
-    return
-  $('[data-behavior~=autosize]').autosize()
-  $('[data-behavior~=editor_instructions]').on 'focus', ->
-    this.value = "1. " if _.isEmpty this.value
