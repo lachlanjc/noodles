@@ -55,6 +55,7 @@ $(document).ready ->
       window.history.replaceState null, null, "?q=#{encodeURIComponent(q)}&src=#{s}"
 
       $('[data-behavior~=explore_clear_search]').show 'slow'
+      $('[data-behavior~=explore_suggestions]').fadeOut()
 
       u = "/explore/results?q=#{encodeURIComponent(q)}&src=#{s}"
 
