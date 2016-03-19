@@ -60,24 +60,29 @@ $(document).ready ->
 
   if /iPhone|iPad/i.test(navigator.userAgent)
     $('[data-behavior~=copy]').hide()
-  clipboard = new Clipboard('[data-behavior~=copy]', text: (trigger) ->
+  clipboard = new Clipboard '[data-behavior~=copy]', text: (trigger) ->
     trigger.getAttribute 'data-clipboard-text'
-  )
+  clipboardReset = (t) ->
+    t.toggleClass 'bg-green bg-red' if t.attr('class').match /red/
+    t.text 'Copied!'
+    r = -> t.text 'Copy'
+    setTimeout r, 1500
   clipboard.on 'error', (e) ->
     $btn = $(e.trigger)
-    if /Mac/i.test(navigator.userAgent)
+    $btn.toggleClass 'bg-green bg-red' unless $btn.attr('class').match /red/
+    if /Mac/i.test navigator.userAgent
       $btn.text 'Press ⌘-C'
     else
       $btn.text 'Press Ctrl-C'
+    $(document).on 'keyup', (k) ->
+      clipboardReset $btn if k.keyCode is 91
     $btn.on 'mouseleave', (m) ->
+      $btn.toggleClass 'bg-green bg-red' if $btn.attr('class').match /red/
       $btn.text 'Copy'
       e.clearSelection()
     return
   clipboard.on 'success', (e) ->
-    $btn = $(e.trigger)
-    $btn.text 'Copied!'
-    reset = -> $btn.text('Copy')
-    setTimeout reset, 1500
+    clipboardReset $(e.trigger)
     e.clearSelection()
     return
 
