@@ -22,13 +22,13 @@ class CollectionList extends React.Component {
   }
 
   renderCollections() {
-    const colls = this.props.collections;
+    const colls = this.props.collections
 
-    if (_.isEmpty(colls)) { this.renderBlankSlate() } else {
-      return _.map(colls, coll => {
-        return <CollectionListItem coll={coll} key={'coll-' + coll.id} />
-      })
-    }
+    if (_.isEmpty(colls)) { return ( this.renderBlankSlate() ) }
+
+    return _.map(colls, coll => {
+      return <CollectionListItem coll={coll} key={'coll-' + coll.id} />
+    })
   }
 }
 
