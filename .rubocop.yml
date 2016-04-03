@@ -4,5 +4,8 @@ AllCops:
     - 'db/schema.rb'
     - 'bin/*'
     - 'Gemfile.lock'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+    - 'tmp/**/*'
 Metrics/LineLength:
   Enabled: false
