@@ -13,7 +13,11 @@ class AllrecipesSearchScraper
       result['url'] = 'http://allrecipes.com' + item.at_css('a').attr('href')
       result['title'] = item.search('h3').text.squish
       result['description'] = item.search('.rec-card__description').text.squish.truncate(164)
-      result['image'] = item.at_css('.grid-col__rec-image').attr('data-original-src')
+      if item.at_css('.grid-col__rec-image').present?
+        result['image'] = item.at_css('.grid-col__rec-image').attr('data-original-src')
+      elsif item.at_css('.grid-col__hub-image').present?
+        result['image'] = item.at_css('.grid-col__hub-image').attr('src')
+      end
       results.push(result)
     end
     results.delete_if do |item|
