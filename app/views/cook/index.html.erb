@@ -33,12 +33,14 @@
       </div>
     <% end %>
 
-    <% @recipe.instructions.lines.each do |step| %>
-      <%= content_tag :div,
-                       plain_text_from_markdown(step.to_s).html_safe,
-                       'data-behavior': 'checklist_item',
-                       class: 'f2 grey-2 bg-white rounded shadow pointer pam db mbm' if step.strip.present? %>
-    <% end %>
+    <ol class="list-reset">
+      <% sanitize(markdown(@recipe.instructions)).lines.each do |step| %>
+        <% text = plain_text_from_markdown(step.to_s, remove_numbers: true) %>
+        <%= content_tag :li, text.html_safe,
+                        'data-behavior': 'checklist_item',
+                        class: 'f2 grey-2 bg-white rounded shadow pointer pam db mbm' if text.strip.present? %>
+      <% end %>
+    </ol>
 
     <div class="bg-white rounded shadow pam db f2 tc mbm grey-2">
       <span>And now you're finished! Enjoy the <%= @recipe.title %>.</span>
