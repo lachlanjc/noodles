@@ -52,7 +52,7 @@ class RecipesController < ApplicationController
       flash[:green] = 'Great, your changes were saved.'
       if request.xhr?
         render :show
-      elsif params[:cook]
+      elsif request.referer.match('redirect_to=cook')
         redirect_to cook_recipe_path(@recipe)
       else
         redirect_to @recipe

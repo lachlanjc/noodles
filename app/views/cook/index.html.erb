@@ -72,7 +72,7 @@
     <%= inline_svg 'exit.svg' %>
   <% end %>
 <% else %>
-  <%= link_to edit_recipe_path(@recipe),
+  <%= link_to edit_recipe_path(@recipe, redirect_to: 'cook'),
               class: 'btn-paper-mini bg-orange fill-white circle fixed pas shadow tooltipped',
               'aria-label': 'Edit this recipe' do %>
     <%= inline_svg 'edit.svg' %>
