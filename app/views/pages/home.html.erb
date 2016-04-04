@@ -17,9 +17,9 @@
     <%= render 'shared/nav' %>
 
     <article class="hero-content phm mx-auto">
-      <%= link_to @primary_text, @primary_link, class: 'btn bg-orange tsn f2 mtl pam' %>
       <h1 class="white f1 mega-l mw8 mx-auto normal hero-shadow">One place for all your recipes.</h1>
       <h2 class="white mw8 mx-auto normal hero-shadow">Keep, cook, and share your recipes with Noodles.</h2>
+      <%= link_to 'Start Exploring', explore_path, class: 'btn bg-orange f2 mtl pam' if nobody_signed_in? %>
     </article>
   </header>
   <p class="phl mw7 mx-auto f3 f2-ns tl mtl mbm">

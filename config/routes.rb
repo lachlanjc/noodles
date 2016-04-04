@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root 'pages#home'
-  get '/home', to: 'pages#home_forced', as: :home
+  get '/home', to: 'pages#home', as: :home
   get '/styleguide', to: 'pages#styleguide', as: :styleguide
 
   resources :recipes do
