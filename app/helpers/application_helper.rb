@@ -1,22 +1,14 @@
 module ApplicationHelper
-  include DeviseHelper
-
-  def flash_color_class(level)
-    case level.to_sym
-    when :grey then 'grey-3'
-    when :green then 'green'
-    when :red, :alert then 'red'
-    when :blue, :notice then 'blue'
-    else 'grey-3'
-    end
-  end
-
-  def title(page_title)
-    content_for(:title) { page_title }
-  end
-
   def app_url
     Rails.env.development? ? 'http://noodles.dev' : 'https://getnoodl.es'
+  end
+
+  def simple_controller
+    request.filtered_parameters['controller']
+  end
+
+  def simple_action
+    request.filtered_parameters['action']
   end
 
   def modal_close

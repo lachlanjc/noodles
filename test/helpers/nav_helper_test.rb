@@ -12,4 +12,12 @@ class NavHelperTest < ActionView::TestCase
     activate_nav!(:hello)
     assert_match(/b/, nav_active_class(:hello))
   end
+
+  test 'flash color' do
+    assert_equal 'red', flash_color_class(:red)
+  end
+
+  test 'flash color vague' do
+    assert_equal 'grey-3', flash_color_class(:hello)
+  end
 end

@@ -4,10 +4,6 @@ class ApplicationHelperTest < ActionView::TestCase
   include ApplicationHelper
   include SvgHelper
 
-  test 'flash color' do
-    assert_equal 'red', flash_color_class(:red)
-  end
-
   test 'app url' do
     assert_equal app_url, 'https://getnoodl.es'
   end
