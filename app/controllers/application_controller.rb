@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include DeviseHelper
+
   protect_from_forgery with: :exception
   layout proc { false if request.xhr? }
   before_action :configure_permitted_parameters, if: :devise_controller?
