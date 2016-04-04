@@ -38,11 +38,6 @@
     }
   }
 
-  img {
-    border-radius: $border-radius;
-    border: $border-width solid $darken-2;
-  }
-
   &.f5 {
     blockquote,
     pre {
@@ -54,4 +49,9 @@
     color: inherit;
     font-size: $f3;
   }
+}
+
+.docs-content img {
+  border-radius: $border-radius;
+  border: $border-width solid $darken-2;
 }

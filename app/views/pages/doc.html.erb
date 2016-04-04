@@ -3,7 +3,7 @@
 
 <%= render 'shared/nav' %>
 
-<h1 class="f1 tc mbn phm dn-ns"><%= @title %></h1>
+<h1 class="f1 mbn phm dn-ns"><%= @title %></h1>
 
 <main class="col-12 flex-ns fas mx-auto">
   <% if @title == 'Docs' %>
@@ -22,8 +22,8 @@
       </nav>
     </section>
   <% end %>
-  <article class="md-col-6 flex-auto flex-first mw7 mx-auto phm content">
-    <h1 class="f0 meta-l mvm dn db-ns"><%= @title %></h1>
+  <article class="md-col-6 flex-auto flex-first mw7 mx-auto phm docs-content">
+    <h1 class="f0 mvm dn db-ns"><%= @title %></h1>
     <%= @doc.html_safe %>
   </article>
 </main>
