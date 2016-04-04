@@ -148,6 +148,7 @@ $(document).ready ->
     d.text 'Removing photo...'
     v = 'blur(1px) grayscale(1)'
     p.css { 'filter': v, '-webkit-filter': v }
+    $('[data-behavior~=photo_field]').val null
     $.get $(this).data('href'), (e) ->
       d.text 'Removed!'
       $('[data-behavior~=editor_photo_cont]').hide 300, ->
