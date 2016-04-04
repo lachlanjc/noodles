@@ -33,7 +33,6 @@ class RecipesController < ApplicationController
 
   def edit
     title_setup
-    @page_title = "Editing #{@recipe.title}"
   end
 
   def create
@@ -59,6 +58,7 @@ class RecipesController < ApplicationController
         redirect_to @recipe
       end
     else
+      title_setup
       render :edit
     end
   end
