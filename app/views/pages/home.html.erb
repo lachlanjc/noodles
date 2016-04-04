@@ -13,40 +13,13 @@
 <body class="tc man bg-grey-6">
   <header class="hero-container bg-cover bg-center bg-no-repeat"
           style="background-image: url(<%= image_path "home/#{rand(1..6).to_s}.jpg" %>);">
-    <nav role="navigation" class="flex-ns phm pvs white dn-p">
-      <div class="pvs">
-        <%= link_to 'Home', root_url, class: 'phs link-reset white normal' %>
-        <%= link_to 'Features', docs_path, class: 'phs link-reset white normal' %>
-        <%= link_to 'Explore', explore_path, class: 'phs link-reset white normal' %>
-      </div>
-
-      <div class="flex-auto mts dn dib-ns">
-        <% if flash.any? %>
-          <% flash.each do |key, value| %>
-            <span class="phl pvs border border-white white dib" style="border-width: 2px; border-radius: 4px;">
-              <%= value.to_s %>
-            </span>
-          <% end %>
-        <% else %>
-          <span class="white caps">Noodles</span>
-        <% end %>
-      </div>
-
-      <div class="pvs">
-        <%= link_to 'About', help_path, class: 'phs link-reset white normal' %>
-        <%= link_to 'Blog', announcements_path, class: 'phs link-reset white link-reset white' %>
-        <% if user_signed_in? %>
-          <%= link_to 'Sign Out', sign_out_path, method: :delete, class: 'phs link-reset white normal' %>
-        <% else %>
-          <%= link_to 'Sign In', sign_in_path, class: 'phs link-reset white normal' %>
-        <% end %>
-      </div>
-    </nav>
+    <% activate_nav! :home %>
+    <%= render 'shared/nav' %>
 
     <article class="hero-content phm mx-auto">
-      <h1 class="white f1 mega-l mw8 mx-auto normal">One place for all your recipes.</h1>
-      <h2 class="white mw8 mx-auto normal">Keep, cook, and share your recipes with Noodles.</h2>
       <%= link_to @primary_text, @primary_link, class: 'btn bg-orange tsn f2 mtl pam' %>
+      <h1 class="white f1 mega-l mw8 mx-auto normal hero-shadow">One place for all your recipes.</h1>
+      <h2 class="white mw8 mx-auto normal hero-shadow">Keep, cook, and share your recipes with Noodles.</h2>
     </article>
   </header>
   <p class="phl mw7 mx-auto f3 f2-ns tl mtl mbm">
