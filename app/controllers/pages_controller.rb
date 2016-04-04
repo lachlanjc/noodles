@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
-  include PagesHelper
-
+  include NavHelper
+  include TextHelper
 
   def home
     render :home, layout: false
@@ -13,15 +13,15 @@ class PagesController < ApplicationController
   end
 
   def terms
-    render_doc('terms.md')
+    render_doc :terms
   end
 
   def privacy
-    render_doc('privacy.md')
+    render_doc :privacy
   end
 
   def docs
-    render_doc('docs.md')
+    render_doc :docs
   end
 
   def embed_demo
@@ -30,5 +30,11 @@ class PagesController < ApplicationController
 
   private
 
+  def render_doc(filename)
+    activate_nav! filename.to_s.chomp('.md').to_sym
+    @title = filename.to_s.chomp('.md').humanize
+    data = File.read(Rails.root.join('public', 'docs', filename.to_s + '.md'))
+    @doc = markdown(data).html_safe
+    render 'pages/doc'
   end
 end
