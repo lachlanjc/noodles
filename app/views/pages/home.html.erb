@@ -71,19 +71,19 @@
     <blockquote class="mx-auto mw6 f4 f3-ns mbm">
       &ldquo;Noodles lets me enjoy cooking instead of frantically trying to find recipes.&rdquo;
     </blockquote>
-    <a href="#signup" name="signup" data-behavior="modal_trigger inline_signup_btn"
-       style="padding: 1rem 1.5rem;" class="btn bg-orange f3 f2-ns">
-       Sign Up
-    </a>
+    <% if nobody_signed_in? %>
+      <a href="#signup" name="signup" data-behavior="modal_trigger inline_signup_btn"
+         style="padding: 1rem 1.5rem;" class="btn bg-orange f3 f2-ns">
+         Sign Up
+      </a>
+      <section class="modal" role="dialog" id="signup">
+        <%= modal_close %>
+        <h2 class="orange man">Sign up for Noodles</h2>
+        <%= render 'devise/registrations/new', user: User.new, text: 'Noodles is (and always will be) completely free.',
+                   options: { class: 'modal--scroll' } %>
+      </section>
+    <% end %>
   </section>
-  <% if nobody_signed_in? %>
-    <section class="modal" role="dialog" id="signup">
-      <%= modal_close %>
-      <h2 class="orange man">Sign up for Noodles</h2>
-      <%= render 'devise/registrations/new', user: User.new, text: 'Noodles is (and always will be) completely free.',
-                 options: { class: 'modal--scroll' } %>
-    </section>
-  <% end %>
   <footer class="db pvm grey-4">
     <%= link_to 'Terms', :terms, class: 'phs link-reset' %>
     <%= link_to 'Privacy', :privacy, class: 'phs link-reset' %>
