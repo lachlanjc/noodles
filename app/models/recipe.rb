@@ -8,7 +8,7 @@ class Recipe < ActiveRecord::Base
 
   has_attached_file :img, default_url: '', path: 'recipes/:id/img/:style.:extension'
   validates_attachment_content_type :img, content_type: /\Aimage\/.*\Z/
-  validates_with AttachmentSizeValidator, attributes: :img, less_than: 2.megabytes
+  validates_with AttachmentSizeValidator, attributes: :img, less_than: 5.megabytes
 
   after_save :collection_cleanup!
 
