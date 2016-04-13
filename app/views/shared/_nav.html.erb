@@ -12,9 +12,8 @@
         <%= link_to t('general.collections'), collections_path, class: nav_active_class(:collections) %>
         <%= link_to 'Explore', explore_path, class: nav_active_class(:explore) %>
       </section>
-
       <section>
-        <%= link_to 'Blog', announcements_path, class: nav_active_class(:announcements) unless nav_active?(:onboarding) %>
+        <%= link_to 'News', 'https://news.getnoodl.es/', class: nav_active_class(:medium) %>
         <%= link_to t('general.settings'), :settings, class: nav_active_class(:settings) %>
         <%= link_to t('general.help'), :help, class: nav_active_class(:help) %>
         <%= link_to t('general.sign_out'), :sign_out, class: nav_active_class(:sign_out) %>
@@ -25,8 +24,8 @@
         <%= link_to t('general.features'), docs_path, class: nav_active_class(:docs) %>
         <%= link_to t('general.about'), :help, class: nav_active_class(:help) %>
       </section>
-
       <section>
+        <%= link_to 'News', 'https://news.getnoodl.es/', class: nav_active_class(:medium) %>
         <%= link_to t('general.sign_in'), :sign_in, class: nav_active_class(:sign_in) %>
         <%= link_to t('general.sign_up'), :sign_up, class: nav_active_class(:sign_up) %>
       </section>
