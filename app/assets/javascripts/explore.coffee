@@ -31,15 +31,16 @@ $(document).ready ->
     $('[data-behavior~=explore_src_pick_bar]').data 'src-selected', 'nyt'
     activateSrc 'nyt'
 
-  logSearchToIntercom = ->
+  logSearchToAnalytics = ->
     u = $('[data-behavior~=nav]').data 'user'
     q = _.trim $('[data-behavior~=explore_search_field]').val()
-    if u isnt 'anon' and !_.isEmpty(q) and typeof Intercom isnt 'undefined'
+    if u isnt 'anon' and !_.isEmpty(q)
       e =
         user_id: u
         query: _.trim $('[data-behavior~=explore_search_field]').val()
         source: $('[data-behavior~=explore_src_pick_bar]').data 'src-selected'
-      Intercom 'trackEvent', 'searched-explore', e
+      Intercom('trackEvent', 'searched-explore', e) if typeof Intercom isnt 'undefined'
+      heap.track('Searches Explore', _.omit(e, 'user_id'))
 
   searchActions = ->
     t = $('[data-behavior~=explore_search_field]')
@@ -77,7 +78,7 @@ $(document).ready ->
 
   f = $('[data-behavior~=explore_search_field]')
   f.on 'keypress', _.debounce searchActions, 400
-  f.on 'change', _.debounce logSearchToIntercom, 1000
+  f.on 'change', _.debounce logSearchToAnalytics, 1000
 
   $(document).on 'click', '[data-behavior~=explore_clear_search]', ->
     $(this).hide 'slow'
