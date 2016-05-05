@@ -1,6 +1,7 @@
 <%- title @recipe.title.html_safe %>
 <% activate_nav!(:recipes) %>
 <% activate_nav!(:shared_recipe) %>
+<% remove_grey_bg! if @image_layout %>
 
 <% content_for :meta do -%>
   <% if @recipe.imaged? %>

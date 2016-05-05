@@ -139,7 +139,6 @@ class RecipesController < ApplicationController
       return unless size.present?
       if size[0].to_i > 750
         @image_layout = true
-        @remove_grey_bg = false
         @hide_flash = flash.any?
       end
     end

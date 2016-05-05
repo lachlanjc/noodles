@@ -1,5 +1,6 @@
 <% activate_nav!(:sign_up) %>
 <%- title 'Sign Up' %>
+<% content_for(:bg_img) { image_path "auth/#{rand(1..4).to_s}.jpg" } %>
 
 <% @form = render 'new', user: @user, text: t('.sign_up_and') %>
 
@@ -8,7 +9,7 @@
 <% else %>
   <%= render 'shared/nav' %>
 
-  <main class="document mw7 tc">
+  <main class="document document--bg mw6 tc">
     <h1 class="mbs"><%= t('.welcome') %></h1>
     <%= @form %>
   </main>

@@ -28,4 +28,17 @@ module NavHelper
   def title(page_title)
     content_for(:title) { page_title }
   end
+
+  def remove_grey_bg!
+    content_for(:body_classes) { nil }
+  end
+
+  def body_classes
+    if content_for?(:bg_img)
+      'bg-no-repeat bg-center bg-cover'
+    else
+      content_for(:body_classes) || 'bg-grey-6'
+    end
+  end
+
 end

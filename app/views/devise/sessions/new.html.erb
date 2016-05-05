@@ -1,9 +1,10 @@
 <% activate_nav!(:sign_in) %>
 <%- title 'Sign in' %>
+<% content_for(:bg_img) { image_path "auth/#{rand(1..4).to_s}.jpg" } %>
 
 <%= render 'shared/nav' %>
 
-<main class="document mw7 tc">
+<main class="document document--bg mw6 tc">
   <h1 class="mbs"><%= t '.sign_in_to_n' %></h1>
   <p class="mbm"><%= t '.enter_info' %></p>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
