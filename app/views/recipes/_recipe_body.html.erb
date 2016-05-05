@@ -1,6 +1,6 @@
 <h2 class="mtm">Ingredients</h1>
 <div class="recipe__ingredients content" itemprop="ingredients">
-  <% @recipe.ingredients.lines.each do |line| %>
+  <% @recipe.ingredients.to_s.lines.each do |line| %>
     <%= ingredient_processed(line).html_safe %>
   <% end %>
 </div>

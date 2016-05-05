@@ -24,7 +24,7 @@
     <% else %>
       <% @media_url = @recipe.img.url.to_s %>
     <% end %>
-    <a rel="nofollow" href="http://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.getnoodl.es%2Fs%2F<%= @recipe.shared_id %><%= '&media=' + @media_url %>&description=<%= @recipe.title %> <%= '(' + @recipe.description + ')' %> on Noodles" class="mrs" target="_blank">
+    <a rel="nofollow" href="http://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.getnoodl.es%2Fs%2F<%= @recipe.shared_id %><%= '&media=' + @media_url %>&description=<%= @recipe.title %> <%= "(#{@recipe.description})" %> on Noodles" class="mrs" target="_blank">
       <%= social_icon 'pinterest' %>
     </a>
     <a rel="nofollow" href="https://buffer.com/add?url=http%3A%2F%2Fwww.getnoodl.es%2Fs%2F<%= @recipe.shared_id %>&text=Check out <%= @recipe.title %>, published on Noodles:" class="mrs" target="_blank">

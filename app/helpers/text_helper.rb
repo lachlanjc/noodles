@@ -1,6 +1,6 @@
 module TextHelper
   def markdown(str = '')
-    Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, underline: true, space_after_headers: true, strikethrough: true).render(str).html_safe
+    Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, underline: true, space_after_headers: true, strikethrough: true).render(str.to_s).html_safe
   end
 
   def plain_text_from_markdown(text = '', options = {})
