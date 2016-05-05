@@ -186,3 +186,7 @@ $(document).ready ->
 
   $(document).on 'click', '[data-behavior~=checklist_item]', ->
     $(this).toggleClass 'checked'
+
+  $(document).on 'submit', '[data-behavior~=clip_form]', ->
+    v = $('[data-behavior~=clip_url]').val()
+    heap.track('Clips Recipe', { 'URL': v })

@@ -3,8 +3,8 @@
   Clipping supports most recipe sites.
   <%= link_to 'Report a problem', 'mailto:lachlan@getnoodl.es?subject=Clipping%20issue', class: 'grey-3 underline' %>
 </small>
-<%= form_tag(save_path, method: 'get', class: 'flex mtm') do %>
+<%= form_tag(save_path, method: 'get', class: 'flex mtm', 'data-behavior': 'clip_form') do %>
   <%= url_field_tag 'url', nil, class: 'text-input flex-auto mrs', style: 'min-width: initial;',
-                     placeholder: "Paste in the recipe's URL" %>
+                     placeholder: "Paste in the recipe's URL", 'data-behavior': 'clip_url' %>
   <%= submit_tag 'Clip', name: nil, class: 'flex-last btn bg-blue' %>
 <% end %>
