@@ -21,11 +21,11 @@
     <% else %>
       <section>
         <%= link_to t('general.home'), root_url, class: nav_active_class(:home) %>
-        <%= link_to t('general.features'), docs_path, class: nav_active_class(:docs) %>
-        <%= link_to t('general.about'), :help, class: nav_active_class(:help) %>
-      </section>
-      <section>
+        <%= link_to t('general.explore'), explore_path, class: nav_active_class(:explore) %>
         <%= link_to 'News', 'https://news.getnoodl.es/', class: nav_active_class(:medium) %>
+      </section>
+      <section class="mls-ns">
+        <%= link_to t('general.about'), :help, class: nav_active_class(:help) %>
         <%= link_to t('general.sign_in'), :sign_in, class: nav_active_class(:sign_in) %>
         <%= link_to t('general.sign_up'), :sign_up, class: nav_active_class(:sign_up) %>
       </section>
