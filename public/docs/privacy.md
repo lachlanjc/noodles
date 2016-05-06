@@ -2,7 +2,7 @@
 
 ___
 
-This Privacy Policy governs the manner in which Noodles collects, uses, maintains and discloses information collected from users (each, a "User") of the www.getnoodl.es website ("Site"). This privacy policy applies to the Site and all products and services offered by Noodles.
+This Privacy Policy governs the manner in which Noodles collects, uses, maintains and discloses information collected from users (each, a "User") of the getnoodl.es website ("Site"). This privacy policy applies to the Site and all products and services offered by Noodles.
 
 ## Personal identification information
 

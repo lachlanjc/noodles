@@ -32,7 +32,7 @@ en:
     registrations:
       new:
         welcome: Hey, welcome to Noodles!
-        sign_up_and: Three quick questions and you'll be cooking. 💨😉
+        sign_up_and: Three quick questions and you'll be cooking.
         first_name: What's your first name?
         email_check: Your email address?
         eight_char: (at least 8 characters)
