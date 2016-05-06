@@ -67,18 +67,21 @@
 </main>
 
 <% if not_my_recipe? %>
-  <% exit_path = @recipe.shared_id == '6ww5W0L' ? root_url : share_path(@recipe.shared_id) %>
-  <%= link_to exit_path, class: 'btn-paper bg-orange fill-white circle fixed pam shadow-deep shadow-deep--effect' do %>
+  <% exit_path = @recipe.shared_id == 'sample' ? root_url : share_path(@recipe.shared_id) %>
+  <% exit_ttip = @recipe.shared_id == 'sample' ? 'Go back home' : 'Exit Cook Mode' %>
+  <%= link_to exit_path,
+              class: 'btn-paper bg-orange fill-white circle fixed pam shadow-deep shadow-deep--effect tooltipped',
+              'aria-label': exit_ttip do %>
     <%= inline_svg 'exit.svg' %>
   <% end %>
 <% else %>
   <%= link_to edit_recipe_path(@recipe, redirect_to: 'cook'),
-              class: 'btn-paper-mini bg-orange fill-white circle fixed pas shadow tooltipped',
+              class: 'btn-paper-mini bg-orange fill-white circle fixed pas shadow-deep shadow-deep--effect tooltipped',
               'aria-label': 'Edit this recipe' do %>
     <%= inline_svg 'edit.svg' %>
   <% end %>
   <%= link_to recipe_path(@recipe),
-              class: 'btn-paper bg-orange fill-white circle fixed pam shadow tooltipped',
+              class: 'btn-paper bg-orange fill-white circle fixed pam shadow-deep shadow-deep--effect tooltipped',
               'aria-label': 'Exit Cook Mode' do %>
     <%= inline_svg 'exit.svg' %>
   <% end %>
