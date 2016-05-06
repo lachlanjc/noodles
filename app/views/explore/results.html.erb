@@ -1,7 +1,7 @@
 <ul class="list-reset mx-auto" data-behavior="explore_masonry_grid">
 <% if @results.any? %>
   <% @results.each do |result| %>
-  <li class="rounded shadow mbl dib oh" style="width: 290px;"
+  <li class="rounded shadow shadow--effect mbl dib oh" style="width: 290px;"
       data-behavior="explore_result_item"
       data-title="<%= result['title'] %>" data-url="<%= result['url'] %>">
     <% if result['image'].present? %>

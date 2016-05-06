@@ -5,13 +5,11 @@ class CollectionListItem extends React.Component {
     if (!_.isEmpty(coll.photo_url)) {
       imgClass = 'image-header bg-center bg-no-repeat bg-cover'
       img = `url(${coll.photo_url.toString()})`
-    } else {
-      imgClass = 'bg-white rounded shadow pam'
     }
 
     return (
       <a href={coll.url} style={{minHeight: '15vh', backgroundImage: img}}
-         className={`flex fc fac fjc rounded shadow pal mbm bg-white rounded shadow ${imgClass}`}>
+         className={`flex fc fac fjc rounded shadow shadow--effect pal mbm bg-white ${imgClass}`}>
         <h2 className='coll__name f1 mw7 mbm'>{coll.name}</h2>
         {!_.isEmpty(coll.description) ?
           <h3 className='coll__desc lead man normal mw7'>{coll.description}</h3>

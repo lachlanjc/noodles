@@ -12,7 +12,7 @@ class RecipeListItem extends React.Component {
     recipe.favorite === true ? icns.push(<Icon icon='fav' className='mls fill-orange' />) : null
 
     return (
-      <li className='bg-white rounded shadow mbs pam'>
+      <li className='bg-white rounded shadow shadow--effect mbs pam'>
         <a href={recipeLink} className='link-reset'>
           <div className='fr dn-p'>{icns}</div>
           <h3 className='man normal'>{recipe.title}</h3>
