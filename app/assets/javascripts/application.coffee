@@ -127,7 +127,7 @@ $(document).ready ->
   $('[data-behavior~=rehide]').hide().removeClass('dn')
 
   $(document).on 'click', '[data-behavior~=photo_button]', ->
-    $('[data-behavior~=photo_field]').click()
+    $('[data-behavior~=photo_field]')[0].click()
   $('[data-behavior~=photo_field]').on 'change', ->
     d = $('[data-behavior~=photo_button]').find('[data-behavior~=description]')
     d.text this.value.match(/[^\/\\]+$/)[0]
