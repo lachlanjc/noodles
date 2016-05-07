@@ -128,6 +128,8 @@ $(document).ready ->
       $('[data-behavior~=explore_clipped_open]').attr 'href', '/recipes/' + s
       $('[data-behavior~=explore_clipped_toggle]').toggle 400
 
+      heap.track('Clips Recipe', { 'URL': u })
+
       setTimeout (->
         $('.modal__overlay').fadeOut 400
         $('[data-behavior~=explore_preview_modal]').hide 400, ->
