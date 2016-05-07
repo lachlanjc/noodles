@@ -9,7 +9,7 @@ input[type=checkbox] + label {
 
 .text-input {
   -webkit-appearance: none;
-  color: $grey-3;
+  color: $grey-2;
   border: $border;
   border-radius: $border-radius;
   display: block;
@@ -19,7 +19,7 @@ input[type=checkbox] + label {
   &:focus {
     transition: all 0.2s;
     border-color: $blue;
-    color: $black;
+    color: $grey-1;
     outline: 0;
   }
 }

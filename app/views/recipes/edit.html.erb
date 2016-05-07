@@ -1,12 +1,12 @@
-<% activate_nav!(:edit_recipe) %>
-<%- title "Editing #{@title}".html_safe %>
+<% activate_nav!(:recipes) %>
+<%- title @page_title || "Editing #{@title}".html_safe %>
 
 <%= render 'shared/nav' %>
 
 <main class="md-col-8 mx-auto mw7 phm pvm-ns">
   <% if params[:action] == 'new' %>
     <section class="mw6 mx-auto bg-white rounded pam shadow mbm flex" data-behavior="editor_clip">
-      <%= inline_svg 'chev-right.svg', size: 20, class: 'fill-grey-4 dib mrs pointer fsn', 'data-behavior': 'editor_clip_r editor_clip_trigger' %>
+      <%= inline_svg 'chev-right.svg', size: 20, class: 'fill-grey-3 dib mrs pointer fsn', 'data-behavior': 'editor_clip_r editor_clip_trigger' %>
       <article class="flex-auto dib">
         <h4 class="man fwn pointer" data-behavior="editor_clip_trigger editor_clip_header">
           Saving a recipe from the web?
@@ -27,7 +27,7 @@
       <img src="<%= @recipe.img.url if @recipe.imaged? %>" width="96" class="rounded oh bx pointer" data-behavior="editor_photo_preview" style="">
     </div>
     <div class="grey-4 pointer" data-behavior="photo_button">
-      <%= inline_svg 'photo-upload.svg', size: 32, class: 'fill-grey-4 relative', style: 'top: 10px;' %>
+      <%= inline_svg 'photo-upload.svg', size: 32, class: 'fill-grey-3 relative', style: 'top: 10px;' %>
       <span data-behavior="description" style="word-break: break-all;">
         <%= @recipe.unimaged? ? 'Upload a photo' : 'Upload a new photo' %>
       </span>

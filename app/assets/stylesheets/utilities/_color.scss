@@ -9,7 +9,7 @@
   color: $orange;
 
   &--hover:hover {
-    color: $orange;
+    color: $orange !important;
   }
 }
 .bg-orange {
@@ -34,7 +34,7 @@
   color: $blue;
 
   &-dark--hover:hover {
-    color: $blue-dark;
+    color: $blue-dark !important;
   }
 }
 .bg-blue {
@@ -55,16 +55,6 @@
 }
 .fill-white {
   fill: #fff;
-}
-
-.grey-6 {
-  color: $grey-6;
-}
-.bg-grey-6 {
-  background-color: $grey-6;
-}
-.fill-grey-6 {
-  fill: $grey-6;
 }
 
 .grey-5 {
@@ -89,6 +79,10 @@
 
 .grey-3 {
   color: $grey-3;
+
+  &--hover:hover {
+    color: $grey-3 !important;
+  }
 }
 .bg-grey-3 {
   background-color: $grey-3;
@@ -101,11 +95,18 @@
   color: $grey-2;
 
   &--hover:hover {
-    color: $grey-2;
+    color: $grey-2 !important;
   }
 }
+.bg-grey-2 {
+  background-color: $grey-2;
+}
+
 .grey-1 {
   color: $grey-1;
+}
+.bg-grey-1 {
+  background-color: $grey-1;
 }
 
 .darken-1 {

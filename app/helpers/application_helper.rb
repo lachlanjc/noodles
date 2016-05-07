@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def modal_close
-    svg = inline_svg('close.svg', class: 'fill-grey-4')
+    svg = inline_svg('close.svg', class: 'fill-grey-3')
     content_tag :action, svg, class: 'db fr pointer', data: { behavior: 'modal_close' }
   end
 

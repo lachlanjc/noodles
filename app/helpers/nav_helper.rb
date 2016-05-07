@@ -37,7 +37,7 @@ module NavHelper
     if content_for?(:bg_img)
       'bg-no-repeat bg-center bg-cover'
     else
-      content_for(:body_classes) || 'bg-grey-6'
+      content_for(:body_classes) || 'bg-grey-5'
     end
   end
 

@@ -77,7 +77,7 @@ class NoteEditor extends React.Component {
     const editing = (this.state.editing === true && this.props.allowEditing === true);
     return (
       <section className='mw6 mx-auto border pam mbm rounded bg-notes'>
-        <h3 className='mtn mbs tc grey-4 caps'>Notes</h3>
+        <h3 className='mtn mbs tc grey-2 caps'>Notes</h3>
         {editing ? this.renderEditing() : this.renderNotes()}
       </section>
     )
