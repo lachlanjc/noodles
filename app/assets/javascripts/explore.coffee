@@ -130,10 +130,8 @@ $(document).ready ->
 
       setTimeout (->
         $('.modal__overlay').fadeOut 400
-        $('[data-behavior~=explore_preview_modal]').hide 400
-        setTimeout (->
+        $('[data-behavior~=explore_preview_modal]').hide 400, ->
           t.text 'Clip'
           t.attr 'class', 'btn bg-blue mtm mx-auto'
-          $('[data-behavior~=explore_clipped_toggle]').toggle 'fast'
-        ), 400
-      ), 800
+          $('[data-behavior~=explore_clipped_toggle]').toggle 0
+      ), 300
