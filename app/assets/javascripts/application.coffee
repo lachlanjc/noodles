@@ -102,8 +102,7 @@ $(document).ready ->
   clipboardReset = (t) ->
     t.toggleClass 'bg-green bg-red' if t.attr('class').match /red/
     t.text 'Copied!'
-    r = -> t.text 'Copy'
-    setTimeout r, 1500
+    setTimeout (-> t.text 'Copy'), 1500
   clipboard.on 'error', (e) ->
     $btn = $(e.trigger)
     $btn.toggleClass 'bg-green bg-red' unless $btn.attr('class').match /red/
