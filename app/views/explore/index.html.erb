@@ -96,7 +96,13 @@
   <article class="text modal--scroll" data-behavior="explore_preview_body"></article>
   <footer class="border-top tc blue">
     <% if user_signed_in? %>
-      <a class="btn bg-blue mtm" data-behavior="explore_clip_from_preview">Clip</a>
+      <a data-behavior="explore_clip_from_preview explore_clipped_toggle"
+         class="btn bg-blue mtm mx-auto" style="max-width: 27px;">Clip</a>
+      <a class="blue mtm lh db" target="_blank" style="display: none;"
+         data-behavior="explore_clipped_open explore_clipped_toggle">
+        Clipped! <strong>Open </strong>
+        <%= inline_svg 'open-new-tab.svg', size: 16, class: 'fill-blue' %>
+      </a>
     <% else %>
       <a data-behavior="explore_trigger_inline_signup" class="btn bg-orange mtm">Sign up for Noodles to Clip</a>
     <% end %>

@@ -88,22 +88,6 @@ $(document).ready ->
     $('[data-behavior~=explore_suggestions]').fadeIn()
     window.history.replaceState null, null, '/explore'
 
-  clippingFinished = (b, id) ->
-    b.attr 'data-behavior', null
-    b.attr 'href', '/recipes/' + id
-    b.removeClass 'bg-blue busy'
-    b.attr 'style', 'color: #0092ff; box-shadow: inset 0 0 0 2px #0092ff;'
-    b.text 'Clipped!'
-
-  $(document).on 'click', '[data-behavior~=explore_clip_from_list]', ->
-    t = $(this)
-    t.text ''
-    t.toggleClass 'bg-blue busy'
-
-    u = '/save?url=' + t.closest('[data-behavior~=explore_result_item]').data 'url'
-    $.get u, (s) ->
-      clippingFinished t, s
-
   $(document).on 'click', '[data-behavior~=explore_preview]', ->
     t = $(this)
     r = t.closest '[data-behavior~=explore_result_item]'
@@ -127,7 +111,8 @@ $(document).ready ->
       c.removeClass 'busy busy--large mx-auto'
       c.html d
 
-    $(document).on 'click', '.modal__overlay', -> $(this).hide 200
+    $(document).on 'click', '.modal__overlay', ->
+      $(this).hide 200
 
   $(document).on 'click', '[data-behavior~=explore_trigger_inline_signup]', ->
     $(this).closest('.modal').hide()
@@ -135,23 +120,20 @@ $(document).ready ->
 
   $(document).on 'click', '[data-behavior~=explore_clip_from_preview]', ->
     t = $(this)
-    t.text null
-
+    t.text ''
     t.attr 'class', 'btn busy db mtm mx-auto'
-
     u = t.data 'url'
 
     $.get '/save?url=' + u, (s) ->
-      t.attr 'class', 'b mtm db link-reset'
-      t.text 'Clipped!'
+      $('[data-behavior~=explore_clipped_open]').attr 'href', '/recipes/' + s
+      $('[data-behavior~=explore_clipped_toggle]').toggle 400
 
-      p = $("[data-behavior~=explore_result_item][data-url='#{u}']")
-      p = p.find '[data-behavior~=explore_clip_from_list]'
-      clippingFinished p, s
-
-      c = ->
-        $('.modal__overlay').fadeOut 200
-        $('[data-behavior=explore_preview_modal]').css 'display': 'none'
-        t.text 'Clip'
-        t.attr 'class', 'btn bg-blue mtm'
-      setTimeout c, 600
+      setTimeout (->
+        $('.modal__overlay').fadeOut 400
+        $('[data-behavior~=explore_preview_modal]').hide 400
+        setTimeout (->
+          t.text 'Clip'
+          t.attr 'class', 'btn bg-blue mtm mx-auto'
+          $('[data-behavior~=explore_clipped_toggle]').toggle 'fast'
+        ), 400
+      ), 800
