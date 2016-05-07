@@ -11,11 +11,11 @@
   <%= render 'layouts/head' %>
 </head>
 <body class="tc man bg-grey-6">
+  <% activate_nav! :home %>
+  <%= render 'shared/nav' %>
   <header class="hero-container bg-cover bg-center bg-no-repeat"
-          style="background-image: url(<%= image_path "home/#{rand(1..5).to_s}.jpg" %>);">
-    <% activate_nav! :home %>
-    <%= render 'shared/nav' %>
-
+          style="background-image: url(<%= image_path "home/#{rand(1..5).to_s}.jpg" %>);
+                 margin-top: -1rem;">
     <article class="hero-content phm mx-auto">
       <h1 class="white f1 mega-l mw8 mx-auto normal hero-shadow">One place for all your recipes.</h1>
       <h2 class="white mw8 mx-auto normal hero-shadow">Keep, cook, and share your recipes with Noodles.</h2>
