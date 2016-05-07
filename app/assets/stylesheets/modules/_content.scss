@@ -1,5 +1,5 @@
 .content {
-  color: $grey-1;
+  color: $grey-2;
   word-wrap: break-word;
 
   a:not(.btn) {
@@ -16,11 +16,11 @@
 
   blockquote {
     padding: $space-1 $space-2;
-    border-left: 4px solid $grey-5;
+    border-left: 4px solid $grey-4;
   }
 
   pre {
-    background-color: $grey-6;
+    background-color: $grey-5;
     border-radius: $border-radius;
     font-family: $monospace-font-family;
     margin: 0;

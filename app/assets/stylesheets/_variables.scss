@@ -1,10 +1,8 @@
-$grey-6: #f4f4f5;
-$grey-5: #dbdee3;
-$grey-4: #8b909a;
-$grey-3: #666d78;
-$grey-2: darken($grey-3, 6%); // #585e67
-$grey-1: darken($grey-2, 4%); // #4f545c
-$black: #353941;
+$grey-5: #f4f4f6;
+$grey-4: #e0e6ed;
+$grey-3: #8492a6;
+$grey-2: #3c4858;
+$grey-1: #1f2d3d;
 
 $darken-1: rgba(#000,.0625);
 $darken-2: rgba(#000,.125);
@@ -24,7 +22,7 @@ $blue: #0092ff;
   $blue-dark: darken($blue, 8%);
 
 $border-width: 1px;
-$border-color: $grey-5;
+$border-color: $grey-4;
 $border: $border-width solid $border-color;
 $border-radius: 6px;
 

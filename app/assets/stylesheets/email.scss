@@ -10,7 +10,7 @@ td, p {
   font-family: Lato, '-apple-system', 'Avenir Next', 'Helvetica', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
 
   strong {
-    color: $black;
+    color: $grey-1;
   }
 }
 ul {
@@ -21,7 +21,7 @@ li {
   margin: 0 0 3px 0;
 
   strong {
-    color: $black;
+    color: $grey-1;
   }
 }
 img {
@@ -32,7 +32,7 @@ blockquote {
   font-style: italic;
 }
 h1, h2 {
-  color: $black;
+  color: $grey-1;
 }
 h1 {
   font-size: 25px;
@@ -84,7 +84,7 @@ a {
 
 .img-wrap {
   text-align: center;
-  background: $grey-6;
+  background: $grey-5;
   padding: 5px;
   img {
     display: block;
@@ -98,8 +98,8 @@ a {
 
 pre {
   white-space: pre-wrap;
-  background: $grey-1;
-  color: $grey-6;
+  background: $grey-5;
+  color: $grey-2;
   padding: 15px;
 }
 code {

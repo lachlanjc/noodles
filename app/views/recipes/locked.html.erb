@@ -3,7 +3,7 @@
 <%= render 'shared/nav' %>
 
 <main class="md-col-6 mx-auto phm tc pvl">
-  <%= inline_svg 'locked.svg', size: 200, class: 'mx-auto fill-grey-4' %>
+  <%= inline_svg 'locked.svg', size: 200, class: 'mx-auto fill-grey-3' %>
   <h2>Sorry, that recipe is private.</h2>
   <p>To see this recipe, ask the recipe owner to make sure they've shared this recipe.</p>
   <%= link_to t('general.sign_in'), sign_in_path, class: 'mts btn bg-blue' unless user_signed_in? %>

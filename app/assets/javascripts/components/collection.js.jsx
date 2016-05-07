@@ -3,7 +3,7 @@ class CollectionPage extends React.Component {
     super(props);
     this.state = {
       coll: {}
-    };
+    }
   }
 
   componentWillMount() {
@@ -14,7 +14,7 @@ class CollectionPage extends React.Component {
     const dataPath = this.props.pub ? `/c/data/${this.props.id}.json` : `/collections/${this.props.id}.json`;
     $.getJSON(dataPath, function(response) {
       this.setState({coll: response.collection});
-    }.bind(this));
+    }.bind(this))
   }
 
   render() {
@@ -35,9 +35,9 @@ class CollectionPage extends React.Component {
       <BlankSlate>
         <h3 className='man'>No recipes in this collection yet.</h3>
         {this.props.pub === false ?
-          <div className='mtm'>
+          <div className='mts'>
             <p>Add recipes by clicking "Add to Collection" at the bottom of any of your recipes.</p>
-            <a href='/recipes' className='btn bg-blue'>Find some recipes</a>
+            <a href='/recipes' className='btn bg-blue mts'>Find some recipes</a>
           </div>
         : null}
       </BlankSlate>
@@ -51,17 +51,17 @@ class CollectionHeader extends React.Component {
   }
 
   render() {
-    const coll = this.props.coll;
+    const coll = this.props.coll
 
-    let rootClass = 'col-12 bx flex fac';
-    let rootStyle = {};
-    let actionsClass = 'caps f4 dn-p mtm';
+    let rootClass = 'col-12 bx flex fac'
+    let rootStyle = {}
+    let actionsClass = 'caps f4 dn-p mtm'
     if (!_.isEmpty(coll.photo)) {
-      rootClass += ' image-header relative inline-with-nav pvl bg-cover bg-center bg-no-repeat';
-      rootStyle.backgroundImage = `url(${coll.photo_url})`;
-      actionsClass += ' mbm db white';
+      rootClass += ' image-header relative inline-with-nav pvl bg-cover bg-center bg-no-repeat'
+      rootStyle.backgroundImage = `url(${coll.photo_url})`
+      actionsClass += ' mbm db white'
     } else {
-      rootClass += ' tc grey-4 pvm';
+      rootClass += ' tc grey-2 pvm'
     }
 
     return (

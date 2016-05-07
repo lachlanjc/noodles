@@ -7,8 +7,8 @@
 
   <div class="btn bg-white btn-sm mts lh" data-behavior="photo_button">
     <%= f.file_field :photo, class: 'dn', 'data-behavior': 'photo_field' %>
-    <%= inline_svg 'photo-upload.svg', size: 24, class: 'fill-grey-4' %>
-    <span class="grey-4 relative f5" style="top: -6px;" data-behavior="photo_name">
+    <%= inline_svg 'photo-upload.svg', size: 24, class: 'fill-grey-3' %>
+    <span class="grey-2 relative f5" style="top: -6px;" data-behavior="photo_name">
     <% if @collection.unimaged? %>
       Upload a photo background
     <% else %>

@@ -60,7 +60,7 @@
       <%= f.submit 'Save', class: 'btn bg-blue' %>
     <% end %>
   <% else %>
-    <article class="text tc border bg-grey-6 rounded pal">
+    <article class="text tc border bg-grey-4 rounded pal">
       <h3 class="mtn">You don't have any collections yet!</h3>
       <p>Collections help you organize your recipes.</p>
       <%= link_to 'Create a Collection', collections_path(new_collection: true), class: 'btn bg-green mts' %>
@@ -73,7 +73,7 @@
 <section id="embed" class="modal" role="dialog">
   <%= modal_header 'Embed on the Web' %>
   <p>Copy and paste the code below onto your website or blog to embed this recipe.</p>
-  <%= content_tag :pre, escape_once(recipe_embed), class: 'man pas border rounded bg-grey-6', style: 'white-space: inherit' %>
+  <%= content_tag :pre, escape_once(recipe_embed), class: 'man pas border rounded bg-grey-4', style: 'white-space: inherit' %>
   <button type="button" class="btn bg-green btn-sm mvm"
           data-clipboard-text="<%= escape_once(recipe_embed) %>" data-behavior="copy">
     Copy

@@ -6,7 +6,7 @@ class RecipeListItem extends React.Component {
     let icns = [];
     _.forEach(['collections', 'notes', 'photo', 'web'], function (feature) {
       if (recipe[feature] === true) {
-        icns.push(<Icon icon={feature} className='mls fill-grey-5' />)
+        icns.push(<Icon icon={feature} className='mls fill-grey-4' />)
       }
     })
     recipe.favorite === true ? icns.push(<Icon icon='fav' className='mls fill-orange' />) : null

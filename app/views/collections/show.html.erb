@@ -6,9 +6,7 @@
 <%= react_component 'CollectionPage', id: @collection.id, edit: true, pub: false %>
 
 <section class="modal" role="dialog" id="editCollection">
-  <%= modal_close %>
-  <h2>Edit Collection</h2>
-  <hr>
+  <%= modal_header 'Edit Collection' %>
   <%= render 'form' %>
 </section>
 

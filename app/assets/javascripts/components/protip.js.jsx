@@ -12,7 +12,7 @@ class ProTip extends React.Component {
 
     return (
       <footer className='tc'>
-        <Icon icon='protip' size={24} className='dib fill-grey-4 mrs relative' style={{top: 6}} />
+        <Icon icon='protip' size={24} className='dib fill-grey-3 mrs relative' style={{top: 6}} />
         <strong>ProTip! </strong>
         {tip}
       </footer>
