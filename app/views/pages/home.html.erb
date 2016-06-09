@@ -17,6 +17,7 @@
           style="background-image: url(<%= image_path "home/#{rand(1..5).to_s}.jpg" %>);
                  margin-top: -1rem;">
     <article class="hero-content phm mx-auto">
+      <%= render 'shared/flash' if flash.any? %>
       <h1 class="white f1 mega-l mw8 mx-auto normal hero-shadow">One place for all your recipes.</h1>
       <h2 class="white mw8 mx-auto normal hero-shadow">Keep, cook, and share your recipes with Noodles.</h2>
       <%= link_to 'Start exploring', explore_path, class: 'btn bg-orange f2 mtl pam' if nobody_signed_in? %>
