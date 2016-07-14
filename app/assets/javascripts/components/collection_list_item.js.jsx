@@ -12,7 +12,7 @@ class CollectionListItem extends React.Component {
          className={`flex fc fac fjc rounded shadow shadow--effect pal mbm bg-white ${imgClass}`}>
         <h2 className='coll__name f1 mw7 mbm'>{coll.name}</h2>
         {!_.isEmpty(coll.description) ?
-          <h3 className='coll__desc lead man normal mw7'>{coll.description}</h3>
+          <h3 className='coll__desc f2 lh-copy man normal mw7'>{coll.description}</h3>
         : null}
       </a>
     )
