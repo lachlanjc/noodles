@@ -47,7 +47,7 @@ class NoteEditor extends React.Component {
     return (
       <div>
         <textarea htmlFor='recipe[notes]' rows='4'
-          className='text-input invisible-input col-12 man'
+          className='text-input invisible-input col-12 man lh-copy'
           placeholder='Type your notes for the recipe here.'
           defaultValue={this.state.plainNotes} onChange={this.updateTextNotes} />
         <action className='dib dn-p blue blue-dark--hover pointer mtm mrm' onClick={this.submitNotes}>

@@ -73,19 +73,19 @@
                    placeholder: 'Title your recipe...' %>
 
   <%= f.text_area :description,
-                  class: 'text-input invisible-input col-12',
+                  class: 'text-input invisible-input col-12 lh-copy',
                   placeholder: 'If you\'d like, write a description for the recipe here.',
                   rows: '1', autocomplete: 'off', 'data-behavior': 'autosize' %>
 
   <%= f.label :ingredients, class: 'dib f3' %><small class="f5 mls grey-4">Put one on each line.</small>
   <%= f.text_area :ingredients,
-                  class: 'text-input invisible-input col-12 man',
+                  class: 'text-input invisible-input col-12 man lh-copy',
                   placeholder: 'Click here and type your recipe\'s ingredients.',
                   rows: '3', autocomplete: 'off', 'data-behavior': 'autosize' %>
 
   <%= f.label :instructions, class: 'dib f3' %><small class="f5 mls grey-4">Fully supports Markdown.</small>
   <%= f.text_area :instructions,
-                  class: 'text-input invisible-input col-12 man',
+                  class: 'text-input invisible-input col-12 man lh-copy',
                   placeholder: 'Add the instructions here.',
                   rows: '4', autocomplete: 'off',
                   'data-behavior': 'autosize editor_instructions' %>
