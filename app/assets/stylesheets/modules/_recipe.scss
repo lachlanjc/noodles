@@ -8,10 +8,6 @@
   ul {
     margin-bottom: 0;
   }
-
-  ul {
-    @extend %list-reset;
-  }
 }
 
 .fav__checkbox,
