@@ -1,25 +1,26 @@
+
 class RecipesHome extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       recipesCore: [],
       recipesCurrent: [],
-      view: 'all'
-    };
+      view: 'all',
+    }
   }
 
   componentWillMount() {
-    this.fetchData();
-    this.findAll();
+    this.fetchData()
+    this.findAll()
   }
 
   fetchData() {
-    $.getJSON('/recipes.json', function(response) {
+    $.getJSON('/recipes.json', response => {
       this.setState({
         recipesCore: response.recipes,
-        recipesCurrent: response.recipes
-      });
-    }.bind(this))
+        recipesCurrent: response.recipes,
+      })
+    })
   }
 
   findAll(e) {
@@ -33,7 +34,7 @@ class RecipesHome extends React.Component {
     this.setState({
       recipesCurrent: _.filter(this.state.recipesCore, 'favorite'),
       view: 'fav'
-    });
+    })
   }
 
   render() {
@@ -45,9 +46,9 @@ class RecipesHome extends React.Component {
           <FilterBar>
             <FilterBarItem active={this.state.view} view='all' name='All' onClick={e => this.findAll(e)} />
             <FilterBarItem active={this.state.view} view='fav' name='Favorites' onClick={e => this.findFav(e)} />
-            {!_.isEmpty(recipes) ?
+            {!_.isEmpty(recipes) &&
               <FilterBarItem active={this.state.view} view='rdm' name='Random' href={_.sample(recipes).url} />
-            : null}
+            }
           </FilterBar>
         </header>
         <RecipeList recipesCore={recipes} pub={false} createFromSearch={true} searchCommands={true} />
