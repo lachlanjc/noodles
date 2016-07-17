@@ -17,6 +17,10 @@ module SvgHelper
     doc.to_html.html_safe
   end
 
+  def inline_svg_path(filename)
+    Nokogiri::HTML(inline_svg(filename)).xpath('//path/@d')
+  end
+
   def social_icon(service = 'email')
     colors = {
       twitter: '00aced',
