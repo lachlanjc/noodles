@@ -1,13 +1,10 @@
-class BlankSlate extends React.Component {
-  render() {
-    const width = this.props.width || 6
-    return (
-      <article className={`md-col-${width} border bg-grey-4 rounded ${this.props.margin || 'mvl'} pal tc mx-auto`}>
-        {this.props.children}
-      </article>
-    )
-  }
-}
+
+const BlankSlate = ({ width, margin, ...props }) => (
+  <article
+    className={`md-col-${width || 6} border bg-grey-4 rounded ${margin || 'mvl'} pal tc mx-auto`}
+    {...props}
+  />
+)
 
 BlankSlate.propTypes = {
   width: React.PropTypes.number,
