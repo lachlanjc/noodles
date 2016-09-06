@@ -26,14 +26,14 @@
          data-behavior="editor_photo_cont <%= 'rehide' if @recipe.unimaged? %>">
       <img src="<%= @recipe.img.url if @recipe.imaged? %>" width="96" class="rounded oh bx pointer" data-behavior="editor_photo_preview" style="">
     </div>
-    <div class="grey-4 pointer" data-behavior="photo_button">
+    <div class="grey-3 pointer" data-behavior="photo_button">
       <%= inline_svg 'photo-upload.svg', size: 32, class: 'fill-grey-3 relative', style: 'top: 10px;' %>
       <span data-behavior="description" style="word-break: break-all;">
         <%= @recipe.unimaged? ? 'Upload a photo' : 'Upload a new photo' %>
       </span>
     </div>
     <% if @recipe.imaged? %>
-      <div class="grey-4 pointer mts" data-behavior="remove_current_photo"
+      <div class="grey-3 pointer mts" data-behavior="remove_current_photo"
            data-href="<%= remove_image_recipe_path(@recipe.id) %>">
         <%= inline_svg 'close.svg', width: 32, height: 24, class: 'fill-grey-3 relative', style: 'top: 6px;' %>
         <span data-behavior="description">Remove current photo</span>
