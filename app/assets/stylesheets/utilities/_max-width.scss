@@ -7,7 +7,14 @@
 .mw10 { max-width: 128rem; }
 */
 
-.mw5  { max-width: 16rem; }
-.mw6  { max-width: 32rem; }
-.mw7  { max-width: 48rem; }
-.mw8  { max-width: 64rem; }
+.mw5 { max-width: 16rem; }
+.mw6 { max-width: 32rem; }
+.mw7 { max-width: 48rem; }
+.mw8 { max-width: 64rem; }
+
+@media screen and (min-width: 48em) {
+  .mw5-ns { max-width: 16rem; }
+  .mw6-ns { max-width: 32rem; }
+  .mw7-ns { max-width: 48rem; }
+  .mw8-ns { max-width: 64rem; }
+}
