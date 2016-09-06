@@ -19,10 +19,7 @@
 .bw0     { border-width: 0; }
 
 .rounded { border-radius: $border-radius; }
-
-.circle {
-  border-radius: 50%;
-}
+.circle  { border-radius: 50%; }
 
 .rounded-top {
   border-radius: $border-radius $border-radius 0 0;
