@@ -13,17 +13,27 @@
 
   <main class="document pan mw7">
     <% if !@image_layout %>
-      <header class="flex-ns fac phm phl-ns mtm mtl-ns">
+      <header class="flex-ns fac fjb phm phl-ns mtm mtl-ns">
         <h1 class="lh-title mtn mbs" itemprop="name"><%= @recipe.title %></h1>
-        <div class="flex-auto"></div>
-        <%= form_for(@recipe, html: { class: 'lh0 dib dn-p fsn' }) do |f| %>
-          <%= f.label :favorite, class: 'tooltipped man', 'data-behavior': 'r_fav', 'aria-label': 'Favorite', tabindex: 0 do %>
-            <%= f.check_box :favorite, class: 'fav__checkbox', 'data-behavior': 'r_fav_trigger' %>
-            <%= inline_svg 'favorite_outline.svg', class: 'fill-orange pointer fav__indicator--basic', size: 28 %>
-            <%= inline_svg 'favorite.svg', class: 'fill-orange pointer fav__indicator--checked', size: 28 %>
+        <div class="flex fac mbm mbn-ns mll-ns">
+          <%= form_for(@recipe, html: { class: 'lh0 dib dn-p fsn' }) do |f| %>
+            <%= f.label :favorite, class: 'tooltipped tooltipped--n man', 'data-behavior': 'r_fav', 'aria-label': 'Favorite', tabindex: 0 do %>
+              <%= f.check_box :favorite, class: 'fav__checkbox', 'data-behavior': 'r_fav_trigger' %>
+              <%= inline_svg 'favorite_outline.svg', class: 'fill-orange pointer fav__indicator--basic', size: 28 %>
+              <%= inline_svg 'favorite.svg', class: 'fill-orange pointer fav__indicator--checked', size: 28 %>
+            <% end %>
           <% end %>
-        <% end %>
-        <%= render 'actions', color: 'orange', rootClass: 'fsn mlm', menuClass: '' %>
+          <a
+            href="#share"
+            name="share"
+            class="dib lh0 mlm pointer tooltipped tooltipped--n"
+            aria-label="Share a public link"
+            data-behavior="modal_trigger"
+            >
+            <%= inline_svg 'link.svg', class: 'fill-orange', size: 28 %>
+          </a>
+          <%= render 'actions', color: 'orange', rootClass: 'fsn mll', menuClass: '' %>
+        </div>
       </header>
       <div class="text content phm phl-ns" itemprop="description"><%= sanitize markdown @recipe.description.to_s %></div>
     <% end %>

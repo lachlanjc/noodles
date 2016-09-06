@@ -1,5 +1,5 @@
 <action type="button" class="dib lh0 menu__toggle <%= rootClass %>" data-behavior="menu_toggle" aria-expanded="false" tabindex="0">
-  <%= inline_svg 'menu.svg', class: "fill-#{color}", size: 28 %>
+<span class="<%= color %> caps">Menu</span>
   <popmenu class="menu__content <%= menuClass %>" data-behavior="menu_content">
     <%= link_to edit_recipe_path(@recipe), class: 'menu__action' do %>
       <%= inline_svg 'edit.svg', class: 'menu__action__icon', size: 18 %>
