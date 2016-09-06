@@ -1,5 +1,17 @@
-<header class="image-header inline-with-nav relative bg-cover bg-center pam pvl-ns flex-ns fac"
-        style="background-image: url(<%= @recipe.img.url %>);">
+<header
+  class="image-header inline-with-nav relative bg-cover bg-center pam pvl-ns flex-ns fac fjc"
+  style="background-image: url(<%= @recipe.img.url %>); flex-flow: column wrap;"
+  >
+  <a
+    href="#photo"
+    name="photo"
+    class="dib lh0 fr fn-ns absolute-ns mtm-ns pointer tooltipped"
+    style="right: 0; order: 100;"
+    aria-label="View photo full size"
+    data-behavior="modal_trigger"
+    >
+    <%= inline_svg 'fullscreen.svg', class: 'fill-white', size: 28 %>
+  </a>
 
   <div class="md-col-8 mx-auto mw7 flex-ns fac">
     <div class="db flex-auto">
@@ -19,7 +31,7 @@
     </div>
 
     <% if me_owns_recipe? && !nav_active?(:shared_recipe) %>
-      <%= form_for(@recipe, html: { class: 'lh0 fsn dib dn-p' }) do |f| %>
+      <%= form_for(@recipe, html: { class: 'lh0 fsn mrm dib dn-p' }) do |f| %>
         <%= f.label :favorite, class: 'tooltipped tooltipped--n man mlm-ns', 'data-behavior': 'r_fav', 'aria-label': 'Favorite', tabindex: 0 do %>
           <%= f.check_box :favorite, class: 'fav__checkbox', 'data-behavior': 'r_fav_trigger' %>
           <%= inline_svg 'favorite_outline.svg', class: 'fill-white pointer fav__indicator--basic', size: 28 %>
@@ -27,10 +39,7 @@
         <% end %>
       <% end %>
     <% end %>
-    <a href="#photo" name="photo" class="dib mhm lh0 fsn relative pointer tooltipped"
-       aria-label="View photo full size" data-behavior="modal_trigger">
-      <%= inline_svg 'fullscreen.svg', class: 'fill-white', size: 28 %>
-    </a>
+
     <%= render 'actions', color: 'white', rootClass: 'fsn dn-p', menuClass: 'tsn' if me_owns_recipe? && !nav_active?(:shared_recipe) %>
   </div>
 </header>
