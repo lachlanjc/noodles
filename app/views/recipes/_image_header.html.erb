@@ -7,12 +7,12 @@
       <%= @recipe.title %>
     </h1>
     <% if @recipe.description.present? %>
-    <div class="content" itemprop="description">
+    <div class="content mbm" itemprop="description">
       <%= whitened_markdown @recipe.description, [:f3] %>
     </div>
     <% end %>
     <% if @recipe.user.present? && nav_active?(:shared_recipe) %>
-      <p class="white f5 mtm">Shared by <%= @recipe.user.first_name %></p>
+      <p class="white f5 mbm">Shared by <%= @recipe.user.first_name %></p>
     <% end %>
   </div>
   <div class="mtm-ns flex fac">
