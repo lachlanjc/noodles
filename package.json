@@ -8,10 +8,10 @@
   },
   "devDependencies": {
     "get-css": "^1.2.1",
-    "clean-css": "^3.4.18",
+    "clean-css": "^3.4.19",
     "fs": "^0.0.2",
     "pageres": "^4.1.2",
-    "lodash": "^4.13.1",
+    "lodash": "^4.15.0",
     "parker": "^0.0.10"
   },
   "dependencies": {},
