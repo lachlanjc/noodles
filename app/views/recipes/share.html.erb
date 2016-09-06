@@ -38,11 +38,10 @@
   <article class="document pan mw7">
     <% if me_owns_recipe? %>
       <section class="flex fac bg-grey-3 pam phl-ns mbm mbl-ns rounded-top white">
-        <%= inline_svg 'locked.svg', size: 18, class: 'fill-white' %>
-        <p class="white mls mbn dib">
+        <%= inline_svg 'locked.svg', size: 18, class: 'fill-white dn dib-ns' %>
+        <span class="white mls mbn dib flex-auto">
           This is a preview of the public recipe page.
-        </p>
-        <div class="flex-auto"></div>
+        </span>
         <%= link_to 'Back', recipe_path(@recipe), class: 'link-reset mrm underline f5' %>
         <a href="#share" class="link-reset underline f5" data-behavior="modal_trigger">
           Share link
@@ -56,7 +55,7 @@
         <% if @recipe.user.present? %>
         <p class="grey-3">Shared by <%= @recipe.user.first_name %></p>
         <% end %>
-        <div class="text" itemprop="description"><%= sanitize markdown(@recipe.description.to_s) %></div>
+        <div class="text content" itemprop="description"><%= sanitize markdown(@recipe.description.to_s) %></div>
       </header>
     <% end %>
 

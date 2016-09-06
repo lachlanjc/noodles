@@ -25,7 +25,7 @@
         <% end %>
         <%= render 'actions', color: 'orange', rootClass: 'fsn mlm', menuClass: '' %>
       </header>
-      <div class="text phm phl-ns" itemprop="description"><%= sanitize markdown @recipe.description.to_s %></div>
+      <div class="text content phm phl-ns" itemprop="description"><%= sanitize markdown @recipe.description.to_s %></div>
     <% end %>
     <section class="phm phl-ns <%= @image_layout ? 'mvm mvl-ns' : 'mbm mbl-ns' %>">
       <%= render 'recipe_body' %>
