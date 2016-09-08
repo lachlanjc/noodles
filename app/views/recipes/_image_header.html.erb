@@ -47,12 +47,15 @@
   </div>
 </header>
 
-<section id="photo" role="dialog" class="modal sm-col-8 mw8-ns lh0">
-  <div class="pointer absolute pas" style="right: 1rem;" data-behavior="modal_close">
+<section id="photo" role="dialog" class="modal sm-col-8 lg-col-9 mw8-ns mw9-l pan oh lh0">
+  <div class="pointer absolute pas r0" data-behavior="modal_close">
     <%= inline_svg 'close.svg', class: 'fill-white' %>
   </div>
-  <%= image_tag @recipe.img.url, class: 'col-12',
-                alt: "Photo of #{@recipe.title}", itemprop: 'image' %>
+  <%= image_tag @recipe.img.url,
+    class: 'col-12',
+    alt: @recipe.title,
+    itemprop: 'image'
+  %>
 </section>
 
 <%= render 'shared/flash' if flash.any? %>

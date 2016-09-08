@@ -18,3 +18,7 @@
   .mw7-ns { max-width: 48rem; }
   .mw8-ns { max-width: 64rem; }
 }
+
+@media screen and (min-width: 64em) {
+  .mw9-l { max-width: 96rem; }
+}

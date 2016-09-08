@@ -4,9 +4,9 @@
   box-sizing: border-box;
   display: none;
   max-width: 95%;
+  min-width: 36rem;
   padding: $space-2;
   top: $space-3;
-  width: 36rem;
 }
 
 .modal--scroll {
