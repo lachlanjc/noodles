@@ -47,14 +47,11 @@
   </div>
 </header>
 
-<section id="photo" role="dialog" class="modal sm-col-8 mw8-ns">
+<section id="photo" role="dialog" class="modal sm-col-8 mw8-ns lh0">
   <div class="pointer absolute pas" style="right: 1rem;" data-behavior="modal_close">
-    <%= inline_svg 'close.svg', class: 'fill-white',
-                   style: '-webkit-filter: drop-shadow(0 2px 2px rgba(0,0,0,.25));
-                              -moz-filter: drop-shadow(0 2px 2px rgba(0,0,0,.25));
-                                   filter: drop-shadow(0 2px 2px rgba(0,0,0,.25));' %>
+    <%= inline_svg 'close.svg', class: 'fill-white' %>
   </div>
-  <%= image_tag @recipe.img.url, class: 'col-12 fl',
+  <%= image_tag @recipe.img.url, class: 'col-12',
                 alt: "Photo of #{@recipe.title}", itemprop: 'image' %>
 </section>
 
