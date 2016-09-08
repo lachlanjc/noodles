@@ -22,9 +22,11 @@
 
   <section class="mbm db" data-behavior="editor_photo">
     <%= f.file_field :img, class: 'dn', 'data-behavior': 'photo_field' %>
-    <div class="fr mtm <%= 'dn' if @recipe.unimaged? %>"
-         data-behavior="editor_photo_cont <%= 'rehide' if @recipe.unimaged? %>">
-      <img src="<%= @recipe.img.url if @recipe.imaged? %>" width="96" class="rounded oh bx pointer" data-behavior="editor_photo_preview" style="">
+    <div
+      class="fr mtm <%= 'dn' if @recipe.unimaged? %>"
+      data-behavior="editor_photo_cont <%= 'rehide' if @recipe.unimaged? %>"
+    >
+      <img src="<%= @recipe.img.url if @recipe.imaged? %>" width="96" class="rounded oh bx pointer" data-behavior="editor_photo_preview">
     </div>
     <div class="grey-3 pointer" data-behavior="photo_button">
       <%= inline_svg 'photo-upload.svg', size: 32, class: 'fill-grey-3 relative', style: 'top: 10px;' %>

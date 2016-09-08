@@ -14,35 +14,6 @@ $(document).ready ->
     $(m).attr 'aria-expanded', !o
     return
 
-  N.showEditorPhotoPreview = ->
-    t = $('[data-behavior~=editor_photo_preview]')
-    $('[data-behavior~=modal_overlay]').fadeTo 'fast', 1
-    t.css {
-      'position': 'absolute',
-      'z-index': 10,
-    }
-    if window.innerWidth > 768
-      t.animate {
-        'right': '20%',
-        'min-width': '16rem',
-        'width': '60%',
-      }, 300
-    else
-      t.animate {
-        'right': (window.innerWidth - 256) / 2, # 256 = 16px * 16rem
-        'width': '16rem',
-      }, 300
-  N.hideEditorPhotoPreview = ->
-    t = $('[data-behavior~=editor_photo_preview]')
-    t.css { position: 'initial' }
-    t.animate {
-      'min-width': t.attr('width'),
-      'width': t.attr('width'),
-    }, 300, ->
-      t.attr 'style', '' # Removes left, right, etc
-    $('[data-behavior~=modal_overlay]').fadeTo 'fast', 0, ->
-      $(this).css 'display', '' # Removes display: none and clears focus
-
   # Popover menus
   $(document).on 'click', (e) ->
     o = $(N.openMenuSelector)
@@ -55,8 +26,6 @@ $(document).ready ->
     # Close popover menus on esc
     if e.keyCode is 27 and $(N.openMenuSelector).length > 0
       N.toggleMenu $(N.openMenuSelector)
-    if e.keyCode is 27 and $('[data-behavior~=editor_photo_preview]').length > 0
-      N.hideEditorPhotoPreview()
 
   $(document).on 'click', '[data-behavior~=flash]', ->
     $(this).toggleClass 'bg-white shadow well border'
@@ -163,18 +132,6 @@ $(document).ready ->
     h.toggleClass 'mtn man fwn pointer' # Fix margins
     h.text 'Clip from the Web' # Be definitive.
     return
-  # Editor – photo preview
-  $(document).on 'click', '[data-behavior~=editor_photo_preview]', ->
-    if $(this).attr('style').length > 2
-      N.hideEditorPhotoPreview()
-    else
-      N.showEditorPhotoPreview()
-    return
-  # Hide photo preview by clicking overlay
-  if $('[data-behavior~=editor_photo_preview]').length > 0
-    $(document).on 'click', '[data-behavior~=modal_overlay]', ->
-      N.hideEditorPhotoPreview()
-      $(this).hide 50
 
   $('[data-behavior~=autosize]').autosize()
   $('[data-behavior~=editor_instructions]').on 'focus', ->
