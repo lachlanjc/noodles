@@ -23,10 +23,7 @@ Rails.application.routes.draw do
 
   # Collections
   resources :collections, except: [:new, :edit]
-  scope '/c' do
-    get '/data/:id', to: 'collections#share'
-    get '/:shared_id', to: 'collections#share', as: :collection_share
-  end
+  get '/c/:shared_id', to: 'collections#share'
 
   get '/save', to: 'save#save', as: :save
 

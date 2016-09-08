@@ -26,6 +26,11 @@
 
 <%= render 'shared/nav' %>
 
-<%= react_component 'CollectionPage', id: @collection.id, edit: false, pub: true %>
+<%= react_component 'CollectionPage',
+  id: @collection.id,
+  shared_id: @collection.shared_id,
+  edit: false,
+  pub: true
+%>
 
 <%= render 'share' %>

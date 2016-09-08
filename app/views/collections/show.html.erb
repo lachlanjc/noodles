@@ -3,7 +3,12 @@
 
 <%= render 'shared/nav' %>
 
-<%= react_component 'CollectionPage', id: @collection.id, edit: true, pub: false %>
+<%= react_component 'CollectionPage',
+  id: @collection.id,
+  shared_id: @collection.shared_id,
+  edit: true,
+  pub: false
+%>
 
 <section class="modal" role="dialog" id="editCollection">
   <%= modal_header 'Edit Collection' %>

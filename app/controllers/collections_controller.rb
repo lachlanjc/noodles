@@ -41,9 +41,10 @@ class CollectionsController < ApplicationController
   private
 
   def set_collection
-    @collection = Collection.find(params[:id])
-    if @collection.nil? && params[:shared_id]
-      @collection = Collection.find_by_shared_id(params[:shared_id])
+    if params[:shared_id]
+      @collection = Collection.find_by(shared_id: params[:shared_id])
+    else
+      @collection = Collection.find(params[:id])
     end
     raise_not_found
   end
