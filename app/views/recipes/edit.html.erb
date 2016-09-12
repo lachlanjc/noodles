@@ -92,18 +92,19 @@
                   rows: '4', autocomplete: 'off',
                   'data-behavior': 'autosize editor_instructions' %>
 
-  <section>
-    <h2 class="mtn">Details</h2>
+  <%= f.label :notes, class: 'dib f3' %>
+  <%= f.text_area :notes, rows: '4', autocomplete: 'off', class: 'text-input sm-col-10 md-col-8 lh-copy bg-notes' %>
 
-    <%= f.label :source, class: 'dib' %><small class="f5 mls grey-4">Where did this recipe come from?</small>
-    <%= f.text_field :source, class: 'text-input md-col-8' %>
+  <h2 class="mtl">Details</h2>
 
-    <%= f.label :author, class: 'dib' %><small class="f5 mls grey-4">Who originally wrote this recipe?</small>
-    <%= f.text_field :author, class: 'text-input md-col-8' %>
+  <%= f.label :source, class: 'dib' %><small class="f5 mls grey-4">Where did this recipe come from?</small>
+  <%= f.text_field :source, class: 'text-input md-col-8' %>
 
-    <%= f.label :serves, 'Yield', class: 'dib' %><small class="f5 mls grey-4">How many servings does your recipe produce?</small>
-    <%= f.text_field :serves, class: 'text-input md-col-8' %>
-  </section>
+  <%= f.label :author, class: 'dib' %><small class="f5 mls grey-4">Who originally wrote this recipe?</small>
+  <%= f.text_field :author, class: 'text-input md-col-8' %>
+
+  <%= f.label :serves, 'Yield', class: 'dib' %><small class="f5 mls grey-4">How many servings does your recipe produce?</small>
+  <%= f.text_field :serves, class: 'text-input md-col-8' %>
 
   <%= f.submit 'Save', class: 'btn bg-blue b mtl mbl', 'data-disable-with': 'Saving...' %>
   <span class="grey-4 mlm">or</span>
