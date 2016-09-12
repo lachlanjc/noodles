@@ -38,10 +38,25 @@ a {
   color: $orange;
   text-decoration: none;
 
-  &:hover { color: $orange-dark; }
-  &.blue:hover { color: $blue-dark; }
-  &.grey-1:hover { color: $grey-2; }
-  &.grey-3:hover { color: $grey-4; }
+  &:hover,
+  &:focus {
+    color: $orange-dark;
+  }
+
+  &.blue:hover,
+  &.blue:focus {
+    color: $blue-dark;
+  }
+
+  &.grey-1:hover,
+  &.grey-3:focus {
+    color: $grey-2;
+  }
+
+  &.grey-3:hover,
+  &.grey-3:focus {
+    color: $grey-2;
+  }
 }
 
 .text {
