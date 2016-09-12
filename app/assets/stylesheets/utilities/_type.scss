@@ -18,6 +18,8 @@ p, h4, .f4  { font-size: $f4; }
 
 @media screen and (min-width: 64em) {
  .mega-l    { font-size: $mega; }
+ .f0-l      { font-size: $f0; }
+ .f1-l      { font-size: $f1; }
 }
 
 /*
@@ -42,6 +44,7 @@ p, h4, .f4  { font-size: $f4; }
 
 .b          { font-weight: $bold-font-weight; }
 .fwn, .normal { font-weight: normal; }
+.super      { font-weight: 800; }
 .tsn        { text-shadow: none; }
 .underline  { text-decoration: underline; }
 .wbw        { word-wrap: break-word; }
@@ -52,6 +55,12 @@ p, h4, .f4  { font-size: $f4; }
 }
 
 .checked {
-  color: $grey-4;
+  color: $grey-3;
   text-decoration: line-through;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

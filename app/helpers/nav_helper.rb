@@ -30,7 +30,7 @@ module NavHelper
   end
 
   def remove_grey_bg!
-    content_for(:body_classes) { nil }
+    content_for(:body_classes) { 'bg-white' }
   end
 
   def body_classes

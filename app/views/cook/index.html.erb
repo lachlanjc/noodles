@@ -1,12 +1,12 @@
 <%- title "Cooking #{@recipe.title}".html_safe %>
 
 <main class="flex-ns">
-  <aside class="md-col-4 pam mw6">
-    <h1 class="man grey-1"><%= @recipe.title %></h2>
-    <p class="grey-3 man">
+  <aside class="md-col-6 pam pal-l mw6">
+    <p class="grey-3 man caps mbn">
       <%= pluralize(@recipe.instructions.lines.count, "steps") %>
       <%= content_tag :span, " · Published by #{@recipe.user.first_name}" if not_my_recipe? %>
     </p>
+    <h1 class="lh f0 mega-l man super grey-1"><%= @recipe.title %></h1>
 
     <hr>
 
@@ -26,7 +26,7 @@
     <%= react_component 'NoteEditor', id: @recipe.id, plain: @recipe.notes, rendered: notes_rendered, allowEditing: me_owns_recipe? %>
   </aside>
 
-  <article class="mw7 mx-auto mtm phm">
+  <article class="mw7 mx-auto mtm mtn-ns pam pal-l">
     <% flash.each do |key, value| %>
       <div class="f2 pam tc mbm rounded bg-<%= flash_color_class(key) %> white pointer dn-p" role="alertdialog" data-behavior="flash">
         <%= value %>
@@ -38,7 +38,7 @@
         <% text = plain_text_from_markdown(step.to_s, remove_numbers: true) %>
         <%= content_tag :li, text.html_safe,
                         'data-behavior': 'checklist_item',
-                        class: 'f2 grey-2 bg-white rounded shadow pointer pam db mbm' if text.strip.present? %>
+                        class: 'f2 grey-2 bg-white rounded shadow shadow-deep--effect pointer pam db mbm' if text.strip.present? %>
       <% end %>
     </ol>
 
