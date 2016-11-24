@@ -30,6 +30,9 @@ input[type=checkbox] + label {
   resize: none;
   padding: 0;
 }
+textarea.invisible-input {
+  line-height: 1.75;
+}
 
 .field_with_errors .text-input {
   border-color: $red;
