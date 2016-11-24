@@ -53,12 +53,13 @@ $(document).ready ->
 
       s = $('[data-behavior~=explore_src_pick_bar]').data 'src-selected'
 
-      window.history.replaceState null, null, "?q=#{encodeURIComponent(q)}&src=#{s}"
+      p = "?q=#{encodeURIComponent(q)}&src=#{s}"
+      window.history.replaceState null, null, p
 
       $('[data-behavior~=explore_clear_search]').show 'slow'
       $('[data-behavior~=explore_suggestions]').fadeOut()
 
-      u = "/explore/results?q=#{encodeURIComponent(q)}&src=#{s}"
+      u = "/explore/results#{p}"
 
       $.get u, (t) ->
         r.removeClass 'busy busy--large'
