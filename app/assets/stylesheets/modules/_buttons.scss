@@ -36,10 +36,11 @@
 
 .btn--primary {
   background: $green;
-  padding: 1rem 1.5rem;
-  border-bottom: 2px solid rgba(0,0,0,.15);
-  font-size: 1.25rem;
-  font-weight: bold;
+  padding: .5rem 1.25rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.5;
 }
 
 // .btn--bordered {
