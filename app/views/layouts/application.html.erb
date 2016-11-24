@@ -3,7 +3,7 @@
 <head>
   <title><%= "#{content_for(:title)} ·" if content_for?(:title) %> Noodles</title>
   <%= content_for?(:meta) ? yield(:meta) : render('layouts/media') %>
-  <%= stylesheet_link_tag 'application', '//brick.a.ssl.fastly.net/Lato:400,600', media: 'all' %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= render 'layouts/head' %>
 </head>
