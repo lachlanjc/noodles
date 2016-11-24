@@ -27,12 +27,6 @@
     <a rel="nofollow" href="http://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fgetnoodl.es%2Fs%2F<%= @recipe.shared_id %><%= '&media=' + @media_url %>&description=<%= @recipe.title %> <%= "(#{@recipe.description})" %> on Noodles" class="mrs" target="_blank">
       <%= social_icon 'pinterest' %>
     </a>
-    <a rel="nofollow" href="https://buffer.com/add?url=http%3A%2F%2Fgetnoodl.es%2Fs%2F<%= @recipe.shared_id %>&text=Check out <%= @recipe.title %>, published on Noodles:" class="mrs" target="_blank">
-      <%= social_icon 'buffer' %>
-    </a>
-    <a rel="nofollow" href="https://plus.google.com/share?url=http%3A%2F%2Fgetnoodl.es%2Fs%2F<%= @recipe.shared_id %>" class="mrs" target="_blank">
-      <%= social_icon 'gplus' %>
-    </a>
     <% if me_owns_recipe? %>
       <a href="mailto:?subject=Check out <%= @recipe.title %> on Noodles&body=I published a new recipe on Noodles (https://getnoodl.es), <%= @recipe.title %>. Check it out: <%= @shared_url %>">
     <% else %>
