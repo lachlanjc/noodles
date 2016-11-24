@@ -4,9 +4,12 @@
   box-sizing: border-box;
   display: none;
   max-width: 95%;
-  min-width: 36rem;
   padding: $space-2;
   top: $space-3;
+
+  @media screen and (min-width: 30em) {
+    min-width: 36rem;
+  }
 }
 
 .modal--scroll {
