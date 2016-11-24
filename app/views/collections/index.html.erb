@@ -17,10 +17,10 @@
 </a>
 
 <% if params[:new_collection] %>
-  <!-- Stupid hack alert! -->
   <script>
+  // Stupid hack
   $(function() {
-    $("a[href=#newCollection]").click();
+    $('a[href="#newCollection"]').click();
   });
   </script>
 <% end %>
