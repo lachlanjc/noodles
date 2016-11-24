@@ -16,11 +16,11 @@
 }
 
 .modal__feature {
-  border-radius: 0 0 6px 6px;
-  left: -1rem;
-  min-width: 36rem;
+  border-radius: 0 0 $border-radius $border-radius;
+  width: calc(100% + 1rem);
   position: relative;
   top: 1rem;
+  left: -1rem;
 }
 
 .modal__overlay {
