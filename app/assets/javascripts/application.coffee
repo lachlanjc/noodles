@@ -27,9 +27,7 @@ $(document).ready ->
     if e.keyCode is 27 and $(N.openMenuSelector).length > 0
       N.toggleMenu $(N.openMenuSelector)
 
-  $(document).on 'click', '[data-behavior~=flash]', ->
-    $(this).toggleClass 'bg-white shadow well border'
-    $(this).slideUp 'fast'
+  $('[data-behavior~=flash]').delay(5 * 1e3).fadeOut('fast')
 
   totalModalize()
 

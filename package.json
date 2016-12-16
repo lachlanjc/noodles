@@ -7,12 +7,13 @@
     "test": "test"
   },
   "devDependencies": {
-    "get-css": "^1.2.1",
-    "clean-css": "^3.4.19",
+    "clean-css": "^3.4.22",
     "fs": "^0.0.2",
-    "pageres": "^4.1.2",
-    "lodash": "^4.15.0",
-    "parker": "^0.0.10"
+    "get-css": "^1.2.1",
+    "lodash": "^4.17.2",
+    "pageres": "^4.2.0",
+    "parker": "^0.0.10",
+    "standard": "^8.6.0"
   },
   "dependencies": {},
   "scripts": {
