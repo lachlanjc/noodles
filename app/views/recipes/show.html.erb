@@ -1,6 +1,7 @@
 <%- title @recipe.title.html_safe %>
 <% activate_nav!(:recipes) %>
 <% remove_grey_bg! if @image_layout %>
+<% @hide_flash = true if @image_layout %>
 
 <%= render 'shared/nav' %>
 
