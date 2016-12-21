@@ -7,6 +7,7 @@ class RecipesController < ApplicationController
   before_filter :please_sign_in, only: [:index, :create]
   before_filter :set_recipe, except: [:index, :new, :create]
   before_filter :not_the_owner, only: [:update, :notes, :export_pdf, :remove_image, :destroy]
+  before_filter :img_layout, only: [:show, :share]
   protect_from_forgery except: :embed_js
 
   def index
@@ -14,7 +15,6 @@ class RecipesController < ApplicationController
   end
 
   def show
-    setup_image_layout if @recipe.img.present?
     @shared_url = shared_url
     render :locked, status: 403 if not_my_recipe?
   end
@@ -133,15 +133,7 @@ class RecipesController < ApplicationController
     @title = @recipe.title.to_s || params[:title].to_s.capitalize.squish
   end
 
-  def setup_image_layout
-    safely do
-      size = FastImage.size @recipe.img.url
-      return unless size.present?
-      if size[0].to_i > 750
-        @image_layout = true
-        @hide_flash = flash.any?
-      end
-    end
-    @image_layout = defined? @image_layout
+  def img_layout
+    @image_layout = @recipe.img.present?
   end
 end
