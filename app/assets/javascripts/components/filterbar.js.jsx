@@ -1,22 +1,26 @@
 
 const FilterBar = ({ ...props }) => (
-  <section role='menubar' className='filterbar tc' {...props} />
+  <section {...props} role='menubar' className='filterbar tc' />
 )
 
 const FilterBarItem = ({ active, view, className, ...props }) => {
-  let cx
+  let cx = [
+    'filterbar__item dib phm pointer',
+    className
+  ]
   if (_.isEqual(active, view)) {
-    cx = 'bg-orange white white-hover b '
+    cx.push('bg-orange white white-hover b')
   } else {
-    cx = 'grey-1 '
+    cx.push('grey-1')
   }
-  cx = `filterbar__item dib phm pointer ${cx} ${className}`
+  cx = _.join(cx, ' ')
 
   return (
     <a
+      {...props}
       role='menuitem'
       className={cx}
-      {...props} />
+    />
   )
 }
 
