@@ -1,10 +1,9 @@
 class ApplicationController < ActionController::Base
-  include DeviseHelper
-
   protect_from_forgery with: :exception
   layout proc { false if request.xhr? }
   before_action :configure_permitted_parameters, if: :devise_controller?
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+  helper_method :nobody_signed_in?
 
   def not_found
     raise ActionController::RoutingError.new('Not Found')
@@ -14,6 +13,10 @@ class ApplicationController < ActionController::Base
     redirect_to :back
     rescue ActionController::RedirectBackError
       redirect_to root_path
+  end
+
+  def nobody_signed_in?
+    !user_signed_in?
   end
 
   def please_sign_in
