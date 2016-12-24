@@ -3,7 +3,7 @@
 
   <p class="mbs">Share this link:</p>
   <section class="f5 mx-auto">
-    <input value="<%= @shared_url %>" class="text-input dib" readonly>
+    <input value="<%= @shared_url %>" class="text-input dib" data-behavior="autoselect" readonly>
     <button type="button" class="btn bg-green btn-sm mls"
             data-clipboard-text="<%= @shared_url %>" data-behavior="copy">
       Copy

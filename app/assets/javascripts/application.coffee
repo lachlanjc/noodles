@@ -90,6 +90,13 @@ $(document).ready ->
   # Switch .dn for inline style — prevents flash on load.
   $('[data-behavior~=rehide]').hide().removeClass('dn')
 
+  if $('[data-behavior~=autoselect]').length > 0
+    $('[data-behavior~=autoselect]').focus().select()
+    $(document).on 'click', '[data-behavior~=autoselect]', (e) ->
+      t = e.target
+      t.selectionStart = 0
+      t.selectionEnd = 999
+
   $(document).on 'click', '[data-behavior~=photo_button]', ->
     $('[data-behavior~=photo_field]')[0].click()
   $('[data-behavior~=photo_field]').on 'change', ->

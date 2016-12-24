@@ -3,7 +3,7 @@
   <p>Share this public link to your recipe with your friends. They can save a copy of it to their own Noodles accounts.</p>
 
   <div class="f5">
-    <input value="<%= @shared_url %>" class="text-input dib" readonly>
+    <input value="<%= @shared_url %>" class="text-input dib" data-behavior="autoselect" readonly>
     <button type="button" class="btn bg-green btn-sm mls"
             data-clipboard-text="<%= @shared_url %>" data-behavior="copy">
       Copy
