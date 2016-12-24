@@ -62,8 +62,6 @@ $(document).ready ->
   $(document).on 'click', '[data-behavior~=print]', ->
     window.print()
 
-  if /iPhone|iPad/i.test(navigator.userAgent)
-    $('[data-behavior~=copy]').hide()
   clipboard = new Clipboard '[data-behavior~=copy]', text: (trigger) ->
     trigger.getAttribute 'data-clipboard-text'
   clipboardReset = (t) ->
