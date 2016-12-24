@@ -79,7 +79,6 @@ class RecipesController < ApplicationController
   end
 
   def share
-    setup_image_layout if @recipe.img.present?
     @shared_url = shared_url
   end
 
