@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
   end
 
   def record_not_found
-    flash[:red] = "We can't find that. 😐"
+    flash[:danger] = "We can't find that. 😐"
     redirect_to root_url
   end
 end

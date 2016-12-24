@@ -26,7 +26,7 @@ class RecipesController < ApplicationController
       @page_title = 'New recipe'
       render :edit
     else
-      flash[:red] = "You'll need to sign in to add recipes."
+      flash[:danger] = "You'll need to sign in to add recipes."
       redirect_to root_url
     end
   end
@@ -40,7 +40,7 @@ class RecipesController < ApplicationController
     @recipe.user_id = current_user.id
 
     if @recipe.save
-      flash[:green] = "Awesome, you've saved your new recipe."
+      flash[:success] = 'New recipe saved!'
       redirect_to @recipe
     else
       render :edit
@@ -49,7 +49,7 @@ class RecipesController < ApplicationController
 
   def update
     if @recipe.update(recipe_params)
-      flash[:green] = 'Great, your changes were saved.'
+      flash[:success] = 'Saved!'
       if request.xhr?
         render :show
       elsif request.referer.match('redirect_to=cook')
@@ -65,7 +65,7 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe.destroy
-    flash[:green] = 'Okay, we\'ve got that recipe in the recycling bin now.'
+    flash[:success] = 'The recipe has been deleted.'
     redirect_to recipes_url
   end
 
@@ -89,7 +89,7 @@ class RecipesController < ApplicationController
     @new_recipe.source = shared_url
     @new_recipe.favorite = false
     @new_recipe.save
-    flash[:green] = "#{@recipe.title} has been saved!"
+    flash[:success] = 'Recipe saved!'
     redirect_to @new_recipe
   end
 

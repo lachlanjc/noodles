@@ -34,7 +34,7 @@ class CollectionsController < ApplicationController
 
   def destroy
     @collection.destroy
-    flash[:green] = 'Your collection is no more.'
+    flash[:success] = 'The collection is in the trash.'
     redirect_to collections_path
   end
 
@@ -66,7 +66,7 @@ class CollectionsController < ApplicationController
 
   def only_mine
     if not_my_collection?
-      flash[:red] = 'That\'s not yours.'
+      flash[:danger] = 'That\'s not yours.'
       redirect_to root_url
     end
   end
