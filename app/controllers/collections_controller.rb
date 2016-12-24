@@ -11,12 +11,10 @@ class CollectionsController < ApplicationController
   end
 
   def show
-    populate_collection
     @shared_url = shared_coll_url
   end
 
   def share
-    populate_collection
     @shared_url = shared_coll_url
   end
 
@@ -42,11 +40,12 @@ class CollectionsController < ApplicationController
 
   def set_collection
     if params[:shared_id]
-      @collection = Collection.find_by(shared_id: params[:shared_id])
+      @collection = Collection.includes(:user).find_by(shared_id: params[:shared_id])
     else
-      @collection = Collection.find(params[:id])
+      @collection = Collection.includes(:user).find(params[:id])
     end
     raise_not_found
+    @recipes = @collection.recipes
   end
 
   def raise_not_found
@@ -54,14 +53,7 @@ class CollectionsController < ApplicationController
   end
 
   def collection_params
-    params.require(:collection).permit(:name, :description, :photo, :user_id)
-  end
-
-  def populate_collection
-    @recipes = []
-    @collection.user.recipes.each do |recipe|
-      @recipes.push(recipe) if recipe.collections.include?(@collection.id.to_s)
-    end
+    params.require(:collection).permit(:name, :description, :photo)
   end
 
   def only_mine

@@ -9,6 +9,14 @@ class Collection < ActiveRecord::Base
   has_attached_file :photo, path: 'collections/:id/photo.:extension', default_url: ''
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
 
+  def recipes
+    list = []
+    self.user.recipes.each do |recipe|
+      list.push(recipe) if recipe.collections.include?(self.id)
+    end
+    list
+  end
+
   def to_param
     "#{id} #{name}".parameterize
   end
