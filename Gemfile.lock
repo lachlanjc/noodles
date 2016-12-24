@@ -202,11 +202,6 @@ GEM
       rails_stdout_logging
     rails_autolink (1.1.6)
       rails (> 3.1)
-    rails_real_favicon (0.0.6)
-      json (>= 1.7, < 3)
-      rails (>= 3.1)
-      rest-client (~> 2.0)
-      rubyzip (~> 1)
     rails_serve_static_assets (0.0.5)
     rails_stdout_logging (0.0.5)
     railties (4.2.7.1)
@@ -230,7 +225,6 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     rmagick (2.16.0)
-    rubyzip (1.2.0)
     safely_block (0.1.1)
       errbase
     sass (3.4.22)
@@ -307,7 +301,6 @@ DEPENDENCIES
   rails (= 4.2.7.1)
   rails_12factor
   rails_autolink
-  rails_real_favicon
   rake
   react-rails
   redcarpet

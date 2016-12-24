@@ -2,13 +2,34 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Noodles · Keep, cook, and share your recipes.</title>
+  <title>Noodles – one place for all your recipes.</title>
   <meta name="keywords" content="recipe app,best recipe app,recipe organizer app,noodles,noodles app,online recipes,paprika,find recipes">
   <meta name="description" content="<%= t('general.description') %>">
   <%= stylesheet_link_tag 'home' %>
   <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Lato:400,600">
-  <%= render 'layouts/media' %>
-  <%= render 'layouts/head' %>
+  <meta property="fb:pages" content="698221030285633">
+  <meta property="og:site_name" content="Noodles">
+  <meta property="og:title" content="Noodles">
+  <meta property="og:url" content="https://getnoodl.es/">
+  <meta property="og:image" content="<%= asset_path 'icon.png' %>">
+  <meta property="og:description" content="<%= t('general.description') %>">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@noodlesapp">
+  <meta name="twitter:title" content="Noodles">
+  <meta name="twitter:description" content="<%= t('general.description') %>">
+  <meta name="twitter:image:src" content="<%= asset_path 'icon.png' %>">
+  <meta name="twitter:domain" content="getnoodl.es">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ff6d00">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Noodles">
+  <meta name="application-name" content="Noodles">
+  <meta name="theme-color" content="#ff6d00">
 </head>
 <body class="tc man bg-grey-5">
   <% activate_nav! :home %>
