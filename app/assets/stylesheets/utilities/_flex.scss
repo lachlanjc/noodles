@@ -1,7 +1,11 @@
 .flex { display: flex; }
 
-@media screen and (min-width: 48em) {
+@media screen and (min-width: 30em) {
   .flex-ns { display: flex; }
+}
+
+@media screen and (min-width: 48em) {
+  .flex-md { display: flex; }
 }
 
 .fac  { align-items: center; }
@@ -20,6 +24,7 @@
 }
 
 .flex-rows { flex-flow: row wrap; }
+.flex-cols { flex-flow: column wrap; }
 
 .flex-first { order: -1; }
 .flex-last  { order: 99999; }
