@@ -6,7 +6,7 @@
 <%= react_component 'CollectionList', collections: @collections.as_json %>
 
 <section class="modal" id="newCollection" role="dialog">
-  <%= modal_header 'New Collection' %>
+  <%= modal_header @collections.any? ? 'Make your next collection' : 'Make your first collection' %>
   <%= render 'form' %>
 </section>
 
@@ -18,9 +18,9 @@
 
 <% if params[:new_collection] %>
   <script>
-  // Stupid hack
+  // Ugly hack, but…
   $(function() {
-    $('a[href="#newCollection"]').click();
-  });
+    $('a[href="#newCollection"]').click()
+  })
   </script>
 <% end %>
