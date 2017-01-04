@@ -6,7 +6,7 @@ Rails.application.configure do
 
   config.eager_load = true
 
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
 
   config.serve_static_files = false
@@ -29,6 +29,8 @@ Rails.application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.active_record.dump_schema_after_migration = false
+
+  Rails.application.routes.default_url_options[:host] = 'getnoodl.es'
 
   # Paperclip Settings
   config.paperclip_defaults = {

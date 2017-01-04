@@ -4,7 +4,7 @@ Rails.application.configure do
 
   config.eager_load = false
 
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
 
   config.action_mailer.raise_delivery_errors = false
@@ -19,6 +19,8 @@ Rails.application.configure do
 
   config.action_view.raise_on_missing_translations = true
 
+  Rails.application.routes.default_url_options[:host] = 'localhost:9292'
+
   # Paperclip Settings
   config.paperclip_defaults = {
     storage: :s3,
@@ -31,7 +33,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { host: 'noodles.dev' }
+  config.action_mailer.default_url_options = { host: 'localhost:9292' }
   config.action_mailer.delivery_method = :mandrill
 
   config.react.variant = :development
