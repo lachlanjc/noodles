@@ -4,6 +4,7 @@ ruby '2.3.0'
 gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'rails_autolink'
+gem 'active_model_serializers', '~> 0.10.0'
 gem 'autoprefixer-rails'
 gem 'aws-sdk', '< 2.0'
 gem 'devise'
