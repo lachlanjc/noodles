@@ -34,14 +34,12 @@ $f2: 1.5rem;
 $f3: 1.25rem;
 $f4: 1rem;
 $f5: .875rem;
+$font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Segoe UI', 'Helvetica Neue', sans-serif;
+$heading-font-family: $serif-font-family;
 $bold-font-weight: 600;
 $spacing: .1em;
-$font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Segoe UI', 'Helvetica Neue', sans-serif;
 $serif-font-family: Georgia, Times, serif;
-$line-height: 1.6;
-$heading-font-family: $font-family;
-$heading-font-weight: $bold-font-weight;
-$heading-line-height: 1.25;
+$line-height: 1.5;
 $monospace-font-family: 'SFMono-Regular', 'Source Code Pro', Consolas, monospace;
 
 $space-1: .5rem;
