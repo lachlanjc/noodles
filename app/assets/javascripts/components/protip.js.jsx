@@ -6,11 +6,11 @@ const tips = [
   'Mark recipes as favorites with the star for quick access.',
   'Save recipes from the web with the Clip icon in the right corner.',
   'Share a recipe with anyone from the menu on the recipe page.',
-  'Download a PDF of a recipe from the menu on the recipe page.',
+  'Download a PDF of a recipe from the menu on the recipe page.'
 ]
 
 const ProTip = () => {
-  const tip = tips[_.random(0,1)]
+  const tip = tips[_.random(0, tips.length - 1)]
   return (
     <footer className='tc'>
       <Icon
