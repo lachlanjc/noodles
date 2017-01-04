@@ -11,6 +11,6 @@ module Shareable
   private
 
   def generate_shared_id
-    self.shared_id = rand(32**8).to_s(32)
+    self.shared_id = rand(16**4).to_s(32)
   end
 end
