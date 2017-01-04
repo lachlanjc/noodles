@@ -56,7 +56,7 @@ $(document).ready ->
       p = "?q=#{encodeURIComponent(q)}&src=#{s}"
       window.history.replaceState null, null, p
 
-      $('[data-behavior~=explore_clear_search]').show 'slow'
+      $('[data-behavior~=explore_clear_search]').show 'fast'
       $('[data-behavior~=explore_suggestions]').fadeOut()
 
       u = "/explore/results#{p}"
@@ -82,7 +82,7 @@ $(document).ready ->
   f.on 'change', _.debounce logSearchToAnalytics, 1000
 
   $(document).on 'click', '[data-behavior~=explore_clear_search]', ->
-    $(this).hide 'slow'
+    $(this).hide 'fast'
     $('[data-behavior~=explore_search_field]').val null
     $('[data-behavior~=explore_results_container]').removeClass 'busy busy--large'
     $('[data-behavior~=explore_masonry_grid]').remove()
