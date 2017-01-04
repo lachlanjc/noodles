@@ -1,30 +1,32 @@
-<nav role="navigation" class="nav bg-blur flex-ns sticky-ns tc-ns mbm pas phm-ns tc dn-p"
-     data-behavior="nav" data-user="<%= user_signed_in? ? current_user.id : 'anon' %>">
+<nav
+  role="navigation"
+  class="nav bg-blur sticky-ns mbm pas phm-ns tc dn-p"
+  data-behavior="nav"
+  data-user="<%= user_signed_in? ? current_user.id : 'anon' %>">
 
-  <%= link_to root_url, class: 'dn dib-ns nav__icon lh' do %>
+  <%= link_to root_url, class: 'nav__icon' do %>
     <%= inline_svg 'cook.svg', class: 'fill-orange', size: 28 %>
   <% end %>
 
-  <article class="nav__container flex-ns flex-auto fjc">
+  <article class="nav__container">
     <% if user_signed_in? %>
-      <section>
+      <section class="nav__section">
         <%= link_to t('general.recipes'), recipes_path, class: nav_active_class(:recipes) %>
         <%= link_to t('general.collections'), collections_path, class: nav_active_class(:collections) %>
         <%= link_to 'Explore', explore_path, class: nav_active_class(:explore) %>
       </section>
-      <section>
+      <section class="nav__section">
         <%= link_to 'News', 'https://news.getnoodl.es/', class: nav_active_class(:medium) %>
         <%= link_to t('general.settings'), :settings, class: nav_active_class(:settings) %>
-        <%= link_to t('general.help'), :help, class: nav_active_class(:help) %>
         <%= link_to t('general.sign_out'), :sign_out, class: nav_active_class(:sign_out) %>
       </section>
     <% else %>
-      <section>
+      <section class="nav__section">
         <%= link_to t('general.home'), root_url, class: nav_active_class(:home) %>
         <%= link_to t('general.explore'), explore_path, class: nav_active_class(:explore) %>
         <%= link_to 'News', 'https://news.getnoodl.es/', class: nav_active_class(:medium) %>
       </section>
-      <section class="mls-ns">
+      <section class="nav__section">
         <%= link_to t('general.about'), :help, class: nav_active_class(:help) %>
         <%= link_to t('general.sign_in'), :sign_in, class: nav_active_class(:sign_in) %>
         <%= link_to t('general.sign_up'), :sign_up, class: nav_active_class(:sign_up) %>
