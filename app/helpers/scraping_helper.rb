@@ -11,8 +11,8 @@ module ScrapingHelper
 
     page = safely { open(url).read }
     data = Hangry.parse page
-    # Allrecipes has trouble with names
-    if data.name.to_s.squish.length > 1 || host =~ /allrecipes\.com/
+
+    if data.name.to_s.squish.present? || host =~ /allrecipes|marthastewart/
       data = process_recipe_page(url, page, data)
     else
       false
@@ -31,7 +31,7 @@ module ScrapingHelper
     elsif host =~ /allrecipes\.com/
       data.name = document.css('[itemprop=name]')[0].attr('content').to_s
     elsif host =~ /foodandwine\.com/
-      data.name = document.css('[itemprop=name]')[2].text.to_s.squish
+      data.name = document.css('[itemprop=name]')[0].text.to_s.squish
     elsif host =~ /bonappetit\.com/
       data = process_ba_page!(data, document)
     elsif host =~ /marthastewart\.com/

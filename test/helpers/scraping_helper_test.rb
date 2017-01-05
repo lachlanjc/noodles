@@ -24,7 +24,7 @@ class ScrapingHelperTest < ActionView::TestCase
   end
 
   test 'food52 import' do
-    assert_equal 'Carrot-Pineapple Cake with Cream Cheese Frosting', master_scrape('http://food52.com/recipes/38008-carrot-pineapple-cake-with-cream-cheese-frosting')[:title]
+    assert_equal 'Carrot-Pineapple Cake with Cream Cheese Frosting', master_scrape('https://food52.com/recipes/38008-carrot-pineapple-cake-with-cream-cheese-frosting')[:title]
   end
 
   test 'bon appetit import' do
