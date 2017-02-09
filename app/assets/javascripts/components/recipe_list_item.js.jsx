@@ -1,6 +1,5 @@
 
 const RecipeListItem = ({ recipe, pub }) => {
-  console.log(recipe)
   const link = pub ? recipe.public_path : recipe.path
 
   const feats = ['collections', 'notes', 'photo', 'web', 'favorite']
