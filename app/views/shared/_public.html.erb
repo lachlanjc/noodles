@@ -1,0 +1,16 @@
+<section id="share" class="modal modal--mw" role="dialog">
+  <%= modal_header 'Public sharing link' %>
+  <%= content_tag :p, "You can send a public link to this #{object.type} to anyone in the world.", class: 'di' %>
+  <%= content_tag :p, 'They can save a copy of it to their own Noodles account.', class: 'di' if object.is_a?(Recipe) && is_my?(object) %>
+
+  <div class="flex mtm">
+    <input value="<%= object.public_url %>" class="text-input flex-auto" data-behavior="autoselect" readonly>
+    <button
+      type="button" class="btn bg-blue btn-sm mls"
+      data-clipboard-text="<%= object.public_url %>"
+      data-behavior="copy">
+      Copy
+    </button>
+  </div>
+  <%= link_to 'See what the public page looks like →', object.public_url, class: 'db mts mbm f5 blue underline' unless public_page? %>
+</section>

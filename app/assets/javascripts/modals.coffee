@@ -15,17 +15,24 @@
           $(modal_id).hide()
           $('[data-behavior~=modal_overlay]').hide()
 
-        $('[data-behavior~=modal_overlay]').click ->
+        $(document).on 'click', '[data-behavior~=modal_overlay]', ->
           close_modal modal_id
-        $('[data-behavior~=modal_close]').click ->
+        $(document).on 'click', '[data-behavior~=modal_close]', ->
           close_modal modal_id
         $(document).keydown (e) ->
-          close_modal modal_id if e.keyCode is 27
+          close_modal modal_id if e.keyCode is 27 # esc key
+
+        if $(this).data('behavior').match('modal_close_first')
+          $(this).closest('.modal').hide()
+
         modal_height = $(modal_id).outerHeight()
         modal_width = $(modal_id).outerWidth()
         $('[data-behavior~=modal_overlay]').fadeTo 200, o.overlay
+
+        scrollable = $(modal_id).attr('class').match('modal--scrollable')
+
         $(modal_id).css
-          'display': 'block'
+          'display': scrollable ? 'flex' : 'block'
           'position': 'fixed'
           'opacity': 0
           'z-index': 100
@@ -33,6 +40,7 @@
           'margin-left': -(modal_width / 2) + 'px'
         $(modal_id).fadeTo 200, 1
         e.preventDefault()
+        $(modal_id).children('[data-behavior~=autoselect]').focus().select()
         return
 ) jQuery
 

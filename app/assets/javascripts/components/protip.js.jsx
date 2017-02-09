@@ -1,7 +1,7 @@
 
 const tips = [
   'Create a new recipe super quickly by searching with its title.',
-  'Find a random recipe with the die icon next to search.',
+  'Tap the lightbulb icon next to search for a random recipe.',
   'Use Cook Mode to check off ingredients as you cook.',
   'Mark recipes as favorites with the star for quick access.',
   'Save recipes from the web with the Clip icon in the right corner.',
@@ -12,17 +12,23 @@ const tips = [
 const ProTip = () => {
   const tip = tips[_.random(0, tips.length - 1)]
   return (
-    <footer className='tc'>
+    <footer
+      className='border-top dn-p'
+      style={{
+        paddingTop: 8,
+        paddingBottom: 12,
+        paddingLeft: 12,
+        paddingRight: 12,
+        textAlign: 'center'
+      }}
+    >
       <Icon
         icon='bolt'
         className='dib fill-grey-3 mrs relative'
         style={{ top: 6 }}
       />
-      <strong
-        style={{ marginRight: 4 }}
-        children='ProTip!'
-      />
-      {tip}
+      <strong>ProTip—</strong>
+      <span>{tip}</span>
     </footer>
   )
 }

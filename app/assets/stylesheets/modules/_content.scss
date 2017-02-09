@@ -2,6 +2,7 @@
   color: $grey-1;
   line-height: 1.75;
   word-wrap: break-word;
+  font-family: $serif-font-family;
 
   a:not(.btn) {
     color: $blue;
@@ -36,6 +37,15 @@
 
     li {
       margin-left: 2rem;
+    }
+  }
+
+  @media screen and (min-width: 48em) {
+    &.list--unindented-m {
+      ul li,
+      ol li {
+        margin-left: 0;
+      }
     }
   }
 

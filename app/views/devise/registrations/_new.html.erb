@@ -1,27 +1,29 @@
-<% opts = defined?(options) ? options : {} %>
-<% opts.merge!({ url: user_registration_path(user), autocomplete: 'on', html: { name: 'reg' } }) %>
+<% options ||= {} %>
+<% options = {
+  url: user_registration_path(user),
+  autocomplete: 'on',
+  html: { name: 'reg' }.reverse_merge(options)
+} %>
 
-<%= form_for(user, opts) do |f| %>
-  <% if text.present? %>
-    <p data-behavior="hide_on_inline_submit"><%= text %></p>
-  <% end %>
+<%= form_for(user, options) do |f| %>
+  <%= content_tag :p, text, 'data-behavior': 'hide_on_inline_submit' if defined? text %>
 
   <%= devise_error_messages!(user) %>
 
-  <%= f.label :first_name, t('devise.registrations.new.first_name') %>
-  <%= f.text_field :first_name, id: 'fname', autofocus: true, placeholder: 'Ryan', class: 'text-input mx-auto' %>
+  <%= f.label :first_name, t('devise.registrations.new.first_name'), class: 'label' %>
+  <%= f.text_field :first_name, autofocus: true, placeholder: 'Carbonara', class: 'text-input' %>
 
-  <%= f.label :email, t('devise.registrations.new.email_check') %>
-  <%= f.email_field :email, required: true, autocomplete: 'email', placeholder: 'ryan@example.com', class: 'text-input mx-auto' %>
+  <%= f.label :email, 'Your email address', class: 'label' %>
+  <%= f.email_field :email, required: true, autocomplete: 'email', placeholder: 'carbonara@icloud.com', class: 'text-input' %>
 
-  <%= f.label :password, 'Now, pick a password:' %>
-  <%= f.password_field :password, required: true, id: 'new-password', pattern: '.{8,}', placeholder: '••••••••', class: 'text-input mx-auto' %>
+  <%= f.label :password, 'Pick a password', class: 'label' %>
+  <%= f.password_field :password, required: true, pattern: '.{8,}', placeholder: '8 characters recommended', class: 'text-input' %>
 
   <%= f.hidden_field :want_newsletter, value: true %>
 
-  <%= f.submit t('general.sign_up'), class: 'btn bg-orange mtm b' %>
+  <%= f.submit t('general.sign_up'), class: 'btn btn--primary bg-orange mtm b form__submit' %>
 
   <p class="f5 mtm mbn grey-3">
-    By signing up for and using Noodles you are agreeing to the <%= link_to 'Terms', :terms %> and <%= link_to 'Privacy Policy', :privacy %>.
+    You’re agreeing to the <%= link_to 'terms', terms_path %> and <%= link_to 'privacy policy', privacy_path %>.
   </p>
 <% end %>

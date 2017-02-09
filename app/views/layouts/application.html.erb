@@ -8,14 +8,15 @@
     <meta property="fb:pages" content="698221030285633">
     <meta property="og:site_name" content="Noodles">
     <meta property="og:title" content="Noodles">
-    <meta property="og:url" content="https://getnoodl.es/">
-    <meta property="og:image" content="<%= asset_path 'icon.png' %>">
+    <meta property="og:url" content="https://getnoodl.es">
+    <meta property="og:image" content="<%= asset_path 'icon/icon.png' %>">
     <meta property="og:description" content="<%= t('general.description') %>">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@noodlesapp">
+    <meta name="twitter:creator" content="@noodlesapp">
     <meta name="twitter:title" content="Noodles">
     <meta name="twitter:description" content="<%= t('general.description') %>">
-    <meta name="twitter:image:src" content="<%= asset_path 'icon.png' %>">
+    <meta name="twitter:image:src" content="<%= asset_path 'icon/icon.png' %>">
     <meta name="twitter:domain" content="getnoodl.es">
   <% end %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,7 +37,8 @@
 </head>
 <body
   class="<%= body_classes %> man"
-  style="<%= "background-image: url(#{content_for(:bg_img)});" if content_for?(:bg_img) %>">
+  style="<%= "background-image: url(#{content_for(:bg_img)});" if content_for?(:bg_img) %>"
+  data-user="<%= user_signed_in? ? current_user_id : 'anon' %>">
   <%= yield %>
 </body>
 </html>

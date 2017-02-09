@@ -1,5 +1,5 @@
 class Collection < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user, touch: true
   has_many :recipes
 
   include Shareable
@@ -10,26 +10,13 @@ class Collection < ActiveRecord::Base
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
 
   def recipes
-    list = []
-    self.user.recipes.each do |recipe|
-      list.push(recipe) if recipe.collections.include?(self.id)
-    end
-    list
+    results = self.user.recipes.pluck(:id, :collections)
+    results.delete_if { |item| !item[1].include?(self.id.to_s) }
+    Recipe.find(results.transpose[0] || [])
   end
 
   def to_param
     "#{id} #{name}".parameterize
-  end
-
-  def as_json
-    {
-      name: name,
-      description: description,
-      url: Rails.application.routes.url_helpers.collection_path(self),
-      id: id,
-      publisher: user.first_name,
-      photo_url: photo.url.to_s
-    }
   end
 
   def imaged?
@@ -38,5 +25,13 @@ class Collection < ActiveRecord::Base
 
   def unimaged?
     !imaged?
+  end
+
+  def photo_url
+    imaged? ? photo.url : "#{ENV['SPLATTERED_URL']}/#{name}"
+  end
+
+  def public_url
+    coll_share_url shared_id
   end
 end

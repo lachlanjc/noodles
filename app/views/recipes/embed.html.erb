@@ -1,14 +1,14 @@
-<%= stylesheet_link_tag 'embed', '//brick.a.ssl.fastly.net/Lato:400', media: 'all' %>
-<%= link_to shared_path(r), style: 'text-decoration: none;' do %>
+<%= link_to r.public_url, style: 'text-decoration: none;' do %>
   <% if r.imaged? %>
     <article class="noodles noodles--img" style="background-image: url(<%= r.img.url %>);">
   <% else %>
     <article class="noodles noodles--basic">
   <% end %>
     <%= content_tag :h1, r.title, class: 'noodles__text noodles__header' %>
-    <%= content_tag(:p, r.description_truncated, class: 'noodles__text noodles__description') if r.description.to_s.present? %>
+    <%= content_tag(:p, r.description.truncate(72), class: 'noodles__text noodles__description') if r.description.to_s.present? %>
     <footer class="noodles__footer noodles__text">
       Published with &#10084; on Noodles
     </footer>
   </article>
+  <%= stylesheet_link_tag 'embed', media: 'all' %>
 <% end %>

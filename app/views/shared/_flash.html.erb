@@ -1,9 +1,15 @@
+<% simple ||= false %>
 <% if flash.any? %>
-<section class="md-col-6 mw6 phm mx-auto dn-p">
-<% flash.each do |key, value| %>
-  <div class="pam mbm rounded shadow bg-<%= flash_color_class(key) %> white pointer" role="alertdialog" data-behavior="flash">
-    <%= value %>
-  </div>
-<% end %>
-</section>
+  <% if simple %>
+    <% flash.each do |type, message| %>
+      <div
+        role="alertdialog"
+        data-behavior="flash"
+        class="pam tc mbm rounded bg-blue white">
+        <%= message %>
+      </div>
+    <% end %>
+  <% else %>
+    <%= react_component 'FlashContainer', flashes: flash_json %>
+  <% end %>
 <% end %>

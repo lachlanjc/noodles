@@ -1,21 +1,25 @@
 .flex { display: flex; }
+.flex-i { display: inline-flex; }
 
 @media screen and (min-width: 30em) {
   .flex-ns { display: flex; }
+  .flex-i-ns { display: inline-flex; }
 }
 
 @media screen and (min-width: 48em) {
   .flex-md { display: flex; }
 }
 
-.fac  { align-items: center; }
-.fab  { align-items: baseline; }
-.fas  { align-items: flex-start; }
-.fae  { align-items: flex-end; }
-.fjc  { justify-content: center; }
-.fjb  { justify-content: space-between; }
-.fc   { flex-direction: column; }
-.fsn  { flex-shrink: 0; }
+.fac { align-items: center; }
+.fab { align-items: baseline; }
+.fas { align-items: flex-start; }
+.fae { align-items: flex-end; }
+.fjs { justfiy-content: flex-start; }
+.fje { justfiy-content: flex-end; }
+.fjc { justify-content: center; }
+.fjb { justify-content: space-between; }
+.fc  { flex-direction: column; }
+.fsn { flex-shrink: 0; }
 
 .flex-auto {
   flex: 1 1 auto;

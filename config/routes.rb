@@ -1,29 +1,32 @@
 Rails.application.routes.draw do
-
   root 'pages#home'
   get '/home', to: 'pages#home', as: :home
   get '/styleguide', to: 'pages#styleguide', as: :styleguide
 
   resources :recipes do
     member do
-      get '/cook', to: 'cook#index'
+      post '/', to: 'recipes#update'
+      get '/cook', to: 'cook#index', as: :cook
+      post '/cook', to: 'cook#record_cook'
+      get '/collections', to: 'recipes#collections'
       get '/pdf', to: 'recipes#export_pdf', as: :export_pdf
       get '/remove_image', to: 'recipes#remove_image', as: :remove_image
     end
   end
 
-  scope '/s' do
-    get '/:shared_id', to: 'recipes#share', as: :share
-    get '/:shared_id/cook', to: 'cook#share', as: :public_cook
-    get '/:shared_id/save', to: 'recipes#save_to_noodles', as: :save_to_noodles
+  scope '/s/:shared_id' do
+    get '/', to: 'recipes#share', as: :share
+    get '/cook', to: 'cook#index', as: :public_cook
+    get '/save', to: 'recipes#save_to_noodles', as: :save_to_noodles
   end
 
-  get '/embed', to: 'pages#embed_demo', as: :embed_demo
-  get '/embed/:shared_id', to: 'recipes#embed_js', as: :embed
+  scope 'embed' do
+    get '/', to: 'pages#embed_demo', as: :embed_demo
+    get '/:shared_id', to: 'recipes#embed_js', as: :embed
+  end
 
-  # Collections
   resources :collections, except: [:new, :edit]
-  get '/c/:shared_id', to: 'collections#share'
+  get '/c/:shared_id', to: 'collections#share', as: :coll_share
 
   get '/save', to: 'save#save', as: :save
 
@@ -33,8 +36,8 @@ Rails.application.routes.draw do
     get '/preview', to: 'explore#preview'
   end
 
-  get '/about', to: 'pages#about', as: :about
-  get '/help', to: 'pages#about', as: :help
+  get '/contact', to: 'pages#help', as: :contact
+  get '/help', to: 'pages#help', as: :help
   get '/docs', to: 'pages#docs', as: :docs
   get '/privacy', to: 'pages#privacy', as: :privacy
   get '/terms', to: 'pages#terms', as: :terms
@@ -55,7 +58,7 @@ Rails.application.routes.draw do
     put    'signup',  to: 'devise/registrations#update',  as: :update_user_registration
     delete 'signup',  to: 'devise/registrations#destroy', as: :destroy_user
 
-    get 'onboarding', to: 'devise/registrations#onboarding', as: :onboarding
+    get 'subscribe', to: 'registrations#subscribe', as: :subscribe
 
     get 'settings', to: 'devise/registrations#edit',     as: :settings
 
@@ -66,7 +69,6 @@ Rails.application.routes.draw do
   scope '/admin' do
     get '/dashboard', to: 'analytics#dashboard', as: :analytics_dash
     get '/all_users', to: 'analytics#all_users', as: :analytics_users
-    get '/collections', to: 'analytics#collections', as: :analytics_collections
     get '/performance', to: 'analytics#performance', as: :analytics_performance
   end
 end

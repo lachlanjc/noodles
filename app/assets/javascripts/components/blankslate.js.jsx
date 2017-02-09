@@ -1,8 +1,19 @@
 
-const BlankSlate = ({ width, margin, ...props }) => (
+const BlankSlate = ({ width, margin, className, ...props }) => (
   <article
-    className={`md-col-${width || 6} border bg-grey-4 rounded ${margin || 'mvl'} pal tc mx-auto`}
     {...props}
+    className={
+      _.join([
+        `border rounded pal tc mx-auto`,
+        width ? `md-col-${width}` : 'measure',
+        margin || 'mvl',
+        className
+      ], ' ')
+    }
+    style={{
+      borderWidth: 2,
+      borderStyle: 'dashed'
+    }}
   />
 )
 

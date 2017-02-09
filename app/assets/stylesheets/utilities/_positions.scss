@@ -14,7 +14,14 @@
     position: -webkit-sticky;
     position: -moz-sticky;
     position: -ms-sticky;
-    position: sticky;
   }
-  .tl-ns { top: 4rem; }
+
+  .relative-ns { position: relative; }
+  .absolute-ns { position: absolute; }
+  .fixed-ns    { position: fixed; }
+
+  .t0-ns { top: 0; }
+  .r0-ns { right: 0; }
+  .b0-ns { bottom: 0; }
+  .l0-ns { left: 0; }
 }

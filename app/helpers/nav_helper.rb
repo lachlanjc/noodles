@@ -15,13 +15,19 @@ module NavHelper
     @navs.push(nav.to_sym)
   end
 
-  def flash_color_class(level)
+  def flash_json
+    flash.to_a.each do |f|
+      f[0] = flash_type(f[0])
+    end
+  end
+
+  def flash_type(level)
     case level.to_sym
-    when :grey then 'grey-3'
-    when :green then 'green'
-    when :red, :alert then 'red'
-    when :blue, :notice then 'blue'
-    else 'grey-3'
+    when :grey then nil
+    when :success, :green then 'success'
+    when :danger, :alert, :red then 'danger'
+    when :notice, :blue then 'info'
+    else 'message'
     end
   end
 
@@ -41,4 +47,9 @@ module NavHelper
     end
   end
 
+  def flag_page?
+    controllers = %w(devise/registrations devise/sessions pages).include?(params[:controller])
+    actions = %w(share subscribe).include?(params[:action])
+    user_signed_in? && !controllers && !actions
+  end
 end

@@ -1,18 +1,17 @@
 <% activate_nav!(:collections) %>
-<%- title @collection.name.html_safe %>
+<%- title @collection.name %>
 
 <%= render 'shared/nav' %>
 
 <%= react_component 'CollectionPage',
-  id: @collection.id,
-  shared_id: @collection.shared_id,
+  collection: @collection_json,
   edit: true,
   pub: false
 %>
 
-<section class="modal" role="dialog" id="editCollection">
+<section class="modal" role="dialog" id="edit">
   <%= modal_header 'Edit Collection' %>
   <%= render 'form' %>
 </section>
 
-<%= render 'share' %>
+<%= render 'shared/public', object: @collection %>

@@ -5,9 +5,9 @@ module DeviseHelper
 
     messages = user.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
     html = <<-HTML
-    <div class="rounded mvm phm mx-auto" style="border: 2px solid #ff0013; padding-bottom: 1.5rem;">
+    <div class="rounded pam phm mvm mx-auto" style="border: 2px solid #ff0013; padding-bottom: 1.5rem;">
       <h2 class="red mtn f3">Those Noodles are a bit tangled.</h2>
-      <ul class="list-reset pan text tc">#{messages}</ul>
+      <ul class="list-reset pan">#{messages}</ul>
     </div>
     HTML
 

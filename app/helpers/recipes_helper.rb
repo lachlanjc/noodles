@@ -2,28 +2,12 @@ module RecipesHelper
   include ApplicationHelper
   include TextHelper
 
-  def me_owns_recipe?
-    user_signed_in? && @recipe.user_id == current_user.id
-  end
-
-  def not_my_recipe?
-    !me_owns_recipe?
-  end
-
-  def shared_path(recipe = @recipe)
-    "/s/#{recipe.shared_id}"
-  end
-
-  def shared_url(recipe = @recipe)
-    app_url + shared_path(recipe)
-  end
-
   def sample_recipe
     Recipe.find_by_shared_id 'sample'
   end
 
   def recipe_embed(r = @recipe)
-    ph = content_tag(:a, "#{r.title} on Noodles", href: shared_url(r))
+    ph = content_tag(:a, "#{r.title} on Noodles", href: share_url(r.shared_id))
     content_tag(:section, ph, id: "noodles-#{r.shared_id}") + embed_script(r)
   end
 
@@ -44,22 +28,30 @@ module RecipesHelper
     source_data.to_s.match(/https?/).present?
   end
 
-  def ingredient_processed(text)
+  def ingredient_processed(text, options = {})
     line = sanitize markdown(text)
     line = Nokogiri::HTML::DocumentFragment.parse(line)
-    line.css('p').each { |item| item['itemprop'] = 'recipeIngredient' }
+    line = line.first_element_child
+
+    name = options[:name] || (text.match(/# /) ? 'h1' : 'li')
+    line.name = name
+
+    options.delete 'name'
+    # line['itemprop'] = 'recipeIngredient'
+    options.each { |key, val| line[key] = val }
+
     line.to_s.html_safe
   end
 
-  def instructions_processed(instructions = @recipe.instructions)
+  def instructions_processed(instructions = @recipe.instructions, options = {})
     text = sanitize markdown(instructions)
-    text = Nokogiri::HTML::DocumentFragment.parse(text)
-    text.css('li').each { |item| item['itemprop'] = 'instruction' }
+    # text = Nokogiri::HTML::DocumentFragment.parse(text)
+    # text.css('li').each { |item| item['itemprop'] = 'instruction' }
     text.to_s.html_safe
   end
 
   def no_details?(recipe = @recipe)
-    recipe.source.blank? && recipe.author.blank? && recipe.serves.blank?
+    @recipe.slice(:source, :author, :serves).values.join.blank?
   end
 
   def details?(recipe = @recipe)
@@ -67,7 +59,7 @@ module RecipesHelper
   end
 
   def notes_blankslate
-    content_tag(:p, 'No notes for this recipe yet.')
+    content_tag(:p, 'No notes for this recipe yet.', class: 'grey-3')
   end
 
   def notes_rendered(recipe = @recipe)

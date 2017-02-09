@@ -1,8 +1,4 @@
 module ApplicationHelper
-  def app_url
-    Rails.env.development? ? 'http://noodles.dev' : 'https://getnoodl.es'
-  end
-
   def simple_controller
     request.filtered_parameters['controller']
   end
@@ -12,14 +8,45 @@ module ApplicationHelper
   end
 
   def modal_close
-    svg = inline_svg('close.svg', class: 'fill-grey-3')
+    svg = inline_svg('close.svg', size: 28, class: 'fill-grey-3')
     content_tag :action, svg, class: 'db fr pointer', data: { behavior: 'modal_close' }
   end
 
   def modal_header(text)
     html = modal_close
-    html << content_tag(:h2, text, class: 'mtn tl')
-    html << tag(:hr)
+    html << content_tag(:h2, text, class: 'mtn')
+    html << tag(:hr, class: 'mtn')
     html
+  end
+
+  def backlink(label, path)
+    arrow = content_tag(:span, '← ', class: 'grey-2')
+    link = link_to("Back to #{label}", path, class: 'blue')
+    content_tag(:section, arrow + link, class: 'pvs tc f5').html_safe
+  end
+
+  def make_schema(data = {})
+    content_tag 'script', data.to_json.html_safe, type: 'application/ld+json'
+  end
+
+  def org_schema
+    {
+      '@context': 'http://schema.org',
+      '@type': 'Organization',
+      name: 'Noodles',
+      url: 'https://4db27366.ngrok.io' || 'https://getnoodl.es',
+      logo: image_url('icon/circle@512.png'),
+      sameAs: [
+        'https://news.getnoodl.es',
+        'https://twitter.com/noodlesapp',
+        'https://facebook.com/getnoodles'
+      ],
+      contactPoint: [{
+        '@type': 'ContactPoint',
+        email: 'lachlan@getnoodl.es',
+        contactType: 'customer support inquiries',
+        url: 'https://getnoodl.es/help'
+      }]
+    }
   end
 end

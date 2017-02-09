@@ -7,7 +7,7 @@ class PagesController < ApplicationController
     render :home, layout: false
   end
 
-  def about
+  def help
   end
 
   def styleguide

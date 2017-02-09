@@ -1,8 +1,15 @@
-<%- title 'Recipes' %>
+<% title 'Recipes' %>
 <% activate_nav!(:recipes) %>
 
 <%= render 'shared/nav' %>
 
-<%= react_component 'RecipesHome' %>
+<% if @recipes.any? %>
+  <%= react_component 'RecipesHome',
+    recipes: @recipes_json,
+    collections: @collections_json
+  %>
+<% else %>
+  <%= react_component 'RecipesHomeBlank' %>
+<% end %>
 
-<%= render 'new' %>
+<%= render 'import' %>

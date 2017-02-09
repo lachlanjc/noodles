@@ -4,33 +4,28 @@
 <% content_for :meta do -%>
   <% if @collection.imaged? %>
     <meta name="twitter:card" content="summary_large_image">
-    <meta property="og:image" content="<%= @collection.photo.url %>"/>
-    <meta name="twitter:image" content="<%= @collection.photo.url %>">
+    <meta name="twitter:image" content="<%= @collection.media_url %>">
+    <meta property="og:image" content="<%= @collection.media_url %>">
   <% else %>
     <meta name="twitter:card" content="summary">
   <% end %>
-  <meta property="og:site_name" content="Noodles" />
-  <meta property="og:url" content="<%= @shared_url %>">
-  <meta property="og:title" content="<%= @collection.name %>">
+  <meta name="twitter:site" content="@noodlesapp">
+  <meta name="twitter:creator" content="@noodlesapp">
+  <meta property="og:site_name" content="Noodles">
+  <meta property="og:url" content="<%= @collection.public_url %>">
   <meta name="twitter:title" content="<%= @collection.name %>">
-  <% if @collection.description.blank? %>
-    <% @description = "Check out this collection published on Noodles by #{@collection.user.first_name}." %>
-    <meta property="og:description" content="<%= @description %>">
-    <meta property="twitter:description" content="<%= @description %>">
-  <% else %>
-    <meta property="og:description" content="<%= @collection.description %> — Published on Noodles">
-    <meta name="twitter:description" content="<%= @collection.description %> — Published on Noodles">
-    <meta name="description" content="<%= @collection.description %> — Published on Noodles">
-  <% end %>
+  <meta property="og:title" content="<%= @collection.name %>">
+  <% @description = "This collection was published on Noodles by #{@collection.publisher}." if @collection.description.blank? %>
+  <meta property="og:description" content="<%= @description || @recipe.description %>">
+  <meta name="twitter:description" content="<%= @description || @recipe.description %>">
+  <meta name="description" content="<%= @description || @recipe.description %>">
 <% end -%>
 
-<%= render 'shared/nav' %>
-
 <%= react_component 'CollectionPage',
-  id: @collection.id,
-  shared_id: @collection.shared_id,
+  collection: @collection_json,
   edit: false,
   pub: true
 %>
 
-<%= render 'share' %>
+<%= render 'shared/public', object: @collection %>
+<%= render 'shared/promo' %>

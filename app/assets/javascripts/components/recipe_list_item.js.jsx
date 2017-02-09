@@ -1,27 +1,40 @@
-class RecipeListItem extends React.Component {
-  render() {
-    const recipe = this.props.recipe
-    const recipeLink = this.props.pub === true ? recipe.shared_url : recipe.url
 
-    let icns = [];
-    _.forEach(['collections', 'notes', 'photo', 'web'], function (feature) {
-      if (recipe[feature] === true) {
-        icns.push(<Icon icon={feature} className='mls fill-grey-4' />)
-      }
-    })
-    recipe.favorite === true ? icns.push(<Icon icon='fav' className='mls fill-orange' />) : null
+const RecipeListItem = ({ recipe, pub }) => {
+  console.log(recipe)
+  const link = pub ? recipe.public_path : recipe.path
 
-    return (
-      <li className='bg-white rounded shadow shadow--effect mbs pam'>
-        <a href={recipeLink} className='link-reset'>
-          <div className='fr dn-p'>{icns}</div>
-          <h3 className='man normal'>{recipe.title}</h3>
-          <p className='man text'>{recipe.description_preview}</p>
-        </a>
-      </li>
-    )
-  }
+  const feats = ['collections', 'notes', 'photo', 'web', 'favorite']
+  let icns = []
+  _.forEach(feats, feat => {
+    if (recipe[feat]) {
+      icns.push(
+        <RecipeListItemIcon
+          feat={feat}
+          key={`r-${recipe.shared_id}-${_.indexOf(feats, feat)}`}
+        />
+      )
+    }
+  })
+
+  const { title, description } = recipe
+
+  return (
+    <li className='border-top feel pam'>
+      <a href={link} className='link-reset'>
+        <div className='fr dn-p'>{icns}</div>
+        <h3 className='man' children={title} />
+        <p className='man text truncate grey-3'>{description}</p>
+      </a>
+    </li>
+  )
 }
+
+const RecipeListItemIcon = ({ feat }) => (
+  <Icon
+    icon={feat === 'favorite' ? 'fav' : feat}
+    className={`mls ${feat === 'favorite' ? 'fill-orange' : 'fill-grey-4'}`}
+  />
+)
 
 RecipeListItem.propTypes = {
   recipe: React.PropTypes.object.isRequired,

@@ -9,8 +9,8 @@
 <% else %>
   <%= render 'shared/nav' %>
 
-  <main class="document bw0 bg-blur mw6 tc">
-    <h1 class="mbs"><%= t('.welcome') %></h1>
+  <main class="document bw0 mw6">
+    <%= section_header 'Hey, welcome to Noodles!', 1, class: 'mtn mbs f2' %>
     <%= @form %>
   </main>
 <% end %>

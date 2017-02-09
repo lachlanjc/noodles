@@ -1,8 +1,8 @@
+<% no_margin ||= false %>
 <nav
   role="navigation"
-  class="nav bg-blur sticky-ns mbm pas phm-ns tc dn-p"
-  data-behavior="nav"
-  data-user="<%= user_signed_in? ? current_user.id : 'anon' %>">
+  class="nav bg-blur sticky-ns pas phm-ns tc dn-p <%= 'mbm' unless no_margin %>"
+  data-behavior="nav">
 
   <%= link_to root_url, class: 'nav__icon' do %>
     <%= inline_svg 'cook.svg', class: 'fill-orange', size: 28 %>
@@ -17,8 +17,8 @@
       </section>
       <section class="nav__section">
         <%= link_to 'News', 'https://news.getnoodl.es/', class: nav_active_class(:medium) %>
-        <%= link_to t('general.settings'), :settings, class: nav_active_class(:settings) %>
-        <%= link_to t('general.sign_out'), :sign_out, class: nav_active_class(:sign_out) %>
+        <%= link_to t('general.settings'), settings_path, class: nav_active_class(:settings) %>
+        <%= link_to t('general.sign_out'), sign_out_path, class: nav_active_class(:sign_out) %>
       </section>
     <% else %>
       <section class="nav__section">
@@ -27,12 +27,22 @@
         <%= link_to 'News', 'https://news.getnoodl.es/', class: nav_active_class(:medium) %>
       </section>
       <section class="nav__section">
-        <%= link_to t('general.about'), :help, class: nav_active_class(:help) %>
-        <%= link_to t('general.sign_in'), :sign_in, class: nav_active_class(:sign_in) %>
-        <%= link_to t('general.sign_up'), :sign_up, class: nav_active_class(:sign_up) %>
+        <%= link_to t('general.help'), help_path, class: nav_active_class(:help) %>
+        <%= link_to t('general.sign_in'), sign_in_path, class: nav_active_class(:sign_in) %>
+        <%= link_to t('general.sign_up'), sign_up_path, class: nav_active_class(:sign_up) %>
       </section>
     <% end %>
   </article>
 </nav>
 
 <%= render 'shared/flash' if @hide_flash != true %>
+
+<% if flag_page? %>
+  <%= react_component 'Flags',
+    { subscribe: !current_user.subscriber? },
+    { style: 'position: fixed; left: 0px; right: 0px; bottom: 0px; z-index: 1;' }
+  %>
+
+  <%= react_component 'HelpModal', email: current_user.email %>
+  <%= react_component 'SubscribeModal' unless current_user.subscriber? %>
+<% end %>

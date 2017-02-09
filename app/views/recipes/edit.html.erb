@@ -1,32 +1,29 @@
 <% activate_nav!(:recipes) %>
 <%- title @page_title || "Editing #{@title}".html_safe %>
 
-<%= render 'shared/nav' %>
+<%= render 'shared/nav', margin: @recipe.persisted? %>
 
-<main class="md-col-8 mx-auto mw7 phm pvm-ns">
-  <% if params[:action] == 'new' %>
-    <section class="mw6 mx-auto bg-white rounded pam shadow mbm flex" data-behavior="editor_clip">
-      <%= inline_svg 'chev-right.svg', size: 20, class: 'fill-grey-3 dib mrs pointer fsn', 'data-behavior': 'editor_clip_r editor_clip_trigger' %>
-      <article class="flex-auto dib">
-        <h4 class="man fwn pointer" data-behavior="editor_clip_trigger editor_clip_header">
-          Saving a recipe from the web?
-        </h4>
-        <div class="dn" data-behavior="editor_clip_content rehide">
-          <%= render 'clip' %>
-        </div>
-      </article>
-    </section>
-  <% end %>
+<% if @recipe.new_record? %>
+  <a href="#import" name="import" class="link-reset flex fac fjc mvm" data-behavior="modal_trigger">
+    <%= inline_svg 'web.svg', size: 24, class: 'fill-grey-3 fsn' %>
+    <p class="lh-solid mls mbn grey-2">
+      Importing from the web?
+    </p>
+  </a>
+  <%= render 'import' %>
+<% else %>
+  <%= backlink @recipe.title, params[:redirect_to] || recipe_path(@recipe) %>
+<% end %>
 
-<%= form_for(@recipe) do |f| %>
-
+<main class="document md-col-8 mw7">
+<%= form_for(@recipe, url: recipe_path(@recipe, redirect_to: params[:redirect_to])) do |f| %>
   <section class="mbm db" data-behavior="editor_photo">
     <%= f.file_field :img, class: 'dn', 'data-behavior': 'photo_field' %>
     <div
       class="fr mtm <%= 'dn' if @recipe.unimaged? %>"
       data-behavior="editor_photo_cont <%= 'rehide' if @recipe.unimaged? %>"
     >
-      <img src="<%= @recipe.img.url if @recipe.imaged? %>" width="96" class="rounded oh bx pointer" data-behavior="editor_photo_preview">
+      <img src="<%= @recipe.img.url if @recipe.imaged? %>" width="96" class="rounded oh bx" data-behavior="editor_photo_preview">
     </div>
     <div class="grey-3 pointer" data-behavior="photo_button">
       <%= inline_svg 'photo-upload.svg', size: 32, class: 'fill-grey-3 relative', style: 'top: 10px;' %>
@@ -44,10 +41,12 @@
   </section>
 
   <% if @recipe.errors.any? %>
-    <section class="md-col-8 mx-auto bg-white rounded shadow tc mtm mbm pal"
-             role="alertdialog" data-behavior="recipe_errors">
+    <section
+      class="md-col-8 mx-auto bg-white rounded shadow mvm pam pal-ns"
+      data-behavior="recipe_errors"
+      role="alertdialog">
       <% @errors = @recipe.errors.messages %>
-      <% if @errors[:title] %>
+      <% if @errors[:title].present? %>
         <% if @errors[:title].first.match 'blank' %>
           <h2 class="red normal mtn">Your recipe doesn't have a title!</h2>
           <p class="mbn">Add a title (below) and you'll be good to go.</p>
@@ -56,7 +55,8 @@
           <h2 class="red normal mtn">That title is too long!</h2>
           <p class="mbn">Try shortening it (to less than 250 characters) and you'll be good to go.</p>
         <% end %>
-      <% elsif @errors[:img] %>
+      <% end %>
+      <% if @errors[:img].present? %>
         <% if @errors[:img].last.match 'less than' %>
           <h2 class="red normal mtn">That's a big photo!</h2>
           <p class="mbn">Please use an image that's less than 2 MB.</p>
@@ -69,46 +69,69 @@
     </section>
   <% end %>
 
-  <%= f.text_field :title, value: @title,
-                   autofocus: true, required: true, autocomplete: 'off',
-                   class: 'text-input invisible-input col-12 man b f1',
-                   placeholder: 'Title your recipe...' %>
+  <%= f.text_field :title,
+    value: @title,
+    required: true,
+    autofocus: true,
+    autocomplete: 'off',
+    placeholder: 'Title your recipe…',
+    class: 'text-input invisible-input serif col-12 man b f1'
+  %>
 
+  <%= f.label :description, class: 'label f3 dib' %>
   <%= f.text_area :description,
-                  class: 'text-input invisible-input col-12 lh-copy',
-                  placeholder: 'If you\'d like, write a description for the recipe here.',
-                  rows: '1', autocomplete: 'off', 'data-behavior': 'autosize' %>
+    rows: 1,
+    autocomplete: 'off',
+    placeholder: 'If you\'d like, write a description for the recipe here.',
+    'data-behavior': 'autosize',
+    class: 'text-input invisible-input serif col-12 lh-copy'
+  %>
 
-  <%= f.label :ingredients, class: 'dib f3' %><small class="f5 mls grey-4">Put one on each line.</small>
+  <%= f.label :ingredients, class: 'label f3 dib' %>
+  <small class="f5 mls grey-4">Put one on each line.</small>
   <%= f.text_area :ingredients,
-                  class: 'text-input invisible-input col-12 man lh-copy',
-                  placeholder: 'Click here and type your recipe\'s ingredients.',
-                  rows: '3', autocomplete: 'off', 'data-behavior': 'autosize' %>
+    rows: 3,
+    autocomplete: 'off',
+    placeholder: 'Click here and type your recipe\'s ingredients.',
+    'data-behavior': 'autosize',
+    class: 'text-input invisible-input serif col-12 man lh-copy'
+  %>
 
-  <%= f.label :instructions, class: 'dib f3' %><small class="f5 mls grey-4">Fully supports Markdown.</small>
+  <%= f.label :instructions, class: 'label f3 dib' %>
+  <small class="f5 mls grey-4">Fully supports Markdown.</small>
   <%= f.text_area :instructions,
-                  class: 'text-input invisible-input col-12 man lh-copy',
-                  placeholder: 'Add the instructions here.',
-                  rows: '4', autocomplete: 'off',
-                  'data-behavior': 'autosize editor_instructions' %>
+    rows: 4,
+    autocomplete: 'off',
+    placeholder: 'Add the instructions here.',
+    'data-behavior': 'autosize editor_instructions',
+    class: 'text-input invisible-input serif col-12 man lh-copy'
+  %>
 
-  <%= f.label :notes, class: 'dib f3' %>
-  <%= f.text_area :notes, rows: '4', autocomplete: 'off', class: 'text-input sm-col-10 md-col-8 lh-copy bg-notes' %>
+  <%= f.label :notes, class: 'label f3 dib' %>
+  <small class="f5 mls grey-4">What would you want to remember for next time?</small>
+  <%= f.text_area :notes,
+    rows: '4',
+    autocomplete: 'off',
+    placeholder: 'Write your notes here.',
+    class: 'text-input invisible-input serif col-12 man lh-copy'
+  %>
 
-  <h2 class="mtl">Details</h2>
+  <%= section_header 'Details', 2, class: 'mtl' %>
 
-  <%= f.label :source, class: 'dib' %><small class="f5 mls grey-4">Where did this recipe come from?</small>
-  <%= f.text_field :source, class: 'text-input md-col-8' %>
+  <%= f.label :source, class: 'label dib' %>
+  <small class="f5 mls grey-4">Where did this recipe come from?</small>
+  <%= f.text_field :source, class: 'text-input serif md-col-8' %>
 
-  <%= f.label :author, class: 'dib' %><small class="f5 mls grey-4">Who originally wrote this recipe?</small>
-  <%= f.text_field :author, class: 'text-input md-col-8' %>
+  <%= f.label :author, class: 'label dib' %>
+  <small class="f5 mls grey-4">Who originally wrote this recipe?</small>
+  <%= f.text_field :author, class: 'text-input serif md-col-8' %>
 
-  <%= f.label :serves, 'Yield', class: 'dib' %><small class="f5 mls grey-4">How many servings does your recipe produce?</small>
-  <%= f.text_field :serves, class: 'text-input md-col-8' %>
+  <%= f.label :serves, 'Yield', class: 'label dib' %>
+  <small class="f5 mls grey-4">How many servings does your recipe produce?</small>
+  <%= f.text_field :serves, class: 'text-input serif md-col-8' %>
 
-  <%= f.submit 'Save', class: 'btn bg-blue b mtl mbl', 'data-disable-with': 'Saving...' %>
-  <span class="grey-4 mlm">or</span>
-  <%= link_to 'Cancel', @recipe, class: 'grey-3 underline' %>
-
+  <footer class="tc">
+    <%= f.submit 'Save', class: 'btn btn--primary bg-blue b mtl', 'data-disable-with': 'Saving...' %>
+  </footer>
 <% end %>
 </main>

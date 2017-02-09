@@ -5,4 +5,8 @@ class User < ActiveRecord::Base
 
   has_many :recipes, dependent: :destroy
   has_many :collections, dependent: :destroy
+
+  def subscriber?
+    false
+  end
 end

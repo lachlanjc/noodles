@@ -1,84 +1,82 @@
 <%- title @recipe.title.html_safe %>
-<% activate_nav!(:recipes) %>
 <% activate_nav!(:shared_recipe) %>
 <% remove_grey_bg! if @image_layout %>
 
 <% content_for :meta do -%>
   <% if @recipe.imaged? %>
     <meta name="twitter:card" content="summary_large_image">
-    <meta property="og:image" content="<%= @recipe.img.url %>"/>
-    <meta name="twitter:image" content="<%= @recipe.img.url %>">
+    <meta property="og:image" content="<%= @recipe.media_url %>"/>
+    <meta name="twitter:image" content="<%= @recipe.media_url %>">
   <% else %>
     <meta name="twitter:card" content="summary">
   <% end %>
   <meta property="og:site_name" content="Noodles" />
-  <meta property="og:url" content="<%= @shared_url %>">
+  <meta property="og:url" content="<%= @recipe.public_url %>">
   <meta property="og:title" content="<%= @recipe.title %>">
   <meta name="twitter:title" content="<%= @recipe.title %>">
-  <% if @recipe.description.blank? %>
-    <% @description = "Check out this recipe published on Noodles by #{@recipe.user.first_name}." %>
-    <meta property="og:description" content="<%= @description %>">
-    <meta property="twitter:description" content="<%= @description %>">
-  <% else %>
-    <meta property="og:description" content="<%= @recipe.description %> — Published on Noodles">
-    <meta name="twitter:description" content="<%= @recipe.description %> — Published on Noodles">
-    <meta name="description" content="<%= @recipe.description %> — Published on Noodles">
-  <% end %>
+  <% @description = "This recipe was published on Noodles by #{@recipe.publisher}." if @recipe.description.blank? %>
+  <meta property="og:description" content="<%= @description || @recipe.description %>">
+  <meta name="twitter:description" content="<%= @description || @recipe.description %>">
+  <meta name="description" content="<%= @description || @recipe.description %>">
+  <%= make_schema({
+    '@context': 'http://schema.org',
+    '@type': 'Recipe',
+    dateCreated: @recipe.created_at,
+    dateModified: @recipe.updated_at,
+    name: @recipe.title,
+    description: @recipe.description,
+    image: @recipe.photo_url,
+    recipeIngredient: @recipe.ingredients.to_s.lines.map(&:chomp!),
+    recipeInstructions: @recipe.instructions.to_s.lines.map(&:chomp!),
+    recipeYield: @recipe.serves,
+    author: {
+      '@type': 'Person',
+      name: @recipe.publisher,
+    },
+    isAccessibleForFree: true,
+    provider: org_schema,
+    url: @recipe.public_url,
+    potentialAction: {
+      '@type': 'CookAction'
+    }
+  }) %>
 <% end -%>
 
-<%= render 'shared/nav' %>
-
-<main itemscope itemtype="http://schema.org/Recipe">
-  <meta itemprop="url" content="<%= @shared_url %>" />
-  <meta itemprop="dateCreated" content="<%= @recipe.created_at %>" />
-  <meta itemprop="dateModified" content="<%= @recipe.updated_at %>" />
-
-  <%= render 'image_header' if @image_layout %>
-
-  <article class="document pan mw7">
-    <% if me_owns_recipe? %>
-      <section class="flex fac bg-grey-3 pam phl-ns mbm mbl-ns rounded-top white">
-        <%= inline_svg 'locked.svg', size: 18, class: 'fill-white dn dib-ns' %>
-        <span class="white mls mbn dib flex-auto">
-          This is a preview of the public recipe page.
-        </span>
-        <%= link_to 'Back', recipe_path(@recipe), class: 'link-reset mrm underline f5' %>
-        <a href="#share" class="link-reset underline f5" data-behavior="modal_trigger">
-          Share link
-        </a>
-      </section>
-    <% end %>
-
-    <% if !@image_layout %>
-      <header class="phm phl-ns">
-        <h1 class="mtm mtl-ns" itemprop="name"><%= @recipe.title %></h1>
-        <% if @recipe.user.present? %>
-        <p class="grey-3">Shared by <%= @recipe.user.first_name %></p>
-        <% end %>
-        <div class="text content" itemprop="description"><%= sanitize markdown(@recipe.description.to_s) %></div>
-      </header>
-    <% end %>
-
-    <section class="<%= @image_layout ? "phm #{me_owns_recipe? ? 'mbl-ns' : 'pvm-ns'}" : 'phm mbm' %> phl-ns">
-      <%= render 'recipe_body' %>
-    </section>
-
-    <% if user_signed_in? && not_my_recipe? %>
-      <footer class="tc">
-        <%= link_to 'Save to my Noodles', :save_to_noodles, 'aria-label': 'Save your own copy', class: 'btn bg-orange tooltipped tooltipped--n mbm mbl-ns b dn-p' %>
-      </footer>
-    <% elsif nobody_signed_in? %>
-      <footer class="border-top pam pal-ns tc mtm">
-        <%= render 'shared/interested_in_noodles' %>
-      </footer>
-    <% end %>
+<% if @image_layout %>
+  <%= render 'image_header' %>
+  <article class="mw7 mx-auto bx pam phl-ns">
+    <%= render 'recipe_body' %>
   </article>
+<% else %>
+  <article class="document mtm mbn">
+    <h1 class="mvn" itemprop="name"><%= @recipe.title %></h1>
+    <div class="mbm dn-p flex fac lh0 fr-ns absolute-ns t0-ns r0-ns mrm-ns mtl-ns">
+      <%= link_to save_to_noodles_path(@recipe.shared_id),
+        class: 'dn mrm pointer tooltipped tooltipped--n',
+        'data-behavior': 'show_if_signed_in',
+        'aria-label': 'Save to your library' do %>
+        <%= inline_svg 'add_circle.svg', class: 'fill-orange', size: 32 %>
+      <% end %>
+      <%= link_to public_cook_path(@recipe.shared_id),
+        class: 'mrm pointer tooltipped tooltipped--n',
+        'aria-label': 'Open in Cook Mode' do %>
+        <%= inline_svg 'cook.svg', class: 'fill-orange', size: 32 %>
+      <% end %>
+    </div>
+    <%= content_tag :p,
+      "Shared by #{@recipe.publisher}",
+      class: 'grey-3' if @recipe.user
+    %>
+    <%= content_tag :div,
+      sanitize(markdown(@recipe.description)),
+      class: 'text content',
+      itemprop: 'description' if @recipe.description
+    %>
 
-  <%= react_component 'NoteEditor', id: @recipe.id, plain: @recipe.notes, rendered: notes_rendered, allowEditing: me_owns_recipe? %>
-</main>
-
-<%= render 'social' %>
-
-<%= link_to public_cook_path(@recipe.shared_id), class: 'btn-paper bg-orange fill-white circle fixed pam shadow-deep shadow-deep--effect', rel: 'nofollow' do %>
-  <%= inline_svg 'cook.svg' %>
+    <%= render 'recipe_body' %>
+  </article>
 <% end %>
+
+<%= render 'shared/promo' %>
+
+<%= render 'shared/public', object: @recipe %>

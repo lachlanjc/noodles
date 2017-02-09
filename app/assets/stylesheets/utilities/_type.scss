@@ -22,6 +22,34 @@ p, h4, .f4  { font-size: $f4; }
  .f1-l      { font-size: $f1; }
 }
 
+.sans      { font-family: $font-family; }
+.serif     { font-family: $serif-font-family; }
+.mono      { font-family: $monospace-font-family; }
+
+.b         { font-weight: $bold-font-weight; }
+.fwn,
+.normal    { font-weight: 400; }
+
+.tsn       { text-shadow: none; }
+.underline { text-decoration: underline; }
+.wbw       { word-wrap: break-word; }
+
+.caps {
+  text-transform: uppercase;
+  letter-spacing: $spacing;
+}
+
+.checked {
+  color: $grey-3;
+  text-decoration: line-through;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /*
 @media screen and (min-width: 48em) and (max-width: 64em) {
  .mega-m    { font-size: $mega; }
@@ -42,25 +70,3 @@ p, h4, .f4  { font-size: $f4; }
 }
 */
 
-.b          { font-weight: $bold-font-weight; }
-.fwn, .normal { font-weight: normal; }
-.super      { font-weight: 800; }
-.tsn        { text-shadow: none; }
-.underline  { text-decoration: underline; }
-.wbw        { word-wrap: break-word; }
-
-.caps {
-  text-transform: uppercase;
-  letter-spacing: $spacing;
-}
-
-.checked {
-  color: $grey-3;
-  text-decoration: line-through;
-}
-
-.truncate {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}

@@ -1,0 +1,28 @@
+<section id="import" role="dialog" class="modal">
+  <%= modal_header 'Clip from the Web' %>
+  <%= form_tag(save_path, method: 'get', 'data-behavior': 'clip_form') do %>
+    <%= label_tag 'url', 'Paste the URL of a recipe to save it', class: 'label mtn dib' %>
+    <span class="grey-3"> – </span>
+    <%= link_to 'report a problem',
+      '#help',
+      'data-behavior': 'modal_trigger modal_close_first',
+      class: 'f5 grey-3 underline'
+    %>
+    <div class="flex">
+    <%= url_field_tag 'url', nil,
+      class: 'text-input flex-auto mrs',
+      style: 'min-width: initial;',
+      placeholder: 'URL',
+      'data-behavior': 'clip_url'
+    %>
+    <%= submit_tag 'Clip →', name: nil, class: 'flex-last btn bg-blue' %>
+    </div>
+  <% end %>
+  <%= link_to explore_path, class: 'modal__feature link-reset dn db-ns bg-grey-5 grey-3 grey-3--hover f5 border-top pas' do %>
+    <%= inline_svg 'chev-right.svg', class: 'fr fill-grey-3' %>
+    <span class="mls dib">
+      Find and save new recipes right from Noodles with
+      <span class="orange b">Explore</span>
+    </span>
+  <% end %>
+</section>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151107041250) do
+ActiveRecord::Schema.define(version: 20170129175811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(version: 20151107041250) do
     t.string   "shared_id"
     t.text     "collections",           default: [], array: true
     t.string   "author"
+    t.datetime "last_cooked_at"
+    t.integer  "cooks_count",           default: 0
   end
 
   create_table "users", force: :cascade do |t|

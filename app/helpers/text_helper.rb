@@ -30,4 +30,12 @@ module TextHelper
   def clean_autolink(text)
     auto_link(text, html: { target: '_blank' }) { |text| remove_url_head(text) }
   end
+
+  def section_header(text, level, options = {})
+    tag = "h#{level}"
+    options[:class] = ['section-header', options[:class]].join(' ')
+    content_tag(tag, options) do
+      content_tag(:span, text, class: 'section-header__name')
+    end
+  end
 end

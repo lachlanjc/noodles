@@ -1,19 +1,7 @@
 <action type="button" class="dib lh0 menu__toggle <%= rootClass %>" data-behavior="menu_toggle" aria-expanded="false" tabindex="0">
   <%= inline_svg 'more.svg', class: "fill-#{color || 'orange'}", size: 28 %>
   <popmenu class="menu__content <%= menuClass %>" data-behavior="menu_content">
-    <%= link_to edit_recipe_path(@recipe), class: 'menu__action' do %>
-      <%= inline_svg 'edit.svg', class: 'menu__action__icon', size: 20 %>
-      <span>Edit</span>
-    <% end %>
-    <a href="#collect" class="menu__action" data-behavior="modal_trigger">
-      <%= inline_svg 'collection.svg', class: 'menu__action__icon', size: 20 %>
-      <span>Add to Collection</span>
-    </a>
-    <a href="#share" class="menu__action" data-behavior="modal_trigger">
-      <%= inline_svg 'share.svg', class: 'menu__action__icon', size: 20 %>
-      <span>Share a public link</span>
-    </a>
-    <a href="#embed" class="menu__action" data-behavior="modal_trigger">
+    <a href="#embed" class="menu__action" data-behavior="modal_trigger embed_trigger">
       <%= inline_svg 'embed.svg', class: 'menu__action__icon', size: 20 %>
       <span>Embed</span>
     </a>

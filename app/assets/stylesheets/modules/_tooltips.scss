@@ -3,7 +3,6 @@
 
   &:after {
     position: absolute;
-    display: none;
     pointer-events: none;
     content: attr(aria-label);
     padding: 2px 10px;
@@ -17,20 +16,22 @@
     bottom: 50%;
     margin-right: .5rem;
     transform: translateY(50%);
+    opacity: 0;
+    transition: all 186ms cubic-bezier(0.4, 0.0, 0.2, 1);
     width: max-content;
   }
 
   &:hover:after,
   &:active:after,
   &:focus:after {
-    display: inline-block;
+    opacity: 1;
   }
 }
 
 .tooltipped--e:after {
   left: 100%;
   right: 0;
-  margin-left: 5px;
+  margin-left: $space-1;
   margin-right: 0;
   transform: translateY(50%);
 }
@@ -38,6 +39,6 @@
 .tooltipped--n:after {
   right: 50%;
   bottom: 100%;
-  margin-bottom: 5px;
+  margin-right: 0;
   transform: translateX(50%);
 }

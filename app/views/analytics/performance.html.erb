@@ -2,8 +2,8 @@
 <%- title 'Performance' %>
 <%= render 'shared/analytics_nav' %>
 
-<main class="mw8">
-  <h1>Performance</h1>
+<main class="mw8 phm phl-ns bx">
+  <h1 class="grey-2 sans">Performance</h1>
 
   <style>
     table { width: 100%; }
@@ -12,7 +12,7 @@
 
   <table class="text">
     <thead>
-      <tr style="text-decoration: underline">
+      <tr>
         <th></th>
         <% @cohorts.size.times do |i| %>
           <th>
@@ -37,7 +37,7 @@
             <% if @cohorts.size - index > (i + 1) %>
               <%= "#{((row[1][:count][i].to_f/start.to_f) * 100.00).round(0)}%" %>
             <% else %>
-              --
+              –
             <% end %>
           </td>
         <% end %>

@@ -2,25 +2,24 @@ class AnalyticsController < ApplicationController
   before_filter :authenticate
 
   def dashboard
-    @users_count = User.all.count
+    @users_count = 0
     @users_none = []
-    @users_one = []
     @users_many = []
+    @users_week = []
+    @users_active = []
 
-    User.all.each do |user|
-      @count = user.recipes.count
-      @users_none.push(user) if @count == 0
-      @users_one.push(user)  if @count == 1
-      @users_many.push(user) if @count > 1
+    User.find_each do |user|
+      count = user.recipes.count
+      @users_none.push(user) if count == 0 || count == 1
+      @users_many.push(user) if count > 1
+      @users_week.push(user) if user.created_at < 1.week.ago
+      @users_active.push(user) if user.last_sign_in_at < 1.week.ago
+      @users_count += 1
     end
   end
 
   def all_users
     @users = User.all.order(created_at: :desc)
-  end
-
-  def collections
-    @collections = Collection.all.order(created_at: :desc)
   end
 
   def performance
@@ -30,6 +29,7 @@ class AnalyticsController < ApplicationController
   private
 
   def authenticate
-    redirect_to root_url unless user_signed_in? && current_user.id == 1
+    accessible = user_signed_in? && current_user.id == 1
+    render_locked(OpenStruct.new({ type: 'analytic' })) unless accessible
   end
 end

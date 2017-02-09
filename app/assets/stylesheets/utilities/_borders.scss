@@ -18,6 +18,8 @@
 
 .bw0     { border-width: 0; }
 
+.br--sm   { border-radius: $border-radius-sm; }
+.br,
 .rounded { border-radius: $border-radius; }
 .circle  { border-radius: 50%; }
 

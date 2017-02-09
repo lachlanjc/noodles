@@ -1,19 +1,44 @@
 
 const CollectionListItem = ({ coll }) => {
-  let imgClass, img
-  if (!_.isEmpty(coll.photo_url)) {
-    imgClass = 'image-header bg-center bg-no-repeat bg-cover'
-    img = `url(${coll.photo_url.toString()})`
+  const { path, photo, name, description } = coll
+  const sx = {
+    boxSizing: 'border-box',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundImage: `url('${photo}')`,
+    width: '100%',
+  }
+
+  let img
+  let cx = [ 'pam rounded' ]
+  if (_.isEmpty(photo)) {
+    cx.push('bg-orange white')
+  } else {
+    cx.push('image-header bg-center bg-no-repeat bg-cover')
+    img = `url(${photo.toString()})`
+  }
+  if (_.isEmpty(description)) {
+    cx.push('pvl-ns')
   }
 
   return (
-    <a href={coll.url} style={{ minHeight: '15vh', backgroundImage: img }}
-       className={`flex fc fac fjc rounded shadow shadow--effect pal mbm bg-white ${imgClass}`}>
-      <h2 className='coll__name f1 mw7 mbm'>{coll.name}</h2>
-      {!_.isEmpty(coll.description) &&
-        <h3 className='coll__desc f2 lh-copy man normal mw7'>{coll.description}</h3>
-      }
-    </a>
+    <article className='card pan coll flex-grid__item flex'>
+      <a
+        href={path}
+        style={sx}
+        className={N.cxs(cx)}
+      >
+        <h2 className='f1 white mvn'>{name}</h2>
+        {!_.isEmpty(description) &&
+          <p
+            className='f3 white lh-title mvn wbw'
+            children={description}
+          />
+        }
+      </a>
+    </article>
   )
 }
 

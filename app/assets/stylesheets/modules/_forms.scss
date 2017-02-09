@@ -7,12 +7,20 @@ input[type=checkbox] + label {
   display: inline-block;
 }
 
+.label {
+  color: $grey-2;
+  display: block;
+  font-size: $f4;
+  font-weight: 600;
+}
+
 .text-input {
   -webkit-appearance: none;
   color: $grey-2;
   border: $border;
-  border-radius: $border-radius;
+  border-radius: $border-radius-sm;
   display: block;
+  margin: 0;
   min-width: 16rem;
   padding: $space-1;
 

@@ -31,28 +31,23 @@
 
 .menu__content {
   display: none;
-  width: 12rem;
+  width: 14rem;
   position: absolute;
   top: 100%;
-  right: 0;
+  right: -100%;
   background-color: #fff;
   border-radius: $border-radius-sm;
   border: $border;
   box-shadow: 0 3px 12px rgba($grey-2, 0.25);
   overflow: hidden;
   z-index: 2;
-
-  @media screen and (min-width: 30em) {
-    min-width: 18rem;
-  }
 }
 
 .menu__action {
   display: flex;
   align-items: center;
   line-height: 1;
-  font-size: .875rem;
-  padding: 8px 12px;
+  padding: 12px 16px;
 
   &,
   &:hover {
@@ -72,4 +67,11 @@
 .menu__action__icon {
   fill: $grey-2;
   margin-right: $space-1;
+}
+
+@media screen and (min-width: 30em) {
+  .menu__action {
+    font-size: $f5;
+    padding: 8px 12px;
+  }
 }

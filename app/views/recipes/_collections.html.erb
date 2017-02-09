@@ -1,0 +1,44 @@
+<span class="db b grey-2">Collections</span>
+<% if @collections.any? %>
+  <%= form_for(@recipe, remote: true, data: { behavior: 'recipe_colls_form' }) do |f| %>
+    <div class="flex-ns flex-rows fas lh-title">
+      <%= collection_check_boxes(:recipe, :collections, @collections, :id, :name) do |b| %>
+        <% @active = @recipe.collections.include?(b.value.to_s) %>
+        <%= b.check_box for: "coll_#{b.value}",
+          checked: @active,
+          'data-behavior': 'recipe_colls_check',
+          class: 'colladd__item__check dn'
+        %>
+        <%= b.label name: "coll_#{b.value}",
+          value: b.text.truncate(32),
+          for: "recipe_collections_#{b.value}",
+          class: 'colladd__item flex fac',
+          'data-behavior': "recipe_colls_item #{'recipe_colls_inactive' unless @active}"
+        %>
+      <% end %>
+      <div class="flex fac pointer grey-3" data-behavior="recipe_add_colls" style="line-height: 1.8;">
+        <%= inline_svg 'add.svg',
+          size: 24,
+          class: 'fill-grey-3'
+        %>
+        <span>Add to Collections…</span>
+      </div>
+    </div>
+    <div class="flex fac">
+      <%= f.submit 'Save',
+        'data-behavior': 'rehide recipe_colls_submit',
+        class: 'btn bg-blue mln mrm dn'
+      %>
+      <%= link_to '+ New collection…',
+        collections_path(new_collection: true),
+        'data-behavior': 'recipe_colls_inactive',
+        class: 'grey-3 f5'
+      %>
+    </div>
+  <% end %>
+<% else %>
+  <p class="serif grey-3">
+    You don't have any collections yet.
+    <%= link_to 'Make one!', collections_path(new_collection: true), class: 'green mts' %>
+  </p>
+<% end %>

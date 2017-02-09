@@ -7,16 +7,14 @@ module ScrapingHelper
     path = find_path(link)
 
     url = link
+    url.gsub!('http://', 'https://')
     url.gsub!(/\/print/, '') if host =~ /allrecipes\.com/
 
     page = safely { open(url).read }
     data = Hangry.parse page
 
-    if data.name.to_s.squish.present? || host =~ /allrecipes|marthastewart/
-      data = process_recipe_page(url, page, data)
-    else
-      false
-    end
+    return unless data.name.to_s.squish.present? || host =~ /allrecipes|marthastewart/
+    process_recipe_page(url, page, data)
   end
 
   # Process recipe pages
@@ -41,11 +39,12 @@ module ScrapingHelper
     elsif data.instructions.to_s.match(/\n/).blank?
       data = process_blog_page!(data, document)
     end
-    recipe = create_recipe_item(data)
+    create_recipe_item(data)
   end
 
   # Adjust for NYT Cooking pages
   def process_nyt_page!(data, document)
+    data.description = document.css('[itemprop=description] p:first-child').text
     data.ingredients = []
     document.search('.recipe-ingredients')[0].search('li').each do |it|
       v = it.text.squish.gsub(/:$/, '').capitalize

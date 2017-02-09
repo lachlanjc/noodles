@@ -1,88 +1,96 @@
-<%- title "Cooking #{@recipe.title}".html_safe %>
+<%- title @recipe.title.html_safe %>
 
-<main class="flex-ns">
-  <aside class="md-col-6 pam pal-l mw6">
-    <p class="grey-3 man caps mbn">
-      <%= pluralize(@recipe.instructions.lines.count, "steps") %>
-      <%= content_tag :span, " · Published by #{@recipe.user.first_name}" if not_my_recipe? %>
+<main class="flex-ns pvm phm-ns">
+  <aside class="flex-auto measure pam pal-l">
+    <%= render 'shared/flash', simple: true %>
+
+    <h1 class="f0 super lh man grey-1"><%= @recipe.title %></h1>
+    <p class="grey-3 mtn">
+      <span class="dn" data-behavior="show_if_anonymous">
+        Published by <%= @recipe.publisher %> –
+      </span>
+      <%= pluralize @recipe.instructions.lines.count, 'step' %>
     </p>
-    <h1 class="lh f0 mega-l man super grey-1"><%= @recipe.title %></h1>
+
+    <div class="mvm">
+      <%= link_to @exit_path, class: 'flex-i fac grey-3 mrl' do %>
+        <%= inline_svg 'exit.svg', class: 'fill-grey-3 mrs' %>
+        Exit
+      <% end %>
+      <%= link_to edit_recipe_path(@recipe,
+        redirect_to: cook_recipe_path(@recipe)),
+        target: '_blank',
+        class: 'dn flex-i fac grey-3',
+        'data-behavior': 'show_if_my_object' do %>
+        <%= inline_svg 'edit.svg', class: 'fill-grey-3 mrs' %>
+        Edit
+      <% end %>
+    </div>
 
     <hr>
 
-    <h2 class="mbn">Ingredients</h2>
+    <h2 class="sticky-ns mbn">Ingredients</h2>
     <p class="grey-4 f5">Tap on ingredients to cross them off.</p>
 
-    <ul class="recipe__ingredients content list-reset">
-    <% @recipe.ingredients.lines.each do |item| %>
-      <%= content_tag :li, ingredient_processed(item).html_safe,
-                      'data-behavior': 'checklist_item',
-                      class: 'pointer' if item.strip.present? %>
-    <% end %>
+    <ul class="recipe__ingredients sans content list-reset">
+      <% @recipe.ingredients.lines.each do |item| %>
+        <%= ingredient_processed item,
+          'data-behavior': 'checklist_item',
+          class: 'checklist__item pointer' if item.strip.present?
+        %>
+      <% end %>
     </ul>
 
     <hr>
 
-    <%= react_component 'NoteEditor', id: @recipe.id, plain: @recipe.notes, rendered: notes_rendered, allowEditing: me_owns_recipe? %>
+    <section class="bg-notes rounded border pam">
+      <h2 class="mtn">Notes</h2>
+      <%= content_tag :div, notes_rendered, class: 'content' %>
+    </section>
   </aside>
 
-  <article class="mw7 mx-auto mtm mtn-ns pam pal-l">
-    <% flash.each do |key, value| %>
-      <div class="f2 pam tc mbm rounded bg-<%= flash_color_class(key) %> white pointer dn-p" role="alertdialog" data-behavior="flash">
-        <%= value %>
-      </div>
-    <% end %>
-
-    <ol class="list-reset">
-      <% sanitize(markdown(@recipe.instructions)).lines.each do |step| %>
-        <% text = plain_text_from_markdown(step.to_s, remove_numbers: true) %>
-        <%= content_tag :li, text.html_safe,
-                        'data-behavior': 'checklist_item',
-                        class: 'f2 grey-2 bg-white rounded shadow shadow-deep--effect pointer pam db mbm' if text.strip.present? %>
+  <article class="flex-auto mx-auto mtm mtn-ns pam pal-l">
+    <ol class="list-reset content">
+      <% @recipe.instructions.lines.reject(&:blank?).each do |step| %>
+        <%= content_tag :li,
+          plain_text_from_markdown(step, remove_numbers: true).html_safe,
+          'data-behavior': 'checklist_item',
+          class: 'f2 grey-2 card pointer pam db mbm'
+        %>
       <% end %>
     </ol>
 
-    <div class="bg-white rounded shadow pam db f2 tc mbm grey-2">
-      <span>And now you're finished! Enjoy the <%= @recipe.title %>.</span>
+    <div class="card serif pam db f2 mbm grey-2">
+      <span>You're finished! Enjoy.</span>
 
-      <%= image_tag @recipe.img, alt: 'Photo of ' + @recipe.title, class: 'mtm mx-auto rounded' if @recipe.img.present? %>
+      <%= image_tag @recipe.img, alt: @recipe.title, class: 'mtm mx-auto rounded' if @recipe.imaged? %>
 
-      <% if me_owns_recipe? %>
-        <%= form_for(@recipe, url: recipe_path(@recipe, cook: true), html: { class: 'mts f4' }) do |f| %>
-          <%= f.file_field :img, class: 'dn', data: { behavior: 'photo_field cook_photo_field' } %>
-          <div data-behavior="photo_button">
-            <a data-behavior="photo_name" class="btn bg-white">
-              <%= @recipe.unimaged? ? 'Add a photo' : 'Upload a new photo' %>
-            </a>
-            <% if @recipe.imaged? %>
-              <span class="grey-4 phs">or</span>
-              <%= link_to('remove this photo', remove_image_recipe_path(@recipe, cook: true),
-                           class: 'btn bg-white') %>
-            <% end %>
-          </div>
-        <% end %>
+      <%= form_for(@recipe, url: recipe_path(@recipe, cook: true),
+        html: {
+          class: 'dn mts f4',
+          'data-behavior': 'show_if_my_object'
+        }) do |f| %>
+        <%= f.file_field :img, class: 'dn', data: { behavior: 'photo_field cook_photo_field' } %>
+        <div data-behavior="photo_button">
+          <a data-behavior="photo_name" class="btn bg-white">
+            <%= @recipe.unimaged? ? 'Add a photo' : 'Upload a new photo' %>
+          </a>
+          <% if @recipe.imaged? %>
+            <span class="grey-4 phs">or</span>
+            <%= link_to 'remove this photo',
+              remove_image_recipe_path(@recipe, cook: true),
+              class: 'btn bg-white'
+            %>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </article>
 </main>
 
-<% if not_my_recipe? %>
-  <% exit_path = @recipe.shared_id == 'sample' ? root_url : share_path(@recipe.shared_id) %>
-  <% exit_ttip = @recipe.shared_id == 'sample' ? 'Go back home' : 'Exit Cook Mode' %>
-  <%= link_to exit_path,
-              class: 'btn-paper bg-orange fill-white circle fixed pam shadow-deep shadow-deep--effect tooltipped',
-              'aria-label': exit_ttip do %>
-    <%= inline_svg 'exit.svg' %>
-  <% end %>
-<% else %>
-  <%= link_to edit_recipe_path(@recipe, redirect_to: 'cook'),
-              class: 'btn-paper-mini bg-orange fill-white circle fixed pas shadow-deep shadow-deep--effect tooltipped',
-              'aria-label': 'Edit this recipe' do %>
-    <%= inline_svg 'edit.svg' %>
-  <% end %>
-  <%= link_to recipe_path(@recipe),
-              class: 'btn-paper bg-orange fill-white circle fixed pam shadow-deep shadow-deep--effect tooltipped',
-              'aria-label': 'Exit Cook Mode' do %>
-    <%= inline_svg 'exit.svg' %>
-  <% end %>
-<% end %>
+<script>
+  N.object_user = <%= @recipe.user_id %>
+  if (N.my_object) {
+    $.post(window.location.href, function() {});
+  }
+</script>

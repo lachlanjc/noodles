@@ -4,31 +4,38 @@ class RecipesController < ApplicationController
   include RecipesHelper
   include ScrapingHelper
 
-  before_filter :please_sign_in, only: [:index, :create]
-  before_filter :set_recipe, except: [:index, :new, :create]
-  before_filter :not_the_owner, only: [:update, :notes, :export_pdf, :remove_image, :destroy]
-  before_filter :img_layout, only: [:show, :share]
+  before_filter :please_sign_in, except: [:show, :share, :embed_js]
+  before_filter :set_recipe, only: [:show, :share, :edit, :update, :destroy, :export_pdf, :embed_js, :remove_image, :collections]
+  before_action -> { hey_thats_my @recipe }, only: [:edit, :update, :destroy, :export_pdf, :remove_image, :collections]
   protect_from_forgery except: :embed_js
 
   def index
     @recipes = current_user.recipes.order(:title)
+    @recipes_json = ActiveModelSerializers::SerializableResource.new(@recipes, each_serializer: RecipeListSerializer).as_json
+    respond_to do |format|
+      format.html do
+        @collections_json = ActiveModelSerializers::SerializableResource.new(current_user.collections.order(:updated_at).limit(5), each_serializer: CollectionListSerializer).as_json
+      end
+      format.json { render json: @recipes_json }
+    end
   end
 
   def show
-    @shared_url = shared_url
-    render :locked, status: 403 if not_my_recipe?
+    if isnt_my? @recipe
+      render_locked @recipe
+    else
+      respond_to do |format|
+        format.html { @image_layout = @recipe.imaged? }
+        format.json { render json: @recipe }
+      end
+    end
   end
 
   def new
-    if user_signed_in?
-      @recipe = Recipe.new
-      title_setup
-      @page_title = 'New recipe'
-      render :edit
-    else
-      flash[:danger] = "You'll need to sign in to add recipes."
-      redirect_to root_url
-    end
+    @recipe = Recipe.new
+    title_setup
+    @page_title = 'New recipe'
+    render :edit
   end
 
   def edit
@@ -36,9 +43,7 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
-    @recipe.user_id = current_user.id
-
+    @recipe = Recipe.new(recipe_params.merge({ user_id: current_user_id }))
     if @recipe.save
       flash[:success] = 'New recipe saved!'
       redirect_to @recipe
@@ -48,15 +53,10 @@ class RecipesController < ApplicationController
   end
 
   def update
+    params = recipe_params.merge({ collections: recipe_params[:collections].to_a.reject(&:blank?) })
     if @recipe.update(recipe_params)
-      flash[:success] = 'Saved!'
-      if request.xhr?
-        render :show
-      elsif request.referer.match('redirect_to=cook')
-        redirect_to cook_recipe_path(@recipe)
-      else
-        redirect_to @recipe
-      end
+      flash[:success] = 'Saved!' unless @recipe.previous_changes[:collections]
+      redirect_to request.params[:redirect_to] || @recipe
     else
       title_setup
       render :edit
@@ -79,34 +79,33 @@ class RecipesController < ApplicationController
   end
 
   def share
-    @shared_url = shared_url
+    @image_layout = @recipe.imaged?
   end
 
   def save_to_noodles
     @new_recipe = @recipe.dup
     @new_recipe.user_id = current_user.id
-    @new_recipe.source = shared_url
+    @new_recipe.source = @recipe.public_url
     @new_recipe.favorite = false
     @new_recipe.save
-    flash[:success] = 'Recipe saved!'
+    flash[:success] = 'Saved!'
     redirect_to @new_recipe
   end
 
   def remove_image
     @recipe.update_attribute(:img, nil)
-    if params[:cook]
-      redirect_to cook_recipe_path(@recipe)
-    else
-      redirect_to edit_recipe_path(@recipe)
-    end
+    redirect_to params[:cook] ? cook_recipe_path(@recipe) : edit_recipe_path(@recipe)
+  end
+
+  def collections
+    @collections = current_user.collections
+    render partial: 'recipes/collections'
   end
 
   private
 
   def set_recipe
-    @recipe = Recipe.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    @recipe = Recipe.find_by(shared_id: params[:shared_id]) if params[:shared_id]
+    @recipe = Recipe.includes(:user).find_by regular_or_shared_id
     raise_not_found
   end
 
@@ -114,25 +113,15 @@ class RecipesController < ApplicationController
     raise ActiveRecord::RecordNotFound if @recipe.nil?
   end
 
-  # Only allow trusted parameters
   def recipe_params
     params.require(:recipe).permit(:title, :description, :img, :ingredients, :instructions, :favorite, :source, :author, :serves, :notes, :shared_id, collections: [])
   end
 
-  def not_the_owner
-    if not_my_recipe?
-      flash[:red] = "That's not yours."
-      redirect_to root_url
-    else
-      true
-    end
-  end
-
   def title_setup
-    @title = @recipe.title.to_s || params[:title].to_s.capitalize.squish
-  end
-
-  def img_layout
-    @image_layout = @recipe.img.present?
+    if params[:title].to_s.strip.present?
+      @title = params[:title].to_s.capitalize.squish
+    else
+      @title = @recipe.title.to_s
+    end
   end
 end

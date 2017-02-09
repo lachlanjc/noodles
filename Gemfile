@@ -4,7 +4,7 @@ ruby '2.3.0'
 gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'rails_autolink'
-gem 'active_model_serializers', '~> 0.10.0'
+gem 'active_model_serializers'
 gem 'autoprefixer-rails'
 gem 'aws-sdk', '< 2.0'
 gem 'devise'
@@ -15,10 +15,10 @@ gem 'hangry'
 gem 'html_to_plain_text'
 gem 'ingreedy'
 gem 'intercom-rails'
-gem 'jbuilder'
 gem 'jquery-rails'
+gem 'marginalia'
 gem 'mechanize'
-gem 'newrelic_rpm'
+gem 'passenger'
 gem 'paperclip', '4.3.7'
 gem 'pg'
 gem 'prawnto_2', require: 'prawnto'
@@ -36,12 +36,19 @@ gem 'slowpoke'
 gem 'uglifier'
 gem 'wombat'
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-clipboard'
+  gem 'rails-assets-imagesloaded'
+  gem 'rails-assets-lodash'
+  gem 'rails-assets-masonry'
+end
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'pry'
   gem 'seed_dump'
   gem 'tracer_bullets'
+  gem 'web-console'
 end
 
 group :production do

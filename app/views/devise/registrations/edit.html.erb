@@ -1,40 +1,61 @@
-<%- title "Settings" %>
 <% activate_nav!(:settings) %>
+<% title 'Settings' %>
 
+<% content_for(:bg_img) { image_path "auth/#{rand(1..4).to_s}.jpg" } %>
 <%= render 'shared/nav' %>
 
-<article class="document">
+<main class="document meta-split bw0 mw7">
+  <div class="meta-split__col meta-split__col--left">
+    <%= section_header 'Account settings', 2, class: 'mtn mbm grey-2 f3' %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
-  <h1><%= t(".account_settings") %></h1>
+      <%= devise_error_messages! %>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= f.label t('.fn'), class: 'label' %>
+      <%= f.text_field :first_name, class: 'text-input', name: 'fname', required: true %>
 
-    <%= devise_error_messages! %>
+      <%= f.label t('.email_a'), class: 'label' %>
+      <%= f.email_field :email, class: 'text-input', autocomplete: 'email' %>
 
-    <%= f.label t(".fn") %>
-    <%= f.text_field :first_name, class: "text-input", name: "fname", required: true %>
+      <div>
+        <%= f.check_box :want_newsletter %>
+        <%= f.label :want_newsletter, 'Subscribe to the (occasional) newsletter' %>
+      </div>
 
-    <%= f.label t(".email_a") %>
-    <%= f.email_field :email, class: "text-input", name: "email", autocomplete: "email" %>
+      <%= f.label :password, 'New password', class: 'label dib' %>
+      <small class="f5 dib grey-3">(only if you'd like to change it)</small>
+      <%= f.password_field :password, autocomplete: 'off', class: 'text-input' %>
 
-    <div>
-      <%= f.check_box :want_newsletter %>
-      <%= f.label :want_newsletter, "Receive Noodles Announcements (monthly or less)" %>
-    </div>
+      <%= f.submit t('general.update'), class: 'btn bg-blue mtm' %>
 
-    <%= f.label :password, 'New password', class: 'dib' %>
-    <small class="f5 dib grey-3">Only if you'd like it to change.</small>
-    <%= f.password_field :password, autocomplete: "off", class: "text-input" %>
+    <% end %>
 
-    <%= f.submit t("general.update"), class: "btn bg-blue mtm" %>
+    <%= section_header 'Subscription', 2, class: 'mtl mbs grey-2 f3' %>
+    <% if current_user.subscriber? %>
+      <p>Thank you for your subscription!</p>
+      <%= react_component 'SubscribeBtn', children: 'Manage your subscription', primary: false, className: 'f5' %>
+    <% else %>
+      <p>
+        Please consider buying a subscription. It's just $12/year and helps keep Noodles running.
+      </p>
+      <%= link_to 'Learn more', subscribe_path, class: 'btn bg-green' %>
+    <% end %>
+  </div>
+  <div class="meta-split__col meta-split__col--right">
+    <%= section_header 'Help', 2, class: 'mtn mbs grey-2 f3' %>
+    <%= react_component 'HelpContent' %>
 
-  <% end %>
+    <%= section_header 'Delete your account', 2, class: 'mtl mbs grey-2 f3' %>
 
-  <hr>
+    <p>
+      If you want to delete your account, click the button below. All your recipes, as well as shared recipes, will be erased forever.
+    </p>
 
-  <h2 class="mtm"><%= t(".delete_account") %></h2>
-  <p><%= t(".want_account_gone") %></p>
-  <p>If you just need help with something in Noodles, <%= link_to 'head over to the Help page', :help %>.</p>
-  <%= link_to t(".delete_my_account"), user_registration_path(resource_name), class: "btn-sm btn bg-red", data: { confirm: "Are you sure you want to delete your Noodles account and your recipes? If so, hit OK." }, method: :delete, rel: "nofollow" %>
-
-</article>
+    <%= link_to t('.delete_my_account'),
+      user_registration_path(current_user),
+      method: :delete,
+      class: 'btn btn-sm bg-red',
+      'data-confirm': 'Are you sure you want to delete your Noodles account and your recipes?'
+    %>
+  </div>
+</main>

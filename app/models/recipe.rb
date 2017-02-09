@@ -3,17 +3,24 @@ class Recipe < ActiveRecord::Base
 
   include Shareable
 
-  validates :title, presence: true, length: { maximum: 254 }
-  validates :user_id, presence: true
+  validates :title,
+    presence: true,
+    length: { maximum: 254 }
+  validates :user_id,
+    presence: true
 
   has_attached_file :img, default_url: '', path: 'recipes/:id/img/:style.:extension'
   validates_attachment_content_type :img, content_type: /\Aimage\/.*\Z/
   validates_with AttachmentSizeValidator, attributes: :img, less_than: 5.megabytes
 
-  after_save :collection_cleanup!
+  before_update :collection_cleanup!
 
   def to_param
     "#{id} #{title}".parameterize
+  end
+
+  def name
+    title
   end
 
   def description_truncated
@@ -26,6 +33,24 @@ class Recipe < ActiveRecord::Base
 
   def unimaged?
     !imaged?
+  end
+
+  def sample?
+    shared_id == 'sample'
+  end
+
+  def find_collections
+    list = self.user.collections.pluck(:id)
+    list.delete_if { |item| !self.collections.include?(item.to_s) }
+    Collection.find(list)
+  end
+
+  def photo_url
+    imaged? ? photo.url : "#{ENV['SPLATTERED_URL']}/#{name}"
+  end
+
+  def public_url
+    share_url(self.shared_id)
   end
 
   private

@@ -1,26 +1,24 @@
-<%- title 'Collections' %>
+<% title 'Collections' %>
 <% activate_nav!(:collections) %>
 
 <%= render 'shared/nav' %>
 
-<%= react_component 'CollectionList', collections: @collections.as_json %>
+<% if @collections.any? %>
+  <%= react_component 'CollectionsHome', collections: @collections_json %>
+<% else %>
+  <%= react_component 'CollectionsHomeBlankSlate' %>
+<% end %>
 
-<section class="modal" id="newCollection" role="dialog">
+<section class="modal" id="new" role="dialog">
   <%= modal_header @collections.any? ? 'Make your next collection' : 'Make your first collection' %>
   <%= render 'form' %>
 </section>
-
-<a href="#newCollection" data-behavior="modal_trigger"
-   class="btn-paper bg-orange fill-white circle fixed pam shadow-deep shadow-deep--effect tooltipped"
-   aria-label="New Collection">
-  <%= inline_svg 'add.svg' %>
-</a>
 
 <% if params[:new_collection] %>
   <script>
   // Ugly hack, but…
   $(function() {
-    $('a[href="#newCollection"]').click()
+    $('a[href="#new"]').click()
   })
   </script>
 <% end %>
