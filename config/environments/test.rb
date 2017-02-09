@@ -42,4 +42,6 @@ Rails.application.configure do
   # Defaults for Rails 5
   config.active_support.test_order = :random
   config.active_record.raise_in_transactional_callbacks = true
+
+  Rails.application.routes.default_url_options[:host] = 'localhost:3000'
 end

@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ExploreControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
+  include Devise::Test::ControllerHelpers
 
   test 'should get index' do
     sign_in users(:one)
@@ -34,7 +34,7 @@ class ExploreControllerTest < ActionController::TestCase
   end
 
   test 'should get epicurious preview' do
-    get :preview, url: 'http://www.epicurious.com/recipes/food/views/sheet-pan-grilled-cheese-56390006'
+    get :preview, url: 'https://www.epicurious.com/recipes/food/views/sheet-pan-grilled-cheese-56390006'
     assert_response :success
     assert_not_nil assigns(:recipe)
   end

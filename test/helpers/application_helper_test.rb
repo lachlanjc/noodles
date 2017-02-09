@@ -4,10 +4,6 @@ class ApplicationHelperTest < ActionView::TestCase
   include ApplicationHelper
   include SvgHelper
 
-  test 'app url' do
-    assert_equal app_url, 'https://getnoodl.es'
-  end
-
   test 'modal close' do
     assert_not_nil modal_close
   end

@@ -1,5 +1,5 @@
 require 'test_helper'
 
 class RecipeTest < ActiveSupport::TestCase
-  include Devise::TestHelpers
+  include Devise::Test::ControllerHelpers
 end

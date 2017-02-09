@@ -7,7 +7,7 @@ class SvgHelperTest < ActionView::TestCase
     assert_not_nil inline_svg('add.svg')
   end
 
-  test 'social icon' do
-    assert_not_nil social_icon('twitter')
+  test 'inline svg path' do
+    assert_not_nil inline_svg_path('add.svg')
   end
 end
