@@ -10,7 +10,7 @@ module ScrapingHelper
     url.gsub!('http://', 'https://')
     url.gsub!(/\/print/, '') if host =~ /allrecipes\.com/
 
-    page = safely { open(url).read }
+    page = safely { Mechanize.new.get(url).content }
     data = Hangry.parse page
 
     return unless data.name.to_s.squish.present? || host =~ /allrecipes|marthastewart/
@@ -77,8 +77,8 @@ module ScrapingHelper
     document.search('.ingredients li').each do |step|
       data.ingredients.push step.text.squish
     end
-    data.instructions = document.css('.prep-steps li.step').text
-    data.author = document.css('.contributors li')[0].text.strip
+    data.instructions = document.css('.preparation__step').to_a.map(&:text)
+    data.author = document.css('span.recipe__credits + span')[0].text
     data
   end
 
