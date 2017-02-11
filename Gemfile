@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 
-gem 'dotenv-rails', groups: [:development, :test]
+gem 'dotenv-rails'
 
 gem 'rails_autolink'
 gem 'active_model_serializers'
