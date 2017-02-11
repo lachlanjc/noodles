@@ -198,7 +198,7 @@ GEM
       railties (= 4.2.7.1)
       sprockets-rails
     rails-assets-clipboard (1.6.0)
-    rails-assets-desandro-matches-selector (2.0.1)
+    rails-assets-desandro-matches-selector (2.0.2)
     rails-assets-ev-emitter (1.0.3)
     rails-assets-fizzy-ui-utils (2.0.3)
       rails-assets-desandro-matches-selector (~> 2.0.0)
@@ -344,5 +344,8 @@ DEPENDENCIES
   web-console
   wombat
 
+RUBY VERSION
+   ruby 2.3.1p112
+
 BUNDLED WITH
-   1.11.2
+   1.13.2

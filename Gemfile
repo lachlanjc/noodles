@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.0'
+ruby '2.3.1'
 
 gem 'dotenv-rails', groups: [:development, :test]
 
@@ -23,7 +23,6 @@ gem 'paperclip', '4.3.7'
 gem 'pg'
 gem 'prawnto_2', require: 'prawnto'
 gem 'premailer-rails'
-gem 'puma'
 gem 'rails', '4.2.7.1'
 gem 'rake'
 gem 'react-rails'
@@ -51,5 +50,6 @@ group :development do
 end
 
 group :production do
+  gem 'puma'
   gem 'rails_12factor'
 end
