@@ -43,7 +43,6 @@ Rails.application.routes.draw do
   get '/terms', to: 'pages#terms', as: :terms
 
   get '/blog', to: 'announcements#index'
-  resources :announcements
   get '/announcements/unsubscribe/:code/:user_id', to: 'announcements#unsubscribe', as: :unsubscribe
 
   devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }
