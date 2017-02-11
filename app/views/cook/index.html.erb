@@ -1,7 +1,7 @@
 <%- title @recipe.title.html_safe %>
 
 <main class="flex-ns pvm phm-ns">
-  <aside class="flex-auto measure pam pal-l">
+  <aside class="lg-col-4 measure pam pal-l">
     <%= render 'shared/flash', simple: true %>
 
     <h1 class="f0 super lh man grey-1"><%= @recipe.title %></h1>
@@ -49,7 +49,7 @@
     </section>
   </aside>
 
-  <article class="flex-auto mx-auto mtm mtn-ns pam pal-l">
+  <article class="flex-auto mw7 mx-auto mtm mtn-ns pam pal-l">
     <ol class="list-reset content">
       <% @recipe.instructions.lines.reject(&:blank?).each do |step| %>
         <%= content_tag :li,
