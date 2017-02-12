@@ -4,7 +4,7 @@
 
 <%= render 'shared/nav' %>
 
-<main class="document bw0 mw6">
+<main class="document mw6">
   <%= section_header 'Sign in', 1, class: 'mtn mbm grey-2 f2' %>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
@@ -21,7 +21,7 @@
       <%= f.label :remember_me, class: 'mts' %>
     </div>
 
-    <%= f.submit t('.sign_in'), class: 'btn bg-orange mtm' %>
+    <%= f.submit t('.sign_in'), class: 'btn btn--primary bg-orange mtm' %>
 
   <% end %>
 
