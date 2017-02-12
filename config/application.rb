@@ -8,5 +8,6 @@ Bundler.require(*Rails.groups)
 
 module Noodles
   class Application < Rails::Application
+    config.action_controller.page_cache_directory = "#{Rails.root}/public/page_cache"
   end
 end

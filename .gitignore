@@ -10,3 +10,4 @@ db/seeds.rb
 *.un~
 node_modules/
 meta/results/
+public/page_cache

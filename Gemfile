@@ -4,6 +4,8 @@ ruby '2.3.1'
 gem 'dotenv-rails'
 
 gem 'rails_autolink'
+gem 'actionpack-page_caching'
+gem 'actionpack-action_caching'
 gem 'active_model_serializers'
 gem 'autoprefixer-rails'
 gem 'aws-sdk', '< 2.0'
