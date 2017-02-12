@@ -11,6 +11,7 @@ class PagesController < ApplicationController
   end
 
   def styleguide
+    render :styleguide, layout: 'simple'
   end
 
   def terms
@@ -32,6 +33,6 @@ class PagesController < ApplicationController
     @title = filename.to_s.chomp('.md').humanize
     data = File.read(Rails.root.join('public', 'docs', filename.to_s + '.md'))
     @doc = markdown(data).html_safe
-    render 'pages/doc'
+    render 'pages/doc', layout: 'simple'
   end
 end
