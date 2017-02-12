@@ -1,15 +1,6 @@
 @media print {
-  .btn-paper,
-  .btn-paper-mini,
   .dn-p {
     display: none !important;
-  }
-
-  .document {
-    width: 100%;
-    border: 0 !important;
-    border-bottom: $border !important;
-    border-radius: 0 !important;
   }
 
   .superheader {
