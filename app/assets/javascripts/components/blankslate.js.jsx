@@ -1,16 +1,14 @@
 
 const BlankSlate = ({
-  width = 8,
-   argin,
-   className,
-   ...props
+  margin,
+  className,
+  ...props
 }) =>
   <article
     {...props}
     className={
       _.join([
-        `border rounded pal tc mx-auto`,
-        width ? `md-col-${width}` : 'measure',
+        `measure border rounded pal tc mx-auto`,
         margin || 'mvl',
         className
       ], ' ')
@@ -22,6 +20,5 @@ const BlankSlate = ({
   />
 
 BlankSlate.propTypes = {
-  width: React.PropTypes.isOneOf([ 6, 8, 10 ]),
   margin: React.PropTypes.string
 }

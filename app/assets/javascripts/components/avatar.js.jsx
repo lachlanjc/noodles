@@ -4,7 +4,7 @@ const Avatar = ({
   size = 48,
   style,
   ...props
-}) => (
+}) =>
   <img
     {...props}
     src={src}
@@ -17,7 +17,6 @@ const Avatar = ({
       ...style
     }}
   />
-)
 
 Avatar.propTypes = {
   src: React.PropTypes.string.isRequired,

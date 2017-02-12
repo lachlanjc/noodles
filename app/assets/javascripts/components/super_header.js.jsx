@@ -14,12 +14,12 @@ const SuperHeader = ({
   const cx = [
     'superheader f1 f0-ns mbm mbl-ns border-bottom',
     className
-  ].join(' ')
+  ]
   return (
     <h1
       {...props}
       style={sx}
-      className={cx}
+      className={N.cxs(cx)}
     />
   )
 }
