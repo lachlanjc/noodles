@@ -1,11 +1,7 @@
 <%- title @title %>
 <%= render 'shared/nav' %>
 
-<h1 class="f1 mbn phm dn-ns"><%= @title %></h1>
-
-<main class="col-12 flex-ns fas mx-auto">
-  <article class="md-col-6 flex-auto flex-first mw7 mx-auto phm docs-content">
-    <h1 class="f0 mvm dn db-ns"><%= @title %></h1>
-    <%= @doc.html_safe %>
-  </article>
+<main class="document bw0 mw7">
+  <%= section_header @title, 1, class: 'mtn mbs grey-2' %>
+  <%= content_tag :div, @doc.html_safe, class: 'content' %>
 </main>
