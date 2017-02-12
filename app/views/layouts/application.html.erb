@@ -31,9 +31,7 @@
   <meta name="application-name" content="Noodles">
   <meta name="theme-color" content="#ff6d00">
   <%= render 'shared/analytics' %>
-  <%= stylesheet_link_tag 'fonts', media: 'all' %>
-  <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
+  <%= stylesheet_link_tag 'application', 'fonts', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
 <body
@@ -41,5 +39,6 @@
   style="<%= "background-image: url(#{content_for(:bg_img)});" if content_for?(:bg_img) %>"
   data-user="<%= user_signed_in? ? current_user_id : 'anon' %>">
   <%= yield %>
+  <%= javascript_include_tag 'application' %>
 </body>
 </html>
