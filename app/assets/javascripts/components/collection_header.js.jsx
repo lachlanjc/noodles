@@ -8,7 +8,7 @@ class CollectionHeader extends React.Component {
     const { name, description, publisher, photo } = coll
 
     let cx = {
-      root: [ 'col-12 bx flex fac' ],
+      root: [ 'w-100 bx flex fac' ],
       actions: [ 'caps f4 dn-p mts c--inherit' ]
     }
     let sx = {}
@@ -22,7 +22,7 @@ class CollectionHeader extends React.Component {
 
     return (
       <header className={N.cxs(cx.root)} style={sx}>
-        <main className='sm-col-12 md-col-8 mx-auto pam mw7'>
+        <main className='w-100 w-two-thirds-m mx-auto pam mw7'>
           <h1 className='coll__name c--inherit mvn f0'>
             {_.isEmpty(coll.name) ? 'Loading…' : coll.name}
           </h1>

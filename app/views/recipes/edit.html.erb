@@ -15,7 +15,7 @@
   <%= backlink @recipe.title, params[:redirect_to] || recipe_path(@recipe) %>
 <% end %>
 
-<main class="document md-col-8 mw7">
+<main class="document w-two-thirds-m mw7">
 <%= form_for(@recipe, url: recipe_path(@recipe, redirect_to: params[:redirect_to])) do |f| %>
   <section class="mbm db" data-behavior="editor_photo">
     <%= f.file_field :img, class: 'dn', 'data-behavior': 'photo_field' %>
@@ -42,7 +42,7 @@
 
   <% if @recipe.errors.any? %>
     <section
-      class="md-col-8 mx-auto bg-white rounded shadow mvm pam pal-ns"
+      class="w-two-thirds-m mx-auto bg-white rounded shadow mvm pam pal-ns"
       data-behavior="recipe_errors"
       role="alertdialog">
       <% @errors = @recipe.errors.messages %>
@@ -75,7 +75,7 @@
     autofocus: true,
     autocomplete: 'off',
     placeholder: 'Title your recipe…',
-    class: 'text-input invisible-input serif col-12 man b f1'
+    class: 'text-input invisible-input serif w-100 man b f1'
   %>
 
   <%= f.label :description, class: 'label f3 dib' %>
@@ -84,7 +84,7 @@
     autocomplete: 'off',
     placeholder: 'If you\'d like, write a description for the recipe here.',
     'data-behavior': 'autosize',
-    class: 'text-input invisible-input serif col-12 lh-copy'
+    class: 'text-input invisible-input serif w-100 lh-copy'
   %>
 
   <%= f.label :ingredients, class: 'label f3 dib' %>
@@ -94,7 +94,7 @@
     autocomplete: 'off',
     placeholder: 'Click here and type your recipe\'s ingredients.',
     'data-behavior': 'autosize',
-    class: 'text-input invisible-input serif col-12 man lh-copy'
+    class: 'text-input invisible-input serif w-100 man lh-copy'
   %>
 
   <%= f.label :instructions, class: 'label f3 dib' %>
@@ -104,7 +104,7 @@
     autocomplete: 'off',
     placeholder: 'Add the instructions here.',
     'data-behavior': 'autosize editor_instructions',
-    class: 'text-input invisible-input serif col-12 man lh-copy'
+    class: 'text-input invisible-input serif w-100 man lh-copy'
   %>
 
   <%= f.label :notes, class: 'label f3 dib' %>
@@ -113,22 +113,22 @@
     rows: '4',
     autocomplete: 'off',
     placeholder: 'Write your notes here.',
-    class: 'text-input invisible-input serif col-12 man lh-copy'
+    class: 'text-input invisible-input serif w-100 man lh-copy'
   %>
 
   <%= section_header 'Details', 2, class: 'mtl' %>
 
   <%= f.label :source, class: 'label dib' %>
   <small class="f5 mls grey-4">Where did this recipe come from?</small>
-  <%= f.text_field :source, class: 'text-input serif md-col-8' %>
+  <%= f.text_field :source, class: 'text-input serif w-two-thirds-m' %>
 
   <%= f.label :author, class: 'label dib' %>
   <small class="f5 mls grey-4">Who originally wrote this recipe?</small>
-  <%= f.text_field :author, class: 'text-input serif md-col-8' %>
+  <%= f.text_field :author, class: 'text-input serif w-two-thirds-m' %>
 
   <%= f.label :serves, 'Yield', class: 'label dib' %>
   <small class="f5 mls grey-4">How many servings does your recipe produce?</small>
-  <%= f.text_field :serves, class: 'text-input serif md-col-8' %>
+  <%= f.text_field :serves, class: 'text-input serif w-two-thirds-m' %>
 
   <footer class="tc">
     <%= f.submit 'Save', class: 'btn btn--primary bg-blue b mtl', 'data-disable-with': 'Saving...' %>

@@ -2,8 +2,7 @@
 <%- title 'User Analytics' %>
 <%= render 'shared/analytics_nav' %>
 
-<main class="md-col-8 mx-auto phm">
-
+<main class="w-two-thirds-m mx-auto phm">
   <h1>Users (<%= @users.count %>)</h1>
 
   <ul class="list-reset">
@@ -24,7 +23,7 @@
           <li>Referring URL: <%= link_to user.referring_url %></li>
           <li>Landing URL: <%= user.landing_url %></li>
           <li>Email: <%= link_to user.email, "mailto:" + user.email %></li>
-	  <li class="mts"><a class="btn btn-sm bg-blue" href="https://app.intercom.io/apps/<%= ENV['INTERCOM_APP_ID'] %>/users/show?user_id=<%= user.id %>">Open in Intercom</a></li>
+          <li class="mts"><a class="btn btn-sm bg-blue" href="https://app.intercom.io/apps/<%= ENV['INTERCOM_APP_ID'] %>/users/show?user_id=<%= user.id %>">Open in Intercom</a></li>
         </ul>
       </li>
     <% end %>

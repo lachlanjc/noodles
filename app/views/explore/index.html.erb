@@ -19,18 +19,18 @@
 <header
   class="relative inline-with-nav image-header bg-center bg-no-repeat bg-cover pvxl phm flex fac"
   style='background-image: url(<%= image_path "explore/#{rand(1..6).to_s}.jpg" %>);'>
-  <div class="tc mx-auto col-12">
+  <div class="tc mx-auto w-100">
     <%= link_to root_url, class: 'link-reset' do %>
       <h1 class="mvn white">
         Noodles Explore
       </h1>
     <% end %>
     <h2 class="white sans fwn mts mbm">What do you want to make?</h2>
-    <div class="md-col-8 mw7 phs mx-auto flex fac">
+    <div class="w-two-thirds-m mw7 phs mx-auto flex fac">
       <input
         type="text"
         role="search"
-        class="text-input col-12 dib f2 rounded card pvs phm bw0 bx"
+        class="text-input w-100 dib f2 rounded card pvs phm bw0 bx"
         placeholder="maybe pancakes?"
         data-behavior="explore_search_field"
         autofocus
@@ -50,28 +50,28 @@
   </div>
 </header>
 
-<main class="md-col-10 mx-auto pam tc mw7" data-behavior="explore_results_container">
-  <article class="col-12 rounded bg-white shadow pal bx mx-auto mw6">
-    <div class="md-col-10 mx-auto pam-ns">
-    <h2 class="mtn fwn">
-      Find the best recipes on the web with <span class="b">Explore</span>.
-    </h2>
-    <% if user_signed_in? %>
-      <p class="mbn">
-        Search for anything you want to cook,
-        then save your favorite results to your library.
-      </p>
-    <% else %>
-      <p>
-        Search for anything you want to cook.
-        <br class="dn db-ns">
-        Sign up to save the recipes you find.
-      </p>
-      <div class="tc mts" data-behavior="inline_signup_btn_container">
-        <a href="#signup" name="signup" data-behavior="modal_trigger inline_signup_btn" class="btn bg-orange">Sign up for Noodles</a>
-        <%= link_to 'Sign back in', sign_in_path, class: 'mls-ns mts btn bg-white' %>
-      </div>
-    <% end %>
+<main class="w-80-m mx-auto pam tc mw7" data-behavior="explore_results_container">
+  <article class="w-100 rounded bg-white shadow pal bx mx-auto mw6">
+    <div class="w-80-m mx-auto pam-ns">
+      <h2 class="mtn fwn">
+        Find the best recipes on the web with <span class="b">Explore</span>.
+      </h2>
+      <% if user_signed_in? %>
+        <p class="mbn">
+          Search for anything you want to cook,
+          then save your favorite results to your library.
+        </p>
+      <% else %>
+        <p>
+          Search for anything you want to cook.
+          <br class="dn db-ns">
+          Sign up to save the recipes you find.
+        </p>
+        <div class="tc mts" data-behavior="inline_signup_btn_container">
+          <a href="#signup" name="signup" data-behavior="modal_trigger inline_signup_btn" class="btn bg-orange">Sign up for Noodles</a>
+          <%= link_to 'Sign back in', sign_in_path, class: 'mls-ns mts btn bg-white' %>
+        </div>
+      <% end %>
     </div>
   </article>
 </main>
@@ -90,7 +90,7 @@
     <%= modal_header 'Sign up for Noodles' %>
     <%= render 'devise/registrations/new',
       user: User.new,
-      options: { class: 'modal__scroller col-12' }
+      options: { class: 'modal__scroller w-100' }
     %>
     <div class="dn" data-behavior="inline_signup_error">
       <h3 class="red fwn mbm">Something went wrong. 😞</h3>

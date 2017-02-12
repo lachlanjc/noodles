@@ -85,7 +85,7 @@ const HelpForm = ({ email }) => (
     className='flex fac mbm'
   >
     <div className='flex-auto mrm'>
-      <label className='label col-12 flex fac man border-bottom'>
+      <label className='label w-100 flex fac man border-bottom'>
         <span style={sx.label}>Email</span>
         <input
           type='email'
@@ -96,7 +96,7 @@ const HelpForm = ({ email }) => (
           style={sx.input}
         />
       </label>
-      <label className='label col-12 flex fac man'>
+      <label className='label w-100 flex fac man'>
         <span style={_.merge(sx.label, sx.cover)}>Body</span>
         <textarea
           id='message'

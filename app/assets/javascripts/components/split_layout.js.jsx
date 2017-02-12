@@ -13,7 +13,7 @@ const SplitLayout = ({
     'flex-md',
     className || 'pam phl-ns'
   ].join(' ')
-  cx.sidebar = 'md-col-6 lg-col-4 measure--narrow-ns mbl tc tl-ns'
+  cx.sidebar = 'w-50-m w-third-l measure--narrow-ns mbl tc tl-ns'
   cx.heading = [
     'sans orange',
     headingClassName

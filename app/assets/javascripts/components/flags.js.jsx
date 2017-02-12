@@ -3,7 +3,7 @@ const Flags = ({
   subscribe = true,
   ...props
 }) =>
-  <div className='col-12 mlm-ns tc tl-ns' {...props}>
+  <div className='w-100 mlm-ns tc tl-ns' {...props}>
     <HelpFlag />
     {subscribe && <SubscribeFlag />}
   </div>
