@@ -33,6 +33,7 @@ gem 'safely_block'
 gem 'sass-rails'
 gem 'skylight'
 gem 'slowpoke'
+gem 'therubyracer'
 gem 'uglifier'
 gem 'wombat'
 
