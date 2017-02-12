@@ -1,7 +1,6 @@
 <%- title @title %>
-<%= render 'shared/nav' %>
 
-<main class="document bw0 mw7">
+<main class="document mvl mw7">
   <%= section_header @title, 1, class: 'mtn mbs grey-2' %>
   <%= content_tag :div, @doc.html_safe, class: 'content' %>
 </main>
