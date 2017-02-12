@@ -2,6 +2,8 @@ class PagesController < ApplicationController
   include NavHelper
   include TextHelper
 
+  caches_page :home, :styleguide, :terms, :privacy
+
   def home
     render :home, layout: false
   end
@@ -22,7 +24,7 @@ class PagesController < ApplicationController
   end
 
   def embed_demo
-    render 'embed_demo', layout: false
+    render :embed_demo, layout: false
   end
 
   private
