@@ -3,7 +3,7 @@ const tips = [
   'Create a new recipe super quickly by searching with its title.',
   'Tap the lightbulb icon next to search for a random recipe.',
   'Use Cook Mode to check off ingredients as you cook.',
-  'Mark recipes as favorites with the star for quick access.',
+  'Mark recipes as favorites with the heart to find them faster.',
   'Save recipes from the web with the Clip icon in the right corner.',
   'Share a recipe with anyone from the menu on the recipe page.',
   'Download a PDF of a recipe from the menu on the recipe page.'
