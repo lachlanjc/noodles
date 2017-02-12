@@ -3,7 +3,7 @@
     defaults =
       top: 33
       overlay: 0.8
-    overlay = $('<div class="col-12 bg-darken-4 modal__overlay" data-behavior="modal_overlay"></div>')
+    overlay = $('<div class="modal__overlay" data-behavior="modal_overlay"></div>')
     $('body').append overlay if $('.modal__overlay').length is 0
     options = $.extend(defaults, options)
     @each ->
