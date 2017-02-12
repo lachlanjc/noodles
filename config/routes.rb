@@ -46,8 +46,8 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }
   as :user do
-    get  'login',     to: 'devise/sessions#new',          as: :sign_in
-    get  'signin',    to: 'devise/sessions#new'
+    get  'login',     to: 'sessions#new',                 as: :log_in
+    get  'signin',    to: 'sessions#new',                 as: :sign_in
     post 'login',     to: 'devise/sessions#create',       as: :update_user_session
     get  'logout',    to: 'devise/sessions#destroy',      as: :sign_out
 
