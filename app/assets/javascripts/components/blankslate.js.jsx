@@ -1,5 +1,10 @@
 
-const BlankSlate = ({ width, margin, className, ...props }) => (
+const BlankSlate = ({
+  width = 8,
+   argin,
+   className,
+   ...props
+}) =>
   <article
     {...props}
     className={
@@ -15,9 +20,8 @@ const BlankSlate = ({ width, margin, className, ...props }) => (
       borderStyle: 'dashed'
     }}
   />
-)
 
 BlankSlate.propTypes = {
-  width: React.PropTypes.number,
+  width: React.PropTypes.isOneOf([ 6, 8, 10 ]),
   margin: React.PropTypes.string
 }
