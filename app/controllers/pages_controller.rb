@@ -21,10 +21,6 @@ class PagesController < ApplicationController
     render_doc :privacy
   end
 
-  def docs
-    render_doc :docs
-  end
-
   def embed_demo
     render 'embed_demo', layout: false
   end

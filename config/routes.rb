@@ -38,7 +38,6 @@ Rails.application.routes.draw do
 
   get '/contact', to: 'pages#help', as: :contact
   get '/help', to: 'pages#help', as: :help
-  get '/docs', to: 'pages#docs', as: :docs
   get '/privacy', to: 'pages#privacy', as: :privacy
   get '/terms', to: 'pages#terms', as: :terms
 
