@@ -41,25 +41,32 @@
   </script>
 </head>
 <body class="man tc">
-  <% activate_nav! :home %>
-  <%= render 'shared/nav' %>
   <header
     class="bg-cover bg-center bg-no-repeat mbm"
     style="
       background-image: url(<%= image_path "home/#{rand(1..5).to_s}.jpg" %>);
-      margin-top: -1rem;
     ">
+    <nav role="navigation" class="flex fas tl pas pam-ns" style="width: 100%; padding-bottom: 0;">
+      <%= link_to root_url, style: 'line-height: 0;' do %>
+        <%= inline_svg 'cook.svg', class: 'fill-white', size: 32 %>
+      <% end %>
+      <%= link_to t('general.sign_in'),
+        sign_in_path,
+        class: 'btn bg-white',
+        style: 'border: 0; margin-left: auto;'
+      %>
+    </nav>
     <article class="hero phm-ns mx-auto">
       <%= render 'shared/flash' if flash.any? %>
       <div class="banner bg-blur mx-auto">
         <h1 class="f1 f0-ns mvn">Now you’re cooking!</h1>
-        <h2 class="f3 f2-ns mtn mbl grey-2 normal">All your recipes in one place.</h2>
+        <h2 class="f3 f2-ns mtn mbl grey-2 sans normal">All your recipes in one place.</h2>
         <a
           href="#signup"
           name="signup"
           data-behavior="modal_trigger inline_signup_btn"
           class="btn btn--primary bg-orange b f3 f2-ns shadow">
-          Try Noodle
+          Try Noodles
         </a>
       </div>
     </article>
