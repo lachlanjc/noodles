@@ -56,8 +56,8 @@ class RecipeList extends React.Component {
           ))}
           {searching && _.isEmpty(recipes) &&
             <BlankSlate>
-              <h3 className='normal man'>No search results</h3>
-              <p className='mbn'>Try searching for something less specific. 🔍</p>
+              <h3 className='man'>No search results 🔍</h3>
+              <p className='mbn'>Try searching for something less specific.</p>
               {searching && (createFromSearch || false) &&
                 <a
                   className='mtm btn bg-blue'
