@@ -3,7 +3,6 @@ class PagesController < ApplicationController
   include TextHelper
 
   def home
-    @hide_flash = true
     render :home, layout: false
   end
 

@@ -17,7 +17,7 @@ module NavHelper
 
   def flash_json
     flash.to_a.each do |f|
-      f[0] = flash_type(f[0])
+      f[0] = flash_type(f[0]) if f[1].present?
     end
   end
 

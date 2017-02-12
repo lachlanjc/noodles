@@ -3,7 +3,7 @@
 en:
   devise:
     failure:
-      already_authenticated: You're already signed in ;)
+      already_authenticated: ""
       inactive: "Your account is not activated yet."
       invalid: "Hmm, either your email or password is wrong."
       not_found_in_database: "Invalid email or password."
@@ -27,7 +27,7 @@ en:
       updated: "Your password was changed successfully. You are now signed in."
       updated_not_active: "Your password was changed successfully."
     registrations:
-      destroyed: "Your account has been deleted. If you need anything, just click Contact Us (above). Sorry to see you go!"
+      destroyed: "Your account has been deleted. Thanks for trying it out!"
       signed_up: ""
       updated: "You updated your account successfully."
     sessions:
