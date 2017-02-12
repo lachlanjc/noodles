@@ -4,7 +4,7 @@ const RecipesHomeList = ({
 }) => (
   <Document
     mw={7}
-    className='card pan oh'
+    className='pan oh'
     style={{
       height: 'intrinsic',
       borderRadius: 10
