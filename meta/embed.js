@@ -1,7 +1,8 @@
-var fs = require('fs')
-var Pageres = require('pageres')
 
-new Pageres({delay: 2})
-  .src('http://noodles.dev/embed', ['400x400'], {filename: 'Embed'})
+const fs = require('fs')
+const Pageres = require('pageres')
+
+new Pageres({ delay: 2 })
+  .src('http://localhost:3000/embed', [ '350x225' ], { filename: 'Embed' })
   .dest('./meta/results')
   .run()
