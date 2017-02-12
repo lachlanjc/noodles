@@ -46,11 +46,11 @@ class Recipe < ActiveRecord::Base
   end
 
   def photo_url
-    imaged? ? photo.url : "#{ENV['SPLATTERED_URL']}/#{name}"
+    imaged? ? img.url : "#{ENV['SPLATTERED_URL']}/#{name}"
   end
 
   def public_url
-    share_url(self.shared_id)
+    share_url self.shared_id
   end
 
   private
