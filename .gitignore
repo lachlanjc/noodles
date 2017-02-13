@@ -1,5 +1,3 @@
-# Read more at http://help.github.com/ignore-files/
-
 .DS_Store
 *.log
 /tmp/*
@@ -10,4 +8,8 @@ db/seeds.rb
 *.un~
 node_modules/
 meta/results/
-public/page_cache
+/public/page_cache
+/public/assets
+/.bundle
+/vendor/bundle/*
+passenger.3000.pid
