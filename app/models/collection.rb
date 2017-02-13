@@ -1,4 +1,4 @@
-class Collection < ActiveRecord::Base
+class Collection < ApplicationRecord
   belongs_to :user, touch: true
   has_many :recipes
 
@@ -6,7 +6,10 @@ class Collection < ActiveRecord::Base
 
   validates :user_id, presence: true
 
-  has_attached_file :photo, path: 'collections/:id/photo.:extension', default_url: ''
+  has_attached_file :photo,
+    path: 'collections/:id/photo.:extension',
+    default_url: '',
+    s3_region: 'us-east-1'
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
 
   def recipes

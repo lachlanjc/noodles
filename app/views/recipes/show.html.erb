@@ -2,12 +2,8 @@
 <% activate_nav!(:recipes) %>
 <% remove_grey_bg! if @image_layout %>
 
-<%= render 'shared/nav', no_margin: @image_layout %>
-
-<div itemscope itemtype="http://schema.org/Recipe">
-  <meta itemprop="url" content="<%= @recipe.public_url %>" />
-  <meta itemprop="dateCreated" content="<%= @recipe.created_at %>" />
-  <meta itemprop="dateModified" content="<%= @recipe.updated_at %>" />
+<% cache ['show', 'v1', @recipe] do %>
+  <%= render 'shared/nav', no_margin: @image_layout %>
 
   <%= render 'image_header' if @image_layout %>
 
@@ -51,25 +47,25 @@
       <%= render 'recipe_body' %>
     </main>
   <% end %>
-</div>
 
-<%= render 'shared/public', object: @recipe %>
+  <%= render 'shared/public', object: @recipe %>
 
-<section id="embed" class="modal modal--mw" role="dialog">
-  <%= modal_header 'Embed on the Web' %>
-  <p>Copy/paste the code below to your website to embed this recipe.</p>
-  <%= content_tag :textarea,
-    escape_once(recipe_embed),
-    class: 'input-reset w-100 man pas f5 mono border br--sm wbw bx',
-    'data-behavior': 'autoselect',
-    rows: 4,
-    readonly: true
-  %>
-  <button
-    class="btn bg-blue mrm"
-    data-clipboard-text="<%= escape_once(recipe_embed) %>" data-behavior="copy">
-    Copy
-  </button>
-  <a class="btn btn-sm bg-grey-3" href="#help" data-behavior="modal_trigger modal_close_first">Help</a>
-  <%= section_header 'Preview', 3, class: 'dn', 'data-behavior': 'rehide' %>
-</section>
+  <section id="embed" class="modal modal--mw" role="dialog">
+    <%= modal_header 'Embed on the Web' %>
+    <p>Copy/paste the code below to your website to embed this recipe.</p>
+    <%= content_tag :textarea,
+      escape_once(recipe_embed),
+      class: 'input-reset w-100 man pas f5 mono border br--sm wbw bx',
+      'data-behavior': 'autoselect',
+      rows: 4,
+      readonly: true
+    %>
+    <button
+      class="btn bg-blue mrm"
+      data-clipboard-text="<%= escape_once(recipe_embed) %>" data-behavior="copy">
+      Copy
+    </button>
+    <a class="btn btn-sm bg-grey-3" href="#help" data-behavior="modal_trigger modal_close_first">Help</a>
+    <%= section_header 'Preview', 3, class: 'dn', 'data-behavior': 'rehide' %>
+  </section>
+<% end %>

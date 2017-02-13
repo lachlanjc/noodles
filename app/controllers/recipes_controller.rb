@@ -4,8 +4,8 @@ class RecipesController < ApplicationController
   include RecipesHelper
   include ScrapingHelper
 
-  before_filter :please_sign_in, except: [:show, :share, :embed_js]
-  before_filter :set_recipe, only: [:show, :share, :edit, :update, :destroy, :export_pdf, :embed_js, :remove_image, :collections]
+  before_action :please_sign_in, except: [:show, :share, :embed_js]
+  before_action :set_recipe, only: [:show, :share, :edit, :update, :destroy, :export_pdf, :embed_js, :remove_image, :collections]
   before_action -> { hey_thats_my @recipe }, only: [:edit, :update, :destroy, :export_pdf, :remove_image, :collections]
   protect_from_forgery except: :embed_js
 
@@ -80,6 +80,7 @@ class RecipesController < ApplicationController
 
   def share
     @image_layout = @recipe.imaged?
+    render :share, layout: 'simple'
   end
 
   def save_to_noodles

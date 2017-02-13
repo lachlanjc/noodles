@@ -14,7 +14,7 @@
   <meta property="og:url" content="<%= @recipe.public_url %>">
   <meta property="og:title" content="<%= @recipe.title %>">
   <meta name="twitter:title" content="<%= @recipe.title %>">
-  <% @description = "This recipe was published on Noodles by #{@recipe.publisher}." if @recipe.description.blank? %>
+  <% @description = "Recipe published on Noodles by #{@recipe.publisher}." if @recipe.description.blank? %>
   <meta property="og:description" content="<%= @description || @recipe.description %>">
   <meta name="twitter:description" content="<%= @description || @recipe.description %>">
   <meta name="description" content="<%= @description || @recipe.description %>">
@@ -42,41 +42,40 @@
   }) %>
 <% end -%>
 
-<% if @image_layout %>
-  <%= render 'image_header' %>
-  <article class="mw7 mx-auto bx pam phl-ns">
-    <%= render 'recipe_body' %>
-  </article>
-<% else %>
-  <article class="document mtm mbn">
-    <h1 class="mvn" itemprop="name"><%= @recipe.title %></h1>
-    <div class="mbm dn-p flex fac lh0 fr-ns absolute-ns t0-ns r0-ns mrm-ns mtl-ns">
-      <%= link_to save_to_noodles_path(@recipe.shared_id),
-        class: 'dn mrm pointer tooltipped tooltipped--n',
-        'data-behavior': 'show_if_signed_in',
-        'aria-label': 'Save to your library' do %>
-        <%= inline_svg 'add_circle.svg', class: 'fill-orange', size: 32 %>
-      <% end %>
-      <%= link_to public_cook_path(@recipe.shared_id),
-        class: 'mrm pointer tooltipped tooltipped--n',
-        'aria-label': 'Open in Cook Mode' do %>
-        <%= inline_svg 'cook.svg', class: 'fill-orange', size: 32 %>
-      <% end %>
-    </div>
-    <%= content_tag :p,
-      "Shared by #{@recipe.publisher}",
-      class: 'grey-3' if @recipe.user
-    %>
-    <%= content_tag :div,
-      sanitize(markdown(@recipe.description)),
-      class: 'text content',
-      itemprop: 'description' if @recipe.description
-    %>
+<% cache ['share', 'v1', @recipe] do %>
+  <% if @image_layout %>
+    <%= render 'image_header' %>
+    <article class="mw7 mx-auto bx pam phl-ns">
+      <%= render 'recipe_body' %>
+    </article>
+  <% else %>
+    <article class="document mtm mbn">
+      <h1 class="mvn" itemprop="name"><%= @recipe.title %></h1>
+      <div class="mbm dn-p flex fac lh0 fr-ns absolute-ns t0-ns r0-ns mrm-ns mtl-ns">
+        <%= link_to save_to_noodles_path(@recipe.shared_id),
+          class: 'dn mrm pointer tooltipped tooltipped--n',
+          'aria-label': 'Save to your library' do %>
+          <%= inline_svg 'add_circle.svg', class: 'fill-orange', size: 32 %>
+        <% end %>
+        <%= link_to public_cook_path(@recipe.shared_id),
+          class: 'mrm pointer tooltipped tooltipped--n',
+          'aria-label': 'Open in Cook Mode' do %>
+          <%= inline_svg 'cook.svg', class: 'fill-orange', size: 32 %>
+        <% end %>
+      </div>
+      <%= content_tag :p,
+        "Shared by #{@recipe.publisher}",
+        class: 'grey-3' if @recipe.user
+      %>
+      <%= content_tag :div,
+        sanitize(markdown(@recipe.description)),
+        class: 'text content',
+        itemprop: 'description' if @recipe.description
+      %>
 
-    <%= render 'recipe_body' %>
-  </article>
+      <%= render 'recipe_body' %>
+    </article>
+  <% end %>
+
+  <%= render 'shared/promo' %>
 <% end %>
-
-<%= render 'shared/promo' %>
-
-<%= render 'shared/public', object: @recipe %>

@@ -15,10 +15,11 @@
 </section>
 
 <% if params[:new_collection] %>
-  <script>
-  // Ugly hack, but…
-  $(function() {
-    $('a[href="#new"]').click()
-  })
-  </script>
+  <% content_for :javascript do -%>
+    <script>
+    $(function() {
+      $('a[href="#new"]').click()
+    })
+    </script>
+  <% end -%>
 <% end %>

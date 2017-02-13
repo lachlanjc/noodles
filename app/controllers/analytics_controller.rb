@@ -1,5 +1,5 @@
 class AnalyticsController < ApplicationController
-  before_filter :authenticate
+  before_action :authenticate
 
   def dashboard
     @users_count = 0

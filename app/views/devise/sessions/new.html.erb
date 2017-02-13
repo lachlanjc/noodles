@@ -1,9 +1,10 @@
-<% activate_nav!(:sign_in) %>
-<%- title 'Sign in' %>
+<% activate_nav! :sign_in %>
+<% title 'Sign in' %>
 <% content_for(:bg_img) { image_path "auth/#{rand(1..4).to_s}.jpg" } %>
 
 <%= render 'shared/nav' %>
 
+<% cache do -%>
 <main class="document mw6">
   <%= section_header 'Sign in', 1, class: 'mtn mbm grey-2 f2' %>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -27,3 +28,4 @@
 
   <%= link_to 'Forgot your password?', :forgot_password, class: 'mtm db f5 grey-3' %>
 </main>
+<% end -%>

@@ -1,5 +1,5 @@
 class CookController < ApplicationController
-  before_filter :set_recipe
+  before_action :set_recipe
 
   def index
     if isnt_my?(@recipe) && params[:shared_id].blank?

@@ -25,9 +25,7 @@ class ApplicationController < ActionController::Base
 
   # Go back, or at least home
   def go_back
-    redirect_to :back
-  rescue ActionController::RedirectBackError
-    redirect_to root_path
+    redirect_back(fallback_location: root_path)
   end
 
   # Render 404 page
@@ -84,7 +82,7 @@ class ApplicationController < ActionController::Base
 
   # Is this a public sharing page?
   def public_page?
-    params[:action] == :share.to_s
+    params[:action].to_sym == :share
   end
 
   # Is this NOT a public sharing page?

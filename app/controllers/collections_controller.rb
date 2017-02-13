@@ -1,7 +1,7 @@
 class CollectionsController < ApplicationController
   include CollectionsHelper
 
-  before_filter :please_sign_in, except: [:show, :share]
+  before_action :please_sign_in, except: [:show, :share]
   before_action :set_collection, except: [:index, :create]
   before_action -> { hey_thats_my @collection }, except: [:index, :create, :show, :share]
 

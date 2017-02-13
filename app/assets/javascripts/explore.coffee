@@ -1,7 +1,7 @@
 #= require masonry/dist/masonry.pkgd
 #= require imagesloaded/imagesloaded.pkgd
 
-$(document).ready ->
+$(document).on 'turbolinks:load', ->
   activateSrc = (src) ->
     b = $('[data-behavior~=explore_src_pick_bar]')
     c = b.find("[data-behavior~=explore_src_pick][data-src-name=#{src}]")

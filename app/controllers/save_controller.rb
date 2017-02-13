@@ -2,8 +2,8 @@ class SaveController < ApplicationController
   include ApplicationHelper
   include ScrapingHelper
 
-  before_filter :validate_url
-  before_filter :redirect_guests
+  before_action :validate_url
+  before_action :redirect_guests
 
   def save
     recipe_data = master_scrape(params[:url])

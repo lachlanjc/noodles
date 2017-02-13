@@ -1,5 +1,5 @@
 <% activate_nav!(:explore) %>
-<%- title 'Explore' %>
+<% title 'Explore' %>
 
 <% content_for :meta do -%>
   <meta property="og:type" content="website">
@@ -119,7 +119,7 @@
         Clip
       </a>
       <a
-        class="blue"
+        class="blue pvs"
         target="_blank"
         data-behavior="rehide explore_clipped_open explore_clipped_toggle">
         Clipped – <strong>Open</strong>
@@ -132,20 +132,22 @@
   </footer>
 </section>
 
-<script>
-var urlParams;
-(window.onpopstate = function() {
-	var match,
-		pl = /\+/g, // Regex for replacing addition symbol with a space
-		search = /([^&=]+)=?([^&]*)/g,
-		decode = function(s) {
-			return decodeURIComponent(s.replace(pl, ' '));
-		},
-		query = window.location.search.substring(1);
+<% content_for :javascript do -%>
+  <script>
+  var urlParams;
+  (window.onpopstate = function() {
+    var match,
+      pl = /\+/g, // Regex for replacing addition symbol with a space
+      search = /([^&=]+)=?([^&]*)/g,
+      decode = function(s) {
+        return decodeURIComponent(s.replace(pl, ' '));
+      },
+      query = window.location.search.substring(1);
 
-	urlParams = {};
-	while (match = search.exec(query))
-		urlParams[decode(match[1])] = decode(match[2]);
-})();
-</script>
-<%= javascript_include_tag 'explore' %>
+    urlParams = {};
+    while (match = search.exec(query))
+      urlParams[decode(match[1])] = decode(match[2]);
+  })();
+  </script>
+  <%= javascript_include_tag 'explore', 'data-turbolinks-track': 'reload' %>
+<% end -%>

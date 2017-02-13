@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= "#{content_for(:title)} –" if content_for?(:title) %> Noodles</title>
-  <% if content_for?(:meta) %>
-    <%= yield(:meta) %>
+  <title><%= "#{content_for :title} –" if content_for? :title %> Noodles</title>
+  <% if content_for? :meta %>
+    <%= yield :meta %>
   <% else %>
     <meta property="fb:pages" content="698221030285633">
     <meta property="og:site_name" content="Noodles">
@@ -39,6 +39,7 @@
   style="<%= "background-image: url(#{content_for(:bg_img)});" if content_for?(:bg_img) %>"
   data-user="<%= user_signed_in? ? current_user_id : 'anon' %>">
   <%= yield %>
-  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= yield :javascript %>
 </body>
 </html>

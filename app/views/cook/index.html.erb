@@ -1,9 +1,8 @@
 <%- title @recipe.title.html_safe %>
 
+<% cache ['cook', 'v1', @recipe] do %>
 <main class="flex-ns pvm phm-ns">
   <aside class="w-third-l measure pam pal-l">
-    <%= render 'shared/flash', simple: true %>
-
     <h1 class="f0 super lh man grey-1"><%= @recipe.title %></h1>
     <p class="grey-3 mtn">
       <span class="dn" data-behavior="show_if_anonymous">
@@ -87,10 +86,13 @@
     </div>
   </article>
 </main>
+<% end %>
 
-<script>
-  N.object_user = <%= @recipe.user_id %>
-  if (N.my_object) {
-    $.post(window.location.href, function() {});
-  }
-</script>
+<% content_for :javascript do -%>
+  <script>
+    N.object_user = <%= @recipe.user_id %>
+    if (N.my_object) {
+      $.post(window.location.href, function() {})
+    }
+  </script>
+<% end -%>

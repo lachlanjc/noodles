@@ -1,13 +1,14 @@
-#= require jquery
+#= require jquery3
 #= require jquery_ujs
+#= require turbolinks
 #= require lodash
 #= require modals
 #= require autosize
 #= require clipboard
-#= require components
 #= require global
+#= require components
 
-$(document).ready ->
+$(document).on 'turbolinks:load', ->
   N.user = $('body').data('user')
   N.signed_in = _.isNumber N.user
   N.anonymous = !N.signed_in
@@ -70,7 +71,7 @@ $(document).ready ->
     $('#embed').append $('#embed [data-behavior~=copy]').data('clipboard-text')
     $('.section-header').show 0
 
-  if N.theres 'recipe_colls_container'
+  if N.theres('recipe_colls_container') and _.includes(window.location.pathname, '/recipes/')
     if _.isEqual N.s('recipe_colls_container').data('user'), N.user
       $.get window.location.pathname + '/collections', (e) ->
         N.s('recipe_colls_container').html e
