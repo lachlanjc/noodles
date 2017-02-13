@@ -1,4 +1,6 @@
 class RecipeListSerializer < BaseSerializer
+  cache key: 'recipe_list'
+
   attributes :id, :title, :description, :path, :public_path,
     :favorite, :notes, :photo, :collections
 
