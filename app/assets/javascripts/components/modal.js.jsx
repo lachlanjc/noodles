@@ -1,13 +1,15 @@
 
 const Modal = ({
   id,
-  title,
   children,
+  className,
+  title,
+  scrollable = false,
   ...props
 }) =>
   <section
     {...props}
-    className='modal'
+    className={N.cxs([ 'modal', scrollable && 'modal--scrollable', className ])}
     role='dialog'
     id={id}
   >
@@ -26,6 +28,11 @@ const Modal = ({
 
 Modal.propTypes = {
   id: React.PropTypes.string.isRequired,
+  className: React.PropTypes.string,
+  children: React.PropTypes.node.isRequired,
   title: React.PropTypes.string.isRequired,
-  children: React.PropTypes.node.isRequired
+  scrollable: React.PropTypes.bool
 }
+
+const ModalScroller = ({ className, ...props }) =>
+  <article {...props} className={N.cxs([ 'modal__scroller', className ])} />
