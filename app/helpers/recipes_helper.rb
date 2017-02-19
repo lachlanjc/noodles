@@ -29,17 +29,17 @@ module RecipesHelper
   end
 
   def ingredient_processed(text, options = {})
-    line = Nokogiri::HTML::DocumentFragment.parse(markdown(line))
-    line = line.first_element_child
+    text = markdown(text)
+    node = Nokogiri::HTML::DocumentFragment.parse(text).first_element_child
 
     name = options[:name] || (text.match(/# /) ? 'h1' : 'li')
-    line.name = name
+    node.name = name
 
     options.delete 'name'
-    # line['itemprop'] = 'recipeIngredient'
-    options.each { |key, val| line[key] = val }
+    # node['itemprop'] = 'recipeIngredient'
+    options.each { |key, val| node[key] = val }
 
-    line.to_s.html_safe
+    node.to_s.html_safe
   end
 
   def instructions_processed(instructions = @recipe.instructions, options = {})
