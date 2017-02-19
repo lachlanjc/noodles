@@ -9,7 +9,7 @@ class Collection < ApplicationRecord
   has_attached_file :photo,
     path: 'collections/:id/photo.:extension',
     default_url: '',
-    s3_region: 'us-east-1'
+    s3_region: ENV['AWS_REGION']
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
 
   def recipes
