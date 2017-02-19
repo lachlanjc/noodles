@@ -1,11 +1,12 @@
 module TextHelper
   def markdown(str = '')
-    Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, underline: true, space_after_headers: true, strikethrough: true).render(str.to_s).html_safe
+    opts = { autolink: true, underline: true, highlight: true, strikethrough: true }
+    md = Redcarpet::Markdown.new(Redcarpet::Render::HTML, opts).render(str.to_s)
+    ActionController::Base.helpers.sanitize md.html_safe
   end
 
   def plain_text_from_markdown(text = '', options = {})
-    text = markdown(text.to_s)
-    text = sanitize(text, tags: %w(ol ul li))
+    text = sanitize(markdown(text), tags: %w(ol ul li))
     text = HtmlToPlainText.plain_text(text)
     text.gsub!(/^\d+\.\s/, '') if options[:remove_numbers]
     text

@@ -35,7 +35,7 @@
         <%= render 'actions', color: 'orange', rootClass: 'mlm', menuClass: '' %>
       </div>
       <%= content_tag :div,
-        sanitize(markdown(@recipe.description)),
+        markdown(@recipe.description),
         class: 'text content mtm',
         itemprop: 'description' if @recipe.description
       %>

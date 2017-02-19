@@ -29,8 +29,7 @@ module RecipesHelper
   end
 
   def ingredient_processed(text, options = {})
-    line = sanitize markdown(text)
-    line = Nokogiri::HTML::DocumentFragment.parse(line)
+    line = Nokogiri::HTML::DocumentFragment.parse(markdown(line))
     line = line.first_element_child
 
     name = options[:name] || (text.match(/# /) ? 'h1' : 'li')
@@ -44,7 +43,7 @@ module RecipesHelper
   end
 
   def instructions_processed(instructions = @recipe.instructions, options = {})
-    text = sanitize markdown(instructions)
+    text = markdown(instructions)
     # text = Nokogiri::HTML::DocumentFragment.parse(text)
     # text.css('li').each { |item| item['itemprop'] = 'instruction' }
     text.to_s.html_safe
@@ -63,6 +62,6 @@ module RecipesHelper
   end
 
   def notes_rendered(recipe = @recipe)
-    recipe.notes.blank? ? notes_blankslate : sanitize(markdown(recipe.notes))
+    recipe.notes.blank? ? notes_blankslate : markdown(recipe.notes)
   end
 end
