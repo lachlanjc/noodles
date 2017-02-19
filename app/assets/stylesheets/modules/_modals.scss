@@ -42,8 +42,9 @@
 }
 
 .modal__feature {
+  box-sizing: border-box;
   border-radius: 0 0 $border-radius $border-radius;
-  width: calc(100% + 1rem);
+  width: calc(100% + 2rem);
   position: relative;
   top: 1rem;
   left: -1rem;

@@ -102,6 +102,21 @@
       options: { class: 'modal--scroll flex fc fjc' }
     %>
   </section>
+  <div
+    class="w-100 mlm-ns tc tl-ns"
+    style="position: fixed; left: 0px; right: 0px; bottom: 0px; z-index: 1;">
+    <a
+      href="#help"
+      data-behavior="modal_trigger"
+      class="dib bg-purple f4 b lh mlm pvs phm"
+      style="border-radius: 6px 6px 0 0; color: #fff;">
+      Help & feedback
+    </a>
+  </div>
+  <section class="modal tl" id="help" role="dialog">
+    <%= modal_header 'Help & feedback' %>
+    <%= render 'shared/help' %>
+  </section>
   <footer class="w-100 border-top b--grey-3 mtxl pvl grey-3 f5 footer">
     <p class="mbn">
       More:

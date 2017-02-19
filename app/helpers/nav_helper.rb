@@ -48,8 +48,8 @@ module NavHelper
   end
 
   def flag_page?
-    controllers = %w(devise/registrations devise/sessions pages).include?(params[:controller])
+    controllers = %w(pages).include?(params[:controller])
     actions = %w(share subscribe).include?(params[:action])
-    user_signed_in? && !controllers && !actions
+    !controllers && !actions
   end
 end

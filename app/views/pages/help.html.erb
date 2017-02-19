@@ -4,15 +4,17 @@
 <% content_for(:bg_img) { image_path "auth/#{rand(1..4).to_s}.jpg" } %>
 <%= render 'shared/nav' %>
 
-<article class="document bw0 mw6">
-  <% if nobody_signed_in? %>
-    <%= section_header 'About Noodles', 1, class: 'f2 mvn tc grey-2' %>
-    <p class="content lh-copy mtm mbl">
+<% if nobody_signed_in? %>
+  <article class="document pam-ns bw0 mw6 mvl">
+    <%= section_header 'About Noodles', 1, class: 'f2 mtn mbs grey-2' %>
+    <p class="content lh-copy mvn">
       Noodles is a free app for cooking — it's your own organized library of all your recipes.
       Check out <%= link_to 'the homepage', root_url %> for more information.
     </p>
-  <% end %>
+  </article>
+<% end %>
 
-  <%= section_header 'Have a question?', 1, class: 'f2 mtn tc grey-2' %>
-  <%= react_component 'HelpContent' %>
+<article class="document pam-ns bw0 mw6">
+  <%= section_header 'Have a question?', 1, class: 'f2 mtn grey-2' %>
+  <%= render 'shared/help' %>
 </article>

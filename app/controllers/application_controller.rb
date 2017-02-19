@@ -23,9 +23,9 @@ class ApplicationController < ActionController::Base
     !someone_signed_in?
   end
 
-  # Go back, or at least home
+  # Go back
   def go_back
-    redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: help_path)
   end
 
   # Render 404 page

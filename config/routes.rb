@@ -36,32 +36,32 @@ Rails.application.routes.draw do
     get '/preview', to: 'explore#preview'
   end
 
-  get '/contact', to: 'pages#help', as: :contact
-  get '/help', to: 'pages#help', as: :help
   get '/privacy', to: 'pages#privacy', as: :privacy
   get '/terms', to: 'pages#terms', as: :terms
+  get '/contact', to: 'pages#help', as: :contact
+  get '/help', to: 'pages#help', as: :help
+  post '/help', to: 'pages#help_form', as: :help_form
 
-  get '/blog', to: 'announcements#index'
   get '/announcements/unsubscribe/:code/:user_id', to: 'announcements#unsubscribe', as: :unsubscribe
 
   devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }
   as :user do
     get  'login',     to: 'sessions#new',                 as: :log_in
-    get  'signin',    to: 'sessions#new',                 as: :sign_in
+    get  'sign_in',   to: 'sessions#new',                 as: :sign_in
     post 'login',     to: 'devise/sessions#create',       as: :update_user_session
-    get  'logout',    to: 'devise/sessions#destroy',      as: :sign_out
+    get  'sign_out',  to: 'devise/sessions#destroy',      as: :sign_out
 
-    get    'signup',  to: 'devise/registrations#new',     as: :sign_up
-    post   'signup',  to: 'devise/registrations#create',  as: :add_user
-    put    'signup',  to: 'devise/registrations#update',  as: :update_user_registration
-    delete 'signup',  to: 'devise/registrations#destroy', as: :destroy_user
+    get    'sign_up', to: 'devise/registrations#new',     as: :sign_up
+    post   'sign_up', to: 'devise/registrations#create',  as: :add_user
+    put    'sign_up', to: 'devise/registrations#update',  as: :update_user_registration
+    delete 'goodbye', to: 'devise/registrations#destroy', as: :destroy_user
 
-    get 'subscribe', to: 'registrations#subscribe', as: :subscribe
+    get 'subscribe', to: 'registrations#subscribe',       as: :subscribe
 
-    get 'settings', to: 'devise/registrations#edit',     as: :settings
+    get 'my/settings', to: 'devise/registrations#edit',   as: :settings
 
-    get 'forgot_password', to: 'devise/passwords#new',   as: :forgot_password
-    get 'change_password', to: 'devise/passwords#edit',  as: :change_password
+    get 'forgot_password', to: 'devise/passwords#new',    as: :forgot_password
+    get 'change_password', to: 'devise/passwords#edit',   as: :change_password
   end
 
   scope '/admin' do

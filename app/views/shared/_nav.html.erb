@@ -38,11 +38,35 @@
 <%= render 'shared/flash' if @hide_flash != true %>
 
 <% if flag_page? %>
-  <%= react_component 'Flags',
-    { subscribe: !current_user.subscriber? },
-    { style: 'position: fixed; left: 0px; right: 0px; bottom: 0px; z-index: 1;' }
-  %>
+  <div
+    class="w-100 mlm-ns tc tl-ns"
+    style="position: fixed; left: 0px; right: 0px; bottom: 0px; z-index: 1;">
+    <a
+      href="#help"
+      data-behavior="modal_trigger"
+      class="dib bg-purple f4 b lh mlm pvs phm"
+      style="border-radius: 6px 6px 0 0; color: #fff;">
+      Help & feedback
+    </a>
+    <% if user_signed_in? %>
+      <% unless current_user.subscriber? %>
+        <a
+          href="#subscribe"
+          data-behavior="modal_trigger"
+          class="dib bg-purple f4 b lh mlm pvs phm"
+          style="border-radius: 6px 6px 0 0; color: #fff;">
+          Subscribe
+        </a>
+      <% end %>
+    <% end %>
+  </div>
 
-  <%= react_component 'HelpModal', email: current_user.email %>
-  <%= react_component 'SubscribeModal' unless current_user.subscriber? %>
+  <section class="modal" id="help" role="dialog">
+    <%= modal_header 'Help & feedback' %>
+    <%= render 'shared/help' %>
+  </section>
+
+  <% if user_signed_in? %>
+    <%= react_component 'SubscribeModal' unless current_user.subscriber? %>
+  <% end %>
 <% end %>
