@@ -53,7 +53,6 @@ class RecipesController < ApplicationController
   end
 
   def update
-    params = recipe_params.merge({ collections: recipe_params[:collections].to_a.reject(&:blank?) })
     if @recipe.update(recipe_params)
       flash[:success] = 'Saved!' unless @recipe.previous_changes[:collections]
       redirect_to request.params[:redirect_to] || @recipe
