@@ -114,6 +114,8 @@ GEM
     errbase (0.0.3)
     erubis (2.7.0)
     execjs (2.7.0)
+    faraday (0.11.0)
+      multipart-post (>= 1.2, < 3)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     hangry (0.0.2)
@@ -162,6 +164,7 @@ GEM
     mimemagic (0.3.2)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
+    multipart-post (2.0.0)
     net-http-digest_auth (1.4.1)
     net-http-persistent (2.9.4)
     netrc (0.11.0)
@@ -279,6 +282,8 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    stripe (2.0.0)
+      faraday (~> 0)
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
       ref
@@ -356,6 +361,7 @@ DEPENDENCIES
   sass-rails
   skylight
   slowpoke
+  stripe
   therubyracer
   tracer_bullets
   turbolinks
