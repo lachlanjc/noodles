@@ -13,9 +13,9 @@ class PagesController < ApplicationController
   end
 
   def help_form
-    HelpFormJob.perform_later(email: params[:email], message: params[:message], url: request.url )
+    HelpFormJob.perform_later(email: params[:email], message: params[:message], url: request.referer)
     flash[:success] = 'Thanks—message sent!'
-    request.params[:action] == 'home' ? redirect_to(help_url) : go_back
+    request.referer == root_url ? redirect_to(help_url) : go_back
   end
 
   def styleguide
