@@ -9,7 +9,7 @@ class PagesController < ApplicationController
   end
 
   def help
-    render :help, layout: 'simple'
+    render :help
   end
 
   def help_form
