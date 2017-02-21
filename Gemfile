@@ -3,7 +3,6 @@ ruby '2.3.1'
 
 gem 'dotenv-rails'
 
-gem 'rails_autolink'
 gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
 gem 'active_model_serializers'
@@ -26,7 +25,6 @@ gem 'passenger'
 gem 'paperclip'
 gem 'pg'
 gem 'prawnto_2', require: 'prawnto'
-gem 'premailer-rails'
 gem 'rails', '5.0.1'
 gem 'rails-controller-testing'
 gem 'rake'
@@ -51,7 +49,6 @@ end
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'seed_dump'
   gem 'tracer_bullets'
   gem 'web-console'
 end

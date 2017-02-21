@@ -29,7 +29,10 @@ module TextHelper
   end
 
   def clean_autolink(text)
-    auto_link(text, html: { target: '_blank' }) { |text| remove_url_head(text) }
+    node = Nokogiri::HTML::DocumentFragment.parse(markdown(text)).css('a')[0]
+    node[:target] = '_blank'
+    node.content = remove_url_head(text)
+    node.to_s.html_safe
   end
 
   def section_header(text, level, options = {})

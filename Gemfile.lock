@@ -48,8 +48,6 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    addressable (2.5.0)
-      public_suffix (~> 2.0, >= 2.0.2)
     arel (7.1.4)
     autoprefixer-rails (6.7.2)
       execjs
@@ -93,8 +91,6 @@ GEM
     cohort_me (0.0.3)
     concurrent-ruby (1.0.4)
     connection_pool (2.2.1)
-    css_parser (1.4.8)
-      addressable
     debug_inspector (0.0.2)
     delayed_job (4.1.2)
       activesupport (>= 3.0, < 5.1)
@@ -125,7 +121,6 @@ GEM
       nokogiri
     html_to_plain_text (1.0.5)
       nokogiri (>= 1.4.0)
-    htmlentities (4.3.4)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (0.8.0)
@@ -194,13 +189,6 @@ GEM
     prawnto_2 (0.2.6)
       prawn (>= 0.6.0)
       rails (>= 3.1)
-    premailer (1.9.2)
-      css_parser (>= 1.4.8)
-      htmlentities (>= 4.0.0)
-    premailer-rails (1.9.5)
-      actionmailer (>= 3, < 6)
-      premailer (~> 1.7, >= 1.7.9)
-    public_suffix (2.0.5)
     rack (2.0.1)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -245,8 +233,6 @@ GEM
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
-    rails_autolink (1.1.6)
-      rails (> 3.1)
     rails_serve_static_assets (0.0.5)
     rails_stdout_logging (0.0.5)
     railties (5.0.1)
@@ -280,9 +266,6 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    seed_dump (3.2.4)
-      activerecord (>= 4)
-      activesupport (>= 4)
     skylight (1.0.1)
       activesupport (>= 3.0.0)
     slowpoke (0.1.3)
@@ -359,7 +342,6 @@ DEPENDENCIES
   passenger
   pg
   prawnto_2
-  premailer-rails
   rails (= 5.0.1)
   rails-assets-clipboard!
   rails-assets-imagesloaded!
@@ -367,13 +349,11 @@ DEPENDENCIES
   rails-assets-masonry!
   rails-controller-testing
   rails_12factor
-  rails_autolink
   rake
   react-rails
   redcarpet
   safely_block
   sass-rails
-  seed_dump
   skylight
   slowpoke
   therubyracer
