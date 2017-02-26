@@ -2,20 +2,14 @@ class AnalyticsController < ApplicationController
   before_action :authenticate
 
   def dashboard
-    @users_count = 0
-    @users_none = []
-    @users_many = []
-    @users_week = []
-    @users_active = []
-
-    User.find_each do |user|
-      count = user.recipes.count
-      @users_none.push(user) if count == 0 || count == 1
-      @users_many.push(user) if count > 1
-      @users_week.push(user) if user.created_at < 1.week.ago
-      @users_active.push(user) if user.last_sign_in_at < 1.week.ago
-      @users_count += 1
-    end
+    @users = User.all.count
+    @users_none = User.left_outer_joins(:recipes).where(recipes: { id: nil }).count
+    @users_many = @users - @users_none
+    @users_week = User.where('created_at > ?', 1.week.ago).count
+    @users_active = User.where('last_sign_in_at > ? OR current_sign_in_at IS NOT NULL', 1.week.ago).count
+    @subscribers = User.where('subscribed_at IS NOT NULL')
+    @subscribers_week = @subscribers.where('subscribed_at < ?', 1.week.ago).count
+    @subscribers = @subscribers.count
   end
 
   def all_users
@@ -30,6 +24,6 @@ class AnalyticsController < ApplicationController
 
   def authenticate
     accessible = user_signed_in? && current_user.id == 1
-    render_locked(OpenStruct.new({ type: 'analytic' })) unless accessible
+    render_locked(OpenStruct.new({ type: 'private page' })) unless accessible
   end
 end
