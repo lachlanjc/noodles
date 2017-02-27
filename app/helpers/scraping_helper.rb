@@ -122,8 +122,7 @@ module ScrapingHelper
   def process_recipe_ingredients(ingredients)
     return if ingredients.blank?
     ingredients = clean_ingredients(ingredients)
-    ingredients = write_ingredients_to_list(ingredients)
-    ingredients
+    write_ingredients_to_list(ingredients)
   end
 
   # Remove inconsistencies in ingredient formatting

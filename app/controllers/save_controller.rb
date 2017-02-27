@@ -8,13 +8,14 @@ class SaveController < ApplicationController
   def save
     recipe_data = master_scrape(params[:url])
     if recipe_data.nil? || recipe_data[:title].blank?
+      EmailMeJob.perform_later(subject: 'Escargot issue', body: params[:url])
       action_unsupported!
     else
       action_save!(recipe_data)
     end
   end
 
-  protected
+  private
 
   def url_is_valid?(u = params[:url])
     url = URI.parse(u) rescue false
@@ -23,22 +24,19 @@ class SaveController < ApplicationController
 
   def validate_url
     unless url_is_valid?
-      flash[:danger] = 'You didn\'t provide a valid recipe link.'
+      flash[:danger] = 'You didn’t provide a valid recipe link.'
       go_back
     end
   end
 
   def redirect_guests
     return if user_signed_in?
-    flash[:info] = 'Hey there! Sign up for Noodles to save that awesome recipe.'
+    flash[:info] = 'Hey! Sign up for Noodles to save that awesome recipe.'
     redirect_to new_user_registration_url
   end
 
-  private
-
   def action_unsupported!
-    msg = "Sorry — we can't clip from that site."
-    flash_or_text(:danger, msg)
+    flash_or_text(:danger, 'Noodles can’t clip that now—but will learn soon!')
     go_back unless request.xhr?
   end
 
@@ -47,6 +45,6 @@ class SaveController < ApplicationController
     dom = find_domain_name(params[:url]).humanize
     msg = "Saved #{@recipe.title} from #{dom}."
     flash_or_text(:success, @recipe.id, msg)
-      redirect_to @recipe unless request.xhr?
+    redirect_to @recipe unless request.xhr?
   end
 end
