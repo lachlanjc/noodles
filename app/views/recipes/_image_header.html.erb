@@ -5,14 +5,14 @@
       url(<%= @recipe.img.url %>);
   ">
   <div class="w-100 mw7 mx-auto bx phm phl-ns">
-    <h1 class="f1 f0-ns white mbn dib" itemprop="name">
+    <h1 class="f1 f0-ns white mbn dib">
       <%= @recipe.title %>
     </h1>
     <% if public_page? && @recipe.user %>
       <p class="white f5 mbm">Shared by <%= @recipe.publisher %></p>
     <% end %>
     <% if @recipe.description.present? %>
-      <div class="content lh-title mbn" itemprop="description">
+      <div class="content lh-title mbn">
         <%= whitened_markdown @recipe.description, [:f3] %>
       </div>
     <% end %>
@@ -37,6 +37,11 @@
           <%= inline_svg 'favorite_outline.svg', class: 'fill-white pointer fav__indicator--basic', size: 32 %>
           <%= inline_svg 'favorite.svg', class: 'fill-white pointer fav__indicator--checked', size: 32 %>
         <% end %>
+      <% end %>
+      <%= link_to cook_recipe_path(@recipe.id),
+        class: 'mrm pointer tooltipped tooltipped--n',
+        'aria-label': 'Open in Cook Mode' do %>
+        <%= inline_svg 'cook.svg', class: 'fill-white', size: 32 %>
       <% end %>
       <%= link_to edit_recipe_path(@recipe),
         class: 'mrm pointer tooltipped tooltipped--n',

@@ -9,8 +9,8 @@
 
   <% if !@image_layout %>
     <main class="document mw7 mtm">
-      <%= link_to 'Cook this', cook_recipe_path(@recipe), class: 'badge fr' %>
-      <h1 class="lh-header mtn" itemprop="name"><%= @recipe.title %></h1>
+      <%= link_to 'Cook this', cook_recipe_path(@recipe), class: 'badge fr dn-p' %>
+      <h1 class="lh-header mtn"><%= @recipe.title %></h1>
       <div class="mts mbm dn-p flex fac flex-rows lh0">
         <%= form_for(@recipe) do |f| %>
           <%= f.label :favorite, class: 'tooltipped tooltipped--n man', 'data-behavior': 'r_fav', 'aria-label': 'Favorite', tabindex: 0 do %>
@@ -29,21 +29,19 @@
           name="share"
           class="mlm pointer tooltipped tooltipped--n"
           aria-label="Share a public link"
-          data-behavior="modal_trigger" >
+          data-behavior="modal_trigger">
           <%= inline_svg 'share.svg', class: 'fill-orange', size: 28 %>
         </a>
         <%= render 'actions', color: 'orange', rootClass: 'mlm', menuClass: '' %>
       </div>
       <%= content_tag :div,
         markdown(@recipe.description),
-        class: 'text content mtm',
-        itemprop: 'description' if @recipe.description
+        class: 'text content mtm' if @recipe.description
       %>
       <%= render 'recipe_body' %>
     </main>
   <% else %>
     <main class="mw7 mx-auto bx phm phl-ns pvm">
-      <%= link_to 'Cook this', cook_recipe_path(@recipe), class: 'badge' if @image_layout %>
       <%= render 'recipe_body' %>
     </main>
   <% end %>
