@@ -42,7 +42,8 @@ Rails.application.routes.draw do
   get '/help', to: 'pages#help', as: :help
   post '/help', to: 'pages#help_form', as: :help_form
 
-  get '/announcements/unsubscribe/:code/:user_id', to: 'announcements#unsubscribe', as: :unsubscribe
+  resources :subscriptions, only: [:index, :create, :destroy]
+  get '/email_unsubscribe/:code/:user_id', to: 'announcements#unsubscribe', as: :email_unsubscribe
 
   devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }
   as :user do
@@ -55,8 +56,6 @@ Rails.application.routes.draw do
     post   'sign_up', to: 'devise/registrations#create',  as: :add_user
     put    'sign_up', to: 'devise/registrations#update',  as: :update_user_registration
     delete 'goodbye', to: 'devise/registrations#destroy', as: :destroy_user
-
-    get 'subscribe', to: 'registrations#subscribe',       as: :subscribe
 
     get 'my/settings', to: 'devise/registrations#edit',   as: :settings
 

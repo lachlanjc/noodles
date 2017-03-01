@@ -32,13 +32,13 @@
 
     <%= section_header 'Subscription', 2, class: 'mtl mbs grey-2 f3' %>
     <% if current_user.subscriber? %>
-      <p>Thank you for your subscription!</p>
-      <%= react_component 'SubscribeBtn', children: 'Manage your subscription', primary: false, className: 'f5' %>
+      <p>Thank you for subscribing! It helps a lot.</p>
+      <%= link_to 'Manage your subscription', subscriptions_path, class: 'btn bg-green' %>
     <% else %>
       <p>
         Please consider buying a subscription—$12/year to help keep Noodles running.
       </p>
-      <%= link_to 'Learn more', subscribe_path, class: 'btn bg-green' %>
+      <%= link_to 'Learn more', subscriptions_path, class: 'btn bg-green' %>
     <% end %>
   </div>
   <div class="meta-split__col meta-split__col--right">

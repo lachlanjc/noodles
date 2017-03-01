@@ -42,4 +42,8 @@ module TextHelper
       content_tag(:span, text, class: 'section-header__name')
     end
   end
+
+  def unix_date(time)
+    DateTime.strptime(time.to_s, '%s').to_date
+  end
 end

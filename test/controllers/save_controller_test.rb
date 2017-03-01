@@ -1,8 +1,6 @@
 require 'test_helper'
 
 class SaveControllerTest < ActionController::TestCase
-  include Devise::Test::ControllerHelpers
-
   test 'should recognize invalid url' do
     get :save, params: { url: 'hello' }
     assert_not_empty flash[:danger]
