@@ -4,9 +4,9 @@
 
 <%= render 'shared/nav' %>
 
-<main class="document meta-split bw0 mw7">
+<main class="document meta-split mw8">
   <div class="meta-split__col meta-split__col--left">
-    <%= section_header 'Account settings', 2, class: 'mtn mbm grey-2 f3' %>
+    <%= section_header 'My account', 2, class: 'mtn mbm grey-2 f3' %>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
       <%= devise_error_messages! %>
@@ -17,14 +17,14 @@
       <%= f.label t('.email_a'), class: 'label' %>
       <%= f.email_field :email, class: 'text-input', autocomplete: 'email' %>
 
-      <div>
-        <%= f.check_box :want_newsletter %>
-        <%= f.label :want_newsletter, 'Subscribe to the (occasional) newsletter' %>
+      <div class="flex fac mts">
+        <%= f.check_box :want_newsletter, class: 'mrs' %>
+        <%= f.label :want_newsletter, 'Receive the (occasional) newsletter', class: 'man' %>
       </div>
 
       <%= f.label :password, 'New password', class: 'label dib' %>
       <small class="f5 dib grey-3">(only if you'd like to change it)</small>
-      <%= f.password_field :password, autocomplete: 'off', class: 'text-input' %>
+      <%= f.password_field :password, pattern: '.{8,}', placeholder: '8 characters recommended', class: 'text-input' %>
 
       <%= f.submit t('general.update'), class: 'btn bg-blue mtm' %>
 
@@ -36,17 +36,16 @@
       <%= react_component 'SubscribeBtn', children: 'Manage your subscription', primary: false, className: 'f5' %>
     <% else %>
       <p>
-        Please consider buying a subscription. It's just $12/year and helps keep Noodles running.
+        Please consider buying a subscription—$12/year to help keep Noodles running.
       </p>
       <%= link_to 'Learn more', subscribe_path, class: 'btn bg-green' %>
     <% end %>
   </div>
   <div class="meta-split__col meta-split__col--right">
     <%= section_header 'Help', 2, class: 'mtn mbs grey-2 f3' %>
-    <%= react_component 'HelpContent' %>
+    <%= render 'shared/help', hide_footer: true %>
 
     <%= section_header 'Delete your account', 2, class: 'mtl mbs grey-2 f3' %>
-
     <p>
       If you want to delete your account, click the button below. All your recipes, as well as shared recipes, will be erased forever.
     </p>
