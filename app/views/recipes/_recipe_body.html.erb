@@ -29,7 +29,7 @@
   <span class="content"><%= @recipe.serves %></span>
 <% end if @recipe.serves.present? %>
 
-<div data-user="<%= @recipe.user_id %>" data-behavior="recipe_colls_container"></div>
+<div data-user="<%= @recipe.user_id %>" data-behavior="recipe_colls_container" class="dn-p"></div>
 
 <%= section_header 'Notes', 2, class: 'mtm' %>
 <%= content_tag :div, notes_rendered, class: 'content mbm' %>
