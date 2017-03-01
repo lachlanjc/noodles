@@ -5,7 +5,7 @@
 <%= render 'shared/nav' %>
 
 <% if nobody_signed_in? %>
-  <article class="document pam-ns bw0 mw6 mvl">
+  <article class="document pam-ns mw6 mvl">
     <%= section_header 'About Noodles', 1, class: 'f2 mtn mbs grey-2' %>
     <p class="content lh-copy mvn">
       Noodles is a free app for cooking — it's your own organized library of all your recipes.
@@ -14,7 +14,7 @@
   </article>
 <% end %>
 
-<article class="document pam-ns bw0 mw6">
+<article class="document pam-ns mw6">
   <%= section_header 'Have a question?', 1, class: 'f2 mtn grey-2' %>
   <%= render 'shared/help' %>
 </article>

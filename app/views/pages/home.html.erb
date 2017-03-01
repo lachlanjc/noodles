@@ -60,7 +60,7 @@
       <%= render 'shared/flash' if flash.any? %>
       <div class="banner bg-blur mx-auto">
         <h1 class="f1 f0-ns mvn">Now you’re cooking!</h1>
-        <h2 class="f3 f2-ns mtn mbl grey-2 sans normal">All your recipes in one place.</h2>
+        <h2 class="f3 f2-ns mts mbm mbl-ns grey-2 sans normal">All your recipes in one place.</h2>
         <a
           href="#signup"
           name="signup"
@@ -95,7 +95,7 @@
     class="btn btn--primary bg-blue">
     Make a free account
   </a>
-  <section class="modal modal--signup tc" role="dialog" id="signup">
+  <section class="modal modal--signup modal--outlined tc" role="dialog" id="signup">
     <%= modal_header 'Sign up for Noodles' %>
     <%= render 'devise/registrations/new',
       user: User.new,
@@ -113,7 +113,7 @@
       Help & feedback
     </a>
   </div>
-  <section class="modal tl" id="help" role="dialog">
+  <section class="modal w-100 modal--mw tl" id="help" role="dialog">
     <%= modal_header 'Help & feedback' %>
     <%= render 'shared/help' %>
   </section>
