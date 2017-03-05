@@ -16,11 +16,11 @@ const RecipesHomeSidebar = ({
       y={16}
       className='dib db-ns'
     />
-    <Button
+    <ModalLink
       primary
+      is='btn'
+      name='import'
       color='purple'
-      href='#import'
-      data-behavior='modal_trigger'
       children='Import'
     />
     <Spacer
