@@ -5,7 +5,7 @@ before_install:
   - gem install bundler
   - bundle install --without development
 script:
-  - rake db:create db:migrate
-  - rake test
+  - rails db:create db:migrate
+  - rails test
 notifications:
   slack: getnoodles:EQiFyZq4M1Tv94DaXRN8f2Gy
