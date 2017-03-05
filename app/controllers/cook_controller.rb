@@ -13,8 +13,8 @@ class CookController < ApplicationController
   def record_cook
     please_sign_in
     hey_thats_my @recipe
+    @recipe.increment :cooks_count
     @recipe.update_attribute(:last_cooked_at, Time.now)
-    @recipe.update_attribute(:cooks_count, @recipe.cooks_count + 1)
     head :ok
   end
 

@@ -1,5 +1,6 @@
 one:
   name: "Desserts"
   description: "The sweeter the better."
+  shared_id: desserts
   user_id: 1
   id: 1
