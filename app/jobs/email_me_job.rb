@@ -1,7 +1,7 @@
 class EmailMeJob < ApplicationJob
   include TextHelper
 
-  def perform(data)
+  def perform(props)
     return if Rails.env.test?
     Aws::SES::Client.new.send_email({
       destination: {
@@ -13,19 +13,19 @@ class EmailMeJob < ApplicationJob
         body: {
           html: {
             charset: 'UTF-8',
-            data: markdown(data[:body]),
+            data: markdown(props[:body]),
           },
           text: {
             charset: 'UTF-8',
-            data: data[:body],
+            data: props[:body],
           },
         },
         subject: {
           charset: 'UTF-8',
-          data: data[:subject],
+          data: props[:subject],
         },
       },
-      source: 'Noodles <app@getnoodl.es>'
+      source: "Noodles <#{Rails.env}@getnoodl.es>"
     })
   end
 end
