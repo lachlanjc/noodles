@@ -1,8 +1,6 @@
 require 'test_helper'
 
 class ExploreControllerTest < ActionController::TestCase
-  include Devise::Test::ControllerHelpers
-
   test 'should get index' do
     sign_in users(:one)
     get :index

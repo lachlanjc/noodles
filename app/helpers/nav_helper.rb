@@ -26,8 +26,8 @@ module NavHelper
     when :grey then nil
     when :success, :green then 'success'
     when :danger, :alert, :red then 'danger'
-    when :notice, :blue then 'info'
-    else 'message'
+    when :notice, :info, :blue then 'notice'
+    else 'notice'
     end
   end
 

@@ -31,7 +31,7 @@ class SaveController < ApplicationController
 
   def redirect_guests
     return if user_signed_in?
-    flash[:info] = 'Hey! Sign up for Noodles to save that awesome recipe.'
+    flash[:notice] = 'Hey! Sign up for Noodles to save that awesome recipe.'
     redirect_to new_user_registration_url
   end
 

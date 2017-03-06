@@ -12,7 +12,9 @@ class SubscriptionsControllerTest < ActionController::TestCase
     sign_in users(:one)
     current_user = @controller.current_user
     token = StripeMock.create_test_helper.generate_card_token
-    post :create, params: { stripeToken: token }
+    assert_difference 'User.subscribers.count', +1 do
+      post :create, params: { stripeToken: token }
+    end
     assert_redirected_to subscriptions_url
     assert current_user.subscriber?
     assert_not_nil current_user.stripe_customer

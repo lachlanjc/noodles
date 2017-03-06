@@ -34,7 +34,7 @@ module ApplicationHelper
       '@context': 'http://schema.org',
       '@type': 'Organization',
       name: 'Noodles',
-      url: 'https://4db27366.ngrok.io' || 'https://getnoodl.es',
+      url: 'https://getnoodl.es',
       logo: image_url('icon/circle@512.png'),
       sameAs: [
         'https://news.getnoodl.es',

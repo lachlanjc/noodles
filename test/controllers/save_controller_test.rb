@@ -1,20 +1,24 @@
 require 'test_helper'
 
 class SaveControllerTest < ActionController::TestCase
-  test 'should recognize invalid url' do
-    get :save, params: { url: 'hello' }
-    assert_not_empty flash[:danger]
-  end
-
   test 'should prompt signup' do
     get :save, params: { url: 'http://cooking.nytimes.com/recipes/1016717-the-best-clam-chowder' }
-    assert_response 302
+    assert_redirected_to new_user_registration_url
+    assert_not_nil flash[:notice]
   end
 
-  test 'should successfully save' do
+  test 'should save new recipe' do
     sign_in users(:one)
-    get :save, params: { url: 'http://cooking.nytimes.com/recipes/1016717-the-best-clam-chowder' }
-    assert_response 302
-    assert_not_nil flash[:success]
+    assert_difference 'Recipe.count', +1 do
+      get :save, params: { url: 'http://cooking.nytimes.com/recipes/1016717-the-best-clam-chowder' }
+    end
+    assert_redirected_to recipe_path(Recipe.last)
+    assert_not_empty flash[:success]
+  end
+
+  test 'should recognize invalid url' do
+    get :save, params: { url: 'hello' }
+    assert_response :redirect
+    assert_not_empty flash[:danger]
   end
 end

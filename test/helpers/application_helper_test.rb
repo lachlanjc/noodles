@@ -11,4 +11,16 @@ class ApplicationHelperTest < ActionView::TestCase
   test 'modal header' do
     assert_not_nil modal_header('hello')
   end
+
+  test 'backlink' do
+    assert_not_nil backlink('running tests', root_url)
+  end
+
+  test 'making a schema' do
+    assert_not_nil make_schema
+  end
+
+  test 'org schema' do
+    assert_not_nil org_schema
+  end
 end

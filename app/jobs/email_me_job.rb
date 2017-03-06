@@ -2,6 +2,7 @@ class EmailMeJob < ApplicationJob
   include TextHelper
 
   def perform(data)
+    return if Rails.env.test?
     Aws::SES::Client.new.send_email({
       destination: {
         to_addresses: [
