@@ -24,19 +24,19 @@ class SaveController < ApplicationController
 
   def validate_url
     unless url_is_valid?
-      flash[:danger] = 'You didn’t provide a valid recipe link.'
+      flash[:danger] = 'That isn’t a valid URL.'
       go_back
     end
   end
 
   def redirect_guests
     return if user_signed_in?
-    flash[:notice] = 'Hey! Sign up for Noodles to save that awesome recipe.'
+    flash[:notice] = 'Sign up or sign in to save that recipe.'
     redirect_to new_user_registration_url
   end
 
   def action_unsupported!
-    flash_or_text(:danger, 'Noodles can’t clip that now—but will learn soon!')
+    flash_or_text :danger, 'Noodles can’t clip that now—but the developer has been notified.'
     go_back unless request.xhr?
   end
 
