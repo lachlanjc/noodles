@@ -76,7 +76,7 @@
   </article>
 </main>
 
-<h2 class="phm mx-auto mw7 normal flex fac fjc mtn" data-behavior="explore_suggestions rehide">
+<h2 class="phm mx-auto mw7 normal dn flex fac fjc mtn" data-behavior="explore_suggestions rehide">
   <span class="f0 mrm">😋</span>
   <span>
     Carrot cake? Gelato?<br>
@@ -100,10 +100,10 @@
 <% end %>
 
 <section class="modal modal--scrollable modal--mw phl-ns" role="dialog" id="preview" data-behavior="explore_preview_modal">
-  <action class="pointer absolute r0 mrm mrl-ns mts mtm-ns" data-behavior="modal_close">
-    <%= inline_svg 'close.svg', size: 28, class: 'fill-grey-3' %>
-  </action>
   <header class="mtm-ns mbm">
+    <action class="fr" data-behavior="modal_close">
+      <%= inline_svg 'close.svg', size: 28, class: 'fill-grey-3' %>
+    </action>
     <h2 class="orange mvn dtc" data-behavior="explore_preview_title"></h2>
     <a data-behavior="explore_open_original" class="dtc v-top phs" target="_blank" rel="nofollow">
       <%= inline_svg 'open-new-tab.svg', class: 'fill-orange', size: 16 %>

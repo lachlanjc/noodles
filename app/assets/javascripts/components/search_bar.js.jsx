@@ -7,10 +7,7 @@ const SearchBar = ({ count, className, children, ...props }) => {
   label = `${label} ${count} ${count !== 1 ? 'recipes' : 'recipe'}…`
 
   return (
-    <section
-      role='search'
-      className={_.join(['flex fac mvs phm dn-p', className], ' ')}
-      >
+    <section role='search' className={N.cxs(['flex fac mvs phm dn-p', className])}>
       <Icon icon='search' className='fill-grey-3 fsn' />
       <input
         type='text'
