@@ -130,8 +130,8 @@ $(document).on 'turbolinks:load', ->
       heap.track('Clips Recipe', { 'URL': u }) if typeof heap isnt 'undefined'
 
       setTimeout (->
-        $('[data-behavior~=modal_overlay]').hide 256
-        $('[data-behavior~=explore_preview_modal]').hide 256, ->
+        $('[data-behavior~=modal_overlay]').fadeOut 256
+        $('[data-behavior~=explore_preview_modal]').fadeOut 256, ->
           t.text 'Clip'
           t.attr 'class', 'btn btn--primary bg-blue'
           t.hide 0

@@ -30,12 +30,12 @@
 
 .modal__scroller {
   flex: 1 1 auto;
-  max-height: 60vh;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 }
 
 .modal__footer {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;

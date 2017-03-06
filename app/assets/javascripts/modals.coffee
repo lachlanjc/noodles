@@ -29,15 +29,15 @@
         modal_width = $(modal_id).outerWidth()
         $('[data-behavior~=modal_overlay]').fadeTo 200, o.overlay
 
-        scrollable = $(modal_id).attr('class').match('modal--scrollable')
+        scrollable = $(modal_id).attr('class').match('modal--scrollable') isnt null
 
         $(modal_id).css
-          'display': scrollable ? 'flex' : 'block'
-          'position': 'fixed'
-          'opacity': 0
-          'z-index': 100
-          'left': 50 + '%'
-          'margin-left': -(modal_width / 2) + 'px'
+          display: `scrollable ? 'flex' : 'block'`
+          position: 'fixed'
+          opacity: 0
+          zIndex: 100
+          left: 50 + '%'
+          marginLeft: -(modal_width / 2) + 'px'
         $(modal_id).fadeTo 200, 1
         e.preventDefault()
         $(modal_id).children('[data-behavior~=autoselect]').focus().select()
