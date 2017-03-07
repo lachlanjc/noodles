@@ -91,7 +91,6 @@ GEM
     cohort_me (0.0.3)
     concurrent-ruby (1.0.5)
     connection_pool (2.2.1)
-    dante (0.2.0)
     debug_inspector (0.0.2)
     delayed_job (4.1.2)
       activesupport (>= 3.0, < 5.1)
@@ -163,7 +162,6 @@ GEM
     mimemagic (0.3.2)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
-    multi_json (1.12.1)
     net-http-digest_auth (1.4.1)
     net-http-persistent (2.9.4)
     netrc (0.11.0)
@@ -283,10 +281,6 @@ GEM
       sprockets (>= 3.0.0)
     stripe (1.58.0)
       rest-client (>= 1.4, < 4.0)
-    stripe-ruby-mock (2.4.0)
-      dante (>= 0.2.0)
-      multi_json (~> 1.0)
-      stripe (~> 1.31)
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
       ref
@@ -365,7 +359,6 @@ DEPENDENCIES
   skylight
   slowpoke
   stripe
-  stripe-ruby-mock
   therubyracer
   tracer_bullets
   turbolinks

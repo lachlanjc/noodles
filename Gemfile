@@ -54,10 +54,6 @@ group :development do
   gem 'web-console'
 end
 
-group :test do
-  gem 'stripe-ruby-mock', require: 'stripe_mock'
-end
-
 group :production do
   gem 'rails_12factor'
 end
