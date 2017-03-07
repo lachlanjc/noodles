@@ -39,14 +39,14 @@
 
 <% if flag_page? %>
   <div
-    class="w-100 mlm-ns tc tl-ns"
+    class="w-100 mlm-ns"
     style="position: fixed; left: 0px; right: 0px; bottom: 0px; z-index: 1;">
     <% if user_signed_in? %>
       <% unless current_user.subscriber? %>
         <a
           href="<%= subscriptions_path %>"
           data-behavior="modal_trigger"
-          class="dib bg-purple f4 b lh mlm-ns mrm pvs phm"
+          class="dib bg-purple f4 b lh mlm pvs phm"
           style="border-radius: 6px 6px 0 0; color: #fff;">
           Subscribe
         </a>
@@ -55,7 +55,7 @@
     <a
       href="#help"
       data-behavior="modal_trigger"
-      class="dib bg-purple f4 b lh pvs phm"
+      class="dib bg-purple f4 b lh mlm pvs phm"
       style="border-radius: 6px 6px 0 0; color: #fff;">
       Help & feedback
     </a>
