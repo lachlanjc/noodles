@@ -54,6 +54,10 @@ group :development do
   gem 'web-console'
 end
 
+group :test do
+  gem 'rest_client', '>= 1.8.0'
+end
+
 group :production do
   gem 'rails_12factor'
 end
