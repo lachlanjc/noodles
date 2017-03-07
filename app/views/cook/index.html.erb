@@ -59,14 +59,15 @@
       <% end %>
     </ol>
 
-    <div class="card serif pam db f2 mbm grey-2">
-      <span>You're finished! Enjoy.</span>
+    <div class="card pam db f2 mbm grey-2">
+      <span class="serif">You're finished! Enjoy.</span>
 
       <%= image_tag @recipe.img, alt: @recipe.title, class: 'mtm mx-auto rounded' if @recipe.imaged? %>
 
-      <%= form_for(@recipe, url: recipe_path(@recipe, cook: true),
+      <%= form_for(@recipe,
+        url: recipe_path(@recipe, cook: true),
         html: {
-          class: 'dn mts f4',
+          class: 'dn mts f4 sans',
           'data-behavior': 'show_if_my_object'
         }) do |f| %>
         <%= f.file_field :img, class: 'dn', data: { behavior: 'photo_field cook_photo_field' } %>
