@@ -357,7 +357,7 @@ DEPENDENCIES
   rake
   react-rails
   redcarpet
-  rest_client (>= 1.8.0)
+  rest_client
   safely_block
   sass-rails
   skylight

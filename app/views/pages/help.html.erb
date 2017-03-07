@@ -1,7 +1,7 @@
 <% activate_nav!(:help) %>
 <% title 'Help' %>
+<% bg_carousel 'help.jpg' %>
 
-<% content_for(:bg_img) { image_path "auth/#{rand(1..4).to_s}.jpg" } %>
 <%= render 'shared/nav' %>
 
 <% if nobody_signed_in? %>

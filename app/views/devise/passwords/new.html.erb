@@ -1,22 +1,23 @@
-<% activate_nav!(:forgot_password) %>
+<% activate_nav! :forgot_password %>
+<% title 'Forgot password' %>
+<% bg_carousel %>
+
+<% cache do -%>
 <%= render 'shared/nav' %>
 
-<article class="document">
-
-  <h1 class="orange">Forgot your password?</h1>
+<main class="document mw6">
+  <h1>Forgot your password?</h1>
   <p>Don't worry, it happens to everyone. Just enter your email below, then check for a new message in just a minute.</p>
 
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-
     <%= devise_error_messages! %>
 
     <%= f.hidden_field :reset_password_token %>
 
-    <%= f.label "Email address" %>
-    <%= f.email_field :email, class: "text-input", autofocus: true, required: true %>
+    <%= f.label 'Email address', class: 'label' %>
+    <%= f.email_field :email, class: 'text-input', autofocus: true, required: true %>
 
-    <%= f.submit "Send password reset link", class: "btn bg-orange mtm" %>
-
+    <%= f.submit 'Send password reset link', class: 'btn btn--primary bg-orange mtm' %>
   <% end %>
-
-</article>
+</main>
+<% end -%>

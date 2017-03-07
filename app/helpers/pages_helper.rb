@@ -8,4 +8,24 @@ module PagesHelper
       ].join.html_safe
     end
   end
+
+  def bg_carousel(url = basic_carousel_url)
+    content_for(:bg_img) { image_path url }
+  end
+
+  def style_carousel(url)
+    "background-image: url(#{image_path url});"
+  end
+
+  def home_carousel_url
+    "home/#{rand(1..5)}.jpg"
+  end
+
+  def explore_carousel_url
+    "explore/#{rand(1..5)}.jpg"
+  end
+
+  def basic_carousel_url
+    "carousel/#{rand(1..6)}.jpg"
+  end
 end

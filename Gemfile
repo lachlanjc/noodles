@@ -55,7 +55,7 @@ group :development do
 end
 
 group :test do
-  gem 'rest_client', '>= 1.8.0'
+  gem 'rest_client'
 end
 
 group :production do
