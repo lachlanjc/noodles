@@ -1,6 +1,6 @@
 Rails.application.configure do
 
-  config.action_controller.asset_host = 'assets.getnoodl.es'
+  # config.action_controller.asset_host = 'assets.getnoodl.es'
 
   config.cache_classes = true
 
