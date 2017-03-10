@@ -32,7 +32,6 @@ gem 'redcarpet'
 gem 'safely_block'
 gem 'sass-rails'
 gem 'skylight'
-gem 'slowpoke'
 gem 'stripe'
 gem 'therubyracer'
 gem 'turbolinks'
@@ -51,10 +50,6 @@ group :development do
   gem 'binding_of_caller'
   gem 'tracer_bullets'
   gem 'web-console'
-end
-
-group :test do
-  gem 'rest_client'
 end
 
 group :production do
