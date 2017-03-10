@@ -6,9 +6,7 @@
 #= require autosize
 #= require clipboard
 #= require global
-#= require react
-#= require react_ujs
-#= require_tree ./components
+#= require components
 
 $(document).on 'turbolinks:load', ->
   N.user = $('body').data('user')

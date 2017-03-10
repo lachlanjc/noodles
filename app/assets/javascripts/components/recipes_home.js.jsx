@@ -9,7 +9,9 @@ const RecipesHome = ({
     sidebar={
       <RecipesHomeSidebar collections={collections} />
     }
-    content={<RecipesHomeList recipes={recipes} />}
+    content={
+      <RecipesHomeList recipes={recipes} />
+    }
   />
 
 RecipesHome.propTypes = {

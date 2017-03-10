@@ -1,7 +1,7 @@
 
 const RecipesHomeList = ({
   recipes
-}) => (
+}) =>
   <Document
     mw={7}
     className='pan oh'
@@ -24,7 +24,6 @@ const RecipesHomeList = ({
     </RecipeList>
     <ProTip />
   </Document>
-)
 
 RecipesHomeList.propTypes = {
   recipes: React.PropTypes.array.isRequired
