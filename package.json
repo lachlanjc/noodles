@@ -3,13 +3,13 @@
   "version": "2.0.0",
   "description": "All your recipes in one place.",
   "devDependencies": {
-    "clean-css": "^4.0.6",
+    "clean-css": "^4.0.8",
     "fs": "^0.0.2",
     "get-css": "^1.2.3",
     "lodash": "^4.17.4",
     "pageres": "^4.3.0",
     "parker": "^0.0.10",
-    "standard": "^8.6.0"
+    "standard": "^9.0.1"
   },
   "scripts": {
     "css": "node meta/css-stats.js",
