@@ -8,7 +8,7 @@ const CollectionListItem = ({ coll }) => {
     justifyContent: 'center',
     alignItems: 'center',
     backgroundImage: `url('${photo}')`,
-    width: '100%',
+    width: '100%'
   }
 
   let img

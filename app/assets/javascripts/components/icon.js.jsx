@@ -29,7 +29,7 @@ style={_.merge({
 }, style)}
 */
 
-const Icon = ({ icon, size, style, ...props }) => (
+const Icon = ({ icon, size, style, ...props }) =>
   <svg
     {...props}
     width={size || 24}
@@ -40,7 +40,6 @@ const Icon = ({ icon, size, style, ...props }) => (
   >
     <path d={paths[icon]} />
   </svg>
-)
 
 Icon.propTypes = {
   icon: React.PropTypes.string.isRequired,

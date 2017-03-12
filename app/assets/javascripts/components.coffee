@@ -28,3 +28,6 @@
 #= require components/spacer
 #= require components/split_layout
 #= require components/super_header
+
+# HACK so Uglifier doesn't remove names of components called with view helper
+console.log RecipesHome, RecipesHomeBlankSlate, CollectionsHome, CollectionPage, FlashContainer

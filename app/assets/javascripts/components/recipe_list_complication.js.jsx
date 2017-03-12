@@ -3,7 +3,7 @@ const RecipeListComplication = ({
   tooltip,
   icon,
   ...props
-}) => (
+}) =>
   <a
     {...props}
     className='mlm lh0 tooltipped'
@@ -12,7 +12,6 @@ const RecipeListComplication = ({
       <Icon icon={icon} className='fill-grey-3' />
     }
   />
-)
 
 RecipeListComplication.propTypes = {
   tooltip: React.PropTypes.string.isRequired,

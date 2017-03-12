@@ -28,12 +28,11 @@ const RecipeListItem = ({ recipe, pub }) => {
   )
 }
 
-const RecipeListItemIcon = ({ feat }) => (
+const RecipeListItemIcon = ({ feat }) =>
   <Icon
     icon={feat === 'favorite' ? 'fav' : feat}
     className={`mls ${feat === 'favorite' ? 'fill-orange' : 'fill-grey-4'}`}
   />
-)
 
 RecipeListItem.propTypes = {
   recipe: React.PropTypes.object.isRequired,

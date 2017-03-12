@@ -6,13 +6,11 @@ const BlankSlate = ({
 }) =>
   <article
     {...props}
-    className={
-      _.join([
-        `measure border rounded pal tc mx-auto`,
-        margin || 'mvl',
-        className
-      ], ' ')
-    }
+    className={N.cxs([
+      'measure border rounded pal tc mx-auto',
+      margin || 'mvl',
+      className
+    ])}
     style={{
       borderWidth: 2,
       borderStyle: 'dashed'

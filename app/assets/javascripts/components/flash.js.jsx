@@ -13,13 +13,13 @@ const FlashContainer = ({
   }
   return (
     <section style={sx}>
-      {_.map(flashes, (flash, i) => (
+      {_.map(flashes, (flash, i) =>
         <FlashMessage
           key={`flash-${i}`}
           type={flash[0]}
           message={flash[1]}
         />
-      ))}
+      )}
     </section>
   )
 }

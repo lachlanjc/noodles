@@ -8,13 +8,13 @@ const CollectionsMini = ({
       <a href='/collections' className='blue'>Collections</a>
     </h2>
     <ul className='list-reset'>
-      {_.map(collections, coll => (
+      {_.map(collections, coll =>
         <CollectionsMiniItem
           name={coll.name}
           path={coll.path}
           key={coll.path}
         />
-      ))}
+      )}
     </ul>
     {_.isEmpty(collections) &&
       <p className='grey-3'>

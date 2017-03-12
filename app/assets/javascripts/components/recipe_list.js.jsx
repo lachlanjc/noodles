@@ -43,17 +43,17 @@ class RecipeList extends React.Component {
         <SearchBar
           onChange={e => this._updateSearch(e)}
           count={_.size(recipesCore)}
-          autoFocus={true}
+          autoFocus
           children={children}
         />
         <ul className='list-reset mx-auto mbn'>
-          {_.map(recipes, recipe => (
+          {_.map(recipes, recipe =>
             <RecipeListItem
               recipe={recipe}
               pub={pub || false}
               key={`r${recipe.id}`}
             />
-          ))}
+          )}
           {searching && _.isEmpty(recipes) &&
             <BlankSlate>
               <h3 className='man'>No search results 🔍</h3>

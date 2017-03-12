@@ -9,26 +9,24 @@ const tips = [
   'Download a PDF of a recipe from the menu on the recipe page.'
 ]
 
-const ProTip = () => {
-  const tip = tips[_.random(0, tips.length - 1)]
-  return (
-    <footer
-      className='border-top dn-p'
-      style={{
-        paddingTop: 8,
-        paddingBottom: 12,
-        paddingLeft: 12,
-        paddingRight: 12,
-        textAlign: 'center'
-      }}
-    >
-      <Icon
-        icon='bolt'
-        className='dib fill-grey-3 mrs relative'
-        style={{ top: 6 }}
-      />
-      <strong>ProTip—</strong>
-      <span>{tip}</span>
-    </footer>
-  )
-}
+const getProTip = () => tips[_.random(0, tips.length - 1)]
+
+const ProTip = () =>
+  <footer
+    className='border-top dn-p'
+    style={{
+      paddingTop: 8,
+      paddingBottom: 12,
+      paddingLeft: 12,
+      paddingRight: 12,
+      textAlign: 'center'
+    }}
+  >
+    <Icon
+      icon='bolt'
+      className='dib fill-grey-3 mrs relative'
+      style={{ top: 6 }}
+    />
+    <strong>ProTip—</strong>
+    <span>{getProTip()}</span>
+  </footer>

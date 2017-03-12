@@ -42,7 +42,7 @@ class CollectionHeader extends React.Component {
   }
 }
 
-const CollectionHeaderActions = ({ className, edit }) => (
+const CollectionHeaderActions = ({ className, edit }) =>
   <section className={className}>
     {edit &&
       <a
@@ -61,4 +61,3 @@ const CollectionHeaderActions = ({ className, edit }) => (
       children='Share'
     />
   </section>
-)

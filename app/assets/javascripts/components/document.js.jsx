@@ -4,17 +4,16 @@ const Document = ({
   measure,
   mw,
   ...props
-}) => (
+}) =>
   <main
     {...props}
-    className={_.join([
+    className={N.cxs([
       'document',
       measure && 'measure',
       mw && `mw${mw || 7}`,
       className
-    ], ' ')}
+    ])}
   />
-)
 
 Document.propTypes = {
   className: React.PropTypes.string,
