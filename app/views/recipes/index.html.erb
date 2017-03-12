@@ -3,13 +3,6 @@
 
 <%= render 'shared/nav' %>
 
-<div class="mw6 mx-auto bg-red rounded pam white">
-  Hey! I'm really sorry if this isn't working right now.
-  All <a href="/recipes.json" class="white" style="text-decoration: underline;">your data</a> is safe.
-  <br>
-  If you need anything, please email me: lachlan@getnoodl.es
-</div>
-
 <% if @recipes.any? %>
   <%= react_component 'RecipesHome',
     recipes: @recipes_json,
