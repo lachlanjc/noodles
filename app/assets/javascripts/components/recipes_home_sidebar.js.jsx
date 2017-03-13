@@ -12,7 +12,7 @@ const RecipesHomeSidebar = ({
       children='New recipe'
     />
     <Spacer
-      x={16}
+      x={12}
       y={16}
       className='dib db-ns'
     />
@@ -24,7 +24,7 @@ const RecipesHomeSidebar = ({
       children='Import'
     />
     <Spacer
-      x={16}
+      x={12}
       y={16}
       className='dib db-ns'
     />

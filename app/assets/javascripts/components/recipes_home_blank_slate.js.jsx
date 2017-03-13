@@ -36,7 +36,7 @@ const css = `
 
 const RecipesHomeBlankSlate = () =>
   <article className='phm mw8 mx-auto tc'>
-    <h2 className='f1 f0-ns mtn mbm'>
+    <h2 className='f1 mtn mbs grey-2'>
       Let’s get cooking!
     </h2>
     <ol className='flex-grid fjc list-reset relative tl'>

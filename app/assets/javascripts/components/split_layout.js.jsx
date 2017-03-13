@@ -9,19 +9,19 @@ const SplitLayout = ({
   ...props
 }) => {
   let cx = {}
-  cx.root = [
+  cx.root = N.cxs([
     'flex-md',
     className || 'pam phl-ns'
-  ].join(' ')
+  ])
   cx.sidebar = 'w-50-m w-third-l measure--narrow-ns mbl tc tl-ns'
-  cx.heading = [
+  cx.heading = N.cxs([
     'sans orange',
     headingClassName
-  ].join(' ')
-  cx.content = [
+  ])
+  cx.content = N.cxs([
     'mx-auto',
     contentClassName
-  ].join(' ')
+  ])
   return (
     <main
       {...props}

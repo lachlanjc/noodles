@@ -12,7 +12,7 @@ const SuperHeader = ({
     ...style
   }
   const cx = [
-    'superheader f1 f0-ns mbm mbl-ns border-bottom',
+    'superheader f1 f0-ns mbn mbl-ns border-bottom',
     className
   ]
   return (
