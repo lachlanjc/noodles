@@ -32,8 +32,7 @@ module RecipesHelper
     text = markdown(text)
     node = Nokogiri::HTML::DocumentFragment.parse(text).first_element_child
 
-    name = options[:name] || (text.match(/# /) ? 'h1' : 'li')
-    node.name = name
+    node.name = options[:name] || (text.match(/# /) ? 'h1' : 'li')
 
     options.delete 'name'
     # node['itemprop'] = 'recipeIngredient'
