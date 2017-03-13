@@ -29,7 +29,9 @@ module TextHelper
   end
 
   def clean_autolink(text)
-    node = Nokogiri::HTML::DocumentFragment.parse(markdown(text)).css('a')[0]
+    node = Nokogiri::HTML::DocumentFragment.parse(markdown(text)).css('a')
+    return markdown(text).to_s.html_safe if node.blank?
+    node = node.first
     node[:target] = '_blank'
     node.content = remove_url_head(text)
     node.to_s.html_safe
