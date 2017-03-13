@@ -3,18 +3,17 @@
 <head>
   <title>404 error :(</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Source+Code+Pro:400,700">
   <style>
   body {
     color: #4f545c;
     text-align: center;
-    font-family: "Source Code Pro", Menlo, Courier, monospace;
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Segoe UI', 'Helvetica Neue', sans-serif;
     font-size: 16px;
   }
   main {
     margin: 1rem auto;
     max-width: 48rem;
-    padding: 2rem;
+    padding: 2rem 1rem;
   }
   h1, h2 {
     font-weight: 400;
@@ -35,8 +34,8 @@
     color: #0c7ee8;
     font-weight: bold;
   }
-  .mt1 {
-    margin-top: .5rem;
+  .mt2 {
+    margin-top: 1rem;
   }
   .block {
     display: block;
@@ -51,10 +50,10 @@
     <h1><strong>404.</strong> The Noodles are in a bit of a tangle.</h1>
     <h2>This URL doesn't go anywhere.</h2>
     <p>It's either a bad link or you misstyped something. You could:</p>
-    <p><a href="javascript:window.history.back()">Go back to the previous page</a></p>
-    <small class="block muted"><strong>or</strong></small>
     <p>
-      <a href="mailto:lachlan@getnoodl.es?subject=I%20got%20a%20404%20error" id="emailLink">Report the error</a> so I can fix it
+      <a href="javascript:window.history.back()">Go back</a>
+      <small class="muted"><strong>or</strong></small>
+      <a href="mailto:lachlan@getnoodl.es?subject=I%20got%20a%20404%20error" id="emailLink">Report the issue</a>
       <script>
       var emailLink = document.getElementById("emailLink");
       var time = new Date();
