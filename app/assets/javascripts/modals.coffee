@@ -37,7 +37,7 @@
           opacity: 0
           zIndex: 100
           left: 50 + '%'
-          marginLeft: -(modal_width / 2) + 'px'
+          marginLeft: -(Math.round(modal_width / 2)) + 'px'
         $(modal_id).fadeTo 200, 1
         e.preventDefault()
         $(modal_id).children('[data-behavior~=autoselect]').focus().select()
