@@ -79,7 +79,7 @@ class RecipesController < ApplicationController
 
   def share
     @image_layout = @recipe.imaged?
-    render :share, layout: 'simple'
+    render :share
   end
 
   def save_to_noodles
