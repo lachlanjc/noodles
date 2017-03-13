@@ -31,6 +31,7 @@ module RecipesHelper
   def ingredient_processed(text, options = {})
     text = markdown(text)
     node = Nokogiri::HTML::DocumentFragment.parse(text).first_element_child
+    return text.to_s.html_safe if node.blank?
 
     node.name = options[:name] || (text.match(/# /) ? 'h1' : 'li')
 
