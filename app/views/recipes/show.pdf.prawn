@@ -6,10 +6,12 @@ font_families.update('Sentinel' => {
 })
 
 font 'Sentinel'
-fallback_fonts(['Times-Roman'])
-default_leading 6
+fallback_fonts ['Times-Roman']
 
 text @recipe.title, size: 32, style: :bold
+move_down 8
+
+default_leading 6
 
 if @recipe.description.present?
   text @recipe.description
