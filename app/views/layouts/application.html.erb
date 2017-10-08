@@ -40,6 +40,7 @@
   data-user="<%= user_signed_in? ? current_user_id : 'anon' %>">
   <%= yield %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'components' %>
   <%= yield :javascript %>
 </body>
 </html>

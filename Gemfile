@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
-ruby '2.3.1'
+ruby '2.4.1'
+
+git_source(:github) do |repo|
+  repo = "#{repo}/#{repo}" unless repo.include?("/")
+  "https://github.com/#{repo}.git"
+end
 
 gem 'dotenv-rails'
 
@@ -11,7 +16,7 @@ gem 'aws-sdk'
 gem 'aws-sdk-rails'
 gem 'delayed_job_active_record'
 gem 'devise'
-gem 'devise_marketable'
+# gem 'devise_marketable'
 gem 'coffee-rails'
 gem 'cohort_me'
 gem 'hangry'
@@ -25,10 +30,9 @@ gem 'paperclip'
 gem 'pg'
 gem 'prawnto_2', require: 'prawnto'
 gem 'puma'
-gem 'rails', '5.0.1'
+gem 'rails', '5.1.3.rc3'
 gem 'rails-controller-testing'
 gem 'rake'
-gem 'react-rails'
 gem 'redcarpet'
 gem 'safely_block'
 gem 'sass-rails'
@@ -37,6 +41,8 @@ gem 'stripe'
 gem 'therubyracer'
 gem 'turbolinks'
 gem 'uglifier'
+gem 'webpacker', github: 'rails/webpacker'
+gem 'webpacker-react', github: 'renchap/webpacker-react'
 gem 'wombat'
 
 source 'https://rails-assets.org' do
@@ -49,7 +55,8 @@ end
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'tracer_bullets'
+  gem 'foreman'
+  # gem 'tracer_bullets'
   gem 'web-console'
 end
 
