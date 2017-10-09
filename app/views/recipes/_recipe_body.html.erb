@@ -12,10 +12,10 @@
 
 <%= section_header 'Details', 2, class: 'mtm' %>
 
-<%= content_tag(:p, class: 'wbw') do %>
+<%= content_tag(:div, class: 'wbw mbm') do %>
   <span class="db b grey-2">Source</span>
   <span class="content">
-    <%= clean_autolink @recipe.source %></p>
+    <%= clean_autolink @recipe.source %>
   </span>
 <% end if @recipe.source.present? %>
 
