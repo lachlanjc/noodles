@@ -1,19 +1,3 @@
-GIT
-  remote: https://github.com/rails/webpacker.git
-  revision: d207b68ec89ee4f7462b8e5352d365d2903c6ca2
-  specs:
-    webpacker (3.0.2)
-      activesupport (>= 4.2)
-      rack-proxy (>= 0.6.1)
-      railties (>= 4.2)
-
-GIT
-  remote: https://github.com/renchap/webpacker-react.git
-  revision: 563cd74775c588cdf1048332ac1f10f9cac4a7fe
-  specs:
-    webpacker-react (0.3.2)
-      webpacker
-
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -315,6 +299,12 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
+    webpacker (3.0.2)
+      activesupport (>= 4.2)
+      rack-proxy (>= 0.6.1)
+      railties (>= 4.2)
+    webpacker-react (0.3.2)
+      webpacker
     webrobots (0.1.2)
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
@@ -370,8 +360,8 @@ DEPENDENCIES
   turbolinks
   uglifier
   web-console
-  webpacker!
-  webpacker-react!
+  webpacker
+  webpacker-react
   wombat
 
 RUBY VERSION

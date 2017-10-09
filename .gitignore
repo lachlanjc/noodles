@@ -13,3 +13,5 @@ meta/results/
 /.bundle
 /vendor/bundle/*
 passenger.3000.pid
+/public/packs
+/public/packs-test

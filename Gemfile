@@ -41,8 +41,8 @@ gem 'stripe'
 gem 'therubyracer'
 gem 'turbolinks'
 gem 'uglifier'
-gem 'webpacker', github: 'rails/webpacker'
-gem 'webpacker-react', github: 'renchap/webpacker-react'
+gem 'webpacker'
+gem 'webpacker-react'
 gem 'wombat'
 
 source 'https://rails-assets.org' do
