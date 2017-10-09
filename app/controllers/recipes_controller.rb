@@ -10,7 +10,7 @@ class RecipesController < ApplicationController
   protect_from_forgery except: :embed_js
 
   def index
-    @recipes = current_user.recipes.order(:title)
+    @recipes = current_user.recipes
     @recipes_json = ActiveModelSerializers::SerializableResource.new(@recipes, each_serializer: RecipeListSerializer).as_json
     respond_to do |format|
       format.html do
@@ -69,8 +69,10 @@ class RecipesController < ApplicationController
   end
 
   def export_pdf
-    prawnto filename: @recipe.title, inline: !params[:download]
-    render 'recipes/show.pdf'
+    render file: 'recipes/show.pdf',
+      content_type: 'application/pdf',
+      filename: @recipe.title,
+      disposition: 'inline'
   end
 
   def embed_js

@@ -1,4 +1,7 @@
 Rails.application.configure do
+  # Make javascript_pack_tag load assets from webpack-dev-server.
+  config.x.webpacker[:dev_server_host] = "http://localhost:3035"
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -47,7 +50,7 @@ Rails.application.configure do
 
   config.action_view.raise_on_missing_translations = true
 
-  Rails.application.routes.default_url_options[:host] = 'localhost:3000'
+  Rails.application.routes.default_url_options[:host] = 'localhost:5000'
 
   # Paperclip Settings
   config.paperclip_defaults = {
@@ -58,8 +61,6 @@ Rails.application.configure do
       secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
-
-  config.react.variant = :development
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true

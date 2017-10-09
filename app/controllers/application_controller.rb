@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   helper_method :nobody_signed_in?, :current_user_id, :is_my?, :isnt_my?,
     :public_page?, :private_page?
+  # include Webpacker::Helper
 
   # Keep the current user id in memory
   def current_user_id

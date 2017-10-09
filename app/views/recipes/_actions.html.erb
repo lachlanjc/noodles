@@ -5,7 +5,7 @@
       <%= inline_svg 'embed.svg', class: 'menu__action__icon', size: 20 %>
       <span>Embed</span>
     </a>
-    <%= link_to export_pdf_recipe_path(@recipe, download: true), class: 'menu__action' do %>
+    <%= link_to export_pdf_recipe_path(@recipe), class: 'menu__action' do %>
       <%= inline_svg 'download.svg', class: 'menu__action__icon', size: 20 %>
       <span>Download as PDF</span>
     <% end %>
