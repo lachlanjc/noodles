@@ -10,98 +10,96 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170225223039) do
-
+ActiveRecord::Schema.define(version: 20_170_225_223_039) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "announcements", force: :cascade do |t|
-    t.string   "title"
-    t.text     "body"
-    t.text     "body_rendered"
-    t.integer  "author_id"
-    t.boolean  "mail"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table 'announcements', force: :cascade do |t|
+    t.string   'title'
+    t.text     'body'
+    t.text     'body_rendered'
+    t.integer  'author_id'
+    t.boolean  'mail'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
   end
 
-  create_table "collections", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "shared_id"
-    t.index ["user_id"], name: "index_collections_on_user_id", using: :btree
+  create_table 'collections', force: :cascade do |t|
+    t.string   'name'
+    t.text     'description'
+    t.string   'photo_file_name'
+    t.string   'photo_content_type'
+    t.integer  'photo_file_size'
+    t.datetime 'photo_updated_at'
+    t.integer  'user_id'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
+    t.string   'shared_id'
+    t.index ['user_id'], name: 'index_collections_on_user_id', using: :btree
   end
 
-  create_table "delayed_jobs", force: :cascade do |t|
-    t.integer  "priority",   default: 0, null: false
-    t.integer  "attempts",   default: 0, null: false
-    t.text     "handler",                null: false
-    t.text     "last_error"
-    t.datetime "run_at"
-    t.datetime "locked_at"
-    t.datetime "failed_at"
-    t.string   "locked_by"
-    t.string   "queue"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+  create_table 'delayed_jobs', force: :cascade do |t|
+    t.integer  'priority',   default: 0, null: false
+    t.integer  'attempts',   default: 0, null: false
+    t.text     'handler',                null: false
+    t.text     'last_error'
+    t.datetime 'run_at'
+    t.datetime 'locked_at'
+    t.datetime 'failed_at'
+    t.string   'locked_by'
+    t.string   'queue'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
+    t.index %w[priority run_at], name: 'delayed_jobs_priority', using: :btree
   end
 
-  create_table "recipes", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
-    t.text     "ingredients"
-    t.text     "instructions"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-    t.boolean  "favorite"
-    t.string   "img_file_name"
-    t.string   "img_content_type"
-    t.integer  "img_file_size"
-    t.datetime "img_updated_at"
-    t.text     "instructions_rendered"
-    t.boolean  "shared"
-    t.string   "source"
-    t.text     "notes"
-    t.string   "serves"
-    t.string   "shared_id"
-    t.text     "collections",           default: [], array: true
-    t.string   "author"
-    t.datetime "last_cooked_at"
-    t.integer  "cooks_count",           default: 0
+  create_table 'recipes', force: :cascade do |t|
+    t.string   'title'
+    t.text     'description'
+    t.text     'ingredients'
+    t.text     'instructions'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
+    t.integer  'user_id'
+    t.boolean  'favorite'
+    t.string   'img_file_name'
+    t.string   'img_content_type'
+    t.integer  'img_file_size'
+    t.datetime 'img_updated_at'
+    t.text     'instructions_rendered'
+    t.boolean  'shared'
+    t.string   'source'
+    t.text     'notes'
+    t.string   'serves'
+    t.string   'shared_id'
+    t.text     'collections', default: [], array: true
+    t.string   'author'
+    t.datetime 'last_cooked_at'
+    t.integer  'cooks_count', default: 0
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "referring_url"
-    t.text     "landing_url"
-    t.string   "first_name"
-    t.boolean  "newsletter_sent"
-    t.boolean  "want_newsletter"
-    t.string   "stripe_customer"
-    t.string   "stripe_subscription"
-    t.datetime "subscribed_at"
-    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  create_table 'users', force: :cascade do |t|
+    t.string   'email',                  default: '', null: false
+    t.string   'encrypted_password',     default: '', null: false
+    t.string   'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.integer  'sign_in_count', default: 0, null: false
+    t.datetime 'current_sign_in_at'
+    t.datetime 'last_sign_in_at'
+    t.string   'current_sign_in_ip'
+    t.string   'last_sign_in_ip'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
+    t.text     'referring_url'
+    t.text     'landing_url'
+    t.string   'first_name'
+    t.boolean  'newsletter_sent'
+    t.boolean  'want_newsletter'
+    t.string   'stripe_customer'
+    t.string   'stripe_subscription'
+    t.datetime 'subscribed_at'
+    t.index ['email'], name: 'index_users_on_email', unique: true, using: :btree
+    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true, using: :btree
   end
-
 end

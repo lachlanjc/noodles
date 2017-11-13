@@ -24,6 +24,6 @@ class AnalyticsController < ApplicationController
 
   def authenticate
     accessible = user_signed_in? && current_user.id == 1
-    render_locked(OpenStruct.new({ type: 'private page' })) unless accessible
+    render_locked(OpenStruct.new(type: 'private page')) unless accessible
   end
 end

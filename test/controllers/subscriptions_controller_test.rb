@@ -14,11 +14,11 @@ class SubscriptionsControllerTest < ActionController::TestCase
 
   test 'should subscribe' do
     token = Stripe::Token.create(card: {
-      number: 4242424242424242,
-      exp_month: Time.now.month,
-      exp_year: Time.now.next_year.year,
-      cvc: 314
-    }).id
+                                   number: 4_242_424_242_424_242,
+                                   exp_month: Time.now.month,
+                                   exp_year: Time.now.next_year.year,
+                                   cvc: 314
+                                 }).id
     assert_difference 'User.subscribers.count', +1 do
       post :create, params: { stripeToken: token }
       @user.reload

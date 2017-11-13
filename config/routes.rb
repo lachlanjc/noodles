@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     get '/:shared_id', to: 'recipes#embed_js', as: :embed
   end
 
-  resources :collections, except: [:new, :edit]
+  resources :collections, except: %i[new edit]
   get '/c/:shared_id', to: 'collections#share', as: :coll_share
 
   get '/save', to: 'save#save', as: :save
@@ -42,7 +42,7 @@ Rails.application.routes.draw do
   get '/help', to: 'pages#help', as: :help
   post '/help', to: 'pages#help_form', as: :help_form
 
-  resources :subscriptions, only: [:index, :create, :destroy]
+  resources :subscriptions, only: %i[index create destroy]
   get '/email_unsubscribe/:code/:user_id', to: 'announcements#unsubscribe', as: :email_unsubscribe
 
   devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }

@@ -16,11 +16,11 @@ module SocialHelper
   end
 
   def social_services
-    %w(twitter facebook pinterest email)
+    %w[twitter facebook pinterest email]
   end
 
   def social_buttons(object)
-    html = ""
+    html = ''
     social_services.each do |s|
       html += social_button(object, s)
     end

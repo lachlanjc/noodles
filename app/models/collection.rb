@@ -7,14 +7,14 @@ class Collection < ApplicationRecord
   validates :user_id, presence: true
 
   has_attached_file :photo,
-    path: 'collections/:id/photo.:extension',
-    default_url: '',
-    s3_region: ENV['AWS_REGION']
+                    path: 'collections/:id/photo.:extension',
+                    default_url: '',
+                    s3_region: ENV['AWS_REGION']
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
 
   def recipes
-    results = self.user.recipes.pluck(:id, :collections)
-    results.delete_if { |item| !item[1].include?(self.id.to_s) }
+    results = user.recipes.pluck(:id, :collections)
+    results.delete_if { |item| !item[1].include?(id.to_s) }
     Recipe.find(results.transpose[0] || [])
   end
 

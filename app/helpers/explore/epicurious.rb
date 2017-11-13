@@ -26,13 +26,13 @@ class EpicuriousSearchScraper
   protected
 
   def fix_image(result)
-    if result['image'] =~ /\/i\/recipe\-img\-icon/
+    if result['image'].match?(/\/i\/recipe\-img\-icon/)
       result['image'] = ''
     else
       s = result['image']
       s.gsub! /_116/, ''
       s.gsub! /_120/, '_500'
-      result['image'] = s =~ /assets/ ? s : 'http://epicurious.com' + s
+      result['image'] = s.match?(/assets/) ? s : 'http://epicurious.com' + s
     end
     result
   end

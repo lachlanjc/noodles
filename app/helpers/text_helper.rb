@@ -6,7 +6,7 @@ module TextHelper
   end
 
   def plain_text_from_markdown(text = '', options = {})
-    text = sanitize(markdown(text), tags: %w(ol ul li))
+    text = sanitize(markdown(text), tags: %w[ol ul li])
     text = HtmlToPlainText.plain_text(text)
     text.gsub!(/^\d+\.\s/, '') if options[:remove_numbers]
     text

@@ -8,7 +8,7 @@ module ScrapingHelper
 
     url = link
     url.gsub!('http://', 'https://')
-    url.gsub!(/\/print/, '') if host =~ /allrecipes\.com/
+    url.gsub!(/\/print/, '') if host.match?(/allrecipes\.com/)
 
     page = safely { Mechanize.new.get(url).content }
     data = Hangry.parse page
@@ -21,20 +21,20 @@ module ScrapingHelper
   def process_recipe_page(url, page, data)
     host = find_domain(url).to_s
     document = Nokogiri::HTML::DocumentFragment.parse(page)
-    if host =~ /nytimes\.com/
+    if host.match?(/nytimes\.com/)
       data = process_nyt_page!(data, document)
-    elsif host =~ /epicurious\.com/
+    elsif host.match?(/epicurious\.com/)
       data = process_epicurious_page!(data, document)
     # F&W/AR use the name itemprop in the wrong places
-    elsif host =~ /allrecipes\.com/
+    elsif host.match?(/allrecipes\.com/)
       data.name = document.css('[itemprop=name]')[0].attr('content').to_s
-    elsif host =~ /foodandwine\.com/
+    elsif host.match?(/foodandwine\.com/)
       data.name = document.css('[itemprop=name]')[0].text.to_s.squish
-    elsif host =~ /bonappetit\.com/
+    elsif host.match?(/bonappetit\.com/)
       data = process_ba_page!(data, document)
-    elsif host =~ /marthastewart\.com/
+    elsif host.match?(/marthastewart\.com/)
       data.instructions = document.css('.directions-list .directions-item').text
-    elsif host =~ /driscolls\.com/
+    elsif host.match?(/driscolls\.com/)
       data.instructions = document.css('#recipe-content #instructions').text
     elsif data.instructions.to_s.match(/\n/).blank?
       data = process_blog_page!(data, document)

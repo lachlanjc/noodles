@@ -1,9 +1,9 @@
 class CollectionsController < ApplicationController
   include CollectionsHelper
 
-  before_action :please_sign_in, except: [:show, :share]
-  before_action :set_collection, except: [:index, :create]
-  before_action -> { hey_thats_my @collection }, except: [:index, :create, :show, :share]
+  before_action :please_sign_in, except: %i[show share]
+  before_action :set_collection, except: %i[index create]
+  before_action -> { hey_thats_my @collection }, except: %i[index create show share]
 
   def index
     @collections = current_user.collections
@@ -36,7 +36,7 @@ class CollectionsController < ApplicationController
   end
 
   def create
-    @collection = Collection.new(collection_params.merge({ user: current_user }))
+    @collection = Collection.new(collection_params.merge(user: current_user))
     respond_to do |format|
       if @collection.save
         format.html { redirect_to collection_path(@collection) }

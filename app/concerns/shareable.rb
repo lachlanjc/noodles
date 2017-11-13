@@ -6,21 +6,21 @@ module Shareable
 
   included do
     validates :shared_id,
-      presence: true,
-      length: { minimum: 2 },
-      uniqueness: true
+              presence: true,
+              length: { minimum: 2 },
+              uniqueness: true
 
     before_validation :generate_shared_id,
-      on: :create
+                      on: :create
     after_validation :regenerate_shared_id,
-      on: :create,
-      if: proc { |object| object.errors.any? }
+                     on: :create,
+                     if: proc { |object| object.errors.any? }
   end
 
   def generate_shared_id
-    self.update_attribute(:shared_id, make_shared_id)
+    update_attribute(:shared_id, make_shared_id)
   end
-  alias_method :regenerate_shared_id, :generate_shared_id
+  alias regenerate_shared_id generate_shared_id
 
   def type
     self.class.name.downcase
@@ -35,20 +35,20 @@ module Shareable
   end
 
   def twitter_url
-    social_network(:twitter, '/share', text: "#{self.name} (published on @noodlesapp)", url: self.public_url)
+    social_network(:twitter, '/share', text: "#{name} (published on @noodlesapp)", url: public_url)
   end
 
   def facebook_url
-    social_network(:facebook, '/sharer/sharer.php', u: self.public_url)
+    social_network(:facebook, '/sharer/sharer.php', u: public_url)
   end
 
   def pinterest_url
-    social_network(:pinterest, '/pin/create/button', url: self.public_url, media: media_url, description: "#{self.name} (published on Noodles)")
+    social_network(:pinterest, '/pin/create/button', url: public_url, media: media_url, description: "#{name} (published on Noodles)")
   end
 
   def email_url
-    body = "#{self.name} (published on Noodles): #{self.public_url}"
-    "mailto:?subject=#{self.name}&body=#{body}"
+    body = "#{name} (published on Noodles): #{public_url}"
+    "mailto:?subject=#{name}&body=#{body}"
   end
 
   private

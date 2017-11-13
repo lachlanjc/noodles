@@ -3,7 +3,7 @@ module RecipesHelper
   include TextHelper
 
   def sample_recipe
-    Recipe.find_by_shared_id 'sample'
+    Recipe.find_by shared_id: 'sample'
   end
 
   def recipe_embed(r = @recipe)
@@ -33,7 +33,7 @@ module RecipesHelper
     node = Nokogiri::HTML::DocumentFragment.parse(text).first_element_child
     return text.to_s.html_safe if node.blank?
 
-    node.name = options[:name] || (text.match(/# /) ? 'h1' : 'li')
+    node.name = options[:name] || (text.match?(/# /) ? 'h1' : 'li')
 
     options.delete 'name'
     # node['itemprop'] = 'recipeIngredient'
@@ -42,14 +42,14 @@ module RecipesHelper
     node.to_s.html_safe
   end
 
-  def instructions_processed(instructions = @recipe.instructions, options = {})
+  def instructions_processed(instructions = @recipe.instructions, _options = {})
     text = markdown(instructions)
     # text = Nokogiri::HTML::DocumentFragment.parse(text)
     # text.css('li').each { |item| item['itemprop'] = 'instruction' }
     text.to_s.html_safe
   end
 
-  def no_details?(recipe = @recipe)
+  def no_details?(_recipe = @recipe)
     @recipe.slice(:source, :author, :serves).values.join.blank?
   end
 

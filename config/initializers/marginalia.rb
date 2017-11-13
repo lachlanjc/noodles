@@ -1,1 +1,1 @@
-Marginalia::Comment.components = [:controller, :action, :line]
+Marginalia::Comment.components = %i[controller action line]

@@ -3,8 +3,7 @@ class ExploreController < ApplicationController
   include RecipesHelper
   include ScrapingHelper
 
-  def index
-  end
+  def index; end
 
   def results
     @results = find_explore_results(params[:src], params[:q])

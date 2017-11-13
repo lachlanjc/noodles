@@ -26,7 +26,7 @@ class AllrecipesSearchScraper
     results.each do |item|
       item['description'] = item['description'].to_s.truncate(164)
       placeholder = 'http://images.media-allrecipes.com/userphotos/250x250/0.jpg'
-      item['image'] = '' if item['image'] =~ /#{Regexp.quote(placeholder)}/
+      item['image'] = '' if item['image'].match?(/#{Regexp.quote(placeholder)}/)
     end
     results
   end

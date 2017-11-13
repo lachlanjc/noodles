@@ -1,10 +1,9 @@
 class RegistrationsController < Devise::RegistrationsController
-  def subscribe
-  end
+  def subscribe; end
 
   protected
 
-  def after_sign_up_path_for(resource)
+  def after_sign_up_path_for(_resource)
     params[:explore] ? explore_path : recipes_path
   end
 

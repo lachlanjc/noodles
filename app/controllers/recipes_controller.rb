@@ -4,9 +4,9 @@ class RecipesController < ApplicationController
   include RecipesHelper
   include ScrapingHelper
 
-  before_action :please_sign_in, except: [:show, :share, :embed_js]
-  before_action :set_recipe, only: [:show, :share, :edit, :update, :destroy, :export_pdf, :embed_js, :remove_image, :collections]
-  before_action -> { hey_thats_my @recipe }, only: [:edit, :update, :destroy, :export_pdf, :remove_image, :collections]
+  before_action :please_sign_in, except: %i[show share embed_js]
+  before_action :set_recipe, only: %i[show share edit update destroy export_pdf embed_js remove_image collections]
+  before_action -> { hey_thats_my @recipe }, only: %i[edit update destroy export_pdf remove_image collections]
   protect_from_forgery except: :embed_js
 
   def index
@@ -43,7 +43,7 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new(recipe_params.merge({ user_id: current_user_id }))
+    @recipe = Recipe.new(recipe_params.merge(user_id: current_user_id))
     if @recipe.save
       flash[:success] = 'New recipe saved!'
       redirect_to @recipe
@@ -70,9 +70,9 @@ class RecipesController < ApplicationController
 
   def export_pdf
     render file: 'recipes/show.pdf',
-      content_type: 'application/pdf',
-      filename: @recipe.title,
-      disposition: 'inline'
+           content_type: 'application/pdf',
+           filename: @recipe.title,
+           disposition: 'inline'
   end
 
   def embed_js
@@ -120,10 +120,10 @@ class RecipesController < ApplicationController
   end
 
   def title_setup
-    if params[:title].to_s.strip.present?
-      @title = params[:title].to_s.capitalize.squish
-    else
-      @title = @recipe.title.to_s
-    end
+    @title = if params[:title].to_s.strip.present?
+               params[:title].to_s.capitalize.squish
+             else
+               @recipe.title.to_s
+             end
   end
 end

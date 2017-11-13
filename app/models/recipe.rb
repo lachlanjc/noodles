@@ -4,15 +4,15 @@ class Recipe < ApplicationRecord
   include Shareable
 
   validates :title,
-    presence: true,
-    length: { maximum: 254 }
+            presence: true,
+            length: { maximum: 254 }
   validates :user_id,
-    presence: true
+            presence: true
 
   has_attached_file :img,
-    path: 'recipes/:id/img/:style.:extension',
-    default_url: '',
-    s3_region: ENV['AWS_REGION']
+                    path: 'recipes/:id/img/:style.:extension',
+                    default_url: '',
+                    s3_region: ENV['AWS_REGION']
   validates_attachment_content_type :img, content_type: /\Aimage\/.*\Z/
   validates_with AttachmentSizeValidator, attributes: :img, less_than: 5.megabytes
 
@@ -43,8 +43,8 @@ class Recipe < ApplicationRecord
   end
 
   def find_collections
-    list = self.user.collections.pluck(:id)
-    list.delete_if { |item| !self.collections.include?(item.to_s) }
+    list = user.collections.pluck(:id)
+    list.delete_if { |item| !collections.include?(item.to_s) }
     Collection.find(list)
   end
 
@@ -53,7 +53,7 @@ class Recipe < ApplicationRecord
   end
 
   def public_url
-    share_url self.shared_id
+    share_url shared_id
   end
 
   private

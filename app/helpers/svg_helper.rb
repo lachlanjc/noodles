@@ -9,7 +9,7 @@ module SvgHelper
       options[:height] = options[:size]
       options.delete :size
     end
-    options.each { |key, value| svg["#{key}"] = value }
+    options.each { |key, value| svg[key.to_s] = value }
     doc.to_html.html_safe
   end
 
