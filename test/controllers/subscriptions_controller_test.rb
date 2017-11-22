@@ -1,7 +1,8 @@
 require 'test_helper'
 
-# This is actually an integration test ¯\_(ツ)_/¯
 class SubscriptionsControllerTest < ActionController::TestCase
+  include Devise::Test::ControllerHelpers
+
   setup do
     @user = users(:one)
     sign_in @user

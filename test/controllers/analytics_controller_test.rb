@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class AnalyticsControllerTest < ActionController::TestCase
+  include Devise::Test::ControllerHelpers
+
   test 'should be locked out' do
     get :dashboard
     assert_response 403

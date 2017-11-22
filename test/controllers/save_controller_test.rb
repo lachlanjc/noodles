@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class SaveControllerTest < ActionController::TestCase
+  include Devise::Test::ControllerHelpers
+
   test 'should prompt signup' do
     get :save, params: { url: 'http://cooking.nytimes.com/recipes/1016717-the-best-clam-chowder' }
     assert_redirected_to new_user_registration_url

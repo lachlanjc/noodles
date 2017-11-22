@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class PagesControllerTest < ActionController::TestCase
+  include Devise::Test::ControllerHelpers
+
   test 'should get home page' do
     get :home
     assert_response :success
