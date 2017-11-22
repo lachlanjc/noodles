@@ -11,7 +11,7 @@ class SaveControllerTest < ActionController::TestCase
 
   test 'should save new recipe' do
     sign_in users(:one)
-    assert_difference 'Recipe.count', +1 do
+    assert_difference 'Recipe.count' do
       get :save, params: { url: 'http://cooking.nytimes.com/recipes/1016717-the-best-clam-chowder' }
     end
     assert_redirected_to recipe_path(Recipe.last)

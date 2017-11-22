@@ -31,11 +31,11 @@ class RecipesHelperTest < ActionView::TestCase
   end
 
   test 'processed ingredient' do
-    assert_not_empty ingredient_processed('hello')
+    assert_match 'hello', ingredient_processed('hello')
   end
 
   test 'processed instructions' do
-    assert_not_empty instructions_processed('hello')
+    assert_match 'hello', instructions_processed('hello')
   end
 
   test 'notes blankslate' do

@@ -13,7 +13,7 @@ class ApplicationHelperTest < ActionView::TestCase
   end
 
   test 'backlink' do
-    assert_not_nil backlink('running tests', root_url)
+    assert_match 'running tests', backlink('running tests', root_url)
   end
 
   test 'making a schema' do
