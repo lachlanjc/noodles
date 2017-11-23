@@ -31,7 +31,6 @@ class ExploreControllerTest < ActionController::TestCase
     get :preview, params: { url: 'http://cooking.nytimes.com/recipes/1012732-bacon-lettuce-and-plum-sandwiches' }
     assert_response :success
     r = assigns(:recipe)
-    puts r.to_json
     assert_not_nil r
     assert_match 'plums', r.ingredients
     assert_match 'cutting board', r.instructions
