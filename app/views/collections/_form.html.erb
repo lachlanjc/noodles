@@ -3,7 +3,7 @@
   <%= f.text_field :name, class: 'text-input', placeholder: 'Desserts', required: true %>
 
   <%= f.label :description, class: 'label dib' %><small class="f5 grey-3 mls">(optional)</small>
-  <%= f.text_area :description, class: 'text-input', placeholder: 'Quickly describe your collection.' %>
+  <%= f.text_area :description, class: 'text-input', placeholder: 'Quickly describe your collection. (optional)', 'data-behavior': 'autosize' %>
 
   <%= f.label :photo, class: 'label' %>
   <div class="flex-ns fac mbm">
