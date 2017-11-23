@@ -36,8 +36,16 @@ module RecipesHelper
     node.name = options[:name] || (text.match?(/# /) ? 'h1' : 'li')
 
     options.delete 'name'
-    # node['itemprop'] = 'recipeIngredient'
-    options.each { |key, val| node[key] = val }
+    options.each { |key, val| node[key] = val } # For Coook Mode
+
+    if !text.match?('# ') && text.match(/\d/)
+      begin
+        i = Ingreedy.parse(node.children.to_s).ingredient
+        c = node.children.to_s
+        node.children = c.gsub(i, "<u>#{i}</u>")
+      rescue Ingreedy::ParseFailed
+      end
+    end
 
     node.to_s.html_safe
   end

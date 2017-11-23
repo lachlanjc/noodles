@@ -13,6 +13,11 @@
   ul {
     list-style: none;
   }
+
+  u {
+    border-bottom: 1px dotted $grey-3;
+    text-decoration: none;
+  }
 }
 
 .checklist__item {
