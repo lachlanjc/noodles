@@ -22,11 +22,44 @@ body {
 }
 
 .banner {
-  display: inline-block;
-  background-color: rgba($grey-6, .92);
-  border-radius: 2rem;
-  padding: 2rem .5rem;
+  padding: $space-2;
   width: 100%;
+  display: grid;
+}
+
+h1 {
+  background-color: $orange;
+  color: $white;
+  text-align: left;
+  display: inline-block;
+  margin: $space-1 0;
+  padding: $space-1 / 2;
+
+  &:nth-of-type(1) {
+    grid-row: 1;
+    text-align: right;
+    -webkit-clip-path: polygon(0% 10%, 100% 0, 100% 90%, 0 100%);
+    clip-path: polygon(0% 10%, 100% 0, 100% 90%, 0 100%);
+  }
+  &:nth-of-type(2) {
+    grid-row: 2;
+    width: 50%;
+    -webkit-clip-path: polygon(10% 0%, 100% 0, 90% 100%, 0 100%);
+    clip-path: polygon(0% 10%, 100% 0, 100% 90%, 0 100%);
+    padding-left: $space-3;
+  }
+  &:nth-of-type(3) {
+    grid-row: 3;
+    width: 80%;
+    justify-self: center;
+    text-align: center;
+    -webkit-clip-path: polygon(10% 0%, 90% 0%, 100% 90%, 0% 100%);
+    clip-path: polygon(0% 10%, 100% 0, 100% 90%, 0 100%);
+  }
+}
+
+.banner__container {
+  grid-row: 4;
 }
 
 .feature-list {
@@ -51,14 +84,13 @@ body {
   margin-right: auto;
 }
 
+.modal {
+  width: 90%;
+}
+
 @media screen and (min-width: 30em) {
   .hero {
-    padding: 6rem 2rem 8rem;
-  }
-
-  .banner {
-    padding: 3rem 4rem;
-    width: auto;
+    padding: 4rem 2rem;
   }
 
   .feature-list {
@@ -84,6 +116,30 @@ body {
   .modal--signup {
     min-width: 24rem;
     max-width: 24rem;
+  }
+}
+
+@media (min-width: 40em) {
+  .banner {
+    padding: 3rem 4rem;
+    max-width: 64rem;
+    width: auto;
+    margin: auto;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  h1 {
+    margin-top: -$space-3;
+    width: 100% !important;
+    &:nth-of-type(1) { grid-column: 1; }
+    &:nth-of-type(2) { grid-column: 3; }
+    &:nth-of-type(3) { grid-column: 2; }
+  }
+
+  .banner__container {
+    grid-column: 2;
+    margin-left: -$space-3;
+    margin-right: -$space-3;
   }
 }
 

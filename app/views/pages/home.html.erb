@@ -56,22 +56,26 @@
     </nav>
     <article class="hero phm-ns mx-auto">
       <%= render 'shared/flash' if flash.any? %>
-      <div class="banner bg-blur mx-auto">
-        <h1 class="f1 f0-ns mvn">Now you’re cooking!</h1>
-        <h2 class="f3 f2-ns mts mbm mbl-ns grey-2 sans normal">All your recipes in one place.</h2>
-        <a
-          href="#signup"
-          name="signup"
-          data-behavior="modal_trigger inline_signup_btn"
-          class="btn btn--primary bg-orange b f3 f2-ns shadow">
-          Try Noodles
-        </a>
+      <div class="banner">
+        <h1 class="f0 f0-ns">Cooking</h1>
+        <h1 class="f0 f0-ns">is</h1>
+        <h1 class="f0 f0-ns">hard.</h1>
+        <div class="banner__container mtm mtl-ns rounded bg-grey-6 bg-blur pam pal-ns">
+          <h2 class="f3 f2-ns mtn mbm grey-2 sans normal">Get a head start with all your recipes organized.</h2>
+          <a
+            href="#signup"
+            name="signup"
+            data-behavior="modal_trigger inline_signup_btn"
+            class="btn btn--primary bg-blue b f3 f2-ns shadow">
+            Try Noodles
+          </a>
+        </div>
       </div>
     </article>
   </header>
   <section class="mw8 mx-auto pvm phm-ns">
     <p class="mw7 mx-auto mtn mbl phm f3 f2-ns serif">
-      Noodles is an organized library of all your recipes.
+      Noodles is a simple library of all your recipes.
       <br class="dn db-ns">
       Add one in just a few taps, find it in seconds later – anywhere.
     </p>
@@ -122,7 +126,7 @@
       <a href="https://twitter.com/noodlesapp">Twitter</a>,
       <a href="https://facebook.com/getnoodles">Facebook</a>.
     </p>
-    <p class="mbn">
+    <p class="f5 mbn">
       Fine print:
       <%= link_to 'Terms', terms_path %>, <%= link_to 'Privacy', privacy_path %>.
       <br class="dn-ns">
