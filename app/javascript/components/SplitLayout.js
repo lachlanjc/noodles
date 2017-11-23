@@ -22,10 +22,11 @@ const SplitLayout = ({
     className={N.cxs(['flex-md', className || 'pam phl-ns'])}
   >
     <aside className="w-50-m w-third-l measure--narrow-ns mbl tc tl-ns">
-      <SuperHeader
-        className={N.cxs(['sans orange', headingClassName])}
-        children={heading}
-      />
+      {heading &&
+        <SuperHeader
+          className={N.cxs(['sans orange', headingClassName])}
+          children={heading}
+        />}
       {sidebar}
     </aside>
     <Spacer x={48} className="dn dib-ns" />
@@ -34,7 +35,7 @@ const SplitLayout = ({
 )
 
 SplitLayout.propTypes = {
-  heading: PropTypes.string.isRequired,
+  heading: PropTypes.string,
   headingClassName: PropTypes.string,
   sidebar: PropTypes.element,
   content: PropTypes.element.isRequired,

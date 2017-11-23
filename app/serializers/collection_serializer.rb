@@ -1,7 +1,7 @@
 class CollectionSerializer < BaseSerializer
   cache key: 'collection'
 
-  attributes :id,
+  attributes :id, :created_at, :updated_at,
              :name, :description, :photo, :publisher, :recipes,
              :user_id, :shared_id, :path, :public_path
 

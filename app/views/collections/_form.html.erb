@@ -3,7 +3,7 @@
   <%= f.text_field :name, class: 'text-input', placeholder: 'Desserts', required: true %>
 
   <%= f.label :description, class: 'label dib' %><small class="f5 grey-3 mls">(optional)</small>
-  <%= f.text_area :description, class: 'text-input', placeholder: 'Quickly describe your collection.' %>
+  <%= f.text_area :description, class: 'text-input w-100 lh-copy', placeholder: 'Quickly describe your collection. (optional)', 'data-behavior': 'autosize' %>
 
   <%= f.label :photo, class: 'label' %>
   <div class="flex-ns fac mbm">
@@ -18,12 +18,10 @@
   </div>
 
   <footer class="modal__footer">
-    <%= link_to t('general.delete'), @collection, method: :delete, data: { confirm: t('general.delete_collection_forever'), disable_with: 'Deleting...' }, class: 'btn btn--primary bg-red', style: 'margin-right: auto' if @collection.persisted? %>
+    <%= link_to t('general.delete'), @collection, method: :delete, data: { confirm: t('general.delete_collection_forever'), disable_with: 'Deleting…' }, class: 'btn bg-red', style: 'margin-right: auto' if @collection.persisted? %>
     <button
-      class="btn btn--primary bg-grey-3 mrs"
-      data-behavior="modal_close">
-      Never mind
-    </button>
+      class="btn bg-grey-3 mrs"
+      data-behavior="modal_close">Cancel</button>
     <% if @collection.persisted? %>
       <%= f.submit 'Save', class: 'btn btn--primary bg-blue b' %>
     <% else %>
