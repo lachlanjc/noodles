@@ -1,8 +1,7 @@
+# Settings specified here will take precedence over those in config/application.rb
 Rails.application.configure do
   # Make javascript_pack_tag lookup digest hash to enable long-term caching
   config.x.webpacker[:digesting] = true
-
-  # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
   config.cache_classes = true
