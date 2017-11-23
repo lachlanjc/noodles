@@ -9,7 +9,7 @@ const RecipesHome = ({ recipes, collections }) => (
   <SplitLayout
     className="pvm phl-ns"
     heading="Recipes"
-    sidebar={<RecipesHomeSidebar collections={collections} />}
+    sidebar={<RecipesHomeSidebar recipes={recipes} collections={collections} />}
     content={<RecipesHomeList recipes={recipes} />}
   />
 )

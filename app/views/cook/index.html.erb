@@ -94,8 +94,8 @@
 <% content_for :javascript do -%>
   <script>
     N.object_user = <%= @recipe.user_id %>
-    if (N.my_object) {
+    <% if is_my? @recipe %>
       $.post(window.location.href, function() {})
-    }
+    <% end %>
   </script>
 <% end -%>

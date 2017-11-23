@@ -1,41 +1,40 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const CollectionsMini = ({ collections, hidden = false }) => (
-  <div className={hidden ? 'dn' : 'dn db-ns mtl'}>
-    <h2 className="f3 pvs border-bottom mtn mbs">
+import SidebarModule, {
+  SidebarModuleHeading,
+  SidebarModuleList,
+  SidebarModuleListItem
+} from './SidebarModule'
+
+const CollectionsMini = ({ collections, ...props }) => (
+  <SidebarModule {...props}>
+    <SidebarModuleHeading>
       <a href="/collections" className="blue">Collections</a>
-    </h2>
-    <ul className="list-reset">
+    </SidebarModuleHeading>
+    <SidebarModuleList>
       {_.map(collections, coll => (
-        <CollectionsMiniItem
+        <SidebarModuleListItem
           name={coll.name}
           path={coll.path}
           key={coll.path}
         />
       ))}
-    </ul>
+    </SidebarModuleList>
     {_.isEmpty(collections) &&
       <p className="grey-3">
-        No collections yet –
-        {' '}
+        No collections yet
+        {' – '}
         <a href="/collections?new_collection=true" className="blue">
           create your first!
         </a>
       </p>}
-  </div>
+  </SidebarModule>
 )
+
 CollectionsMini.propTypes = {
   collections: PropTypes.array.isRequired,
   hidden: PropTypes.bool
 }
+
 export default CollectionsMini
-const CollectionsMiniItem = ({ name, path }) => (
-  <li className="mts">
-    <a className="blue" href={path} children={name} />
-  </li>
-)
-CollectionsMiniItem.propTypes = {
-  name: PropTypes.string.isRequired,
-  path: PropTypes.string.isRequired
-}
