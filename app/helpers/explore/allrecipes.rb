@@ -1,6 +1,3 @@
-require 'mechanize'
-require 'nokogiri'
-
 class AllrecipesSearchScraper
   def scrape(q)
     scraper = Mechanize.new

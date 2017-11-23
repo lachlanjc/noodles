@@ -43,7 +43,6 @@ gem 'turbolinks'
 gem 'uglifier'
 gem 'webpacker'
 gem 'webpacker-react'
-gem 'wombat'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-clipboard'

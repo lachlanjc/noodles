@@ -1,6 +1,3 @@
-require 'nokogiri'
-require 'wombat'
-
 class EpicuriousSearchScraper
   def scrape(q)
     scraper = Mechanize.new
