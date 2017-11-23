@@ -8,7 +8,7 @@ import SidebarModule, {
 } from './SidebarModule'
 
 const findRecents = recipes =>
-  _.slice(_.sortBy(recipes, 'last_cooked_at'), 0, 5)
+  _.slice(_.sortBy(_.filter(recipes, 'last_cooked_at'), 'last_cooked_at'), 0, 5)
 
 const RecentlyCooked = ({ recipes, ...props }) => (
   <SidebarModule {...props}>
