@@ -1,7 +1,7 @@
 class AllrecipesSearchScraper
   def scrape(q)
     scraper = Mechanize.new
-    scraper.history_added = proc { sleep 0.4 }
+    scraper.history_added = proc { sleep 0.25 }
 
     results = []
     raw_results = scraper.get('http://allrecipes.com/search/results/?sort=re&wt=' + q).search('section.grid article.grid-col--fixed-tiles:not(#dfp_container)')
@@ -17,13 +17,11 @@ class AllrecipesSearchScraper
       end
       results.push(result)
     end
-    results.delete_if do |item|
-      item['url'].blank? || item['title'].blank?
-    end
+    results.delete_if { |item| !item['url'] || !item['title'] }.compact!
     results.each do |item|
       item['description'] = item['description'].to_s.truncate(164)
       placeholder = 'http://images.media-allrecipes.com/userphotos/250x250/0.jpg'
-      item['image'] = '' if item['image'].match?(/#{Regexp.quote(placeholder)}/)
+      item['image'] = '' if item['image'].to_s.match?(placeholder)
     end
     results
   end

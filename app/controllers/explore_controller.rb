@@ -1,6 +1,5 @@
 class ExploreController < ApplicationController
   include ExploreHelper
-  include RecipesHelper
   include ScrapingHelper
 
   def index; end
