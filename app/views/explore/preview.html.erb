@@ -1,13 +1,17 @@
 <%= section_header 'Ingredients', 3, class: 'mtn' %>
 <div class="recipe__ingredients content">
-  <% @recipe.ingredients.to_s.lines.each do |line| %>
-    <%= ingredient_processed(line).html_safe %>
-  <% end %>
+  <ul>
+    <% @recipe.ingredients.to_s.lines.each do |line| %>
+      <%= ingredient_processed(line).html_safe %>
+    <% end %>
+  </ul>
 </div>
 
 <%= section_header 'Instructions', 3, class: 'mtm' %>
-<div class="content">
-  <%= instructions_processed.html_safe %>
+<div class="recipe__instructions content">
+  <ol>
+    <%= instructions_processed.html_safe %>
+  </ol>
 </div>
 
 <%= section_header 'Details', 3, class: 'mtm' %>

@@ -31,14 +31,16 @@
     <h2 class="sticky-ns mbn">Ingredients</h2>
     <p class="grey-4 f5">Tap on ingredients to cross them off.</p>
 
-    <ul class="recipe__ingredients sans content list-reset">
-      <% @recipe.ingredients.lines.each do |item| %>
-        <%= ingredient_processed item,
-          'data-behavior': 'checklist_item',
-          class: 'checklist__item pointer' if item.strip.present?
-        %>
-      <% end %>
-    </ul>
+    <div class="recipe__ingredients sans content">
+      <ul>
+        <% @recipe.ingredients.lines.each do |item| %>
+          <%= ingredient_processed item,
+            'data-behavior': 'checklist_item',
+            class: 'checklist__item pointer' if item.strip.present?
+          %>
+        <% end %>
+      </ul>
+    </div>
 
     <hr>
 
@@ -48,8 +50,8 @@
     </section>
   </aside>
 
-  <article class="flex-auto mw7 mx-auto mtm mtn-ns pam pal-l">
-    <ol class="list-reset content">
+  <article class="recipe__instructions recipe__instructions--cook flex-auto mw7 mx-auto mtm mtn-ns pam pal-l">
+    <ol>
       <% @recipe.instructions.lines.reject(&:blank?).each do |step| %>
         <%= content_tag :li,
           plain_text_from_markdown(step, remove_numbers: true).html_safe,

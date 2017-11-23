@@ -1,12 +1,14 @@
 <%= section_header 'Ingredients', 2, class: 'mtm' %>
-<ul class="recipe__ingredients list-reset content">
-  <% @recipe.ingredients.to_s.lines.each do |line| %>
-    <%= ingredient_processed(line) %>
-  <% end %>
-</ul>
+<div class="recipe__ingredients content">
+  <ul>
+    <% @recipe.ingredients.to_s.lines.each do |line| %>
+      <%= ingredient_processed(line) %>
+    <% end %>
+  </ul>
+</div>
 
 <%= section_header 'Instructions', 2, class: 'mtm' %>
-<div class="content <%= 'list--unindented-m' if @image_layout %>">
+<div class="recipe__instructions content">
   <%= instructions_processed.html_safe %>
 </div>
 

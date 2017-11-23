@@ -31,22 +31,10 @@
   }
 
   ul,
-  ol {
+  ol,
+  li {
     margin: 0;
     padding: 0;
-
-    li {
-      margin-left: 2rem;
-    }
-  }
-
-  @media screen and (min-width: 48em) {
-    &.list--unindented-m {
-      ul li,
-      ol li {
-        margin-left: 0;
-      }
-    }
   }
 
   &.f5 {
