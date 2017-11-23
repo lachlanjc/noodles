@@ -53,6 +53,10 @@ class RecipesController < ApplicationController
   end
 
   def update
+    c = params[:recipe][:collections]
+    if c.is_a? String
+      params[:recipe][:collections] = [c.to_i] if is_my? Collection.find(c.to_i)
+    end
     if @recipe.update(recipe_params)
       flash[:success] = 'Saved!' unless @recipe.previous_changes[:collections]
       redirect_to request.params[:redirect_to] || @recipe
