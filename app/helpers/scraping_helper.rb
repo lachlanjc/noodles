@@ -13,80 +13,93 @@ module ScrapingHelper
     page = safely { Mechanize.new.get(url).content }
     data = Hangry.parse page
 
-    return unless data.name.to_s.squish.present? || host =~ /allrecipes|marthastewart/
-    process_recipe_page(url, page, data)
+    return unless data.name.present? || host =~ /allrecipes|marthastewart|epicurious|bonappetit|foodandwine/
+    create_recipe_item process_recipe_page(url, page, data)
   end
 
   # Process recipe pages
   def process_recipe_page(url, page, data)
     host = find_domain(url).to_s
-    document = Nokogiri::HTML::DocumentFragment.parse(page)
-    if host.match?(/nytimes\.com/)
-      data = process_nyt_page!(data, document)
-    elsif host.match?(/epicurious\.com/)
-      data = process_epicurious_page!(data, document)
-    # F&W/AR use the name itemprop in the wrong places
-    elsif host.match?(/allrecipes\.com/)
-      data.name = document.css('[itemprop=name]')[0].attr('content').to_s
-    elsif host.match?(/foodandwine\.com/)
-      data.name = document.css('[itemprop=name]')[0].text.to_s.squish
-    elsif host.match?(/bonappetit\.com/)
-      data = process_ba_page!(data, document)
-    elsif host.match?(/marthastewart\.com/)
-      data.instructions = document.css('.directions-list .directions-item').text
-    elsif host.match?(/driscolls\.com/)
-      data.instructions = document.css('#recipe-content #instructions').text
+    doc = Nokogiri::HTML::DocumentFragment.parse(page)
+    if host.match? 'nytimes.com'
+      data = process_nyt_page!(data, doc)
+    elsif host.match? 'epicurious.com'
+      data = process_epicurious_page!(data, doc)
+    elsif host.match? 'allrecipes.com'
+      data.name = doc.css('.recipe-summary h1[itemprop=name]').text
+      data.yield = doc.css('#metaRecipeServings').attr('content')
+    elsif host.match? 'foodandwine.com'
+      data = process_fw_page!(data, doc)
+    elsif host.match? 'bonappetit.com'
+      data = process_ba_page!(data, doc)
+    elsif host.match? 'marthastewart.com'
+      data.instructions = doc.css('.directions-list .directions-item').text
+    elsif host.match? 'driscolls.com'
+      data.instructions = doc.css('#recipe-content #instructions').text
     elsif data.instructions.to_s.match(/\n/).blank?
-      data = process_blog_page!(data, document)
+      data = process_blog_page! data, doc
     end
-    create_recipe_item(data)
+    data
   end
 
-  # Adjust for NYT Cooking pages
-  def process_nyt_page!(data, document)
-    data.description = document.css('[itemprop=description] p:first-child').text
+  # Fixes for NYT Cooking
+  def process_nyt_page!(data, doc)
+    s = [
+      '[itemprop=description] p',
+      '.recipe-ingredients li[itemprop=recipeIngredient]',
+      '.recipe-steps li',
+      '.recipe-subhead span[itemprop=author]'
+    ]
+    data.description = doc.css(s[0]).text
+    data.ingredients = doc.css(s[1]).to_a.map(&:text)
+    data.instructions = doc.css(s[2]).to_a.map(&:text)
+    data.author = doc.search(s[3]).text
+    data
+  end
+
+  # Fixes for Epicurious
+  def process_epicurious_page!(data, doc)
+    data.name = doc.css('h1[itemprop=name]').text
+    data.description = doc.css('.dek[itemprop=description]').text
     data.ingredients = []
-    document.search('.recipe-ingredients')[0].search('li').each do |it|
-      v = it.text.squish.gsub(/:$/, '').capitalize
-      v.prepend('# ') if it.search('.quantity').text.blank? && it.text =~ /For/
-      data.ingredients.push v
-    end
     data.instructions = []
-    document.search('.recipe-steps li').each do |step|
-      data.instructions.push step.text.squish
+    doc.css('.ingredients-info [itemprop=ingredients]').each do |n|
+      data.ingredients.push n.text
     end
-    data.instructions = document.search('.recipe-steps').text
-    data.author = document.search('.recipe-subhead span[itemprop=author]').text
+    i = inst
+    n = ':not(#chefNotes)'
+    data.instructions = doc.css("#{i} li#{n}, #{i} > p#{n}").to_a.map(&:text)
+    data.yield = doc.css('[itemprop=recipeYield]').text
     data
   end
 
-  # Clean up inconsistencies in Epicurious pages
-  def process_epicurious_page!(data, document)
-    d = document.css('[itemprop=description] .truncatedTextModuleText')[0]
-    data.description = d.blank? ? '' : d.text.squish
-    insts = document.css("#{inst} > p:not(#chefNotes)")
-    insts = document.css("#{inst} li:not(#chefNotes)") if insts.empty?
-    data.instructions = insts.text
+  # Fixes for Food & Wine
+  def process_fw_page!(data, doc)
+    data.name = doc.css('h1')[0].text
+    data.description = doc.css('.recipe-summary').text
+    data.ingredients = doc.css('.ingredients li').to_a.map(&:text)
+    data.instructions = doc.css("#{inst} p:last-child").to_a.map(&:text)
+    data.yield = doc.css('.recipe-meta-item-body:last-of-type').text
     data
   end
 
-  # Process Bon Appetit page
-  def process_ba_page!(data, document)
-    data.name = document.css('h1[itemprop=name]').text
-    data.ingredients = []
-    document.search('.ingredients li').each do |step|
-      data.ingredients.push step.text.squish
-    end
-    data.instructions = document.css('.preparation__step').to_a.map(&:text)
-    data.author = document.css('span.recipe__credits + span')[0].text
+  # Fixes for Bon Appetit
+  def process_ba_page!(data, doc)
+    data.name = doc.css('h1[itemprop=name]').text
+    data.description = doc.css('.dek--basically').text
+    data.ingredients = doc.css('.ingredients li').to_a.map(&:text)
+    data.instructions = doc.css('.steps .step').to_a.map(&:text)
+    data.author = doc.css('.contributor-recipe-author .contributor-name').text
+    data.yield = doc.css('.recipe__header__servings').text
     data
   end
 
-  # Support sites (mainly blogs) that use recipeInstructions oddly
-  def process_blog_page!(data, document)
-    data.instructions = []
-    document.css(inst).each do |s|
-      data.instructions.push(s.text.to_s.squish)
+  # Support some sites (mainly blogs)
+  def process_blog_page!(data, doc)
+    data.instructions = doc.css(inst).to_a.map(&:text)
+    if data.ingredients.empty?
+      s = '.wprm-recipe-ingredient-group li[itemprop=recipeIngredient]'
+      data.ingredients = doc.css(s).to_a.map(&:text)
     end
     data
   end
@@ -102,7 +115,7 @@ module ScrapingHelper
     }
   end
 
-  # Create a Recipe with provided data, and respond appropriately
+  # Create a Recipe with provided data
   def create_recipe(recipe_data, url_source)
     Recipe.create(
       user_id: current_user.id,
