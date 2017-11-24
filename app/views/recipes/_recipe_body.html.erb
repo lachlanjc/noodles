@@ -33,5 +33,12 @@
 
 <div data-user="<%= @recipe.user_id %>" data-behavior="recipe_colls_container" class="dn-p"></div>
 
+<%= content_tag(:p, class: 'mts') do %>
+  <span class="db b grey-2">Added</span>
+  <span class="content" title="<%= @recipe.created_at.strftime '%Y-%m-%d at %I:%M %p' %>">
+    <%= @recipe.created_at.strftime '%B %d, %Y' %>
+  </span>
+<% end if @recipe.persisted? %>
+
 <%= section_header 'Notes', 2, class: 'mtm' %>
 <%= content_tag :div, notes_rendered, class: 'content mbm' %>
