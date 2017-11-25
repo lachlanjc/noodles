@@ -6,6 +6,7 @@ import SidebarModule, {
   SidebarModuleList,
   SidebarModuleListItem
 } from './SidebarModule'
+import GroceriesForm from './GroceriesForm'
 
 const GroceriesMini = ({ groceries, ...props }) => (
   <SidebarModule {...props}>
@@ -21,6 +22,7 @@ const GroceriesMini = ({ groceries, ...props }) => (
             <SidebarModuleListItem name={item.name} key={item.name + i} />
           ))}
         />}
+    <GroceriesForm hideSubmit={!_.isEmpty(groceries)} style={{}} />
   </SidebarModule>
 )
 
