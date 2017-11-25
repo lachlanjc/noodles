@@ -70,6 +70,20 @@ $(document).on 'turbolinks:load', ->
     $('#embed').append $('#embed [data-behavior~=copy]').data('clipboard-text')
     $('.section-header').show 0
 
+  N.addGroceries = (el) ->
+    t = _.trim $(el).text()
+    p = "class='add-grocery sans tooltipped tooltipped--n' aria-label='Add to your grocery list'"
+    unless N.exists $(el).find(N.s('add_grocery'))
+      $(el)
+        .append("<div data-behavior='add_grocery' #{p} data-value='#{t}'></div>")
+        .find('[data-behavior~=add_grocery]')
+  N.addGroceries li for li in N.s('recipe_ingredients').find('li') if N.theres 'recipe_ingredients'
+  $(document).on 'click', '[data-behavior~=add_grocery]', ->
+    t = $(this)
+    $.post '/groceries', { grocery: { name: t.data('value') } }, (e) ->
+      t.addClass 'add-grocery--done'
+      t.attr 'aria-label', 'Added!'
+
   if N.theres('recipe_colls_container') and _.includes(window.location.pathname, '/recipes/')
     if _.isEqual N.s('recipe_colls_container').data('user'), N.user
       $.get window.location.pathname + '/collections', (e) ->
