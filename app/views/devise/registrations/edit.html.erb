@@ -22,9 +22,9 @@
         <%= f.label :want_newsletter, 'Receive the (occasional) newsletter', class: 'man' %>
       </div>
 
-      <%= f.label :phone, 'Phone number', class: 'label dib' %>
+      <%= f.label :phone, 'Phone number (+ intl code)', class: 'label dib' %>
       <small class="f5 dib grey-3">(only for SMS grocery list—kept safe, no spam)</small>
-      <%= f.phone_field :phone, placeholder: '555-555-5555', class: 'text-input' %>
+      <%= f.phone_field :phone, placeholder: '1555-555-5555', class: 'text-input' %>
 
       <%= f.label :password, 'New password', class: 'label dib' %>
       <small class="f5 dib grey-3">(only if you’d like to change it)</small>
