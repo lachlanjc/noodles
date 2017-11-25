@@ -44,4 +44,19 @@
       </style>
     </div>
   </div>
+  <footer class="modal__feature bg-grey-5 border-top pam phl-ns">
+    <p class="sans grey-2 mvn">You can only text from your registered phone number.</p>
+    <%= form_for current_user, url: user_registration_path, html: { class: 'mx-auto'} do |f| %>
+      <%= f.label :phone, 'Your phone number (+ intl code)', class: 'label f5 dib' %>
+      <small class="f5 dib grey-3">– never sold or spammed</small>
+      <div class="flex">
+        <%= f.phone_field :phone,
+          placeholder: '555-555-5555',
+          class: 'text-input dib f5',
+          style: 'min-width: 8rem;'
+        %>
+      <%= f.submit 'Save', class: 'btn btn-sm bg-blue mls' %>
+      </div>
+    <% end %>
+  </footer>
 </section>
