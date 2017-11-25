@@ -16,16 +16,18 @@ export const SidebarModuleHeading = props => (
 )
 
 export const SidebarModuleList = props => (
-  <ul className="list-reset" {...props} />
+  <ul className="list-reset mvn" {...props} />
 )
 
 export const SidebarModuleListItem = ({ name, path }) => (
-  <li className="mts">
-    <a className="blue" href={path} children={name} />
+  <li className="mts mbn">
+    {_.isEmpty(path)
+      ? <span className="grey-2" children={name} />
+      : <a className="blue" href={path} children={name} />}
   </li>
 )
 
 SidebarModuleListItem.propTypes = {
   name: PropTypes.string.isRequired,
-  path: PropTypes.string.isRequired
+  path: PropTypes.string
 }

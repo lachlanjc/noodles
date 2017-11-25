@@ -4,12 +4,14 @@ import PropTypes from 'prop-types'
 import Button from './Button'
 import Spacer from './Spacer'
 import ModalLink from './ModalLink'
-import CollectionsMini from './CollectionsMini'
 import RecentlyCooked from './RecentlyCooked'
+import GroceriesMini from './GroceriesMini'
+import CollectionsMini from './CollectionsMini'
 
 const RecipesHomeSidebar = ({
   recipes = [],
   collections = [],
+  groceries = [],
   hideCollections = false,
   ...props
 }) => (
@@ -29,16 +31,18 @@ const RecipesHomeSidebar = ({
       color="orange"
       href="/explore"
       children="Explore"
-      className="mvm mtn-ns"
+      className="mtm mtn-ns"
     />
-    <CollectionsMini collections={collections} hidden={hideCollections} />
+    <GroceriesMini groceries={groceries} />
     <RecentlyCooked recipes={recipes} hidden={_.size(recipes) < 8} />
+    <CollectionsMini collections={collections} hidden={hideCollections} />
   </div>
 )
 
 RecipesHomeSidebar.propTypes = {
   recipes: PropTypes.array,
   collections: PropTypes.array,
+  groceries: PropTypes.array,
   hideCollections: PropTypes.bool
 }
 

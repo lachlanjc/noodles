@@ -6,6 +6,7 @@
 <% if @recipes.any? %>
   <%= react_component 'RecipesHome',
     recipes: @recipes_json,
+    groceries: @groceries_json,
     collections: @collections_json
   %>
 <% else %>
