@@ -1,0 +1,6 @@
+<% title 'Groceries' %>
+<% activate_nav! :groceries %>
+
+<%= render 'shared/nav' %>
+
+<%= react_component 'Groceries', groceries: @groceries %>

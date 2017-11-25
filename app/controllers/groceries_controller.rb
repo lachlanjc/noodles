@@ -6,17 +6,11 @@ class GroceriesController < ApplicationController
 
   # GET /groceries
   def index
-    render react_component: 'Groceries', props: {
-      newGrocery: Grocery.new.as_json,
-      groceries: current_user.groceries.active.as_json
-    }
+    @groceries = current_user.groceries.active.as_json
   end
 
   # GET /groceries/new
   def new
-    render react_component: 'GroceriesNew', props: {
-      newGrocery: Grocery.new.as_json
-    }
   end
 
   # POST /groceries

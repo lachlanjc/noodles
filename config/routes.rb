@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     get '/preview', to: 'explore#preview'
   end
 
-  resources :groceries, only: %i[index new create update]
+  resources :groceries, except: %i[show edit]
 
   get '/privacy', to: 'pages#privacy', as: :privacy
   get '/terms', to: 'pages#terms', as: :terms

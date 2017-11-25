@@ -1,0 +1,8 @@
+<% title 'Adding grocery item' %>
+<% activate_nav! :groceries %>
+
+<%= render 'shared/nav' %>
+
+<%= backlink 'Grocery list', groceries_path %>
+
+<%= react_component 'GroceriesNew' %>
