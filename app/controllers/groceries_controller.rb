@@ -24,8 +24,10 @@ class GroceriesController < ApplicationController
     @grocery = Grocery.new(grocery_params.merge(user: current_user))
 
     if @grocery.save
-      flash[:success] = 'Item created.'
-      redirect_to groceries_url
+      unless request.xhr?
+        flash[:success] = 'Item created.'
+        redirect_to groceries_url
+      end
     else
       render :new
     end
@@ -56,9 +58,5 @@ class GroceriesController < ApplicationController
   def completion?
     return unless params[:action] == 'update'
     params[:grocery] ? params[:grocery].keys.include?('completed_at') : false
-  end
-
-  def klass_list
-    current_user.klasses.as_json(only: %i[id name abbrev color])
   end
 end
