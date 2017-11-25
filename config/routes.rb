@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   end
 
   resources :groceries, except: %i[show edit]
+  post '/groceries/sms', to: 'sms#groceries'
 
   get '/privacy', to: 'pages#privacy', as: :privacy
   get '/terms', to: 'pages#terms', as: :terms
