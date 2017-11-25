@@ -13,9 +13,10 @@
       <section class="nav__section">
         <%= link_to t('general.recipes'), recipes_path, class: nav_active_class(:recipes) %>
         <%= link_to t('general.collections'), collections_path, class: nav_active_class(:collections) %>
-        <%= link_to 'Explore', explore_path, class: nav_active_class(:explore) %>
+        <%= link_to 'Groceries', groceries_path, class: nav_active_class(:groceries) %>
       </section>
       <section class="nav__section">
+        <%= link_to 'Explore', explore_path, class: nav_active_class(:explore) %>
         <%= link_to 'News', 'https://news.getnoodl.es/', class: nav_active_class(:medium) %>
         <%= link_to t('general.settings'), settings_path, class: nav_active_class(:settings) %>
         <%= link_to t('general.sign_out'), sign_out_path, class: nav_active_class(:sign_out) %>
