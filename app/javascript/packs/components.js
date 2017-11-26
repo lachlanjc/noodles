@@ -6,6 +6,8 @@ import RecipesHomeBlank from '../components/RecipesHomeBlankSlate'
 import CollectionsHome from '../components/CollectionsHome'
 import CollectionsHomeBlankSlate from '../components/CollectionsHomeBlankSlate'
 import CollectionPage from '../components/Collection'
+import Groceries from '../components/Groceries'
+import GroceriesNew from '../components/GroceriesNew'
 
 WebpackerReact.setup({
   FlashContainer,
@@ -13,5 +15,7 @@ WebpackerReact.setup({
   RecipesHomeBlank,
   CollectionsHome,
   CollectionsHomeBlankSlate,
-  CollectionPage
+  CollectionPage,
+  Groceries,
+  GroceriesNew
 })
