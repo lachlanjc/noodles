@@ -12,7 +12,8 @@ class GroceriesCheckbox extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
-    completedAt: PropTypes.string
+    completedAt: PropTypes.string,
+    showCompleted: PropTypes.bool
   }
 
   constructor(props) {
@@ -40,7 +41,7 @@ class GroceriesCheckbox extends Component {
   }
 
   render() {
-    const { name, id, completedAt, ...props } = this.props
+    const { name, id, completedAt, showCompleted = false, ...props } = this.props
     const completed = !_.isEmpty(this.state.completedAt)
     return (
       <li
@@ -48,7 +49,7 @@ class GroceriesCheckbox extends Component {
           this.checkbox = a
         }}
       >
-        <Checkbox label={name} checked={completed} strikethrough={completed} />
+        <Checkbox label={name} checked={completed} strikethrough={completed} metadata={showCompleted && new Date(completedAt).toLocaleDateString()} />
       </li>
     )
   }
@@ -60,6 +61,7 @@ const Checkbox = ({
   label,
   checked = false,
   strikethrough = false,
+  metadata,
   ...props
 }) => {
   const cx = {
@@ -86,7 +88,8 @@ const Checkbox = ({
       <div className="flex fac fjc fsn mrs" style={cx.box}>
         <Checkmark className={checked ? 'dib' : 'dn'} size={14} />
       </div>
-      {label && <span className="man">{label}</span>}
+      {!_.isEmpty(label) && <span className="man flex-auto">{label}</span>}
+      {!_.isEmpty(metadata) && <span className="f5 grey-3 mls" children={metadata} />}
     </div>
   )
 }
@@ -94,7 +97,8 @@ const Checkbox = ({
 Checkbox.propTypes = {
   label: PropTypes.string.isRequired,
   checked: PropTypes.bool,
-  strikethrough: PropTypes.bool
+  strikethrough: PropTypes.bool,
+  metadata: PropTypes.string
 }
 
 const Checkmark = ({ size = 16, ...props }) => (

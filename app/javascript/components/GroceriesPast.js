@@ -10,7 +10,7 @@ const GroceriesPast = ({ groceries }) => (
     <SuperHeader className="sans f2 f2-ns mvn-ns">
       Past grocery lists
     </SuperHeader>
-    <GroceriesList items={groceries} />
+    <GroceriesList items={groceries} showCompleted />
   </Document>
 )
 

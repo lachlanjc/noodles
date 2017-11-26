@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import GroceriesCheckbox from './GroceriesCheckbox'
 
-const GroceriesList = ({ items }) => (
+const GroceriesList = ({ items, showCompleted = false }) => (
   <ul
     className="list-reset mtm mbn"
     children={_.map(items, item => (
@@ -11,6 +11,7 @@ const GroceriesList = ({ items }) => (
         name={item.name}
         id={item.id}
         completedAt={item.completed_at}
+        showCompleted={showCompleted}
         key={`item-${item.id}`}
       />
     ))}
@@ -18,7 +19,8 @@ const GroceriesList = ({ items }) => (
 )
 
 GroceriesList.propTypes = {
-  items: PropTypes.array.isRequired
+  items: PropTypes.array.isRequired,
+  showCompleted: PropTypes.bool
 }
 
 export default GroceriesList
