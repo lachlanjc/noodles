@@ -36,7 +36,7 @@ const Groceries = ({ groceries }) => (
     </Document>
     <footer className="flex flex-cols flex-rows-ns fac-ns fjc-ns fjc phm mtm mbxl">
       <div className="flex-i">
-        <Icon icon="share" size={24} className="fill-grey-3 mrm" />
+        <Icon icon="share" size={22} className="fill-grey-3 mrs mrm-ns" />
         <Button color="grey-3" sm href={mailto(groceries)}>
           Email
         </Button>
@@ -52,7 +52,7 @@ const Groceries = ({ groceries }) => (
       />
       <Spacer x={16} y={8} />
       <div className="flex-i">
-        <Icon icon="more" size={24} className="fill-grey-3 mrm" />
+        <Icon icon="more" size={22} className="fill-grey-3 mrs mrm-ns" />
         <ModalLink is="btn" color="grey-3" name="sms" sm>Use SMS</ModalLink>
         <Spacer x={16} />
         <Button color="grey-3" sm href="/groceries/past">
