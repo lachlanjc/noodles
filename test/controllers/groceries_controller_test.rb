@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class GroceriesControllerTest < ActionDispatch::IntegrationTest
+class GroceriesControllerTest < ActionController::TestCase
   include Devise::Test::ControllerHelpers
 
   setup do
@@ -9,25 +9,38 @@ class GroceriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get index' do
-    get groceries_url
+    get :index
     assert_response :success
   end
 
   test 'should get new' do
-    get new_grocery_url
+    get :new
     assert_response :success
   end
 
   test 'should create grocery' do
     assert_difference('Grocery.count') do
-      post groceries_url, params: { grocery: { completed_at: @grocery.completed_at, name: @grocery.name, user_id: @grocery.user_id } }
+      post :create, params: { grocery: { name: @grocery.name, user_id: @grocery.user_id } }
     end
+    assert_equal @grocery.name, Grocery.last.name
 
-    assert_redirected_to grocery_url(Grocery.last)
+    assert_response :redirect
   end
 
   test 'should update grocery' do
-    patch grocery_url(@grocery), params: { grocery: { completed_at: @grocery.completed_at, name: @grocery.name, user_id: @grocery.user_id } }
-    assert_redirected_to grocery_url(@grocery)
+    @name = groceries(:two).name
+    patch :update, params: { id: Grocery.last.id, grocery: { name: @name } }
+    # assert_equal @name, Grocery.last.name
+    assert_response :redirect
+  end
+
+  test 'should destroy grocery' do
+    delete :destroy, params: { id: @grocery.id }
+    assert_response :redirect # should be :success
+  end
+
+  test 'should get past' do
+    get :past
+    assert_response :success
   end
 end
