@@ -41,7 +41,13 @@ class GroceriesCheckbox extends Component {
   }
 
   render() {
-    const { name, id, completedAt, showCompleted = false, ...props } = this.props
+    const {
+      name,
+      id,
+      completedAt,
+      showCompleted = false,
+      ...props
+    } = this.props
     const completed = !_.isEmpty(this.state.completedAt)
     return (
       <li
@@ -49,7 +55,14 @@ class GroceriesCheckbox extends Component {
           this.checkbox = a
         }}
       >
-        <Checkbox label={name} checked={completed} strikethrough={completed} metadata={showCompleted && new Date(completedAt).toLocaleDateString()} />
+        <Checkbox
+          label={name}
+          checked={completed}
+          strikethrough={completed}
+          metadata={
+            showCompleted ? new Date(completedAt).toLocaleDateString() : ''
+          }
+        />
       </li>
     )
   }
@@ -89,7 +102,8 @@ const Checkbox = ({
         <Checkmark className={checked ? 'dib' : 'dn'} size={14} />
       </div>
       {!_.isEmpty(label) && <span className="man flex-auto">{label}</span>}
-      {!_.isEmpty(metadata) && <span className="f5 grey-3 mls" children={metadata} />}
+      {!_.isEmpty(metadata) &&
+        <span className="f5 grey-3 mls" children={metadata} />}
     </div>
   )
 }
