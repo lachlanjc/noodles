@@ -54,9 +54,17 @@ const Groceries = ({ groceries }) => (
       <div className="flex-i">
         <Icon icon="more" size={24} className="fill-grey-3 mrm" />
         <ModalLink is="btn" color="grey-3" name="sms" sm>Use SMS</ModalLink>
+        <Spacer x={16} />
+        <Button color="grey-3" sm href="/groceries/past">
+          View past items
+        </Button>
       </div>
     </footer>
   </div>
 )
+
+Groceries.propTypes = {
+  groceries: PropTypes.array.isRequired
+}
 
 export default Groceries

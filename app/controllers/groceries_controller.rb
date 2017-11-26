@@ -1,6 +1,6 @@
 class GroceriesController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
-  before_action :set_grocery, only: %i[show update destroy]
+  before_action :set_grocery, only: %i[update destroy]
   before_action :authenticate_user!, unless: :completion?
   before_action -> { hey_thats_my @grocery if defined?(@grocery) && !completion? }
 
@@ -35,6 +35,11 @@ class GroceriesController < ApplicationController
     else
       render :show
     end
+  end
+
+  # GET /groceries/past
+  def past
+    @groceries = current_user.groceries.past.as_json
   end
 
   private

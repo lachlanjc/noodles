@@ -8,6 +8,7 @@ import CollectionsHomeBlankSlate from '../components/CollectionsHomeBlankSlate'
 import CollectionPage from '../components/Collection'
 import Groceries from '../components/Groceries'
 import GroceriesNew from '../components/GroceriesNew'
+import GroceriesPast from '../components/GroceriesPast'
 
 WebpackerReact.setup({
   FlashContainer,
@@ -17,5 +18,6 @@ WebpackerReact.setup({
   CollectionsHomeBlankSlate,
   CollectionPage,
   Groceries,
-  GroceriesNew
+  GroceriesNew,
+  GroceriesPast
 })
