@@ -9,6 +9,7 @@ import GroceriesBlankSlate from './GroceriesBlankSlate'
 import GroceriesList from './GroceriesList'
 import GroceriesForm from './GroceriesForm'
 import ModalLink from './ModalLink'
+import Icon from './Icon'
 
 const mailto = items =>
   `mailto:?subject=Grocery%20list&body=${encodeURIComponent(_.join(_.map(items, 'name'), '\n') + '\n\nList from Noodles: https://getnoodl.es/')}`
@@ -33,8 +34,9 @@ const Groceries = ({ groceries }) => (
             <GroceriesForm key="add" />
           ]}
     </Document>
-      <ModalLink is="btn" color="grey-3" name="sms" sm>Use SMS</ModalLink>
-      <Spacer x={16} />
+    <footer className="flex flex-cols flex-rows-ns fac-ns fjc-ns fjc phm mtm mbxl">
+      <div className="flex-i">
+        <Icon icon="share" size={24} className="fill-grey-3 mrm" />
         <Button color="grey-3" sm href={mailto(groceries)}>
           Email
         </Button>
@@ -42,6 +44,17 @@ const Groceries = ({ groceries }) => (
         <Button color="grey-3" sm onClick={e => { window.print() }}>
           Print
         </Button>
+      </div>
+      <Spacer x={16} y={8} />
+      <div
+        className="dn dib-ns grey-4"
+        style={{ width: 0, height: 32, borderLeft: '1px solid currentColor' }}
+      />
+      <Spacer x={16} y={8} />
+      <div className="flex-i">
+        <Icon icon="more" size={24} className="fill-grey-3 mrm" />
+        <ModalLink is="btn" color="grey-3" name="sms" sm>Use SMS</ModalLink>
+      </div>
     </footer>
   </div>
 )

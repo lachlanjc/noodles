@@ -1,15 +1,6 @@
 .flex { display: flex; }
 .flex-i { display: inline-flex; }
 
-@media screen and (min-width: 30em) {
-  .flex-ns { display: flex; }
-  .flex-i-ns { display: inline-flex; }
-}
-
-@media screen and (min-width: 48em) {
-  .flex-md { display: flex; }
-}
-
 .fac { align-items: center; }
 .fab { align-items: baseline; }
 .fas { align-items: flex-start; }
@@ -32,6 +23,18 @@
 
 .flex-first { order: -1; }
 .flex-last  { order: 99999; }
+
+@media screen and (min-width: 30em) {
+  .flex-ns { display: flex; }
+  .flex-i-ns { display: inline-flex; }
+  .flex-rows-ns { flex-flow: row wrap; }
+  .fjc-ns { justify-content: center; }
+  .fac-ns { align-items: center; }
+}
+
+@media screen and (min-width: 48em) {
+  .flex-md { display: flex; }
+}
 
 /*
 .flex-wrap    { flex-wrap: wrap; }
