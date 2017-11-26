@@ -22,19 +22,15 @@ class GroceriesCheckbox extends Component {
   constructor(props) {
     super(props)
     this.state = { completedAt: this.props.completedAt || null }
-    this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
-    console.log(this.checkbox)
     this.checkbox.onclick = e => {
       this.handleClick(e)
     }
   }
 
   handleClick(e) {
-    // e.preventDefault()
-    console.log('click')
     this.setState(a => ({
       completedAt: _.isEmpty(a.completedAt) ? new Date().toISOString() : null
     }))
