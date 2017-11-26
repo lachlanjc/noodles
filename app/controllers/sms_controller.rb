@@ -9,7 +9,7 @@ class SmsController < ApplicationController
     if @user.blank?
       send_message 'Noodles doesn’t recognize your number. Add it: https://getnoodl.es/groceries'
     elsif ['groceries', 'grocery list', 'list'].include? params['Body'].downcase
-      send_message @user.groceries.active.pluck(:name).join("\n") + 'https://getnoodl.es/groceries'
+      send_message @user.groceries.active.pluck(:name).join("\n") + "\n" + 'https://getnoodl.es/groceries'
     else
       Grocery.create name: params['Body'].to_s.squish, user: @user
       send_message 'Saved! (Reply List for all)'

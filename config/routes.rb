@@ -38,7 +38,7 @@ Rails.application.routes.draw do
 
   resources :groceries, except: %i[show edit] do
     collection do
-      get '/past', to: 'groceries#past'
+      get '/past', to: 'groceries#past', as: :past
     end
   end
   post '/groceries/sms', to: 'sms#groceries'
