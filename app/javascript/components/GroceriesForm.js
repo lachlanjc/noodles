@@ -13,7 +13,7 @@ const GroceriesForm = ({ hideSubmit = false, ...props }) => {
       action="/groceries"
       method="POST"
       acceptCharset="UTF-8"
-      className="flex fac w-100 mts"
+      className="flex fac w-100 mts dn-p"
       style={{ paddingTop: 4 }}
       {...props}
     >
