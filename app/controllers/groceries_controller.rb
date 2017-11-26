@@ -10,8 +10,7 @@ class GroceriesController < ApplicationController
   end
 
   # GET /groceries/new
-  def new
-  end
+  def new; end
 
   # POST /groceries
   def create
