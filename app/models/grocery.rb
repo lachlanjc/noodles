@@ -4,7 +4,7 @@ class Grocery < ApplicationRecord
   validates :name, :user_id, presence: true
 
   scope :active, -> { where('completed_at IS NULL') }
-  scope :past,   -> { where('completed_at IS NOT NULL').order(completed_at: :desc) }
+  scope :past,   -> { where('completed_at IS NOT NULL').order(name: :desc) }
 
   def completed?
     completed_at.blank?
