@@ -69,6 +69,7 @@
     </section>
   <% end %>
 
+  <%= f.label :title, class: 'dn' %>
   <%= f.text_field :title,
     value: @title,
     required: true,
@@ -79,40 +80,41 @@
   %>
 
   <%= f.label :description, class: 'label f3 dib' %>
+  <small class="f5 grey-3">(optional)</small>
   <%= f.text_area :description,
     rows: 1,
     autocomplete: 'off',
-    placeholder: 'If you\'d like, write a description for the recipe here.',
+    placeholder: 'Why do you make this recipe? What’s its story?',
     'data-behavior': 'autosize',
     class: 'text-input invisible-input serif w-100 lh-copy'
   %>
 
   <%= f.label :ingredients, class: 'label f3 dib' %>
-  <small class="f5 mls grey-4">Put one on each line.</small>
+  <small class="f5 grey-3">Put one on each line.</small>
   <%= f.text_area :ingredients,
     rows: 3,
     autocomplete: 'off',
-    placeholder: 'Click here and type your recipe\'s ingredients.',
+    placeholder: 'What do you need for this recipe?',
     'data-behavior': 'autosize',
     class: 'text-input invisible-input serif w-100 man lh-copy'
   %>
 
   <%= f.label :instructions, class: 'label f3 dib' %>
-  <small class="f5 mls grey-4">Fully supports Markdown.</small>
+  <small class="f5 grey-3">Supports Markdown</small>
   <%= f.text_area :instructions,
     rows: 4,
     autocomplete: 'off',
-    placeholder: 'Add the instructions here.',
+    placeholder: 'How do you make this recipe?',
     'data-behavior': 'autosize editor_instructions',
     class: 'text-input invisible-input serif w-100 man lh-copy'
   %>
 
   <%= f.label :notes, class: 'label f3 dib' %>
-  <small class="f5 mls grey-4">What would you want to remember for next time?</small>
+  <small class="f5 grey-3">(optional)</small>
   <%= f.text_area :notes,
     rows: '4',
     autocomplete: 'off',
-    placeholder: 'Write your notes here.',
+    placeholder: 'What would you want to remember for next time?',
     'data-behavior': 'autosize',
     class: 'text-input invisible-input serif w-100 man lh-copy'
   %>
@@ -120,15 +122,15 @@
   <%= section_header 'Details', 2, class: 'mtl' %>
 
   <%= f.label :source, class: 'label dib' %>
-  <small class="f5 mls grey-4">Where did this recipe come from?</small>
+  <small class="f5 mls grey-3">Where did this recipe come from?</small>
   <%= f.text_field :source, class: 'text-input serif w-two-thirds-m' %>
 
   <%= f.label :author, class: 'label dib' %>
-  <small class="f5 mls grey-4">Who originally wrote this recipe?</small>
+  <small class="f5 mls grey-3">Who originally wrote this recipe?</small>
   <%= f.text_field :author, class: 'text-input serif w-two-thirds-m' %>
 
   <%= f.label :serves, 'Yield', class: 'label dib' %>
-  <small class="f5 mls grey-4">How many servings does your recipe produce?</small>
+  <small class="f5 mls grey-3">How many servings does your recipe produce?</small>
   <%= f.text_field :serves, class: 'text-input serif w-two-thirds-m' %>
 
   <% if params[:collection] %>
