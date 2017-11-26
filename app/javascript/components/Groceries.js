@@ -34,14 +34,14 @@ const Groceries = ({ groceries }) => (
             <GroceriesForm key="add" />
           ]}
     </Document>
-    <footer className="flex flex-cols flex-rows-ns fac-ns fjc-ns fjc phm mtm mbxl">
+    <footer className="flex flex-cols flex-rows-ns fac-ns fjc-ns fjc phm mtm mbxl dn-p">
       <div className="flex-i">
         <Icon icon="share" size={22} className="fill-grey-3 mrs mrm-ns" />
         <Button color="grey-3" sm href={mailto(groceries)}>
           Email
         </Button>
         <Spacer x={16} />
-        <Button color="grey-3" sm onClick={e => { window.print() }}>
+        <Button color="grey-3" sm data-behavior="print">
           Print
         </Button>
       </div>
