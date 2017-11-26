@@ -22,3 +22,11 @@
 .recipe__ingredients li:hover .add-grocery {
   opacity: 1 !important;
 }
+
+.groceries__item {
+  .delete-grocery {
+    opacity: 0;
+    transition: opacity $transition;
+  }
+  &:hover .delete-grocery { opacity: 1 !important; }
+}

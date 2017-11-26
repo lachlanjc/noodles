@@ -8,7 +8,7 @@ import GroceriesList from './GroceriesList'
 const GroceriesPast = ({ groceries }) => (
   <Document mw={6}>
     <SuperHeader className="sans f2 f2-ns mvn-ns">
-      Past grocery lists
+      Past grocery list items
     </SuperHeader>
     <GroceriesList items={groceries} showCompleted />
   </Document>

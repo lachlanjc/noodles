@@ -37,6 +37,12 @@ class GroceriesController < ApplicationController
     end
   end
 
+  # DELETE /todos/1
+  def destroy
+    @grocery.destroy
+    head :no_content
+  end
+
   # GET /groceries/past
   def past
     @groceries = current_user.groceries.past.as_json
