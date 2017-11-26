@@ -10,7 +10,7 @@ const GroceriesList = ({ items }) => (
       <GroceriesCheckbox
         name={item.name}
         id={item.id}
-        completedAt={item.completedAt}
+        completedAt={item.completed_at}
         key={`item-${item.id}`}
       />
     ))}

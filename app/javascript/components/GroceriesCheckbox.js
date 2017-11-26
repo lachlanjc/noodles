@@ -8,10 +8,6 @@ const headers = new Headers({
   Accept: 'application/json'
 })
 
-const superClick = e => {
-  alert('super!')
-}
-
 class GroceriesCheckbox extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
@@ -21,7 +17,9 @@ class GroceriesCheckbox extends Component {
 
   constructor(props) {
     super(props)
-    this.state = { completedAt: this.props.completedAt || null }
+    this.state = {
+      completedAt: props.completedAt || null
+    }
   }
 
   componentDidMount() {
