@@ -13,15 +13,12 @@ const GroceriesMini = ({ groceries, ...props }) => (
     <SidebarModuleHeading>
       <a href="/groceries" className="blue">Grocery list</a>
     </SidebarModuleHeading>
-    {_.isEmpty(groceries)
-      ? <p className="grey-3">
-          Nothing on your grocery list yet!
-        </p>
-      : <SidebarModuleList
-          children={_.map(groceries, (item, i) => (
-            <SidebarModuleListItem name={item.name} key={item.name + i} />
-          ))}
-        />}
+    {!_.isEmpty(groceries) &&
+      <SidebarModuleList
+        children={_.map(groceries, (item, i) => (
+          <SidebarModuleListItem name={item.name} key={item.name + i} />
+        ))}
+      />}
     <GroceriesForm
       hideSubmit={!_.isEmpty(groceries)}
       makeSuggestions={false}
