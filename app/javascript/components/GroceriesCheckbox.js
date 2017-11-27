@@ -96,7 +96,7 @@ class GroceriesCheckbox extends Component {
           <Icon
             icon="cancel"
             size={22}
-            className="delete-grocery red mls"
+            className="groceries__item__delete red mls"
             style={{ fill: 'currentColor' }}
           />
           {date && <span className="f5 grey-3 mls" children={date} />}
