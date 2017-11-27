@@ -60,6 +60,7 @@ class GroceriesForm extends Component {
         method="POST"
         acceptCharset="UTF-8"
         className="dn-p"
+        onSubmit={N.track('add-grocery', { name })}
         {...props}
       >
         <input type="hidden" name="authenticity_token" value={csrfToken} />

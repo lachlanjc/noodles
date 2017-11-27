@@ -22,6 +22,7 @@ class GroceriesCheckbox extends Component {
   componentDidMount() {
     this.checkbox.onclick = e => {
       this.handleClick(e)
+      N.track('complete-grocery', { name: this.props.name })
     }
     this.delete.onclick = e => {
       this.handleDelete(e)

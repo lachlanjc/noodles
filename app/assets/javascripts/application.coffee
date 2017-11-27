@@ -13,6 +13,10 @@ $(document).on 'turbolinks:load', ->
   N.anonymous = !N.signed_in
   N.my_object = (N.signed_in && _.isEqual(N.user, N.object_user)) || false
 
+  N.track = (name, options) ->
+    Intercom 'trackEvent', name, options if typeof Intercom isnt 'undefined'
+    heap.track name, options if typeof heap isnt 'undefined'
+
   N.toggleMenu = (m) ->
     $(m).find('[data-behavior~=menu_content]').slideToggle 120
     o = $(m).attr('aria-expanded') is 'true'
@@ -179,4 +183,7 @@ $(document).on 'turbolinks:load', ->
     $(this).toggleClass 'checked'
 
   $(document).on 'submit', '[data-behavior~=clip_form]', ->
-    heap.track 'Clips Recipe', { 'URL': N.s('clip_url').val() }
+    N.track 'clips-recipe', { 'URL': N.s('clip_url').val() }
+  $(document).on 'click', '.stripe-button-el', ->
+    N.track 'clicks-subscribe', {}
+  
