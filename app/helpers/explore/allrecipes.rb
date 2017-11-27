@@ -4,8 +4,11 @@ class AllrecipesSearchScraper
     scraper.history_added = proc { sleep 0.25 }
 
     results = []
-    raw_results = scraper.get('http://allrecipes.com/search/results/?sort=re&wt=' + q).search('section.grid article.grid-col--fixed-tiles:not(#dfp_container)')
+    url = 'http://allrecipes.com/search/results/?sort=re&wt=' + q
+    selector = 'section.grid article.grid-col--fixed-tiles:not(#dfp_container):not(.video-card):not(.hub-card)'
+    raw_results = scraper.get(url).search(selector)
     raw_results.each do |item|
+      next if item.at_css('div').attr('class').match('article-card').present?
       result = {}
       result['url'] = 'http://allrecipes.com' + item.at_css('a').attr('href')
       result['title'] = item.search('h3').text.squish
