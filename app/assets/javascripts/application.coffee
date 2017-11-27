@@ -119,6 +119,7 @@ $(document).on 'turbolinks:load', ->
   # Show when in various user states – conditionally fill in cached pages
   N.s('show_if_anonymous').removeClass 'dn' if N.anonymous
   N.s('show_if_signed_in').removeClass 'dn' if N.signed_in
+  N.s('show_unless_mine').removeClass 'dn' unless N.signed_in
   N.s('show_if_my_object').removeClass 'dn' if N.my_object
 
   if N.theres 'autoselect'

@@ -52,8 +52,9 @@
     <article class="document mw7 mtm mbn">
       <h1 class="mvn" itemprop="name"><%= @recipe.title %></h1>
       <div class="mbm dn-p flex fac lh0 fr-ns absolute-ns t0-ns r0-ns mrm-ns mtl-ns">
-        <%= link_to save_to_noodles_path(@recipe.shared_id),
-          class: 'dn mrm pointer tooltipped tooltipped--n',
+        <%= link_to save_path(url: share_url(@recipe.shared_id)),
+          'data-behavior': 'show_unless_mine',
+          class: 'mrm pointer tooltipped tooltipped--n',
           'aria-label': 'Save to your library' do %>
           <%= inline_svg 'add_circle.svg', class: 'fill-orange', size: 32 %>
         <% end %>
