@@ -36,7 +36,7 @@ class GroceriesCheckbox extends Component {
     const data = JSON.stringify({
       grocery: { completed_at: this.state.completedAt }
     })
-    $.put({ url: `/groceries/${this.props.id}`, method: 'PATCH', data })
+    $.ajax({ url: `/groceries/${this.props.id}`, method: 'PATCH', data })
   }
 
   handleDelete(e) {
