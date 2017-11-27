@@ -6,7 +6,7 @@ class SaveController < ApplicationController
   before_action :please_sign_in
 
   def save
-    if params[:url].match 'getnoodl.es/s/'
+    if params[:url].match? 'getnoodl.es/s/'
       id = URI(params[:url]).path.gsub('/s/', '')
       if @recipe = Recipe.find_by(shared_id: id)
         @recipe.duplicate_for(current_user)

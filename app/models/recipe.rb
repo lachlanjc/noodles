@@ -57,9 +57,9 @@ class Recipe < ApplicationRecord
   end
 
   def duplicate_for(user)
-    @new = self.dup
+    @new = dup
     @new.user_id = user.id
-    @new.source = self.public_url
+    @new.source = public_url
     @new.favorite = false
     @new.save
     recipe_path @new

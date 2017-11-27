@@ -2,8 +2,8 @@ class AllrecipesSearchScraper
   PLACEHOLDERS = [
     'http://images.media-allrecipes.com/images/44555.png',
     'http://images.media-allrecipes.com/userphotos/250x250/0.jpg'
-  ]
-  SELECTOR = 'section.grid article.grid-col--fixed-tiles:not(#dfp_container):not(.video-card):not(.hub-card)'
+  ].freeze
+  SELECTOR = 'section.grid article.grid-col--fixed-tiles:not(#dfp_container):not(.video-card):not(.hub-card)'.freeze
 
   def scrape(q)
     scraper = Mechanize.new
