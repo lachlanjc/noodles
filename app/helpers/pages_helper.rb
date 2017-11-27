@@ -2,9 +2,9 @@ module PagesHelper
   def feature_list_item(name, description, link = nil)
     content_tag(link ? :a : :div, href: link, rel: link && 'nofollow', class: 'feature-list__item flex-grid__item') do
       [
-        link ? content_tag(:span, '↗', class: 'blue b fr') : nil,
-        content_tag(:h3, name, class: 'mtn mbs'),
-        content_tag(:p, description, class: 'man grey-3')
+        link ? content_tag(:span, '↗', class: 'blue fr', style: 'font-weight:800') : nil,
+        content_tag(:h3, name, class: 'mtn mbs sans b'),
+        content_tag(:p, description, class: 'man grey-3 serif')
       ].join.html_safe
     end
   end

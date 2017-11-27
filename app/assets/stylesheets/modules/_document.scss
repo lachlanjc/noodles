@@ -40,25 +40,3 @@
     z-index: 0;
   }
 }
-
-/*
-.smear {
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  display: inline-block;
-  padding: $space-1 $space-3;
-  text-align: center;
-}
-.smear--highlight {
-  background-image: url(<%= asset_path 'smear-highlight.svg' %>);
-  color: $grey-2;
-}
-.smear--light {
-  background-image: url(<%= asset_path 'smear-light.svg' %>);
-  color: $grey-2;
-}
-.smear--dark {
-  background-image: url(<%= asset_path 'smear-dark.svg' %>);
-  color: $white;
-}
-*/

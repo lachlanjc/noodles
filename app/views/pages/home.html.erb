@@ -29,16 +29,18 @@
   <meta name="application-name" content="Noodles">
   <meta name="theme-color" content="#ff6d00">
   <%= make_schema org_schema %>
-  <script>
-  !function(g,s,q,r,d){r=g[r]=g[r]||function(){(r.q=r.q||[]).push(arguments)};
-  d=s.createElement(q);q=s.getElementsByTagName(q)[0];
-  d.src='//d1l6p2sc9645hc.cloudfront.net/tracker.js';q.parentNode.insertBefore(d,q)}(window, document, 'script', '_gs');
-  _gs('GSN-107564-I');
-  </script>
-  <script>
-  window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var n=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=(n?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var o=document.getElementsByTagName("script")[0];o.parentNode.insertBefore(a,o);for(var r=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["clearEventProperties","identify","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=r(p[c])};
-  heap.load('2053938006')
-  </script>
+  <% if Rails.env.production? %>
+    <script>
+    !function(g,s,q,r,d){r=g[r]=g[r]||function(){(r.q=r.q||[]).push(arguments)};
+    d=s.createElement(q);q=s.getElementsByTagName(q)[0];
+    d.src='//d1l6p2sc9645hc.cloudfront.net/tracker.js';q.parentNode.insertBefore(d,q)}(window, document, 'script', '_gs');
+    _gs('GSN-107564-I');
+    </script>
+    <script>
+    window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var n=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=(n?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var o=document.getElementsByTagName("script")[0];o.parentNode.insertBefore(a,o);for(var r=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["clearEventProperties","identify","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=r(p[c])};
+    heap.load('2053938006')
+    </script>
+  <% end %>
 </head>
 <body class="man tc">
   <header
@@ -57,46 +59,61 @@
     <article class="hero phm-ns mx-auto">
       <%= render 'shared/flash' if flash.any? %>
       <div class="banner">
-        <h1 class="f0 f0-ns">Cooking</h1>
-        <h1 class="f0 f0-ns">is</h1>
-        <h1 class="f0 f0-ns">hard.</h1>
-        <div class="banner__container mtm mtl-ns rounded bg-grey-6 bg-blur pam pal-ns">
-          <h2 class="f3 f2-ns mtn mbm grey-2 sans normal">Get a head start with all your recipes organized.</h2>
-          <a
-            href="#signup"
-            name="signup"
-            data-behavior="modal_trigger inline_signup_btn"
-            class="btn btn--primary bg-blue b f3 f2-ns shadow">
-            Try Noodles
-          </a>
-        </div>
+        <h1 class="white f0 f0-ns">Cook with <mark>superpowers</mark>.</h1>
+        <h2 class="white sans f2">Noodles is a home for your recipes—explore, save, share.</h2>
+        <a
+          href="#signup"
+          name="signup"
+          data-behavior="modal_trigger inline_signup_btn"
+          class="btn btn--primary bg-blue b f3 f2-ns mtm mtl-ns shadow">
+          Try Noodles
+        </a>
       </div>
     </article>
   </header>
   <section class="mw8 mx-auto pvm phm-ns">
-    <p class="mw7 mx-auto mtn mbl phm f3 f2-ns serif">
+    <h3 class="mw7 mx-auto mtn mbl phm f3 f2-ns lead serif">
       Noodles is a simple library of all your recipes.
       <br class="dn db-ns">
       Add one in just a few taps, find it in seconds later – anywhere.
-    </p>
+    </h3>
     <hr class="bg-orange bw0 mvm" style="width: 64px; height: 4px;">
-    <h2 class="f2 mvn sans">What else?</h2>
+    <h2 class="f2 f1-ns mvm sans">
+      <span class="db grey-3 caps f4 normal">Stop wasting time—</span>
+      Focus on <span class="serif smear">cooking.</span>
+    </h2>
     <article class="feature-list flex-grid tl mts">
       <%= feature_list_item 'Share with anyone', 'Keep recipes private, or share your best via links, PDFs, and embeds.', 'https://getnoodl.es/s/sample' %>
-      <%= feature_list_item 'Cook Mode', 'When you’re at the stove, give your recipes superpowers.', 'https://getnoodl.es/s/sample/cook' %>
-      <%= feature_list_item 'Web clipping', 'Save recipes from the web right from your browser.' %>
+      <%= feature_list_item 'Cook Mode', 'See just what you need when you’re cooking—no frustration required.', 'https://getnoodl.es/s/sample/cook' %>
+      <%= feature_list_item 'Web import', 'Save recipes from the web right from your browser.' %>
       <%= feature_list_item 'Collections', 'Group your recipes however you like, and share them with anyone.', 'https://getnoodl.es/c/2A1J3Q' %>
-      <%= feature_list_item 'Explore', 'Find recipes from the web and save them to your library with a tap.', explore_path %>
-      <%= feature_list_item 'Find it fast', 'Search, mark your favorites, or even open a random recipe.' %>
+      <%= feature_list_item 'Explore', 'Making a quick meal? Find and save great recipes from the web.', explore_path %>
+      <%= feature_list_item 'Grocery List', 'Add items in the app, ingredients from a recipe, or via SMS.' %>
     </article>
   </section>
-  <a
-    href="#signup"
-    name="signup"
-    data-behavior="modal_trigger inline_signup_btn"
-    class="btn btn--primary bg-blue">
-    Make a free account
-  </a>
+  <section>
+    <%= section_header 'Start cooking, not hunting for recipes.', 3, class: 'mw7 mx-auto mtm mbl phm f3 lead grey-2 serif' %>
+    <svg
+      class="arrow dn dib-ns"
+      width="24"
+      height="60"
+      viewBox="0 0 24 60"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8.633 6.695c6.86 12.419 11.75 25.539 14.207 39.496.45 2.413.902 4.826 1.107 7.265.145 1.672-.038 3.342-.166 5.012-.077.959-.95 1.611-1.91 1.524-.931-.114-1.702-.83-1.598-1.761.868-6.927-1.14-13.567-2.49-20.258C15.76 28.1 11.985 18.876 6.98 10.166c-.69-1.182-1.464-2.282-2.21-3.409-.165-.22-.357-.413-.605-.66.281 1.48.59 2.879.79 4.277.142 1.124-.456 1.943-1.415 2.02-.958.077-1.592-.666-1.79-1.736C1.44 9.041.968 7.477.576 5.886.407 5.282.213 4.706.1 4.102-.35 1.744.737.271 3.12.037c2.984-.231 5.728.66 8.446 1.797 1.043.444 2.005 1.025 3.021 1.496.577.25 1.208.444 1.811.557 1.07.197 1.814.996 1.71 1.981-.105.986-.896 1.722-1.965 1.524-1.042-.17-2.03-.504-2.991-.92-1.73-.748-3.378-1.634-5.08-2.41-.33-.056-.659-.113-1.153-.28.664 1.1 1.216 1.98 1.714 2.913z"
+        fillRule="evenodd"
+        class="fill-orange"
+      />
+    </svg>
+    <a
+      href="#signup"
+      name="signup"
+      data-behavior="modal_trigger inline_signup_btn"
+      class="btn btn--primary bg-orange f3">
+      Make a free account
+    </a>
+  </section>
   <section class="modal modal--signup modal--outlined tc" role="dialog" id="signup">
     <%= modal_header 'Sign up for Noodles' %>
     <%= render 'devise/registrations/new',
