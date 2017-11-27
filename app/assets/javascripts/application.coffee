@@ -83,6 +83,8 @@ $(document).on 'turbolinks:load', ->
     $.post '/groceries', { grocery: { name: t.data('value') } }, (e) ->
       t.addClass 'add-grocery--done'
       t.attr 'aria-label', 'Added!'
+  $(document).on 'click', '[data-behavior~=grocery_suggestion]', (e) ->
+    N.updateGroceryName $(this).text(), false
 
   if N.theres('recipe_colls_container') and _.includes(window.location.pathname, '/recipes/')
     if _.isEqual N.s('recipe_colls_container').data('user'), N.user

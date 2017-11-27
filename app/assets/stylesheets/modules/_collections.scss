@@ -7,7 +7,7 @@
   top: $space-2 * -1;
 }
 
-.colladd__item {
+.list__item {
   border: 2px solid $orange;
   border-radius: $border-radius;
   font-size: $f5;
@@ -19,9 +19,9 @@
   color: $orange;
 }
 
-.colladd__item:hover,
-.colladd__item:focus,
-.colladd__item__check:checked + .colladd__item {
+.list__item:hover,
+.list__item:focus,
+.list__item__check:checked + .list__item {
   border-color: transparent;
   background-color: $orange;
   color: $white !important;

@@ -22,7 +22,11 @@ const GroceriesMini = ({ groceries, ...props }) => (
             <SidebarModuleListItem name={item.name} key={item.name + i} />
           ))}
         />}
-    <GroceriesForm hideSubmit={!_.isEmpty(groceries)} style={{}} />
+    <GroceriesForm
+      hideSubmit={!_.isEmpty(groceries)}
+      makeSuggestions={false}
+      style={{}}
+    />
   </SidebarModule>
 )
 

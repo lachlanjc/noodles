@@ -92,12 +92,7 @@ class GroceriesCheckbox extends Component {
           </div>
           <span className="man">{name}</span>
         </div>
-        <div
-          className="flex fac"
-          ref={a => {
-            this.delete = a
-          }}
-        >
+        <div className="flex fac" ref={a => (this.delete = a)}>
           <Icon
             icon="cancel"
             size={22}
