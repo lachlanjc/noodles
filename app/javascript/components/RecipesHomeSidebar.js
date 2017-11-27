@@ -12,12 +12,12 @@ const RecipesHomeSidebar = ({
   recipes = [],
   collections = [],
   groceries = [],
-  hideCollections = false,
+  hideModules = false,
   ...props
 }) => (
   <div className="dn-p">
     <Button primary color="blue" href="/recipes/new" children="New recipe" />
-    <Spacer x={16} y={16} className="dib db-ns" />
+    <Spacer x={8} y={16} className="dib db-ns" />
     <ModalLink
       primary
       is="btn"
@@ -25,7 +25,7 @@ const RecipesHomeSidebar = ({
       color="purple"
       children="Import"
     />
-    <Spacer x={16} y={16} className="dib db-ns" />
+    <Spacer x={8} y={16} className="dib db-ns" />
     <Button
       primary
       color="orange"
@@ -33,9 +33,15 @@ const RecipesHomeSidebar = ({
       children="Explore"
       className="mtm mtn-ns"
     />
-    <GroceriesMini groceries={groceries} />
-    <RecentlyCooked recipes={recipes} hidden={_.size(recipes) < 8} />
-    <CollectionsMini collections={collections} hidden={hideCollections} />
+    {!hideModules && [
+      <GroceriesMini groceries={groceries} key="groceries" />,
+      <RecentlyCooked
+        recipes={recipes}
+        hidden={_.size(recipes) < 8}
+        key="recently"
+      />,
+      <CollectionsMini collections={collections} key="collections" />
+    ]}
   </div>
 )
 
@@ -43,7 +49,7 @@ RecipesHomeSidebar.propTypes = {
   recipes: PropTypes.array,
   collections: PropTypes.array,
   groceries: PropTypes.array,
-  hideCollections: PropTypes.bool
+  hideModules: PropTypes.bool
 }
 
 export default RecipesHomeSidebar

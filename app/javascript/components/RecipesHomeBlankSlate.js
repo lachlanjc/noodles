@@ -7,7 +7,7 @@ const RecipesHomeBlank = () => (
   <SplitLayout
     className="pvm phl-ns"
     heading="Recipes"
-    sidebar={<RecipesHomeSidebar hideCollections />}
+    sidebar={<RecipesHomeSidebar hideModules />}
     content={<RecipesHomeBlankSlate />}
   />
 )
@@ -61,14 +61,16 @@ const RecipesHomeBlankSlate = () => (
       </div>
       <li className="flex-grid__item bg-white rounded shadow pam">
         <h3 className="mvn orange">Explore</h3>
-        <p className="mvn grey-2">Find and save the web’s best recipes.</p>
+        <p className="mvn grey-2">
+          Find and save great recipes from around the web.
+        </p>
         <p
           className="mts mbn dn-ns orange b"
           style={{
             fontStyle: 'italic'
           }}
         >
-          → Start with Explore!
+          → Start here!
         </p>
       </li>
       <li className="flex-grid__item bg-white rounded shadow pam">
@@ -80,6 +82,12 @@ const RecipesHomeBlankSlate = () => (
         <p className="mvn grey-2">Type or paste in a recipe yourself.</p>
       </li>
     </ol>
+    <p className="mtm mtl-ns grey-3">
+      Later: start filling your
+      {' '}
+      <a href="/groceries" className="blue">Grocery List</a>
+    </p>
   </article>
 )
-export default RecipesHomeBlankSlate
+
+export default RecipesHomeBlank
