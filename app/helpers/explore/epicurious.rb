@@ -11,7 +11,7 @@ class EpicuriousSearchScraper
       result = {}
       result['url'] = "http://epicurious.com#{item.at_css('a').attr('href')}"
       result['title'] = item.search('h4').text.squish
-      result['description'] = item.search('p').text.squish.truncate(164)
+      result['description'] = item.search('p').text.squish.truncate(140)
       results.push(result)
     end
     results.delete_if { |item| item['url'].blank? || item['title'].blank? }
