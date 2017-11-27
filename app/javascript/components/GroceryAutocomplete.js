@@ -4,7 +4,6 @@ export default [
   'Almond milk',
   'Aluminum foil',
   'Apples',
-  'Apples',
   'Arugala',
   'Asparagus',
   'Avocados',
