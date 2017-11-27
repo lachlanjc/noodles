@@ -7,12 +7,12 @@
         <%= b.check_box for: "coll_#{b.value}",
           checked: @active,
           'data-behavior': 'recipe_colls_check',
-          class: 'colladd__item__check dn'
+          class: 'list__item__check dn'
         %>
         <%= b.label name: "coll_#{b.value}",
           value: b.text.truncate(32),
           for: "recipe_collections_#{b.value}",
-          class: 'colladd__item flex fac',
+          class: 'list__item flex fac',
           'data-behavior': "recipe_colls_item #{'recipe_colls_inactive' unless @active}"
         %>
       <% end %>

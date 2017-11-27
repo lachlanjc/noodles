@@ -3,17 +3,16 @@
     display: none !important;
   }
 
-  .superheader {
-    padding-bottom: 0 !important;
-    line-height: 0 !important;
-    border-bottom: 0 !important;
+  body {
+    background-color: $white !important;
+  }
 
-    &:after {
-      content: ' on Noodles';
-    }
+  .superheader:before {
+    content: 'Noodles – ';
   }
 
   main {
+    max-width: 100% !important;
     width: 100% !important;
   }
 

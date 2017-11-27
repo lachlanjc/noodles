@@ -36,6 +36,13 @@ Rails.application.routes.draw do
     get '/preview', to: 'explore#preview'
   end
 
+  resources :groceries, except: %i[show edit] do
+    collection do
+      get '/past', to: 'groceries#past', as: :past
+    end
+  end
+  post '/groceries/sms', to: 'sms#groceries'
+
   get '/privacy', to: 'pages#privacy', as: :privacy
   get '/terms', to: 'pages#terms', as: :terms
   get '/contact', to: 'pages#help', as: :contact

@@ -1,0 +1,32 @@
+.add-grocery {
+  display: inline-block;
+  cursor: pointer;
+  background-image: url(<%= asset_path 'add-grocery.svg' %>);
+  background-size: 100%;
+  width: 24px;
+  height: 20px;
+  position: absolute !important;
+  margin-top: 2px;
+  margin-left: $space-1;
+  opacity: 0;
+  transition: opacity $transition;
+}
+.add-grocery--done {
+  background-image: url(<%= asset_path 'add-grocery-done.svg' %>);
+  opacity: 1 !important;
+}
+
+.recipe__ingredients li {
+  position: relative;
+}
+.recipe__ingredients li:hover .add-grocery {
+  opacity: 1 !important;
+}
+
+.groceries__item {
+  .groceries__item__delete {
+    opacity: 0;
+    transition: opacity $transition;
+  }
+  &:hover .groceries__item__delete { opacity: 1 !important; }
+}

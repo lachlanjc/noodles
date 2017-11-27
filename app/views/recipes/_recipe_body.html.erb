@@ -1,5 +1,5 @@
 <%= section_header 'Ingredients', 2, class: 'mtm' %>
-<div class="recipe__ingredients content">
+<div class="recipe__ingredients content" data-behavior="recipe_ingredients">
   <ul>
     <% @recipe.ingredients.to_s.lines.each do |line| %>
       <%= ingredient_processed(line) %>

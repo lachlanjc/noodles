@@ -5,6 +5,9 @@ class User < ApplicationRecord
 
   has_many :recipes, dependent: :destroy
   has_many :collections, dependent: :destroy
+  has_many :groceries, dependent: :destroy
+
+  validates :phone, uniqueness: true
 
   after_update :update_stripe_customer!
   before_destroy :delete_stripe_data!

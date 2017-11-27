@@ -7,6 +7,10 @@ class RegistrationsController < Devise::RegistrationsController
     params[:explore] ? explore_path : recipes_path
   end
 
+  def after_update_path_for(_resource)
+    request.referer == groceries_url ? groceries_path : recipes_path
+  end
+
   def update_resource(resource, params)
     resource.update_without_password(params)
   end

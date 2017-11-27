@@ -102,7 +102,7 @@ $(document).on 'turbolinks:load', ->
     s = if b is 'nyt' then 'NYT Cooking' else _.capitalize b
     $('[data-behavior~=explore_preview_description]').text 'Source: ' + s
 
-    c = $('[data-behavior~=explore_preview_body]')
+    c = N.s 'explore_preview_body'
     c.html null
     c.addClass 'busy busy--large mx-auto'
 
@@ -115,6 +115,8 @@ $(document).on 'turbolinks:load', ->
     $.get '/explore/preview?url=' + u, (d) ->
       c.removeClass 'busy busy--large mx-auto'
       c.html d
+      if N.signed_in
+        N.addGroceries li for li in c.find('[data-behavior~=recipe_ingredients] li')
 
   $(document).on 'click', '[data-behavior~=explore_clip_from_preview]', ->
     t = $(this)
