@@ -89,16 +89,6 @@ class RecipesController < ApplicationController
     render :share
   end
 
-  def save_to_noodles
-    @new_recipe = @recipe.dup
-    @new_recipe.user_id = current_user.id
-    @new_recipe.source = @recipe.public_url
-    @new_recipe.favorite = false
-    @new_recipe.save
-    flash[:success] = 'Saved!'
-    redirect_to @new_recipe
-  end
-
   def remove_image
     @recipe.update_attribute(:img, nil)
     redirect_to params[:cook] ? cook_recipe_path(@recipe) : edit_recipe_path(@recipe)

@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   scope '/s/:shared_id' do
     get '/', to: 'recipes#share', as: :share
     get '/cook', to: 'cook#index', as: :public_cook
-    get '/save', to: 'recipes#save_to_noodles', as: :save_to_noodles
   end
 
   scope 'embed' do

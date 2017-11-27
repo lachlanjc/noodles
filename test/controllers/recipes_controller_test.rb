@@ -64,11 +64,6 @@ class RecipesControllerTest < ActionController::TestCase
     assert_not_empty flash[:success]
   end
 
-  test 'should get public' do
-    get :share, params: { shared_id: @recipe.shared_id }
-    assert_response :success
-  end
-
   test 'should get collections' do
     get :collections, params: { id: @recipe.id }, xhr: true
     assert_response :success
@@ -91,17 +86,20 @@ class RecipesControllerTest < ActionController::TestCase
     assert_redirected_to edit_recipe_url(@recipe)
   end
 
-  test 'should get public page' do
+  test 'should get public' do
+    get :share, params: { shared_id: @recipe.shared_id }
+    assert_response :success
+  end
+
+  test 'should get public signed out' do
     sign_out users(:one)
     get :share, params: { shared_id: @recipe.shared_id }
     assert_response :success
-    sign_in users(:one)
   end
 
   test 'should be locked out' do
     sign_out users(:one)
     get :show, params: { id: @recipe.id }
     assert_response 403
-    sign_in users(:one)
   end
 end

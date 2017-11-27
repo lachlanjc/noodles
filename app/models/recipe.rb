@@ -56,6 +56,15 @@ class Recipe < ApplicationRecord
     share_url shared_id
   end
 
+  def duplicate_for(user)
+    @new = self.dup
+    @new.user_id = user.id
+    @new.source = self.public_url
+    @new.favorite = false
+    @new.save
+    recipe_path @new
+  end
+
   private
 
   def collection_cleanup!
