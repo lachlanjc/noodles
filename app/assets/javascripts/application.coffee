@@ -143,6 +143,17 @@ $(document).on 'turbolinks:load', ->
   $('[data-behavior~=editor_instructions]').on 'focus', ->
     $(this).val '1. ' if _.isEmpty $(this).val()
 
+  if N.theres 'font_dec'
+    $('html').css 'font-size', 16
+  N.getFontSize = ->
+    _.toNumber _.replace($('html').css('font-size'), 'px', '')
+  N.changeFontSize = (a) ->
+    $('html').css 'font-size', N.getFontSize() + a
+  $(document).on 'click', '[data-behavior~=font_dec]', ->
+    N.changeFontSize -2
+  $(document).on 'click', '[data-behavior~=font_inc]', ->
+    N.changeFontSize 2
+
   $('[data-behavior~=cook_photo_field]').on 'change', ->
     $(this)[0].form.submit()
 

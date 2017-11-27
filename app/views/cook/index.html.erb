@@ -11,7 +11,7 @@
       <%= pluralize @recipe.instructions.lines.count, 'step' %>
     </p>
 
-    <div class="mvm">
+    <div class="flex fac mvm">
       <%= link_to @exit_path, class: 'flex-i fac grey-3 mrl' do %>
         <%= inline_svg 'exit.svg', class: 'fill-grey-3 mrs' %>
         Exit
@@ -24,6 +24,10 @@
         <%= inline_svg 'edit.svg', class: 'fill-grey-3 mrs' %>
         Edit
       <% end %>
+      <div class="flex-i fac mll pointer border rounded b grey-3">
+        <div class="flex-auto f4 tr phm" data-behavior="font_dec">A</div>
+        <div class="flex-auto f2 tl phm border-left" data-behavior="font_inc">A</div>
+      </div>
     </div>
 
     <hr>

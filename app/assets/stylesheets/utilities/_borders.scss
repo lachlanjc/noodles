@@ -4,16 +4,12 @@
   border-color: $border-color;
 }
 
-.border-top {
-  border-top-style: solid;
-  border-top-width: $border-width;
-  border-top-color: $border-color;
-}
-
-.border-bottom {
-  border-bottom-style: solid;
-  border-bottom-width: $border-width;
-  border-bottom-color: $border-color;
+@each $side in (top bottom left right) {
+  .border-#{$side} {
+    border-#{$side}-style: solid;
+    border-#{$side}-width: $border-width;
+    border-#{$side}-color: $border-color;
+  }
 }
 
 .bw0     { border-width: 0; }
@@ -28,17 +24,6 @@
 }
 
 /*
-.border-left {
-  border-left-style: solid;
-  border-left-width: $border-width;
-  border-left-color: $border-color;
-}
-.border-right {
-  border-right-style: solid;
-  border-right-width: $border-width;
-  border-right-color: $border-color;
-}
-
 .rounded-bottom {
   border-radius: 0 0 $border-radius $border-radius;
 }
