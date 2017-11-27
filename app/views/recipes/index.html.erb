@@ -13,4 +13,19 @@
   <%= react_component 'RecipesHomeBlank' %>
 <% end %>
 
+<% if @analytics.present? && Rails.env.production? %>
+<script>
+Intercom('update', {
+  'recipes_count': '<%= @analytics[:recipes] %>',
+  'collections_count': '<%= @analytics[:collections] %>',
+  'groceries_count': '<%= @analytics[:groceries] %>'
+})
+heap.addUserProperties({
+  'recipes_count': '<%= @analytics[:recipes] %>',
+  'collections_count': '<%= @analytics[:collections] %>',
+  'groceries_count': '<%= @analytics[:groceries] %>'
+})
+</script>
+<% end %>
+
 <%= render 'import' %>
