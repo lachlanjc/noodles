@@ -35,6 +35,7 @@ export default [
   'Cheese',
   'Chicken broth',
   'Chicken',
+  'Chickpeas',
   'Chili powder',
   'Chips',
   'Chocolate',
