@@ -1,3 +1,4 @@
+import React from 'react'
 import BlankSlate from './BlankSlate'
 import ModalLink from './ModalLink'
 
@@ -18,4 +19,5 @@ const CollectionsHomeBlankSlate = () => (
     />
   </BlankSlate>
 )
+
 export default CollectionsHomeBlankSlate
