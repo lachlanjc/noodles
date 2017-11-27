@@ -88,7 +88,7 @@ class GroceriesCheckbox extends Component {
           }}
         >
           <div className="flex fac fjc fsn mrs" style={cx.box}>
-            <Checkmark className={completed ? 'dib' : 'dn'} size={14} />
+            <Checkmark className={completed ? 'dib' : 'dn'} />
           </div>
           <span className="man">{name}</span>
         </div>
@@ -108,63 +108,7 @@ class GroceriesCheckbox extends Component {
 
 export default GroceriesCheckbox
 
-const Checkbox = ({
-  label,
-  checked = false,
-  strikethrough = false,
-  metadata,
-  handleDelete,
-  ...props
-}) => {
-  const cx = {
-    root: {
-      position: 'relative',
-      cursor: 'pointer',
-      lineHeight: '1.125',
-      textDecoration: strikethrough && 'line-through'
-    },
-    box: {
-      boxSizing: 'border-box',
-      width: 22,
-      height: 22,
-      backgroundColor: checked ? '#00cd57' : '#f9fafc',
-      borderRadius: 6,
-      borderStyle: checked ? null : 'solid',
-      borderColor: '#8492a6',
-      borderWidth: 1,
-      transition: 'background-color .2s ease-out'
-    }
-  }
-  return (
-    <div className="f4 flex fac w-100 mtm" style={cx.root} {...props}>
-      <div className="flex fac fjc fsn mrs" style={cx.box}>
-        <Checkmark className={checked ? 'dib' : 'dn'} size={14} />
-      </div>
-      {!_.isEmpty(label) && <span className="man flex-auto">{label}</span>}
-      <div className="flex fac">
-        <Icon
-          icon="cancel"
-          size={22}
-          className="delete-grocery red mls"
-          style={{ fill: 'currentColor' }}
-          onClick={handleDelete}
-        />
-        {!_.isEmpty(metadata) &&
-          <span className="f5 grey-3 mls" children={metadata} />}
-      </div>
-    </div>
-  )
-}
-
-Checkbox.propTypes = {
-  label: PropTypes.string.isRequired,
-  checked: PropTypes.bool,
-  strikethrough: PropTypes.bool,
-  metadata: PropTypes.string,
-  handleDelete: PropTypes.func
-}
-
-const Checkmark = ({ size = 16, ...props }) => (
+const Checkmark = ({ size = 14, ...props }) => (
   <svg
     viewBox="0 0 32 32"
     alt="checkmark icon"
