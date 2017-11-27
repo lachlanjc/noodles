@@ -18,7 +18,7 @@ class GroceriesController < ApplicationController
 
     if @grocery.save
       unless request.xhr?
-        flash[:success] = 'Item created.'
+        flash[:success] = 'Item added.'
         redirect_to groceries_url
       end
     else
