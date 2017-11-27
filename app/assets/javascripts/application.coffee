@@ -77,7 +77,8 @@ $(document).on 'turbolinks:load', ->
       $(el)
         .append("<div data-behavior='add_grocery' #{p} data-value='#{t}'></div>")
         .find('[data-behavior~=add_grocery]')
-  N.addGroceries li for li in N.s('recipe_ingredients').find('li') if N.theres 'recipe_ingredients'
+  if N.theres 'recipe_ingredients' and N.signed_in
+    N.addGroceries li for li in N.s('recipe_ingredients').find('li')
   $(document).on 'click', '[data-behavior~=add_grocery]', ->
     t = $(this)
     $.post '/groceries', { grocery: { name: t.data('value') } }, (e) ->
