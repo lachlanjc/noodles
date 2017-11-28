@@ -5,6 +5,8 @@
   border-bottom: 1px solid rgba(0,0,0,.1);
   z-index: 6;
   top: 0;
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
 }
 
 .nav__icon {
