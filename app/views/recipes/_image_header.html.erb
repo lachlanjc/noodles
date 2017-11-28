@@ -19,7 +19,7 @@
   </div>
   <div class="dn-p flex fac flex-rows lh0 mtl">
     <% if public_page? %>
-      <%= link_to save_to_noodles_path(@recipe.shared_id),
+      <%= link_to share_url(@recipe.shared_id)),
         class: 'dn mrm pointer tooltipped tooltipped--n',
         'data-behavior': 'show_if_signed_in',
         'aria-label': 'Save to your library' do %>
