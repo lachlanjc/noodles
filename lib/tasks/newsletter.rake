@@ -28,6 +28,6 @@ namespace :newsletter do
   desc 'Send a test newsletter to anyone'
   task :test_send_anyone, [:email] => [:environment] do |t, args|
     NewsletterMailer.newsletter(args[:email]).deliver_now
-    puts 'And they’re off!'
+    puts 'And they’re off! ' + args[:email].to_s
   end
 end
