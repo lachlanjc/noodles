@@ -7,24 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-  <table class="entire-page">
-    <tr>
-      <td>
-        <table class="email-body">
-          <tr>
-            <td class="email-header">
-              <%= link_to 'NOODLES NEWS', root_url %>
-            </td>
-          </tr>
-          <%= yield %>
-          <tr>
-            <td class="footer">
-              You're receiving this email because you signed up for Noodles. You can <a href="<%= @unsub %>">instantly opt out</a> any time.
-            </td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-  </table>
+  <%= yield %>
 </body>
 </html>

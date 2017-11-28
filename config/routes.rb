@@ -50,7 +50,6 @@ Rails.application.routes.draw do
   post '/help', to: 'pages#help_form', as: :help_form
 
   resources :subscriptions, only: %i[index create destroy]
-  get '/email_unsubscribe/:code/:user_id', to: 'announcements#unsubscribe', as: :email_unsubscribe
 
   devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }
   as :user do
