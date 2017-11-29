@@ -1,8 +1,8 @@
-<% activate_nav!(:analytics_users) %>
-<%- title 'User Analytics' %>
+<% activate_nav! :analytics_users %>
+<% title 'User Analytics' %>
 <%= render 'shared/analytics_nav' %>
 
-<main class="w-two-thirds-m mx-auto phm">
+<main class="mw8 mx-auto phm">
   <h1 class="mls grey-2 sans">Users (<%= @users.count %>)</h1>
 
   <ul class="flex-grid list-reset">
@@ -13,20 +13,25 @@
           <a href="#<%= user.id %>" class="phs grey-3 f4">#<%= user.id %></a>
         </h2>
         <ul class="list-reset pan man">
+          <li><%= link_to user.email, "mailto:" + user.email %></li>
           <li>Recipes: <%= user.recipes.count %></li>
           <li>Collections: <%= user.collections.count %></li>
+          <li>Groceries: <%= user.groceries.count %></li>
           <li>Sessions: <%= user.sign_in_count %></li>
-        <% if user.last_sign_in_at.present? %>
-          <li>Last seen: <%= user.last_sign_in_at.to_s(:short) %></li>
-        <% end %>
+          <% if user.last_sign_in_at.present? %>
+            <li>Last seen: <%= user.last_sign_in_at.to_s(:short) %></li>
+          <% end %>
           <li>Signed up: <%= user.created_at.to_s(:short) %></li>
-          <li>Referring URL: <%= link_to user.referring_url %></li>
-          <li>Landing URL: <%= user.landing_url %></li>
-          <li><%= link_to user.email, "mailto:" + user.email %></li>
-          <li class="mts"><a class="btn btn-sm bg-blue" href="https://app.intercom.io/apps/<%= ENV['INTERCOM_APP_ID'] %>/users/show?user_id=<%= user.id %>">Open in Intercom</a></li>
+          <% if user.referring_url.present? %>
+            <li class="oh">Referring URL: <%= link_to user.referring_url, user.referring_url.truncate(140) %></li>
+          <% end %>
+          <li class="mts">
+            <a class="btn btn-sm bg-blue"
+              href="https://app.intercom.io/apps/<%= ENV['INTERCOM_APP_ID'] %>/users/show?user_id=<%= user.id %>">Open in Intercom
+            </a>
+          </li>
         </ul>
       </li>
     <% end %>
   </ul>
-
 </main>

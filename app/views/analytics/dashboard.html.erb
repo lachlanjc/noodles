@@ -19,7 +19,7 @@
     <h1 class="mvn grey-1 sans fwn"><%= @users_active %></h1>
     <p class="grey-3 mbn">
       seen this week
-      (<%= number_to_percentage (@users_active / @users) * 100, precision: 0 %>)
+      (<%= number_to_percentage (@users_active / @users), precision: 0 %>)
     </p>
   </section>
 
@@ -46,20 +46,17 @@
     <h1 class="mvn grey-1 sans fwn"><%= @users_none %></h1>
     <p class="grey-3 mbn">
       have no recipes
-      (<%= number_to_percentage (@users_none / @users) * 100, precision: 0 %>)
-    </p>
-  </section>
-
-  <section class="flex-grid__item card">
-    <h1 class="mvn grey-1 sans fwn"><%= @users_many %></h1>
-    <p class="grey-3 mbn">
-      users have many recipes
-      (<%= number_to_percentage (@users_many / @users) * 100, precision: 0 %>)
+      (<%= number_to_percentage (@users_none / @users), precision: 0 %>)
     </p>
   </section>
 
   <section class="flex-grid__item card">
     <h1 class="mvn grey-1 sans fwn"><%= Collection.all.count %></h1>
     <p class="grey-3 mbn">collections</p>
+  </section>
+
+  <section class="flex-grid__item card">
+    <h1 class="mvn grey-1 sans fwn"><%= Grocery.all.count %></h1>
+    <p class="grey-3 mbn">groceries</p>
   </section>
 </main>
