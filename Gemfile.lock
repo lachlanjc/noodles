@@ -49,18 +49,18 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (8.0.0)
-    autoprefixer-rails (7.1.6)
+    autoprefixer-rails (7.2.0)
       execjs
-    aws-sdk (2.10.90)
-      aws-sdk-resources (= 2.10.90)
-    aws-sdk-core (2.10.90)
+    aws-sdk (2.10.95)
+      aws-sdk-resources (= 2.10.95)
+    aws-sdk-core (2.10.95)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
     aws-sdk-rails (1.0.1)
       aws-sdk-resources (~> 2)
       railties (>= 3)
-    aws-sdk-resources (2.10.90)
-      aws-sdk-core (= 2.10.90)
+    aws-sdk-resources (2.10.95)
+      aws-sdk-core (= 2.10.95)
     aws-sigv4 (1.0.2)
     bcrypt (3.1.11)
     better_errors (2.4.0)
@@ -283,13 +283,13 @@ GEM
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.3)
-    twilio-ruby (5.5.0)
+    twilio-ruby (5.5.1)
       faraday (~> 0.9)
       jwt (>= 1.5, <= 2.5)
       nokogiri (>= 1.6, < 2.0)
     tzinfo (1.2.4)
       thread_safe (~> 0.1)
-    uglifier (3.2.0)
+    uglifier (4.0.1)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
@@ -366,4 +366,4 @@ RUBY VERSION
    ruby 2.4.1p111
 
 BUNDLED WITH
-   1.14.6
+   1.16.0
