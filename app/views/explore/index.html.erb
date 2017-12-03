@@ -1,5 +1,5 @@
 <% activate_nav!(:explore) %>
-<%- title 'Explore' %>
+<% title 'Explore' %>
 
 <% content_for :meta do -%>
   <meta property="og:type" content="website">
@@ -7,7 +7,7 @@
   <meta property="og:site_name" content="Noodles">
   <meta name="twitter:site" content="@noodlesapp">
   <meta name="twitter:domain" content="getnoodl.es">
-  <meta property="og:url" content="<%= explore_path %>">
+  <meta property="og:url" content="<%= explore_url %>">
   <meta property="og:title" content="Noodles Explore">
   <meta name="twitter:title" content="Noodles Explore">
   <meta property="og:description" content="Find the best recipes on the web with Noodles Explore.">
@@ -16,19 +16,25 @@
 
 <%= render 'shared/nav' %>
 
-<header class="relative inline-with-nav image-header bg-center bg-no-repeat bg-cover pvxl phm flex fac"
-        style='background-image: url(<%= image_path "explore/#{rand(1..6).to_s}.jpg" %>);'>
-  <div class="tc mx-auto col-12">
-    <h1 class="mtn mbn white">
-      Explore
-      <span class="normal">by <%= link_to 'Noodles', root_url, class: 'link-reset' %></span>
-    </h1>
-    <h2 class="white normal mts mbm">What do you want to make?</h2>
-    <div class="md-col-8 mw7 phs mx-auto flex fac">
-      <input type="text" role="search"
-             class="text-input col-12 dib f2 shadow shadow--effect pvs phm bw0 bx"
-             placeholder="maybe pancakes?"
-             data-behavior="explore_search_field" autofocus>
+<header
+  class="relative inline-with-nav image-header bg-center bg-no-repeat bg-cover pvxl phm flex fac"
+  style="<%= style_carousel explore_carousel_url %>">
+  <div class="tc mx-auto w-100">
+    <%= link_to root_url, class: 'link-reset' do %>
+      <h1 class="mvn white">
+        Noodles Explore
+      </h1>
+    <% end %>
+    <h2 class="white sans fwn mts mbm">What do you want to make?</h2>
+    <div class="w-two-thirds-m mw7 phs mx-auto flex fac">
+      <input
+        type="text"
+        role="search"
+        class="text-input w-100 dib f2 rounded card pvs phm bw0 bx"
+        placeholder="pancakes"
+        data-behavior="explore_search_field"
+        autofocus
+      />
       <a class="pointer dn" data-behavior="explore_clear_search rehide">
         <%= inline_svg 'close.svg', class: 'fill-white mls dib' %>
       </a>
@@ -44,15 +50,15 @@
   </div>
 </header>
 
-<main class="md-col-10 mx-auto pam tc mw7" data-behavior="explore_results_container">
-  <article class="col-12 rounded bg-white shadow pal mbl mx-auto bx mw6">
-    <h2 class="mtn normal">
+<main class="w-80-m mx-auto pam tc mw7" data-behavior="explore_results_container">
+  <article class="w-100 card rounded pam pal-ns mbl bx mx-auto mw6">
+    <h2 class="w-80-m mx-auto mtn fwn">
       Find the best recipes on the web with <span class="b">Explore</span>.
     </h2>
     <% if user_signed_in? %>
       <p class="mbn">
-        Search for anything you want to cook &mdash;
-        you can save the recipes to your Noodles with just a click.
+        Search for anything you want to cook,
+        then save your favorite results to your library.
       </p>
     <% else %>
       <p>
@@ -60,69 +66,88 @@
         <br class="dn db-ns">
         Sign up to save the recipes you find.
       </p>
-      <div class="tc mts" data-behavior="inline_signup_btn_container">
-        <a href="#signup" name="signup" data-behavior="modal_trigger inline_signup_btn" class="btn bg-orange">Sign up for Noodles</a>
-        <%= link_to 'Sign back in', sign_in_path, class: 'mls-ns mts btn bg-white' %>
+      <div class="flex fac fjc mts" data-behavior="inline_signup_btn_container">
+        <a href="#signup" name="signup" data-behavior="modal_trigger inline_signup_btn" class="btn btn--primary bg-orange">Sign up</a>
+        <%= link_to 'Sign in', sign_in_path, class: 'btn bg-white mlm' %>
       </div>
     <% end %>
   </article>
 </main>
 
-<h2 class="phm mx-auto mw7 normal tc mtn mbm dn" data-behavior="explore_suggestions rehide">
-  Granola? Carrot cake? Sorbet? Risotto? Stir fry?
-  <br>😋
+<h2 class="phm mx-auto mw7 normal dn flex fac fjc mtn" data-behavior="explore_suggestions rehide">
+  <span class="f0 mrm">😋</span>
+  <span>
+    Carrot cake? Gelato?<br>
+    Mochi? Kebabs?<br>
+    Spring rolls? Lamb curry?
+  </span>
 </h2>
 
 <% if nobody_signed_in? %>
-  <section class="modal tc" role="dialog" id="signup">
-    <%= modal_close %>
-    <h2 class="orange man">Sign up for Noodles</h2>
-    <%= render 'devise/registrations/new', user: User.new, text: 'Noodles is (and always will be) completely free.',
-               options: { class: 'modal--scroll', data: { remote: true, behavior: 'inline_signup_form' } } %>
-    <div class="dn tc" data-behavior="inline_signup_error">
-      <p class="f3 red normal">Something went wrong.</p>
-      <%= link_to 'Try Again', sign_up_path, class: 'btn bg-blue' %>
+  <section class="modal modal--signup modal--outlined tc" role="dialog" id="signup">
+    <%= modal_header 'Sign up for Noodles' %>
+    <%= render 'devise/registrations/new',
+      user: User.new,
+      options: { class: 'modal--scroll flex fc fjc' }
+    %>
+    <div class="dn" data-behavior="inline_signup_error">
+      <h3 class="red fwn mbm">Something went wrong. 😞</h3>
+      <%= link_to 'Try Again', sign_up_path, class: 'btn btn--primary bg-blue' %>
     </div>
   </section>
 <% end %>
 
-<section class="modal pam" role="dialog" id="preview" data-behavior="explore_preview_modal">
-  <%= modal_close %>
-  <h2 class="orange di man" data-behavior="explore_preview_title"></h2>
-  <a data-behavior="explore_open_original" class="dib" target="_blank" rel="nofollow">
-    <%= inline_svg 'open-new-tab.svg', class: 'fill-orange relative', size: 16, style: 'top: -5px; left: 2px;' %>
-  </a>
-  <p class="grey-4" data-behavior="explore_preview_description"></p>
-  <article class="text modal--scroll" data-behavior="explore_preview_body"></article>
-  <footer class="border-top tc blue">
+<section class="modal modal--scrollable modal--mw w-100 phl-ns" role="dialog" id="preview" data-behavior="explore_preview_modal">
+  <header class="mtm-ns mbm">
+    <div class="flex">
+      <h2 class="flex-auto orange mvn" data-behavior="explore_preview_title"></h2>
+      <a data-behavior="explore_open_original" class="v-top phs fsn" target="_blank" rel="nofollow">
+        <%= inline_svg 'open-new-tab.svg', class: 'fill-orange', size: 16 %>
+      </a>
+      <action role="button" class="fr fsn" data-behavior="modal_close">
+        <%= inline_svg 'close.svg', size: 28, class: 'fill-grey-3' %>
+      </action>
+    </div>
+    <p class="grey-3 mbn" data-behavior="explore_preview_description"></p>
+  </header>
+  <article class="text modal__scroller" data-behavior="explore_preview_body"></article>
+  <footer class="modal__footer">
     <% if user_signed_in? %>
-      <a data-behavior="explore_clip_from_preview explore_clipped_toggle"
-         class="btn bg-blue mtm mx-auto" style="max-width: 27px;">Clip</a>
-      <a class="blue mtm lh db" target="_blank" style="display: none;"
-         data-behavior="explore_clipped_open explore_clipped_toggle">
-        Clipped! <strong>Open </strong>
+      <a
+        data-behavior="explore_clip_from_preview explore_clipped_toggle"
+        style="max-width: 28px;">
+        Clip
+      </a>
+      <a
+        class="blue pvs"
+        target="_blank"
+        data-behavior="rehide explore_clipped_open explore_clipped_toggle">
+        Clipped – <strong>Open</strong>
         <%= inline_svg 'open-new-tab.svg', size: 16, class: 'fill-blue' %>
       </a>
     <% else %>
-      <a data-behavior="explore_trigger_inline_signup" class="btn bg-orange mtm">Sign up for Noodles to Clip</a>
+      <a data-behavior="modal_trigger modal_close_first" href="#signup" class="btn btn--primary bg-orange">Sign up</a>
+      <span class="grey-3 dib mlm">before you Clip</a>
     <% end %>
   </footer>
 </section>
 
-<script>
-var urlParams;
-(window.onpopstate = function() {
-	var match,
-		pl = /\+/g, // Regex for replacing addition symbol with a space
-		search = /([^&=]+)=?([^&]*)/g,
-		decode = function(s) {
-			return decodeURIComponent(s.replace(pl, ' '));
-		},
-		query = window.location.search.substring(1);
+<% content_for :javascript do -%>
+  <script>
+  var urlParams;
+  (window.onpopstate = function() {
+    var match,
+      pl = /\+/g, // Regex for replacing addition symbol with a space
+      search = /([^&=]+)=?([^&]*)/g,
+      decode = function(s) {
+        return decodeURIComponent(s.replace(pl, ' '));
+      },
+      query = window.location.search.substring(1);
 
-	urlParams = {};
-	while (match = search.exec(query))
-		urlParams[decode(match[1])] = decode(match[2]);
-})();
-</script>
-<%= javascript_include_tag 'explore' %>
+    urlParams = {};
+    while (match = search.exec(query))
+      urlParams[decode(match[1])] = decode(match[2]);
+  })();
+  </script>
+  <%= javascript_include_tag 'explore', 'data-turbolinks-track': 'reload' %>
+<% end -%>

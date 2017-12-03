@@ -1,0 +1,54 @@
+<div class="flex fac mvm">
+  <img
+    src="https://lachlanjc.me/static/portrait-96.jpg"
+    class="circle dib fsn mrm"
+    width="48" height="48">
+  <div
+    class="flex-auto pvs phm rounded f5 lh-copy"
+    style="background-color: #ecf9fd"
+  >
+    Hey! I’m <a href="https://lachlanjc.me/" class="blue">Lachlan</a>, the creator of Noodles. If you need help or have feedback, please let me know – I’m here to help.
+  </div>
+</div>
+<div class="flex fac">
+  <img
+    src="https://lachlanjc.me/static/missing_avatar-96.png"
+    class="circle dn dib-ns fsn mrm"
+    width="48" height="48">
+  <%= form_tag '/help', method: 'POST', class: 'help flex-auto flex-ns fac' do -%>
+    <div class="w-100 mrm">
+      <label class="label w-100 flex fac man border-bottom">
+        <span style="width: 3em;" class="tr mrs">Email</span>
+        <input
+          type="email"
+          name="email"
+          value="<%= current_user.email if user_signed_in? %>"
+          placeholder="me@icloud.com"
+          class="text-input flex-auto bw0 bx man"
+          required
+        />
+      </label>
+      <label class="label w-100 flex fac man">
+        <span style="width: 3em;" class="tr mrs">Body</span>
+        <textarea
+          id="message"
+          name="message"
+          rows="1"
+          placeholder="How do I…"
+          class="text-input flex-auto bw0 bx man"
+          required
+        ></textarea>
+      </label>
+    </div>
+    <%= submit_tag 'Send', class: 'btn bg-blue mts mlxl man-ns fsn' %>
+  <% end -%>
+</div>
+<% hide_footer ||= false %>
+<% unless hide_footer %>
+<div class="modal__feature bg-grey-5 grey-3 border-top pas flex fac fjc">
+  <span class="grey-3 caps b f5 mrm">Or</span>
+  <a href="mailto:lachlan@getnoodl.es" class="btn btn-sm bg-grey-3 mrm">Email</a>
+  <a href="http://m.me/getnoodles" class="btn btn-sm bg-grey-3 mrm">Messenger</a>
+  <a href="https://twitter.com/noodlesapp" class="btn btn-sm bg-grey-3">Twitter</a>
+</div>
+<% end %>

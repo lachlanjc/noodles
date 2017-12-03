@@ -1,49 +1,63 @@
 source 'https://rubygems.org'
-ruby '2.3.0'
+ruby '2.4.1'
 
-gem 'dotenv-rails', groups: [:development, :test]
+git_source(:github) do |repo|
+  repo = "#{repo}/#{repo}" unless repo.include?("/")
+  "https://github.com/#{repo}.git"
+end
 
-gem 'rails_autolink'
+gem 'dotenv-rails'
+
+gem 'actionpack-page_caching'
+gem 'actionpack-action_caching'
+gem 'active_model_serializers'
 gem 'autoprefixer-rails'
-gem 'aws-sdk', '< 2.0'
+gem 'aws-sdk', '~> 2'
+gem 'aws-sdk-rails'
+gem 'delayed_job_active_record'
 gem 'devise'
-gem 'devise_marketable'
+# gem 'devise_marketable'
 gem 'coffee-rails'
 gem 'cohort_me'
-gem 'fastimage'
 gem 'hangry'
 gem 'html_to_plain_text'
 gem 'ingreedy'
 gem 'intercom-rails'
-gem 'jbuilder'
 gem 'jquery-rails'
-gem 'mandrill_dm'
+gem 'marginalia'
 gem 'mechanize'
-gem 'newrelic_rpm'
 gem 'paperclip'
 gem 'pg'
 gem 'prawnto_2', require: 'prawnto'
-gem 'premailer-rails'
 gem 'puma'
-gem 'rails', '4.2.5.1'
+gem 'rails', '5.1.4'
+gem 'rails-controller-testing'
 gem 'rake'
-gem 'react-rails'
 gem 'redcarpet'
-gem 'rmagick'
 gem 'safely_block'
 gem 'sass-rails'
 gem 'skylight'
-gem 'slowpoke'
+gem 'stripe'
+gem 'therubyracer'
+gem 'turbolinks'
+gem 'twilio-ruby'
 gem 'uglifier'
-gem 'wombat'
+gem 'webpacker'
+gem 'webpacker-react'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-clipboard'
+  gem 'rails-assets-imagesloaded'
+  gem 'rails-assets-lodash'
+  gem 'rails-assets-masonry'
+end
 
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'pry'
-  gem 'rails_real_favicon'
-  gem 'seed_dump'
-  gem 'tracer_bullets'
+  gem 'foreman'
+  # gem 'tracer_bullets'
+  gem 'web-console'
 end
 
 group :production do

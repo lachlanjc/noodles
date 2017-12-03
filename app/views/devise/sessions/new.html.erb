@@ -1,30 +1,31 @@
-<% activate_nav!(:sign_in) %>
-<%- title 'Sign in' %>
-<% content_for(:bg_img) { image_path "auth/#{rand(1..4).to_s}.jpg" } %>
+<% activate_nav! :sign_in %>
+<% title 'Sign in' %>
+<% bg_carousel %>
 
 <%= render 'shared/nav' %>
 
-<main class="document bw0 bg-blur mw6 tc">
-  <h1 class="mbs"><%= t '.sign_in_to_n' %></h1>
-  <p class="mbm"><%= t '.enter_info' %></p>
+<% cache do -%>
+<main class="document mw6">
+  <%= section_header 'Sign in', 1, class: 'mtn mbm grey-2 f2' %>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
     <%= devise_error_messages! %>
 
-    <%= f.label :email %>
-    <%= f.email_field :email, class: 'text-input mx-auto', required: true, autofocus: true %>
+    <%= f.label :email, class: 'label' %>
+    <%= f.email_field :email, class: 'text-input', required: true, autofocus: true, placeholder: 'bolognese@icloud.com' %>
 
-    <%= f.label :password %>
-    <%= f.password_field :password, class: 'text-input mx-auto', required: true, pattern: ".{8,}", title: "Make sure you use at least 8 characters" %>
+    <%= f.label :password, class: 'label mtm' %>
+    <%= f.password_field :password, class: 'text-input', required: true, pattern: '.{8,}', placeholder: '••••••••' %>
 
     <div>
       <%= f.check_box :remember_me %>
-      <%= f.label :remember_me, class: 'mtm' %>
+      <%= f.label :remember_me, class: 'mts' %>
     </div>
 
-    <%= f.submit t('.sign_in'), class: 'btn bg-orange mtm' %>
+    <%= f.submit t('.sign_in'), class: 'btn btn--primary bg-orange mtm' %>
 
   <% end %>
 
-  <%= link_to 'Forgot your password?', :forgot_password, class: 'mtm db f5 grey-2' %>
+  <%= link_to 'Forgot your password?', :forgot_password, class: 'mtm db f5 grey-3' %>
 </main>
+<% end -%>

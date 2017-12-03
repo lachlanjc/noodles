@@ -1,33 +1,28 @@
-require 'nokogiri'
-require 'wombat'
-
 class NYTSearchScraper
-  include Wombat::Crawler
-
   def scrape(q)
-    scraped_data = Wombat.crawl do
-      base_url 'http://cooking.nytimes.com'
-      path '/search?q=' + q
+    scraper = Mechanize.new
+    scraper.history_added = proc { sleep 0.25 }
 
-      results 'css=#search-results .recipe-card-list .recipe-card', :iterator do
-        title 'css=h3.name'
-        description 'css=.card-byline'
-        image 'css=.image', :html
-        url 'css=*', :html
+    results = []
+    search = URI.encode(q).gsub /\%20/, '+'
+    raw_results = scraper.get "http://cooking.nytimes.com/search?q=#{search}"
+    raw_results = raw_results.search('#search-results .recipe-card:not(.ad-container)')
+    raw_results.each do |item|
+      result = {}
+      result['url'] = "http://cooking.nytimes.com/#{item.at_css('a').attr('href')}"
+      result['title'] = item.search('h3').text.squish
+      result['description'] = item.search('h3 + p').text.squish.truncate(164)
+      if item.search('.cooking-time').any?
+        result['description'] += ' – ' + item.at_css('.cooking-time').text.squish
       end
-    end
-    scraped_data['results'].delete_if do |item|
-      item['title'].blank?
-    end
-    scraped_data['results'].each do |result|
-      src = 'http://cooking.nytimes.com' + Nokogiri::HTML(result['url'].to_s).at_css('a')['href'].to_s
-      result['url'] = src
-      result['description'] = result['description'].to_s.truncate(164)
-      result['image'] = '' if result['image'] =~ /pattern/
-      if result['image'].to_s.length > 2
-        result['image'] = Nokogiri::HTML(result['image'].to_s).at_css('img').attributes['data-large'].value
+      if item.search('.sticker').any?
+        result['description'] += ' – ' + item.search('.sticker').text.squish
       end
+      result['image'] = item.at_css('img').attr('data-large')
+      result['image'] = '' if result['image'].to_s.match?('pattern')
+      results.push(result)
     end
-    scraped_data['results']
+    results.delete_if { |item| !item['url'] || !item['title'] }.compact!
+    results
   end
 end

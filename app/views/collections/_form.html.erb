@@ -1,28 +1,31 @@
 <%= form_for(@collection) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name, class: 'text-input', placeholder: 'Salads? Pasta? Cakes?' %>
+  <%= f.label :name, 'Collection name', class: 'label' %>
+  <%= f.text_field :name, class: 'text-input', placeholder: 'Desserts', required: true %>
 
-  <%= f.label :description, class: 'dib' %><small class='f5 mls'>(optional)</small>
-  <%= f.text_area :description, class: 'text-input', placeholder: 'Quickly describe your collection.' %>
+  <%= f.label :description, class: 'label dib' %><small class="f5 grey-3 mls">(optional)</small>
+  <%= f.text_area :description, class: 'text-input w-100 lh-copy', placeholder: 'Quickly describe your collection. (optional)', 'data-behavior': 'autosize' %>
 
-  <div class="btn bg-white btn-sm mts lh" data-behavior="photo_button">
-    <%= f.file_field :photo, class: 'dn', 'data-behavior': 'photo_field' %>
-    <%= inline_svg 'photo-upload.svg', size: 24, class: 'fill-grey-3' %>
-    <span class="grey-2 relative f5" style="top: -6px;" data-behavior="photo_name">
-    <% if @collection.unimaged? %>
-      Upload a photo background
-    <% else %>
-      Change the photo background
-    <% end %>
-    </span>
+  <%= f.label :photo, class: 'label' %>
+  <div class="flex-ns fac mbm">
+    <div class="btn bg-white lh" role="button" data-behavior="photo_button">
+      <%= f.file_field :photo, class: 'dn', 'data-behavior': 'photo_field' %>
+      <span class="grey-2" data-behavior="description">
+        <%= @collection.unimaged? ? 'Upload a photo' : 'Change photo' %>
+      </span>
+    </div>
+
+    <%= link_to 'Open photo ↗', @collection.photo.url, target: '_blank', class: 'mlm grey-3 f5 lh' if @collection.imaged? %>
   </div>
 
-  <footer class="flex fae fjb mts">
-    <% if @collection.name %>
-      <%= link_to t('general.delete'), @collection, method: :delete, data: { confirm: t('general.delete_collection_forever'), disable_with: 'Deleting...' }, class: 'btn bg-red btn-sm' %>
-      <%= f.submit 'Save', class: 'btn bg-blue' %>
+  <footer class="modal__footer">
+    <%= link_to t('general.delete'), @collection, method: :delete, data: { confirm: t('general.delete_collection_forever'), disable_with: 'Deleting…' }, class: 'btn bg-red', style: 'margin-right: auto' if @collection.persisted? %>
+    <button
+      class="btn bg-grey-3 mrs"
+      data-behavior="modal_close">Cancel</button>
+    <% if @collection.persisted? %>
+      <%= f.submit 'Save', class: 'btn btn--primary bg-blue b' %>
     <% else %>
-      <%= f.submit 'Create', class: 'btn bg-green mtm db' %>
+      <%= f.submit 'Create', class: 'btn btn--primary bg-green b' %>
     <% end %>
   </footer>
 <% end %>

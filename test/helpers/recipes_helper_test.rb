@@ -4,18 +4,9 @@ class RecipesHelperTest < ActionView::TestCase
   include TextHelper
   include RecipesHelper
 
-  test 'should generate recipe share path' do
-    assert_equal '/s/goodcheese', shared_path(recipes(:one))
-  end
-
-  test 'should generate recipe share link' do
-    assert_equal 'https://getnoodl.es/s/goodcheese', shared_url(recipes(:one))
-  end
-
   test 'sample recipe' do
     r = Recipe.create(title: 'Pancakes', user_id: 1)
-    r.shared_id = 'sample'
-    r.save
+    r.update_attribute(:shared_id, 'sample')
     assert_not_nil sample_recipe
   end
 
@@ -36,23 +27,15 @@ class RecipesHelperTest < ActionView::TestCase
   end
 
   test 'should test recipe is from web' do
-    assert from_web?('https://getnoodl.es/s/6ww5W0L')
+    assert from_web?('https://getnoodl.es/s/sample')
   end
 
   test 'processed ingredient' do
-    assert_not_empty ingredient_processed('hello')
+    assert_match 'hello', ingredient_processed('hello')
   end
 
   test 'processed instructions' do
-    assert_not_empty instructions_processed('hello')
-  end
-
-  test 'no details on recipe' do
-    assert no_details?(recipes(:no_details))
-  end
-
-  test 'recipe has details' do
-    assert_not no_details?(recipes(:one))
+    assert_match 'hello', instructions_processed('hello')
   end
 
   test 'notes blankslate' do

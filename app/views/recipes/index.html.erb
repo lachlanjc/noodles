@@ -1,8 +1,31 @@
-<%- title 'Recipes' %>
+<% title 'Recipes' %>
 <% activate_nav!(:recipes) %>
 
 <%= render 'shared/nav' %>
 
-<%= react_component 'RecipesHome' %>
+<% if @recipes.any? %>
+  <%= react_component 'RecipesHome',
+    recipes: @recipes_json,
+    groceries: @groceries_json,
+    collections: @collections_json
+  %>
+<% else %>
+  <%= react_component 'RecipesHomeBlank' %>
+<% end %>
 
-<%= render 'new' %>
+<% if @analytics.present? && Rails.env.production? %>
+<script>
+Intercom('update', {
+  'recipes_count': '<%= @analytics[:recipes] %>',
+  'collections_count': '<%= @analytics[:collections] %>',
+  'groceries_count': '<%= @analytics[:groceries] %>'
+})
+heap.addUserProperties({
+  'recipes_count': '<%= @analytics[:recipes] %>',
+  'collections_count': '<%= @analytics[:collections] %>',
+  'groceries_count': '<%= @analytics[:groceries] %>'
+})
+</script>
+<% end %>
+
+<%= render 'import' %>

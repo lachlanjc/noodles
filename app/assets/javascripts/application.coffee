@@ -1,47 +1,22 @@
-#= require jquery
-#= require rails-behaviors
+#= require jquery3
+#= require jquery_ujs
+#= require turbolinks
 #= require lodash
 #= require modals
 #= require autosize
-#= require clipboard/clipboard
-#= require components
+#= require clipboard
 #= require global
 
-$(document).ready ->
+$(document).on 'turbolinks:load', ->
+  N.user = $('body').data('user')
+  N.signed_in = _.isNumber N.user
+  N.anonymous = !N.signed_in
+  N.my_object = (N.signed_in && _.isEqual(N.user, N.object_user)) || false
+
   N.toggleMenu = (m) ->
     $(m).find('[data-behavior~=menu_content]').slideToggle 120
     o = $(m).attr('aria-expanded') is 'true'
     $(m).attr 'aria-expanded', !o
-    return
-
-  N.showEditorPhotoPreview = ->
-    t = $('[data-behavior~=editor_photo_preview]')
-    $('[data-behavior~=modal_overlay]').fadeTo 'fast', 1
-    t.css {
-      'position': 'absolute',
-      'z-index': 10,
-    }
-    if window.innerWidth > 768
-      t.animate {
-        'right': '20%',
-        'min-width': '16rem',
-        'width': '60%',
-      }, 300
-    else
-      t.animate {
-        'right': (window.innerWidth - 256) / 2, # 256 = 16px * 16rem
-        'width': '16rem',
-      }, 300
-  N.hideEditorPhotoPreview = ->
-    t = $('[data-behavior~=editor_photo_preview]')
-    t.css { position: 'initial' }
-    t.animate {
-      'min-width': t.attr('width'),
-      'width': t.attr('width'),
-    }, 300, ->
-      t.attr 'style', '' # Removes left, right, etc
-    $('[data-behavior~=modal_overlay]').fadeTo 'fast', 0, ->
-      $(this).css 'display', '' # Removes display: none and clears focus
 
   # Popover menus
   $(document).on 'click', (e) ->
@@ -55,24 +30,20 @@ $(document).ready ->
     # Close popover menus on esc
     if e.keyCode is 27 and $(N.openMenuSelector).length > 0
       N.toggleMenu $(N.openMenuSelector)
-    if e.keyCode is 27 and $('[data-behavior~=editor_photo_preview]').length > 0
-      N.hideEditorPhotoPreview()
 
-  $(document).on 'click', '[data-behavior~=flash]', ->
-    $(this).toggleClass 'bg-white shadow well border'
-    $(this).slideUp 'fast'
+  N.s('flash').delay(5 * 1e3).fadeOut('fast')
 
   totalModalize()
 
   $(document).on 'keydown', 'action, [data-behavior~=r_fav]', (e) ->
     $(this).click() if e.keyCode is 32 or e.keyCode is 13
 
-  $('[data-behavior~=inline_signup_form]').on 'ajaxBeforeSend', ->
+  $('[data-behavior~=inline_signup_form]').on 'ajax:beforeSend', ->
     t = $(this)
     t.html null
     t.toggleClass 'busy busy--large mx-auto'
     t.find('[data-behavior~=hide_on_inline_submit]').hide()
-  $(document).on 'ajaxSuccess', '[data-behavior~=inline_signup_form]', ->
+  $(document).on 'ajax:success', '[data-behavior~=inline_signup_form]', ->
     t = $(this)
     if b = $('[data-behavior~=inline_signup_btn]')
       b.blur()
@@ -83,11 +54,10 @@ $(document).ready ->
     if !_.isEmpty u.match 'explore'
       r = -> location.reload()
     else
-      r = -> window.location = '/onboarding'
+      r = -> window.location = '/recipes'
     setTimeout r, 600
-  $(document).on 'ajaxError', '[data-behavior~=inline_signup_form]', ->
-    t = $(this)
-    t.toggleClass 'busy busy--large mx-auto bg-darken-1 border rounded pvm mt2 tc'
+  $(document).on 'ajax:error', '[data-behavior~=inline_signup_form]', ->
+    $(this).toggleClass 'busy busy--large mx-auto bg-darken-1 border rounded pvm mt2 tc'
     $('[data-behavior~=inline_signup_error]').toggleClass 'dn'
 
   $('[data-behavior~=r_fav_trigger]').on 'change', ->
@@ -95,43 +65,75 @@ $(document).ready ->
   $(document).on 'click', '[data-behavior~=print]', ->
     window.print()
 
-  if /iPhone|iPad/i.test(navigator.userAgent)
-    $('[data-behavior~=copy]').hide()
+  # Add preview to embed modal, but only on the first open
+  $(document).one 'click', '[data-behavior~=embed_trigger]', ->
+    $('#embed').append $('#embed [data-behavior~=copy]').data('clipboard-text')
+    $('.section-header').show 0
+
+  N.addGroceries = (el) ->
+    t = _.trim $(el).text()
+    p = "class='add-grocery sans tooltipped tooltipped--n' aria-label='Add to your grocery list'"
+    unless N.exists $(el).find(N.s('add_grocery'))
+      $(el)
+        .append("<div data-behavior='add_grocery' #{p} data-value='#{t}'></div>")
+        .find('[data-behavior~=add_grocery]')
+  N.addGroceries li for li in N.s('recipe_ingredients').find('li') if N.signed_in
+  $(document).on 'click', '[data-behavior~=add_grocery]', ->
+    t = $(this)
+    $.post '/groceries', { grocery: { name: t.data('value') } }, (e) ->
+      t.addClass 'add-grocery--done'
+      t.attr 'aria-label', 'Added!'
+  $(document).on 'click', '[data-behavior~=grocery_suggestion]', (e) ->
+    N.updateGroceryName $(this).text(), false
+
+  if N.theres('recipe_colls_container') and _.includes(window.location.pathname, '/recipes/')
+    if _.isEqual N.s('recipe_colls_container').data('user'), N.user
+      $.get window.location.pathname + '/collections', (e) ->
+        N.s('recipe_colls_container').html e
+        N.s('recipe_colls_inactive').hide 0
+        $(document).on 'click', '[data-behavior~=recipe_add_colls]', ->
+          $('[data-behavior~=recipe_add_colls]').fadeOut 'fast'
+          $('[data-behavior~=recipe_colls_inactive]').fadeIn 'fast'
+        $(document).on 'change', '[data-behavior~=recipe_colls_check]', ->
+          $('[data-behavior~=recipe_colls_submit]').fadeIn 'fast'
+        $(document).on 'ajax:error', '[data-behavior~=recipe_colls_form]', (one, two) ->
+          N.s('recipe_colls_form').find('input[type=submit]').text '!!!!'
+          console.error one, two
+        $(document).on 'ajax:success', '[data-behavior~=recipe_colls_form]', ->
+          $('[data-behavior~=recipe_colls_submit]').fadeOut 'fast'
+
   clipboard = new Clipboard '[data-behavior~=copy]', text: (trigger) ->
     trigger.getAttribute 'data-clipboard-text'
   clipboardReset = (t) ->
-    t.toggleClass 'bg-green bg-red' if t.attr('class').match /red/
     t.text 'Copied!'
     setTimeout (-> t.text 'Copy'), 1500
-  clipboard.on 'error', (e) ->
-    $btn = $(e.trigger)
-    $btn.toggleClass 'bg-green bg-red' unless $btn.attr('class').match /red/
-    if /Mac/i.test navigator.userAgent
-      $btn.text 'Press ⌘-C'
-    else
-      $btn.text 'Press Ctrl-C'
-    $(document).on 'keyup', (k) ->
-      clipboardReset $btn if k.keyCode is 91
-    $btn.on 'mouseleave', (m) ->
-      $btn.toggleClass 'bg-green bg-red' if $btn.attr('class').match /red/
-      $btn.text 'Copy'
-      e.clearSelection()
-    return
   clipboard.on 'success', (e) ->
     clipboardReset $(e.trigger)
     e.clearSelection()
     return
 
-  # Switch .dn for inline style — prevents flash on load.
-  $('[data-behavior~=rehide]').hide().removeClass('dn')
+  # Switch .dn for inline style (prevents flash on load)
+  N.s('rehide').hide().removeClass('dn')
+
+  # Show when in various user states – conditionally fill in cached pages
+  N.s('show_if_anonymous').removeClass 'dn' if N.anonymous
+  N.s('show_if_signed_in').removeClass 'dn' if N.signed_in
+  N.s('show_unless_mine').removeClass 'dn' unless N.signed_in
+  N.s('show_if_my_object').removeClass 'dn' if N.my_object
+
+  if N.theres 'autoselect'
+    N.s('autoselect').focus().select()
+    $(document).on 'click', '[data-behavior~=autoselect]', (e) ->
+      t = e.target
+      t.selectionStart = 0
+      t.selectionEnd = 999
 
   $(document).on 'click', '[data-behavior~=photo_button]', ->
     $('[data-behavior~=photo_field]')[0].click()
   $('[data-behavior~=photo_field]').on 'change', ->
-    d = $('[data-behavior~=photo_button]').find('[data-behavior~=description]')
+    d = N.s('photo_button').find('[data-behavior~=description]')
     d.text this.value.match(/[^\/\\]+$/)[0]
-    $('[data-behavior~=recipe_errors]').hide 400
-    u = window.URL || window.webkitURL
+    N.s('recipe_errors').hide 400
     if f = document.querySelector('[data-behavior~=photo_field]').files[0]
       r = new FileReader
       r.addEventListener 'load', (->
@@ -143,42 +145,31 @@ $(document).ready ->
   $(document).on 'click', '[data-behavior~=remove_current_photo]', ->
     t = $(this)
     d = t.find('[data-behavior~=description]')
-    p = $('[data-behavior~=editor_photo_preview]')
+    p = N.s 'editor_photo_preview'
     d.text 'Removing photo...'
     v = 'blur(1px) grayscale(1)'
     p.css { 'filter': v, '-webkit-filter': v }
     $('[data-behavior~=photo_field]').val null
     $.get $(this).data('href'), (e) ->
       d.text 'Removed!'
-      $('[data-behavior~=editor_photo_cont]').hide 300, ->
-        p.attr 'style', ''
+      N.s('editor_photo_cont').hide 300, -> p.attr 'style', ''
       t.hide 'slow'
-    $('[data-behavior~=recipe_errors]').hide 300
-  $(document).on 'click', '[data-behavior~=editor_clip_trigger]', (e) ->
-    # Prevent clicking again
-    $('[data-behavior~=editor_clip_trigger]').data 'behavior', ''
-    $('[data-behavior~=editor_clip_r]').remove()
-    $('[data-behavior~=editor_clip_content]').show 'fast'
-    h = $('[data-behavior~=editor_clip_header]')
-    h.toggleClass 'mtn man fwn pointer' # Fix margins
-    h.text 'Clip from the Web' # Be definitive.
-    return
-  # Editor – photo preview
-  $(document).on 'click', '[data-behavior~=editor_photo_preview]', ->
-    if $(this).attr('style').length > 2
-      N.hideEditorPhotoPreview()
-    else
-      N.showEditorPhotoPreview()
-    return
-  # Hide photo preview by clicking overlay
-  if $('[data-behavior~=editor_photo_preview]').length > 0
-    $(document).on 'click', '[data-behavior~=modal_overlay]', ->
-      N.hideEditorPhotoPreview()
-      $(this).hide 50
+    N.s('recipe_errors').hide 300
 
-  $('[data-behavior~=autosize]').autosize()
+  N.s('autosize').autosize()
   $('[data-behavior~=editor_instructions]').on 'focus', ->
-    this.value = '1. ' if _.isEmpty this.value
+    $(this).val '1. ' if _.isEmpty $(this).val()
+
+  if N.theres 'font_dec'
+    $('html').css 'font-size', 16
+  N.getFontSize = ->
+    _.toNumber _.replace($('html').css('font-size'), 'px', '')
+  N.changeFontSize = (a) ->
+    $('html').css 'font-size', N.getFontSize() + a
+  $(document).on 'click', '[data-behavior~=font_dec]', ->
+    N.changeFontSize -2
+  $(document).on 'click', '[data-behavior~=font_inc]', ->
+    N.changeFontSize 2
 
   $('[data-behavior~=cook_photo_field]').on 'change', ->
     $(this)[0].form.submit()
@@ -187,5 +178,7 @@ $(document).ready ->
     $(this).toggleClass 'checked'
 
   $(document).on 'submit', '[data-behavior~=clip_form]', ->
-    v = $('[data-behavior~=clip_url]').val()
-    heap.track('Clips Recipe', { 'URL': v })
+    N.track 'clips-recipe', { 'URL': N.s('clip_url').val() }
+  $(document).on 'click', '.stripe-button-el', ->
+    N.track 'clicks-subscribe', {}
+  

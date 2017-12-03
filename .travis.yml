@@ -1,11 +1,11 @@
 language: ruby
 rvm:
-  - 2.3.0
+  - 2.4.1
 before_install:
   - gem install bundler
   - bundle install --without development
 script:
-  - rake db:create db:migrate
-  - rake test:helpers
+  - rails db:create db:migrate
+  - rails test
 notifications:
   slack: getnoodles:EQiFyZq4M1Tv94DaXRN8f2Gy

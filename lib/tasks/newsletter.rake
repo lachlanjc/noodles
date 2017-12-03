@@ -10,8 +10,8 @@ namespace :newsletter do
 
   desc 'Send the newsletter out to every user'
   task send_it: :environment do
-    User.where(newsletter_sent: false, want_newsletter: true).each do |user|
-      NewsletterMailer.newsletter(user).deliver_now
+    User.where(newsletter_sent: false).where('created_at < ?', 1.day.ago).each do |user|
+      NewsletterMailer.newsletter(user.email).deliver_now
       puts 'Email delivered to ' + user.email
       user.newsletter_sent = true
       user.save
@@ -21,23 +21,13 @@ namespace :newsletter do
 
   desc 'Send the newsletter to LJC'
   task test_send: :environment do
-    NewsletterMailer.newsletter(User.find(1)).deliver_now
-    puts 'And he\'s off!'
+    NewsletterMailer.newsletter(User.first.email).deliver_now
+    puts 'And they’re off! ' + User.first.email
   end
 
   desc 'Send a test newsletter to anyone'
-  task :test_send_anyone, [:email] => [:environment] do |t, args|
-    user = User.new(email: args[:email], id: 1)
-    NewsletterMailer.newsletter(user).deliver_now
-    puts 'And he\'s off!'
-  end
-
-  desc 'Re-subscribe everyone'
-  task want_true: :environment do
-    User.all.each do |user|
-      user.want_newsletter = true
-      user.save
-    end
-    puts 'Finished!'
+  task :test_send_to, [:email] => [:environment] do |t, args|
+    NewsletterMailer.newsletter(args[:email]).deliver_now
+    puts 'And they’re off! ' + args[:email].to_s
   end
 end

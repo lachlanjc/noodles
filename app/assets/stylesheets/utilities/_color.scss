@@ -4,6 +4,9 @@
 .bg-red {
   background-color: $red;
 }
+.fill-red {
+  fill: $red;
+}
 
 .orange {
   color: $orange;
@@ -29,6 +32,9 @@
 .bg-green {
   background-color: $green;
 }
+.fill-green {
+  fill: $green;
+}
 
 .blue {
   color: $blue;
@@ -44,17 +50,27 @@
   fill: $blue;
 }
 
+.purple {
+  color: $purple;
+}
+.bg-purple {
+  background-color: $purple;
+}
+.fill-purple {
+  fill: $purple;
+}
+
 .white {
-  color: #fff;
+  color: $white;
 }
 .white-hover:hover {
-  color: #fff;
+  color: $white;
 }
 .bg-white {
-  background-color: #fff;
+  background-color: $white;
 }
 .fill-white {
-  fill: #fff;
+  fill: $white;
 }
 
 .grey-5 {
@@ -68,7 +84,7 @@
 }
 
 .grey-4 {
-  color: $grey-3;
+  color: $grey-4;
 }
 .bg-grey-4 {
   background-color: $grey-4;
@@ -109,60 +125,9 @@
   background-color: $grey-1;
 }
 
-.darken-1 {
-  color: $darken-1;
-}
-.bg-darken-1 {
-  background-color: $darken-1;
-}
-// .border-darken-1 {
-//   border-color: $darken-1;
-// }
-
-.darken-2 {
-  color: $darken-2;
-}
-.bg-darken-2 {
-  background-color: $darken-2;
-}
-.border-darken-2 {
-  border-color: $darken-2;
-}
-
-/*
-.darken-3 {
-  color: $darken-3;
-}
-.bg-darken-3 {
-  background-color: $darken-3;
-}
-
-.darken-4 {
-  color: $darken-4;
-}
-*/
-.bg-darken-4 {
-  background-color: $darken-4;
-}
+.c--inherit { color: inherit; }
+.f--cc { fill: currentcolor; }
 
 .shadow {
-  box-shadow: 0 1px 2px rgba(100,100,100,.2);
-}
-.shadow--effect:hover,
-.shadow--effect:focus {
-  box-shadow: 0 2px 6px rgba(0,0,0,.2);
-  transition: .4s cubic-bezier(.3,.6,0.2,1.4);
-}
-
-.shadow-deep {
-  box-shadow: 0 2px 10px rgba(0,0,0,.2);
-}
-.shadow-deep--effect:hover,
-.shadow-deep--effect:focus {
-  box-shadow: 0 3px 18px rgba(0,0,0,.4);
-  transition: .4s cubic-bezier(.3,.6,0.2,1.4);
-}
-
-.well {
-  box-shadow: inset 0 0 10px rgba(0,0,0,.05);
+  box-shadow: $shadow-1;
 }

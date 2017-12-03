@@ -1,32 +1,44 @@
-<h2 class="mtm">Ingredients</h1>
-<div class="recipe__ingredients content" itemprop="ingredients">
-  <% @recipe.ingredients.to_s.lines.each do |line| %>
-    <%= ingredient_processed(line).html_safe %>
-  <% end %>
+<%= section_header 'Ingredients', 2, class: 'mtm' %>
+<div class="recipe__ingredients content" data-behavior="recipe_ingredients">
+  <ul>
+    <% @recipe.ingredients.to_s.lines.each do |line| %>
+      <%= ingredient_processed(line) %>
+    <% end %>
+  </ul>
 </div>
 
-<h2 class="mtm">Instructions</h2>
-<div class="content" itemprop="recipeInstructions">
+<%= section_header 'Instructions', 2, class: 'mtm' %>
+<div class="recipe__instructions content">
   <%= instructions_processed.html_safe %>
 </div>
 
-<% if @recipe.imaged? && @image_layout == false %>
-  <%= image_tag @recipe.img.url, class: 'flex mx-auto rounded oh',
-                alt: "Photo of #{@recipe.title}", itemprop: 'image' %>
-<% end %>
+<%= section_header 'Details', 2, class: 'mtm' %>
 
-<h2 class="mtm">Details</h2>
-<% if @recipe.source.present? %>
-  <p class="wbw">Source: <%= clean_autolink @recipe.source %></p>
-<% end %>
-<% if @recipe.author.present? %>
-  <p>Author: <span itemprop="author"><%= @recipe.author %></span></p>
-<% end %>
-<% if @recipe.serves.present? %>
-  <p>Yield: <span itemprop="recipeYield"><%= @recipe.serves %></span></p>
-<% end %>
-<% if no_details? %>
-  <p class="grey-2">
-    No details for this recipe. Details describe where the recipe came from and the recipe's yield.
-  </p>
-<% end %>
+<%= content_tag(:div, class: 'wbw mbm') do %>
+  <span class="db b grey-2">Source</span>
+  <span class="content">
+    <%= clean_autolink @recipe.source %>
+  </span>
+<% end if @recipe.source.present? %>
+
+<%= content_tag(:p) do %>
+  <span class="db b grey-2">Author</span>
+  <span class="content"><%= @recipe.author %></span>
+<% end if @recipe.author.present? %>
+
+<%= content_tag(:p) do %>
+  <span class="db b grey-2">Yield</span>
+  <span class="content"><%= @recipe.serves %></span>
+<% end if @recipe.serves.present? %>
+
+<div data-user="<%= @recipe.user_id %>" data-behavior="recipe_colls_container" class="dn-p"></div>
+
+<%= content_tag(:p, class: 'mts') do %>
+  <span class="db b grey-2">Added</span>
+  <span class="content" title="<%= @recipe.created_at.strftime '%Y-%m-%d at %I:%M %p' %>">
+    <%= @recipe.created_at.strftime '%B %d, %Y' %>
+  </span>
+<% end if @recipe.persisted? %>
+
+<%= section_header 'Notes', 2, class: 'mtm' %>
+<%= content_tag :div, notes_rendered, class: 'content mbm' %>

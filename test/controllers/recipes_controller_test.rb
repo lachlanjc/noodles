@@ -1,18 +1,25 @@
 require 'test_helper'
 
 class RecipesControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
+  include Devise::Test::ControllerHelpers
 
   setup do
     sign_in users(:one)
     @recipe = recipes(:one)
-    @recipe.user_id = users(:one).id
+  end
+
+  teardown do
+    Rails.cache.clear
   end
 
   test 'should get index' do
     get :index
     assert_response :success
-    assert_not_nil assigns(:recipes)
+  end
+
+  test 'should get show' do
+    get :show, params: { id: @recipe.id }
+    assert_response :success
   end
 
   test 'should get new' do
@@ -20,66 +27,79 @@ class RecipesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test 'cannot save without title' do
-    post :create, recipe: { title: nil }
-    assert_not recipe.save
+  test 'should get edit' do
+    get :edit, params: { id: @recipe.id }
+    assert_response :success
+  end
+
+  test 'should edit recipe' do
+    put :update, params: { id: @recipe.id, recipe: { title: 'New title' } }
+    assert_response :redirect
+    @recipe.reload
+    assert_equal 'New title', @recipe.title
+    assert_not_empty flash[:success]
+  end
+
+  test 'should update collections' do
+    put :update, params: { id: @recipe.id, recipe: { collections: [1] } }
+    assert_response :redirect
+    @recipe.reload
+    assert_equal [1.to_s], @recipe.collections
+    assert_nil flash[:success]
   end
 
   test 'should create recipe' do
     assert_difference('Recipe.count') do
-      post :create, recipe: {
-        title: @recipe.title, id: 1, description: @recipe.description,
-        ingredients: @recipe.ingredients, instructions: @recipe.instructions
-      }
+      post :create, params: { recipe: { title: 'Some title' } }
     end
-
-    assert_redirected_to recipe_path(assigns(:recipe))
-    assert_equal 'Awesome, you\'ve saved your new recipe.', flash[:green]
+    assert_redirected_to recipe_path(Recipe.last)
+    assert_not_empty flash[:success]
   end
 
-  test 'should show recipe' do
-    get :show, id: @recipe.id.to_s
-    assert_response :success
-  end
-
-  test 'should show locked recipe page' do
-    sign_out users(:one)
-    get :show, id: @recipe.id.to_s
-    assert_template :locked
-    assert_response 403
-  end
-
-  test 'should get edit' do
-    get :edit, id: @recipe.id
-    assert_response :success
-  end
-
-  test 'should update recipe' do
-    patch :update, id: @recipe, recipe: {
-      title: @recipe.title, id: 1, description: @recipe.description,
-      ingredients: @recipe.ingredients, instructions: @recipe.instructions
-    }
-    assert_redirected_to recipe_path(assigns(:recipe))
-    assert_equal 'Great, your changes were saved.', flash[:green]
-  end
-
-  test 'should destroy recipe' do
+  test 'should delete recipe' do
     assert_difference('Recipe.count', -1) do
-      delete :destroy, id: @recipe
+      delete :destroy, params: { id: @recipe.id }
     end
-
     assert_redirected_to recipes_path
+    assert_not_empty flash[:success]
   end
 
-  test 'should get recipe pdf' do
-    get :export_pdf, recipe_id: @recipe.id
-    assert_not_nil assigns(:recipe)
+  test 'should get collections' do
+    get :collections, params: { id: @recipe.id }, xhr: true
     assert_response :success
   end
 
-  test 'should show shared recipe' do
-    get :share, shared_id: @recipe.shared_id
-    assert_not_nil assigns(:recipe)
+  test 'should get pdf' do
+    get :export_pdf, params: { id: @recipe.id }
     assert_response :success
+  end
+
+  test 'should get embed' do
+    get :embed_js, params: { shared_id: @recipe.shared_id }
+    assert_response :success
+  end
+
+  test 'should remove image' do
+    get :remove_image, params: { id: @recipe.id }
+    @recipe.reload
+    assert @recipe.unimaged?
+    assert_redirected_to edit_recipe_url(@recipe)
+  end
+
+  test 'should get public' do
+    get :share, params: { shared_id: @recipe.shared_id }
+    assert_response :success
+  end
+
+  test 'should get public signed out' do
+    sign_out users(:one)
+    get :share, params: { shared_id: @recipe.shared_id }
+    assert_response :success
+  end
+
+  test 'should be locked out' do
+    sign_out users(:one)
+    get :show, params: { id: @recipe.id }
+    assert_response 403
   end
 end

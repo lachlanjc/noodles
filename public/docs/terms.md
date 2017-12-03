@@ -1,5 +1,4 @@
 <p class="grey-2 f5">Last updated on November 16, 2014.</p>
-___
 
 Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the https://getnoodl.es/ website (the "Service") operated by Noodles ("us", "we", or "our").
 

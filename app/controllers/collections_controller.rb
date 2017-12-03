@@ -1,30 +1,48 @@
 class CollectionsController < ApplicationController
   include CollectionsHelper
 
-  before_action :set_collection, except: [:index, :create]
-  before_filter :authenticate_user!, except: [:share]
-  before_filter :only_mine, only: [:show, :update, :destroy]
+  before_action :please_sign_in, except: %i[show share]
+  before_action :set_collection, except: %i[index create]
+  before_action -> { hey_thats_my @collection }, except: %i[index create show share]
 
   def index
     @collections = current_user.collections
+    @collections_json = ActiveModelSerializers::SerializableResource.new(@collections, each_serializer: CollectionListSerializer).as_json
     @collection = Collection.new
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @collections_json }
+    end
   end
 
   def show
-    populate_collection
-    @shared_url = shared_coll_url
+    if is_my? @collection
+      @collection_json = ActiveModelSerializers::SerializableResource.new(@collection, serializer: CollectionSerializer).as_json
+      respond_to do |format|
+        format.html { render :show }
+        format.json { render json: @collection_json }
+      end
+    else
+      render_locked @collection
+    end
   end
 
   def share
-    populate_collection
-    @shared_url = shared_coll_url
+    @collection_json = ActiveModelSerializers::SerializableResource.new(@collection, serializer: CollectionSerializer).as_json
+    respond_to do |format|
+      format.html { render :share }
+      format.json { render json: @collection_json }
+    end
   end
 
   def create
-    @collection = Collection.new(collection_params)
-    @collection.user = current_user
-    @collection.save
-    redirect_to @collection
+    @collection = Collection.new(collection_params.merge(user: current_user))
+    respond_to do |format|
+      if @collection.save
+        format.html { redirect_to collection_path(@collection) }
+        format.json { render json: @collection, status: :created, location: @collection }
+      end
+    end
   end
 
   def update
@@ -34,18 +52,16 @@ class CollectionsController < ApplicationController
 
   def destroy
     @collection.destroy
-    flash[:green] = 'Your collection is no more.'
-    redirect_to collections_path
+    flash[:success] = 'The collection has been deleted.'
+    redirect_to collections_url
   end
 
   private
 
   def set_collection
-    @collection = Collection.find(params[:id])
-    if @collection.nil? && params[:shared_id]
-      @collection = Collection.find_by_shared_id(params[:shared_id])
-    end
-    raise_not_found
+    @collection = Collection.includes(:user).find_by regular_or_shared_id
+    # raise_not_found
+    @recipes = @collection.recipes
   end
 
   def raise_not_found
@@ -53,20 +69,6 @@ class CollectionsController < ApplicationController
   end
 
   def collection_params
-    params.require(:collection).permit(:name, :description, :photo, :user_id)
-  end
-
-  def populate_collection
-    @recipes = []
-    @collection.user.recipes.each do |recipe|
-      @recipes.push(recipe) if recipe.collections.include?(@collection.id.to_s)
-    end
-  end
-
-  def only_mine
-    if not_my_collection?
-      flash[:red] = 'That\'s not yours.'
-      redirect_to root_url
-    end
+    params.require(:collection).permit(:name, :description, :photo)
   end
 end

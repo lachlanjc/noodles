@@ -1,33 +1,45 @@
 {
   "name": "noodles",
-  "version": "1.0.0",
-  "description": "Keep, cook, and share all your recipes.",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
-  "devDependencies": {
-    "get-css": "^1.2.1",
-    "clean-css": "^3.4.17",
-    "fs": "^0.0.2",
-    "pageres": "^4.1.2",
-    "lodash": "^4.13.1",
-    "parker": "^0.0.10"
-  },
-  "dependencies": {},
+  "version": "2.0.1",
+  "description": "Now you're cooking.",
   "scripts": {
     "css": "node meta/css-stats.js",
-    "embed": "node meta/embed.js"
+    "embed": "node meta/embed.js",
+    "fmt": "prettier app/javascript/*/*.js --single-quote --no-semi --write",
+    "start": "./bin/server"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lachlanjc/noodles.git"
+    "url": "https://github.com/lachlanjc/noodles.git"
   },
-  "author": "Lachlan Campbell <atlachlanjc@gmail.com>",
+  "author": "Lachlan Campbell <lachlan@getnoodl.es>",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/lachlanjc/noodles/issues"
-  },
   "homepage": "https://getnoodl.es",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "@rails/webpacker": "^3.0.2",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "clean-css": "^4.1.9",
+    "coffee-loader": "^0.9.0",
+    "coffee-script": "^1.12.7",
+    "coffeescript": "2.0.3",
+    "get-css": "^1.2.5",
+    "glob": "^7.1.2",
+    "lodash": "^4.17.4",
+    "pageres": "^4.5.1",
+    "parker": "^0.0.10",
+    "path-complete-extname": "^0.1.0",
+    "prop-types": "^15.6.0",
+    "rails-erb-loader": "^5.2.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "webpack": "^3.9.1",
+    "webpack-dev-server": "^2.9.5",
+    "webpack-merge": "^4.1.1",
+    "webpacker-react": "^0.3.2"
+  }
 }

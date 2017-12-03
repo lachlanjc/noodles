@@ -1,11 +1,12 @@
 module TextHelper
   def markdown(str = '')
-    Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, underline: true, space_after_headers: true, strikethrough: true).render(str.to_s).html_safe
+    opts = { autolink: true, underline: true, highlight: true, strikethrough: true }
+    md = Redcarpet::Markdown.new(Redcarpet::Render::HTML, opts).render(str.to_s)
+    ActionController::Base.helpers.sanitize md.html_safe
   end
 
   def plain_text_from_markdown(text = '', options = {})
-    text = markdown(text.to_s)
-    text = sanitize(text, tags: %w(ol ul li))
+    text = sanitize(markdown(text), tags: %w[ol ul li])
     text = HtmlToPlainText.plain_text(text)
     text.gsub!(/^\d+\.\s/, '') if options[:remove_numbers]
     text
@@ -28,6 +29,23 @@ module TextHelper
   end
 
   def clean_autolink(text)
-    auto_link(text, html: { target: '_blank' }) { |text| remove_url_head(text) }
+    node = Nokogiri::HTML::DocumentFragment.parse(markdown(text)).css('a')
+    return markdown(text).to_s.html_safe if node.blank?
+    node = node.first
+    node[:target] = '_blank'
+    node.content = remove_url_head(text)
+    node.to_s.html_safe
+  end
+
+  def section_header(text, level, options = {})
+    tag = "h#{level}"
+    options[:class] = ['section-header', options[:class]].join(' ')
+    content_tag(tag, options) do
+      content_tag(:span, text, class: 'section-header__name')
+    end
+  end
+
+  def unix_date(time)
+    DateTime.strptime(time.to_s, '%s').to_date
   end
 end

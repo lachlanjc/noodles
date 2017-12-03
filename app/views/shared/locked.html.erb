@@ -1,0 +1,10 @@
+<%- title "Private #{object.type}" %>
+
+<%= render 'shared/nav' %>
+
+<main class="w-50-m mx-auto phm tc pvl">
+  <%= inline_svg 'locked.svg', size: 192, class: 'mx-auto fill-grey-3' %>
+  <h2 class="mvs">Sorry, this <%= object.type %> is private.</h2>
+  <p>Try asking the <%= object.type %>’s owner to share the public link.</p>
+  <%= link_to t('general.sign_in'), sign_in_path, class: 'mts btn btn--primary bg-blue' unless user_signed_in? %>
+</main>

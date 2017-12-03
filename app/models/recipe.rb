@@ -1,19 +1,29 @@
-class Recipe < ActiveRecord::Base
-  belongs_to :user
+class Recipe < ApplicationRecord
+  belongs_to :user, touch: true
 
   include Shareable
 
-  validates :title, presence: true, length: { maximum: 254 }
-  validates :user_id, presence: true
+  validates :title,
+            presence: true,
+            length: { maximum: 254 }
+  validates :user_id,
+            presence: true
 
-  has_attached_file :img, default_url: '', path: 'recipes/:id/img/:style.:extension'
+  has_attached_file :img,
+                    path: 'recipes/:id/img/:style.:extension',
+                    default_url: '',
+                    s3_region: ENV['AWS_REGION']
   validates_attachment_content_type :img, content_type: /\Aimage\/.*\Z/
   validates_with AttachmentSizeValidator, attributes: :img, less_than: 5.megabytes
 
-  after_save :collection_cleanup!
+  before_update :collection_cleanup!
 
   def to_param
     "#{id} #{title}".parameterize
+  end
+
+  def name
+    title
   end
 
   def description_truncated
@@ -26,6 +36,33 @@ class Recipe < ActiveRecord::Base
 
   def unimaged?
     !imaged?
+  end
+
+  def sample?
+    shared_id == 'sample'
+  end
+
+  def find_collections
+    list = user.collections.pluck(:id)
+    list.delete_if { |item| !collections.include?(item.to_s) }
+    Collection.find(list)
+  end
+
+  def photo_url
+    imaged? ? img.url : "#{ENV['SPLATTERED_URL']}/#{name}"
+  end
+
+  def public_url
+    share_url shared_id
+  end
+
+  def duplicate_for(user)
+    @new = dup
+    @new.user_id = user.id
+    @new.source = public_url
+    @new.favorite = false
+    @new.save
+    recipe_path @new
   end
 
   private

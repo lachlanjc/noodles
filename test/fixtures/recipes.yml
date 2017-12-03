@@ -5,9 +5,11 @@ one:
   instructions: "1. Eat the cheese."
   favorite: false
   shared_id: "goodcheese"
-  source: "http://goodcheese.getnoodl.es/"
   serves: "As many people as possible."
   notes: "Any decent cheese works."
+  cooks_count: 0
+  last_cooked_at: <%= 5.minutes.ago %>
+  user_id: 1
 two:
   title: "Good Toast"
   description: ""

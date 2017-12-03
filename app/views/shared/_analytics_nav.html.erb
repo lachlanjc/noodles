@@ -1,16 +1,14 @@
-<nav role="navigation" class="nav flex-ns sticky-ns tc-ns mbm pas phm-ns tc dn-p">
+<nav
+  role="navigation"
+  class="nav bg-blur sticky-ns pas phm-ns tc dn-p mbm">
+
   <%= link_to root_url, class: 'dn dib-ns nav__icon lh' do %>
     <%= inline_svg 'cook.svg', class: 'fill-orange', size: 28 %>
   <% end %>
 
-  <article class="nav__container flex-ns flex-auto fjc">
-    <section>
-      <%= link_to "Dashboard", analytics_dash_path, class: nav_active_class(:analytics_dash) %>
-      <%= link_to "Users", analytics_users_path, class: nav_active_class(:analytics_users) %>
-    </section>
-    <section>
-      <%= link_to "Collections", analytics_collections_path, class: nav_active_class(:analytics_collections) %>
-      <%= link_to "Performance", analytics_performance_path, class: nav_active_class(:analytics_performance) %>
-    </section>
+  <article class="nav__container">
+    <%= link_to 'Dashboard', analytics_dash_path, class: nav_active_class(:analytics_dash) %>
+    <%= link_to 'Users', analytics_users_path, class: nav_active_class(:analytics_users) %>
+    <%= link_to 'Performance', analytics_performance_path, class: nav_active_class(:analytics_performance) %>
   </article>
 </nav>

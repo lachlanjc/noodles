@@ -1,44 +1,62 @@
 <% activate_nav!(:analytics_dash) %>
-<%- title 'Analytics Dashboard' %>
+<% title 'Dashboard' %>
 <%= render 'shared/analytics_nav' %>
 
-<main class="mx-auto flex fjc flex-rows mw7">
-  <section class="mas bg-white shadow pam pal-ns rounded" style="width: 13rem;">
-    <h1 class="man orange"><%= @users_count %></h1>
+<main class="flex-grid mw7 mx-auto phm bx">
+  <section class="flex-grid__item card">
+    <h1 class="mvn orange sans fwn"><%= @users %></h1>
     <p class="grey-3 mbn">users</p>
   </section>
 
-  <section class="mas bg-white shadow pam pal-ns rounded" style="width: 13rem;">
-    <h1 class="man orange"><%= Recipe.all.count %></h1>
+  <section class="flex-grid__item card">
+    <h1 class="mvn green sans fwn">+<%= @users_week %></h1>
+    <p class="grey-3 mbn">
+      new users this week
+    </p>
+  </section>
+
+  <section class="flex-grid__item card">
+    <h1 class="mvn grey-1 sans fwn"><%= @users_active %></h1>
+    <p class="grey-3 mbn">
+      seen this week
+      (<%= number_to_percentage (@users_active / @users), precision: 0 %>)
+    </p>
+  </section>
+
+  <section class="flex-grid__item card">
+    <h1 class="mvn orange sans fwn"><%= @subscribers %></h1>
+    <p class="grey-3 mbn">
+      subscribers
+    </p>
+  </section>
+
+  <section class="flex-grid__item card">
+    <h1 class="mvn green sans fwn">+<%= @subscribers_week %></h1>
+    <p class="grey-3 mbn">
+      subscribers new this week
+    </p>
+  </section>
+
+  <section class="flex-grid__item card">
+    <h1 class="mvn grey-1 sans fwn"><%= Recipe.all.count %></h1>
     <p class="grey-3 mbn">recipes</p>
   </section>
 
-  <section class="mas bg-white shadow pam pal-ns rounded" style="width: 13rem;">
-    <h1 class="man orange"><%= Collection.all.count %></h1>
+  <section class="flex-grid__item card">
+    <h1 class="mvn grey-1 sans fwn"><%= @users_none %></h1>
+    <p class="grey-3 mbn">
+      have no recipes
+      (<%= number_to_percentage (@users_none / @users), precision: 0 %>)
+    </p>
+  </section>
+
+  <section class="flex-grid__item card">
+    <h1 class="mvn grey-1 sans fwn"><%= Collection.all.count %></h1>
     <p class="grey-3 mbn">collections</p>
   </section>
 
-  <section class="mas bg-white shadow pam pal-ns rounded" style="width: 13rem;">
-    <h1 class="man orange"><%= @users_none.count %></h1>
-    <p class="grey-3 mbn">
-      users have no recipes
-      (<%= number_with_precision(@users_none.count / @users_count, precision: 2) %>%)
-    </p>
-  </section>
-
-  <section class="mas bg-white shadow pam pal-ns rounded" style="width: 13rem;">
-    <h1 class="man orange"><%= @users_one.count %></h1>
-    <p class="grey-3 mbn">
-      users have 1 recipes
-      (<%= number_with_precision(@users_one.count / @users_count, precision: 2) %>%)
-    </p>
-  </section>
-
-  <section class="mas bg-white shadow pam pal-ns rounded" style="width: 13rem;">
-    <h1 class="man orange"><%= @users_many.count %></h1>
-    <p class="grey-3 mbn">
-      users have several recipes
-      (<%= number_with_precision(@users_many.count / @users_count, precision: 2) %>%)
-    </p>
+  <section class="flex-grid__item card">
+    <h1 class="mvn grey-1 sans fwn"><%= Grocery.all.count %></h1>
+    <p class="grey-3 mbn">groceries</p>
   </section>
 </main>

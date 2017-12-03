@@ -1,12 +1,17 @@
-# Read more at http://help.github.com/ignore-files/
-
 .DS_Store
 *.log
 /tmp/*
-/bin/*
 .env
 db/seeds.rb
 *.swp
 *.un~
 node_modules/
 meta/results/
+/public/assets
+/public/packs
+/public/page_cache
+/.bundle
+/vendor/bundle/*
+passenger.3000.pid
+/public/packs
+/public/packs-test

@@ -1,8 +1,14 @@
 class RegistrationsController < Devise::RegistrationsController
+  def subscribe; end
+
   protected
 
-  def after_sign_up_path_for(resource)
-    params[:explore] ? explore_path : onboarding_path
+  def after_sign_up_path_for(_resource)
+    params[:explore] ? explore_path : recipes_path
+  end
+
+  def after_update_path_for(_resource)
+    request.referer == groceries_url ? groceries_path : recipes_path
   end
 
   def update_resource(resource, params)

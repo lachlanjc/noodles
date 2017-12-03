@@ -1,0 +1,20 @@
+<% activate_nav!(:help) %>
+<% title 'Help' %>
+<% bg_carousel 'help.jpg' %>
+
+<%= render 'shared/nav' %>
+
+<% if nobody_signed_in? %>
+  <article class="document pam-ns mw6 mvl">
+    <%= section_header 'About Noodles', 1, class: 'f2 mtn mbs grey-2' %>
+    <p class="content lh-copy mvn">
+      Noodles is a free app for cooking — it's your own organized library of all your recipes.
+      Check out <%= link_to 'the homepage', root_url %> for more information.
+    </p>
+  </article>
+<% end %>
+
+<article class="document pam-ns mw6">
+  <%= section_header 'Have a question?', 1, class: 'f2 mtn grey-2' %>
+  <%= render 'shared/help' %>
+</article>

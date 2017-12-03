@@ -1,40 +1,64 @@
-<%- title "Settings" %>
-<% activate_nav!(:settings) %>
+<% activate_nav! :settings %>
+<% title 'Settings' %>
+<% bg_carousel %>
 
 <%= render 'shared/nav' %>
 
-<article class="document">
+<main class="document meta-split mw8">
+  <div class="meta-split__col meta-split__col--left">
+    <%= section_header 'My account', 2, class: 'mtn mbm grey-2 f3' %>
+    <%= form_for current_user, url: user_registration_path, html: { method: :put } do |f| %>
 
-  <h1><%= t(".account_settings") %></h1>
+      <%= devise_error_messages! %>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= f.label t('.fn'), class: 'label' %>
+      <%= f.text_field :first_name, class: 'text-input', name: 'fname', required: true %>
 
-    <%= devise_error_messages! %>
+      <%= f.label t('.email_a'), class: 'label' %>
+      <%= f.email_field :email, class: 'text-input', autocomplete: 'email' %>
 
-    <%= f.label t(".fn") %>
-    <%= f.text_field :first_name, class: "text-input", name: "fname", required: true %>
+      <div class="flex fac mts">
+        <%= f.check_box :want_newsletter, class: 'mrs' %>
+        <%= f.label :want_newsletter, 'Receive the (occasional) newsletter', class: 'man' %>
+      </div>
 
-    <%= f.label t(".email_a") %>
-    <%= f.email_field :email, class: "text-input", name: "email", autocomplete: "email" %>
+      <%= f.label :phone, 'Phone number (+ intl code)', class: 'label dib' %>
+      <small class="f5 dib grey-3">(only for SMS grocery list—kept safe, no spam)</small>
+      <%= f.phone_field :phone, placeholder: '1555-555-5555', class: 'text-input' %>
 
-    <div>
-      <%= f.check_box :want_newsletter %>
-      <%= f.label :want_newsletter, "Receive Noodles Announcements (monthly or less)" %>
-    </div>
+      <%= f.label :password, 'New password', class: 'label dib' %>
+      <small class="f5 dib grey-3">(only if you’d like to change it)</small>
+      <%= f.password_field :password, pattern: '.{8,}', placeholder: '8 characters recommended', class: 'text-input' %>
 
-    <%= f.label :password, 'New password', class: 'dib' %>
-    <small class="f5 dib grey-3">Only if you'd like it to change.</small>
-    <%= f.password_field :password, autocomplete: "off", class: "text-input" %>
+      <%= f.submit t('general.update'), class: 'btn bg-blue mtm' %>
 
-    <%= f.submit t("general.update"), class: "btn bg-blue mtm" %>
+    <% end %>
 
-  <% end %>
+    <%= section_header 'Subscription', 2, class: 'mtl mbs grey-2 f3' %>
+    <% if current_user.subscriber? %>
+      <p>Thank you for subscribing! It helps a lot.</p>
+      <%= link_to 'Manage your subscription', subscriptions_path, class: 'btn bg-green' %>
+    <% else %>
+      <p>
+        Please consider buying a subscription—$12/year to help keep Noodles running.
+      </p>
+      <%= link_to 'Learn more', subscriptions_path, class: 'btn bg-green' %>
+    <% end %>
+  </div>
+  <div class="meta-split__col meta-split__col--right">
+    <%= section_header 'Help', 2, class: 'mtn mbs grey-2 f3' %>
+    <%= render 'shared/help', hide_footer: true %>
 
-  <hr>
+    <%= section_header 'Delete your account', 2, class: 'mtl mbs grey-2 f3' %>
+    <p>
+      If you want to delete your account, click the button below. All your recipes, as well as shared recipes, will be erased forever.
+    </p>
 
-  <h2 class="mtm"><%= t(".delete_account") %></h2>
-  <p><%= t(".want_account_gone") %></p>
-  <p>If you just need help with something in Noodles, <%= link_to 'head over to the Help page', :help %>.</p>
-  <%= link_to t(".delete_my_account"), user_registration_path(resource_name), class: "btn-sm btn bg-red", data: { confirm: "Are you sure you want to delete your Noodles account and your recipes? If so, hit OK." }, method: :delete, rel: "nofollow" %>
-
-</article>
+    <%= link_to t('.delete_my_account'),
+      user_registration_path(current_user),
+      method: :delete,
+      class: 'btn btn-sm bg-red',
+      'data-confirm': 'Are you sure you want to delete your Noodles account and your recipes?'
+    %>
+  </div>
+</main>

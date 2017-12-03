@@ -1,16 +1,20 @@
 .nav {
+  display: flex;
+  align-items: center;
+  position: relative;
   border-bottom: 1px solid rgba(0,0,0,.1);
-  background-color: rgba(252,252,252,.98);
   z-index: 6;
   top: 0;
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
 }
 
 .nav__icon {
-  align-self: flex-start;
+  line-height: 1;
 }
 
 .nav__container {
-  line-height: 1.75;
+  margin: auto;
 }
 
 .nav__link {
@@ -18,5 +22,25 @@
 
   &:hover {
     color: $grey-2;
+  }
+}
+
+@media screen and (max-width: 30em) {
+  .nav__icon {
+    position: absolute;
+    top: 25%;
+  }
+}
+
+@media screen and (min-width: 30em) {
+  .nav__section {
+    display: inline-block;
+    line-height: 1.5;
+
+    &:last-child {
+      border-left: $border;
+      padding-left: $space-2;
+      margin-left: $space-2;
+    }
   }
 }

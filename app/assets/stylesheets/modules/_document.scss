@@ -1,16 +1,42 @@
 .document {
-  background: #fff;
-  border-color: $grey-4;
-  border-style: solid;
-  border-width: 1px 0;
   box-sizing: border-box;
-  margin: 0 auto $space-2;
+  background-color: #fff;
+  margin: 0 auto $space-3;
   padding: $space-2;
+  position: relative;
+
+  @media screen and (min-width: 30em) {
+    border-radius: $border-radius;
+    box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.05);
+  }
 
   @media screen and (min-width: 48em) {
-    border-radius: $border-radius;
-    border-width: $border-width;
     padding: $space-3;
     width: (8/12 * 100%);
+  }
+}
+
+.section-header {
+  position: relative;
+
+  &__name {
+    background-color: #fff;
+    display: inline-block;
+    padding-right: $space-2;
+    position: relative;
+  }
+
+  &.tc &__name {
+    padding-left: $space-2;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    border-bottom: $border;
+    z-index: 0;
   }
 }

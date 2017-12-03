@@ -1,23 +1,25 @@
 @media print {
-  .dn-p,
-  .btn-paper,
-  .btn-paper-mini,
-  .filterbar {
+  .dn-p {
     display: none !important;
   }
 
-  .document {
-    width: 100%;
-    border: 0;
+  body {
+    background-color: $white !important;
+  }
+
+  .superheader:before {
+    content: 'Noodles – ';
   }
 
   main {
+    max-width: 100% !important;
     width: 100% !important;
   }
 
   * {
     background: transparent;
     box-shadow: none !important;
+    text-shadow: none !important;
     color: #000 !important;
     max-width: 100%;
     word-wrap: break-word;

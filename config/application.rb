@@ -1,4 +1,4 @@
-require File.expand_path('../boot', __FILE__)
+require_relative 'boot'
 
 require 'rails/all'
 
@@ -8,6 +8,10 @@ Bundler.require(*Rails.groups)
 
 module Noodles
   class Application < Rails::Application
-    config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
+    # Settings in config/environments/* take precedence over those specified here.
+    # Application configuration should go into files in config/initializers
+    # -- all .rb files in that directory are automatically loaded.
+    config.action_controller.page_cache_directory = "#{Rails.root}/public/page_cache"
+    config.active_job.queue_adapter = :delayed_job
   end
 end

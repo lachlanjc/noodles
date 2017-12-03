@@ -1,49 +1,83 @@
-<header class="image-header inline-with-nav relative bg-cover bg-center pam pvl-ns flex-ns fac"
-        style="background-image: url(<%= @recipe.img.url %>);">
-
-  <div class="md-col-8 mx-auto mw7 flex-ns fac">
-    <div class="db flex-auto">
-      <h1 class="f1 f0-ns white mbs" itemprop="name">
-        <%= @recipe.title %>
-      </h1>
-
-      <% if @recipe.description.present? %>
-      <div itemprop="description">
+<header
+  class="image-header bx bg-cover bg-center pvl pvxl-ns flex fc fac fjc"
+  style="
+    background-image: linear-gradient(rgba(0,0,0,.05), rgba(0,0,0,.25)),
+      url(<%= @recipe.img.url %>);
+  ">
+  <div class="w-100 mw7 mx-auto bx phm phl-ns">
+    <h1 class="f1 f0-ns white mbn dib">
+      <%= @recipe.title %>
+    </h1>
+    <% if public_page? && @recipe.user %>
+      <p class="white f5 mbm">Shared by <%= @recipe.publisher %></p>
+    <% end %>
+    <% if @recipe.description.present? %>
+      <div class="content lh-title mbn">
         <%= whitened_markdown @recipe.description, [:f3] %>
       </div>
+    <% end %>
+  </div>
+  <div class="dn-p flex fac flex-rows lh0 mtl">
+    <% if public_page? %>
+      <%= link_to share_url(@recipe.shared_id),
+        class: 'dn mrm pointer tooltipped tooltipped--n',
+        'data-behavior': 'show_if_signed_in',
+        'aria-label': 'Save to your library' do %>
+        <%= inline_svg 'add_circle.svg', class: 'fill-white', size: 32 %>
       <% end %>
-
-      <% if @recipe.user.present? && nav_active?(:shared_recipe) %>
-        <p class="white f5">Shared by <%= @recipe.user.first_name %></p>
+      <%= link_to public_cook_path(@recipe.shared_id),
+        class: 'mrm pointer tooltipped tooltipped--n',
+        'aria-label': 'Open in Cook Mode' do %>
+        <%= inline_svg 'cook.svg', class: 'fill-white', size: 32 %>
       <% end %>
-    </div>
-
-    <% if me_owns_recipe? && !nav_active?(:shared_recipe) %>
-      <%= form_for(@recipe, html: { class: 'lh0 fsn dib dn-p' }) do |f| %>
-        <%= f.label :favorite, class: 'tooltipped tooltipped--n man mlm-ns', 'data-behavior': 'r_fav', 'aria-label': 'Favorite', tabindex: 0 do %>
+    <% else %>
+      <%= form_for(@recipe, html: { class: 'mrm lh0 fsn dib' }) do |f| %>
+        <%= f.label :favorite, class: 'tooltipped tooltipped--n man', 'data-behavior': 'r_fav', 'aria-label': 'Favorite', tabindex: 0 do %>
           <%= f.check_box :favorite, class: 'fav__checkbox', 'data-behavior': 'r_fav_trigger' %>
-          <%= inline_svg 'favorite_outline.svg', class: 'fill-white pointer fav__indicator--basic', size: 28 %>
-          <%= inline_svg 'favorite.svg', class: 'fill-white pointer fav__indicator--checked', size: 28 %>
+          <%= inline_svg 'favorite_outline.svg', class: 'fill-white pointer fav__indicator--basic', size: 32 %>
+          <%= inline_svg 'favorite.svg', class: 'fill-white pointer fav__indicator--checked', size: 32 %>
         <% end %>
       <% end %>
+      <%= link_to cook_recipe_path(@recipe.id),
+        class: 'mrm pointer tooltipped tooltipped--n',
+        'aria-label': 'Open in Cook Mode' do %>
+        <%= inline_svg 'cook.svg', class: 'fill-white', size: 32 %>
+      <% end %>
+      <%= link_to edit_recipe_path(@recipe),
+        class: 'mrm pointer tooltipped tooltipped--n',
+        'aria-label': 'Edit' do %>
+        <%= inline_svg 'edit.svg', class: 'fill-white', size: 32 %>
+      <% end %>
     <% end %>
-    <a href="#photo" name="photo" class="dib mhm lh0 fsn relative pointer tooltipped"
-       aria-label="View photo full size" data-behavior="modal_trigger">
-      <%= inline_svg 'fullscreen.svg', class: 'fill-white', size: 28 %>
+    <a
+      href="#share"
+      name="share"
+      class="dib lh0 mrm pointer tooltipped tooltipped--n"
+      aria-label="Share a public link"
+      data-behavior="modal_trigger"
+      >
+      <%= inline_svg 'share.svg', class: 'fill-white', size: 32 %>
     </a>
-    <%= render 'actions', color: 'white', rootClass: 'fsn dn-p', menuClass: 'tsn' if me_owns_recipe? && !nav_active?(:shared_recipe) %>
+    <a
+      href="#photo"
+      name="photo"
+      class="dib lh0 mrm pointer tooltipped tooltipped--n"
+      aria-label="View photo full size"
+      data-behavior="modal_trigger"
+      >
+      <%= inline_svg 'fullscreen.svg', class: 'fill-white', size: 32 %>
+    </a>
+    <%= render 'actions',
+      color: 'white',
+      rootClass: 'fsn dn-p',
+      menuClass: 'tsn' if is_my?(@recipe) && private_page?
+    %>
   </div>
 </header>
 
-<section id="photo" role="dialog" class="modal sm-col-8 mw8">
-  <div class="pointer absolute pas" style="right: 1rem;" data-behavior="modal_close">
-    <%= inline_svg 'close.svg', class: 'fill-white',
-                   style: '-webkit-filter: drop-shadow(0 2px 2px rgba(0,0,0,.25));
-                              -moz-filter: drop-shadow(0 2px 2px rgba(0,0,0,.25));
-                                   filter: drop-shadow(0 2px 2px rgba(0,0,0,.25));' %>
+<section id="photo" role="dialog" class="modal w-initial mw-100 pan oh lh0">
+  <div class="pointer absolute pas r0" data-behavior="modal_close">
+    <%= inline_svg 'close.svg', class: 'fill-white' %>
   </div>
-  <%= image_tag @recipe.img.url, class: 'col-12 fl',
-                alt: "Photo of #{@recipe.title}", itemprop: 'image' %>
+  <%= image_tag @recipe.img.url, alt: @recipe.title %>
 </section>
-
-<%= render 'shared/flash' if flash.any? %>

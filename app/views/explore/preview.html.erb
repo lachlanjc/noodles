@@ -1,18 +1,38 @@
-<h3 class="mtn">Ingredients</h1>
-<div class="content recipe__ingredients mbm">
-  <% @recipe.ingredients.to_s.lines.each do |line| %>
-    <%= ingredient_processed(line).html_safe %>
-  <% end %>
+<%= section_header 'Ingredients', 3, class: 'mtn' %>
+<div class="recipe__ingredients content" data-behavior="recipe_ingredients">
+  <ul>
+    <% @recipe.ingredients.to_s.lines.each do |line| %>
+      <%= ingredient_processed(line).html_safe %>
+    <% end %>
+  </ul>
 </div>
 
-<h3 class="mtm">Instructions</h3>
-<div class="content" itemprop="recipeInstructions">
-  <%= sanitize markdown(@recipe.instructions) %>
+<%= section_header 'Instructions', 3, class: 'mtm' %>
+<div class="recipe__instructions content">
+  <ol>
+    <%= instructions_processed.html_safe %>
+  </ol>
 </div>
 
-<h3 class="mtm">Details</h3>
-<%= content_tag :p, "Author: #{@recipe.author}" if @recipe.author.present? %>
-<%= content_tag :p, "Yield: #{@recipe.serves}" if @recipe.serves.present? %>
-<% if no_details? %>
-  <p class="grey-3">No author or yield for this recipe.</p>
-<% end %>
+<%= section_header 'Details', 3, class: 'mtm' %>
+
+<%= content_tag(:p, class: 'wbw') do %>
+  <span class="db b grey-2">Source</span>
+  <span class="content">
+    <%= clean_autolink @recipe.source %></p>
+  </span>
+<% end if @recipe.source.present? %>
+
+<%= content_tag(:p) do %>
+  <span class="db b grey-2">Author</span>
+  <span class="content"><%= @recipe.author %></span>
+<% end if @recipe.author.present? %>
+
+<%= content_tag(:p) do %>
+  <span class="db b grey-2">Yield</span>
+  <span class="content"><%= @recipe.serves %></span>
+<% end if @recipe.serves.present? %>
+
+<%= content_tag(:p) do %>
+  No author or yield on this recipe.
+<% end if no_details? %>

@@ -2,91 +2,68 @@
 <% activate_nav!(:recipes) %>
 <% remove_grey_bg! if @image_layout %>
 
-<%= render 'shared/nav' %>
-
-<div itemscope itemtype="http://schema.org/Recipe">
-  <meta itemprop="url" content="<%= @shared_url %>" />
-  <meta itemprop="dateCreated" content="<%= @recipe.created_at %>" />
-  <meta itemprop="dateModified" content="<%= @recipe.updated_at %>" />
+<% cache ['show', 'v1', @recipe] do %>
+  <%= render 'shared/nav', no_margin: @image_layout %>
 
   <%= render 'image_header' if @image_layout %>
 
-  <main class="document pan mw7">
-    <% if !@image_layout %>
-      <header class="flex-ns fac phm phl-ns mtm mtl-ns">
-        <h1 class="lh-title mtn mbs" itemprop="name"><%= @recipe.title %></h1>
-        <div class="flex-auto"></div>
-        <%= form_for(@recipe, html: { class: 'lh0 dib dn-p fsn' }) do |f| %>
-          <%= f.label :favorite, class: 'tooltipped man', 'data-behavior': 'r_fav', 'aria-label': 'Favorite', tabindex: 0 do %>
+  <% if !@image_layout %>
+    <main class="document mw7 mtm">
+      <%= link_to 'Cook this', cook_recipe_path(@recipe), class: 'badge fr dn-p' %>
+      <h1 class="lh-header mtn"><%= @recipe.title %></h1>
+      <div class="mts mbm dn-p flex fac flex-rows lh0">
+        <%= form_for(@recipe) do |f| %>
+          <%= f.label :favorite, class: 'tooltipped tooltipped--n man', 'data-behavior': 'r_fav', 'aria-label': 'Favorite', tabindex: 0 do %>
             <%= f.check_box :favorite, class: 'fav__checkbox', 'data-behavior': 'r_fav_trigger' %>
             <%= inline_svg 'favorite_outline.svg', class: 'fill-orange pointer fav__indicator--basic', size: 28 %>
             <%= inline_svg 'favorite.svg', class: 'fill-orange pointer fav__indicator--checked', size: 28 %>
           <% end %>
         <% end %>
-        <%= render 'actions', color: 'orange', rootClass: 'fsn mlm', menuClass: '' %>
-      </header>
-      <div class="text phm phl-ns" itemprop="description"><%= sanitize markdown @recipe.description.to_s %></div>
-    <% end %>
-    <section class="phm phl-ns <%= @image_layout ? 'mvm mvl-ns' : 'mbm mbl-ns' %>">
-      <%= render 'recipe_body' %>
-    </section>
-  </main>
-
-  <%= react_component 'NoteEditor', id: @recipe.id, plain: @recipe.notes, rendered: notes_rendered, allowEditing: me_owns_recipe? %>
-</div>
-
-<section id="collect" class="modal tc" role="dialog">
-  <%= modal_close %>
-  <h2 class="mtn mbs">Add to Collection</h2>
-
-  <% @collections = current_user.collections %>
-  <% if @collections.any? %>
-    <p>Move this recipe to any of your collections by selecting them below.</p>
-    <%= form_for(@recipe, html: { class: 'phm mtm' }) do |f| %>
-      <ul class="list-reset mw5 mx-auto tl">
-        <%= collection_check_boxes(:recipe, :collections, @collections, :id, :name) do |b| %>
-          <li class="border-top">
-            <%= b.label class: 'colladd__item man pas pointer' do %>
-              <%= b.check_box checked: @recipe.collections.include?(b.value.to_s), class: 'colladd__item__check dn' %>
-              <span class="colladd__item__label"><%= b.text.truncate 30 %></span>
-              <%= inline_svg 'check.svg', class: 'colladd__item__mark fill-orange fr dn' %>
-            <% end %>
-          </li>
+        <%= link_to edit_recipe_path(@recipe),
+          class: 'mlm pointer tooltipped tooltipped--n',
+          'aria-label': 'Edit' do %>
+          <%= inline_svg 'edit.svg', class: 'fill-orange', size: 28 %>
         <% end %>
-        <li class="border-top border-bottom pas grey-1">
-          <%= link_to 'Create New Collection...', collections_path(new_collection: true), class: 'link-reset' %>
-        </li>
-      </ul>
-      <%= f.submit 'Save', class: 'btn bg-blue' %>
-    <% end %>
+        <a
+          href="#share"
+          name="share"
+          class="mlm pointer tooltipped tooltipped--n"
+          aria-label="Share a public link"
+          data-behavior="modal_trigger">
+          <%= inline_svg 'share.svg', class: 'fill-orange', size: 28 %>
+        </a>
+        <%= render 'actions', color: 'orange', rootClass: 'mlm', menuClass: '' %>
+      </div>
+      <%= content_tag :div,
+        markdown(@recipe.description),
+        class: 'text content mtm' if @recipe.description
+      %>
+      <%= render 'recipe_body' %>
+    </main>
   <% else %>
-    <article class="text tc border bg-grey-4 rounded pal">
-      <h3 class="mtn">You don't have any collections yet!</h3>
-      <p>Collections help you organize your recipes.</p>
-      <%= link_to 'Create a Collection', collections_path(new_collection: true), class: 'btn bg-green mts' %>
-    </article>
+    <main class="mw7 mx-auto bx phm phl-ns pvm">
+      <%= render 'recipe_body' %>
+    </main>
   <% end %>
-</section>
 
-<%= render 'social' %>
+  <%= render 'shared/public', object: @recipe %>
 
-<section id="embed" class="modal" role="dialog">
-  <%= modal_header 'Embed on the Web' %>
-  <p>Copy and paste the code below onto your website or blog to embed this recipe.</p>
-  <%= content_tag :pre, escape_once(recipe_embed), class: 'man pas border rounded bg-grey-4', style: 'white-space: inherit' %>
-  <button type="button" class="btn bg-green btn-sm mvm"
-          data-clipboard-text="<%= escape_once(recipe_embed) %>" data-behavior="copy">
-    Copy
-  </button>
-  <p><%= link_to 'Need help?', help_path %></p>
-</section>
-
-<%= link_to edit_recipe_path(@recipe), 'aria-label': 'Edit this recipe',
-            class: 'btn-paper-mini bg-orange fill-white circle fixed pas shadow-deep shadow-deep--effect tooltipped' do %>
-  <%= inline_svg 'edit.svg' %>
-<% end %>
-
-<%= link_to cook_recipe_path, 'aria-label': 'Open Cook Mode',
-            class: 'btn-paper bg-orange fill-white circle fixed pam shadow-deep shadow-deep--effect tooltipped' do %>
-  <%= inline_svg 'cook.svg' %>
+  <section id="embed" class="modal modal--mw" role="dialog">
+    <%= modal_header 'Embed on the Web' %>
+    <p>Copy/paste the code below to your website to embed this recipe.</p>
+    <%= content_tag :textarea,
+      escape_once(recipe_embed),
+      class: 'input-reset w-100 man pas f5 mono border br--sm wbw bx',
+      'data-behavior': 'autoselect',
+      rows: 4,
+      readonly: true
+    %>
+    <button
+      class="btn bg-blue mrm"
+      data-clipboard-text="<%= escape_once(recipe_embed) %>" data-behavior="copy">
+      Copy
+    </button>
+    <a class="btn btn-sm bg-grey-3" href="#help" data-behavior="modal_trigger modal_close_first">Help</a>
+    <%= section_header 'Preview', 3, class: 'dn', 'data-behavior': 'rehide' %>
+  </section>
 <% end %>

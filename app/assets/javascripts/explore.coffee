@@ -1,7 +1,7 @@
-#= require masonry/dist/masonry.pkgd.min.js
-#= require imagesloaded/imagesloaded.pkgd.min.js
+#= require masonry/dist/masonry.pkgd
+#= require imagesloaded/imagesloaded.pkgd
 
-$(document).ready ->
+$(document).on 'turbolinks:load', ->
   activateSrc = (src) ->
     b = $('[data-behavior~=explore_src_pick_bar]')
     c = b.find("[data-behavior~=explore_src_pick][data-src-name=#{src}]")
@@ -32,15 +32,13 @@ $(document).ready ->
     activateSrc 'nyt'
 
   logSearchToAnalytics = ->
-    u = $('[data-behavior~=nav]').data 'user'
-    q = _.trim $('[data-behavior~=explore_search_field]').val()
-    if u isnt 'anon' and !_.isEmpty(q)
+    if N.signed_in
       e =
-        user_id: u
+        user_id: N.user
         query: _.trim $('[data-behavior~=explore_search_field]').val()
         source: $('[data-behavior~=explore_src_pick_bar]').data 'src-selected'
       Intercom('trackEvent', 'searched-explore', e) if typeof Intercom isnt 'undefined'
-      heap.track('Searches Explore', _.omit(e, 'user_id'))
+      heap.track('Searches Explore', _.omit(e, 'user_id')) if typeof heap isnt 'undefined'
 
   searchActions = ->
     t = $('[data-behavior~=explore_search_field]')
@@ -53,12 +51,13 @@ $(document).ready ->
 
       s = $('[data-behavior~=explore_src_pick_bar]').data 'src-selected'
 
-      window.history.replaceState null, null, "?q=#{encodeURIComponent(q)}&src=#{s}"
+      p = "?q=#{encodeURIComponent(q)}&src=#{s}"
+      window.history.replaceState null, null, p
 
-      $('[data-behavior~=explore_clear_search]').show 'slow'
+      $('[data-behavior~=explore_clear_search]').show 'fast'
       $('[data-behavior~=explore_suggestions]').fadeOut()
 
-      u = "/explore/results?q=#{encodeURIComponent(q)}&src=#{s}"
+      u = "/explore/results#{p}"
 
       $.get u, (t) ->
         r.removeClass 'busy busy--large'
@@ -81,7 +80,7 @@ $(document).ready ->
   f.on 'change', _.debounce logSearchToAnalytics, 1000
 
   $(document).on 'click', '[data-behavior~=explore_clear_search]', ->
-    $(this).hide 'slow'
+    $(this).hide 'fast'
     $('[data-behavior~=explore_search_field]').val null
     $('[data-behavior~=explore_results_container]').removeClass 'busy busy--large'
     $('[data-behavior~=explore_masonry_grid]').remove()
@@ -101,22 +100,23 @@ $(document).ready ->
 
     b = $('[data-behavior~=explore_src_pick_bar]').data 'src-selected'
     s = if b is 'nyt' then 'NYT Cooking' else _.capitalize b
-    $('[data-behavior~=explore_preview_description]').text 'Recipe from ' + s
+    $('[data-behavior~=explore_preview_description]').text 'Source: ' + s
 
-    c = $('[data-behavior~=explore_preview_body]')
+    c = N.s 'explore_preview_body'
     c.html null
     c.addClass 'busy busy--large mx-auto'
+
+    $('[data-behavior~=explore_clipped_open]').hide 0
+    p = $('[data-behavior~=explore_clip_from_preview]')
+    p.show 0
+    p.text 'Clip'
+    p.attr 'class', 'btn btn--primary bg-blue'
 
     $.get '/explore/preview?url=' + u, (d) ->
       c.removeClass 'busy busy--large mx-auto'
       c.html d
-
-    $(document).on 'click', '.modal__overlay', ->
-      $(this).hide 200
-
-  $(document).on 'click', '[data-behavior~=explore_trigger_inline_signup]', ->
-    $(this).closest('.modal').hide()
-    $('[data-behavior~=inline_signup_btn]').click()
+      if N.signed_in
+        N.addGroceries li for li in c.find('[data-behavior~=recipe_ingredients] li')
 
   $(document).on 'click', '[data-behavior~=explore_clip_from_preview]', ->
     t = $(this)
@@ -126,14 +126,15 @@ $(document).ready ->
 
     $.get '/save?url=' + u, (s) ->
       $('[data-behavior~=explore_clipped_open]').attr 'href', '/recipes/' + s
-      $('[data-behavior~=explore_clipped_toggle]').toggle 400
+      t.fadeOut 128
+      $('[data-behavior~=explore_clipped_open]').fadeIn 128
 
-      heap.track('Clips Recipe', { 'URL': u })
+      heap.track('Clips Recipe', { 'URL': u }) if typeof heap isnt 'undefined'
 
       setTimeout (->
-        $('.modal__overlay').fadeOut 400
-        $('[data-behavior~=explore_preview_modal]').hide 400, ->
+        $('[data-behavior~=modal_overlay]').fadeOut 256
+        $('[data-behavior~=explore_preview_modal]').fadeOut 256, ->
           t.text 'Clip'
-          t.attr 'class', 'btn bg-blue mtm mx-auto'
-          $('[data-behavior~=explore_clipped_toggle]').toggle 0
-      ), 300
+          t.attr 'class', 'btn btn--primary bg-blue'
+          t.hide 0
+      ), 1024

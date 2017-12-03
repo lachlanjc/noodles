@@ -4,31 +4,40 @@ class RecipesController < ApplicationController
   include RecipesHelper
   include ScrapingHelper
 
-  before_filter :please_sign_in, only: [:index, :create]
-  before_filter :set_recipe, except: [:index, :new, :create]
-  before_filter :not_the_owner, only: [:update, :notes, :export_pdf, :remove_image, :destroy]
+  before_action :please_sign_in, except: %i[show share embed_js]
+  before_action :set_recipe, only: %i[show share edit update destroy export_pdf embed_js remove_image collections]
+  before_action -> { hey_thats_my @recipe }, only: %i[edit update destroy export_pdf remove_image collections]
   protect_from_forgery except: :embed_js
 
   def index
-    @recipes = current_user.recipes.order(:title)
+    @recipes = current_user.recipes
+    @recipes_json = ActiveModelSerializers::SerializableResource.new(@recipes, each_serializer: RecipeListSerializer).as_json
+    respond_to do |format|
+      format.html do
+        safely { analytics }
+        @collections_json = ActiveModelSerializers::SerializableResource.new(current_user.collections.order(:updated_at).limit(5), each_serializer: CollectionListSerializer).as_json
+        @groceries_json = ActiveModelSerializers::SerializableResource.new(current_user.groceries.order(:updated_at).limit(5), each_serializer: GrocerySerializer).as_json
+      end
+      format.json { render json: @recipes_json }
+    end
   end
 
   def show
-    setup_image_layout if @recipe.img.present?
-    @shared_url = shared_url
-    render :locked, status: 403 if not_my_recipe?
+    if isnt_my? @recipe
+      render_locked @recipe
+    else
+      respond_to do |format|
+        format.html { @image_layout = @recipe.imaged? }
+        format.json { render json: @recipe }
+      end
+    end
   end
 
   def new
-    if user_signed_in?
-      @recipe = Recipe.new
-      title_setup
-      @page_title = 'New recipe'
-      render :edit
-    else
-      flash[:red] = "You'll need to sign in to add recipes."
-      redirect_to root_url
-    end
+    @recipe = Recipe.new
+    title_setup
+    @page_title = 'New recipe'
+    render :edit
   end
 
   def edit
@@ -36,11 +45,9 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
-    @recipe.user_id = current_user.id
-
+    @recipe = Recipe.new(recipe_params.merge(user_id: current_user_id))
     if @recipe.save
-      flash[:green] = "Awesome, you've saved your new recipe."
+      flash[:success] = 'New recipe saved!'
       redirect_to @recipe
     else
       render :edit
@@ -48,15 +55,13 @@ class RecipesController < ApplicationController
   end
 
   def update
+    c = params[:recipe][:collections]
+    if c.is_a? String
+      params[:recipe][:collections] = [c.to_i] if is_my? Collection.find(c.to_i)
+    end
     if @recipe.update(recipe_params)
-      flash[:green] = 'Great, your changes were saved.'
-      if request.xhr?
-        render :show
-      elsif request.referer.match('redirect_to=cook')
-        redirect_to cook_recipe_path(@recipe)
-      else
-        redirect_to @recipe
-      end
+      flash[:success] = 'Saved!' unless @recipe.previous_changes[:collections]
+      redirect_to request.params[:redirect_to] || @recipe
     else
       title_setup
       render :edit
@@ -65,13 +70,15 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe.destroy
-    flash[:green] = 'Okay, we\'ve got that recipe in the recycling bin now.'
+    flash[:success] = 'The recipe has been deleted.'
     redirect_to recipes_url
   end
 
   def export_pdf
-    prawnto filename: @recipe.title, inline: !params[:download]
-    render 'recipes/show.pdf'
+    render file: 'recipes/show.pdf',
+           content_type: 'application/pdf',
+           filename: @recipe.title,
+           disposition: 'inline'
   end
 
   def embed_js
@@ -79,35 +86,24 @@ class RecipesController < ApplicationController
   end
 
   def share
-    setup_image_layout if @recipe.img.present?
-    @shared_url = shared_url
-  end
-
-  def save_to_noodles
-    @new_recipe = @recipe.dup
-    @new_recipe.user_id = current_user.id
-    @new_recipe.source = shared_url
-    @new_recipe.favorite = false
-    @new_recipe.save
-    flash[:green] = "#{@recipe.title} has been saved!"
-    redirect_to @new_recipe
+    @image_layout = @recipe.imaged?
+    render :share
   end
 
   def remove_image
     @recipe.update_attribute(:img, nil)
-    if params[:cook]
-      redirect_to cook_recipe_path(@recipe)
-    else
-      redirect_to edit_recipe_path(@recipe)
-    end
+    redirect_to params[:cook] ? cook_recipe_path(@recipe) : edit_recipe_path(@recipe)
+  end
+
+  def collections
+    @collections = current_user.collections
+    render partial: 'recipes/collections'
   end
 
   private
 
   def set_recipe
-    @recipe = Recipe.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    @recipe = Recipe.find_by(shared_id: params[:shared_id]) if params[:shared_id]
+    @recipe = Recipe.includes(:user).find_by regular_or_shared_id
     raise_not_found
   end
 
@@ -115,33 +111,23 @@ class RecipesController < ApplicationController
     raise ActiveRecord::RecordNotFound if @recipe.nil?
   end
 
-  # Only allow trusted parameters
   def recipe_params
     params.require(:recipe).permit(:title, :description, :img, :ingredients, :instructions, :favorite, :source, :author, :serves, :notes, :shared_id, collections: [])
   end
 
-  def not_the_owner
-    if not_my_recipe?
-      flash[:red] = "That's not yours."
-      redirect_to root_url
-    else
-      true
-    end
-  end
-
   def title_setup
-    @title = @recipe.title.to_s || params[:title].to_s.capitalize.squish
+    @title = if params[:title].to_s.strip.present?
+               params[:title].to_s.capitalize.squish
+             else
+               @recipe.title.to_s
+             end
   end
 
-  def setup_image_layout
-    safely do
-      size = FastImage.size @recipe.img.url
-      return unless size.present?
-      if size[0].to_i > 750
-        @image_layout = true
-        @hide_flash = flash.any?
-      end
-    end
-    @image_layout = defined? @image_layout
+  def analytics
+    @analytics = {
+      recipes: current_user.recipes.count,
+      collections: current_user.collections.count,
+      groceries: current_user.groceries.count
+    }
   end
 end

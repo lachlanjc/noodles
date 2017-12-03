@@ -3,47 +3,39 @@
 en:
   devise:
     failure:
-      already_authenticated: You're already signed in ;)
+      already_authenticated: ""
       inactive: "Your account is not activated yet."
-      invalid: "Hmm, either your email or password is wrong."
+      invalid: "Hmm, your email or password is incorrect."
       not_found_in_database: "Invalid email or password."
       timeout: "Your session expired. Please sign in again to continue."
       unauthenticated: "You need to sign in or sign up before continuing."
-      unconfirmed: "You have to confirm your account before continuing."
     mailer:
       confirmation_instructions:
         subject: "Confirmation instructions"
       reset_password_instructions:
-        subject: "Reset password instructions"
-      unlock_instructions:
-        subject: "Unlock Instructions"
+        subject: "Noodles password reset"
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
     passwords:
-      no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
-      send_instructions: "You'll get a password reset email in a few seconds, so go check your inbox!"
+      no_token: "You can’t access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
+      send_instructions: "You’ll get a password reset email in a few seconds, so go check your inbox!"
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
       updated: "Your password was changed successfully. You are now signed in."
       updated_not_active: "Your password was changed successfully."
     registrations:
-      destroyed: "Your account has been deleted. If you need anything, just click Contact Us (above). Sorry to see you go!"
+      destroyed: "Your account has been deleted. Thanks for trying it out!"
       signed_up: ""
-      updated: "You updated your account successfully."
+      updated: "Changes saved!"
     sessions:
-      signed_in: "Great, you've signed in. Enjoy your cooking!"
-      signed_out: "You're signed out. Have a fabulous day!"
-    unlocks:
-      send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
-      send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
-      unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+      signed_in: "You’re signed in—enjoy your cooking!"
+      signed_out: "You’re signed out. Have a fabulous day!"
   errors:
     messages:
       already_confirmed: "was already confirmed, please try signing in"
       confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
       expired: "has expired, please request a new one"
       not_found: "not found"
-      not_locked: "was not locked"
       not_saved:
         one: "Oops, there was a problem:"
-        other: "Yikes, there were %{count} errors:"
+        other: "Yikes, there were %{count} issues:"

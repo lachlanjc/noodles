@@ -2,51 +2,60 @@ class SaveController < ApplicationController
   include ApplicationHelper
   include ScrapingHelper
 
-  before_filter :validate_url
-  before_filter :redirect_guests
+  before_action :validate_url
+  before_action :please_sign_in
 
   def save
-    recipe_data = master_scrape(params[:url])
-    if recipe_data == false || recipe_data[:title].blank?
-      action_unsupported!
+    if params[:url].match? 'getnoodl.es/s/'
+      id = URI(params[:url]).path.gsub('/s/', '')
+      if @recipe = Recipe.find_by(shared_id: id)
+        @recipe.duplicate_for(current_user)
+        action_supported 'Saved to your library.'
+      else
+        action_unsupported
+      end
     else
-      action_save!(recipe_data)
+      recipe_data = master_scrape(params[:url])
+      if recipe_data.blank? || recipe_data[:title].blank?
+        EmailMeJob.perform_later(subject: 'Escargot issue', body: params[:url])
+        action_unsupported
+      else
+        action_supported save_data!(recipe_data)
+      end
     end
   end
 
-  protected
+  private
 
   def url_is_valid?(u = params[:url])
-    url = URI.parse(u) rescue false
+    url = begin
+            URI.parse(u)
+          rescue
+            false
+          end
     url.is_a?(URI::HTTP) || url.is_a?(URI::HTTPS)
   end
 
   def validate_url
     unless url_is_valid?
-      flash[:red] = 'You didn\'t provide a valid recipe link.'
+      flash[:danger] = 'That isn’t a valid URL.'
       go_back
     end
   end
 
-  def redirect_guests
-    return if user_signed_in?
-    flash[:blue] = 'Hey there! Sign up for Noodles (below) to save that awesome recipe.'
-    redirect_to root_url
-  end
-
-  private
-
-  def action_unsupported!
-    msg = "Sorry — that site isn't working because it doesn't use standard markup for the recipe."
-    flash_or_text(:red, msg)
+  def action_unsupported
+    flash_or_text :danger, 'Noodles can’t import that now—but the developer has been notified.'
     go_back unless request.xhr?
   end
 
-  def action_save!(recipe_data)
+  def save_data!(recipe_data)
     @recipe = create_recipe(recipe_data, params[:url])
     dom = find_domain_name(params[:url]).humanize
-    msg = "Awesome! You've saved #{@recipe.title} from #{dom}."
-    flash_or_text(:green, @recipe.id, msg)
-    redirect_to @recipe unless request.xhr?
+    "Saved #{@recipe.title} from #{dom}."
+  end
+
+  def action_supported(msg)
+    flash_or_text(:success, @recipe.id, msg)
+    redirect_to @recipe
   end
 end

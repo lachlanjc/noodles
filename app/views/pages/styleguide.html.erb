@@ -1,26 +1,19 @@
-<%= render 'shared/nav' %>
-
-<article class="md-col-8 mx-auto mw7 mtl">
-  <h1>Header 1</h1>
+<main class="document mvl mw7">
+  <h1>Styleguide (Header 1)</h1>
   <h2>Header 2</h2>
   <h3>Header 3</h3>
   <h4>Header 4</h4>
 
-  <p>This is a standard paragraph. Luckily, the text is long enough that it wraps around and around onto the next line. Sometimes even several lines down!</p>
+  <p>This is a standard paragraph in sans-serif.</p>
+  <p class="content">This is a standard paragraph in serif.</p>
 
-  <div class="mtm pam bg-white rounded shadow content">
-    <h1>Header on a Card</h1>
-    <p class="mbn">This is my wonderful recipe <strong>text</strong>.</p>
-  </div>
-
-  <hr>
-
-  <h2 class="mbm">Colors</h2>
+  <%= section_header 'Colors', 2 %>
 
   <section class="mbm flex fac flex-row mx-auto">
     <div class="pal bg-orange rounded mrs"></div>
     <div class="pal bg-blue rounded mrs"></div>
     <div class="pal bg-green rounded mrs"></div>
+    <div class="pal bg-purple rounded mrs"></div>
     <div class="pal bg-red rounded mrs"></div>
     <div class="pal bg-grey-1 rounded mrs"></div>
     <div class="pal bg-grey-2 rounded mrs"></div>
@@ -29,12 +22,13 @@
     <div class="pal bg-grey-5 rounded border mrs"></div>
   </section>
 
-  <hr>
+  <%= section_header 'Buttons', 2 %>
 
-  <h2 class="mbm">Buttons</h2>
+  <p class="mbl"><a class="btn btn--primary bg-purple">Primary</a></p>
 
   <p><a class="btn bg-orange">Orange</a></p>
   <p><a class="btn bg-blue">Blue</a></p>
   <p><a class="btn bg-green">Green</a></p>
+  <p><a class="btn bg-purple">Green</a></p>
   <p><a class="btn bg-grey-3">Grey 3</a></p>
-</article>
+</main>

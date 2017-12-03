@@ -1,6 +1,8 @@
 .content {
-  color: $grey-2;
+  color: $grey-1;
+  line-height: 1.75;
   word-wrap: break-word;
+  font-family: $serif-font-family;
 
   a:not(.btn) {
     color: $blue;
@@ -29,13 +31,10 @@
   }
 
   ul,
-  ol {
+  ol,
+  li {
     margin: 0;
     padding: 0;
-
-    li {
-      margin-left: 2rem;
-    }
   }
 
   &.f5 {

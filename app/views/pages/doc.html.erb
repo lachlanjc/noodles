@@ -1,27 +1,6 @@
 <%- title @title %>
-<%= render 'shared/nav' %>
 
-<h1 class="f1 mbn phm dn-ns"><%= @title %></h1>
-
-<main class="col-12 flex-ns fas mx-auto">
-  <% if @title == 'Docs' %>
-    <section class="md-col-4 mw5 sticky-ns tl-ns bg-white mvl mx-auto rounded shadow flex-last flex-none">
-      <h2 class="f3 grey-4 man pvm caps tc">Sections</h2>
-      <nav class="border-top">
-        <a class="menu__action f4" href="#cook-mode">Cook Mode</a>
-        <a class="menu__action f4" href="#collections">Collections</a>
-        <a class="menu__action f4" href="#sharing">Sharing</a>
-        <a class="menu__action f4" href="#save-to-noodles">Save to Noodles</a>
-        <a class="menu__action f4" href="#favorites">Favorites</a>
-        <a class="menu__action f4" href="#search">Search</a>
-        <a class="menu__action f4" href="#clip">Clip from the Web</a>
-        <a class="menu__action f4" href="#pdf-export">PDF Export</a>
-        <a class="menu__action f4" href="#embed">Embed</a>
-      </nav>
-    </section>
-  <% end %>
-  <article class="md-col-6 flex-auto flex-first mw7 mx-auto phm docs-content">
-    <h1 class="f0 mvm dn db-ns"><%= @title %></h1>
-    <%= @doc.html_safe %>
-  </article>
+<main class="document mvl mw7">
+  <%= section_header @title, 1, class: 'mtn mbs grey-2' %>
+  <%= content_tag :div, @doc.html_safe, class: 'content' %>
 </main>

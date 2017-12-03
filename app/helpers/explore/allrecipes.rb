@@ -1,14 +1,19 @@
-require 'mechanize'
-require 'nokogiri'
-
 class AllrecipesSearchScraper
+  PLACEHOLDERS = [
+    'http://images.media-allrecipes.com/images/44555.png',
+    'http://images.media-allrecipes.com/userphotos/250x250/0.jpg'
+  ].freeze
+  SELECTOR = 'section.grid article.grid-col--fixed-tiles:not(#dfp_container):not(.video-card):not(.hub-card)'.freeze
+
   def scrape(q)
     scraper = Mechanize.new
-    scraper.history_added = proc { sleep 0.4 }
+    scraper.history_added = proc { sleep 0.25 }
 
     results = []
-    raw_results = scraper.get('http://allrecipes.com/search/results/?sort=re&wt=' + q).search('section.grid article.grid-col--fixed-tiles:not(#dfp_container)')
+    url = 'http://allrecipes.com/search/results/?sort=re&wt=' + q
+    raw_results = scraper.get(url).search(SELECTOR)
     raw_results.each do |item|
+      next if item.at_css('div').attr('class').match('article-card').present?
       result = {}
       result['url'] = 'http://allrecipes.com' + item.at_css('a').attr('href')
       result['title'] = item.search('h3').text.squish
@@ -20,13 +25,10 @@ class AllrecipesSearchScraper
       end
       results.push(result)
     end
-    results.delete_if do |item|
-      item['url'].blank? || item['title'].blank?
-    end
+    results.delete_if { |item| !item['url'] || !item['title'] }.compact!
     results.each do |item|
       item['description'] = item['description'].to_s.truncate(164)
-      placeholder = 'http://images.media-allrecipes.com/userphotos/250x250/0.jpg'
-      item['image'] = '' if item['image'] =~ /#{Regexp.quote(placeholder)}/
+      item['image'] = '' if PLACEHOLDERS.include? item['image'].to_s
     end
     results
   end

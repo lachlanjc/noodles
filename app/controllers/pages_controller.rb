@@ -2,15 +2,24 @@ class PagesController < ApplicationController
   include NavHelper
   include TextHelper
 
+  caches_page :home, :styleguide, :terms, :privacy
+
   def home
-    @hide_flash = true
     render :home, layout: false
   end
 
-  def about
+  def help
+    render :help
+  end
+
+  def help_form
+    HelpFormJob.perform_later(email: params[:email], message: params[:message], url: request.referer)
+    flash[:success] = 'Thanks—message sent!'
+    request.referer == root_url ? redirect_to(help_url) : go_back
   end
 
   def styleguide
+    render :styleguide, layout: 'simple'
   end
 
   def terms
@@ -21,12 +30,8 @@ class PagesController < ApplicationController
     render_doc :privacy
   end
 
-  def docs
-    render_doc :docs
-  end
-
   def embed_demo
-    render 'embed_demo', layout: false
+    render :embed_demo, layout: false
   end
 
   private
@@ -36,6 +41,6 @@ class PagesController < ApplicationController
     @title = filename.to_s.chomp('.md').humanize
     data = File.read(Rails.root.join('public', 'docs', filename.to_s + '.md'))
     @doc = markdown(data).html_safe
-    render 'pages/doc'
+    render 'pages/doc', layout: 'simple'
   end
 end

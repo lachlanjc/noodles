@@ -2,28 +2,12 @@ module RecipesHelper
   include ApplicationHelper
   include TextHelper
 
-  def me_owns_recipe?
-    user_signed_in? && @recipe.user_id == current_user.id
-  end
-
-  def not_my_recipe?
-    !me_owns_recipe?
-  end
-
-  def shared_path(recipe = @recipe)
-    "/s/#{recipe.shared_id}"
-  end
-
-  def shared_url(recipe = @recipe)
-    app_url + shared_path(recipe)
-  end
-
   def sample_recipe
-    Recipe.find_by_shared_id 'sample'
+    Recipe.find_by shared_id: 'sample'
   end
 
   def recipe_embed(r = @recipe)
-    ph = content_tag(:a, "#{r.title} on Noodles", href: shared_url(r))
+    ph = content_tag(:a, "#{r.title} on Noodles", href: share_url(r.shared_id))
     content_tag(:section, ph, id: "noodles-#{r.shared_id}") + embed_script(r)
   end
 
@@ -44,22 +28,37 @@ module RecipesHelper
     source_data.to_s.match(/https?/).present?
   end
 
-  def ingredient_processed(text)
-    line = sanitize markdown(text)
-    line = Nokogiri::HTML::DocumentFragment.parse(line)
-    line.css('p').each { |item| item['itemprop'] = 'recipeIngredient' }
-    line.to_s.html_safe
+  def ingredient_processed(text, options = {})
+    text = markdown(text)
+    node = Nokogiri::HTML::DocumentFragment.parse(text).first_element_child
+    return text.to_s.html_safe if node.blank?
+
+    node.name = options[:name] || (text.match?(/# /) ? 'h1' : 'li')
+
+    options.delete 'name'
+    options.each { |key, val| node[key] = val } # For Coook Mode
+
+    if !text.match?('# ') && text.match(/\d/)
+      begin
+        i = Ingreedy.parse(node.children.to_s).ingredient
+        c = node.children.to_s
+        node.children = c.gsub(i, "<u>#{i}</u>")
+      rescue Ingreedy::ParseFailed
+      end
+    end
+
+    node.to_s.html_safe
   end
 
-  def instructions_processed(instructions = @recipe.instructions)
-    text = sanitize markdown(instructions)
-    text = Nokogiri::HTML::DocumentFragment.parse(text)
-    text.css('li').each { |item| item['itemprop'] = 'instruction' }
+  def instructions_processed(instructions = @recipe.instructions, _options = {})
+    text = markdown(instructions)
+    # text = Nokogiri::HTML::DocumentFragment.parse(text)
+    # text.css('li').each { |item| item['itemprop'] = 'instruction' }
     text.to_s.html_safe
   end
 
-  def no_details?(recipe = @recipe)
-    recipe.source.blank? && recipe.author.blank? && recipe.serves.blank?
+  def no_details?(_recipe = @recipe)
+    @recipe.slice(:source, :author, :serves).values.join.blank?
   end
 
   def details?(recipe = @recipe)
@@ -67,10 +66,10 @@ module RecipesHelper
   end
 
   def notes_blankslate
-    content_tag(:p, 'No notes for this recipe yet.')
+    content_tag(:p, 'No notes for this recipe yet.', class: 'grey-3')
   end
 
   def notes_rendered(recipe = @recipe)
-    recipe.notes.blank? ? notes_blankslate : sanitize(markdown(recipe.notes))
+    recipe.notes.blank? ? notes_blankslate : markdown(recipe.notes)
   end
 end

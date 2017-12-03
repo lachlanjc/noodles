@@ -1,25 +1,29 @@
 .image-header {
-  box-shadow: inset 0 -8vh 12vh rgba(0,0,0,.3);
-  min-height: 28vh;
-  text-shadow: 0 1px 3px rgba(0,0,0,.25);
-
-  &,
-  .coll__name,
-  .coll__desc {
-    color: white;
-  }
+  box-shadow: inset 0 -6vh 10vh rgba(0,0,0,.25);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.75);
 }
 
 .inline-with-nav {
   top: $space-2 * -1;
 }
 
-.colladd__item__check:checked {
-  + .colladd__item__label {
-    color: $orange;
-  }
+.list__item {
+  border: 2px solid $orange;
+  border-radius: $border-radius;
+  font-size: $f5;
+  font-weight: 600;
+  padding: 4px 8px;
+  margin-top: 0;
+  margin-bottom: 8px;
+  margin-right: 8px;
+  color: $orange;
+}
 
-  ~ .colladd__item__mark {
-    display: inline-block;;
-  }
+.list__item:hover,
+.list__item:focus,
+.list__item__check:checked + .list__item {
+  border-color: transparent;
+  background-color: $orange;
+  color: $white !important;
+  cursor: pointer;
 }

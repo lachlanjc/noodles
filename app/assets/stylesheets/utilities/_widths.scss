@@ -1,0 +1,20 @@
+.w-50 {  width:  50%; }
+.w-75 {  width:  75%; }
+.w-100 { width: 100%; }
+
+.w-third { width: calc(100% / 3); }
+.w-two-thirds { width: calc(100% / 1.5); }
+.w-auto { width: auto; }
+
+@media screen and (min-width: 48em) {
+  .w-50-m { width:  50%; }
+  .w-75-m { width:  75%; }
+  .w-80-m { width:  80%; }
+  .w-100-m { width: 100%; }
+  .w-third-m { width: calc(100% / 3); }
+  .w-two-thirds-m { width: calc(100% / 1.5); }
+}
+
+@media screen and (min-width: 64em) {
+  .w-third-l { width: calc(100% / 3); }
+}

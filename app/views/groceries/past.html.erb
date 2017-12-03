@@ -1,0 +1,8 @@
+<% title 'Past groceries' %>
+<% activate_nav! :groceries %>
+
+<%= render 'shared/nav' %>
+
+<%= backlink 'Current list', groceries_path %>
+
+<%= react_component 'GroceriesPast', groceries: @groceries %>

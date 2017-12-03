@@ -1,22 +1,29 @@
 <ul class="list-reset mx-auto" data-behavior="explore_masonry_grid">
 <% if @results.any? %>
   <% @results.each do |result| %>
-  <li class="rounded shadow shadow--effect mbl dib tc oh" style="width: 290px;"
+    <li
+      class="card pan mbl dib tc oh"
+      style="width: 18rem;"
       data-behavior="explore_result_item"
       data-title="<%= result['title'] %>" data-url="<%= result['url'] %>">
-    <a name="preview" href="#preview"
-       data-behavior="explore_preview modal_trigger">
-      <%= image_tag result['image'], class: 'col-12 db man rounded-top' if result['image'].present? %>
-      <article class="bg-white pam">
-        <h3 class="man"><%= result['title'] %></h3>
-        <p class="man text"><%= result['description'] %></p>
-      </article>
-    </a>
-  </li>
+      <a
+        name="preview"
+        href="#preview"
+        data-behavior="explore_preview modal_trigger"
+        style="width: 18rem;"
+        tabindex="0">
+        <%= image_tag result['image'],
+          class: 'w-100 db man rounded-top' if result['image'] %>
+        <article class="bg-white pam">
+          <h3 class="man"><%= result['title'] %></h3>
+          <p class="man text"><%= result['description'] %></p>
+        </article>
+      </a>
+    </li>
   <% end %>
 <% else %>
-  <li class="md-col-8 border bg-grey-4 rounded mvm pal tc mx-auto">
-    <h3 class="mtn">Sorry, Explore couldn't find anything. 😰</h3>
+  <li class="mw6 bg-grey-4 rounded mvm pal tc mx-auto">
+    <h3 class="mtn">Explore couldn't find anything. 😞</h3>
     <p class="mbn">Try a different search, or maybe check another source.</p>
   </li>
 <% end %>
