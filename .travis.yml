@@ -4,8 +4,10 @@ rvm:
 before_install:
   - gem install bundler
   - bundle install --without development
+  - rails yarn:install
 script:
   - rails db:create db:migrate
+  - rails webpacker:compile
   - rails test
 notifications:
   slack: getnoodles:EQiFyZq4M1Tv94DaXRN8f2Gy
