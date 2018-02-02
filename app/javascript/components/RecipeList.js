@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import BlankSlate from './BlankSlate'
+import Button from './Button'
 import Icon from './Icon'
 import RecipeListItem from './RecipeListItem'
 import SearchBar from './SearchBar'
@@ -68,18 +69,22 @@ class RecipeList extends Component {
             />
           ))}
           {searching &&
-            _.isEmpty(recipes) &&
-            <BlankSlate>
-              <h3 className="man">No search results 🔍</h3>
-              <p className="mbn">Try searching for something less specific.</p>
-              {searching &&
-                (createFromSearch || false) &&
-                <Button
-                  color="blue"
-                  href={'/recipes/new?' + $.param({ title: searchText })}
-                  children="New recipe with this title"
-                />}
-            </BlankSlate>}
+            _.isEmpty(recipes) && (
+              <BlankSlate>
+                <h3 className="man">No search results 🔍</h3>
+                <p className="mbn">
+                  Try searching for something less specific.
+                </p>
+                {searching &&
+                  (createFromSearch || false) && (
+                    <Button
+                      color="blue"
+                      href={'/recipes/new?' + $.param({ title: searchText })}
+                      children="New recipe with this title"
+                    />
+                  )}
+              </BlankSlate>
+            )}
         </ul>
       </div>
     )
