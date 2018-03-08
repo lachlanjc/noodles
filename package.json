@@ -1,6 +1,6 @@
 {
   "name": "noodles",
-  "version": "2.0.1",
+  "version": "2.0.4",
   "description": "Now you're cooking.",
   "scripts": {
     "css": "node meta/css-stats.js",
