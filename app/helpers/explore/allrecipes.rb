@@ -3,19 +3,18 @@ class AllrecipesSearchScraper
     'http://images.media-allrecipes.com/images/44555.png',
     'http://images.media-allrecipes.com/userphotos/250x250/0.jpg'
   ].freeze
-  SELECTOR = 'section.grid article.grid-col--fixed-tiles:not(#dfp_container):not(.video-card):not(.hub-card)'.freeze
+  SELECTOR = 'section#grid article.grid-col--fixed-tiles:not(#dfp_container):not(.video-card):not(.hub-card)'.freeze
 
   def scrape(q)
     scraper = Mechanize.new
     scraper.history_added = proc { sleep 0.25 }
 
     results = []
-    url = 'http://allrecipes.com/search/results/?sort=re&wt=' + q
-    raw_results = scraper.get(url).search(SELECTOR)
-    raw_results.each do |item|
-      next if item.at_css('div').attr('class').match('article-card').present?
+    url = "http://allrecipes.com/search/results/?sort=re&wt=#{q}"
+    scraper.get(url).search(SELECTOR).each do |item|
+      next if item.at_css('div').attr('class').to_s.match?('article-card')
       result = {}
-      result['url'] = 'http://allrecipes.com' + item.at_css('a').attr('href')
+      result['url'] = "http://allrecipes.com#{item.at_css('a').attr('href')}"
       result['title'] = item.search('h3').text.squish
       result['description'] = item.search('.rec-card__description').text.squish.truncate(164)
       if item.at_css('.grid-col__rec-image').present?
