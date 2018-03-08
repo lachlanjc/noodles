@@ -33,14 +33,14 @@
   <%= render 'shared/analytics' %>
   <%= stylesheet_link_tag 'application', 'fonts', media: 'all' %>
   <%= csrf_meta_tags %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'components' %>
+  <%= yield :javascript %>
 </head>
 <body
   class="<%= body_classes %> man"
   style="<%= "background-image: url(#{content_for(:bg_img)});" if content_for?(:bg_img) %>"
   data-user="<%= user_signed_in? ? current_user_id : 'anon' %>">
   <%= yield %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'components' %>
-  <%= yield :javascript %>
 </body>
 </html>
