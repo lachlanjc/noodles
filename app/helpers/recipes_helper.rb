@@ -27,16 +27,20 @@ module RecipesHelper
   def from_web?(source_data)
     source_data.to_s.match(/https?/).present?
   end
+  
+  def recipe_ingredients(r = @recipe, options = {})
+    content_tag :ul, r.ingredients.lines.map { |a| ingredient_processed(a, options) }.join.html_safe
+  end
 
-  def ingredient_processed(text, options = {})
-    text = markdown(text)
+  def ingredient_processed(line, options = {})
+    text = markdown(line)
     node = Nokogiri::HTML::DocumentFragment.parse(text).first_element_child
     return text.to_s.html_safe if node.blank?
 
-    node.name = options[:name] || (text.match?(/# /) ? 'h1' : 'li')
+    node.name = line.match?('# ') ? 'h1' : 'li'
 
-    options.delete 'name'
-    options.each { |key, val| node[key] = val } # For Coook Mode
+    options.delete :name
+    options.each { |key, val| node[key] = val } # For data-behavior (Cook Mode)
 
     if !text.match?('# ') && text.match(/\d/)
       begin
@@ -51,10 +55,9 @@ module RecipesHelper
   end
 
   def instructions_processed(instructions = @recipe.instructions, _options = {})
-    text = markdown(instructions)
+    markdown(instructions).to_s.html_safe
     # text = Nokogiri::HTML::DocumentFragment.parse(text)
     # text.css('li').each { |item| item['itemprop'] = 'instruction' }
-    text.to_s.html_safe
   end
 
   def no_details?(_recipe = @recipe)
@@ -66,7 +69,7 @@ module RecipesHelper
   end
 
   def notes_blankslate
-    content_tag(:p, 'No notes for this recipe yet.', class: 'grey-3')
+    content_tag :p, 'No notes for this recipe yet.', class: 'grey-3'
   end
 
   def notes_rendered(recipe = @recipe)

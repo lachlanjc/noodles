@@ -36,14 +36,10 @@
     <p class="grey-3 f5">Tap on ingredients to cross them off.</p>
 
     <div class="recipe__ingredients sans content">
-      <ul>
-        <% @recipe.ingredients.lines.each do |item| %>
-          <%= ingredient_processed item,
-            'data-behavior': 'checklist_item',
-            class: 'checklist__item pointer' if item.strip.present?
-          %>
-        <% end %>
-      </ul>
+      <%= recipe_ingredients @recipe, {
+      	'data-behavior': 'checklist_item',
+        class: 'checklist__item pointer'
+      } %>
     </div>
 
     <hr>

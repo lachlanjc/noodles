@@ -1,11 +1,15 @@
-.recipe__ingredients {
-  h1,
-  p + h1 {
+.recipe__ingredients {  
+  h1 {
+    color: $grey-2;
+    font-family: $font-family;
+    font-size: $f4;
     margin-top: $space-1;
+    line-height: inherit;
   }
 
   p,
-  ul {
+  ul,
+  h1 {
     margin-bottom: 0;
     padding-left: 0;
   }
