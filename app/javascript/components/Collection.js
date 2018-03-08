@@ -24,20 +24,22 @@ const CollectionPage = ({ collection, edit = false, pub = false }) => {
   return (
     <main className={_.isEmpty(photo) && cx}>
       <CollectionHeader edit={edit} pub={pub} coll={collection} />
-      {pub
-        ? content
-        : <SplitLayout
-            sidebar={
-              <CollectionSidebar
-                id={collection.id}
-                recipes={recipes}
-                createdAt={created_at}
-                updatedAt={updated_at}
-              />
-            }
-            content={content}
-            className="phn phl-ns"
-          />}
+      {pub ? (
+        content
+      ) : (
+        <SplitLayout
+          sidebar={
+            <CollectionSidebar
+              id={collection.id}
+              recipes={recipes}
+              createdAt={created_at}
+              updatedAt={updated_at}
+            />
+          }
+          content={content}
+          className="phn phl-ns"
+        />
+      )}
     </main>
   )
 }

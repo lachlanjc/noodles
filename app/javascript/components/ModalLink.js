@@ -16,13 +16,7 @@ class ModalLink extends Component {
   render() {
     const { name, is = 'a', ...props } = this.props
     const Tag = is == 'btn' ? Button : is
-    return (
-      <Tag
-        {...props}
-        href={`#${name}`}
-        data-behavior="modal_trigger"
-      />
-    )
+    return <Tag {...props} href={`#${name}`} data-behavior="modal_trigger" />
   }
 }
 

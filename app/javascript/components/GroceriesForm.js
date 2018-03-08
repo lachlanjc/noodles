@@ -85,31 +85,33 @@ class GroceriesForm extends Component {
               paddingBottom: 4
             }}
           />
-          {!hideSubmit &&
-            <Button is="input" type="submit" color="blue" sm value="Save" />}
+          {!hideSubmit && (
+            <Button is="input" type="submit" color="blue" sm value="Save" />
+          )}
         </div>
         {makeSuggestions &&
-          !_.isEmpty(suggestions) &&
-          <div
-            className="mts flex flex-rows fas lh-title"
-            children={[
-              <div
-                className="flex-i fac mrs"
-                style={{ height: 29 }}
-                key="icon-assistant"
-              >
-                <Icon icon="assistant" size={22} className="fill-grey-3" />
-              </div>,
-              _.map(suggestions, (item, i) => (
-                <span
-                  className="list__item"
-                  children={item}
-                  data-behavior="grocery_suggestion"
-                  key={`item-${item}-${i}`}
-                />
-              ))
-            ]}
-          />}
+          !_.isEmpty(suggestions) && (
+            <div
+              className="mts flex flex-rows fas lh-title"
+              children={[
+                <div
+                  className="flex-i fac mrs"
+                  style={{ height: 29 }}
+                  key="icon-assistant"
+                >
+                  <Icon icon="assistant" size={22} className="fill-grey-3" />
+                </div>,
+                _.map(suggestions, (item, i) => (
+                  <span
+                    className="list__item"
+                    children={item}
+                    data-behavior="grocery_suggestion"
+                    key={`item-${item}-${i}`}
+                  />
+                ))
+              ]}
+            />
+          )}
       </form>
     )
   }

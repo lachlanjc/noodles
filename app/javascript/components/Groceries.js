@@ -12,7 +12,10 @@ import ModalLink from './ModalLink'
 import Icon from './Icon'
 
 const mailto = items =>
-  `mailto:?subject=Grocery%20list&body=${encodeURIComponent(_.join(_.map(items, 'name'), '\n') + '\n\nList from Noodles: https://getnoodl.es/')}`
+  `mailto:?subject=Grocery%20list&body=${encodeURIComponent(
+    _.join(_.map(items, 'name'), '\n') +
+      '\n\nList from Noodles: https://getnoodl.es/'
+  )}`
 
 const Groceries = ({ groceries }) => (
   <div>
@@ -27,12 +30,14 @@ const Groceries = ({ groceries }) => (
         Add item
       </Button>
       <SuperHeader className="sans f1-ns mvn-ns">Grocery List</SuperHeader>
-      {_.isEmpty(groceries)
-        ? <GroceriesBlankSlate />
-        : [
-            <GroceriesList items={groceries} key="list" />,
-            <GroceriesForm key="add" />
-          ]}
+      {_.isEmpty(groceries) ? (
+        <GroceriesBlankSlate />
+      ) : (
+        [
+          <GroceriesList items={groceries} key="list" />,
+          <GroceriesForm key="add" />
+        ]
+      )}
     </Document>
     <footer className="flex flex-cols flex-rows-ns fac-ns fjc-ns fjc phm mtm mbxl dn-p">
       <div className="flex-i">
@@ -53,7 +58,9 @@ const Groceries = ({ groceries }) => (
       <Spacer x={16} y={8} />
       <div className="flex-i">
         <Icon icon="more" size={22} className="fill-grey-3 mrs mrm-ns" />
-        <ModalLink is="btn" color="grey-3" name="sms" sm>Use SMS</ModalLink>
+        <ModalLink is="btn" color="grey-3" name="sms" sm>
+          Use SMS
+        </ModalLink>
         <Spacer x={16} />
         <Button color="grey-3" sm href="/groceries/past">
           View past items

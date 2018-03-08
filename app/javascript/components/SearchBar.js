@@ -13,7 +13,7 @@ const SearchBar = ({ count, className, children, ...props }) => (
       type="text"
       placeholder={
         `Search ${count !== 1 ? 'these' : 'for the'}` +
-          ` ${count} ${count !== 1 ? 'recipes' : 'recipe'}…`
+        ` ${count} ${count !== 1 ? 'recipes' : 'recipe'}…`
       }
       style={{
         height: 36

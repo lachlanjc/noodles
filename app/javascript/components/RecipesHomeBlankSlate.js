@@ -37,9 +37,7 @@ const css = `
 
 const RecipesHomeBlankSlate = () => (
   <article className="phm mw8 mx-auto tc">
-    <h2 className="f1 mtn mbs grey-2">
-      Let’s get cooking!
-    </h2>
+    <h2 className="f1 mtn mbs grey-2">Let’s get cooking!</h2>
     <ol className="flex-grid fjc list-reset relative tl">
       <div className="onboarding__prompt flex-grid__item dn">
         <p className="onboarding__prompt__message tc orange b">
@@ -83,9 +81,10 @@ const RecipesHomeBlankSlate = () => (
       </li>
     </ol>
     <p className="mtm mtl-ns grey-3">
-      Later: start filling your
-      {' '}
-      <a href="/groceries" className="blue">Grocery List</a>
+      Later: start filling your{' '}
+      <a href="/groceries" className="blue">
+        Grocery List
+      </a>
     </p>
   </article>
 )

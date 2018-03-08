@@ -21,10 +21,11 @@ const CollectionSidebar = ({ id, recipes, createdAt, updatedAt }) => (
     <p className="grey-3 mtm mbn f5">
       Created on {new Date(createdAt).toLocaleDateString()}
     </p>
-    {updatedAt !== createdAt &&
+    {updatedAt !== createdAt && (
       <p className="grey-3 mtn mbm f5">
         Updated on {new Date(updatedAt).toLocaleDateString()}
-      </p>}
+      </p>
+    )}
     {!_.isEmpty(recipes) && <RecentlyCooked recipes={recipes} />}
   </div>
 )

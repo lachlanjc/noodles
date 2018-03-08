@@ -10,7 +10,9 @@ import SidebarModule, {
 const CollectionsMini = ({ collections, ...props }) => (
   <SidebarModule {...props}>
     <SidebarModuleHeading>
-      <a href="/collections" className="blue">Collections</a>
+      <a href="/collections" className="blue">
+        Collections
+      </a>
     </SidebarModuleHeading>
     <SidebarModuleList>
       {_.map(collections, coll => (
@@ -21,14 +23,15 @@ const CollectionsMini = ({ collections, ...props }) => (
         />
       ))}
     </SidebarModuleList>
-    {_.isEmpty(collections) &&
+    {_.isEmpty(collections) && (
       <p className="grey-3">
         No collections yet
         {' – '}
         <a href="/collections?new_collection=true" className="blue">
           create your first!
         </a>
-      </p>}
+      </p>
+    )}
   </SidebarModule>
 )
 

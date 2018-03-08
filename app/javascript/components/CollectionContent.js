@@ -5,13 +5,15 @@ import RecipeList from './RecipeList'
 import CollectionBlankSlate from './CollectionBlankSlate'
 
 const CollectionContent = ({ id, recipes, photo, pub }) =>
-  !_.isEmpty(recipes)
-    ? <RecipeList
-        recipesCore={recipes}
-        pub={pub}
-        className={!_.isEmpty(photo) && 'document mw7 pan oh mbl'}
-      />
-    : <CollectionBlankSlate id={id} pub={pub} />
+  !_.isEmpty(recipes) ? (
+    <RecipeList
+      recipesCore={recipes}
+      pub={pub}
+      className={!_.isEmpty(photo) && 'document mw7 pan oh mbl'}
+    />
+  ) : (
+    <CollectionBlankSlate id={id} pub={pub} />
+  )
 
 CollectionContent.propTypes = {
   id: PropTypes.number.isRequired,

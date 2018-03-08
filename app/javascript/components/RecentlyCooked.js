@@ -12,9 +12,7 @@ const findRecents = recipes =>
 
 const RecentlyCooked = ({ recipes, ...props }) => (
   <SidebarModule {...props}>
-    <SidebarModuleHeading>
-      Recently cooked
-    </SidebarModuleHeading>
+    <SidebarModuleHeading>Recently cooked</SidebarModuleHeading>
     <SidebarModuleList>
       {_.map(findRecents(recipes), recipe => (
         <SidebarModuleListItem

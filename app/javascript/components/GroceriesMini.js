@@ -11,14 +11,17 @@ import GroceriesForm from './GroceriesForm'
 const GroceriesMini = ({ groceries, ...props }) => (
   <SidebarModule {...props}>
     <SidebarModuleHeading>
-      <a href="/groceries" className="blue">Grocery list</a>
+      <a href="/groceries" className="blue">
+        Grocery list
+      </a>
     </SidebarModuleHeading>
-    {!_.isEmpty(groceries) &&
+    {!_.isEmpty(groceries) && (
       <SidebarModuleList
         children={_.map(groceries, (item, i) => (
           <SidebarModuleListItem name={item.name} key={item.name + i} />
         ))}
-      />}
+      />
+    )}
     <GroceriesForm
       hideSubmit={!_.isEmpty(groceries)}
       makeSuggestions={false}

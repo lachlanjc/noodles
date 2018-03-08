@@ -21,9 +21,11 @@ export const SidebarModuleList = props => (
 
 export const SidebarModuleListItem = ({ name, path }) => (
   <li className="mts mbn">
-    {_.isEmpty(path)
-      ? <span className="grey-2" children={name} />
-      : <a className="blue" href={path} children={name} />}
+    {_.isEmpty(path) ? (
+      <span className="grey-2" children={name} />
+    ) : (
+      <a className="blue" href={path} children={name} />
+    )}
   </li>
 )
 
