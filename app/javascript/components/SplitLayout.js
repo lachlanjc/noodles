@@ -24,7 +24,7 @@ const SplitLayout = ({
     <aside className="w-50-m w-third-l measure--narrow-ns mbl tc tl-ns">
       {heading && (
         <SuperHeader
-          className={N.cxs(['sans orange', headingClassName])}
+          className={N.cxs(['orange', headingClassName])}
           children={heading}
         />
       )}
