@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const SuperHeading = ({ className = 'orange', style, ...props }) => {
+const SuperHeading = ({ className, style, ...props }) => {
   const sx = {
     fontWeight: '800',
     lineHeight: 1,
@@ -9,8 +9,8 @@ const SuperHeading = ({ className = 'orange', style, ...props }) => {
     paddingBottom: N.space[2],
     ...style
   }
-  const cx = ['superheader sans f1 f0-ns mbn mbl-ns border-bottom', className]
-  return <h1 {...props} style={sx} className={N.cxs(cx)} />
+  const cx = 'superheading sans f1 f0-ns mbn mbl-ns border-bottom'
+  return <h1 {...props} style={sx} className={N.cxs([cx, className])} />
 }
 
 SuperHeading.propTypes = {
