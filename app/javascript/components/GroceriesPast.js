@@ -2,14 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Document from './Document'
-import SuperHeader from './SuperHeader'
+import SuperHeading from './SuperHeading'
 import GroceriesList from './GroceriesList'
 
 const GroceriesPast = ({ groceries }) => (
   <Document mw={6}>
-    <SuperHeader className="f2 f2-ns mvn-ns">
+    <SuperHeading className="f2 f2-ns mvn-ns">
       Past grocery list items
-    </SuperHeader>
+    </SuperHeading>
     <GroceriesList items={groceries} showCompleted />
   </Document>
 )

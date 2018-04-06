@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Document from './Document'
-import SuperHeader from './SuperHeader'
+import SuperHeading from './SuperHeading'
 import Button from './Button'
 import Spacer from './Spacer'
 import GroceriesBlankSlate from './GroceriesBlankSlate'
@@ -29,7 +29,7 @@ const Groceries = ({ groceries }) => (
       >
         Add item
       </Button>
-      <SuperHeader className="f1-ns mvn-ns">Grocery List</SuperHeader>
+      <SuperHeading className="f1-ns mvn-ns">Grocery List</SuperHeading>
       {_.isEmpty(groceries) ? (
         <GroceriesBlankSlate />
       ) : (

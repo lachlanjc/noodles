@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const SuperHeader = ({ className = 'orange', style, ...props }) => {
+const SuperHeading = ({ className = 'orange', style, ...props }) => {
   const sx = {
     fontWeight: '800',
     lineHeight: 1,
@@ -13,9 +13,9 @@ const SuperHeader = ({ className = 'orange', style, ...props }) => {
   return <h1 {...props} style={sx} className={N.cxs(cx)} />
 }
 
-SuperHeader.propTypes = {
+SuperHeading.propTypes = {
   className: PropTypes.string,
   style: PropTypes.object
 }
 
-export default SuperHeader
+export default SuperHeading

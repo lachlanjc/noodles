@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Spacer from './Spacer'
-import SuperHeader from './SuperHeader'
+import SuperHeading from './SuperHeading'
 
 const SplitLayout = ({
   heading,
@@ -23,7 +23,7 @@ const SplitLayout = ({
   >
     <aside className="w-50-m w-third-l measure--narrow-ns mbl tc tl-ns">
       {heading && (
-        <SuperHeader
+        <SuperHeading
           className={N.cxs(['orange', headingClassName])}
           children={heading}
         />
