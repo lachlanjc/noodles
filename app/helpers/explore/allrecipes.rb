@@ -3,7 +3,8 @@ class AllrecipesSearchScraper
     'http://images.media-allrecipes.com/images/44555.png',
     'http://images.media-allrecipes.com/userphotos/250x250/0.jpg'
   ].freeze
-  SELECTOR = 'section#grid article.grid-col--fixed-tiles:not(#dfp_container):not(.video-card):not(.hub-card)'.freeze
+  SELECTOR = '.search-results .recipe-section article.fixed-recipe-card:not(.grid-col--fixed-tiles):not(.video-card):not(.hub-card)'.freeze
+  IMG_SELECTOR = '.fixed-recipe-card__img'.freeze
 
   def scrape(q)
     scraper = Mechanize.new
@@ -16,11 +17,13 @@ class AllrecipesSearchScraper
       result = {}
       result['url'] = "http://allrecipes.com#{item.at_css('a').attr('href')}"
       result['title'] = item.search('h3').text.squish
-      result['description'] = item.search('.rec-card__description').text.squish.truncate(164)
-      if item.at_css('.grid-col__rec-image').present?
-        result['image'] = item.at_css('.grid-col__rec-image').attr('data-original-src')
-      elsif item.at_css('.grid-col__hub-image').present?
-        result['image'] = item.at_css('.grid-col__hub-image').attr('src')
+      result['description'] = item.search('.fixed-recipe-card__description').text.squish.truncate(164)
+      if item.at_css(IMG_SELECTOR).present?
+        result['image'] = item.at_css(IMG_SELECTOR).attr('data-original-src')
+        if result['image'].blank?
+          result['image'] = item.at_css(IMG_SELECTOR).attr('src')
+          result['image'] = nil if result['image'].include? 'spacer.gif'
+        end
       end
       results.push(result)
     end
