@@ -29,7 +29,7 @@ const Groceries = ({ groceries }) => (
       >
         Add item
       </Button>
-      <SuperHeader className="sans f1-ns mvn-ns">Grocery List</SuperHeader>
+      <SuperHeader className="f1-ns mvn-ns">Grocery List</SuperHeader>
       {_.isEmpty(groceries) ? (
         <GroceriesBlankSlate />
       ) : (

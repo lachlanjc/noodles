@@ -5,7 +5,7 @@ import GroceriesForm from './GroceriesForm'
 
 const GroceriesNew = () => (
   <Document mw={6}>
-    <SuperHeader className="sans f2 f2-ns mvn-ns">Add grocery item</SuperHeader>
+    <SuperHeader className="f2 f2-ns mvn-ns">Add grocery item</SuperHeader>
     <GroceriesForm style={{ marginTop: '1rem' }} />
   </Document>
 )
