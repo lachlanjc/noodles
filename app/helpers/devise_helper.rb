@@ -7,7 +7,7 @@ module DeviseHelper
     html = <<-HTML
     <div class="rounded pam phm mvm mx-auto" style="border: 2px solid #ff0013; padding-bottom: 1.5rem;">
       <h2 class="red mtn f3">Those Noodles are a bit tangled.</h2>
-      <ul class="list-reset pan">#{messages}</ul>
+      <ul class="list-reset pan man">#{messages}</ul>
     </div>
     HTML
 
