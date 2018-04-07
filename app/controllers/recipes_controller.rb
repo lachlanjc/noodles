@@ -116,11 +116,9 @@ class RecipesController < ApplicationController
   end
 
   def title_setup
-    @title = if params[:title].to_s.strip.present?
-               params[:title].to_s.capitalize.squish
-             else
-               @recipe.title.to_s
-             end
+    @title =
+      params[:title].to_s.strip.present? ?
+      params[:title].to_s.capitalize.squish : @recipe.title.to_s
   end
 
   def analytics

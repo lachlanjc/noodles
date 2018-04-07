@@ -5,14 +5,18 @@ import BlankSlate from './BlankSlate'
 import Button from './Button'
 import Spacer from './Spacer'
 
-const CollectionBlankSlate = ({ id, pub = true }) => (
-  <BlankSlate className="bg-white" margin="mvn mln">
-    <h3 className="mvn">No recipes in this collection yet.</h3>
-    {!pub && [
-      <p className="mvm" key="desc">
-        Add an existing recipe from its page, or create a new one.
-      </p>,
-      <footer className="flex fjc" key="footer">
+const heading = <h3 className="mvn">No recipes in this collection yet.</h3>
+
+const CollectionBlankSlate = ({ id, pub = true }) =>
+  pub ? (
+    <BlankSlate className="bg-white" margin="man" children={heading} />
+  ) : (
+    <BlankSlate className="bg-white" margin="man">
+      {heading}
+      <p className="mvm">
+        Create a new recipe, or add an existing one from its page.
+      </p>
+      <footer className="flex fjc">
         <Button
           color="blue"
           href={`/recipes/new?collection=${id}`}
@@ -21,9 +25,8 @@ const CollectionBlankSlate = ({ id, pub = true }) => (
         <Spacer x={16} />
         <Button href="/recipes" color="grey-3" children="Find a recipe" />
       </footer>
-    ]}
-  </BlankSlate>
-)
+    </BlankSlate>
+  )
 
 CollectionBlankSlate.propTypes = {
   id: PropTypes.number.isRequired,

@@ -1,7 +1,7 @@
 <% activate_nav!(:collections) %>
 <%- title @collection.name %>
 
-<%= render 'shared/nav' %>
+<%= render 'shared/nav', no_margin: true %>
 
 <%= react_component 'CollectionPage',
   collection: @collection_json,

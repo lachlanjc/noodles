@@ -19,12 +19,12 @@ const SplitLayout = ({
       alignItems: 'flex-start',
       width: '100%'
     }}
-    className={N.cxs(['flex-md', className || 'pam phl-ns'])}
+    className={N.cxs(['flex-md', className || 'pvm phl-ns'])}
   >
-    <aside className="w-50-m w-third-l measure--narrow-ns mbl tc tl-ns">
+    <aside className="w-50-m w-third-l measure--narrow-ns pam mbm pan-ns man-ns">
       {heading && (
         <SuperHeading
-          className={N.cxs(['orange', headingClassName])}
+          className={N.cxs(['mbs mbl-ns', headingClassName])}
           children={heading}
         />
       )}

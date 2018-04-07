@@ -8,7 +8,6 @@ const CollectionListItem = ({ coll }) => {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center',
     backgroundImage: `url('${photo}')`,
     width: '100%'
   }
@@ -23,7 +22,7 @@ const CollectionListItem = ({ coll }) => {
         style={sx}
         className={`pam pvl rounded image-header bg-center bg-no-repeat bg-cover`}
       >
-        <h2 className="f1 white mvn">{name}</h2>
+        <h2 className="f1 white mtn mbs">{name}</h2>
         {desc && (
           <p className="f3 white lh-title mvn wbw" children={description} />
         )}

@@ -1,7 +1,8 @@
 <% no_margin ||= false %>
+<% unless no_margin %><div class="dn-p" style="height: 4rem;"><% end %>
 <nav
   role="navigation"
-  class="nav bg-blur sticky-ns pas phm-ns tc dn-p <%= 'mbm' unless no_margin %>"
+  class="nav bg-blur pas phm-ns tc dn-p"
   data-behavior="nav">
 
   <%= link_to root_url, class: 'nav__icon', 'aria-label': 'Homepage' do %>
@@ -35,6 +36,7 @@
     <% end %>
   </article>
 </nav>
+<% unless no_margin %></div><% end %>
 
 <%= render 'shared/flash' if @hide_flash != true %>
 

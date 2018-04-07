@@ -1,4 +1,5 @@
 .flex-grid {
+  box-sizing: border-box;
   display: block;
   width: 100%;
 }
@@ -25,7 +26,7 @@
   }
 
   .flex-grid__item {
-    margin: .5rem;
+    margin: 0.5rem;
     max-width: 50%;
     width: calc(50% - 1rem);
   }

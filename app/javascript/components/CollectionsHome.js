@@ -8,7 +8,6 @@ import SplitLayout from './SplitLayout'
 const CollectionsHome = ({ collections, ...props }) => (
   <SplitLayout
     heading="Collections"
-    headingClassName="mbm"
     sidebar={
       <ModalLink
         is="btn"
@@ -18,8 +17,7 @@ const CollectionsHome = ({ collections, ...props }) => (
         children="New collection"
       />
     }
-    content={<CollectionList collections={collections} />}
-    contentClassName="mw8"
+    content={<CollectionList collections={collections} className="phm" />}
   />
 )
 

@@ -7,7 +7,6 @@ import SplitLayout from './SplitLayout'
 
 const RecipesHome = ({ recipes = [], groceries = [], collections = [] }) => (
   <SplitLayout
-    className="pvm phl-ns"
     heading="Recipes"
     sidebar={
       <RecipesHomeSidebar
