@@ -1,14 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Spacer = ({ x, y, style, ...props }) => {
-  const sx = {
-    width: x,
-    height: y,
-    ...style
-  }
-  return <div {...props} style={sx} />
-}
+const Spacer = ({ x, y, style, ...props }) => (
+  <div
+    {...props}
+    style={{
+      width: x,
+      height: y,
+      ...style
+    }}
+  />
+)
 
 Spacer.propTypes = {
   x: PropTypes.number,
