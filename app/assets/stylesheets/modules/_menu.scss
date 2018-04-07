@@ -2,7 +2,7 @@
   cursor: pointer;
   position: relative;
 
-  &[aria-expanded=true] {
+  &[aria-expanded='true'] {
     outline: none;
 
     &:before,
@@ -17,12 +17,12 @@
     }
 
     &:before {
-      border-bottom-color: $border-color;
+      border-bottom-color: $blue-dark;
       border-width: 10px;
     }
 
     &:after {
-      border-bottom-color: #fff;
+      border-bottom-color: $blue;
       border-width: 9px;
       margin-left: 1px;
     }
@@ -35,9 +35,9 @@
   position: absolute;
   top: 100%;
   right: -100%;
-  background-color: #fff;
+  background-color: $blue;
   border-radius: $border-radius-sm;
-  border: $border;
+  border: 1px solid $blue-dark;
   box-shadow: 0 3px 12px rgba($grey-2, 0.25);
   overflow: hidden;
   z-index: 2;
@@ -51,21 +51,21 @@
 
   &,
   &:hover {
-    color: $grey-1;
+    color: $white;
   }
 
   &:hover,
   &:focus {
-    background-color: $blue-highlight;
+    background-color: $blue-dark;
   }
 
   & + .menu__action {
-    border-top: $border;
+    border-top: 1px solid $blue-dark;
   }
 }
 
 .menu__action__icon {
-  fill: $grey-2;
+  fill: $white;
   margin-right: $space-1;
 }
 
