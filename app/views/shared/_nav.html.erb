@@ -4,7 +4,7 @@
   class="nav bg-blur sticky-ns pas phm-ns tc dn-p <%= 'mbm' unless no_margin %>"
   data-behavior="nav">
 
-  <%= link_to root_url, class: 'nav__icon' do %>
+  <%= link_to root_url, class: 'nav__icon', 'aria-label': 'Homepage' do %>
     <%= inline_svg 'cook.svg', class: 'fill-orange', size: 28 %>
   <% end %>
 
