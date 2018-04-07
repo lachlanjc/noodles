@@ -10,6 +10,8 @@ import Groceries from '../components/Groceries'
 import GroceriesNew from '../components/GroceriesNew'
 import GroceriesPast from '../components/GroceriesPast'
 
+import Composer from '../components/Composer'
+
 WebpackerReact.setup({
   FlashContainer,
   RecipesHome,
@@ -20,4 +22,5 @@ WebpackerReact.setup({
   Groceries,
   GroceriesNew,
   GroceriesPast
+  SuperHeading,
 })

@@ -21,11 +21,11 @@
   style="<%= style_carousel explore_carousel_url %>">
   <div class="tc mx-auto w-100">
     <%= link_to root_url, class: 'link-reset' do %>
-      <h1 class="mvn white">
-        Noodles Explore
-      </h1>
+      <%= react_component 'SuperHeading',
+        children: 'Noodles Explore', className: 'white',
+        style: { marginBottom: 0, borderBottomWidth: 0 } %>
     <% end %>
-    <h2 class="white sans fwn mts mbm">What do you want to make?</h2>
+    <h2 class="white fwn mvm">What do you want to make?</h2>
     <div class="w-two-thirds-m mw7 phs mx-auto flex fac">
       <input
         type="text"

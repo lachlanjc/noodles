@@ -4,8 +4,9 @@
 <% bg_carousel 'subscribe.jpg' %>
 <%= render 'shared/nav' %>
 
-<main class="document mw6">
-  <%= section_header 'Subscribe', 1, class: 'mtn mbm grey-2 f2 tc' %>
+<main class="document mw6 mtl mtm-ns">
+  <%= react_component 'SuperHeading',
+    children: 'Subscribe', className: 'f1-ns', style: { marginBottom: 16 } %>
   <% if current_user.subscriber? %>
     <div class="flex mvm" style="color: #e91e63;">
       <%= inline_svg 'favorite.svg', size: 48, class: 'f--cc mrm' %>
@@ -85,6 +86,6 @@
       Or, send a single donation →
     </a>
   <% end %>
-  <%= section_header 'Questions?', 2, class: 'grey-2 f3 tc' %>
+  <%= section_header 'Questions?', 2, class: 'grey-2 f3' %>
   <%= render 'shared/help', hide_footer: true %>
 </main>

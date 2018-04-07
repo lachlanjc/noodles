@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const SuperHeading = ({ className, style, ...props }) => {
   const sx = {
-    fontWeight: '800',
+    fontWeight: 800,
     lineHeight: 1,
     marginTop: 0,
     paddingBottom: N.space[2],
