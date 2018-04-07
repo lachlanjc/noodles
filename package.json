@@ -1,6 +1,6 @@
 {
   "name": "noodles",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Now you're cooking.",
   "scripts": {
     "css": "node meta/css-stats.js",
@@ -17,7 +17,7 @@
   "homepage": "https://getnoodl.es",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "^3.2.1",
+    "@rails/webpacker": "^3.4.3",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
@@ -26,8 +26,8 @@
     "clean-css": "^4.1.11",
     "coffee-loader": "^0.9.0",
     "coffee-script": "^1.12.7",
-    "coffeescript": "^2.2.2",
-    "get-css": "^1.2.6",
+    "coffeescript": "^2.2.4",
+    "get-css": "^1.2.7-2",
     "glob": "^7.1.2",
     "lodash": "^4.17.5",
     "pageres": "^4.5.1",
@@ -35,9 +35,10 @@
     "path-complete-extname": "^0.1.0",
     "prop-types": "^15.6.1",
     "rails-erb-loader": "^5.4.1",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "webpack": "^3.10.0",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "unfetch": "^3.0.0",
+    "webpack": "^3.11.0",
     "webpack-dev-server": "^2.11.1",
     "webpack-merge": "^4.1.1",
     "webpacker-react": "^0.3.2"
