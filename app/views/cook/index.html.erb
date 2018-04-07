@@ -1,6 +1,6 @@
 <%- title @recipe.title.html_safe %>
 
-<% cache ['cook', 'v1', @recipe] do %>
+<% cache ['cook', 'v1.1', @recipe] do %>
 <main class="flex-ns pvm phm-ns">
   <aside class="w-third-l measure pam pal-l">
     <h1 class="f0 super lh man grey-1"><%= @recipe.title %></h1>
@@ -42,12 +42,33 @@
       } %>
     </div>
 
-    <hr>
-
-    <section class="bg-notes rounded border pam">
+    <section class="bg-notes rounded border pam mvl">
       <h2 class="mtn">Notes</h2>
       <%= content_tag :div, notes_rendered, class: 'content' %>
     </section>
+
+    <%= image_tag @recipe.img, alt: @recipe.title, class: 'mx-auto rounded' if @recipe.imaged? %>
+
+    <%= form_for(@recipe,
+      url: recipe_path(@recipe, cook: true),
+      html: {
+        class: 'dn mts f4 sans',
+        'data-behavior': 'show_if_my_object'
+      }) do |f| %>
+      <%= f.file_field :img, class: 'dn', data: { behavior: 'photo_field cook_photo_field' } %>
+      <div data-behavior="photo_button">
+        <a data-behavior="photo_name" class="btn bg-white">
+          <%= @recipe.unimaged? ? 'Add a photo' : 'Upload a new photo' %>
+        </a>
+        <% if @recipe.imaged? %>
+          <span class="grey-3 phs">or</span>
+          <%= link_to 'remove this photo',
+            remove_image_recipe_path(@recipe, cook: true),
+            class: 'btn bg-white'
+          %>
+        <% end %>
+      </div>
+    <% end %>
   </aside>
 
   <article class="recipe__instructions recipe__instructions--cook flex-auto mw7 mx-auto mtm mtn-ns pam pal-l">
@@ -63,29 +84,6 @@
 
     <div class="card pam db f2 mbm grey-2">
       <span class="serif">You're finished! Enjoy.</span>
-
-      <%= image_tag @recipe.img, alt: @recipe.title, class: 'mtm mx-auto rounded' if @recipe.imaged? %>
-
-      <%= form_for(@recipe,
-        url: recipe_path(@recipe, cook: true),
-        html: {
-          class: 'dn mts f4 sans',
-          'data-behavior': 'show_if_my_object'
-        }) do |f| %>
-        <%= f.file_field :img, class: 'dn', data: { behavior: 'photo_field cook_photo_field' } %>
-        <div data-behavior="photo_button">
-          <a data-behavior="photo_name" class="btn bg-white">
-            <%= @recipe.unimaged? ? 'Add a photo' : 'Upload a new photo' %>
-          </a>
-          <% if @recipe.imaged? %>
-            <span class="grey-4 phs">or</span>
-            <%= link_to 'remove this photo',
-              remove_image_recipe_path(@recipe, cook: true),
-              class: 'btn bg-white'
-            %>
-          <% end %>
-        </div>
-      <% end %>
     </div>
   </article>
 </main>
