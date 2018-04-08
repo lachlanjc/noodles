@@ -1,5 +1,5 @@
 import React from 'react'
-import Icon from './Icon'
+import Icon from './MDIcon'
 
 const tips = [
   'Create a new recipe super quickly by searching with its title.',

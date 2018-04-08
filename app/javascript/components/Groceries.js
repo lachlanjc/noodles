@@ -9,7 +9,7 @@ import GroceriesBlankSlate from './GroceriesBlankSlate'
 import GroceriesList from './GroceriesList'
 import GroceriesForm from './GroceriesForm'
 import ModalLink from './ModalLink'
-import Icon from './Icon'
+import Icon from './MDIcon'
 
 const mailto = items =>
   `mailto:?subject=Grocery%20list&body=${encodeURIComponent(
