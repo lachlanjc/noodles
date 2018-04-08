@@ -9,6 +9,7 @@ const CollectionContent = ({ id, recipes, photo, pub }) =>
     <RecipeList
       recipesCore={recipes}
       pub={pub}
+      hideFilter={pub}
       className={!_.isEmpty(photo) && 'document mw7 pan oh mbl'}
     />
   ) : (

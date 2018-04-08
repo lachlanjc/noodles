@@ -52,6 +52,11 @@ a {
   &.green:focus {
     color: $green-dark;
   }
+
+  &.purple:hover,
+  &.purple:focus {
+    color: $purple-dark;
+  }
 }
 a,
 action {
