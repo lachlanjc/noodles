@@ -22,7 +22,7 @@
   <footer class="modal__footer">
     <%= link_to t('general.delete'), @collection, method: :delete, data: { confirm: t('general.delete_collection_forever'), disable_with: 'Deleting…' }, class: 'btn bg-red', style: 'margin-right: auto' if @collection.persisted? %>
     <button
-      class="btn bg-grey-3 mrs"
+      class="btn bg-white mrs"
       data-behavior="modal_close">Cancel</button>
     <% if @collection.persisted? %>
       <%= f.submit 'Save', class: 'btn btn--primary bg-blue b' %>

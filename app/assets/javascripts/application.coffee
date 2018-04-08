@@ -132,7 +132,7 @@ $(document).on 'turbolinks:load', ->
   $('[data-behavior~=photo_field]').on 'change', ->
     d = N.s('photo_button').find('[data-behavior~=description]')
     d.text this.value.match(/[^\/\\]+$/)[0]
-    N.s('recipe_errors').hide 400
+    N.s('recipe_errors').hide 256
     if f = document.querySelector('[data-behavior~=photo_field]').files[0]
       r = new FileReader
       r.addEventListener 'load', (->
@@ -151,9 +151,9 @@ $(document).on 'turbolinks:load', ->
     $('[data-behavior~=photo_field]').val null
     $.get $(this).data('href'), (e) ->
       d.text 'Removed!'
-      N.s('editor_photo_cont').hide 300, -> p.attr 'style', ''
+      N.s('editor_photo_cont').hide 256, -> p.attr 'style', ''
       t.hide 'slow'
-    N.s('recipe_errors').hide 300
+    N.s('recipe_errors').hide 256
 
   if N.theres 'font_dec'
     $('html').css 'font-size', 16
