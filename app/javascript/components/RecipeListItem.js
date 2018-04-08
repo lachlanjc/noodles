@@ -2,37 +2,26 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Icon from './Icon'
 
+const RecipeListItemIcon = props => (
+  <Icon size={28} className="mls" {...props} />
+)
+
 const RecipeListItem = ({ recipe, pub }) => {
   const { title, description, shared_id, path, public_path } = recipe
   const link = pub ? public_path : path
 
-  const feats = {
-    collections: 'flag',
-    notes: 'post',
-    photo: 'photo',
-    web: 'link',
-    favorite: 'link'
-  }
-  const icons = []
-  _.forEach(_.keys(feats), feat => {
-    if (recipe[feat]) {
-      icons.push(
-        <RecipeListItemIcon
-          feat={feats[feat]}
-          key={`r-${shared_id}-${_.indexOf(feats, feat)}`}
-        />
-      )
-    }
-  })
-
   return (
     <li className="border-top feel pam">
       <a href={link} className="link-reset">
-        <div
-          className="fr dn-p"
-          style={{ color: '#C0CCDA' }}
-          children={icons}
-        />
+        <div className="fr dn-p" style={{ color: '#C0CCDA' }}>
+          {recipe.collections && <RecipeListItemIcon glyph="collections" />}
+          {recipe.notes && <RecipeListItemIcon glyph="post" />}
+          {recipe.photo && <RecipeListItemIcon glyph="photo" />}
+          {recipe.web && <RecipeListItemIcon glyph="link" />}
+          {recipe.favorite && (
+            <RecipeListItemIcon glyph="like-fill" className="mls purple" />
+          )}
+        </div>
         <h3 className="man" children={title} />
         <p className="man text truncate grey-3">{description}</p>
       </a>
@@ -46,7 +35,3 @@ RecipeListItem.propTypes = {
 }
 
 export default RecipeListItem
-
-const RecipeListItemIcon = ({ feat }) => (
-  <Icon glyph={feat} size={28} style={{}} className={'mls'} />
-)
