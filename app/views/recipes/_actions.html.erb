@@ -1,12 +1,12 @@
-<action type="button" class="dib lh0 menu__toggle <%= rootClass %>" data-behavior="menu_toggle" aria-expanded="false" tabindex="0">
-  <%= react_component 'Icon', { glyph: 'menu', size: 28 }, class: color || 'grey-3' %>
+<action type="button" class="dib lh0 menu__toggle <%= rootClass %> <%= color %>" data-behavior="menu_toggle" aria-expanded="false" tabindex="0">
+  <%= react_component 'Icon', { glyph: 'menu', size: 28 } %>
   <div class="menu__content <%= menuClass %>" data-behavior="menu_content">
     <a href="#embed" class="menu__action" data-behavior="modal_trigger embed_trigger">
       <%= react_component 'Icon', glyph: 'embed', size: 28 %>
       <span>Embed</span>
     </a>
     <%= link_to export_pdf_recipe_path(@recipe), class: 'menu__action' do %>
-      <%= react_component 'Icon', glyph: 'download', size: 28 %>
+      <%= react_component 'Icon', glyph: 'send', size: 28 %>
       <span>Download as PDF</span>
     <% end %>
     <%= link_to @recipe, method: :delete, data: { confirm: t('general.delete_forever') }, class: 'menu__action' do %>
