@@ -2,7 +2,7 @@ class RecipeListSerializer < BaseSerializer
   cache key: 'recipe_list'
 
   attributes :id, :title, :description, :path, :public_path,
-             :favorite, :notes, :photo, :collections, :last_cooked_at
+             :favorite, :notes, :photo, :web, :collections, :last_cooked_at
 
   def notes
     object.notes.present?
@@ -17,14 +17,14 @@ class RecipeListSerializer < BaseSerializer
   end
 
   def web
-    from_web?(object.source)
+    object.from_web?
   end
 
   def path
-    recipe_path(object)
+    recipe_path object
   end
 
   def public_path
-    share_path(object.shared_id)
+    share_path object.shared_id
   end
 end
