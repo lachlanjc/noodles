@@ -11,9 +11,9 @@
       <%= pluralize @recipe.instructions.lines.count, 'step' %>
     </p>
 
-    <div class="flex fac mvm">
+    <div class="flex fac lh mvm">
       <%= link_to @exit_path, class: 'flex-i fac grey-3 mrl' do %>
-        <%= inline_svg 'exit.svg', class: 'fill-grey-3 mrs' %>
+        <%= react_component 'Icon', { glyph: 'door-leave' }, class: 'grey-3 mrs' %>
         Exit
       <% end %>
       <%= link_to edit_recipe_path(@recipe,
@@ -21,12 +21,12 @@
         target: '_blank',
         class: 'dn flex-i fac grey-3',
         'data-behavior': 'show_if_my_object' do %>
-        <%= inline_svg 'edit.svg', class: 'fill-grey-3 mrs' %>
+        <%= react_component 'Icon', { glyph: 'edit' }, class: 'grey-3 mrs' %>
         Edit
       <% end %>
-      <div class="flex-i fac mll pointer border rounded b grey-3">
+      <div class="flex-i fac mll pointer border rounded serif grey-3">
         <div class="flex-auto f4 tr phm" data-behavior="font_dec">A</div>
-        <div class="flex-auto f2 tl phm border-left" data-behavior="font_inc">A</div>
+        <div class="flex-auto f2 tl b phm border-left" data-behavior="font_inc">A</div>
       </div>
     </div>
 
