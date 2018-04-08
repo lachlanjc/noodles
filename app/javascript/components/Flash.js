@@ -37,16 +37,9 @@ const FlashIcon = ({ type }) => {
     icon = 'view-close'
     color = 'red'
   }
-  const sx = {
-    position: 'relative',
-    top: 6,
-    marginRight: 6
-  }
-  if (!_.isEmpty(icon)) {
-     return <Icon glyph={icon} size={24} style={sx} className={color} />
-  } else {
-    return null
-  }
+  return !_.isEmpty(icon) ? (
+    <Icon glyph={icon} size={24} className={color} />
+  ) : null
 }
 
 const FlashMessage = ({ message, type }) => {
@@ -54,7 +47,6 @@ const FlashMessage = ({ message, type }) => {
   const sx = {
     backgroundColor: 'rgba(0,0,0,.75)',
     color: '#fff',
-    display: 'inline-block',
     position: 'relative',
     top: -height,
     borderRadius: height / 2,
@@ -62,11 +54,15 @@ const FlashMessage = ({ message, type }) => {
     paddingLeft: N.space[3],
     paddingRight: N.space[3]
   }
-  const cx = 'dn-p'
   return (
-    <div role="alertdialog" data-behavior="flash" className={cx} style={sx}>
+    <div
+      role="alertdialog"
+      data-behavior="flash"
+      className="dn-p flex-i fac"
+      style={sx}
+    >
       {type && <FlashIcon type={type} />}
-      {message}
+      <span style={{ marginLeft: 4 }} children={message} />
     </div>
   )
 }
