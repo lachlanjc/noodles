@@ -64,6 +64,11 @@ action {
   &.grey-3:focus {
     color: $grey-2;
   }
+
+  &.white:hover,
+  &.white:focus {
+    color: $grey-4;
+  }
 }
 
 .text {

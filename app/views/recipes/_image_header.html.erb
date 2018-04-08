@@ -32,10 +32,11 @@
       <% end %>
     <% else %>
       <%= form_for(@recipe, html: { class: 'mrm lh0 fsn dib' }) do |f| %>
-        <%= f.label :favorite, class: 'white tooltipped tooltipped--n man', 'data-behavior': 'r_fav', 'aria-label': 'Favorite', tabindex: 0 do %>
+        <%= f.label :favorite, class: 'white pointer tooltipped tooltipped--n man',
+          'data-behavior': 'r_fav', 'aria-label': 'Favorite', tabindex: 0 do %>
           <%= f.check_box :favorite, class: 'fav__checkbox', 'data-behavior': 'r_fav_trigger' %>
-          <%= react_component 'Icon', { glyph: 'like' }, class: 'pointer fav__indicator--basic' %>
-          <%= react_component 'Icon', { glyph: 'like-fill' }, class: 'pointer fav__indicator--checked' %>
+          <%= react_component 'Icon', { glyph: 'like' }, class: 'fav__indicator--basic' %>
+          <%= react_component 'Icon', { glyph: 'like-fill' }, class: 'fav__indicator--checked' %>
         <% end %>
       <% end %>
       <%= link_to cook_recipe_path(@recipe.id),
