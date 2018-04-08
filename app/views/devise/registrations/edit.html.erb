@@ -37,6 +37,10 @@
       <%= f.submit t('general.update'), class: 'btn bg-blue mtm' %>
 
     <% end %>
+  </div>
+  <div class="meta-split__col meta-split__col--right">
+    <%= section_header 'Help', 2, class: 'mtn mbs grey-2 f3' %>
+    <%= render 'shared/help', hide_footer: true %>
 
     <%= section_header 'Subscription', 2, class: 'mtl mbs grey-2 f3' %>
     <% if current_user.subscriber? %>
@@ -48,10 +52,9 @@
       </p>
       <%= link_to 'Learn more', subscriptions_path, class: 'btn bg-green' %>
     <% end %>
-  </div>
-  <div class="meta-split__col meta-split__col--right">
-    <%= section_header 'Help', 2, class: 'mtn mbs grey-2 f3' %>
-    <%= render 'shared/help', hide_footer: true %>
+
+    <%= section_header 'News', 2, class: 'mtl mbs grey-2 f3' %>
+    <%= link_to 'See what’s new in Noodles', 'https://news.getnoodl.es', class: 'btn bg-orange' %>
 
     <%= section_header 'Delete your account', 2, class: 'mtl mbs grey-2 f3' %>
     <p>
