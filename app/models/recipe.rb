@@ -15,9 +15,9 @@ class Recipe < ApplicationRecord
                     s3_region: ENV['AWS_REGION']
   validates_attachment_content_type :img, content_type: /\Aimage\/.*\Z/
   validates_with AttachmentSizeValidator, attributes: :img,
-    less_than: 5.megabytes, unless: :publisher_is_subscriber?
+                                          less_than: 5.megabytes, unless: :publisher_is_subscriber?
   validates_with AttachmentSizeValidator, attributes: :img,
-    less_than: 25.megabytes, if: :publisher_is_subscriber?
+                                          less_than: 25.megabytes, if: :publisher_is_subscriber?
 
   before_update :collection_cleanup!
 
@@ -58,7 +58,7 @@ class Recipe < ApplicationRecord
   def public_url
     share_url shared_id
   end
-  
+
   def from_web?
     source.to_s.match(/https?/).present?
   end

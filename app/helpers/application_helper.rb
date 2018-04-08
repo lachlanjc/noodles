@@ -9,8 +9,8 @@ module ApplicationHelper
 
   def modal_close
     content_tag :action,
-      react_component('Icon', { glyph: 'view-close', size: 36 }, { class: 'grey-3' }),
-      class: 'fr dib lh pointer', data: { behavior: 'modal_close' }
+                react_component('Icon', { glyph: 'view-close', size: 36 }, class: 'grey-3'),
+                class: 'fr dib lh pointer', data: { behavior: 'modal_close' }
   end
 
   def modal_header(text)

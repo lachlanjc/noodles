@@ -74,7 +74,7 @@ module RecipesHelper
 
   def composer_for(model, field)
     react_component 'Composer',
-      name: "#{model}[#{field}]",
-      id: [model, field].join('_')
+                    name: "#{model}[#{field}]",
+                    id: [model, field].join('_')
   end
 end

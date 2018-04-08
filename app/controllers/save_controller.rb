@@ -30,7 +30,7 @@ class SaveController < ApplicationController
   def url_is_valid?(u = params[:url])
     url = begin
             URI.parse(u)
-          rescue
+          rescue StandardError
             false
           end
     url.is_a?(URI::HTTP) || url.is_a?(URI::HTTPS)
