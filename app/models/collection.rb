@@ -11,6 +11,10 @@ class Collection < ApplicationRecord
                     default_url: '',
                     s3_region: ENV['AWS_REGION']
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
+  validates_with AttachmentSizeValidator, attributes: :photo,
+    less_than: 5.megabytes, if: :publisher_is_subscriber?
+  validates_with AttachmentSizeValidator, attributes: :photo,
+    less_than: 25.megabytes, if: :publisher_is_subscriber?
 
   def recipes
     results = user.recipes.pluck(:id, :collections)

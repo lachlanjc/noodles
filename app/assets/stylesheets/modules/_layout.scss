@@ -45,6 +45,10 @@
     margin-left: $space-2;
     margin-top: 0;
   }
+
+  .two-columns-ns {
+    column-count: 2;
+  }
 }
 
 @media screen and (min-width: 48em) {

@@ -42,27 +42,32 @@
 
   <% if @recipe.errors.any? %>
     <section
-      class="w-two-thirds-m mx-auto card mvm pam pal-ns"
+      class="w-two-thirds-m mx-auto card mvm pam bg-red white"
       data-behavior="recipe_errors"
       role="alertdialog">
       <% @errors = @recipe.errors.messages %>
       <% if @errors[:title].present? %>
         <% if @errors[:title].first.match 'blank' %>
-          <h2 class="red normal mtn">Your recipe doesn’t have a title!</h2>
+          <h2 class="sans f3 white mtn">Your recipe doesn’t have a title!</h2>
           <p class="mbn">Add a title (below) and you’ll be good to go.</p>
         <% end %>
         <% if @errors[:title].first.match 'too long' %>
-          <h2 class="red normal mtn">That title is too long!</h2>
+          <h2 class="sans f3 white mtn">That title is too long.</h2>
           <p class="mbn">Try shortening it (to less than 250 characters) and you’ll be good to go.</p>
         <% end %>
       <% end %>
       <% if @errors[:img].present? %>
         <% if @errors[:img].last.match 'less than' %>
-          <h2 class="red normal mtn">That photo is too bid.</h2>
-          <p class="mbn">Please use an image that’s less than 5 MB.</p>
+          <h2 class="sans f3 white mtn">That photo is too large.</h2>
+          <p class="mbn">
+            Please use an image that’s less than <%= current_user.subscriber? ? 25 : 5 %> MB.
+            <% if !current_user.free? %>
+              Or, <%= link_to 'buy a subscription', subscriptions_path, class: 'underline white' %> to enable uploads up to 25 MB.
+            <% end %>
+          </p>
         <% end %>
         <% if @errors[:img_content_type].present? %>
-          <h2 class="red normal mtn">That’s not an image.</h2>
+          <h2 class="sans f3 white mtn">That’s not an image.</h2>
           <p class="mbn">Please pick a valid image file (such as JPG/JPEG, PNG, etc).</p>
         <% end %>
       <% end %>

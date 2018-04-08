@@ -30,6 +30,10 @@ module Shareable
     user.first_name
   end
 
+  def publisher_is_subscriber?
+    user.subscriber?
+  end
+
   def media_url
     photo_url || "#{root_url}/logo.png"
   end

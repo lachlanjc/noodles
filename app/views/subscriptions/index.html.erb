@@ -5,9 +5,9 @@
 <%= render 'shared/nav' %>
 
 <main class="document mw6 mtl mtm-ns">
-  <%= react_component 'SuperHeading',
-    children: 'Subscribe', className: 'f1-ns', style: { marginBottom: 16 } %>
-  <% if current_user.subscriber? %>
+  <%= react_component 'SuperHeading', children: 'Subscribe to Noodles',
+    className: 'f1-ns', style: { marginBottom: 16 } %>
+  <% if !current_user.subscriber? %>
     <div class="purple flex mvm">
       <%= react_component 'Icon', { glyph: 'like-fill', size: 48 }, class: 'mrm' %>
       <div>
@@ -28,18 +28,30 @@
   <% else %>
     <section class="content">
       <p>
-        Right now you can use Noodles completely for free,
-        but if you enjoy cooking with it, <span class="b">please consider buying a subscription</span>.
+        Currently you can use Noodles free, but if you enjoy cooking with it,
+        <strong>please consider a subscription</strong>.<br>
+        Here’s what you’ll get:
       </p>
-      <p>
-        I don’t want to waste your time separating out “premium” features, so everything is available free.
-        With a subscription, you’ll just get new things first and even faster support.
-      </p>
-      <p class="sans f3 lh-title mvm" style="font-style: italic;">
-        Your subscription keeps Noodles running and ad-free. I couldn’t work on this project without subscriptions.
-      </p>
-      <p>
-        Noodles is built by a young independent developer.
+      <ul class="sans f4 lh-title list-reset two-columns-ns">
+        <li class="flex fac">
+          <%= react_component 'Icon', { glyph: 'embed' }, class: 'purple fsn mrs' %>
+          <span>Embed recipes on another website/blog</span>
+        </li>
+        <li class="flex fac">
+          <%= react_component 'Icon', { glyph: 'photo' }, class: 'purple fsn mrs' %>
+          <span>Add photos up to 25MB</span>
+        </li>
+        <li class="flex fac">
+          <%= react_component 'Icon', { glyph: 'message' }, class: 'purple fsn mrs' %>
+          <span>Faster support</span>
+        </li>
+        <li class="flex fac">
+          <%= react_component 'Icon', { glyph: 'like' }, class: 'purple fsn mrs' %>
+          <span>Help keep Noodles alive and ad-free</span>
+        </li>
+      </ul>
+      <p class="mtm">
+        I’m a young indie developer building Noodles, and I couldn’t work on this project without subscriptions.
         Your contributions will be spent direclty on the services like Heroku that keep Noodles running.
       </p>
       <p>

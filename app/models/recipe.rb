@@ -14,7 +14,10 @@ class Recipe < ApplicationRecord
                     default_url: '',
                     s3_region: ENV['AWS_REGION']
   validates_attachment_content_type :img, content_type: /\Aimage\/.*\Z/
-  validates_with AttachmentSizeValidator, attributes: :img, less_than: 5.megabytes
+  validates_with AttachmentSizeValidator, attributes: :img,
+    less_than: 5.megabytes, unless: :publisher_is_subscriber?
+  validates_with AttachmentSizeValidator, attributes: :img,
+    less_than: 25.megabytes, if: :publisher_is_subscriber?
 
   before_update :collection_cleanup!
 
