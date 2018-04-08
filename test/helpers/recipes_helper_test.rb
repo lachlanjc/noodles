@@ -26,10 +26,6 @@ class RecipesHelperTest < ActionView::TestCase
     assert_not_empty embed_html(recipes(:one))
   end
 
-  test 'should test recipe is from web' do
-    assert from_web?('https://getnoodl.es/s/sample')
-  end
-
   test 'processed ingredient' do
     assert_match 'hello', ingredient_processed('hello')
   end

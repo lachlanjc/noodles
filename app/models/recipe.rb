@@ -55,6 +55,10 @@ class Recipe < ApplicationRecord
   def public_url
     share_url shared_id
   end
+  
+  def from_web?
+    source.to_s.match(/https?/).present?
+  end
 
   def duplicate_for(user)
     @new = dup

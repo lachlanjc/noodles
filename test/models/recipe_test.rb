@@ -1,5 +1,7 @@
 require 'test_helper'
 
 class RecipeTest < ActiveSupport::TestCase
-  include Devise::Test::ControllerHelpers
+  test 'from web' do
+    assert recipes(:two).from_web?
+  end
 end

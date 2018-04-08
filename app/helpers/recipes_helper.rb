@@ -23,10 +23,6 @@ module RecipesHelper
     html = ApplicationController.new.render_to_string('recipes/embed', locals: { r: recipe }, layout: false)
     strip_whitespace(html)
   end
-
-  def from_web?(source_data)
-    source_data.to_s.match(/https?/).present?
-  end
   
   def recipe_ingredients(r = @recipe, options = {})
     content_tag :ul, r.ingredients.lines.map { |a| ingredient_processed(a, options) }.join.html_safe

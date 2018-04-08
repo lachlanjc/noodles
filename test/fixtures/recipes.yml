@@ -24,7 +24,7 @@ two:
 no_details:
   title: 'No Details'
   shared_id: 'nodetails'
-  source: ''
+  source: 'https://getnoodl.es/s/sample'
   author: ''
   serves: ''
   notes: ''
