@@ -11,12 +11,7 @@ class GroceriesForm extends Component {
     makeSuggestions: PropTypes.bool
   }
 
-  constructor() {
-    super()
-    this.state = { name: '', suggestions: [] }
-    this.updateName = this.updateName.bind(this)
-    this.makeSuggestions = this.makeSuggestions.bind(this)
-  }
+  state = { name: '', suggestions: [] }
 
   componentDidMount() {
     // onClick isn't working, so defined in application CoffeeScript
@@ -26,7 +21,7 @@ class GroceriesForm extends Component {
     }
   }
 
-  updateName(name, makeSuggestions) {
+  updateName = (name, makeSuggestions) => {
     this.setState({ name })
     if (makeSuggestions) {
       this.makeSuggestions(name)
@@ -35,7 +30,7 @@ class GroceriesForm extends Component {
     }
   }
 
-  makeSuggestions(name) {
+  makeSuggestions = name => {
     const searchText = _.trim(_.lowerCase(name))
     if (_.isEmpty(searchText) || searchText.length < 2) {
       this.setState({ suggestions: [] })
@@ -59,7 +54,7 @@ class GroceriesForm extends Component {
         action="/groceries"
         method="POST"
         acceptCharset="UTF-8"
-        className="dn-p"
+        className="dn-p mts"
         onSubmit={N.track('add-grocery', { name })}
         {...props}
       >
