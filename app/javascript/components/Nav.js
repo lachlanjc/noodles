@@ -40,7 +40,7 @@ const Nav = ({ active = 'recipes' }) => (
         href="/collections"
         aria-current={active === 'collections'}
       >
-        <Icon glyph="flag" />
+        <Icon glyph="collections" />
         <span>Collections</span>
       </a>
       <a
