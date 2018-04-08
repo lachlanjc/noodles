@@ -66,10 +66,10 @@ class ApplicationController < ActionController::Base
     render 'shared/locked', locals: { object: object }, status: 403
   end
 
-  # Show flash on html request, render text on xhr request
+  # Show flash on html request, render plain text on xhr request
   def flash_or_text(flash_color, plain_text, flash_text = plain_text)
     if request.xhr?
-      render text: plain_text
+      render plain: plain_text
     else
       flash[flash_color.to_sym] = flash_text
     end
