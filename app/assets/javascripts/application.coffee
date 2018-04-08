@@ -3,7 +3,6 @@
 #= require turbolinks
 #= require lodash
 #= require modals
-#= require autosize
 #= require clipboard
 #= require global
 
@@ -156,10 +155,6 @@ $(document).on 'turbolinks:load', ->
       t.hide 'slow'
     N.s('recipe_errors').hide 300
 
-  N.s('autosize').autosize()
-  $('[data-behavior~=editor_instructions]').on 'focus', ->
-    $(this).val '1. ' if _.isEmpty $(this).val()
-
   if N.theres 'font_dec'
     $('html').css 'font-size', 16
   N.getFontSize = ->
@@ -181,4 +176,3 @@ $(document).on 'turbolinks:load', ->
     N.track 'clips-recipe', { 'URL': N.s('clip_url').val() }
   $(document).on 'click', '.stripe-button-el', ->
     N.track 'clicks-subscribe', {}
-  

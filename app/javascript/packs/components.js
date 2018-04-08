@@ -4,6 +4,7 @@ import Nav from '../components/Nav'
 import FlashContainer from '../components/Flash'
 import SuperHeading from '../components/SuperHeading'
 import Icon, { AllIcons } from '../components/Icon'
+import Composer from '../components/Composer'
 
 import RecipesHome from '../components/RecipesHome'
 import RecipesHomeBlank from '../components/RecipesHomeBlankSlate'
@@ -20,6 +21,7 @@ WebpackerReact.setup({
   SuperHeading,
   Icon,
   AllIcons,
+  Composer,
   RecipesHome,
   RecipesHomeBlank,
   CollectionsHome,

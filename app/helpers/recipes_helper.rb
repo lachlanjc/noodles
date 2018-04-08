@@ -23,7 +23,7 @@ module RecipesHelper
     html = ApplicationController.new.render_to_string('recipes/embed', locals: { r: recipe }, layout: false)
     strip_whitespace(html)
   end
-  
+
   def recipe_ingredients(r = @recipe, options = {})
     content_tag :ul, r.ingredients.lines.map { |a| ingredient_processed(a, options) }.join.html_safe
   end
@@ -70,5 +70,11 @@ module RecipesHelper
 
   def notes_rendered(recipe = @recipe)
     recipe.notes.blank? ? notes_blankslate : markdown(recipe.notes)
+  end
+
+  def composer_for(model, field)
+    react_component 'Composer',
+      name: "#{model}[#{field}]",
+      id: [model, field].join('_')
   end
 end

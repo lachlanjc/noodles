@@ -1,5 +1,15 @@
-.recipe__ingredients {  
-  h1 {
+.DraftEditor-root .public-DraftEditor-content {
+  min-height: 4rem;
+  font-family: $serif-font-family;
+  line-height: 1.6;
+  * {
+    font-style: normal !important;
+  }
+}
+.DraftEditor-root .public-DraftEditor-content,
+.recipe__ingredients {
+  h1,
+  h2 {
     color: $grey-2;
     font-family: $font-family;
     font-size: $f4;
@@ -7,6 +17,13 @@
     line-height: inherit;
   }
 
+  span[style^='font-style: italic'],
+  u {
+    border-bottom: 1px dotted $grey-3;
+    text-decoration: none;
+  }
+}
+.recipe__ingredients {
   p,
   ul,
   h1 {
@@ -16,11 +33,6 @@
 
   ul {
     list-style: none;
-  }
-
-  u {
-    border-bottom: 1px dotted $grey-3;
-    text-decoration: none;
   }
 }
 
@@ -42,7 +54,7 @@ h1.checklist__item {
     counter-increment: item;
   }
   li:before {
-    content: "Step " counter(item);
+    content: 'Step ' counter(item);
     display: block;
     color: $grey-2;
     font-family: $font-family;

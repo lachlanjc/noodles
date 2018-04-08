@@ -81,43 +81,23 @@
 
   <%= f.label :description, class: 'label f3 dib' %>
   <small class="f5 grey-3">(optional)</small>
-  <%= f.text_area :description,
-    rows: 1,
-    autocomplete: 'off',
-    placeholder: 'Why do you make this recipe? What’s its story?',
-    'data-behavior': 'autosize',
-    class: 'text-input invisible-input serif w-100 lh-copy'
-  %>
+  <%= f.hidden_field :description, 'data-behavior': 'composer_field' %>
+  <%= composer_for :recipe, :description %>
 
   <%= f.label :ingredients, class: 'label f3 dib' %>
-  <small class="f5 grey-3">Put one on each line.</small>
-  <%= f.text_area :ingredients,
-    rows: 3,
-    autocomplete: 'off',
-    placeholder: 'What do you need for this recipe?',
-    'data-behavior': 'autosize',
-    class: 'text-input invisible-input serif w-100 man lh-copy'
-  %>
+  <small class="f5 grey-3">(one on each line, supports headings)</small>
+  <%= f.hidden_field :ingredients, 'data-behavior': 'composer_field' %>
+  <%= composer_for :recipe, :ingredients %>
 
   <%= f.label :instructions, class: 'label f3 dib' %>
-  <small class="f5 grey-3">Supports Markdown</small>
-  <%= f.text_area :instructions,
-    rows: 4,
-    autocomplete: 'off',
-    placeholder: 'How do you make this recipe?',
-    'data-behavior': 'autosize editor_instructions',
-    class: 'text-input invisible-input serif w-100 man lh-copy'
-  %>
+  <small class="f5 grey-3">(supports Markdown)</small>
+  <%= f.hidden_field :instructions, 'data-behavior': 'composer_field' %>
+  <%= composer_for :recipe, :instructions %>
 
   <%= f.label :notes, class: 'label f3 dib' %>
-  <small class="f5 grey-3">(optional)</small>
-  <%= f.text_area :notes,
-    rows: '4',
-    autocomplete: 'off',
-    placeholder: 'What would you want to remember for next time?',
-    'data-behavior': 'autosize',
-    class: 'text-input invisible-input serif w-100 man lh-copy'
-  %>
+  <small class="f5 grey-3">(optional, supports Markdown)</small>
+  <%= f.hidden_field :notes, 'data-behavior': 'composer_field' %>
+  <%= composer_for :recipe, :notes %>
 
   <%= section_header 'Details', 2, class: 'mtl' %>
 
