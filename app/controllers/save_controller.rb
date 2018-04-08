@@ -56,6 +56,6 @@ class SaveController < ApplicationController
 
   def action_supported(msg)
     flash_or_text(:success, @recipe.id, msg)
-    redirect_to @recipe
+    redirect_to @recipe unless request.xhr?
   end
 end
