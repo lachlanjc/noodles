@@ -1,6 +1,8 @@
 import WebpackerReact from 'webpacker-react'
 
 import FlashContainer from '../components/Flash'
+import SuperHeading from '../components/SuperHeading'
+
 import RecipesHome from '../components/RecipesHome'
 import RecipesHomeBlank from '../components/RecipesHomeBlankSlate'
 import CollectionsHome from '../components/CollectionsHome'
@@ -10,10 +12,9 @@ import Groceries from '../components/Groceries'
 import GroceriesNew from '../components/GroceriesNew'
 import GroceriesPast from '../components/GroceriesPast'
 
-import Composer from '../components/Composer'
-
 WebpackerReact.setup({
   FlashContainer,
+  SuperHeading,
   RecipesHome,
   RecipesHomeBlank,
   CollectionsHome,
@@ -22,5 +23,4 @@ WebpackerReact.setup({
   Groceries,
   GroceriesNew,
   GroceriesPast
-  SuperHeading,
 })
