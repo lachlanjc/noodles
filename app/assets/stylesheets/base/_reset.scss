@@ -23,6 +23,10 @@ svg {
   max-height: 100%;
 }
 
+svg {
+  flex-shrink: 0;
+}
+
 hr {
   border: 0;
   border-bottom: $border;

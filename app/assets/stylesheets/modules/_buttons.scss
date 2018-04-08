@@ -30,6 +30,11 @@
     opacity: 0.5;
     pointer-events: none;
   }
+
+  svg {
+    margin-left: -2px;
+    margin-right: 6px;
+  }
 }
 
 .btn--primary {

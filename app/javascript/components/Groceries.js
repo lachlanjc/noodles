@@ -20,15 +20,14 @@ const mailto = items =>
 const Groceries = ({ groceries }) => (
   <div>
     <Document mw={6} className="mbn">
-      <Button
+      <a
         href="/groceries/new"
-        color="green"
-        sm
-        className="dn-p"
+        className="green dn-p"
         style={{ float: 'right', marginTop: 4 }}
+        aria-label="Add item"
       >
-        Add item
-      </Button>
+        <Icon glyph="plus" />
+      </a>
       <SuperHeading className="f1-ns mvn-ns">Grocery List</SuperHeading>
       {_.isEmpty(groceries) ? (
         <GroceriesBlankSlate />
@@ -40,8 +39,8 @@ const Groceries = ({ groceries }) => (
       )}
     </Document>
     <footer className="flex flex-cols flex-rows-ns fac-ns fjc-ns fjc phm mtm mbxl dn-p">
-      <div className="flex-i">
-        <Icon glyph="share" size={24} className="grey-3 mrs mrm-ns" />
+      <div className="flex-i fac">
+        <Icon glyph="share" size={28} className="grey-3 mrs" />
         <Button color="grey-3" sm href={mailto(groceries)}>
           Email
         </Button>
@@ -56,8 +55,8 @@ const Groceries = ({ groceries }) => (
         style={{ width: 0, height: 32, borderLeft: '1px solid currentColor' }}
       />
       <Spacer x={16} y={8} />
-      <div className="flex-i">
-        <Icon glyph="enter" size={24} className="grey-3 mrs mrm-ns" />
+      <div className="flex-i fac">
+        <Icon glyph="enter" size={28} className="grey-3 mrs" />
         <ModalLink is="btn" color="grey-3" name="sms" sm>
           Use SMS
         </ModalLink>

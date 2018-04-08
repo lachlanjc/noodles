@@ -48,8 +48,15 @@ a {
     color: $blue-dark;
   }
 
+  &.green:hover,
+  &.green:focus {
+    color: $green-dark;
+  }
+}
+a,
+action {
   &.grey-1:hover,
-  &.grey-3:focus {
+  &.grey-1:focus {
     color: $grey-2;
   }
 
