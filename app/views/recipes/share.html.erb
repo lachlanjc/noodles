@@ -56,12 +56,12 @@
           'data-behavior': 'show_unless_mine',
           class: 'mrm pointer tooltipped tooltipped--n',
           'aria-label': 'Save to your library' do %>
-          <%= inline_svg 'add_circle.svg', class: 'fill-orange', size: 32 %>
+          <%= react_component 'Icon', glyph: 'plus' %>
         <% end %>
         <%= link_to public_cook_path(@recipe.shared_id),
           class: 'mrm pointer tooltipped tooltipped--n',
           'aria-label': 'Open in Cook Mode' do %>
-          <%= inline_svg 'cook.svg', class: 'fill-orange', size: 32 %>
+          <%= react_component 'Icon', glyph: 'door-enter' %>
         <% end %>
       </div>
       <%= content_tag :p,

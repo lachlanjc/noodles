@@ -1,19 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Icon from './MDIcon'
+import Icon from './Icon'
 
-const RecipeListComplication = ({ tooltip, icon, ...props }) => (
+const RecipeListComplication = ({ tooltip, glyph, ...props }) => (
   <a
-    className="mlm lh0 tooltipped"
+    className="mlm lh0 grey-3 tooltipped"
     aria-label={tooltip}
-    children={<Icon icon={icon} className="fill-grey-3" />}
+    children={<Icon glyph={glyph} />}
     {...props}
   />
 )
 
 RecipeListComplication.propTypes = {
   tooltip: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired
+  glyph: PropTypes.string.isRequired
 }
 
 export default RecipeListComplication

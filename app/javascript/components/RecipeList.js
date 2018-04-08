@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 
 import BlankSlate from './BlankSlate'
 import Button from './Button'
-import Icon from './MDIcon'
 import RecipeListItem from './RecipeListItem'
 import SearchBar from './SearchBar'
 

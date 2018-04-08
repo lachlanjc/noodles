@@ -7,7 +7,7 @@
 
   @media screen and (min-width: 30em) {
     border-radius: $border-radius;
-    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.0625);
+    box-shadow: $shadow-2;
   }
 
   @media screen and (min-width: 48em) {

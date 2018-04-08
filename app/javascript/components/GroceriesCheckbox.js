@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import Icon from './MDIcon'
+import Icon from './Icon'
 
 class GroceriesCheckbox extends Component {
   static propTypes = {
@@ -95,10 +95,9 @@ class GroceriesCheckbox extends Component {
         </div>
         <div className="flex fac" ref={a => (this.delete = a)}>
           <Icon
-            icon="cancel"
+            glyph="delete"
             size={22}
             className="groceries__item__delete red mls"
-            style={{ fill: 'currentColor' }}
           />
           {date && <span className="f5 grey-3 mls" children={date} />}
         </div>

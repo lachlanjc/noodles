@@ -50,7 +50,7 @@ Rails.application.configure do
 
   config.action_view.raise_on_missing_translations = true
 
-  Rails.application.routes.default_url_options[:host] = 'localhost:5000'
+  Rails.application.routes.default_url_options[:host] = 'localhost:5100'
 
   # Paperclip Settings
   config.paperclip_defaults = {

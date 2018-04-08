@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Icon from './MDIcon'
+import Icon from './Icon'
 
 const FlashContainer = ({ flashes }) => {
   const sx = {
@@ -30,11 +30,11 @@ export default FlashContainer
 const FlashIcon = ({ type }) => {
   let icon, color
   if (type === 'success' || type === 'info') {
-    icon = 'check'
+    icon = 'checkmark'
     color = 'green'
   }
   if (type === 'danger') {
-    icon = 'close'
+    icon = 'view-close'
     color = 'red'
   }
   const sx = {
@@ -43,7 +43,7 @@ const FlashIcon = ({ type }) => {
     marginRight: 6
   }
   if (!_.isEmpty(icon)) {
-    return <Icon icon={icon} style={sx} className={`fill-${color}`} />
+     return <Icon glyph={icon} size={24} style={sx} className={color} />
   } else {
     return null
   }

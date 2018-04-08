@@ -14,6 +14,11 @@ module NavHelper
     @navs ||= []
     @navs.push(nav.to_sym)
   end
+  
+  def nav_active
+    @navs ||= []
+    @navs.first || :recipes
+  end
 
   def flash_json
     flash.to_a.each do |f|

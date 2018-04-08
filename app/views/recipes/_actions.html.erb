@@ -1,21 +1,17 @@
 <action type="button" class="dib lh0 menu__toggle <%= rootClass %>" data-behavior="menu_toggle" aria-expanded="false" tabindex="0">
-  <%= inline_svg 'more.svg', class: "fill-#{color || 'orange'}", size: 28 %>
-  <popmenu class="menu__content <%= menuClass %>" data-behavior="menu_content">
+  <%= react_component 'Icon', { glyph: 'menu', size: 28 }, class: color || 'orange' %>
+  <div class="menu__content <%= menuClass %>" data-behavior="menu_content">
     <a href="#embed" class="menu__action" data-behavior="modal_trigger embed_trigger">
-      <%= inline_svg 'embed.svg', class: 'menu__action__icon', size: 20 %>
+      <%= react_component 'Icon', glyph: 'embed', size: 28 %>
       <span>Embed</span>
     </a>
     <%= link_to export_pdf_recipe_path(@recipe), class: 'menu__action' do %>
-      <%= inline_svg 'download.svg', class: 'menu__action__icon', size: 20 %>
+      <%= react_component 'Icon', glyph: 'download', size: 28 %>
       <span>Download as PDF</span>
     <% end %>
-    <%= link_to export_pdf_recipe_path(@recipe), class: 'menu__action' do %>
-      <%= inline_svg 'print.svg', class: 'menu__action__icon', size: 20 %>
-      <span>Print</span>
-    <% end %>
     <%= link_to @recipe, method: :delete, data: { confirm: t('general.delete_forever') }, class: 'menu__action' do %>
-      <%= inline_svg 'delete.svg', class: 'menu__action__icon', size: 20 %>
+      <%= react_component 'Icon', glyph: 'delete', size: 28 %>
       <span>Delete</span>
     <% end %>
-  </popmenu>
+  </div>
 </action>

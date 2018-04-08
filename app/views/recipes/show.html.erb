@@ -13,16 +13,16 @@
       <h1 class="lh-header mtn"><%= @recipe.title %></h1>
       <div class="mts mbm dn-p flex fac flex-rows lh0">
         <%= form_for(@recipe) do |f| %>
-          <%= f.label :favorite, class: 'tooltipped tooltipped--n man', 'data-behavior': 'r_fav', 'aria-label': 'Favorite', tabindex: 0 do %>
+          <%= f.label :favorite, class: 'tooltipped tooltipped--n orange man', 'data-behavior': 'r_fav', 'aria-label': 'Favorite', tabindex: 0 do %>
             <%= f.check_box :favorite, class: 'fav__checkbox', 'data-behavior': 'r_fav_trigger' %>
-            <%= inline_svg 'favorite_outline.svg', class: 'fill-orange pointer fav__indicator--basic', size: 28 %>
-            <%= inline_svg 'favorite.svg', class: 'fill-orange pointer fav__indicator--checked', size: 28 %>
+            <%= react_component 'Icon', { glyph: 'like' }, class: 'pointer fav__indicator--basic' %>
+            <%= react_component 'Icon', { glyph: 'like-fill' }, class: 'pointer fav__indicator--checked' %>
           <% end %>
         <% end %>
         <%= link_to edit_recipe_path(@recipe),
           class: 'mlm pointer tooltipped tooltipped--n',
           'aria-label': 'Edit' do %>
-          <%= inline_svg 'edit.svg', class: 'fill-orange', size: 28 %>
+          <%= react_component 'Icon', glyph: 'edit' %>
         <% end %>
         <a
           href="#share"
@@ -30,7 +30,7 @@
           class="mlm pointer tooltipped tooltipped--n"
           aria-label="Share a public link"
           data-behavior="modal_trigger">
-          <%= inline_svg 'share.svg', class: 'fill-orange', size: 28 %>
+          <%= react_component 'Icon', glyph: 'share' %>
         </a>
         <%= render 'actions', color: 'orange', rootClass: 'mlm', menuClass: '' %>
       </div>

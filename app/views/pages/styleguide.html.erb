@@ -1,5 +1,5 @@
 <main class="document mvl mw7">
-  <h1>Styleguide (Header 1)</h1>
+  <%= react_component 'SuperHeading', children: 'Styleguide' %>
   <h2>Header 2</h2>
   <h3>Header 3</h3>
   <h4>Header 4</h4>
@@ -24,11 +24,20 @@
 
   <%= section_header 'Buttons', 2 %>
 
-  <p class="mbl"><a class="btn btn--primary bg-purple">Primary</a></p>
+  <p class="mbl"><a class="btn btn--primary bg-orange">Primary</a></p>
 
-  <p><a class="btn bg-orange">Orange</a></p>
-  <p><a class="btn bg-blue">Blue</a></p>
-  <p><a class="btn bg-green">Green</a></p>
-  <p><a class="btn bg-purple">Green</a></p>
-  <p><a class="btn bg-grey-3">Grey 3</a></p>
+  <div style="column-width: 5rem;">
+    <a class="btn bg-orange">Orange</a>
+    <a class="btn bg-blue">Blue</a>
+    <a class="btn bg-green">Green</a>
+    <a class="btn bg-purple">Purple</a>
+    <a class="btn bg-grey-3">Grey 3</a>
+  </div>
+
+  <%= section_header 'Icons', 2 %>
+  <p class="grey-3 mbm">
+    Iconset sourced from <a href="https://spectrum.chat" class="purple">Spectrum</a>
+  </p>
+
+  <%= react_component 'AllIcons', {}, class: 'grey-2' %>
 </main>

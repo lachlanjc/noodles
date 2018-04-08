@@ -1,41 +1,31 @@
 <% no_margin ||= false %>
 <% unless no_margin %><div class="dn-p" style="height: 4rem;"><% end %>
+<% if user_signed_in? %>
+  <%= react_component 'Nav', active: nav_active.to_s %>
+<% else %>
 <nav
   role="navigation"
   class="nav bg-blur pas phm-ns tc dn-p"
   data-behavior="nav">
 
-  <%= link_to root_url, class: 'nav__icon', 'aria-label': 'Homepage' do %>
+  <%= link_to root_url, class: 'nav__icon dn dib-ns', 'aria-label': 'Homepage' do %>
     <%= inline_svg 'cook.svg', class: 'fill-orange', size: 28 %>
   <% end %>
 
   <article class="nav__container">
-    <% if user_signed_in? %>
-      <section class="nav__section">
-        <%= link_to t('general.recipes'), recipes_path, class: nav_active_class(:recipes) %>
-        <%= link_to t('general.collections'), collections_path, class: nav_active_class(:collections) %>
-        <%= link_to 'Groceries', groceries_path, class: nav_active_class(:groceries) %>
-      </section>
-      <section class="nav__section">
-        <%= link_to 'Explore', explore_path, class: nav_active_class(:explore) %>
-        <%= link_to 'News', 'https://news.getnoodl.es/', class: nav_active_class(:medium) %>
-        <%= link_to t('general.settings'), settings_path, class: nav_active_class(:settings) %>
-        <%= link_to t('general.sign_out'), sign_out_path, class: nav_active_class(:sign_out) %>
-      </section>
-    <% else %>
-      <section class="nav__section">
-        <%= link_to t('general.home'), root_url, class: nav_active_class(:home) %>
-        <%= link_to t('general.explore'), explore_path, class: nav_active_class(:explore) %>
-        <%= link_to 'News', 'https://news.getnoodl.es/', class: nav_active_class(:medium) %>
-      </section>
-      <section class="nav__section">
-        <%= link_to t('general.help'), help_path, class: nav_active_class(:help) %>
-        <%= link_to t('general.sign_in'), sign_in_path, class: nav_active_class(:sign_in) %>
-        <%= link_to t('general.sign_up'), sign_up_path, class: nav_active_class(:sign_up) %>
-      </section>
-    <% end %>
+    <section class="nav__section">
+      <%= link_to t('general.home'), root_url, class: nav_active_class(:home) %>
+      <%= link_to t('general.explore'), explore_path, class: nav_active_class(:explore) %>
+      <%= link_to 'News', 'https://news.getnoodl.es/', class: nav_active_class(:medium) %>
+    </section>
+    <section class="nav__section">
+      <%= link_to t('general.help'), help_path, class: nav_active_class(:help) %>
+      <%= link_to t('general.sign_in'), sign_in_path, class: nav_active_class(:sign_in) %>
+      <%= link_to t('general.sign_up'), sign_up_path, class: nav_active_class(:sign_up) %>
+    </section>
   </article>
 </nav>
+<% end %>
 <% unless no_margin %></div><% end %>
 
 <%= render 'shared/flash' if @hide_flash != true %>

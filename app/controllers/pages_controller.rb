@@ -19,7 +19,7 @@ class PagesController < ApplicationController
   end
 
   def styleguide
-    render :styleguide, layout: 'simple'
+    render :styleguide
   end
 
   def terms

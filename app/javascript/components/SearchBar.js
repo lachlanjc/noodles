@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Icon from './MDIcon'
+import Icon from './Icon'
 
 const SearchBar = ({ count, className, children, ...props }) => (
   <section
     role="search"
     className={N.cxs(['flex fac mvs phm dn-p', className])}
   >
-    <Icon icon="search" className="fill-grey-3 fsn" />
+    <Icon glyph="search" className="grey-3 fsn" />
     <input
       type="text"
       placeholder={

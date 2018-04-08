@@ -9,7 +9,7 @@ import GroceriesBlankSlate from './GroceriesBlankSlate'
 import GroceriesList from './GroceriesList'
 import GroceriesForm from './GroceriesForm'
 import ModalLink from './ModalLink'
-import Icon from './MDIcon'
+import Icon from './Icon'
 
 const mailto = items =>
   `mailto:?subject=Grocery%20list&body=${encodeURIComponent(
@@ -22,7 +22,7 @@ const Groceries = ({ groceries }) => (
     <Document mw={6} className="mbn">
       <Button
         href="/groceries/new"
-        color="grey-3"
+        color="green"
         sm
         className="dn-p"
         style={{ float: 'right', marginTop: 4 }}
@@ -41,7 +41,7 @@ const Groceries = ({ groceries }) => (
     </Document>
     <footer className="flex flex-cols flex-rows-ns fac-ns fjc-ns fjc phm mtm mbxl dn-p">
       <div className="flex-i">
-        <Icon icon="share" size={22} className="fill-grey-3 mrs mrm-ns" />
+        <Icon glyph="share" size={24} className="grey-3 mrs mrm-ns" />
         <Button color="grey-3" sm href={mailto(groceries)}>
           Email
         </Button>
@@ -57,7 +57,7 @@ const Groceries = ({ groceries }) => (
       />
       <Spacer x={16} y={8} />
       <div className="flex-i">
-        <Icon icon="more" size={22} className="fill-grey-3 mrs mrm-ns" />
+        <Icon glyph="enter" size={24} className="grey-3 mrs mrm-ns" />
         <ModalLink is="btn" color="grey-3" name="sms" sm>
           Use SMS
         </ModalLink>

@@ -8,8 +8,9 @@ module ApplicationHelper
   end
 
   def modal_close
-    svg = inline_svg('close.svg', size: 28, class: 'fill-grey-3')
-    content_tag :action, svg, class: 'db fr pointer', data: { behavior: 'modal_close' }
+    content_tag :action,
+      react_component('Icon', { glyph: 'view-close', size: 36 }, { class: 'grey-3' }),
+      class: 'fr dib lh pointer', data: { behavior: 'modal_close' }
   end
 
   def modal_header(text)

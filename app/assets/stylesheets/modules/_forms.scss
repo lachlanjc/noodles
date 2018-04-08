@@ -3,7 +3,7 @@ label {
   margin-top: $space-1;
 }
 
-input[type=checkbox] + label {
+input[type='checkbox'] + label {
   display: inline-block;
 }
 
@@ -16,6 +16,7 @@ input[type=checkbox] + label {
 
 .text-input {
   -webkit-appearance: none;
+  box-sizing: border-box;
   color: $grey-2;
   border: $border;
   border-radius: $border-radius-sm;

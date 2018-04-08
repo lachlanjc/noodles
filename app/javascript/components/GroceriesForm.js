@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import Icon from './MDIcon'
+import Icon from './Icon'
 import Button from './Button'
 import allSuggestions from './GroceryAutocomplete'
 
@@ -65,8 +65,8 @@ class GroceriesForm extends Component {
       >
         <input type="hidden" name="authenticity_token" value={csrfToken} />
         <input type="hidden" name="utf8" value="&#x2713;" />
-        <div className="flex fac w-100 mts" style={{ paddingTop: 4 }}>
-          <Icon icon="add" size={22} className="fill-grey-3" />
+        <div className="flex fac w-100" style={{ marginTop: 6 }}>
+          <Icon glyph="plus" size={22} className="grey-3" />
           <input
             name="grocery[name]"
             id="grocery_name"
@@ -96,10 +96,10 @@ class GroceriesForm extends Component {
               children={[
                 <div
                   className="flex-i fac mrs"
-                  style={{ height: 29 }}
+                  style={{ paddingTop: 4 }}
                   key="icon-assistant"
                 >
-                  <Icon icon="assistant" size={22} className="fill-grey-3" />
+                  <Icon glyph="rep" size={22} className="grey-3" />
                 </div>,
                 _.map(suggestions, (item, i) => (
                   <span

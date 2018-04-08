@@ -1,5 +1,5 @@
 import React from 'react'
-import Icon from './MDIcon'
+import Icon from './Icon'
 
 const tips = [
   'Create a new recipe super quickly by searching with its title.',
@@ -16,26 +16,20 @@ const tips = [
   'Try adding ingredients to your Grocery List over SMS.',
   'What could be better about Noodles? Tap the Feedback tab and let me know.'
 ]
-const getTip = () => tips[_.random(0, tips.length - 1)]
 
 const ProTip = () => (
   <footer
-    className="border-top dn-p"
+    className="border-top flex fac fjc dn-p"
     style={{
       paddingTop: 8,
       paddingBottom: 12,
       paddingLeft: 12,
-      paddingRight: 12,
-      textAlign: 'center'
+      paddingRight: 12
     }}
   >
-    <Icon
-      icon="bolt"
-      className="dib fill-grey-3 mrs relative"
-      style={{ top: 6 }}
-    />
-    <strong>ProTip!</strong>
-    <span className="mls" children={getTip()} />
+    <Icon glyph="emoji" size={28} className="dib grey-3 mrs relative" />
+    <strong style={{ marginRight: 6 }}>ProTip!</strong>
+    <span children={tips[_.random(0, tips.length - 1)]} />
   </footer>
 )
 

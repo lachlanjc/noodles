@@ -17,55 +17,55 @@
       </div>
     <% end %>
   </div>
-  <div class="dn-p flex fac flex-rows lh0 mtl">
+  <div class="dn-p flex fac flex-rows lh0 white mtl">
     <% if public_page? %>
       <%= link_to share_url(@recipe.shared_id),
-        class: 'dn mrm pointer tooltipped tooltipped--n',
+        class: 'dn mrm pointer white tooltipped tooltipped--n',
         'data-behavior': 'show_if_signed_in',
         'aria-label': 'Save to your library' do %>
-        <%= inline_svg 'add_circle.svg', class: 'fill-white', size: 32 %>
+        <%= react_component 'Icon', glyph: 'plus-fill' %>
       <% end %>
       <%= link_to public_cook_path(@recipe.shared_id),
-        class: 'mrm pointer tooltipped tooltipped--n',
+        class: 'mrm pointer white tooltipped tooltipped--n',
         'aria-label': 'Open in Cook Mode' do %>
-        <%= inline_svg 'cook.svg', class: 'fill-white', size: 32 %>
+        <%= react_component 'Icon', glyph: 'door-enter' %>
       <% end %>
     <% else %>
       <%= form_for(@recipe, html: { class: 'mrm lh0 fsn dib' }) do |f| %>
-        <%= f.label :favorite, class: 'tooltipped tooltipped--n man', 'data-behavior': 'r_fav', 'aria-label': 'Favorite', tabindex: 0 do %>
+        <%= f.label :favorite, class: 'white tooltipped tooltipped--n man', 'data-behavior': 'r_fav', 'aria-label': 'Favorite', tabindex: 0 do %>
           <%= f.check_box :favorite, class: 'fav__checkbox', 'data-behavior': 'r_fav_trigger' %>
-          <%= inline_svg 'favorite_outline.svg', class: 'fill-white pointer fav__indicator--basic', size: 32 %>
-          <%= inline_svg 'favorite.svg', class: 'fill-white pointer fav__indicator--checked', size: 32 %>
+          <%= react_component 'Icon', { glyph: 'like' }, class: 'pointer fav__indicator--basic' %>
+          <%= react_component 'Icon', { glyph: 'like-fill' }, class: 'pointer fav__indicator--checked' %>
         <% end %>
       <% end %>
       <%= link_to cook_recipe_path(@recipe.id),
-        class: 'mrm pointer tooltipped tooltipped--n',
+        class: 'mrm pointer white tooltipped tooltipped--n',
         'aria-label': 'Open in Cook Mode' do %>
-        <%= inline_svg 'cook.svg', class: 'fill-white', size: 32 %>
+        <%= react_component 'Icon', glyph: 'door-enter' %>
       <% end %>
       <%= link_to edit_recipe_path(@recipe),
-        class: 'mrm pointer tooltipped tooltipped--n',
+        class: 'mrm pointer white tooltipped tooltipped--n',
         'aria-label': 'Edit' do %>
-        <%= inline_svg 'edit.svg', class: 'fill-white', size: 32 %>
+        <%= react_component 'Icon', glyph: 'edit' %>
       <% end %>
     <% end %>
     <a
       href="#share"
       name="share"
-      class="dib lh0 mrm pointer tooltipped tooltipped--n"
+      class="dib lh0 mrm pointer white tooltipped tooltipped--n"
       aria-label="Share a public link"
       data-behavior="modal_trigger"
       >
-      <%= inline_svg 'share.svg', class: 'fill-white', size: 32 %>
+      <%= react_component 'Icon', glyph: 'share' %>
     </a>
     <a
       href="#photo"
       name="photo"
-      class="dib lh0 mrm pointer tooltipped tooltipped--n"
+      class="dib lh0 mrm pointer white tooltipped tooltipped--n"
       aria-label="View photo full size"
       data-behavior="modal_trigger"
       >
-      <%= inline_svg 'fullscreen.svg', class: 'fill-white', size: 32 %>
+      <%= react_component 'Icon', glyph: 'photo' %>
     </a>
     <%= render 'actions',
       color: 'white',
@@ -76,8 +76,8 @@
 </header>
 
 <section id="photo" role="dialog" class="modal w-initial mw-100 pan oh lh0">
-  <div class="pointer absolute pas r0" data-behavior="modal_close">
-    <%= inline_svg 'close.svg', class: 'fill-white' %>
+  <div class="pointer absolute pas white r0" data-behavior="modal_close">
+    <%= react_component 'Icon', glyph: 'view-close' %>
   </div>
   <%= image_tag @recipe.img.url, alt: @recipe.title %>
 </section>

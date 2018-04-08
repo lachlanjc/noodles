@@ -4,9 +4,9 @@
 <%= render 'shared/nav', margin: @recipe.persisted? %>
 
 <% if @recipe.new_record? %>
-  <a href="#import" name="import" class="link-reset flex fac fjc mvm" data-behavior="modal_trigger">
-    <%= inline_svg 'web.svg', size: 24, class: 'fill-grey-3 fsn' %>
-    <p class="lh-solid mls mbn grey-2">
+  <a href="#import" name="import" class="link-reset flex fac lh fjc mtm mbs" data-behavior="modal_trigger">
+    <%= react_component 'Icon', { glyph: 'link' }, class: 'grey-3 fsn' %>
+    <p class="mls mbn grey-2">
       Importing from the web?
     </p>
   </a>
@@ -25,16 +25,16 @@
     >
       <img src="<%= @recipe.img.url if @recipe.imaged? %>" width="96" class="rounded oh bx" data-behavior="editor_photo_preview">
     </div>
-    <div class="grey-3 pointer" data-behavior="photo_button">
-      <%= inline_svg 'photo-upload.svg', size: 32, class: 'fill-grey-3 relative', style: 'top: 10px;' %>
+    <div class="flex fac lh grey-3 pointer" data-behavior="photo_button">
+      <%= react_component 'Icon', { glyph: 'photo-fill' }, class: 'fill-grey-3 mrs' %>
       <span data-behavior="description" style="word-break: break-all;">
         <%= @recipe.unimaged? ? 'Upload a photo' : 'Upload a new photo' %>
       </span>
     </div>
     <% if @recipe.imaged? %>
-      <div class="grey-3 pointer mts" data-behavior="remove_current_photo"
+      <div class="flex fac lh grey-3 pointer mts" data-behavior="remove_current_photo"
            data-href="<%= remove_image_recipe_path(@recipe.id) %>">
-        <%= inline_svg 'close.svg', width: 32, height: 24, class: 'fill-grey-3 relative', style: 'top: 6px;' %>
+        <%= react_component 'Icon', { glyph: 'delete' }, class: 'fill-grey-3 mrs' %>
         <span data-behavior="description">Remove current photo</span>
       </div>
     <% end %>

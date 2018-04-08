@@ -1,18 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Icon from './MDIcon'
+import Icon from './Icon'
 
 const RecipeListItem = ({ recipe, pub }) => {
   const { title, description, shared_id, path, public_path } = recipe
   const link = pub ? public_path : path
 
-  const feats = ['collections', 'notes', 'photo', 'web', 'favorite']
-  let icns = []
-  _.forEach(feats, feat => {
+  const feats = {
+    collections: 'flag',
+    notes: 'post',
+    photo: 'photo',
+    web: 'link',
+    favorite: 'link'
+  }
+  const icons = []
+  _.forEach(_.keys(feats), feat => {
     if (recipe[feat]) {
-      icns.push(
+      icons.push(
         <RecipeListItemIcon
-          feat={feat}
+          feat={feats[feat]}
           key={`r-${shared_id}-${_.indexOf(feats, feat)}`}
         />
       )
@@ -22,7 +28,11 @@ const RecipeListItem = ({ recipe, pub }) => {
   return (
     <li className="border-top feel pam">
       <a href={link} className="link-reset">
-        <div className="fr dn-p">{icns}</div>
+        <div
+          className="fr dn-p"
+          style={{ color: '#C0CCDA' }}
+          children={icons}
+        />
         <h3 className="man" children={title} />
         <p className="man text truncate grey-3">{description}</p>
       </a>
@@ -38,8 +48,5 @@ RecipeListItem.propTypes = {
 export default RecipeListItem
 
 const RecipeListItemIcon = ({ feat }) => (
-  <Icon
-    icon={feat === 'favorite' ? 'fav' : feat}
-    className={`mls ${feat === 'favorite' ? 'fill-orange' : 'fill-grey-4'}`}
-  />
+  <Icon glyph={feat} size={28} style={{}} className={'mls'} />
 )

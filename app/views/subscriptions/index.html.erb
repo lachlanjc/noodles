@@ -8,10 +8,10 @@
   <%= react_component 'SuperHeading',
     children: 'Subscribe', className: 'f1-ns', style: { marginBottom: 16 } %>
   <% if current_user.subscriber? %>
-    <div class="flex mvm" style="color: #e91e63;">
-      <%= inline_svg 'favorite.svg', size: 48, class: 'f--cc mrm' %>
+    <div class="purple flex mvm">
+      <%= react_component 'Icon', { glyph: 'like-fill', size: 48 }, class: 'mrm' %>
       <div>
-        <p class="c--inherit lh-title b f3 mbs">You’re a subscriber.<br>Thank you!</p>
+        <p class="c--inherit lh-title b serif f3 mbs">You’re a subscriber.<br>Thank you!</p>
         <p class="f5 grey-3">
           Active since
           <%= unix_date(@subscription.start).to_s(:rfc822) %>
@@ -19,9 +19,10 @@
           <% unless @subscription.cancel_at_period_end %>
             Renews for <%= number_to_currency(12, precision: 0) %> on
             <%= unix_date(@subscription.current_period_end).to_s(:rfc822) %>
-            · <%= link_to 'Cancel', subscription_path(@subscription.id), method: :delete, class: 'red' %>
           <% end %>
         </p>
+        <%= link_to 'Cancel', subscription_path(@subscription.id), method: :delete,
+          class: 'btn btn-sm bg-red' unless @subscription.cancel_at_period_end %>
       </div>
     </div>
   <% else %>
@@ -60,9 +61,8 @@
           /* AGGHHH STRIPE */
           .stripe-button-el {
             background-image: none !important;
-            background-color: #ff6d00 !important;
-            border-bottom: 2px solid rgba(0, 0, 0, 0.15);
-            border-radius: 4px !important;
+            background-color: #ff4527 !important;
+            border-radius: 999px !important;
             padding: .5rem 1rem !important;
           }
           .stripe-button-el, .stripe-button-el > span {

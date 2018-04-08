@@ -16,15 +16,14 @@
         <%= react_component 'Icon', { glyph: 'door-leave' }, class: 'grey-3 mrs' %>
         Exit
       <% end %>
-      <%= link_to edit_recipe_path(@recipe,
-        redirect_to: cook_recipe_path(@recipe)),
+      <%= link_to edit_recipe_path(@recipe, redirect_to: cook_recipe_path(@recipe)),
         target: '_blank',
         class: 'dn flex-i fac grey-3',
         'data-behavior': 'show_if_my_object' do %>
         <%= react_component 'Icon', { glyph: 'edit' }, class: 'grey-3 mrs' %>
         Edit
       <% end %>
-      <div class="flex-i fac mll pointer border rounded serif grey-3">
+      <div class="flex-i fac mll pointer border rounded serif lh-title grey-3">
         <div class="flex-auto f4 tr phm" data-behavior="font_dec">A</div>
         <div class="flex-auto f2 tl b phm border-left" data-behavior="font_inc">A</div>
       </div>

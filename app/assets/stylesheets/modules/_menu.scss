@@ -34,11 +34,11 @@
   width: 14rem;
   position: absolute;
   top: 100%;
-  right: -100%;
+  right: -200%;
   background-color: $blue;
   border-radius: $border-radius-sm;
   border: 1px solid $blue-dark;
-  box-shadow: 0 3px 12px rgba($grey-2, 0.25);
+  box-shadow: $shadow-3;
   overflow: hidden;
   z-index: 2;
 }
@@ -46,6 +46,7 @@
 .menu__action {
   display: flex;
   align-items: center;
+  font-weight: 600;
   line-height: 1;
   padding: 12px 16px;
 
@@ -59,19 +60,18 @@
     background-color: $blue-dark;
   }
 
-  & + .menu__action {
+  svg {
+    margin-right: 6px;
+  }
+
+  + .menu__action {
     border-top: 1px solid $blue-dark;
   }
-}
-
-.menu__action__icon {
-  fill: $white;
-  margin-right: $space-1;
 }
 
 @media screen and (min-width: 30em) {
   .menu__action {
     font-size: $f5;
-    padding: 8px 12px;
+    padding: 6px 12px;
   }
 }

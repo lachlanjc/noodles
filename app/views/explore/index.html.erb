@@ -36,7 +36,7 @@
         autofocus
       />
       <a class="pointer dn" data-behavior="explore_clear_search rehide">
-        <%= inline_svg 'close.svg', class: 'fill-white mls dib' %>
+        <%= react_component 'Icon', { glyph: 'view-close' }, class: 'grey-4 mls dib' %>
       </a>
     </div>
     <section role="menubar" class="filterbar mtm" data-behavior="explore_src_pick_bar">
@@ -102,10 +102,10 @@
     <div class="flex">
       <h2 class="flex-auto orange mvn" data-behavior="explore_preview_title"></h2>
       <a data-behavior="explore_open_original" class="v-top phs fsn" target="_blank" rel="nofollow">
-        <%= inline_svg 'open-new-tab.svg', class: 'fill-orange', size: 16 %>
+        <%= react_component 'Icon', { glyph: 'link', size: 32 }, class: 'orange' %>
       </a>
       <action role="button" class="fr fsn" data-behavior="modal_close">
-        <%= inline_svg 'close.svg', size: 28, class: 'fill-grey-3' %>
+        <%= react_component 'Icon', { glyph: 'view-close', size: 36 }, class: 'grey-3' %>
       </action>
     </div>
     <p class="grey-3 mbn" data-behavior="explore_preview_description"></p>
@@ -113,17 +113,18 @@
   <article class="text modal__scroller" data-behavior="explore_preview_body"></article>
   <footer class="modal__footer">
     <% if user_signed_in? %>
-      <a
-        data-behavior="explore_clip_from_preview explore_clipped_toggle"
-        style="max-width: 28px;">
+      <a data-behavior="explore_clip_from_preview explore_clipped_toggle">
         Clip
       </a>
       <a
-        class="blue pvs"
+        class="blue pvs flex fac lh"
         target="_blank"
         data-behavior="rehide explore_clipped_open explore_clipped_toggle">
-        Clipped – <strong>Open</strong>
-        <%= inline_svg 'open-new-tab.svg', size: 16, class: 'fill-blue' %>
+        Clipped!
+        <span class="btn btn-sm bg-blue flex fac lh pvn mlm">
+          <span>Open </span>
+          <%= react_component 'Icon', { glyph: 'link', size: 24 } %>
+        </span>
       </a>
     <% else %>
       <a data-behavior="modal_trigger modal_close_first" href="#signup" class="btn btn--primary bg-orange">Sign up</a>
