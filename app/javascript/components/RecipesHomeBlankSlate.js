@@ -13,18 +13,22 @@ const RecipesHomeBlank = () => (
 )
 
 const css = `
+@media screen and (min-width: 30em) {
+  ol.flex-grid {
+    margin: 0 -0.5rem 1rem;
+  }
+}
 @media screen and (min-width: 64em) {
   .onboarding__prompt {
     position: absolute;
-    top: 66%;
+    top: 80%;
     left: 0;
     display: flex;
     justify-content: center;
   }
 
   .onboarding__prompt__message {
-    margin-top: 0;
-    padding-top: 2.5rem;
+    padding: 2rem 1rem;
   }
 
   .onboarding__prompt__arrow {
@@ -38,6 +42,7 @@ const css = `
 const RecipesHomeBlankSlate = () => (
   <article className="phm mw8 mx-auto tc">
     <h2 className="f1 mtn mbs grey-2">Let’s get cooking!</h2>
+    <p>Noodles is a place to keep recipes, so we need some recipes! There are 3 ways to add recipes:</p>
     <ol className="flex-grid fjc list-reset relative tl">
       <div className="onboarding__prompt flex-grid__item dn">
         <p className="onboarding__prompt__message tc orange b">
@@ -62,22 +67,22 @@ const RecipesHomeBlankSlate = () => (
         <p className="mvn grey-2">
           Find and save great recipes from around the web.
         </p>
+        <p className="mvn grey-3">(in the top navigation)</p>
         <p
           className="mts mbn dn-ns orange b"
-          style={{
-            fontStyle: 'italic'
-          }}
         >
           → Start here!
         </p>
       </li>
       <li className="flex-grid__item bg-white rounded shadow pam">
-        <h3 className="mvn purple">Import</h3>
-        <p className="mvn grey-2">Paste in a URL to import from the web.</p>
-      </li>
-      <li className="flex-grid__item bg-white rounded shadow pam">
         <h3 className="mvn blue">Write</h3>
         <p className="mvn grey-2">Type or paste in a recipe yourself.</p>
+        <p className="mvn grey-3">(“New recipe” in the sidebar)</p>
+      </li>
+      <li className="flex-grid__item bg-white rounded shadow pam">
+        <h3 className="mvn purple">Import</h3>
+        <p className="mvn grey-2">Paste in a URL to import from the web.</p>
+        <p className="mvn grey-3">(“Import” in the sidebar)</p>
       </li>
     </ol>
     <p className="mtm mtl-ns grey-3">
