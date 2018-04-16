@@ -6,7 +6,7 @@
       <span>Embed</span>
     </a>
     <%= link_to export_pdf_recipe_path(@recipe), class: 'menu__action' do %>
-      <%= react_component 'Icon', glyph: 'send', size: 28 %>
+      <%= react_component 'Icon', glyph: 'attachment', size: 28 %>
       <span>Download as PDF</span>
     <% end %>
     <%= link_to @recipe, method: :delete, data: { confirm: t('general.delete_forever') }, class: 'menu__action' do %>
