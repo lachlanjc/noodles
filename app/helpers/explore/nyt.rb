@@ -9,7 +9,7 @@ class NYTSearchScraper
     raw_results = raw_results.search('#search-results .recipe-card:not(.ad-container)')
     raw_results.each do |item|
       result = {}
-      result['url'] = "http://cooking.nytimes.com/#{item.at_css('a').attr('href')}"
+      result['url'] = "http://cooking.nytimes.com#{item.at_css('a').attr('href')}"
       result['title'] = item.search('h3').text.squish
       result['description'] = item.search('h3 + p').text.squish.truncate(164)
       if item.search('.cooking-time').any?
