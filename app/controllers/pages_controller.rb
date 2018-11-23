@@ -13,8 +13,10 @@ class PagesController < ApplicationController
   end
 
   def help_form
-    if params[:message].length > 16 && !params[:message].includes?('drive.google.com')
-      HelpFormJob.perform_later(email: params[:email], message: params[:message], url: request.referer)
+    m = params[:message].to_s
+    x = ['porn', 'viagra', 'drive.google.com', '.ru', 'casino']
+    if m.length > 16 && !x.any? { |s| m.include? s }
+      HelpFormJob.perform_later(email: params[:email], message: m, url: request.referer)
       flash[:success] = 'Thanks—message sent!'
     end
     request.referer == root_url ? redirect_to(help_url) : go_back
