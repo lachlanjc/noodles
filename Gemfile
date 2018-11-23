@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.5.1'
 
 git_source(:github) do |repo|
   repo = "#{repo}/#{repo}" unless repo.include?("/")
@@ -15,9 +16,7 @@ gem 'aws-sdk', '~> 2'
 gem 'aws-sdk-rails'
 gem 'delayed_job_active_record'
 gem 'devise'
-# gem 'devise_marketable'
 gem 'coffee-rails'
-gem 'cohort_me'
 gem 'hangry'
 gem 'html_to_plain_text'
 gem 'ingreedy'
