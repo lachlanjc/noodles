@@ -18,7 +18,7 @@ class NYTSearchScraper
       if item.search('.sticker').any?
         result['description'] += ' – ' + item.search('.sticker').text.squish
       end
-      result['image'] = item.at_css('img').attr('data-large')
+      result['image'] = item.at_css('img').attr('data-src')
       result['image'] = '' if result['image'].to_s.match?('pattern')
       results.push(result)
     end
