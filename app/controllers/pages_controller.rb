@@ -13,8 +13,10 @@ class PagesController < ApplicationController
   end
 
   def help_form
-    HelpFormJob.perform_later(email: params[:email], message: params[:message], url: request.referer)
-    flash[:success] = 'Thanks—message sent!'
+    if params[:message].length > 16 && !params[:message].includes?('drive.google.com')
+      HelpFormJob.perform_later(email: params[:email], message: params[:message], url: request.referer)
+      flash[:success] = 'Thanks—message sent!'
+    end
     request.referer == root_url ? redirect_to(help_url) : go_back
   end
 
