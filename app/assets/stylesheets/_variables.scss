@@ -40,10 +40,10 @@ $f4: 1rem;
 $f5: 0.875rem;
 $font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Segoe UI',
   'Helvetica Neue', sans-serif;
-$serif-font-family: Sentinel, $font-family;
-$heading-font-family: $serif-font-family;
+$serif-font-family: 'ff-tisa-web-pro', $font-family;
+$heading-font-family: $font-family;
 $heading-font-weight: 700;
-$bold-font-weight: 600;
+$bold-font-weight: 700;
 $spacing: 0.1em;
 $line-height: 1.5;
 $monospace-font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo,

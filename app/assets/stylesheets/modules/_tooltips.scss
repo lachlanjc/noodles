@@ -6,15 +6,16 @@
     pointer-events: none;
     content: attr(aria-label);
     padding: 2px 10px;
+    font-family: $font-family;
     font-size: $f5;
     font-weight: normal;
     line-height: 1.5;
     color: $grey-5;
     background-color: $grey-2;
-    border-radius: 3px;
+    border-radius: 4px;
     right: 100%;
     bottom: 50%;
-    margin-right: .5rem;
+    margin-right: 0.5rem;
     transform: translateY(50%);
     opacity: 0;
     transition: all $transition;
