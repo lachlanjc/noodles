@@ -120,6 +120,8 @@
 
   <% if params[:collection] %>
     <input name="recipe[collections][]" value="<%= params[:collection].to_i %>" type="hidden">
+  <% else %>
+    <div data-user="<%= @recipe.user_id %>" data-behavior="recipe_colls_container" class="dn-p mtm"></div>
   <% end %>
 
   <%= f.submit 'Save', class: 'btn btn--primary bg-blue b mtl', 'data-disable-with': 'Saving…' %>

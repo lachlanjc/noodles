@@ -85,21 +85,28 @@ $(document).on 'turbolinks:load', ->
   $(document).on 'click', '[data-behavior~=grocery_suggestion]', (e) ->
     N.updateGroceryName $(this).text(), false
 
-  if N.theres('recipe_colls_container') and _.includes(window.location.pathname, '/recipes/')
+  pn = window.location.pathname
+  if N.theres('recipe_colls_container') and _.includes(pn, '/recipes/')
     if _.isEqual N.s('recipe_colls_container').data('user'), N.user
-      $.get window.location.pathname + '/collections', (e) ->
+      $.get _.replace(pn, '/edit', '') + '/collections', (e) ->
         N.s('recipe_colls_container').html e
         N.s('recipe_colls_inactive').hide 0
+        if _.includes(pn, '/edit')
+          N.s('recipe_colls_submit').remove() 
+          N.s('recipe_add_colls').hide()
+          N.s('recipe_colls_inactive').show()
+          $(document).on 'change', '[data-behavior~=recipe_colls_check]', ->
+            N.s('recipe_colls_form').submit()
         $(document).on 'click', '[data-behavior~=recipe_add_colls]', ->
-          $('[data-behavior~=recipe_add_colls]').fadeOut 'fast'
-          $('[data-behavior~=recipe_colls_inactive]').fadeIn 'fast'
+          N.s('recipe_add_colls').fadeOut 'fast'
+          N.s('recipe_colls_inactive').fadeIn 'fast'
         $(document).on 'change', '[data-behavior~=recipe_colls_check]', ->
-          $('[data-behavior~=recipe_colls_submit]').fadeIn 'fast'
+          N.s('recipe_colls_submit').fadeIn 'fast'
         $(document).on 'ajax:error', '[data-behavior~=recipe_colls_form]', (one, two) ->
           N.s('recipe_colls_form').find('input[type=submit]').text '!!!!'
           console.error one, two
         $(document).on 'ajax:success', '[data-behavior~=recipe_colls_form]', ->
-          $('[data-behavior~=recipe_colls_submit]').fadeOut 'fast'
+          N.s('recipe_colls_submit').fadeOut 'fast'
 
   clipboard = new Clipboard '[data-behavior~=copy]', text: (trigger) ->
     trigger.getAttribute 'data-clipboard-text'
