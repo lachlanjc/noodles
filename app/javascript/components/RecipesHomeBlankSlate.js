@@ -40,8 +40,8 @@ const RecipesHomeBlankSlate = () => (
         <p className="mvn grey-2">
           Tap <span className="blue b sans">New recipe</span> in the sidebar to
           enter a recipe yourself, or{' '}
-          <span className="purple b sans">Import</span> to save a recipe from
-          the web.
+          <span className="pink b sans">Import</span> to save a recipe from the
+          web.
         </p>
       </li>
     </ol>

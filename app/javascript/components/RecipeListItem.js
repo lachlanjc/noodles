@@ -19,7 +19,7 @@ const RecipeListItem = ({ recipe, pub }) => {
           {recipe.photo && <RecipeListItemIcon glyph="photo" />}
           {recipe.web && <RecipeListItemIcon glyph="link" />}
           {recipe.favorite && (
-            <RecipeListItemIcon glyph="like-fill" className="mls purple" />
+            <RecipeListItemIcon glyph="like-fill" className="mls pink" />
           )}
         </div>
         <h3 className="man" children={title} />

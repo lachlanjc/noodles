@@ -24,7 +24,7 @@ const CollectionSidebar = ({ id, recipes, createdAt, updatedAt }) => (
       primary
       is="btn"
       name="share"
-      color="purple"
+      color="pink"
       className="flex-i fac"
     >
       <Icon glyph="share" size={28} />

@@ -16,7 +16,7 @@
             'data-behavior': 'r_fav', 'aria-label': 'Favorite', tabindex: 0 do %>
             <%= f.check_box :favorite, class: 'fav__checkbox', 'data-behavior': 'r_fav_trigger' %>
             <%= react_component 'Icon', { glyph: 'like' }, class: 'grey-3 fav__indicator--basic' %>
-            <%= react_component 'Icon', { glyph: 'like-fill' }, class: 'purple fav__indicator--checked' %>
+            <%= react_component 'Icon', { glyph: 'like-fill' }, class: 'pink fav__indicator--checked' %>
           <% end %>
         <% end %>
         <%= link_to cook_recipe_path(@recipe.id),
@@ -70,7 +70,7 @@
           data-clipboard-text="<%= escape_once(recipe_embed) %>" data-behavior="copy">
           Copy
         </button>
-        <a class="btn btn-sm bg-purple mrm" href="#help" data-behavior="modal_trigger modal_close_first">Help</a>
+        <a class="btn btn-sm bg-pink mrm" href="#help" data-behavior="modal_trigger modal_close_first">Help</a>
         <div class="flex-i fac lh0 sans grey-3 caps f5 mts mtn-ns">
           <%= react_component 'Icon', { glyph: 'channel-private', size: 28 } %>
           <span>(subscriber-only)</span>
@@ -80,7 +80,7 @@
     <% else %>
       <div class="bg-grey-5 rounded border pam tc">
         <p class="grey-3 f3">You’ll need to subscribe to use this feature.</p>
-        <%= link_to 'Buy a subscription', subscriptions_path, class: 'btn btn--primary bg-purple' %>
+        <%= link_to 'Buy a subscription', subscriptions_path, class: 'btn btn--primary bg-pink' %>
       </div>
     <% end %>
   </section>

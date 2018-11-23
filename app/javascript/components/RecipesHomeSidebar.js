@@ -32,7 +32,7 @@ const RecipesHomeSidebar = ({
         primary
         is="btn"
         name="import"
-        color="purple"
+        color="pink"
         className="flex-i fac mvs"
       >
         <Icon glyph="link" size={28} />

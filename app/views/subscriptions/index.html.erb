@@ -8,7 +8,7 @@
   <%= react_component 'SuperHeading', children: 'Subscribe to Noodles',
     className: 'f1-ns', style: { marginBottom: 16 } %>
   <% if current_user.subscriber? %>
-    <div class="purple flex mvm">
+    <div class="pink flex mvm">
       <%= react_component 'Icon', { glyph: 'like-fill', size: 48 }, class: 'mrm' %>
       <div>
         <p class="c--inherit lh-title b serif f3 mbs">You’re a subscriber.<br>Thank you!</p>
@@ -36,19 +36,19 @@
       </p>
       <ul class="sans f4 lh-title list-reset two-columns-ns">
         <li class="flex fac">
-          <%= react_component 'Icon', { glyph: 'embed' }, class: 'purple fsn mrs' %>
+          <%= react_component 'Icon', { glyph: 'embed' }, class: 'pink fsn mrs' %>
           <span>Embed recipes on another website/blog</span>
         </li>
         <li class="flex fac">
-          <%= react_component 'Icon', { glyph: 'photo' }, class: 'purple fsn mrs' %>
+          <%= react_component 'Icon', { glyph: 'photo' }, class: 'pink fsn mrs' %>
           <span>Add photos up to 25MB</span>
         </li>
         <li class="flex fac">
-          <%= react_component 'Icon', { glyph: 'message' }, class: 'purple fsn mrs' %>
+          <%= react_component 'Icon', { glyph: 'message' }, class: 'pink fsn mrs' %>
           <span>Faster support</span>
         </li>
         <li class="flex fac">
-          <%= react_component 'Icon', { glyph: 'like' }, class: 'purple fsn mrs' %>
+          <%= react_component 'Icon', { glyph: 'like' }, class: 'pink fsn mrs' %>
           <span>Help keep Noodles alive and ad-free</span>
         </li>
       </ul>
