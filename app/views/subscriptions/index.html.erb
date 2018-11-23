@@ -7,7 +7,7 @@
 <main class="document mw6 mtl mtm-ns">
   <%= react_component 'SuperHeading', children: 'Subscribe to Noodles',
     className: 'f1-ns', style: { marginBottom: 16 } %>
-  <% if !current_user.subscriber? %>
+  <% if current_user.subscriber? %>
     <div class="purple flex mvm">
       <%= react_component 'Icon', { glyph: 'like-fill', size: 48 }, class: 'mrm' %>
       <div>
@@ -29,7 +29,9 @@
     <section class="content">
       <p>
         Currently you can use Noodles free, but if you enjoy cooking with it,
-        <strong>please consider a subscription</strong>.<br>
+        <strong>please consider a subscription</strong>.
+      </p>
+      <p>
         Here’s what you’ll get:
       </p>
       <ul class="sans f4 lh-title list-reset two-columns-ns">
