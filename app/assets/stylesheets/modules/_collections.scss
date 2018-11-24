@@ -4,6 +4,10 @@
   padding-top: 6rem;
   padding-bottom: 2rem;
 
+  .btn {
+    text-shadow: none;
+  }
+
   @media screen and (min-width: 30em) {
     padding-top: 8rem;
     padding-bottom: 4rem;

@@ -49,25 +49,21 @@
       <%= render 'recipe_body' %>
     </article>
   <% else %>
-    <article class="document mw7 mtm mbn">
+    <article class="document mw7 mtl mbm">
       <h1 class="mvn" itemprop="name"><%= @recipe.title %></h1>
-      <div class="mbm dn-p flex fac lh0 fr-ns absolute-ns t0-ns r0-ns mrm-ns mtl-ns">
-        <%= link_to save_path(url: share_url(@recipe.shared_id)),
-          'data-behavior': 'show_unless_mine',
-          class: 'mrm pointer tooltipped tooltipped--n',
-          'aria-label': 'Save to your library' do %>
-          <%= react_component 'Icon', glyph: 'plus' %>
-        <% end %>
-        <%= link_to public_cook_path(@recipe.shared_id),
-          class: 'mrm pointer tooltipped tooltipped--n',
-          'aria-label': 'Open in Cook Mode' do %>
-          <%= react_component 'Icon', glyph: 'door-enter' %>
-        <% end %>
-      </div>
       <%= content_tag :p,
         "Shared by #{@recipe.publisher}",
         class: 'grey-3' if @recipe.user
       %>
+
+      <div class="mtm mbm dn-p flex fac lh0">
+        <%= link_to 'Cook this', public_cook_path(@recipe.shared_id),
+          class: 'btn bg-orange mrm' %>
+        <%= link_to 'Save a copy', save_path(url: share_url(@recipe.shared_id)),
+          'data-behavior': 'show_unless_mine',
+          class: 'btn bg-blue' %>
+      </div>
+      
       <%= content_tag :div,
         markdown(@recipe.description),
         class: 'text content',

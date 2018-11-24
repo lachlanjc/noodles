@@ -16,63 +16,55 @@
         <%= whitened_markdown @recipe.description, [:f3] %>
       </div>
     <% end %>
-  </div>
-  <div class="dn-p flex fac flex-rows lh0 white mtl">
-    <% if public_page? %>
-      <%= link_to share_url(@recipe.shared_id),
+    <div class="dn-p flex fac flex-rows lh0 white mtl">
+      <% if public_page? %>
+        <%= link_to 'Cook this', public_cook_path(@recipe.shared_id), class: 'btn bg-white mrm' %>
+        <%= link_to share_url(@recipe.shared_id),
         class: 'dn mrm pointer white tooltipped tooltipped--n',
         'data-behavior': 'show_if_signed_in',
         'aria-label': 'Save to your library' do %>
-        <%= react_component 'Icon', glyph: 'plus-fill' %>
-      <% end %>
-      <%= link_to public_cook_path(@recipe.shared_id),
-        class: 'mrm pointer white tooltipped tooltipped--n',
-        'aria-label': 'Open in Cook Mode' do %>
-        <%= react_component 'Icon', glyph: 'door-enter' %>
-      <% end %>
-    <% else %>
-      <%= form_for(@recipe, html: { class: 'mrm lh0 fsn dib' }) do |f| %>
-        <%= f.label :favorite, class: 'white pointer tooltipped tooltipped--n man',
-          'data-behavior': 'r_fav', 'aria-label': 'Favorite', tabindex: 0 do %>
-          <%= f.check_box :favorite, class: 'fav__checkbox', 'data-behavior': 'r_fav_trigger' %>
-          <%= react_component 'Icon', { glyph: 'like' }, class: 'fav__indicator--basic' %>
-          <%= react_component 'Icon', { glyph: 'like-fill' }, class: 'fav__indicator--checked' %>
+          <%= react_component 'Icon', glyph: 'plus' %>
+        <% end %>
+      <% else %>
+        <%= link_to 'Cook this', cook_recipe_path(@recipe.id), class: 'btn bg-white mrm' %>
+        <%= form_for(@recipe, html: { class: 'mrm lh0 fsn dib' }) do |f| %>
+          <%= f.label :favorite, class: 'white pointer tooltipped tooltipped--n man',
+            'data-behavior': 'r_fav', 'aria-label': 'Favorite', tabindex: 0 do %>
+            <%= f.check_box :favorite, class: 'fav__checkbox', 'data-behavior': 'r_fav_trigger' %>
+            <%= react_component 'Icon', { glyph: 'like' }, class: 'fav__indicator--basic' %>
+            <%= react_component 'Icon', { glyph: 'like-fill' }, class: 'fav__indicator--checked' %>
+          <% end %>
+        <% end %>
+        <%= link_to edit_recipe_path(@recipe),
+          class: 'mrm pointer white tooltipped tooltipped--n',
+          'aria-label': 'Edit' do %>
+          <%= react_component 'Icon', glyph: 'edit' %>
         <% end %>
       <% end %>
-      <%= link_to cook_recipe_path(@recipe.id),
-        class: 'mrm pointer white tooltipped tooltipped--n',
-        'aria-label': 'Open in Cook Mode' do %>
-        <%= react_component 'Icon', glyph: 'door-enter' %>
-      <% end %>
-      <%= link_to edit_recipe_path(@recipe),
-        class: 'mrm pointer white tooltipped tooltipped--n',
-        'aria-label': 'Edit' do %>
-        <%= react_component 'Icon', glyph: 'edit' %>
-      <% end %>
-    <% end %>
-    <a
-      href="#share"
-      name="share"
-      class="dib lh0 mrm pointer white tooltipped tooltipped--n"
-      aria-label="Share a public link"
-      data-behavior="modal_trigger"
-      >
-      <%= react_component 'Icon', glyph: 'share' %>
-    </a>
-    <a
-      href="#photo"
-      name="photo"
-      class="dib lh0 mrm pointer white tooltipped tooltipped--n"
-      aria-label="View photo full size"
-      data-behavior="modal_trigger"
-      >
-      <%= react_component 'Icon', glyph: 'photo' %>
-    </a>
-    <%= render 'actions',
-      color: 'white',
-      rootClass: 'fsn dn-p',
-      menuClass: 'tsn' if is_my?(@recipe) && private_page?
-    %>
+      <a
+        href="#share"
+        name="share"
+        class="dib lh0 mrm pointer white tooltipped tooltipped--n"
+        aria-label="Share a public link"
+        data-behavior="modal_trigger"
+        >
+        <%= react_component 'Icon', glyph: 'share' %>
+      </a>
+      <a
+        href="#photo"
+        name="photo"
+        class="dib lh0 mrm pointer white tooltipped tooltipped--n"
+        aria-label="View photo full size"
+        data-behavior="modal_trigger"
+        >
+        <%= react_component 'Icon', glyph: 'photo' %>
+      </a>
+      <%= render 'actions',
+        color: 'white',
+        rootClass: 'fsn dn-p',
+        menuClass: 'tsn' if is_my?(@recipe) && private_page?
+      %>
+    </div>
   </div>
 </header>
 
