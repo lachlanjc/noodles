@@ -13,7 +13,7 @@ $(document).on 'turbolinks:load', ->
   N.my_object = (N.signed_in && _.isEqual(N.user, N.object_user)) || false
 
   N.toggleMenu = (m) ->
-    $(m).find('[data-behavior~=menu_content]').slideToggle 120
+    $(m).find('[data-behavior~=menu_content]').slideToggle 100
     o = $(m).attr('aria-expanded') is 'true'
     $(m).attr 'aria-expanded', !o
 
