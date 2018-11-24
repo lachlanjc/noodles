@@ -78,6 +78,7 @@ class RecipeList extends Component {
           count={_.size(recipesCore)}
           autoFocus
         >
+          {children}
           {!hideFilter && (
             <RecipeListComplication
               actionRef={a => (this.toggle = a)}
@@ -86,7 +87,6 @@ class RecipeList extends Component {
               tooltip={favorites ? 'Show all recipes' : 'Only show favorites'}
             />
           )}
-          {children}
         </SearchBar>
         <ul className="list-reset mx-auto mbn">
           {_.map(recipes, recipe => (

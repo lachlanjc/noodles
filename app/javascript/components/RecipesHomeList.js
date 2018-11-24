@@ -23,7 +23,7 @@ const RecipesHomeList = ({ recipes }) => (
     >
       <RecipeListComplication
         href={_.sample(_.map(recipes, _.property('path')))}
-        glyph="idea"
+        glyph="rep"
         tooltip="Open a random recipe"
       />
     </RecipeList>

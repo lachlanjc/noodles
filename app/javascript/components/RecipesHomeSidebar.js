@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 
 import Button from './Button'
 import Icon from './Icon'
-import Spacer from './Spacer'
 import ModalLink from './ModalLink'
 import RecentlyCooked from './RecentlyCooked'
 import GroceriesMini from './GroceriesMini'
