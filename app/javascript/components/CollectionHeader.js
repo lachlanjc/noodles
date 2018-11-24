@@ -9,7 +9,7 @@ const CollectionHeader = ({ coll, pub }) => (
     }}
   >
     <main className="bx w-100 mw6 mx-auto tc phm">
-      <h1 className="coll__name c--inherit mvn f0">{coll.name}</h1>
+      <h1 className="coll__name c--inherit mvn f0 mega-ns">{coll.name}</h1>
       {!_.isEmpty(coll.description) && (
         <p className="c--inherit f3 mvn">{coll.description}</p>
       )}

@@ -9,8 +9,8 @@
 
   <% if !@image_layout %>
     <main class="document mw7 mtm">
-      <h1 class="lh-header mtn"><%= @recipe.title %></h1>
       <div class="mts mbm dn-p flex fac flex-rows lh0">
+      <h1 class="f1 f0-ns lh mtn"><%= @recipe.title %></h1>
         <%= form_for(@recipe) do |f| %>
           <%= f.label :favorite, class: 'tooltipped tooltipped--n pointer man',
             'data-behavior': 'r_fav', 'aria-label': 'Favorite', tabindex: 0 do %>

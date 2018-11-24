@@ -5,11 +5,11 @@
       url(<%= @recipe.img.url %>);
   ">
   <div class="w-100 mw7 mx-auto bx phm phl-ns">
-    <h1 class="f1 f0-ns white mbn dib">
+    <h1 class="f0 mega-ns white mbn dib">
       <%= @recipe.title %>
     </h1>
     <% if public_page? && @recipe.user %>
-      <p class="white f5 mbm">Shared by <%= @recipe.publisher %></p>
+      <p class="white f3 mbm">Shared by <%= @recipe.publisher %></p>
     <% end %>
     <% if @recipe.description.present? %>
       <div class="content lh-title mbn">
