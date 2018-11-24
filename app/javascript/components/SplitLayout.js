@@ -30,7 +30,7 @@ const SplitLayout = ({
       )}
       {sidebar}
     </aside>
-    <Spacer x={48} className="dn dib-ns" />
+    <Spacer x={48} className="dn dib-ns split-spacer" />
     {content}
   </main>
 )

@@ -1,12 +1,12 @@
 .flex-grid {
   box-sizing: border-box;
-  display: block;
+  display: grid;
+  grid-gap: $space-2;
   width: 100%;
 }
 
 .flex-grid__item {
   box-sizing: border-box;
-  margin-bottom: 1rem;
   width: 100%;
 }
 
@@ -20,15 +20,11 @@
 
 @media screen and (min-width: 30em) {
   .flex-grid {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
   }
 
-  .flex-grid__item {
-    margin: 0.5rem;
-    max-width: 50%;
-    width: calc(50% - 1rem);
+  .split-spacer {
+    min-height: 24rem;
   }
 
   .meta-split {
@@ -48,12 +44,5 @@
 
   .two-columns-ns {
     column-count: 2;
-  }
-}
-
-@media screen and (min-width: 48em) {
-  .flex-grid__item {
-    max-width: 33.333%;
-    width: calc(33.333% - 1rem);
   }
 }

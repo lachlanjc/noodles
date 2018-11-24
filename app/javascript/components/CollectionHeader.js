@@ -8,10 +8,10 @@ const CollectionHeader = ({ coll, pub }) => (
       backgroundImage: `url('${coll.photo}')`
     }}
   >
-    <main className="bx w-100 mw6 mx-auto tc phm">
-      <h1 className="coll__name c--inherit mvn f0 mega-ns">{coll.name}</h1>
+    <main className="bx w-100 mw7 mx-auto tc phm">
+      <h1 className="coll__name c--inherit mvn f0 mega-ns lh">{coll.name}</h1>
       {!_.isEmpty(coll.description) && (
-        <p className="c--inherit f3 mvn">{coll.description}</p>
+        <p className="c--inherit f3 mtm mx-auto mw6">{coll.description}</p>
       )}
       <p className="c--inherit o-80 mts">
         {coll.recipes.length === 1
