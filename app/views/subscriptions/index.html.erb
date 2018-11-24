@@ -28,7 +28,7 @@
   <% else %>
     <section class="content">
       <p>
-        Currently you can use Noodles free, but if you enjoy cooking with it,
+        You can use Noodles totally for free right now, but if you enjoy cooking with it,
         <strong>please consider a subscription</strong>.
       </p>
       <p>
@@ -49,15 +49,15 @@
         </li>
         <li class="flex fac">
           <%= react_component 'Icon', { glyph: 'like' }, class: 'pink fsn mrs' %>
-          <span>Help keep Noodles alive and ad-free</span>
+          <span>Help keep Noodles alive & ad-free</span>
         </li>
       </ul>
       <p class="mtm">
         I’m a young indie developer building Noodles, and I couldn’t work on this project without subscriptions.
-        Your contributions will be spent direclty on the services like Heroku that keep Noodles running.
+        Your contributions will be spent directly on the services like hosting that keep Noodles running. If you’ve got any questions, please ask below.
       </p>
       <p>
-        - Lachlan
+        —Lachlan
       </p>
       <%= form_tag subscriptions_path, method: 'POST', class: 'sans' do |f| %>
         <script
@@ -78,6 +78,7 @@
             background-color: #ff4527 !important;
             border-radius: 999px !important;
             padding: .5rem 1rem !important;
+            resize: none !important;
           }
           .stripe-button-el, .stripe-button-el > span {
             box-shadow: none !important;
