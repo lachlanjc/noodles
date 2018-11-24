@@ -1,5 +1,5 @@
 import React from 'react'
-import Icon from './Icon'
+import Icon, { CollectionsIcon } from './Icon'
 
 const Nav = ({ active = 'recipes' }) => (
   <nav
@@ -40,7 +40,7 @@ const Nav = ({ active = 'recipes' }) => (
         href="/collections"
         aria-current={active === 'collections'}
       >
-        <Icon glyph="collections" />
+        <CollectionsIcon />
         <span>Collections</span>
       </a>
       <a

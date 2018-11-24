@@ -58,7 +58,7 @@ const FlashMessage = ({ message, type }) => {
     <div
       role="alertdialog"
       data-behavior="flash"
-      className="dn-p flex-i fac"
+      className="dn-p flex-i fac sans"
       style={sx}
     >
       {type && <FlashIcon type={type} />}

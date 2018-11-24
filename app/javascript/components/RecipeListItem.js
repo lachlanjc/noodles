@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Icon from './Icon'
+import Icon, { CollectionsIcon } from './Icon'
 
 const RecipeListItemIcon = props => (
   <Icon size={28} className="mls" {...props} />
@@ -14,7 +14,7 @@ const RecipeListItem = ({ recipe, pub }) => {
     <li className="border-top feel pam">
       <a href={link} className="link-reset">
         <div className="fr dn-p" style={{ color: '#C0CCDA' }}>
-          {recipe.collections && <RecipeListItemIcon glyph="collections" />}
+          {recipe.collections && <CollectionsIcon size={28} className="mls" />}
           {recipe.notes && <RecipeListItemIcon glyph="post" />}
           {recipe.photo && <RecipeListItemIcon glyph="photo" />}
           {recipe.web && <RecipeListItemIcon glyph="link" />}
