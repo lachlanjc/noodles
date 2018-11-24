@@ -24,7 +24,7 @@ const RecipesHomeSidebar = ({
         href="/recipes/new"
         className="flex-i fac mvs"
       >
-        <Icon glyph="plus" size={28} />
+        <Icon glyph="post" size={28} />
         <span>New recipe</span>
       </Button>
       <div className="flex-auto" />
