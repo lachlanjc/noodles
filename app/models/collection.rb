@@ -35,7 +35,7 @@ class Collection < ApplicationRecord
   end
 
   def photo_url
-    imaged? ? photo.url : "#{ENV['SPLATTERED_URL']}/#{name}"
+    imaged? ? photo.url : "#{ENV['SPLATTERED_URL']}/#{name.parameterize}"
   end
 
   def public_url
