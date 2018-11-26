@@ -7,7 +7,7 @@
 
   <ul class="flex-grid list-reset">
     <% @users.each do |user| %>
-      <li class="flex-grid__item card <%= 'bg-purple white' if user.subscriber? %>" id="<%= user.id %>">
+      <li class="flex-grid__item card <%= 'bg-pink white' if user.subscriber? %>" id="<%= user.id %>">
         <h2 class="c--inherit mtn mbs">
           <%= user.first_name %>
           <a href="#<%= user.id %>" class="phs grey-3 f4">#<%= user.id %></a>

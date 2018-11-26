@@ -9,7 +9,7 @@ class NYTSearchScraper
     raw_results = raw_results.search('#search-results .recipe-card:not(.ad-container)')
     raw_results.each do |item|
       result = {}
-      result['url'] = "http://cooking.nytimes.com/#{item.at_css('a').attr('href')}"
+      result['url'] = "http://cooking.nytimes.com#{item.at_css('a').attr('href')}"
       result['title'] = item.search('h3').text.squish
       result['description'] = item.search('h3 + p').text.squish.truncate(164)
       if item.search('.cooking-time').any?
@@ -18,7 +18,7 @@ class NYTSearchScraper
       if item.search('.sticker').any?
         result['description'] += ' – ' + item.search('.sticker').text.squish
       end
-      result['image'] = item.at_css('img').attr('data-large')
+      result['image'] = item.at_css('img').attr('data-src')
       result['image'] = '' if result['image'].to_s.match?('pattern')
       results.push(result)
     end

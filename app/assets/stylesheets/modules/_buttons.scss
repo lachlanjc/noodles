@@ -5,12 +5,13 @@
   color: $white;
   cursor: pointer;
   display: inline-block;
+  font-family: $font-family;
   font-weight: 500;
   line-height: 1.125rem;
   padding: $space-1 $space-2;
   transition: all $transition;
   -webkit-appearance: none;
-  -webkit-tap-highlight-color: $darken-1;
+  -webkit-tap-highlight-color: transparent;
 
   &:focus,
   &:hover {

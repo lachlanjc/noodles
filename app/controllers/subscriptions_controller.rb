@@ -4,7 +4,7 @@ class SubscriptionsController < ApplicationController
   before_action :please_sign_in
 
   def index
-    @subscription = current_user.stripe_subscription_details if current_user.subscriber?
+    @subscription = current_user.stripe_subscription_details
   end
 
   def create

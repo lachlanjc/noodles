@@ -6,7 +6,7 @@
 <% if @recipe.new_record? %>
   <a href="#import" name="import" class="link-reset flex fac lh fjc mtm mbs" data-behavior="modal_trigger">
     <%= react_component 'Icon', { glyph: 'link' }, class: 'grey-3 fsn' %>
-    <p class="mls mbn grey-2">
+    <p class="mls mbn grey-2 sans">
       Importing from a website?
     </p>
   </a>
@@ -17,7 +17,7 @@
 
 <main class="document w-two-thirds-m mw7">
 <%= form_for(@recipe, url: recipe_path(@recipe, redirect_to: params[:redirect_to])) do |f| %>
-  <section class="mbm db" data-behavior="editor_photo">
+  <section class="mbm db sans" data-behavior="editor_photo">
     <%= f.file_field :img, class: 'dn', 'data-behavior': 'photo_field' %>
     <div
       class="fr mtm <%= 'dn' if @recipe.unimaged? %>"
@@ -81,7 +81,7 @@
     autofocus: true,
     autocomplete: 'off',
     placeholder: 'Title your recipe…',
-    class: 'text-input invisible-input serif w-100 man b f1'
+    class: 'text-input invisible-input w-100 man b f1'
   %>
 
   <%= f.label :description, class: 'label f3 dib' %>
@@ -120,6 +120,8 @@
 
   <% if params[:collection] %>
     <input name="recipe[collections][]" value="<%= params[:collection].to_i %>" type="hidden">
+  <% else %>
+    <div data-user="<%= @recipe.user_id %>" data-behavior="recipe_colls_container" class="dn-p mtm"></div>
   <% end %>
 
   <%= f.submit 'Save', class: 'btn btn--primary bg-blue b mtl', 'data-disable-with': 'Saving…' %>

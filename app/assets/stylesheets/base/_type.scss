@@ -1,6 +1,6 @@
 body {
   color: $grey-1;
-  font-family: $font-family;
+  font-family: $serif-font-family;
   line-height: $line-height;
 }
 
@@ -53,9 +53,9 @@ a {
     color: $green-dark;
   }
 
-  &.purple:hover,
-  &.purple:focus {
-    color: $purple-dark;
+  &.pink:hover,
+  &.pink:focus {
+    color: $pink-dark;
   }
 }
 a,

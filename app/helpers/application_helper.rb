@@ -23,7 +23,7 @@ module ApplicationHelper
   def backlink(label, path)
     arrow = content_tag(:span, '← ', class: 'grey-2')
     link = link_to("Back to #{label}", path, class: 'blue')
-    content_tag(:section, arrow + link, class: 'pvs tc f5').html_safe
+    content_tag(:section, arrow + link, class: 'pvs tc f5 sans').html_safe
   end
 
   def make_schema(data = {})

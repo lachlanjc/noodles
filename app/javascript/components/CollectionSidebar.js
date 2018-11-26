@@ -24,7 +24,7 @@ const CollectionSidebar = ({ id, recipes, createdAt, updatedAt }) => (
       primary
       is="btn"
       name="share"
-      color="purple"
+      color="pink"
       className="flex-i fac"
     >
       <Icon glyph="share" size={28} />
@@ -37,7 +37,7 @@ const CollectionSidebar = ({ id, recipes, createdAt, updatedAt }) => (
       href={`/recipes/new?collection=${id}`}
       className="flex-i fac"
     >
-      <Icon glyph="plus" size={28} />
+      <Icon glyph="post" size={28} />
       <span>New recipe</span>
     </Button>
     <p className="grey-3 mtm mbn f5">

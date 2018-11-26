@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 
 import Button from './Button'
 import Icon from './Icon'
-import Spacer from './Spacer'
 import ModalLink from './ModalLink'
 import RecentlyCooked from './RecentlyCooked'
 import GroceriesMini from './GroceriesMini'
@@ -24,7 +23,7 @@ const RecipesHomeSidebar = ({
         href="/recipes/new"
         className="flex-i fac mvs"
       >
-        <Icon glyph="plus" size={28} />
+        <Icon glyph="post" size={28} />
         <span>New recipe</span>
       </Button>
       <div className="flex-auto" />
@@ -32,7 +31,7 @@ const RecipesHomeSidebar = ({
         primary
         is="btn"
         name="import"
-        color="purple"
+        color="pink"
         className="flex-i fac mvs"
       >
         <Icon glyph="link" size={28} />

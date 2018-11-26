@@ -1,6 +1,7 @@
 label {
   display: block;
   margin-top: $space-1;
+  font-family: $font-family;
 }
 
 input[type='checkbox'] + label {
@@ -17,6 +18,7 @@ input[type='checkbox'] + label {
 .text-input {
   -webkit-appearance: none;
   box-sizing: border-box;
+  font-family: $font-family;
   color: $grey-2;
   border: $border;
   border-radius: $border-radius-sm;
@@ -26,7 +28,7 @@ input[type='checkbox'] + label {
   padding: $space-1;
 
   &:focus {
-    transition: all 0.2s;
+    transition: all 0.2s ease-in-out;
     border-color: $blue;
     color: $grey-1;
     outline: 0;

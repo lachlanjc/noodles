@@ -56,7 +56,7 @@ class User < ApplicationRecord
   end
 
   def stripe_customer_details
-    return if stripe_customer.blank?
+    return {} if stripe_customer.blank?
     Stripe::Customer.retrieve(stripe_customer)
   end
 
@@ -66,7 +66,7 @@ class User < ApplicationRecord
   end
 
   def stripe_subscription_details
-    return if stripe_subscription.blank?
+    return {} if stripe_subscription.blank?
     Stripe::Subscription.retrieve(stripe_subscription)
   end
 

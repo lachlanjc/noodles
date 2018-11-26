@@ -9,20 +9,16 @@
 
   <% if !@image_layout %>
     <main class="document mw7 mtm">
-      <h1 class="lh-header mtn"><%= @recipe.title %></h1>
-      <div class="mts mbm dn-p flex fac flex-rows lh0">
+      <h1 class="f1 f0-ns lh mtn"><%= @recipe.title %></h1>
+      <div class="mtm mbm dn-p flex fac flex-rows lh0">
+        <%= link_to 'Cook this', cook_recipe_path(@recipe.id), class: 'btn bg-orange mrm' %>
         <%= form_for(@recipe) do |f| %>
           <%= f.label :favorite, class: 'tooltipped tooltipped--n pointer man',
             'data-behavior': 'r_fav', 'aria-label': 'Favorite', tabindex: 0 do %>
             <%= f.check_box :favorite, class: 'fav__checkbox', 'data-behavior': 'r_fav_trigger' %>
             <%= react_component 'Icon', { glyph: 'like' }, class: 'grey-3 fav__indicator--basic' %>
-            <%= react_component 'Icon', { glyph: 'like-fill' }, class: 'purple fav__indicator--checked' %>
+            <%= react_component 'Icon', { glyph: 'like-fill' }, class: 'pink fav__indicator--checked' %>
           <% end %>
-        <% end %>
-        <%= link_to cook_recipe_path(@recipe.id),
-          class: 'mlm pointer grey-3 tooltipped tooltipped--n',
-          'aria-label': 'Open in Cook Mode' do %>
-          <%= react_component 'Icon', glyph: 'door-enter' %>
         <% end %>
         <%= link_to edit_recipe_path(@recipe),
           class: 'mlm pointer grey-3 tooltipped tooltipped--n',
@@ -70,7 +66,7 @@
           data-clipboard-text="<%= escape_once(recipe_embed) %>" data-behavior="copy">
           Copy
         </button>
-        <a class="btn btn-sm bg-purple mrm" href="#help" data-behavior="modal_trigger modal_close_first">Help</a>
+        <a class="btn btn-sm bg-pink mrm" href="#help" data-behavior="modal_trigger modal_close_first">Help</a>
         <div class="flex-i fac lh0 sans grey-3 caps f5 mts mtn-ns">
           <%= react_component 'Icon', { glyph: 'channel-private', size: 28 } %>
           <span>(subscriber-only)</span>
@@ -80,7 +76,7 @@
     <% else %>
       <div class="bg-grey-5 rounded border pam tc">
         <p class="grey-3 f3">You’ll need to subscribe to use this feature.</p>
-        <%= link_to 'Buy a subscription', subscriptions_path, class: 'btn btn--primary bg-purple' %>
+        <%= link_to 'Buy a subscription', subscriptions_path, class: 'btn btn--primary bg-pink' %>
       </div>
     <% end %>
   </section>

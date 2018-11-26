@@ -12,7 +12,6 @@ const CollectionListItem = ({ coll }) => {
     width: '100%'
   }
 
-  const img = `url(${photo})`
   const desc = !_.isEmpty(description)
 
   return (
@@ -20,11 +19,14 @@ const CollectionListItem = ({ coll }) => {
       <a
         href={path}
         style={sx}
-        className={`pam pvl rounded image-header bg-center bg-no-repeat bg-cover`}
+        className="pam pvl rounded image-header bg-center bg-no-repeat bg-cover"
       >
         <h2 className="f1 white mtn mbs">{name}</h2>
         {desc && (
-          <p className="f3 white lh-title mvn wbw" children={description} />
+          <p
+            className="f3 white lh-title mvn wbw"
+            children={_.truncate(description, { length: 140 })}
+          />
         )}
       </a>
     </article>

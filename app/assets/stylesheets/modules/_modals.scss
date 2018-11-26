@@ -1,8 +1,9 @@
 .modal {
-  background: #fff;
+  background: $white;
   border-radius: $border-radius;
   box-sizing: border-box;
   display: none;
+  overflow: hidden;
   padding: $space-2;
   top: $space-3;
   width: 20rem;

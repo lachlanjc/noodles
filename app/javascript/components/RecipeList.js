@@ -78,34 +78,33 @@ class RecipeList extends Component {
           count={_.size(recipesCore)}
           autoFocus
         >
-          {!hideFilter && <RecipeListComplication
-            actionRef={a => (this.toggle = a)}
-            glyph={favorites ? 'like-fill' : 'like'}
-            color={favorites ? 'purple' : 'grey-3'}
-            tooltip={favorites ? 'Show all recipes' : 'Only show favorites'}
-          />}
           {children}
+          {!hideFilter && (
+            <RecipeListComplication
+              actionRef={a => (this.toggle = a)}
+              glyph={favorites ? 'like-fill' : 'like'}
+              color={favorites ? 'pink' : 'grey-3'}
+              tooltip={favorites ? 'Show all recipes' : 'Only show favorites'}
+            />
+          )}
         </SearchBar>
         <ul className="list-reset mx-auto mbn">
           {_.map(recipes, recipe => (
             <RecipeListItem recipe={recipe} pub={pub} key={`r-${recipe.id}`} />
           ))}
-          {searching &&
-            _.isEmpty(recipes) && (
-              <BlankSlate>
-                <h3 className="man">No search results 🔍</h3>
-                <p className="mbn">
-                  Try searching for something less specific.
-                </p>
-                {createFromSearch && (
-                  <Button
-                    color="blue"
-                    href={`/recipes/new?${$.param({ title: searchText })}`}
-                    children="New recipe with this title"
-                  />
-                )}
-              </BlankSlate>
-            )}
+          {searching && _.isEmpty(recipes) && (
+            <BlankSlate>
+              <h3 className="man">No search results 🔍</h3>
+              <p className="mbn">Try searching for something less specific.</p>
+              {createFromSearch && (
+                <Button
+                  color="blue"
+                  href={`/recipes/new?${$.param({ title: searchText })}`}
+                  children="New recipe with this title"
+                />
+              )}
+            </BlankSlate>
+          )}
         </ul>
       </div>
     )

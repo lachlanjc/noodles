@@ -1,7 +1,11 @@
 .filterbar {
+  font-family: $font-family;
   line-height: 2;
 }
 
 .filterbar__item {
   border-radius: 1rem;
+  &:hover {
+    color: $white !important;
+  }
 }

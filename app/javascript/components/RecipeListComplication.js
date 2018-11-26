@@ -13,7 +13,7 @@ const RecipeListComplication = ({
   const Component = is
   return (
     <Component
-      className={N.cxs(['dib mlm lh0 tooltipped', color])}
+      className={N.cxs(['dib mlm lh0 pointer tooltipped', color])}
       aria-label={tooltip}
       children={<Icon glyph={glyph} />}
       {...props}

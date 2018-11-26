@@ -31,7 +31,7 @@ Button.propTypes = {
     'orange',
     'blue',
     'green',
-    'purple',
+    'pink',
     'red',
     'grey-3',
     'grey-2'

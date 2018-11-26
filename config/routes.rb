@@ -72,6 +72,5 @@ Rails.application.routes.draw do
   scope '/admin' do
     get '/dashboard', to: 'analytics#dashboard', as: :analytics_dash
     get '/all_users', to: 'analytics#all_users', as: :analytics_users
-    get '/performance', to: 'analytics#performance', as: :analytics_performance
   end
 end

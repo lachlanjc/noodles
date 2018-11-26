@@ -50,14 +50,14 @@
   fill: $blue;
 }
 
-.purple {
-  color: $purple;
+.pink {
+  color: $pink;
 }
-.bg-purple {
-  background-color: $purple;
+.bg-pink {
+  background-color: $pink;
 }
-.fill-purple {
-  fill: $purple;
+.fill-pink {
+  fill: $pink;
 }
 
 .white {
@@ -104,7 +104,7 @@
   background-color: $grey-3;
 }
 .fill-grey-3 {
-  fill: $grey-3 ;
+  fill: $grey-3;
 }
 
 .grey-2 {
@@ -125,8 +125,12 @@
   background-color: $grey-1;
 }
 
-.c--inherit { color: inherit; }
-.f--cc { fill: currentcolor; }
+.c--inherit {
+  color: inherit;
+}
+.f--cc {
+  fill: currentcolor;
+}
 
 .shadow {
   box-shadow: $shadow-1;

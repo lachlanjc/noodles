@@ -117,14 +117,11 @@
         Clip
       </a>
       <a
-        class="blue pvs flex fac lh"
+        class="btn bg-blue flex fac"
         target="_blank"
         data-behavior="rehide explore_clipped_open explore_clipped_toggle">
+        <%= react_component 'Icon', { glyph: 'link', size: 24 } %>
         Clipped!
-        <span class="btn btn-sm bg-blue flex fac lh pvn mlm">
-          <span>Open </span>
-          <%= react_component 'Icon', { glyph: 'link', size: 24 } %>
-        </span>
       </a>
     <% else %>
       <a data-behavior="modal_trigger modal_close_first" href="#signup" class="btn btn--primary bg-orange">Sign up</a>

@@ -13,17 +13,16 @@ $darken-3: rgba(#000, 0.25);
 $darken-4: rgba(#000, 0.5);
 $hover-background-color: $darken-1;
 
-// $pink: #e91e63;
 $red: #e63a2b;
 $orange: #ff4527;
-$orange-dark: darken($orange, 8%);
+$orange-dark: darken($orange, 10%);
 $light-yellow: #fffae5;
 $green: #1fcb8c;
-$green-dark: darken($green, 8%);
+$green-dark: darken($green, 10%);
 $blue: #2776ff;
-$blue-dark: darken($blue, 8%);
-$purple: #ff2776;
-$purple-dark: darken($purple, 8%);
+$blue-dark: darken($blue, 10%);
+$pink: #ff2776;
+$pink-dark: darken($pink, 10%);
 
 $border-width: 1px;
 $border-color: $grey-4;
@@ -41,10 +40,10 @@ $f4: 1rem;
 $f5: 0.875rem;
 $font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Segoe UI',
   'Helvetica Neue', sans-serif;
-$serif-font-family: Sentinel, $font-family;
-$heading-font-family: $serif-font-family;
+$serif-font-family: 'ff-tisa-web-pro', $font-family;
+$heading-font-family: $font-family;
 $heading-font-weight: 700;
-$bold-font-weight: 600;
+$bold-font-weight: 700;
 $spacing: 0.1em;
 $line-height: 1.5;
 $monospace-font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo,
@@ -58,6 +57,6 @@ $space-4: 4rem;
 $transition: 186ms cubic-bezier(0.4, 0, 0.2, 1);
 
 $shadow-1: 0 1px 3px 0 $darken-1;
-$shadow-2: 0 2px 8px 0 $darken-1;
+$shadow-2: 0 2px 8px 0 $darken-2;
 $shadow-3: 0 4px 15px 0 $darken-2;
 $shadow-4: 0 18px 27px 0 $darken-3;

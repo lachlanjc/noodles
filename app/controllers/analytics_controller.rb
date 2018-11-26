@@ -15,10 +15,6 @@ class AnalyticsController < ApplicationController
     @users = User.all.order(created_at: :desc)
   end
 
-  def performance
-    @cohorts = CohortMe.analyze(period: 'weeks', activation_class: Recipe)
-  end
-
   private
 
   def authenticate

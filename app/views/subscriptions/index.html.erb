@@ -7,8 +7,8 @@
 <main class="document mw6 mtl mtm-ns">
   <%= react_component 'SuperHeading', children: 'Subscribe to Noodles',
     className: 'f1-ns', style: { marginBottom: 16 } %>
-  <% if !current_user.subscriber? %>
-    <div class="purple flex mvm">
+  <% if current_user.subscriber? %>
+    <div class="pink flex mvm">
       <%= react_component 'Icon', { glyph: 'like-fill', size: 48 }, class: 'mrm' %>
       <div>
         <p class="c--inherit lh-title b serif f3 mbs">You’re a subscriber.<br>Thank you!</p>
@@ -28,34 +28,36 @@
   <% else %>
     <section class="content">
       <p>
-        Currently you can use Noodles free, but if you enjoy cooking with it,
-        <strong>please consider a subscription</strong>.<br>
+        You can use Noodles totally for free right now, but if you enjoy cooking with it,
+        <strong>please consider a subscription</strong>.
+      </p>
+      <p>
         Here’s what you’ll get:
       </p>
       <ul class="sans f4 lh-title list-reset two-columns-ns">
         <li class="flex fac">
-          <%= react_component 'Icon', { glyph: 'embed' }, class: 'purple fsn mrs' %>
+          <%= react_component 'Icon', { glyph: 'embed' }, class: 'pink fsn mrs' %>
           <span>Embed recipes on another website/blog</span>
         </li>
         <li class="flex fac">
-          <%= react_component 'Icon', { glyph: 'photo' }, class: 'purple fsn mrs' %>
+          <%= react_component 'Icon', { glyph: 'photo' }, class: 'pink fsn mrs' %>
           <span>Add photos up to 25MB</span>
         </li>
         <li class="flex fac">
-          <%= react_component 'Icon', { glyph: 'message' }, class: 'purple fsn mrs' %>
+          <%= react_component 'Icon', { glyph: 'message' }, class: 'pink fsn mrs' %>
           <span>Faster support</span>
         </li>
         <li class="flex fac">
-          <%= react_component 'Icon', { glyph: 'like' }, class: 'purple fsn mrs' %>
-          <span>Help keep Noodles alive and ad-free</span>
+          <%= react_component 'Icon', { glyph: 'like' }, class: 'pink fsn mrs' %>
+          <span>Help keep Noodles alive & ad-free</span>
         </li>
       </ul>
       <p class="mtm">
         I’m a young indie developer building Noodles, and I couldn’t work on this project without subscriptions.
-        Your contributions will be spent direclty on the services like Heroku that keep Noodles running.
+        Your contributions will be spent directly on the services like hosting that keep Noodles running. If you’ve got any questions, please ask below.
       </p>
       <p>
-        - Lachlan
+        —Lachlan
       </p>
       <%= form_tag subscriptions_path, method: 'POST', class: 'sans' do |f| %>
         <script
@@ -76,6 +78,7 @@
             background-color: #ff4527 !important;
             border-radius: 999px !important;
             padding: .5rem 1rem !important;
+            resize: none !important;
           }
           .stripe-button-el, .stripe-button-el > span {
             box-shadow: none !important;

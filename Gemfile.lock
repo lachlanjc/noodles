@@ -85,7 +85,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    cohort_me (0.0.3)
     concurrent-ruby (1.0.5)
     crass (1.0.3)
     debug_inspector (0.0.3)
@@ -325,7 +324,6 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   coffee-rails
-  cohort_me
   delayed_job_active_record
   devise
   dotenv-rails
@@ -363,7 +361,7 @@ DEPENDENCIES
   webpacker-react
 
 RUBY VERSION
-   ruby 2.5.0p0
+   ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.1
+   1.16.4
