@@ -36,8 +36,24 @@ module ScrapingHelper
       data.instructions = doc.css('.directions-list .directions-item').text
     elsif host.match? 'driscolls.com'
       data.instructions = doc.css('#recipe-content #instructions').text
+    end
+    if data.to_h.values.reject(&:blank?).empty?
+      data = process_schema_for data, doc
     elsif data.instructions.to_s.match(/\n/).blank?
       data = process_blog_page! data, doc
+    end
+    data
+  end
+
+  def process_schema_for(data, doc)
+    if meta = doc.css('script[type="application/ld+json"]').text.squish
+      values = JSON.parse(meta)
+      data.name = values['name']
+      data.description = values['description']&.squish
+      data.ingredients = values['recipeIngredient']
+      data.instructions = values['recipeInstructions']
+      data.yield = values['recipeYield'].to_s.remove('Makes ')
+      data.author = values['author']['name']
     end
     data
   end
