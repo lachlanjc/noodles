@@ -81,9 +81,9 @@ module ScrapingHelper
     doc.css('.ingredients-info [itemprop=ingredients]').each do |n|
       data.ingredients.push n.text
     end
-    i = inst
     n = ':not(#chefNotes)'
-    data.instructions = doc.css("#{i} li#{n}, #{i} > p#{n}").to_a.map(&:text)
+    i = "#{inst} li#{n}, #{inst} > p#{n}"
+    data.instructions = doc.css(i).text.split(/\n/).map(&:strip).flatten.uniq.join("\n")
     data.yield = doc.css('[itemprop=recipeYield]').text
     data
   end
