@@ -13,7 +13,7 @@ module ScrapingHelper
     page = safely { Mechanize.new.get(url).content }
     data = Hangry.parse page
 
-    return unless data.name.present? || host =~ /allrecipes|marthastewart|epicurious|bonappetit|foodandwine/
+    return unless data.name.present? || host =~ /allrecipes|marthastewart|epicurious|bonappetit|foodandwine|food52/
     create_recipe_item process_recipe_page(url, page, data)
   end
 
@@ -26,8 +26,7 @@ module ScrapingHelper
     elsif host.match? 'epicurious.com'
       data = process_epicurious_page!(data, doc)
     elsif host.match? 'allrecipes.com'
-      data.name = doc.css('.recipe-summary h1[itemprop=name]').text
-      data.yield = doc.css('#metaRecipeServings').attr('content')
+      data = process_allrecipes_page!(data, doc)
     elsif host.match? 'foodandwine.com'
       data = process_fw_page!(data, doc)
     elsif host.match? 'bonappetit.com'
@@ -36,8 +35,24 @@ module ScrapingHelper
       data.instructions = doc.css('.directions-list .directions-item').text
     elsif host.match? 'driscolls.com'
       data.instructions = doc.css('#recipe-content #instructions').text
+    end
+    if data.to_h.values.reject(&:blank?).empty?
+      data = process_schema_for data, doc
     elsif data.instructions.to_s.match(/\n/).blank?
       data = process_blog_page! data, doc
+    end
+    data
+  end
+
+  def process_schema_for(data, doc)
+    if meta = doc.css('script[type="application/ld+json"]').text.squish
+      values = JSON.parse(meta)
+      data.name = values['name']
+      data.description = values['description']&.squish
+      data.ingredients = values['recipeIngredient']
+      data.instructions = values['recipeInstructions']
+      data.yield = values['recipeYield'].to_s.remove('Makes ')
+      data.author = values['author']['name']
     end
     data
   end
@@ -66,10 +81,19 @@ module ScrapingHelper
     doc.css('.ingredients-info [itemprop=ingredients]').each do |n|
       data.ingredients.push n.text
     end
-    i = inst
     n = ':not(#chefNotes)'
-    data.instructions = doc.css("#{i} li#{n}, #{i} > p#{n}").to_a.map(&:text)
+    i = "#{inst} li#{n}, #{inst} > p#{n}"
+    data.instructions = doc.css(i).text.split(/\n/).map(&:strip).flatten.uniq.join("\n")
     data.yield = doc.css('[itemprop=recipeYield]').text
+    data
+  end
+
+  # Fixes for Allrecipes
+  def process_allrecipes_page!(data, doc)
+    data.name = doc.css('.recipe-summary h1[itemprop=name]').text
+    data.ingredients = doc.css('li span[itemprop="recipeIngredient"]').map(&:text)
+    data.yield = doc.css('meta[itemprop="recipeYield"]').attr('content').text
+    data.yield += ' servings' if data.yield.present?
     data
   end
 
@@ -97,7 +121,7 @@ module ScrapingHelper
   # Support some sites (mainly blogs)
   def process_blog_page!(data, doc)
     data.instructions = doc.css(inst).to_a.map(&:text)
-    if data.ingredients.empty?
+    if data&.ingredients.empty?
       s = '.wprm-recipe-ingredient-group li[itemprop=recipeIngredient]'
       data.ingredients = doc.css(s).to_a.map(&:text)
     end
@@ -111,7 +135,7 @@ module ScrapingHelper
       description: data.description.to_s.squish,
       ingredients: data.ingredients,
       instructions: data.instructions,
-      serves: data.yield.to_s.capitalize.gsub('Servings:', '').strip
+      serves: data.yield.to_s.capitalize.remove('Servings:',).strip
     }
   end
 

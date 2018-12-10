@@ -54,6 +54,6 @@ class ExploreControllerTest < ActionController::TestCase
     assert_not_nil r
     assert_match 'white sugar', r.ingredients
     assert_match 'Preheat', r.instructions
-    assert_equal '12', r.serves
+    assert_equal '12 servings', r.serves
   end
 end

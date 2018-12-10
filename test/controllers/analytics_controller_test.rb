@@ -19,10 +19,4 @@ class AnalyticsControllerTest < ActionController::TestCase
     get :all_users
     assert_response :success
   end
-
-  test 'should get performance' do
-    sign_in users(:one)
-    get :performance
-    assert_response :success
-  end
 end

@@ -2,7 +2,7 @@ class EmailMeJob < ApplicationJob
   include TextHelper
 
   def perform(props)
-    return if Rails.env.test?
+    return unless Rails.env.production?
     Aws::SES::Client.new.send_email(destination: {
                                       to_addresses: [
                                         'lachlan@getnoodl.es'
