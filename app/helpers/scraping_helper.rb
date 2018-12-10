@@ -26,8 +26,7 @@ module ScrapingHelper
     elsif host.match? 'epicurious.com'
       data = process_epicurious_page!(data, doc)
     elsif host.match? 'allrecipes.com'
-      data.name = doc.css('.recipe-summary h1[itemprop=name]').text
-      data.yield = doc.css('#metaRecipeServings').attr('content')
+      data = process_allrecipes_page!(data, doc)
     elsif host.match? 'foodandwine.com'
       data = process_fw_page!(data, doc)
     elsif host.match? 'bonappetit.com'
@@ -86,6 +85,15 @@ module ScrapingHelper
     n = ':not(#chefNotes)'
     data.instructions = doc.css("#{i} li#{n}, #{i} > p#{n}").to_a.map(&:text)
     data.yield = doc.css('[itemprop=recipeYield]').text
+    data
+  end
+
+  # Fixes for Allrecipes
+  def process_allrecipes_page!(data, doc)
+    data.name = doc.css('.recipe-summary h1[itemprop=name]').text
+    data.ingredients = doc.css('li span[itemprop="recipeIngredient"]').map(&:text)
+    data.yield = doc.css('meta[itemprop="recipeYield"]').attr('content').text
+    data.yield += ' servings' if data.yield.present?
     data
   end
 
