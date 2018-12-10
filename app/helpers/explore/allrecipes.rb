@@ -15,7 +15,7 @@ class AllrecipesSearchScraper
     scraper.get(url).search(SELECTOR).each do |item|
       next if item.at_css('div').attr('class').to_s.match?('article-card')
       result = {}
-      result['url'] = "http://allrecipes.com#{item.at_css('a').attr('href')}"
+      result['url'] = item.at_css('a').attr('href')
       result['title'] = item.search('h3').text.squish
       result['description'] = item.search('.fixed-recipe-card__description').text.squish.truncate(164)
       if item.at_css(IMG_SELECTOR).present?
