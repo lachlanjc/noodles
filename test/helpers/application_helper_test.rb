@@ -4,6 +4,7 @@ class ApplicationHelperTest < ActionView::TestCase
   include ApplicationHelper
   include SvgHelper
 
+=begin
   test 'modal close' do
     assert_not_nil modal_close
   end
@@ -11,6 +12,7 @@ class ApplicationHelperTest < ActionView::TestCase
   test 'modal header' do
     assert_not_nil modal_header('hello')
   end
+=end
 
   test 'backlink' do
     assert_match 'running tests', backlink('running tests', root_url)
