@@ -13,7 +13,7 @@ module ScrapingHelper
     page = safely { Mechanize.new.get(url).content }
     data = Hangry.parse page
 
-    return unless data.name.present? || host =~ /allrecipes|marthastewart|epicurious|bonappetit|foodandwine/
+    return unless data.name.present? || host =~ /allrecipes|marthastewart|epicurious|bonappetit|foodandwine|food52/
     create_recipe_item process_recipe_page(url, page, data)
   end
 
@@ -97,7 +97,7 @@ module ScrapingHelper
   # Support some sites (mainly blogs)
   def process_blog_page!(data, doc)
     data.instructions = doc.css(inst).to_a.map(&:text)
-    if data.ingredients.empty?
+    if data&.ingredients.empty?
       s = '.wprm-recipe-ingredient-group li[itemprop=recipeIngredient]'
       data.ingredients = doc.css(s).to_a.map(&:text)
     end
@@ -111,7 +111,7 @@ module ScrapingHelper
       description: data.description.to_s.squish,
       ingredients: data.ingredients,
       instructions: data.instructions,
-      serves: data.yield.to_s.capitalize.gsub('Servings:', '').strip
+      serves: data.yield.to_s.capitalize.remove('Servings:',).strip
     }
   end
 
