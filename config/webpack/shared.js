@@ -20,7 +20,6 @@ const config = {
 
   module: {
     rules: [
-      { test: /\.coffee(.erb)?$/, loader: 'coffee-loader' },
       {
         test: /\.jsx?(.erb)?$/,
         exclude: /node_modules/,
@@ -44,7 +43,7 @@ const config = {
   plugins: [new webpack.EnvironmentPlugin(Object.keys(process.env))],
 
   resolve: {
-    extensions: ['.js', '.coffee'],
+    extensions: ['.js'],
     modules: [path.resolve('app/javascript'), path.resolve('node_modules')]
   },
 
