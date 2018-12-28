@@ -6,7 +6,7 @@ const SidebarModule = ({ hidden = false, ...props }) => (
 )
 
 SidebarModule.propTypes = {
-  hidden: React.PropTypes.bool
+  hidden: PropTypes.bool
 }
 
 export default SidebarModule
