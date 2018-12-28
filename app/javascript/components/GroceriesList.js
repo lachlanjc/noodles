@@ -5,7 +5,7 @@ import GroceriesCheckbox from './GroceriesCheckbox'
 
 const GroceriesList = ({ items, showCompleted = false }) => (
   <ul
-    className="groceries list-reset mtm mbn"
+    className="groceries sans list-reset mtm mbn"
     children={_.map(items, item => (
       <GroceriesCheckbox
         name={item.name}
