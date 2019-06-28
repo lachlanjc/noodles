@@ -36,12 +36,9 @@ module ScrapingHelper
     elsif host.match? 'driscolls.com'
       data.instructions = doc.css('#recipe-content #instructions').text
     end
-    if data[:author].to_s.blank? && doc.css('[itemprop=author]')
-      data.author = doc.css('[itemprop=author]').text
-    end
     if data.to_h.values.reject(&:blank?).empty?
       data = process_schema_for data, doc
-    elsif data.instructions.to_s.blank?
+    elsif data.instructions.to_s.match(/\n/).blank?
       data = process_blog_page! data, doc
     end
     data
@@ -106,8 +103,7 @@ module ScrapingHelper
     data.description = doc.css('.recipe-summary').text
     data.ingredients = doc.css('.ingredients li').to_a.map(&:text)
     data.instructions = doc.css("#{inst} p:last-child").to_a.map(&:text)
-    data.author = doc.css('.author-name').text
-    data.yield = doc.css('.recipe-meta-item:last-child .recipe-meta-item-body').text
+    data.yield = doc.css('.recipe-meta-item-body:last-of-type').text
     data
   end
 
@@ -116,7 +112,7 @@ module ScrapingHelper
     data.name = doc.css('h1[itemprop=name]').text
     data.description = doc.css('.dek--basically').text
     data.ingredients = doc.css('.ingredients li').to_a.map(&:text)
-    data.instructions = doc.css('.steps .step').to_a.map(&:text).join("\n")
+    data.instructions = doc.css('.steps .step').to_a.map(&:text)
     data.author = doc.css('.contributor-recipe-author .contributor-name').text
     data.yield = doc.css('.recipe__header__servings').text
     data
@@ -137,10 +133,9 @@ module ScrapingHelper
     {
       title: data.name.to_s.squish.truncate(255),
       description: data.description.to_s.squish,
-      ingredients: process_recipe_ingredients(data.ingredients),
-      instructions: process_recipe_instructions(data.instructions),
-      serves: process_yield(data.yield),
-      author: data.author
+      ingredients: data.ingredients,
+      instructions: data.instructions,
+      serves: data.yield.to_s.capitalize.remove('Servings:',).strip
     }
   end
 
@@ -154,7 +149,7 @@ module ScrapingHelper
       instructions: process_recipe_instructions(recipe_data[:instructions]),
       source: url_source,
       author: recipe_data[:author].to_s.squish,
-      serves: process_yield(recipe_data[:serves]),
+      serves: recipe_data[:serves].to_s.squish,
       notes: recipe_data[:notes].to_s.squish,
       favorite: false
     )
@@ -163,17 +158,20 @@ module ScrapingHelper
   # Fully process recipe ingredients
   def process_recipe_ingredients(ingredients)
     return if ingredients.blank?
-    ingredients = ingredients.split(/\s\s+/) if ingredients.is_a? String
-    # Each of the steps is now in an array.
-    ingredients.delete_if { |item| item.to_s.squish!.gsub(/\s\s+/, ' ').length < 3 }
-    ingredients.map! { |i| clean_ingredient!(i) }
+    ingredients = clean_ingredients(ingredients)
     write_ingredients_to_list(ingredients)
   end
 
   # Remove inconsistencies in ingredient formatting
-  def clean_ingredient!(i)
-    # Remove custom lists or line breaks
-    i.gsub(/^\-|\*\s?/, '').to_s.gsub(/\s\s+/, ' ').to_s.capitalize.unicode_normalize(:nfkc).squish
+  def clean_ingredients(ingredients)
+    ingredients = ingredients.split(/\s\s+/) if ingredients.is_a? String
+    ingredients.delete_if { |item| item.to_s.squish!.gsub(/\s\s+/, ' ').length < 3 }
+    # Each of the steps is now in an array.
+    ingredients.each do |item|
+      # Remove custom lists or line breaks
+      item.gsub!(/^\-|\*\s?/, '').to_s.gsub!(/\s\s+/, ' ').to_s.squish!.capitalize
+    end
+    ingredients
   end
 
   # Write a list of ingredients
@@ -197,8 +195,7 @@ module ScrapingHelper
     # Each of the steps is now in an array.
     # Remove useless steps
     steps.delete_if do |step|
-      s = step.to_s.squish
-      s.length < 3 || s.match('Preparation') || s.match('Watch Now')
+      step.to_s.squish.length < 3 || step.to_s.match('Preparation')
     end
     steps.each do |step|
       # Remove custom numbering or line breaks
@@ -214,10 +211,6 @@ module ScrapingHelper
       instructions_md += "#{(id + 1)}. #{step.squish}\n"
     end
     instructions_md.strip
-  end
-
-  def process_yield(text)
-    text.to_s.capitalize.remove('Servings:',).remove('serves').remove(': ').squish
   end
 
   protected
