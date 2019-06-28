@@ -3,27 +3,36 @@ require 'test_helper'
 class ScrapingHelperTest < ActionView::TestCase
   include ScrapingHelper
 
+  def check_recipe(title, url)
+    @recipe = master_scrape(url)
+    assert_equal @recipe[:title], title
+    assert_not_nil @recipe[:description]
+    assert_not_nil @recipe[:ingredients]
+    assert_not_nil @recipe[:instructions]
+    assert_not_nil @recipe[:author]
+  end
+
   test 'nyt cooking import' do
-    assert_equal 'Bacon, Lettuce and Plum Sandwiches', master_scrape('http://cooking.nytimes.com/recipes/1012732-bacon-lettuce-and-plum-sandwiches')[:title]
+    check_recipe('Bacon, Lettuce and Plum Sandwiches', 'http://cooking.nytimes.com/recipes/1012732-bacon-lettuce-and-plum-sandwiches')
   end
 
   test 'epicurious import' do
-    assert_equal 'Sheet-Pan Grilled Cheese', master_scrape('http://www.epicurious.com/recipes/food/views/sheet-pan-grilled-cheese-56390006')[:title]
+    check_recipe('Sheet-Pan Grilled Cheese', 'http://www.epicurious.com/recipes/food/views/sheet-pan-grilled-cheese-56390006')
   end
 
-  test 'food and wine import' do
-    assert_equal 'Chocolate Chip Cookie Ice Cream Bars', master_scrape('https://www.foodandwine.com/recipes/chocolate-chip-cookie-ice-cream-bars')[:title]
+  test 'fw import' do
+    check_recipe('Chocolate Chip Cookie Ice Cream Bars', 'https://www.foodandwine.com/recipes/chocolate-chip-cookie-ice-cream-bars')
   end
 
   test 'allrecipes import' do
-    assert_equal 'Peppered Shrimp Alfredo', master_scrape('http://allrecipes.com/recipe/133128/peppered-shrimp-alfredo/')[:title]
+    check_recipe('Peppered Shrimp Alfredo', 'http://allrecipes.com/recipe/133128/peppered-shrimp-alfredo/')
   end
 
   test 'food52 import' do
-    assert_equal 'Carrot-Pineapple Cake with Cream Cheese Frosting', master_scrape('https://food52.com/recipes/38008-carrot-pineapple-cake-with-cream-cheese-frosting')[:title]
+    check_recipe('Carrot-Pineapple Cake with Cream Cheese Frosting', 'https://food52.com/recipes/38008-carrot-pineapple-cake-with-cream-cheese-frosting')
   end
 
   test 'bon appetit import' do
-    assert_equal 'Chocolate Chunk–Pumpkin Seed Cookies', master_scrape('https://www.bonappetit.com/recipe/chocolate-chunk-pumpkin-seed-cookies')[:title]
+    check_recipe('Chocolate Chunk–Pumpkin Seed Cookies', 'https://www.bonappetit.com/recipe/chocolate-chunk-pumpkin-seed-cookies')
   end
 end

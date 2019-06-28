@@ -40,7 +40,7 @@ gem 'stripe'
 gem 'turbolinks'
 gem 'twilio-ruby'
 gem 'uglifier'
-gem 'webpacker'
+gem 'webpacker', '4.0.0.rc.2'
 gem 'webpacker-react'
 
 source 'https://rails-assets.org' do

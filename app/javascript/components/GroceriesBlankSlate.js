@@ -5,7 +5,7 @@ import GroceriesForm from './GroceriesForm'
 const GroceriesBlankSlate = () => (
   <BlankSlate margin="mtm mbn">
     <h3 className="mvn">No groceries yet.</h3>
-    <p className="mts mbn">
+    <p className="mts mbm">
       Keep a list of all the groceries you need to buy here.
     </p>
     <GroceriesForm makeSuggestions />

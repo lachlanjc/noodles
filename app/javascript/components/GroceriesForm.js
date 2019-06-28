@@ -48,13 +48,12 @@ class GroceriesForm extends Component {
     const node = document.querySelector("head meta[name='csrf-token']")
     if (node && node.content) csrfToken = _.toString(node.content)
     const { name, suggestions } = this.state
-    const size = makeSuggestions && !_.isEmpty(name) ? 'f3' : 'f4'
     return (
       <form
         action="/groceries"
         method="POST"
         acceptCharset="UTF-8"
-        className="dn-p mts"
+        className="dn-p mtm"
         onSubmit={N.track('add-grocery', { name })}
         {...props}
       >
@@ -70,7 +69,7 @@ class GroceriesForm extends Component {
             onChange={e => this.updateName(e.target.value, true)}
             value={name}
             autoFocus
-            className={`text-input flex-auto mhs ${size}`}
+            className={`text-input flex-auto mhs f4`}
             style={{
               borderWidth: '0 0 1px 0',
               borderRadius: 0,
@@ -84,29 +83,28 @@ class GroceriesForm extends Component {
             <Button is="input" type="submit" color="blue" sm value="Save" />
           )}
         </div>
-        {makeSuggestions &&
-          !_.isEmpty(suggestions) && (
-            <div
-              className="mts flex flex-rows fas lh-title"
-              children={[
-                <div
-                  className="flex-i fac mrs"
-                  style={{ paddingTop: 4 }}
-                  key="icon-assistant"
-                >
-                  <Icon glyph="rep" size={22} className="grey-3" />
-                </div>,
-                _.map(suggestions, (item, i) => (
-                  <span
-                    className="list__item"
-                    children={item}
-                    data-behavior="grocery_suggestion"
-                    key={`item-${item}-${i}`}
-                  />
-                ))
-              ]}
-            />
-          )}
+        {makeSuggestions && !_.isEmpty(suggestions) && (
+          <div
+            className="mts flex flex-rows fas lh-title"
+            children={[
+              <div
+                className="flex-i fac mrs"
+                style={{ paddingTop: 4 }}
+                key="icon-assistant"
+              >
+                <Icon glyph="rep" size={22} className="grey-3" />
+              </div>,
+              _.map(suggestions, (item, i) => (
+                <span
+                  className="list__item"
+                  children={item}
+                  data-behavior="grocery_suggestion"
+                  key={`item-${item}-${i}`}
+                />
+              ))
+            ]}
+          />
+        )}
       </form>
     )
   }

@@ -29,13 +29,7 @@ class RecipeList extends Component {
   }
 
   static getDerivedStateFromProps(newProps, newState) {
-    this.setState({ recipes: _.sortBy(newProps.recipesCore, 'title') })
-    return this.state.recipes
-  }
-
-  constructor(props) {
-    super(props)
-    this.toggle = null
+    return { recipes: _.sortBy(newProps.recipesCore, 'title') }
   }
 
   componentDidMount() {
