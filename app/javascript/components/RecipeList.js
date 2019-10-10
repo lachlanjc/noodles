@@ -78,6 +78,7 @@ class RecipeList extends Component {
       <section className="flex fac fjb mvs phm dn-p">
         <span className="grey-3 sans">
           {recipes.length === recipesCore.length ? recipes.length : `${recipes.length}/${recipesCore.length}`}
+          {' '}
           {recipes.length === 1 ? 'recipe' : 'recipes'}
         </span>
           {!hideFilter && (
