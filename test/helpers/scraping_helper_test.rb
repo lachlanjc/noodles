@@ -9,7 +9,6 @@ class ScrapingHelperTest < ActionView::TestCase
     assert_not_nil @recipe[:description]
     assert_not_nil @recipe[:ingredients]
     assert_not_nil @recipe[:instructions]
-    assert_not_nil @recipe[:author]
   end
 
   test 'nyt cooking import' do
