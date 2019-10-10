@@ -67,12 +67,16 @@ class RecipeList extends Component {
 
     return (
       <div className={className}>
+      {/*
         <SearchBar
           onChange={this.updateSearch}
           count={_.size(recipesCore)}
           autoFocus
         >
           {children}
+          */}
+      <section className="flex fac fjb mvs phm muted dn-p">
+        {recipes.length} {recipes.length === 1 ? 'recipe' : 'recipes'}
           {!hideFilter && (
             <RecipeListComplication
               actionRef={a => (this.toggle = a)}
@@ -81,7 +85,7 @@ class RecipeList extends Component {
               tooltip={favorites ? 'Show all recipes' : 'Only show favorites'}
             />
           )}
-        </SearchBar>
+        </section>
         <ul className="list-reset mx-auto mbn">
           {_.map(recipes, recipe => (
             <RecipeListItem recipe={recipe} pub={pub} key={`r-${recipe.id}`} />
