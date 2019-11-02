@@ -60,7 +60,7 @@ module ScrapingHelper
   # Fixes for NYT Cooking
   def process_nyt_page!(data, doc)
     s = [
-      '[itemprop=description] p',
+      '[itemprop=description] p:first-of-type',
       '.recipe-ingredients li[itemprop=recipeIngredient]',
       '.recipe-steps li',
       '.recipe-subhead span[itemprop=author]'
