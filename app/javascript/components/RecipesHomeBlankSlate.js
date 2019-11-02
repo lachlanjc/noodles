@@ -14,9 +14,9 @@ const RecipesHomeBlank = () => (
 )
 
 const RecipesHomeBlankSlate = () => (
-  <Document>
-    <h2 className="f1 mtn mbs orange">Let’s get cooking!</h2>
-    <p>
+  <article>
+    <h2 className="f1 mtm mbs orange">Let’s get cooking!</h2>
+    <p className="sans grey-3 f2">
       Noodles is a place to keep your recipes. So let’s add your first few
       recipes.
     </p>
@@ -28,28 +28,27 @@ const RecipesHomeBlankSlate = () => (
         gridGap: 24
       }}
     >
-      <li className="bg-grey-5 rounded shadow pam">
+      <li className="card pam">
         <h3 className="mvn">Trying to find a new recipe?</h3>
         <p className="mvn grey-2">
           Tap <span className="orange b sans">Explore</span> at the top to find
           a recipe on the web via Noodles.
         </p>
       </li>
-      <li className="bg-grey-5 rounded pam">
+      <li className="card pam">
         <h3 className="mvn">Already have a recipe?</h3>
         <p className="mvn grey-2">
-          Tap <span className="blue b sans">New recipe</span> in the sidebar to
-          enter a recipe yourself, or{' '}
-          <span className="pink b sans">Import</span> to save a recipe from the
-          web.
+          In the sidebar, tap <span className="blue b sans">New recipe</span> to
+          write in a recipe yourself, or{' '}
+          <span className="pink b sans">Import</span> to save a web recipe.
         </p>
       </li>
     </ol>
-    <p>
+    <p class="grey-2">
       <strong>Have any questions?</strong> Tap “Help & feedback” in the corner
-      of any page & I’ll help you out.
+      of any page & I’ll help you out 🧡
     </p>
-  </Document>
+  </article>
 )
 
 export default RecipesHomeBlank
