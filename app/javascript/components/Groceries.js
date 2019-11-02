@@ -55,16 +55,9 @@ const Groceries = ({ groceries }) => (
         style={{ width: 0, height: 32, borderLeft: '1px solid currentColor' }}
       />
       <Spacer x={16} y={8} />
-      <div className="flex-i fac">
-        <Icon glyph="enter" size={28} className="grey-3 mrs" />
-        <ModalLink is="btn" color="grey-3" name="sms" sm>
-          Use SMS
-        </ModalLink>
-        <Spacer x={16} />
-        <Button color="grey-3" sm href="/groceries/past">
-          View past items
-        </Button>
-      </div>
+      <Button color="grey-3" sm href="/groceries/past">
+        View past items
+      </Button>
     </footer>
   </div>
 )
