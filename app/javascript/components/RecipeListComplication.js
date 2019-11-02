@@ -7,7 +7,6 @@ const RecipeListComplication = ({
   tooltip,
   glyph,
   color = 'grey-3',
-  actionRef,
   ...props
 }) => {
   const Component = is
@@ -17,7 +16,6 @@ const RecipeListComplication = ({
       aria-label={tooltip}
       children={<Icon glyph={glyph} />}
       {...props}
-      ref={actionRef}
     />
   )
 }
