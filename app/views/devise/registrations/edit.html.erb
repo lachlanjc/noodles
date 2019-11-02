@@ -22,11 +22,13 @@
         <%= f.label :want_newsletter, 'Receive the (occasional) newsletter', class: 'man' %>
       </div>
 
+      <!--
       <%= f.label :phone, 'Phone number (+ intl code)', class: 'label' %>
       <small class="f5 db grey-3">(only for SMS grocery list—kept safe, no spam)</small>
       <%= f.phone_field :phone, placeholder: '1555-555-5555', class: 'text-input' %>
+      -->
 
-      <%= section_header 'Change your password?', 3, class: 'mtm mbs grey-2 f4' %>
+      <%= section_header 'Change your password?', 3, class: 'mtm mbs grey-2' %>
 
       <%= f.label :password, 'Current password', class: 'label' %>
       <%= f.password_field :current_password, placeholder: 'Required', class: 'text-input' %>
