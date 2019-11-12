@@ -25,7 +25,7 @@ module RecipesHelper
   end
 
   def recipe_ingredients(r = @recipe, options = {})
-    content_tag :ul, r.ingredients.lines.map { |a| ingredient_processed(a, options) }.join.html_safe
+    content_tag :ul, r.ingredients.to_s.lines.map { |a| ingredient_processed(a, options) }.join.html_safe
   end
 
   def ingredient_processed(line, options = {})
@@ -51,7 +51,7 @@ module RecipesHelper
   end
 
   def instructions_processed(instructions = @recipe.instructions, _options = {})
-    markdown(instructions).to_s.html_safe
+    markdown(instructions.to_s).to_s.html_safe
     # text = Nokogiri::HTML::DocumentFragment.parse(text)
     # text.css('li').each { |item| item['itemprop'] = 'instruction' }
   end
