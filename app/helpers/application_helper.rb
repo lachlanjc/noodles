@@ -44,7 +44,7 @@ module ApplicationHelper
       ],
       contactPoint: [{
         '@type': 'ContactPoint',
-        email: 'lachlan@getnoodl.es',
+        email: 'noodles@lachlanjc.com',
         contactType: 'customer support inquiries',
         url: 'https://getnoodl.es/help'
       }]

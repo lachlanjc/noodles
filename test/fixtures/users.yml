@@ -1,5 +1,5 @@
 one:
   id: 1
   first_name: 'Lachlan'
-  email: 'lachlan@getnoodl.es'
+  email: 'noodles@lachlanjc.com'
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>

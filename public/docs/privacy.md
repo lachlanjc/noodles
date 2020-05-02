@@ -57,4 +57,4 @@ ___
 
 [https://getnoodl.es/help](https://getnoodl.es/help)
 
-[lachlan@getnoodl.es](mailto:lachlan@getnoodl.es?subject=Question about Privacy Policy)
+[noodles@lachlanjc.com](mailto:noodles@lachlanjc.com?subject=Question about Privacy Policy)

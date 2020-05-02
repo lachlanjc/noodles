@@ -5,7 +5,7 @@ class EmailMeJob < ApplicationJob
     return unless Rails.env.production?
     Aws::SES::Client.new.send_email(destination: {
                                       to_addresses: [
-                                        'lachlan@getnoodl.es'
+                                        'noodles@lachlanjc.com'
                                       ]
                                     },
                                     message: {

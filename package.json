@@ -10,7 +10,7 @@
     "type": "git",
     "url": "https://github.com/lachlanjc/noodles.git"
   },
-  "author": "Lachlan Campbell <lachlan@getnoodl.es>",
+  "author": "Lachlan Campbell <noodles@lachlanjc.com>",
   "license": "ISC",
   "homepage": "https://getnoodl.es",
   "private": true,

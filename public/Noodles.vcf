@@ -3,7 +3,7 @@ VERSION:3.0
 PRODID:-//Apple Inc.//Mac OS X 10.12.6//EN
 N:;Noodles;;;
 FN:Noodles
-EMAIL;type=INTERNET;type=WORK;type=pref:lachlan@getnoodl.es
+EMAIL;type=INTERNET;type=WORK;type=pref:noodles@lachlanjc.com
 TEL;type=CELL;type=VOICE;type=pref:(814) 753-4120
 item1.URL;type=pref:https://getnoodl.es/
 item1.X-ABLabel:_$!<HomePage>!$_

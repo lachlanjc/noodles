@@ -1,5 +1,5 @@
 class NewsletterMailer < ActionMailer::Base
-  default from: 'Lachlan Campbell <lachlan@getnoodl.es>'
+  default from: 'Lachlan Campbell <noodles@lachlanjc.com>'
   layout 'newsletter_mailer'
 
   def newsletter(email)

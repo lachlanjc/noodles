@@ -5,7 +5,7 @@ class HelpFormJob < ApplicationJob
     body = generate_body(data[:email], data[:message], data[:url])
     Aws::SES::Client.new.send_email(destination: {
                                       to_addresses: [
-                                        'lachlan@getnoodl.es'
+                                        'noodles@lachlanjc.com'
                                       ]
                                     },
                                     message: {

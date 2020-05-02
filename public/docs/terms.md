@@ -92,4 +92,4 @@ ___
 
 [https://getnoodl.es/help](https://getnoodl.es/help)
 
-[lachlan@getnoodl.es](mailto:lachlan@getnoodl.es?subject=Question about Terms of Service)
+[noodles@lachlanjc.com](mailto:noodles@lachlanjc.com?subject=Question about Terms of Service)
