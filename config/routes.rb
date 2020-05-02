@@ -47,7 +47,6 @@ Rails.application.routes.draw do
   get '/terms', to: 'pages#terms', as: :terms
   get '/contact', to: 'pages#help', as: :contact
   get '/help', to: 'pages#help', as: :help
-  post '/help', to: 'pages#help_form', as: :help_form
 
   resources :subscriptions, only: %i[index create destroy]
 
