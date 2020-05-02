@@ -61,14 +61,16 @@ module ScrapingHelper
   def process_nyt_page!(data, doc)
     s = [
       '[itemprop=description] p:first-of-type',
-      '.recipe-ingredients li[itemprop=recipeIngredient]',
+      '.recipe-ingredients li',
       '.recipe-steps li',
-      '.recipe-subhead span[itemprop=author]'
+      '.recipe-subhead span[itemprop=author]',
+      'ul.recipe-notes li'
     ]
-    data.description = doc.css(s[0]).text
-    data.ingredients = doc.css(s[1]).to_a.map(&:text)
-    data.instructions = doc.css(s[2]).to_a.map(&:text)
-    data.author = doc.search(s[3]).text
+    data.description = doc.css(s[0])&.text
+    data.ingredients = doc.css(s[1])&.to_a&.map(&:text)
+    data.instructions = doc.css(s[2])&.to_a&.map(&:text)
+    data.author = doc.search(s[3])&.text
+    data.notes = doc.css(s[4])&.to_a&.map(&:text).join("\n")
     data
   end
 
