@@ -16,7 +16,7 @@ class RecipesController < ApplicationController
       format.html do
         safely { analytics }
         @collections_json = ActiveModelSerializers::SerializableResource.new(current_user.collections.order(:updated_at).limit(5), each_serializer: CollectionListSerializer).as_json
-        @groceries_json = ActiveModelSerializers::SerializableResource.new(current_user.groceries.order(:updated_at).limit(5), each_serializer: GrocerySerializer).as_json
+        @groceries_json = ActiveModelSerializers::SerializableResource.new(current_user.groceries.active.order(:updated_at).limit(5), each_serializer: GrocerySerializer).as_json
       end
       format.json { render json: @recipes_json }
     end
