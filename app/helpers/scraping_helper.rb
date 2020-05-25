@@ -94,7 +94,7 @@ module ScrapingHelper
   def process_allrecipes_page!(data, doc)
     data.name = doc.css('.recipe-summary h1[itemprop=name]')&.text
     data.ingredients = doc.css('li span[itemprop="recipeIngredient"]')&.map(&:text)
-    data.yield = doc.css('meta[itemprop="recipeYield"]')&.attr('content').text
+    data.yield = doc.css('meta[itemprop="recipeYield"]')&.attr('content')&.text
     data.yield += ' servings' if data.yield.present?
     data
   end
@@ -115,8 +115,8 @@ module ScrapingHelper
     data.description = doc.css('.dek--basically').text
     data.ingredients = doc.css('.ingredients li').to_a.map(&:text)
     data.instructions = doc.css('.steps .step').to_a.map(&:text)
-    data.author = doc.css('.contributor-recipe-author .contributor-name').text
-    data.yield = doc.css('.recipe__header__servings').text
+    data.author = doc.css('.contributor-recipe-author .contributor-name')&.text
+    data.yield = doc.css('.recipe__header__servings')&.text
     data
   end
 
