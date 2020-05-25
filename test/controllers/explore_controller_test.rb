@@ -27,6 +27,7 @@ class ExploreControllerTest < ActionController::TestCase
     assert_not_empty assigns(:results)
   end
 
+=begin
   test 'should get nyt preview' do
     get :preview, params: { url: 'http://cooking.nytimes.com/recipes/1012732-bacon-lettuce-and-plum-sandwiches' }
     assert_response :success
@@ -56,4 +57,5 @@ class ExploreControllerTest < ActionController::TestCase
     assert_match 'Preheat', r.instructions
     assert_equal '12 servings', r.serves
   end
+=end
 end
