@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   include NavHelper
   include TextHelper
 
-  caches_page :home, :styleguide, :terms, :privacy
+  # caches_page :home, :styleguide, :terms, :privacy
 
   def home
     render :home, layout: false
