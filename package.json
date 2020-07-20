@@ -45,7 +45,7 @@
     "draftjs-md-converter": "^1.2.0",
     "fuse.js": "^3.4.6",
     "glob": "^7.1.6",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "parker": "^0.0.10",
     "path-complete-extname": "^1.0.0",
     "prop-types": "^15.7.2",
