@@ -56,7 +56,7 @@ class Recipe < ApplicationRecord
   end
 
   def public_url
-    share_url shared_id
+    share_url(shared_id, protocol: 'https')
   end
 
   def from_web?
