@@ -11,9 +11,9 @@ class ScrapingHelperTest < ActionView::TestCase
     assert_not_nil @recipe[:instructions]
   end
 
-  test 'nyt cooking import' do
-    check_recipe('Bacon, Lettuce and Plum Sandwiches', 'http://cooking.nytimes.com/recipes/1012732-bacon-lettuce-and-plum-sandwiches')
-  end
+  # test 'nyt cooking import' do
+  #   check_recipe('Bacon, Lettuce and Plum Sandwiches', 'http://cooking.nytimes.com/recipes/1012732-bacon-lettuce-and-plum-sandwiches')
+  # end
 
   test 'epicurious import' do
     check_recipe('Sheet-Pan Grilled Cheese', 'http://www.epicurious.com/recipes/food/views/sheet-pan-grilled-cheese-56390006')
