@@ -24,7 +24,7 @@ const Nav = ({ active = 'recipes', referer = null }) => (
       _.startsWith(referer, '/collections') ||
       _.startsWith(referer, '/groceries')) ? (
         <a
-          className="bg-orange white circle p1 dn dib-ns"
+          className="bg-grey-5 orange circle p1 dn dib-ns"
           aria-label="Back"
           href={referer}
         >
@@ -76,7 +76,7 @@ const Nav = ({ active = 'recipes', referer = null }) => (
       aria-expanded={false}
       tabIndex={0}
     >
-      <Icon glyph="settings" className="grey-3" />
+      <Icon glyph="settings" className="bg-grey-5 grey-3 p1 circle" />
       <popmenu className="menu__content" data-behavior="menu_content">
         <a className="menu__action" href="/my/settings">
           <Icon glyph="settings" />
