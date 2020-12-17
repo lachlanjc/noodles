@@ -62,4 +62,16 @@ module NavHelper
     locations = %w[devise/registrations#edit].include?(current_location)
     !controllers && !actions && !locations
   end
+
+  def current_referer
+    begin
+      if request.referer.present?
+        session[:current_referer] = URI((request.referer || '')).path
+      else
+        session[:current_referer] = URI((request.referer || '')).path
+      end
+    rescue URI::Error => e
+      session[:current_referer] = nil
+    end
+  end
 end

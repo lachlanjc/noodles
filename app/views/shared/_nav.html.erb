@@ -1,7 +1,7 @@
 <% no_margin ||= false %>
 <% unless no_margin %><div class="dn-p" style="height: 4rem;"><% end %>
 <% if user_signed_in? %>
-  <%= react_component 'Nav', active: nav_active.to_s %>
+  <%= react_component 'Nav', active: nav_active.to_s, referer: current_referer %>
 <% else %>
 <nav
   role="navigation"
