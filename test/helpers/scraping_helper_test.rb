@@ -23,9 +23,9 @@ class ScrapingHelperTest < ActionView::TestCase
     check_recipe('Chocolate Chip Cookie Ice Cream Bars', 'https://www.foodandwine.com/recipes/chocolate-chip-cookie-ice-cream-bars')
   end
 
-  test 'allrecipes import' do
-    check_recipe('Peppered Shrimp Alfredo', 'http://allrecipes.com/recipe/133128/peppered-shrimp-alfredo/')
-  end
+  # test 'allrecipes import' do
+  #   check_recipe('Peppered Shrimp Alfredo', 'http://allrecipes.com/recipe/133128/peppered-shrimp-alfredo/')
+  # end
 
   test 'food52 import' do
     check_recipe('Carrot-Pineapple Cake with Cream Cheese Frosting', 'https://food52.com/recipes/38008-carrot-pineapple-cake-with-cream-cheese-frosting')
