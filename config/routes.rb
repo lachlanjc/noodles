@@ -67,6 +67,7 @@ Rails.application.routes.draw do
     get 'forgot_password', to: 'devise/passwords#new',    as: :forgot_password
     get 'change_password', to: 'devise/passwords#edit',   as: :change_password
   end
+  get '.well-known/change-password', to: redirect('/my/settings')
 
   scope '/admin' do
     get '/dashboard', to: 'analytics#dashboard', as: :analytics_dash
