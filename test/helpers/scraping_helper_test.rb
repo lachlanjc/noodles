@@ -31,7 +31,7 @@ class ScrapingHelperTest < ActionView::TestCase
     check_recipe('Carrot-Pineapple Cake with Cream Cheese Frosting', 'https://food52.com/recipes/38008-carrot-pineapple-cake-with-cream-cheese-frosting')
   end
 
-  test 'bon appetit import' do
-    check_recipe('Chocolate Chunk–Pumpkin Seed Cookies', 'https://www.bonappetit.com/recipe/chocolate-chunk-pumpkin-seed-cookies')
-  end
+  # test 'bon appetit import' do
+  #   check_recipe('Chocolate Chunk–Pumpkin Seed Cookies', 'https://www.bonappetit.com/recipe/chocolate-chunk-pumpkin-seed-cookies')
+  # end
 end
