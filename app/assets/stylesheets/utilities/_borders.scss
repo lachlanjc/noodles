@@ -12,12 +12,20 @@
   }
 }
 
-.bw0     { border-width: 0; }
+.bw0 {
+  border-width: 0;
+}
 
-.br--sm   { border-radius: $border-radius-sm; }
+.br--sm {
+  border-radius: $border-radius-sm;
+}
 .br,
-.rounded { border-radius: $border-radius; }
-.circle  { border-radius: 50%; }
+.rounded {
+  border-radius: $border-radius;
+}
+.circle {
+  border-radius: 999px;
+}
 
 .rounded-top {
   border-radius: $border-radius $border-radius 0 0;
