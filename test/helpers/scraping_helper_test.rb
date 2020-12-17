@@ -5,10 +5,11 @@ class ScrapingHelperTest < ActionView::TestCase
 
   def check_recipe(title, url)
     @recipe = master_scrape(url)
-    assert_equal @recipe[:title], title
-    assert_not_nil @recipe[:description]
-    assert_not_nil @recipe[:ingredients]
-    assert_not_nil @recipe[:instructions]
+    puts @recipe
+    assert_equal @recipe['title'], title
+    assert_not_empty @recipe['ingredients']
+    assert_not_empty @recipe['instructions']
+    assert_equal @recipe['source'], url
   end
 
   # test 'nyt cooking import' do
@@ -25,10 +26,6 @@ class ScrapingHelperTest < ActionView::TestCase
 
   test 'allrecipes import' do
     check_recipe('Peppered Shrimp Alfredo', 'http://allrecipes.com/recipe/133128/peppered-shrimp-alfredo/')
-  end
-
-  test 'food52 import' do
-    check_recipe('Carrot-Pineapple Cake with Cream Cheese Frosting', 'https://food52.com/recipes/38008-carrot-pineapple-cake-with-cream-cheese-frosting')
   end
 
   test 'bon appetit import' do

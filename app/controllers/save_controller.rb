@@ -16,8 +16,9 @@ class SaveController < ApplicationController
       end
     else
       recipe_data = master_scrape(params[:url])
-      if recipe_data.blank? || recipe_data[:title].blank?
-        EmailMeJob.perform_later(subject: 'Escargot issue', body: params[:url])
+      if recipe_data.blank?
+        nil.length
+        # EmailMeJob.perform_later(subject: 'Escargot issue', body: params[:url])
         action_unsupported
       else
         action_supported save_data!(recipe_data)
@@ -44,7 +45,7 @@ class SaveController < ApplicationController
   end
 
   def action_unsupported
-    flash_or_text :danger, 'Noodles can’t import that now—but the developer has been notified.'
+    flash_or_text :danger, 'Noodles can’t import from that website right now :('
     go_back unless request.xhr?
   end
 

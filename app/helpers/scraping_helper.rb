@@ -2,28 +2,27 @@
 module ScrapingHelper
   include RecipesHelper
 
-  def master_scrape(link)
-    host = find_domain(link)
-    path = find_path(link)
-
-    url = link
-    url.gsub!('http://', 'https://')
-    url.gsub!(/\/print/, '') if host.match?(/allrecipes\.com/)
-
-    page = safely { Mechanize.new.get(url).content }
-    data = Hangry.parse page
-
-    return unless data.name.present? || host =~ /allrecipes|marthastewart|epicurious|bonappetit|foodandwine|food52/
-    create_recipe_item process_recipe_page(url, page, data)
+  def master_scrape(url)
+    begin
+      data = safely { JSON.load(open("https://escargot-r9tc75z4t.now.sh/api/scrape?url=#{url}")) }
+    rescue OpenURI::HTTPError
+    end
+    if !data
+      page = safely { Mechanize.new.get(url).content }
+      data = Hangry.parse(page).to_h
+      data = process_recipe_page(url, page, data)
+      data = create_recipe_item data
+    end
+    data
   end
 
   # Process recipe pages
   def process_recipe_page(url, page, data)
     host = find_domain(url).to_s
     doc = Nokogiri::HTML::DocumentFragment.parse(page)
-    if host.match? 'nytimes.com'
-      data = process_nyt_page!(data, doc)
-    elsif host.match? 'epicurious.com'
+    # if host.match? 'nytimes.com'
+      # data = process_nyt_page!(data, doc)
+    if host.match? 'epicurious.com'
       data = process_epicurious_page!(data, doc)
     elsif host.match? 'allrecipes.com'
       data = process_allrecipes_page!(data, doc)
@@ -37,24 +36,25 @@ module ScrapingHelper
       data.instructions = doc.css('#recipe-content #instructions').text
     end
     if data.to_h.values.reject(&:blank?).empty?
-      data = process_schema_for data, doc
+      data = process_schema_for doc
     elsif data.instructions.to_s.match(/\n/).blank?
       data = process_blog_page! data, doc
     end
     data
   end
 
-  def process_schema_for(data, doc)
-    if meta = doc.css('script[type="application/ld+json"]').text.squish
-      values = JSON.parse(meta)
-      data.name = values['name']
-      data.description = values['description']&.squish
-      data.ingredients = values['recipeIngredient']
-      data.instructions = values['recipeInstructions']
-      data.yield = values['recipeYield'].to_s.remove('Makes ')
-      data.author = values['author']['name']
-    end
-    data
+  def process_schema_for(doc)
+    meta = doc.css('script[type="application/ld+json"]').text.squish
+    return {} unless meta
+    values = JSON.parse(meta)
+    {
+      name: values['name'],
+      description: values['description']&.squish,
+      ingredients: values['recipeIngredient'],
+      instructions: values['recipeInstructions'],
+      yield: values['recipeYield'].to_s.remove('Makes '),
+      author: values['author']['name']
+    }
   end
 
   # Fixes for NYT Cooking
@@ -133,28 +133,35 @@ module ScrapingHelper
   # Basic scaffolding for recipe item
   def create_recipe_item(data)
     {
-      title: data.name.to_s.squish.truncate(255),
-      description: data.description.to_s.squish,
-      ingredients: data.ingredients,
-      instructions: data.instructions,
-      serves: data.yield.to_s.capitalize.remove('Servings:',).strip
+      title: data[:name].to_s.squish.truncate(255),
+      description: data[:description].to_s.squish,
+      ingredients: data[:ingredients],
+      instructions: data[:instructions],
+      serves: data[:yield].to_s.capitalize.remove('Servings:',).strip
     }
   end
 
   # Create a Recipe with provided data
-  def create_recipe(recipe_data, url_source)
-    Recipe.create(
-      user_id: current_user.id,
-      title: recipe_data[:title],
-      description: recipe_data[:description],
-      ingredients: process_recipe_ingredients(recipe_data[:ingredients]),
-      instructions: process_recipe_instructions(recipe_data[:instructions]),
-      source: url_source,
-      author: recipe_data[:author].to_s.squish,
-      serves: recipe_data[:serves].to_s.squish,
-      notes: recipe_data[:notes].to_s.squish,
-      favorite: false
-    )
+  def create_recipe(data, url_source)
+    data['user_id'] = current_user.id
+    data['img'] = open(data['photo']) if data['photo']
+    data.delete('photo')
+    data['ingredients'] = process_recipe_ingredients data[:ingredients]
+    data['instructions'] = process_recipe_instructions data[:instructions]
+    data['source'] = url_source
+      # 'favorite': false,
+      # img: data['photo'] ? open(data['photo']) : nil
+    # ).delete(:photo)
+    # puts attrs
+    Recipe.create(data)
+    # title: recipe_data[:title],
+    # description: recipe_data[:description],
+    # ingredients: recipe_data[:ingredients], # process_recipe_ingredients(recipe_data[:ingredients]),
+    # instructions: recipe_data[:instructions], # process_recipe_instructions(recipe_data[:instructions]),
+    # source: url_source,
+    # author: recipe_data[:author].to_s.squish,
+    # serves: recipe_data[:serves].to_s.squish,
+    # notes: recipe_data[:notes].to_s.squish,
   end
 
   # Fully process recipe ingredients
@@ -186,8 +193,7 @@ module ScrapingHelper
   # Fully process recipe instructions
   def process_recipe_instructions(instructions)
     return '' if instructions.blank?
-    steps = clean_instructions(instructions)
-    steps = form_markdown_for_instructions(steps)
+    steps = form_markdown_for_instructions(clean_instructions(instructions))
     steps.chomp
   end
 
@@ -199,11 +205,15 @@ module ScrapingHelper
     steps.delete_if do |step|
       step.to_s.squish.length < 3 || step.to_s.match('Preparation')
     end
-    steps.each do |step|
-      # Remove custom numbering or line breaks
-      step.gsub!(/^\w?\d\.?/, '').to_s.squish!
+    steps.map do |step|
+      if step.is_a? Hash
+        step['itemListElement'][0]['text'].to_s if step['itemListElement']
+        # nil.length
+      else
+        # Remove custom numbering or line breaks
+        step.to_s.gsub!(/^\w?\d\.?/, '').to_s.squish!
+      end
     end
-    steps
   end
 
   # Generate Markdown based on instructions
