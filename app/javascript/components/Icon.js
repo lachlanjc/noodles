@@ -1,7 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-
-const Icon = require('@hackclub/icons').default
+const { default: Icon, glyphNames } = require('@hackclub/icons')
 
 export default Icon
 
@@ -30,15 +28,15 @@ export const CollectionsIcon = ({ size = 32, ...props }) => (
 )
 
 export const AllIcons = () => (
-  <div
+  <section
     style={{
       display: 'grid',
       gridTemplateColumns: 'repeat(auto-fill, minmax(48px, 1fr))',
       gridGap: 16
     }}
   >
-    {_.keys(glyphs).map(key => (
+    {glyphNames.map(key => (
       <Icon glyph={key} size={48} key={key} />
     ))}
-  </div>
+  </section>
 )
