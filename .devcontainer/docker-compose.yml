@@ -29,6 +29,7 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
       POSTGRES_DB: postgres
+    network_mode: host
 
 # Persist database information after your VM shuts down (just these two lines!)
 volumes:
