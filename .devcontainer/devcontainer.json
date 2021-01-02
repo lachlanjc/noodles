@@ -5,15 +5,38 @@
   "dockerComposeFile": "docker-compose.yml",
   "service": "app",
   "workspaceFolder": "/noodles",
-  "forwardPorts": [3000, 3035, 5100],
+  "forwardPorts": [3000, 3035, 5100, 5432],
 
 	// Set *default* container specific settings.json values on container create.
-	"settings": { 
-		"terminal.integrated.shell.linux": "/bin/bash"
-	},
+	"settings": {
+    "terminal.integrated.shell.linux": "/bin/zsh",
+    "sqltools.connections": [
+      {
+        "name": "Container database",
+        "driver": "PostgreSQL",
+        "previewLimit": 50,
+        "server": "localhost",
+        "port": 5432,
+        "database": "postgres",
+        "username": "postgres",
+        "password": "postgres"
+      }
+    ],
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  },
 
-	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": [
+  "extensions": [
+    "dbaeumer.vscode-eslint",
+    "mtxr.sqltools",
+    "mtxr.sqltools-driver-pg",
+    "esbenp.prettier-vscode",
 		"rebornix.Ruby"
 	],
 
