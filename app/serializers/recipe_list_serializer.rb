@@ -2,7 +2,7 @@ class RecipeListSerializer < BaseSerializer
   cache key: 'recipe_list'
 
   attributes :id, :title, :description, :path, :public_path,
-             :favorite, :notes, :photo, :web, :collections, :last_cooked_at
+             :favorite, :notes, :photo, :web, :collections, :cooks_count, :last_cooked_at
 
   def notes
     object.notes.present?
