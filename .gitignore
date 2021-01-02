@@ -6,7 +6,6 @@ db/seeds.rb
 *.swp
 *.un~
 node_modules/
-meta/results/
 /public/assets
 /public/packs
 /public/page_cache

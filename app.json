@@ -76,7 +76,6 @@
     }
   },
   "addons": [
-    "newrelic",
     "heroku-postgresql",
     "papertrail",
     "scheduler"
