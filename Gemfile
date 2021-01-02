@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.5.1'
+ruby '2.7.2'
 
 git_source(:github) do |repo|
   repo = "#{repo}/#{repo}" unless repo.include?("/")
@@ -35,7 +35,6 @@ gem 'rake'
 gem 'redcarpet'
 gem 'safely_block'
 gem 'sass-rails'
-gem 'skylight'
 gem 'stripe'
 gem 'turbolinks'
 gem 'twilio-ruby'
@@ -59,4 +58,5 @@ end
 
 group :production do
   gem 'rails_12factor'
+  gem 'skylight'
 end
