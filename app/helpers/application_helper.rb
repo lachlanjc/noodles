@@ -36,7 +36,7 @@ module ApplicationHelper
       '@type': 'Organization',
       name: 'Noodles',
       url: 'https://getnoodl.es',
-      logo: image_url('icon/circle@512.png'),
+      logo: image_url('icon/icon.png'),
       sameAs: [
         'https://news.getnoodl.es',
         'https://twitter.com/noodlesapp',
