@@ -54,7 +54,9 @@ const RecipeList = ({
         {searching && _.isEmpty(recipes) && (
           <BlankSlate>
             <h3 className="man">No search results 🔍</h3>
-            <p className="mbn">Try searching for something less specific.</p>
+            <p className={createFromSearch ? 'mb2' : 'mbn'}>
+              Try searching for something less specific.
+            </p>
             {createFromSearch && (
               <Button
                 color="blue"
