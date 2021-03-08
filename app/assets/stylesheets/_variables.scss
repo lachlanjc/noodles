@@ -40,13 +40,13 @@ $f4: 1rem;
 $f5: 0.875rem;
 $font-family: ui-rounded, system-ui, -apple-system, BlinkMacSystemFont, Roboto, 'Segoe UI',
   'Helvetica Neue', sans-serif;
-$serif-font-family: 'ff-tisa-web-pro', $font-family;
+$serif-font-family: 'ff-tisa-web-pro', ui-serif, Georgia, Times, serif;
 $heading-font-family: $font-family;
 $heading-font-weight: 700;
 $bold-font-weight: 700;
 $spacing: 0.1em;
 $line-height: 1.5;
-$monospace-font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo,
+$monospace-font-family: ui-monospace, 'SFMono-Regular', Consolas, Menlo, 'Liberation Mono',
   Courier, monospace;
 
 $space-1: 0.5rem;
