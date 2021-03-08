@@ -11,26 +11,26 @@
 <%= section_header 'Details', 2, class: 'mtm' %>
 
 <%= content_tag(:div, class: 'wbw mbm') do %>
-  <span class="db b grey-2">Source</span>
+  <span class="db b sans grey-2">Source</span>
   <span class="content">
     <%= clean_autolink @recipe.source %>
   </span>
 <% end if @recipe.source.present? %>
 
 <%= content_tag(:p) do %>
-  <span class="db b grey-2">Author</span>
+  <span class="db b sans grey-2">Author</span>
   <span class="content"><%= @recipe.author %></span>
 <% end if @recipe.author.present? %>
 
 <%= content_tag(:p) do %>
-  <span class="db b grey-2">Yield</span>
+  <span class="db b sans grey-2">Yield</span>
   <span class="content"><%= @recipe.serves %></span>
 <% end if @recipe.serves.present? %>
 
-<div data-user="<%= @recipe.user_id %>" data-behavior="recipe_colls_container" class="dn-p"></div>
+<div data-user="<%= @recipe.user_id %>" data-behavior="recipe_colls_container" class="dn-p sans"></div>
 
 <%= content_tag(:p, class: 'mts') do %>
-  <span class="db b grey-2">Added</span>
+  <span class="db b sans grey-2">Added</span>
   <span class="content" title="<%= @recipe.created_at.strftime '%Y-%m-%d at %I:%M %p' %>">
     <%= @recipe.created_at.strftime '%B %d, %Y' %>
   </span>
