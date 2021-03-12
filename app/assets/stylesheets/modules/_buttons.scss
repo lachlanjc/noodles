@@ -1,7 +1,6 @@
 .btn {
-  border-radius: 999px;
+  border-radius: $border-radius;
   border: 0;
-  box-shadow: $shadow-1;
   color: $white;
   cursor: pointer;
   display: inline-block;

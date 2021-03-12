@@ -17,12 +17,12 @@
     }
 
     &:before {
-      border-bottom-color: $blue-dark;
+      border-bottom-color: $orange-dark;
       border-width: 10px;
     }
 
     &:after {
-      border-bottom-color: $blue;
+      border-bottom-color: $orange;
       border-width: 9px;
       margin-left: 1px;
     }
@@ -35,9 +35,9 @@
   position: absolute;
   top: 100%;
   right: -200%;
-  background-color: $blue;
-  border-radius: $border-radius-sm;
-  border: 1px solid $blue-dark;
+  background-color: $orange;
+  border-radius: $border-radius;
+  border: 1px solid $orange-dark;
   box-shadow: $shadow-3;
   font-family: $font-family;
   overflow: hidden;
@@ -58,7 +58,7 @@
 
   &:hover,
   &:focus {
-    background-color: $blue-dark;
+    background-color: $orange-dark;
   }
 
   svg {
@@ -66,7 +66,7 @@
   }
 
   + .menu__action {
-    border-top: 1px solid $blue-dark;
+    border-top: 1px solid $orange-dark;
   }
 }
 

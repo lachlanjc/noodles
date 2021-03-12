@@ -29,7 +29,7 @@ $border-color: $grey-4;
 $border: $border-width solid $border-color;
 
 $border-radius: 10px;
-$border-radius-sm: 5px;
+$border-radius-sm: 6px;
 
 $mega: 4rem;
 $f0: 3rem;
@@ -54,9 +54,13 @@ $space-2: 1rem;
 $space-3: 2rem;
 $space-4: 4rem;
 
-$transition: 186ms cubic-bezier(0.4, 0, 0.2, 1);
+$transition: 256ms cubic-bezier(0.4, 0, 0.2, 1);
 
-$shadow-1: 0 1px 3px 0 $darken-1;
-$shadow-2: 0 2px 8px 0 $darken-2;
-$shadow-3: 0 4px 15px 0 $darken-2;
-$shadow-4: 0 18px 27px 0 $darken-3;
+$shadow-1: 0px 2.5px 5px -1px rgba(50, 50, 93, 0.25),
+  0px 1.5px 3px -1.5px rgba(0, 0, 0, 0.3);
+$shadow-2: 0px 6.3px 12.5px -2.5px rgba(50, 50, 93, 0.25),
+  0px 3.8px 7.5px -3.7px rgba(0, 0, 0, 0.3);
+$shadow-3: 0px 13.5px 27px -5.4px rgba(50, 50, 93, 0.25),
+  0px 8.1px 16.2px -8.1px rgba(0, 0, 0, 0.3);
+$shadow-4: 0px 30px 60px -12px rgba(50, 50, 93, 0.25),
+  0px 18px 36px -18px rgba(0, 0, 0, 0.3);
