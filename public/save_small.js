@@ -1,1 +1,0 @@
-document.write('<a href="https://getnoodl.es/save?url=' + window.location.href + '"><img src="http://assets.getnoodl.es/save_small.png" srcset="http://assets.getnoodl.es/save_small.png 1x, http://assets.getnoodl.es/save_small@2x.png 2x" alt="Save this recipe to Noodles"></a>');
