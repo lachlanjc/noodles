@@ -30,7 +30,9 @@ $(document).on 'turbolinks:load', ->
     if e.keyCode is 27 and $(N.openMenuSelector).length > 0
       N.toggleMenu $(N.openMenuSelector)
 
-  N.s('flash').delay(5 * 1e3).fadeOut('fast')
+  N.s('flash').delay(5).fadeOut('fast')
+  $(document).on 'click', '[data-behavior~=flash]', ->
+    $(this).fadeOut('fast')
 
   totalModalize()
 
