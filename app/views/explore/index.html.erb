@@ -55,21 +55,19 @@
 <main class="w-80-m mx-auto pam tc mw7" data-behavior="explore_results_container">
   <article class="w-100 card rounded pam pal-ns mbl bx mx-auto mw6">
     <h2 class="w-80-m mx-auto mtn fwn">
-      Noodles Explore is <strong class="b">temporarily unavailable</strong> 😓
+      Find the best recipes on the web with <strong class="b">Explore</strong>.
     </h2>
-    <% if !user_signed_in? %>
-        <!--
+    <% if user_signed_in? %>
       <p class="mbn">
         Search for anything you want to cook,
         then save your favorite results to your library.
       </p>
-    <%# else %>
+    <% else %>
       <p>
         Search for anything you want to cook.
         <br class="dn db-ns">
         Sign up to save the recipes you find.
       </p>
-    -->
       <div class="flex fac fjc mts" data-behavior="inline_signup_btn_container">
         <a href="#signup" name="signup" data-behavior="modal_trigger inline_signup_btn" class="btn btn--primary bg-orange">Sign up</a>
         <%= link_to 'Sign in', sign_in_path, class: 'btn bg-white mlm' %>
