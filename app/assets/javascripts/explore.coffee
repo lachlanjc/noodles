@@ -37,7 +37,7 @@ $(document).on 'turbolinks:load', ->
         user_id: N.user
         query: _.trim $('[data-behavior~=explore_search_field]').val()
         source: $('[data-behavior~=explore_src_pick_bar]').data 'src-selected'
-      Intercom('trackEvent', 'searched-explore', e) if typeof Intercom isnt 'undefined'
+      # Intercom('trackEvent', 'searched-explore', e) if typeof Intercom isnt 'undefined'
       heap.track('Searches Explore', _.omit(e, 'user_id')) if typeof heap isnt 'undefined'
 
   searchActions = ->

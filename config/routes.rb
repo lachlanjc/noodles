@@ -41,14 +41,14 @@ Rails.application.routes.draw do
       get '/past', to: 'groceries#past', as: :past
     end
   end
-  post '/groceries/sms', to: 'sms#groceries'
+  # post '/groceries/sms', to: 'sms#groceries'
 
   get '/privacy', to: 'pages#privacy', as: :privacy
   get '/terms', to: 'pages#terms', as: :terms
   get '/contact', to: 'pages#help', as: :contact
   get '/help', to: 'pages#help', as: :help
 
-  resources :subscriptions, only: %i[index create destroy]
+  # resources :subscriptions, only: %i[index create destroy]
 
   devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }
   as :user do

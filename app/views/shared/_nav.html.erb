@@ -34,17 +34,6 @@
   <div
     class="w-100 mlm-ns dn-p sans"
     style="position: fixed; left: 0px; right: 0px; bottom: 0px; z-index: 1;">
-    <% if user_signed_in? %>
-      <% unless current_user.subscriber? %>
-        <a
-          href="<%= subscriptions_path %>"
-          data-behavior="modal_trigger"
-          class="dib bg-pink f4 b lh mlm pvs phm"
-          style="border-radius: 6px 6px 0 0; color: #fff;">
-          Subscribe
-        </a>
-      <% end %>
-    <% end %>
     <a
       href="#help"
       data-behavior="modal_trigger"

@@ -9,10 +9,11 @@ class User < ApplicationRecord
 
   validates :phone, uniqueness: true, allow_blank: true
 
+  scope :subscribers, -> { where('subscribed_at IS NOT NULL') }
+
+  =begin
   after_update :update_stripe_customer!
   before_destroy :delete_stripe_data!
-
-  scope :subscribers, -> { where('subscribed_at IS NOT NULL') }
 
   STRIPE_PLAN_ID = 'noodles-subscription'.freeze
 
@@ -79,6 +80,7 @@ class User < ApplicationRecord
     delete_stripe_customer! && delete_stripe_subscription!
     update(subscribed_at: nil, stripe_customer: nil, stripe_subscription: nil)
   end
+  =end
 
   def subscriber?
     subscribed_at.present?

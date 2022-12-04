@@ -17,6 +17,7 @@ module AnalyticsHelper
     "'collections_count': #{user_collections_count}," if simple_controller == 'collections'
   end
 
+  =begin
   def intercom_custom_data
     data = {}
     if simple_controller == 'devise/registrations'
@@ -27,4 +28,5 @@ module AnalyticsHelper
     data[:collections_count] = user_collections_count if simple_controller == 'collections'
     data
   end
+  =end
 end

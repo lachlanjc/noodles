@@ -1,1 +1,1 @@
-Stripe.api_key = ENV['STRIPE_SECRET']
+# Stripe.api_key = ENV['STRIPE_SECRET']

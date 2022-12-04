@@ -11,5 +11,5 @@
   ), ' '
 
 @N.track = (name, options) ->
-  Intercom 'trackEvent', name, options if typeof Intercom isnt 'undefined'
+  # Intercom 'trackEvent', name, options if typeof Intercom isnt 'undefined'
   heap.track name, options if typeof heap isnt 'undefined'
