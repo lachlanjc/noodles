@@ -11,7 +11,16 @@ class User < ApplicationRecord
 
   scope :subscribers, -> { where('subscribed_at IS NOT NULL') }
 
-  =begin
+  def subscriber?
+    subscribed_at.present?
+  end
+
+  def free?
+    !subscriber?
+  end
+end
+
+=begin
   after_update :update_stripe_customer!
   before_destroy :delete_stripe_data!
 
@@ -80,13 +89,4 @@ class User < ApplicationRecord
     delete_stripe_customer! && delete_stripe_subscription!
     update(subscribed_at: nil, stripe_customer: nil, stripe_subscription: nil)
   end
-  =end
-
-  def subscriber?
-    subscribed_at.present?
-  end
-
-  def free?
-    !subscriber?
-  end
-end
+=end
