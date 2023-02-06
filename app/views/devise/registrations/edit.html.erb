@@ -44,19 +44,6 @@
     <%= section_header 'Help', 2, class: 'mtn mbs grey-2 f3' %>
     <%= render 'shared/help', hide_footer: true %>
 
-    <%#
-    <%= section_header 'Subscription', 2, class: 'mtl mbs grey-2 f3' %>
-    <% if current_user.subscriber? %>
-      <p>Thank you for subscribing! It helps a lot.</p>
-      <%= link_to 'Manage my subscription', subscriptions_path, class: 'btn bg-green' %>
-    <% else %>
-      <p>
-        Please consider buying a subscription—$12/year to help keep Noodles running—or make a one-time donation of any amount.
-      </p>
-      <%= link_to 'Learn more', subscriptions_path, class: 'btn bg-green' %>
-    <% end %>
-    #%>
-
     <%= section_header 'Delete your account', 2, class: 'mtl mbs grey-2 f3' %>
     <p>
       If you’re not feeling Noodles, and want to delete your account, click the button below. All your recipes, as well as shared recipes, will be erased forever.
