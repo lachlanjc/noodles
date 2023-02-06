@@ -57,7 +57,7 @@ module NavHelper
   end
 
   def flag_page?
-    controllers = %w[pages subscriptions].include?(params[:controller])
+    controllers = %w[pages].include?(params[:controller])
     actions = %w[share].include?(params[:action])
     locations = %w[devise/registrations#edit].include?(current_location)
     !controllers && !actions && !locations

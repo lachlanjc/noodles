@@ -51,33 +51,26 @@
 
   <section id="embed" class="modal modal--mw" role="dialog">
     <%= modal_header 'Embed on the Web' %>
-    <% if !current_user.subscriber? %>
-      <p>Copy/paste the code below to your website to embed this recipe.</p>
-      <%= content_tag :textarea,
-        escape_once(recipe_embed),
-        class: 'input-reset w-100 man pas f5 mono border br--sm wbw bx',
-        'data-behavior': 'autoselect',
-        rows: 4,
-        readonly: true
-      %>
-      <div class="flex flex-rows fac mts">
-        <button
-          class="btn bg-blue mrm"
-          data-clipboard-text="<%= escape_once(recipe_embed) %>" data-behavior="copy">
-          Copy
-        </button>
-        <a class="btn btn-sm bg-pink mrm" href="#help" data-behavior="modal_trigger modal_close_first">Help</a>
-        <div class="flex-i fac lh0 sans grey-3 caps f5 mts mtn-ns">
-          <%= react_component 'Icon', { glyph: 'channel-private', size: 28 } %>
-          <span>(subscriber-only)</span>
-        </div>
+    <p>Copy/paste the code below to your website to embed this recipe.</p>
+    <%= content_tag :textarea,
+      escape_once(recipe_embed),
+      class: 'input-reset w-100 man pas f5 mono border br--sm wbw bx',
+      'data-behavior': 'autoselect',
+      rows: 4,
+      readonly: true
+    %>
+    <div class="flex flex-rows fac mts">
+      <button
+        class="btn bg-blue mrm"
+        data-clipboard-text="<%= escape_once(recipe_embed) %>" data-behavior="copy">
+        Copy
+      </button>
+      <a class="btn btn-sm bg-pink mrm" href="#help" data-behavior="modal_trigger modal_close_first">Help</a>
+      <div class="flex-i fac lh0 sans grey-3 caps f5 mts mtn-ns">
+        <%= react_component 'Icon', { glyph: 'channel-private', size: 28 } %>
+        <span>(subscriber-only)</span>
       </div>
-      <%= section_header 'Preview', 3, class: 'dn', 'data-behavior': 'rehide' %>
-    <% else %>
-      <div class="bg-grey-5 rounded border pam tc">
-        <p class="grey-3 f3">You’ll need to subscribe to use this feature.</p>
-        <%= link_to 'Buy a subscription', subscriptions_path, class: 'btn btn--primary bg-pink' %>
-      </div>
-    <% end %>
+    </div>
+    <%= section_header 'Preview', 3, class: 'dn', 'data-behavior': 'rehide' %>
   </section>
 <% end %>
