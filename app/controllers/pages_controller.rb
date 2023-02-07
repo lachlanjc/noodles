@@ -4,6 +4,14 @@ class PagesController < ApplicationController
 
   # caches_page :home, :styleguide, :terms, :privacy
 
+  def index
+    if user_signed_in?
+      redirect_to recipes_path
+    else
+      render :home, layout: false
+    end
+  end
+
   def home
     render :home, layout: false
   end
