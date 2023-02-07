@@ -19,22 +19,9 @@ const Nav = ({ active = 'recipes', referer = null }) => (
     className="nav nav--tabs bg-blur phl-ns tc dn-p"
     data-behavior="nav"
   >
-    {(_.startsWith(referer, '/recipes') ||
-      _.startsWith(referer, '/explore') ||
-      _.startsWith(referer, '/collections') ||
-      _.startsWith(referer, '/groceries')) ? (
-        <a
-          className="bg-grey-5 orange circle p1 dn dib-ns"
-          aria-label="Back"
-          href={referer}
-        >
-          <Icon glyph="enter" style={{ transform: 'rotate(180deg)' }} />
-        </a>
-      ) : (
-        <a className="nav__icon dn dib-ns" aria-label="Homepage" href="/">
-          <Logo />
-        </a>
-      )}
+    <a className="nav__icon dn dib-ns" aria-label="Homepage" href="/">
+      <Logo />
+    </a>
     <article className="nav__container">
       <a
         className="nav__tab"
