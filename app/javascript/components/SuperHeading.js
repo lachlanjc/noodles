@@ -9,7 +9,7 @@ const SuperHeading = ({ className, style, ...props }) => {
     paddingBottom: N.space[2],
     ...style
   }
-  const cx = 'superheading sans f1 f0-ns mbn mbl-ns border-bottom'
+  const cx = 'superheading f1 f0-ns mbn mbl-ns border-bottom'
   return <h1 {...props} style={sx} className={N.cxs([cx, className])} />
 }
 

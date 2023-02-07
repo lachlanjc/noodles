@@ -42,10 +42,10 @@ $f4: 1rem;
 $f5: 0.875rem;
 $font-family: ui-rounded, system-ui, -apple-system, BlinkMacSystemFont, Roboto,
   'Segoe UI', 'Helvetica Neue', sans-serif;
-$serif-font-family: 'elena-web', ui-serif, Georgia, Times, serif;
-$heading-font-family: $font-family;
-$heading-font-weight: 700;
-$bold-font-weight: 700;
+$serif-font-family: 'Fraunces', ui-serif, Georgia, Times, serif;
+$heading-font-family: $serif-font-family;
+$heading-font-weight: 600;
+$bold-font-weight: 600;
 $spacing: 0.1em;
 $line-height: 1.5;
 $monospace-font-family: ui-monospace, 'SFMono-Regular', Consolas, Menlo,

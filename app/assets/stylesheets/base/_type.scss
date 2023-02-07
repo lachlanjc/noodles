@@ -29,6 +29,10 @@ h1 {
   color: $orange;
 }
 
+h2 {
+  font-family: $font-family;
+}
+
 p {
   margin: 0 0 12px;
   font-size: $f4;
@@ -51,6 +55,11 @@ a {
   &.green:hover,
   &.green:focus {
     color: $green-dark;
+  }
+
+  &.yellow:hover,
+  &.yellow:focus {
+    color: $yellow-dark;
   }
 
   &.pink:hover,
