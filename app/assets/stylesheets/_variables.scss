@@ -13,15 +13,16 @@ $darken-3: rgba(#000, 0.25);
 $darken-4: rgba(#000, 0.5);
 $hover-background-color: $darken-1;
 
-$red: #e02020;
-$orange: #ff7843;
-$orange-dark: #f26725; // darken($orange, 10%);
+$red: #ec2b3e;
+$orange: #f06c2f;
+$orange-dark: #c26c33; // darken($orange, 10%);
+$yellow: #f7c332;
 $light-yellow: #fffae5;
-$green: #039f60;
+$green: #009677;
 $green-dark: darken($green, 8%);
-$blue: #0091ff;
-$blue-dark: darken($blue, 8%);
-$pink: #ee48b1;
+$blue: #027580;
+$blue-dark: #2f5b8d; // darken($blue, 8%);
+$pink: #ec5495;
 $pink-dark: darken($pink, 8%);
 
 $border-width: 1px;
