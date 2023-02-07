@@ -1,6 +1,7 @@
 .btn {
   border-radius: $border-radius;
   border: 0;
+  box-shadow: $shadow-1;
   color: $white;
   cursor: pointer;
   display: inline-block;
@@ -9,7 +10,7 @@
   line-height: 1.125rem;
   padding: $space-1 $space-2;
   transition: all $transition;
-  -webkit-appearance: none;
+  appearance: none;
   -webkit-tap-highlight-color: transparent;
 
   &:focus,
@@ -55,6 +56,7 @@
 // }
 
 .btn-sm {
+  border-radius: $border-radius-sm;
   font-size: $f5;
   font-weight: 400;
   padding: 0.25rem 0.75rem;

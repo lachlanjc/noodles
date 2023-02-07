@@ -1,12 +1,12 @@
 .card {
   background-color: $white;
   border-radius: $border-radius;
-  box-shadow: $shadow-1;
+  box-shadow: $shadow-2;
   padding: $space-2;
   transition: all $transition;
 
   &:hover,
   &:focus {
-    box-shadow: $shadow-2;
+    box-shadow: $shadow-3;
   }
 }

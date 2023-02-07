@@ -1,18 +1,18 @@
 {
-	"name": "Noodles",
-	"icons": [
-		{
-			"src": "\/android-chrome-192x192.png",
-			"sizes": "192x192",
-			"type": "image\/png"
-		},
-		{
-			"src": "\/android-chrome-512x512.png",
-			"sizes": "512x512",
-			"type": "image\/png"
-		}
-	],
-	"theme_color": "#ff4527",
-	"start_url": "https:\/\/getnoodl.es\/recipes",
-	"display": "standalone"
+  "name": "Noodles",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#ff7843",
+  "start_url": "https://getnoodl.es/recipes",
+  "display": "standalone"
 }
