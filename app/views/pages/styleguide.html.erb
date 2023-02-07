@@ -9,34 +9,38 @@
 
   <%= section_header 'Colors', 2 %>
 
-  <section class="mbm flex fac flex-row mx-auto">
-    <div class="pal bg-orange rounded mrs"></div>
-    <div class="pal bg-blue rounded mrs"></div>
-    <div class="pal bg-green rounded mrs"></div>
-    <div class="pal bg-pink rounded mrs"></div>
-    <div class="pal bg-red rounded mrs"></div>
-    <div class="pal bg-grey-1 rounded mrs"></div>
-    <div class="pal bg-grey-2 rounded mrs"></div>
-    <div class="pal bg-grey-3 rounded mrs"></div>
-    <div class="pal bg-grey-4 rounded mrs"></div>
-    <div class="pal bg-grey-5 rounded border mrs"></div>
-  </section>
+  <div class="mbm flex flex-wrap fac" style="gap: 1rem;">
+    <div class="pal bg-orange rounded"></div>
+    <div class="pal bg-blue rounded"></div>
+    <div class="pal bg-green rounded"></div>
+    <div class="pal bg-pink rounded"></div>
+    <div class="pal bg-yellow rounded"></div>
+    <div class="pal bg-red rounded"></div>
+  </div>
+  <div class="mbl flex flex-wrap fac" style="gap: 1rem;">
+    <div class="pal bg-grey-1 rounded"></div>
+    <div class="pal bg-grey-2 rounded"></div>
+    <div class="pal bg-grey-3 rounded"></div>
+    <div class="pal bg-grey-4 rounded"></div>
+    <div class="pal bg-grey-5 rounded border"></div>
+  </div>
 
   <%= section_header 'Buttons', 2 %>
 
   <p class="mbl"><a class="btn btn--primary bg-orange">Primary</a></p>
 
-  <div style="column-width: 5rem;">
+  <div class="mbl flex flex-wrap" style="gap: 0.5rem;">
     <a class="btn bg-orange">Orange</a>
     <a class="btn bg-blue">Blue</a>
     <a class="btn bg-green">Green</a>
-    <a class="btn bg-pink">pink</a>
+    <a class="btn bg-pink">Pink</a>
+    <a class="btn bg-yellow">Yellow</a>
     <a class="btn bg-grey-3">Grey 3</a>
   </div>
 
   <%= section_header 'Icons', 2 %>
   <p class="grey-3 mbm">
-    Iconset sourced from <a href="https://spectrum.chat" class="pink">Spectrum</a>
+    Iconset sourced from <a href="https://supercons.vercel.app">Supercons</a>
   </p>
 
   <%= react_component 'AllIcons', {}, class: 'grey-2' %>
