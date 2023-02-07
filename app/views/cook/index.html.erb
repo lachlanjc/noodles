@@ -11,8 +11,8 @@
       <%= pluralize @recipe.instructions.lines.count, 'step' %>
     </p>
 
-    <div class="flex flex-rows fac lh mvm">
-      <%= link_to @exit_path, class: 'flex-i fac grey-3 mrl' do %>
+    <div class="flex flex-rows fac lh mvm" style="column-gap: 1rem; row-gap: 0.5rem;">
+      <%= link_to @exit_path, class: 'flex-i fac grey-3' do %>
         <%= react_component 'Icon', { glyph: 'door-leave' }, class: 'grey-3 mrs' %>
         Exit
       <% end %>
@@ -23,7 +23,7 @@
         <%= react_component 'Icon', { glyph: 'edit' }, class: 'grey-3 mrs' %>
         Edit
       <% end %>
-      <div class="flex-i fac mll pointer border rounded serif lh-title grey-3">
+      <div class="flex-i fac pointer border rounded serif lh-title grey-3">
         <div class="flex-auto f4 tr phm" data-behavior="font_dec">A</div>
         <div class="flex-auto f2 tl b phm border-left" data-behavior="font_inc">A</div>
       </div>

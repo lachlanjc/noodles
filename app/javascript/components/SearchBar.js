@@ -11,6 +11,7 @@ const SearchBar = ({ count, className, children, ...props }) => (
     <Icon glyph="search" className="grey-3 fsn" />
     <input
       type="text"
+      inputMode="search"
       placeholder={
         `Search ${count !== 1 ? 'these' : 'for the'}` +
         ` ${count} ${count !== 1 ? 'recipes' : 'recipe'}…`

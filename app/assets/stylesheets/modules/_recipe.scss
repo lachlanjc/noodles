@@ -89,6 +89,9 @@ h1.checklist__item {
   display: inline-block !important;
 }
 
+.feel {
+  transition: background-color $transition;
+}
 .feel:hover {
   background-color: $grey-6;
 }

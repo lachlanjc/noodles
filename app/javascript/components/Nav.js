@@ -67,7 +67,7 @@ const Nav = ({ active = 'recipes', referer = null }) => (
       <popmenu className="menu__content" data-behavior="menu_content">
         <a className="menu__action" href="/my/settings">
           <Icon glyph="settings" />
-          <span>My Settings</span>
+          <span>Settings</span>
         </a>
         <a className="menu__action" href="https://news.getnoodl.es/">
           <Icon glyph="notification" />
@@ -75,7 +75,7 @@ const Nav = ({ active = 'recipes', referer = null }) => (
         </a>
         <a className="menu__action" href="/sign_out">
           <Icon glyph="door-leave" />
-          <span>Sign Out</span>
+          <span>Sign out</span>
         </a>
       </popmenu>
     </action>
