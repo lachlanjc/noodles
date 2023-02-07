@@ -20,10 +20,8 @@ gem 'coffee-rails'
 gem 'hangry'
 gem 'html_to_plain_text'
 gem 'ingreedy'
-# gem 'intercom-rails'
 gem 'jquery-rails'
 gem 'mechanize'
-gem 'mini_racer'
 gem 'paperclip', '5.2.1'
 gem 'pg', '~> 0.18'
 gem 'prawnto_2', require: 'prawnto'
@@ -33,7 +31,7 @@ gem 'rails-controller-testing'
 gem 'rake'
 gem 'redcarpet'
 gem 'safely_block'
-gem 'sassc-rails'
+gem 'sass-rails'
 # gem 'stripe'
 gem 'turbolinks'
 # gem 'twilio-ruby'
@@ -53,8 +51,4 @@ group :development do
   gem 'binding_of_caller'
   gem 'foreman'
   gem 'web-console'
-end
-
-group :production do
-  gem 'rails_12factor'
 end
