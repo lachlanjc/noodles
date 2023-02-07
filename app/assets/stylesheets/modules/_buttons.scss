@@ -22,8 +22,11 @@
 
   &.bg-white {
     border: 1px solid $grey-4;
-    border-bottom: 2px solid $grey-4;
     color: $grey-2;
+  }
+
+  &.bg-pink {
+    color: $grey-1;
   }
 
   &[disabled] {

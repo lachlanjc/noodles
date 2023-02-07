@@ -19,7 +19,7 @@ const RecipesHomeSidebar = ({
     <div className="flex flex-rows">
       <Button
         primary
-        color="blue"
+        color="green"
         href="/recipes/new"
         className="flex-i fac mvs"
       >
@@ -31,7 +31,7 @@ const RecipesHomeSidebar = ({
         primary
         is="btn"
         name="import"
-        color="pink"
+        color="blue"
         className="flex-i fac mvs"
       >
         <Icon glyph="link" size={28} />

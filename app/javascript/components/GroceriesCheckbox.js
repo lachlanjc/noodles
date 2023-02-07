@@ -77,10 +77,10 @@ class GroceriesCheckbox extends Component {
         boxSizing: 'border-box',
         width: 22,
         height: 22,
-        backgroundColor: completed ? '#00cd57' : '#f9fafc',
+        backgroundColor: completed ? '#7b8c32' : '#fffcf5',
         borderRadius: 6,
         borderStyle: completed ? null : 'solid',
-        borderColor: '#8492a6',
+        borderColor: '#e8e1c9',
         borderWidth: 1,
         transition: 'background-color .2s ease-out'
       }

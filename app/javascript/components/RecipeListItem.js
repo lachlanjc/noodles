@@ -13,7 +13,7 @@ const RecipeListItem = ({ recipe, pub }) => {
   return (
     <li className="border-top feel pam">
       <a href={link} className="link-reset">
-        <div className="fr dn-p" style={{ color: '#C0CCDA' }}>
+        <div className="fr dn-p grey-3">
           {recipe.collections && <CollectionsIcon size={28} className="mls" />}
           {recipe.notes && <RecipeListItemIcon glyph="post" />}
           {recipe.photo && <RecipeListItemIcon glyph="photo" />}

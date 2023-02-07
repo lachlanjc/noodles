@@ -16,7 +16,7 @@ input[type='checkbox'] + label {
 }
 
 .text-input {
-  -webkit-appearance: none;
+  appearance: none;
   box-sizing: border-box;
   font-family: $font-family;
   color: $grey-2;
@@ -33,6 +33,10 @@ input[type='checkbox'] + label {
     color: $grey-1;
     outline: 0;
   }
+
+  &::placeholder {
+    color: $grey-3;
+  }
 }
 
 .invisible-input {
@@ -40,6 +44,13 @@ input[type='checkbox'] + label {
   border: 0;
   resize: none;
   padding: 0;
+
+  &::placeholder {
+    color: $grey-3;
+  }
+  &.b.f1::placeholder {
+    color: $grey-4;
+  }
 }
 textarea.invisible-input {
   line-height: 1.75;

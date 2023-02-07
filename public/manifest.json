@@ -12,7 +12,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#ff7843",
+  "theme_color": "#ff6634",
   "start_url": "https://getnoodl.es/recipes",
   "display": "standalone"
 }

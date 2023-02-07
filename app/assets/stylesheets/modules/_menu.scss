@@ -17,12 +17,12 @@
     }
 
     &:before {
-      border-bottom-color: $orange-dark;
+      border-bottom-color: $grey-4;
       border-width: 10px;
     }
 
     &:after {
-      border-bottom-color: $orange;
+      border-bottom-color: $grey-4;
       border-width: 9px;
       margin-left: 1px;
     }
@@ -35,10 +35,9 @@
   position: absolute;
   top: 100%;
   right: -200%;
-  background-color: $orange;
+  background-color: $grey-4;
   border-radius: $border-radius;
-  border: 1px solid $orange-dark;
-  box-shadow: $shadow-3;
+  box-shadow: $shadow-6;
   font-family: $font-family;
   overflow: hidden;
   z-index: 2;
@@ -50,15 +49,16 @@
   font-weight: 600;
   line-height: 1;
   padding: 12px 16px;
+  transition: background-color $transition;
 
   &,
   &:hover {
-    color: $white;
+    color: $grey-2;
   }
 
   &:hover,
   &:focus {
-    background-color: $orange-dark;
+    background-color: $grey-5;
   }
 
   svg {
@@ -66,7 +66,7 @@
   }
 
   + .menu__action {
-    border-top: 1px solid $orange-dark;
+    border-top: 1px solid $darken-1;
   }
 }
 

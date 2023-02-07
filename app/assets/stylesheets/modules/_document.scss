@@ -1,6 +1,6 @@
 .document {
   box-sizing: border-box;
-  background-color: #fff;
+  background-color: $grey-6;
   margin: 0 auto $space-3;
   padding: $space-2;
   position: relative;
@@ -20,7 +20,7 @@
   position: relative;
 
   &__name {
-    background-color: #fff;
+    background-color: $grey-6;
     display: inline-block;
     padding-right: $space-2;
     position: relative;
