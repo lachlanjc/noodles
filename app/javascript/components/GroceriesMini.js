@@ -25,6 +25,7 @@ const GroceriesMini = ({ groceries, ...props }) => (
     <GroceriesForm
       hideSubmit={!_.isEmpty(groceries)}
       makeSuggestions={false}
+      autoFocus={false}
       style={{}}
     />
   </SidebarModule>

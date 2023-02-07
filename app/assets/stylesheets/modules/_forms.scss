@@ -38,6 +38,13 @@ input[type='checkbox'] + label {
     color: $grey-3;
   }
 }
+.text-input--slash + kbd {
+  transition: opacity $transition;
+}
+.text-input--slash:focus + kbd,
+.text-input--slash:not(:empty) + kbd {
+  opacity: 0;
+}
 
 .invisible-input {
   background: transparent;

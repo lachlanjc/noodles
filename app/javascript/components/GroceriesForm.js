@@ -8,7 +8,8 @@ import allSuggestions from './GroceryAutocomplete'
 class GroceriesForm extends Component {
   static propTypes = {
     hideSubmit: PropTypes.bool,
-    makeSuggestions: PropTypes.bool
+    makeSuggestions: PropTypes.bool,
+    autoFocus: PropTypes.bool
   }
 
   state = { name: '', suggestions: [] }
@@ -43,7 +44,12 @@ class GroceriesForm extends Component {
   }
 
   render() {
-    const { hideSubmit = false, makeSuggestions = true, ...props } = this.props
+    const {
+      hideSubmit = false,
+      makeSuggestions = true,
+      autoFocus = true,
+      ...props
+    } = this.props
     let csrfToken
     const node = document.querySelector("head meta[name='csrf-token']")
     if (node && node.content) csrfToken = _.toString(node.content)
@@ -68,7 +74,7 @@ class GroceriesForm extends Component {
             ref={a => (this.input = a)}
             onChange={e => this.updateName(e.target.value, true)}
             value={name}
-            autoFocus
+            autoFocus={autoFocus}
             className={`text-input flex-auto mhs f4`}
             style={{
               borderWidth: '0 0 1px 0',
