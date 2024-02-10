@@ -104,7 +104,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.8)
+    concurrent-ruby (1.2.0)
     connection_pool (2.2.3)
     crass (1.0.6)
     debug_inspector (1.0.0)
@@ -130,8 +130,8 @@ GEM
     execjs (2.7.0)
     ffi (1.15.5)
     foreman (0.87.2)
-    globalid (0.4.1)
-      activesupport (>= 4.2.0)
+    globalid (1.1.0)
+      activesupport (>= 5.0)
     hangry (0.0.2)
       activesupport
       nokogiri
@@ -173,7 +173,7 @@ GEM
       rake
     mini_mime (1.0.1)
     mini_portile2 (2.5.1)
-    minitest (5.14.4)
+    minitest (5.17.0)
     net-http-digest_auth (1.4.1)
     net-http-persistent (3.1.0)
       connection_pool (~> 2.2)
@@ -264,7 +264,7 @@ GEM
     turbolinks (5.2.0)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    tzinfo (1.2.9)
+    tzinfo (1.2.11)
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
